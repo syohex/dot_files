@@ -1,0 +1,25 @@
+;; key-chord setting
+(require 'key-chord)
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay 0.05)
+(setq key-chord-one-keys-delay 0.1)
+;; don't hijack input method!
+(defadvice toggle-input-method (around toggle-input-method-around activate)
+  (let ((input-method-function-save input-method-function))
+    ad-do-it
+    (setq input-method-function input-method-function-save)))
+
+(require 'thing-opt)
+(define-thing-commands)
+(key-chord-define-global "dw" 'kill-word*)
+(key-chord-define-global "yw" 'copy-word)
+(key-chord-define-global "vw" 'mark-word*)
+(key-chord-define-global "ds" 'kill-sexp*)
+(key-chord-define-global "ys" 'copy-sexp)
+(key-chord-define-global "vs" 'mark-sexp*)
+(key-chord-define-global "dq" 'kill-string)
+(key-chord-define-global "yq" 'copy-string)
+(key-chord-define-global "vq" 'mark-string)
+;;(key-chord-define-global "dl" 'kill-up-list)
+;;(key-chord-define-global "yl" 'copy-up-list)
+;;(key-chord-define-global "vl" 'mark-up-list)

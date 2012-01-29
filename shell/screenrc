@@ -1,0 +1,11 @@
+escape ^z^z
+vbell off
+hardstatus on
+hardstatus alwayslastline "|%c| %w"
+
+startup_message off
+
+shell -$SHELL
+defscrollback 3000
+
+termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'

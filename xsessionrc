@@ -1,0 +1,5 @@
+#!/bin/sh
+
+VTE_CJK_WIDTH=1
+export VTE_CJK_WIDTH
+

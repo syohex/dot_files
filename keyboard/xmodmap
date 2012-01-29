@@ -1,0 +1,13 @@
+! Swap Ctrl, CapsLock
+!remove Lock = Caps_Lock
+!remove Control = Control_L
+!keysym Control_L = Caps_Lock
+!keysym Caps_Lock = Control_L
+!add Lock = Caps_Lock
+!add Control = Control_L
+
+!keycode 9 = Escape NoSymbol Escape NoSymbol Escape
+
+! setxkbmap -model us -layout us
+keycode 132 = quoteleft asciitilde
+keycode  49 = Alt_L

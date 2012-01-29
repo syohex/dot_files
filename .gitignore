@@ -1,0 +1,7 @@
+*~
+*.pch
+mail/
+perl/pit_config_default.yaml
+perl/pause
+ssh
+netrc

@@ -1,0 +1,328 @@
+# -*- mode:sh-mode -*-
+# completion
+fpath=($HOME/.zsh/mycomp $fpath)
+autoload -U compinit
+compinit
+
+# default umask
+umask 022
+
+# for move by word
+autoload -Uz select-word-style
+select-word-style bash
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt hist_ignore_dups
+setopt share_history
+
+# key-type is Emacs
+bindkey -e
+
+# for incremental search
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+# not complete command, these completion is too long.
+compdef -d java
+compdef -d git
+
+# not exit Ctrl-D
+setopt ignoreeof
+
+# for sighup
+setopt NOHUP
+setopt nocheckjobs
+
+# stty
+stty stop undef
+
+# completion like emacs
+zstyle ':completion:*:default' menu select=1
+
+# completion use cache
+zstyle ':completion:*' use-cache true
+
+# with slash
+setopt noautoremoveslash
+
+# auto-cd
+setopt auto_pushd
+setopt PUSHD_IGNORE_DUPS
+
+# glob expand
+setopt null_glob no_nomatch
+
+# print if line is one line
+unsetopt promptcr
+
+# Not bell
+setopt NO_beep
+setopt nolistbeep
+
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
+# key binding of command history
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+# setting LANG, this should be UTF-8
+export LANG=ja_JP.UTF-8
+
+# PATH
+export PATH=~/bin:$PATH
+
+# setup ls coloring
+local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*' list-colors $LIST_COLOR
+if [ "$OSTYPE" == "linux-gnu" ]
+then
+    alias ls='ls --color -F'
+    if [ ! -e ~/.dir_colors ]
+    then
+        dircolors -p > ~/.dir_colors
+    fi
+    eval `dircolors ~/.dir_colors -b`
+else
+    if which gls > /dev/null 2>&1
+    then
+        alias ls='gls --color -F'
+    fi
+fi
+
+# setting for emacs and java
+case "$OSTYPE" in
+darwin*)
+        # emacs and emacsclient is symbolic link for Cocoa Emacs
+
+        # java setting for using iterm on mac
+        alias javac='javac -J-Dfile.encoding=UTF-8'
+        alias java='java -Dfile.encoding=UTF-8'
+        ;;
+esac
+
+launch_emacs () {
+    local pwd=$PWD
+    cd ${HOME}
+    case "$OSTYPE" in
+        darwin*)
+            open -n /Applications/Emacs.app --args --reverse
+            ;;
+    esac
+    cd ${pwd}
+}
+
+# alias
+alias lv='less'
+alias rdesktop='rdesktop -x l -a 16 -g 90%'
+alias grep='grep --color=always'
+alias minicom='LANG=C minicom'
+
+if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
+then
+    alias e='emacsclient.sh'
+else
+    alias e='emacsclient'
+fi
+
+alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
+
+## alias for perl
+alias pad="plackup -MPlack::App::Directory \
+           -e 'Plack::App::Directory->new->to_app'"
+alias doclife_md="plackup -MDocLife::Markdown -e \
+                  'DocLife::Markdown->new( root => \".\", suffix => \".md\")->to_app'"
+
+# global alias
+alias -g L='|less -R'
+alias -g V="|lv -c"
+alias -g G='|grep'
+alias -g T='|tee'
+
+# send to clipboard for each platform
+if which pbcopy >/dev/null 2>&1 ; then
+   # Mac
+   alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then
+   # Linux
+   alias -g C='| xsel --input --clipboard'
+elif which putclip >/dev/null 2>&1 ; then
+   # Cygwin
+   alias -g C='| putclip'
+fi
+
+# PROMPT
+autoload colors
+colors
+PROMPT="%B%{${fg[yellow]}%}%n@%m:%{${reset_color}%}%b%# "
+
+# EDITOR
+export EDITOR="emacsclient"
+
+# Subversion log editor
+export SVN_EDITOR='emacsclient'
+
+# PAGER setting
+export PAGER='less'
+export LESSCHARSET=utf-8
+case $OSTYPE in
+    darwin*)
+        export LESS='-r'
+        ;;
+esac
+
+# load perlbrew config file
+if [ -e ~/perl5/perlbrew/etc/bashrc ]
+then
+    source ~/perl5/perlbrew/etc/bashrc
+fi
+
+# load rvm(like perlbrew in Ruby language)
+if [ -e ~/.rvm/scripts/rvm ]
+then
+    source ~/.rvm/scripts/rvm
+fi
+
+# load nvm(node.js manager)
+if [ -e ~/.nvm/nvm.sh ]
+then
+    source ~/.nvm/nvm.sh
+    nvm use stable > /dev/null
+    export NODE_PATH=/home/syohei/.nvm/`node --version`/lib/node_modules:$NODE_PATH
+fi
+
+# setting for python virtual env
+VIRTUALENV_ACTIVE=~/virtual_env/bin/activate
+if [ -e ${VIRTUALENV_ACTIVE} ]
+then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    source ${VIRTUALENV_ACTIVE}
+fi
+
+# for Homebrew at MacOSX
+case $OSTYPE in
+    darwin*)
+        export PATH=/usr/local/share/python:$PATH
+        ;;
+esac
+
+# llvm setting
+export PATH=~/local/llvm/bin:$PATH
+
+# haskell setting
+export PATH=~/.cabal/bin:$PATH
+
+# scala setting
+export PATH=~/src/scala/bin:$PATH
+
+# clojure setting
+export CLOJURE_EXT=~/.clojure
+export PATH=~/src/clojure-contrib/launchers/bash:$PATH
+alias clj=clj-env-dir
+
+## setup Clozure CL(ccl)
+export CCL_DEFAULT_DIRECTORY=~/local/ccl
+
+# for mlterm setting
+if [ "$TERM" != "xterm" ]
+then
+    alias ssh='TERM=xterm ssh'
+else
+    export TERM=xterm-256color
+fi
+
+# loading common function for any platform
+SHELL_DIR=~/dot_files/shell
+if [ -e ${SHELL_DIR}/common_func.sh ]
+then
+    source ${SHELL_DIR}/common_func.sh
+fi
+
+# loading MacOSX function
+case "$OSTYPE" in
+darwin*)
+        if [ -e ${SHELL_DIR}/mac_func.sh ]
+        then
+            source ${SHELL_DIR}/mac_func.sh
+        fi
+        ;;
+esac
+
+## for setting cdd
+source ${SHELL_DIR}/cdd.zsh
+
+function chpwd() {
+    _reg_pwd_screennum
+}
+
+## create emacs env file
+perl -wle \
+    'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
+    PATH GEM_PATH GEM_HOME CLOJURE_EXT \
+    > ~/.emacs.d/shellenv.el
+
+## utils between Emacs and shell
+## Invoke the ``dired'' of current working directory in Emacs buffer.
+dired () {
+    emacsclient -e "(dired \"${1:-$PWD}\")"
+}
+
+## Chdir to the ``default-directory'' of currently opened in Emacs buffer.
+cde () {
+    EMACS_CWD=`emacsclient -e "
+      (if (featurep 'elscreen)
+          (elscreen-current-directory)
+        (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
+
+    echo "chdir to $EMACS_CWD"
+    cd "$EMACS_CWD"
+}
+
+## use only emux:term
+cdl () {
+    EMACS_LAST_DIR=`emacsclient -e "emux:term-last-dir" | sed 's/^"\(.*\)"$/\1/'`
+    echo "chdir to $EMACS_LAST_DIR"
+    cd $EMACS_LAST_DIR
+}
+
+## Chdir top of Perl project
+cdp () {
+    orig_dir=$PWD
+    current_dir=$PWD
+    while [ "$current_dir" != '/' ]
+    do
+        for file in Makefile.PL Build.PL .git .gitignore
+        do
+            if [ -e $current_dir/$file ]
+            then
+                echo "$current_dir"
+                cd $current_dir
+                return 0
+            fi
+        done
+
+        current_dir=`dirname $current_dir`
+    done
+
+    echo "$orig_dir is not Perl Project Directory"
+    return 1
+}
+
+## show git branch at right prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+_DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
+RPROMPT=%B"%1(v|%F{magenta}%1v%f|)"%b${_DIRPART}

@@ -1,0 +1,20 @@
+;; twittering-mode
+(add-hook 'load-path "~/.emacs.d/twittering-mode")
+(when (require 'twittering-mode nil t)
+  (setq twittering-icon-mode t)
+  (setq twittering-status-format "%i %s,  %@:\n%FILL[  ]{%T // from %f%L%r%R}\n")
+  (setq twittering-username "syohex")
+  ;; for oauth
+  (setq twittering-auth-method 'oauth)
+  (setq twittering-oauth-consumer-key "zU2u2XUWjquWI7qZNsl4A")
+  (setq twittering-oauth-consumer-secret "PU40BU4P3xZuE3hNEbdjnhqdHzot6Tqx18e3PFPD1OI")
+  (setq twittering-account-authorization 'authorized)
+  (setq twittering-oauth-access-token-alist
+       '(("oauth_token" . "210790410-Z4TLEUswryzK5YO7wSvtQykdjASqLRZ7b1Fb6sVz")
+         ("oauth_token_secret" . "34h6u1el9iw48s3v1ieBJ2K390yrxmHfNQ1RXqA2Rw")
+         ("user_id" . "210790410")
+         ("screen_name" . "syohex")))
+  (setq twittering-update-status-function 'twittering-update-status-from-pop-up-buffer)
+  (define-key twittering-edit-mode-map (kbd "C-c u") 'url-title)
+  (define-key twittering-mode-map (kbd "F") 'twittering-favorite)
+  (twittering-enable-unread-status-notifier))

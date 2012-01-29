@@ -1,0 +1,4 @@
+# Ack config file
+--nogroup
+--type-add=ruby=.rake,rakefile,Rakefile,.builder
+--type-set=tags=tags

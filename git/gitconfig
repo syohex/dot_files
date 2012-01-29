@@ -1,0 +1,34 @@
+[user]
+name = Syohei YOSHIDA
+email = syohex@gmail.com
+
+[color]
+branch = auto
+diff   = auto
+status = auto
+
+[color "branch"]
+current = yellow reverse
+local   = yellow
+remote  = green
+
+[color "status"]
+added     = green bold
+changed   = red
+untracked = cyan
+
+[color]
+ui = auto
+
+[core]
+editor=emacsclient.sh
+pager=less
+
+[alias]
+st = status
+ci = commit
+br = branch
+df = diff
+lg = log -p
+ls = ls-files
+tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
