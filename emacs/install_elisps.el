@@ -273,6 +273,3 @@
 
 ;; indirect region
 (install-elisp "https://raw.github.com/renard/indirect-region/master/indirect-region.el")
-
-;; smart-tab
-(install-elisp "https://raw.github.com/genehack/smart-tab/master/smart-tab.el")

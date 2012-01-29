@@ -29,10 +29,6 @@
       (setq indent-tabs-mode nil)
     (setq indent-tabs-mode t)))
 
-;; smart-tab
-(require 'smart-tab)
-(global-smart-tab-mode 1)
-
 ;; delete trailling space and blank line tail of file
 (defun my/delete-trailing-blank-lines ()
   (interactive)
