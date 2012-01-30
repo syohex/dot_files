@@ -56,9 +56,17 @@ my %module_repos = (
             system("make");
         },
     },
+
+    'io-mode' => {
+        url => 'https://github.com/superbobry/io-mode.git',
+    },
+
+    'io-emacs' => {
+        url => 'https://github.com/slackorama/io-emacs.git',
+    },
 );
 
-my $EMACS_DIR = File::Spec->catfile($ENV{HOME}, ".emacs.d");
+my $EMACS_DIR = File::Spec->catfile($ENV{HOME}, ".emacs.d", "repos");
 
 chdir $EMACS_DIR;
 while (my ($module, $conf) = each %module_repos) {
