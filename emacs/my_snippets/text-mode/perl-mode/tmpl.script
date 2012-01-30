@@ -1,0 +1,7 @@
+#name : Template script
+# --
+#!perl
+use strict;
+use warnings;
+
+$0

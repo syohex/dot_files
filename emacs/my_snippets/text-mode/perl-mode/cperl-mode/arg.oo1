@@ -1,0 +1,4 @@
+#name : Argument 1(OOP)
+# --
+my \$self = shift;
+$0

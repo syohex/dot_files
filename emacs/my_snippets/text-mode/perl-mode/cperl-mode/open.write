@@ -1,0 +1,5 @@
+#name : open file write mode
+# --
+open my \$fh, '>', \$${1:file} or die "Can't open \$$1";
+$0
+close \$fh;

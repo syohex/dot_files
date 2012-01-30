@@ -1,0 +1,7 @@
+#name : Test::More; and done_testing
+# --
+use Test::More;
+
+$0
+
+done_testing;

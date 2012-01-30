@@ -1,0 +1,4 @@
+#name : Argument Multiple(OOP)
+# --
+my (\$self, \$${1:arg1}) = @_;
+$0

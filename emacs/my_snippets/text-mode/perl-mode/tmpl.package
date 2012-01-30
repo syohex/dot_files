@@ -1,0 +1,11 @@
+#name : Template package without document
+# --
+package ${1:`(yas/perl-package-name)`};
+use strict;
+use warnings;
+
+$0
+
+1;
+
+__END__

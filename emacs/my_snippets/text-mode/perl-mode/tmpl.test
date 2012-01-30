@@ -1,0 +1,11 @@
+#name : Template Test
+# --
+use strict;
+use warnings;
+use Test::More;
+
+use ${1:ModuleName};
+
+$0
+
+done_testing;

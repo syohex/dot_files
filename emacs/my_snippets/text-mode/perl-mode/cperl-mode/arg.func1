@@ -1,0 +1,4 @@
+#name : Argument 1(Function Style)
+# --
+my \$${1:arg} = shift;
+$0

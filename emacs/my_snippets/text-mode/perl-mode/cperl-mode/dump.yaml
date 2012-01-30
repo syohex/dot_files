@@ -1,0 +1,3 @@
+#name : Dump YAML and die
+# --
+use YAML; die YAML::Dump($1);
