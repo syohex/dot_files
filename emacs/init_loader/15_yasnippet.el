@@ -21,3 +21,10 @@
 (add-hook 'wl-draft-mode-hook
           '(lambda ()
              (yas/minor-mode)))
+
+;; Load own snippet directories
+(defun yas/load-all-directories ()
+  (interactive)
+  (yas/reload-all)
+  (mapc 'yas/load-directory-1 '("~/.emacs.d/my_snippets")))
+(yas/load-all-directories)
