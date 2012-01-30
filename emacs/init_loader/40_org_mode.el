@@ -41,7 +41,6 @@
 
 (eval-after-load "org"
   '(progn
-     (define-key org-mode-map (kbd "<tab>") 'yas/expand)
      (smartrep-define-key
       org-mode-map "C-c" '(("C-n" . (lambda ()
                                       (outline-next-visible-heading 1)))
