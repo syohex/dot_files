@@ -13,13 +13,6 @@
    (end-of-buffer)
    (eval-print-last-sexp)))
 
-;; please set proxy if you need
-(when nil
-    (setq url-proxy-services
-      '(("http"  . "http://10.1.127.1:8080")
-        ("ftp"   . "http://10.1.127.1:8080")
-        ("https" . "http://10.1.127.1:8080"))))
-
 ;; anything インタフェース周りの全体的な改善
 (auto-install-batch "anything")
 
