@@ -1,6 +1,6 @@
 ;; org-mode
 (add-to-list 'load-path
-             (expand-file-name "~/.emacs.d/org-mode/lisp"))
+             (expand-file-name "~/.emacs.d/repos/org-mode/lisp"))
 
 (when (require 'org-install nil t)
   (define-key global-map "\C-cl" 'org-store-link)

@@ -25,3 +25,8 @@ ln -s $PWD/emacs ~/.emacs
 # Create init_loader symbolic link
 rm -f ~/.emacs.d/init_loader
 ln -s $PWD/init_loader ~/.emacs.d/init_loader
+
+# Create symbolic link of elisp which is managed by git
+rm -f ~/.emacs.d/repos
+ln -s $PWD/repos ~/.emacs.d/repos
+

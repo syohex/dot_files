@@ -1,5 +1,5 @@
 ;; twittering-mode
-(add-hook 'load-path "~/.emacs.d/twittering-mode")
+(add-hook 'load-path "~/.emacs.d/repos/twittering-mode")
 (when (require 'twittering-mode nil t)
   (setq twittering-icon-mode t)
   (setq twittering-status-format "%i %s,  %@:\n%FILL[  ]{%T // from %f%L%r%R}\n")

@@ -12,7 +12,7 @@
 (setq github-token "d2f3cca0b05efbec4b52535a8e6e54a3")
 
 ;; magit
-(add-to-list 'load-path "~/.emacs.d/magit")
+(add-to-list 'load-path "~/.emacs.d/repos/magit")
 (require 'magit)
 
 (set-face-foreground 'magit-diff-add "green")
