@@ -1,0 +1,30 @@
+[submodule "emacs/repos/auto-complete"]
+	path = emacs/repos/auto-complete
+	url = https://github.com/m2ym/auto-complete.git
+[submodule "emacs/repos/expand-region.el"]
+	path = emacs/repos/expand-region.el
+	url = https://github.com/magnars/expand-region.el.git
+[submodule "emacs/repos/io-emacs"]
+	path = emacs/repos/io-emacs
+	url = https://github.com/slackorama/io-emacs.git
+[submodule "emacs/repos/io-mode"]
+	path = emacs/repos/io-mode
+	url = https://github.com/superbobry/io-mode.git
+[submodule "emacs/repos/magit"]
+	path = emacs/repos/magit
+	url = https://github.com/magit/magit.git
+[submodule "emacs/repos/mark-multiple.el"]
+	path = emacs/repos/mark-multiple.el
+	url = https://github.com/magnars/mark-multiple.el.git
+[submodule "emacs/repos/org-mode"]
+	path = emacs/repos/org-mode
+	url = git://orgmode.org/org-mode.git
+[submodule "emacs/repos/slime"]
+	path = emacs/repos/slime
+	url = git://github.com/nablaone/slime.git
+[submodule "emacs/repos/twittering-mode"]
+	path = emacs/repos/twittering-mode
+	url = https://github.com/hayamiz/twittering-mode.git
+[submodule "emacs/repos/wanderlust"]
+	path = emacs/repos/wanderlust
+	url = https://github.com/wanderlust/wanderlust.git
