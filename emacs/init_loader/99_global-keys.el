@@ -7,11 +7,10 @@
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "C-S-y") 'kill-whole-line)
-(global-set-key (kbd "C-x z") 'repeat-complex-command)
 
 ;;; Ctrl-z Prefix
-(global-set-key (kbd "C-z r") 'anything-resume)
-(global-set-key (kbd "C-z C-z") 'magit-status)
+(global-set-key (kbd "C-z x") 'anything-filelist+)
+(global-set-key (kbd "C-z z") 'anything-resume)
 
 ;; for git
 (global-set-key (kbd "C-z a") 'sgit:add)
@@ -21,7 +20,7 @@
 (global-set-key (kbd "C-z g") 'anything-git-grep)
 
 ;; for anything-project
-(global-set-key (kbd "C-z f") 'anything-project)
+(global-set-key (kbd "C-z C-f") 'anything-project)
 (global-set-key (kbd "C-z C-g") 'anything-project-grep)
 
 (setq my/anything-c-source-buffer+
@@ -221,8 +220,6 @@
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
-(define-key my/ctrl-q-map (kbd "a") 'anything-filelist+)
-(define-key my/ctrl-q-map (kbd "z") 'anything-resume)
 
 (defun my/indent-region ()
   (interactive)
