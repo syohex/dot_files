@@ -2,8 +2,7 @@
 
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-j") 'dabbrev-expand)
-(global-set-key (kbd "M-j") 'dabbrev-expand)
+(global-set-key (kbd "C-;") 'dabbrev-expand)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
@@ -222,6 +221,8 @@
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
+(define-key my/ctrl-q-map (kbd "a") 'anything-filelist+)
+(define-key my/ctrl-q-map (kbd "z") 'anything-resume)
 
 (defun my/indent-region ()
   (interactive)
