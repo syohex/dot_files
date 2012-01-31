@@ -1,0 +1,7 @@
+#name : Shebang Perl
+# --
+#!perl
+use strict;
+use warnings;
+
+$0
