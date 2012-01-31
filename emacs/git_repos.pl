@@ -64,6 +64,14 @@ my %module_repos = (
     'io-emacs' => {
         url => 'https://github.com/slackorama/io-emacs.git',
     },
+
+    'mark-multiple.el' => {
+        url => 'https://github.com/magnars/mark-multiple.el.git',
+    },
+
+    'expand-region.el' => {
+        url => 'https://github.com/magnars/expand-region.el.git',
+    },
 );
 
 my $EMACS_DIR = File::Spec->catfile($ENV{HOME}, ".emacs.d", "repos");
