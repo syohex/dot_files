@@ -197,7 +197,6 @@
 (setq-default find-file-visit-truename t)
 
 ;; expand region
-(add-to-list 'load-path "~/.emacs.d/repos/expand-region.el")
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (global-set-key (kbd "C-M-@") 'er/contract-region)

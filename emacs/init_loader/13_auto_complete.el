@@ -1,6 +1,4 @@
 ;; setting of auto-complete
-(add-to-list 'load-path "~/.emacs.d/repos/auto-complete")
-
 (require 'pos-tip)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/repos/auto-complete/dict")

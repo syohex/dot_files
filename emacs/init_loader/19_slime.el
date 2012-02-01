@@ -1,5 +1,4 @@
 ;;; slime
-(add-to-list 'load-path "~/.emacs.d/repos/slime")
 (require 'slime)
 (slime-setup '(slime-repl slime-fancy slime-banner))
 
