@@ -13,9 +13,8 @@
 (global-set-key (kbd "C-z z") 'anything-resume)
 
 ;; for git
-(global-set-key (kbd "C-z a") 'sgit:add)
-(global-set-key (kbd "C-z C-c") 'sgit:commit)
 (global-set-key (kbd "C-z d") 'sgit:diff)
+(global-set-key (kbd "C-z l") 'sgit:log)
 (global-set-key (kbd "C-z s") 'sgit:status)
 (global-set-key (kbd "C-z g") 'anything-git-grep)
 
