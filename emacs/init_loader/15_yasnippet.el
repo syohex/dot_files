@@ -2,6 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 
 (setq yas/trigger-key "SPC")
+(setq yas/trigger-key "TAB")
 
 (when (require 'yasnippet-config nil t)
   (yas/setup "~/.emacs.d/plugins/yasnippet")
