@@ -38,6 +38,7 @@ my %module_repos = (
         after_hook => sub {
             system("make");
         },
+        load_path => 'lisp',
     },
 
     'twittering-mode' => {
@@ -76,6 +77,8 @@ my %module_repos = (
 
 my $EMACS_DIR = File::Spec->catfile($ENV{HOME}, ".emacs.d", "repos");
 
+my @load_pathes;
+
 chdir $EMACS_DIR;
 while (my ($module, $conf) = each %module_repos) {
     my $is_cloned_now = 0;
@@ -104,5 +107,14 @@ while (my ($module, $conf) = each %module_repos) {
         $conf->{after_hook}->($module);
     }
 
+    my $load_path = $conf->{load_path} || "";
+    push @load_pathes, File::Spec->catfile(Cwd::getcwd, $load_path);
+
     chdir File::Spec->updir;
 }
+
+open my $fh, ">", "repos.el";
+for my $load_path (@load_pathes) {
+    print {$fh} qq/(add-to-list 'load-path "$load_path")\n/;
+}
+close $fh;
