@@ -266,3 +266,6 @@
 
 ;; indirect region
 (install-elisp "https://raw.github.com/renard/indirect-region/master/indirect-region.el")
+
+;; wrap-region
+(install-elisp "https://raw.github.com/rejeep/wrap-region/master/wrap-region.el")
