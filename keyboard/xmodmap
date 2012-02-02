@@ -11,3 +11,6 @@
 ! setxkbmap -model us -layout us
 keycode 132 = quoteleft asciitilde
 keycode  49 = Alt_L
+
+! Muhenkan is used as 'Window key'
+keycode 102 = Super_L
