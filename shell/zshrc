@@ -142,9 +142,10 @@ alias doclife_md="plackup -MDocLife::Markdown -e \
 
 # global alias
 alias -g L='|less -R'
-alias -g V="|lv -c"
+alias -g V="|\lv -c"
 alias -g G='|grep'
 alias -g T='|tee'
+alias -g U='|nkf -w |less -R'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
