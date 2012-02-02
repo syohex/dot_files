@@ -291,15 +291,7 @@
 ;; jaunte
 (require 'jaunte)
 (define-key my/ctrl-q-map (kbd "j") 'jaunte)
-
-;; yafastnav
-(require 'yafastnav)
-(define-key my/ctrl-q-map (kbd "h") 'yafastnav-jump-to-current-screen)
-(define-key my/ctrl-q-map (kbd "f") 'yafastnav-jump-to-forward)
-(define-key my/ctrl-q-map (kbd "b") 'yafastnav-jump-to-backward)
-(set-face-attribute 'yafastnav-shortcut-key-face-type nil
-                    :background "blue" :foreground "white"
-                    :weight 'extra-bold)
+(setq jaunte-global-hint-unit 'whitespace)
 
 ;; cycle buffer
 (require 'cycle-buffer)

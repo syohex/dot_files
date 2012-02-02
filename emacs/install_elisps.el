@@ -159,7 +159,7 @@
 (install-elisp "http://www.dr-qubit.org/undo-tree/undo-tree.el")
 
 ;; jaunte.el hit-a-hint
-(install-elisp "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
+(install-elisp "https://raw.github.com/syohex/jaunte.el/moveunit/jaunte.el")
 
 ;; for flymake perl
 (install-elisp "http://svn.coderepos.org/share/lang/elisp/set-perl5lib/set-perl5lib.el")
@@ -220,9 +220,6 @@
 ;; highlight-column
 (auto-install-from-url "http://www.emacswiki.org/emacs/download/vline.el")
 (auto-install-from-url "http://www.emacswiki.org/emacs/download/col-highlight.el")
-
-;; hit a hint yafastnav
-(auto-install-from-url "https://raw.github.com/tm8st/emacs-yafastnav/master/yafastnav.el")
 
 ;; inf-clojure
 (auto-install-from-url "https://raw.github.com/syohex/emacs-inf-clojure/master/inf-clojure.el")
