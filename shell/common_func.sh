@@ -3,7 +3,16 @@
 # Set keyboard for US keymap
 us_keyboard () {
     setxkbmap -model us -layout us
-    xmodmap ~/.xmodmap
+
+    if [ "$1" = "think" ]
+    then
+        xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
+    elif [ "$1" = "happy" ]
+    then
+        xmodmap ~/dot_files/keyboard/hhk_xmodmap
+    else
+        echo "Usage: us_keyboard 'happy' or 'think'"
+    fi
 }
 
 # Set keyboard for Japanese keymap
