@@ -269,23 +269,6 @@
 (define-key my/ctrl-q-map (kbd "<down>") 'windmove-down)
 (define-key my/ctrl-q-map (kbd "<up>") 'windmove-up)
 
-(defun my/insert-indent-beginning-line (num)
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (dotimes (n (* num 2))
-      (insert " "))))
-
-(define-key my/ctrl-q-map (kbd "<tab>")
-  (lambda () (interactive) (my/insert-indent-beginning-line 1)))
-
-(defun my/insert-pair-to-symbol ()
-  (interactive)
-  (mark-symbol)
-  (call-interactively 'insert-pair-region))
-
-(define-key my/ctrl-q-map (kbd "`") 'my/insert-pair-to-symbol)
-
 ;; for scroll other window
 (smartrep-define-key
  global-map "C-q" '(("n" . (lambda () (scroll-other-window 1)))
@@ -303,20 +286,6 @@
     (insert "\n")))
 (define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 (global-set-key (kbd "M-g y") 'repeat-yank)
-
-;; Ctrl-t map
-(defvar my/ctrl-t-map (make-sparse-keymap)
-  "My original keymap binded to C-t.")
-(defalias 'my/ctrl-t-prefix my/ctrl-t-map)
-(define-key global-map (kbd "C-t") 'my/ctrl-t-prefix)
-(define-key my/ctrl-t-map (kbd "C-f") 'forward-symbol)
-
-(defun my/backward-symbol ()
-  (interactive)
-  (forward-symbol -1))
-
-(define-key my/ctrl-t-map (kbd "C-b") 'my/backward-symbol)
-
 
 ;;;; hitahint
 ;; jaunte
