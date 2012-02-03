@@ -6,6 +6,14 @@
                       'japanese-jisx0208
                       '("VL ゴシック" . "unicode-bmp"))))
 
+(defun set-big-font ()
+  (interactive)
+  (set-default-font "VL ゴシック-12"))
+
+(defun set-normal-font ()
+  (interactive)
+  (set-default-font "VL ゴシック-10"))
+
 ;; font-setting for Mac OSX
 (when (and window-system (system-macosx-p))
  (set-face-attribute 'default nil
