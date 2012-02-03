@@ -11,7 +11,11 @@ us_keyboard () {
     then
         xmodmap ~/dot_files/keyboard/hhk_xmodmap
     else
-        echo "Usage: us_keyboard 'happy' or 'think'"
+        select type in hhk thinkpad
+        do
+            xmodmap ~/dot_files/keyboard/${type}_xmodmap
+            break
+        done
     fi
 }
 
