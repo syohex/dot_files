@@ -2,8 +2,7 @@
 
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-;") 'dabbrev-expand)
-(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
+(global-set-key (kbd "M-j") 'dabbrev-expand)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "C-S-y") 'kill-whole-line)
@@ -109,14 +108,6 @@
 
 (global-set-key "\C-xrN" 'number-rectangle)
 
-(defun switch-to-minibuffer-window ()
-  "switch to minibuffer window (if active)"
-  (interactive)
-  (when (active-minibuffer-window)
-    (select-window (active-minibuffer-window))))
-
-(global-set-key (kbd "C-M-o") 'switch-to-minibuffer-window)
-
 ;; document
 (defmacro major-mode-eql (mode)
   `(eql major-mode ,mode))
@@ -136,13 +127,6 @@
       (man input))))
 
 (global-set-key (kbd "<f1>") 'my/man)
-
-;; goto-column
-(defun my/goto-column (column)
-  (interactive
-   (list (read-string "Goto Column: ")))
-  (move-to-column (string-to-int column)))
-(global-set-key (kbd "M-g c") 'my/goto-column)
 
 ;;; switch last-buffer
 (defvar last-buffer-saved nil)
@@ -204,18 +188,12 @@
 (defalias 'my/ctrl-q-prefix my/ctrl-q-map)
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-(define-key my/ctrl-q-map (kbd "w") 'copy-symbol)
-(define-key my/ctrl-q-map (kbd "k") 'kill-symbol)
-(define-key my/ctrl-q-map (kbd "s") 'copy-string)
-(define-key my/ctrl-q-map (kbd "u") 'copy-url)
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
-(define-key my/ctrl-q-map (kbd "m") 'moccur)
 (define-key my/ctrl-q-map (kbd "t") 'text-translator)
 (define-key my/ctrl-q-map (kbd "l") 'align)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "C-t") 'org-remember)
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
