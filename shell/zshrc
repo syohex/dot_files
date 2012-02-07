@@ -257,11 +257,10 @@ darwin*)
 esac
 
 ## for setting cdd
-source ${SHELL_DIR}/cdd.zsh
-
-function chpwd() {
-    _reg_pwd_screennum
-}
+if [ -e ${SHELL_DIR}/cdd.zsh ]
+then
+    source ${SHELL_DIR}/cdd.zsh
+fi
 
 ## create emacs env file
 perl -wle \
