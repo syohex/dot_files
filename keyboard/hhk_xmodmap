@@ -11,6 +11,7 @@ keycode 102 = Super_L
 remove mod1 = Alt_L
 remove mod4 = Super_L
 
+keycode 49 = Super_L
 keycode 64 = Alt_L
 keycode 133 = Alt_L
 
