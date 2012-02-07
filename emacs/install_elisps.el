@@ -93,9 +93,6 @@
 (install-elisp
  "http://cvs.savannah.gnu.org/viewvc/*checkout*/global/gtags.el?root=global")
 
-;; savekill - saving content of kill ring
-(install-elisp-from-emacswiki "savekill.el")
-
 ;; git-commit-mode
 (install-elisp
  "https://github.com/rafl/git-commit-mode/raw/master/git-commit.el")
