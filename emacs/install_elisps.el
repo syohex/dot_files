@@ -159,7 +159,7 @@
 (install-elisp "http://www.dr-qubit.org/undo-tree/undo-tree.el")
 
 ;; jaunte.el hit-a-hint
-(install-elisp "https://raw.github.com/syohex/jaunte.el/moveunit/jaunte.el")
+(install-elisp "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
 
 ;; for flymake perl
 (install-elisp "http://svn.coderepos.org/share/lang/elisp/set-perl5lib/set-perl5lib.el")
