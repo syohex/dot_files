@@ -9,5 +9,6 @@
 
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(define-key ac-complete-mode-map "\C-s" 'ac-isearch)
 (define-key ac-completing-map "\t" 'ac-complete)
 (setq ac-quick-help-delay 0.5)
