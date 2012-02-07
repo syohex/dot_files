@@ -10,6 +10,7 @@
 ;;; Ctrl-z Prefix
 (global-set-key (kbd "C-x C-a") 'anything-filelist+)
 (global-set-key (kbd "C-x C-w") 'anything-resume)
+(global-set-key (kbd "C-z b") 'anything-bookmarks)
 
 ;; for git
 (global-set-key (kbd "C-z d") 'sgit:diff)
