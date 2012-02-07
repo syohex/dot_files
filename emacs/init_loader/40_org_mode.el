@@ -28,6 +28,9 @@
   ;; faces
   (set-face-foreground 'org-tag "green yellow")
 
+  ;; function of org-open-at-point
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+
   ;; hooks
   (add-hook 'org-mode-hook 'my/org-mode-hook))
 
