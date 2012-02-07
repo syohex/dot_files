@@ -39,7 +39,5 @@
 (eval-after-load "org"
   '(progn
      (smartrep-define-key
-      org-mode-map "C-c" '(("C-n" . (lambda ()
-                                      (outline-next-visible-heading 1)))
-                           ("C-p" . (lambda ()
-                                      (outline-previous-visible-heading 1)))))))
+         org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
+                              ("C-p" . (outline-previous-visible-heading 1))))))

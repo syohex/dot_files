@@ -249,12 +249,17 @@
 
 ;; for scroll other window
 (smartrep-define-key
- global-map "C-q" '(("n" . (lambda () (scroll-other-window 1)))
-                    ("p" . (lambda () (scroll-other-window -1)))
-                    ("N" . 'scroll-other-window)
-                    ("P" . (lambda () (scroll-other-window '-)))
-                    ("a" . (lambda () (beginning-of-buffer-other-window 0)))
-                    ("e" . (lambda () (end-of-buffer-other-window 0)))))
+    global-map "C-q" '(("n" . (scroll-other-window 1))
+                       ("p" . (scroll-other-window -1))
+                       ("N" . 'scroll-other-window)
+                       ("P" . (scroll-other-window '-))
+                       ("a" . (beginning-of-buffer-other-window 0))
+                       ("e" . (end-of-buffer-other-window 0))))
+
+;; for bm-next, bm-previous
+(smartrep-define-key
+    global-map "C-q" '((">" . (bm-next))
+                       ("<" . (bm-previous))))
 
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)
