@@ -1,4 +1,4 @@
-#name : Argument 1(OOP)
+#name : my $self = shift
 # --
 my \$self = shift;
 $0

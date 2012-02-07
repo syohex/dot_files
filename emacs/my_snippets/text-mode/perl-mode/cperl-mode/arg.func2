@@ -1,4 +1,4 @@
-#name : Argument Multiple(Function Style)
+#name : my ($arg1, $arg2 ...) = @_;
 # --
 my (\$${1:arg1}) = @_;
 $0
