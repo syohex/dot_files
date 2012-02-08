@@ -43,7 +43,6 @@
 
 ;; anything-project
 (require 'anything-project)
-(global-set-key (kbd "C-c C-f") 'anything-project)
 
 (ap:add-project
  :name 'perl
