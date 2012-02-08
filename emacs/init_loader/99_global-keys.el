@@ -63,7 +63,7 @@
         ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
-(global-set-key (kbd "C-x %") 'goto-match-paren)
+(global-set-key (kbd "M-C-o") 'goto-match-paren)
 
 ;; Moving per symbol
 (global-set-key (kbd "M-F") 'forward-symbol)
@@ -256,6 +256,11 @@
                        ("P" . (scroll-other-window '-))
                        ("a" . (beginning-of-buffer-other-window 0))
                        ("e" . (end-of-buffer-other-window 0))))
+
+;; for move paragraph
+(smartrep-define-key
+    global-map "C-q" '(("[" . (backward-paragraph))
+                       ("]" . (forward-paragraph))))
 
 ;; for bm-next, bm-previous
 (smartrep-define-key
