@@ -18,11 +18,6 @@
                                   (car (last (split-string file-path "/lib/"))))
       (file-name-nondirectory file-path))))
 
-;; enable yasnippet-mode in wl-draft-mode
-(add-hook 'wl-draft-mode-hook
-          '(lambda ()
-             (yas/minor-mode)))
-
 ;; Load own snippet directories
 (defun yas/load-all-directories ()
   (interactive)
