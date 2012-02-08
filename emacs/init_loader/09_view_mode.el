@@ -19,6 +19,8 @@
 (define-key view-mode-map (kbd "j") 'next-line)
 (define-key view-mode-map (kbd "k") 'previous-line)
 (define-key view-mode-map (kbd "l") 'forward-char)
+(define-key view-mode-map (kbd "[") 'backward-paragraph)
+(define-key view-mode-map (kbd "]") 'forward-paragraph)
 (define-key view-mode-map (kbd "J") 'View-scroll-line-forward)
 (define-key view-mode-map (kbd "K") 'View-scroll-line-backward)
 
