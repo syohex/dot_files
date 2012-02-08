@@ -6,10 +6,14 @@
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "C-S-y") 'kill-whole-line)
-
-;;; Ctrl-z Prefix
 (global-set-key (kbd "C-x C-a") 'anything-filelist+)
 (global-set-key (kbd "C-x C-w") 'anything-resume)
+
+;;; Ctrl-z Prefix
+(defvar my/ctrl-z-map (make-sparse-keymap)
+  "My original keymap binded to C-z")
+(unless window-system
+  (define-key global-map (kbd "C-z") my/ctrl-z-map))
 (global-set-key (kbd "C-z b") 'anything-bookmarks)
 
 ;; for git
