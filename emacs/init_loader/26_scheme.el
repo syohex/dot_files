@@ -10,7 +10,6 @@
   (run-scheme scheme-program-name))
 
 (define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
-(push '("*scheme*" :stick t) popwin:special-display-config)
 
 (defun gauche-info-index (topic)
   (interactive
