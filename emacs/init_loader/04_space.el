@@ -26,8 +26,8 @@
 (defun toggle-indent-tab-mode ()
   (interactive)
   (if indent-tabs-mode
-      (setq indent-tabs-mode nil)
-    (setq indent-tabs-mode t)))
+      (setq-default indent-tabs-mode nil)
+    (setq-default indent-tabs-mode t)))
 
 ;; delete trailling space and blank line tail of file
 (defun my/delete-trailing-blank-lines ()

@@ -9,3 +9,14 @@
     (setq c-basic-offset 8)))
 
 (add-hook 'c-mode-hook #'my/c-mode-init)
+
+(defun toggle-c-basic-offset ()
+  (when (integerp c)
+    (if (= c-basic-offset 4))
+       (setq-default c-basic-offset 8)
+     (setq-default c-basic-offset 4)))
+
+(defun switch-kernel-edit ()
+  (toggle-c-basic-offset)
+  (toggle-indent-tab-mode)
+  (toggle-delete-trailing-whitespace-setting))
