@@ -1,0 +1,3 @@
+[submodule "shell/submodules/zaw"]
+	path = shell/submodules/zaw
+	url = git://github.com/zsh-users/zaw

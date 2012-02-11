@@ -340,3 +340,16 @@ then
     echo "\033AnSiTh" $HOST
     chpwd_emacs_ansi_term
 fi
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+
+# zaw : anything
+if [ -e ~/dot_files/shell/submodules/zaw/zaw.zsh ]
+then
+    source ~/dot_files/shell/submodules/zaw/zaw.zsh
+    bindkey '^@' zaw-cdr
+fi
