@@ -1,0 +1,4 @@
+#name : my $self = shift
+# --
+my \$self = shift;
+$0

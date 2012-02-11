@@ -142,9 +142,10 @@ alias doclife_md="plackup -MDocLife::Markdown -e \
 
 # global alias
 alias -g L='|less -R'
-alias -g V="|lv -c"
+alias -g V="|\lv -c"
 alias -g G='|grep'
 alias -g T='|tee'
+alias -g U='|nkf -w |less -R'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
@@ -256,11 +257,10 @@ darwin*)
 esac
 
 ## for setting cdd
-source ${SHELL_DIR}/cdd.zsh
-
-function chpwd() {
-    _reg_pwd_screennum
-}
+if [ -e ${SHELL_DIR}/cdd.zsh ]
+then
+    source ${SHELL_DIR}/cdd.zsh
+fi
 
 ## create emacs env file
 perl -wle \
@@ -326,3 +326,30 @@ precmd () {
 }
 _DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
 RPROMPT=%B"%1(v|%F{magenta}%1v%f|)"%b${_DIRPART}
+
+## for emacs ansi-term. notify pwd to ansi-term
+function chpwd_emacs_ansi_term() {
+    echo '\033AnSiTc' $PWD
+}
+
+if [[ $EMACS =~ "(term:.*)" ]]
+then
+    chpwd_functions=($chpwd_functions chpwd_emacs_ansi_term)
+
+    echo "\033AnSiTu" $USER
+    echo "\033AnSiTh" $HOST
+    chpwd_emacs_ansi_term
+fi
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+
+# zaw : anything
+if [ -e ~/dot_files/shell/submodules/zaw/zaw.zsh ]
+then
+    source ~/dot_files/shell/submodules/zaw/zaw.zsh
+    bindkey '^@' zaw-cdr
+fi

@@ -1,0 +1,4 @@
+#name : my $arg = shift
+# --
+my \$${1:arg} = shift;
+$0

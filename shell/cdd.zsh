@@ -112,3 +112,7 @@ compctl -K _cdd cdd
 functions _cdd() {
     reply=(`\grep -v "(^$WINDOW:|^$)" "$CDD_PWD_FILE"|sort -k1 -t: -n`)
 }
+
+function chpwd() {
+    _reg_pwd_screennum
+}

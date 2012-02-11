@@ -120,36 +120,6 @@
 (define-key undo-tree-map (kbd "C-x u") 'undo-tree-undo)
 (define-key undo-tree-map (kbd "C-/") 'undo-tree-visualize)
 
-;; insert-pair
-(define-key global-map (kbd "M-\'") 'insert-pair)
-(define-key global-map (kbd "M-\"") 'insert-pair)
-(define-key global-map (kbd "M-[") 'insert-pair)
-(define-key global-map (kbd "M-`") 'insert-pair-region)
-
-(defun insert-pair-region (start end str)
-  (interactive
-   (list (region-beginning) (region-end)
-         (read-string "Insert string: ")))
-  (save-excursion
-    (goto-char start)
-    (setq start (point-marker))
-    (goto-char end)
-    (setq end (point-marker))
-    (let* ((pair-str (mapconcat #'insert-pair-region:find-pair str ""))
-           (rev-pair-str (apply 'string (reverse (string-to-list pair-str)))))
-      (goto-char start)
-      (insert-string str)
-      (goto-char end)
-      (insert-string rev-pair-str)))
-  (goto-char (+ end 1)))
-
-(defun insert-pair-region:find-pair (chr)
-  (let ((left (assoc chr insert-pair-alist))
-        (right (rassoc (list chr) insert-pair-alist)))
-    (char-to-string (cond (left (cadr left))
-                          (right (car right))
-                          (t chr)))))
-
 (defun kill-following-spaces ()
   (interactive)
   (let ((orig-point (point)))
@@ -197,7 +167,6 @@
 (setq-default find-file-visit-truename t)
 
 ;; expand region
-(add-to-list 'load-path "~/.emacs.d/expand-region.el")
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (global-set-key (kbd "C-M-@") 'er/contract-region)

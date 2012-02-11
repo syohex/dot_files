@@ -8,11 +8,8 @@
 
 ;; gist
 (require 'gist)
-(setq github-user "syohex")
-(setq github-token "d2f3cca0b05efbec4b52535a8e6e54a3")
 
 ;; magit
-(add-to-list 'load-path "~/.emacs.d/magit")
 (require 'magit)
 
 (set-face-foreground 'magit-diff-add "green")
@@ -97,19 +94,5 @@
   (pop-to-buffer sgit:buffer-name)
   (diff-mode)
   (view-mode)))
-
-;; git add
-(defun sgit:add ()
-  (interactive)
-  (let ((filename (buffer-file-name (current-buffer))))
-    (call-process "git" nil t nil "add" filename)
-    (sgit:status)
-    (message "git add %s" filename)))
-
-;; git commit
-(defun sgit:commit ()
-  (interactive)
-  (save-window-excursion
-   (eshell-command "git commit -v &")))
 
 (push '("*sgit*" :height 20) popwin:special-display-config)

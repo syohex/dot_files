@@ -1,7 +1,4 @@
 ;; org-mode
-(add-to-list 'load-path
-             (expand-file-name "~/.emacs.d/org-mode/lisp"))
-
 (when (require 'org-install nil t)
   (define-key global-map "\C-cl" 'org-store-link)
   (define-key global-map "\C-ca" 'org-agenda)
@@ -31,6 +28,9 @@
   ;; faces
   (set-face-foreground 'org-tag "green yellow")
 
+  ;; function of org-open-at-point
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+
   ;; hooks
   (add-hook 'org-mode-hook 'my/org-mode-hook))
 
@@ -41,9 +41,6 @@
 
 (eval-after-load "org"
   '(progn
-     (define-key org-mode-map (kbd "<tab>") 'yas/expand)
      (smartrep-define-key
-      org-mode-map "C-c" '(("C-n" . (lambda ()
-                                      (outline-next-visible-heading 1)))
-                           ("C-p" . (lambda ()
-                                      (outline-previous-visible-heading 1)))))))
+         org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
+                              ("C-p" . (outline-previous-visible-heading 1))))))

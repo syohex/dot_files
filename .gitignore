@@ -5,3 +5,4 @@ perl/pit_config_default.yaml
 perl/pause
 ssh
 netrc
+emacs/init_loader/99_private.el

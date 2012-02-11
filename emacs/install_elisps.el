@@ -13,13 +13,6 @@
    (end-of-buffer)
    (eval-print-last-sexp)))
 
-;; please set proxy if you need
-(when nil
-    (setq url-proxy-services
-      '(("http"  . "http://10.1.127.1:8080")
-        ("ftp"   . "http://10.1.127.1:8080")
-        ("https" . "http://10.1.127.1:8080"))))
-
 ;; anything インタフェース周りの全体的な改善
 (auto-install-batch "anything")
 
@@ -99,9 +92,6 @@
 ;; gtags-mode
 (install-elisp
  "http://cvs.savannah.gnu.org/viewvc/*checkout*/global/gtags.el?root=global")
-
-;; savekill - saving content of kill ring
-(install-elisp-from-emacswiki "savekill.el")
 
 ;; git-commit-mode
 (install-elisp
@@ -228,9 +218,6 @@
 (auto-install-from-url "http://www.emacswiki.org/emacs/download/vline.el")
 (auto-install-from-url "http://www.emacswiki.org/emacs/download/col-highlight.el")
 
-;; hit a hint yafastnav
-(auto-install-from-url "https://raw.github.com/tm8st/emacs-yafastnav/master/yafastnav.el")
-
 ;; inf-clojure
 (auto-install-from-url "https://raw.github.com/syohex/emacs-inf-clojure/master/inf-clojure.el")
 
@@ -273,3 +260,6 @@
 
 ;; indirect region
 (install-elisp "https://raw.github.com/renard/indirect-region/master/indirect-region.el")
+
+;; wrap-region
+(install-elisp "https://raw.github.com/rejeep/wrap-region/master/wrap-region.el")

@@ -1,0 +1,5 @@
+#name : Shebang Python
+# --
+#!/usr/bin/env python
+
+$0

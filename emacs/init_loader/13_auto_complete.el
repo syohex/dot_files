@@ -1,9 +1,7 @@
 ;; setting of auto-complete
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-
 (require 'pos-tip)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/repos/auto-complete/dict")
 (ac-config-default)
 
 (setq ac-auto-start nil)
@@ -11,5 +9,6 @@
 
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(define-key ac-complete-mode-map "\C-s" 'ac-isearch)
 (define-key ac-completing-map "\t" 'ac-complete)
 (setq ac-quick-help-delay 0.5)

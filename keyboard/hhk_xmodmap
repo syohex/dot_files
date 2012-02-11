@@ -1,0 +1,19 @@
+! setting for happy hacking keyboard
+
+! setxkbmap -model us -layout usX
+keycode 132 = quoteleft asciitilde
+!keycode 133 = Alt_L
+
+! Muhenkan is used as 'Window key'
+keycode 102 = Super_L
+
+! Fix Alt key
+remove mod1 = Alt_L
+remove mod4 = Super_L
+
+keycode 49 = Super_L
+keycode 64 = Alt_L
+keycode 133 = Alt_L
+
+add mod1 = Alt_L
+add mod4 = Super_L

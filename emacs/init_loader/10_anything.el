@@ -23,8 +23,6 @@
 (define-key anything-map (kbd "C-M-p") 'anything-previous-source)
 
 ;; anything
-(global-set-key (kbd "C-;") 'anything-filelist+)
-(global-set-key (kbd "C-:") 'anything-resume)
 (global-set-key (kbd "C-x C-c") 'anything-M-x)
 
 ;; anything-show-kill-ring
@@ -45,7 +43,6 @@
 
 ;; anything-project
 (require 'anything-project)
-(global-set-key (kbd "C-c C-f") 'anything-project)
 
 (ap:add-project
  :name 'perl

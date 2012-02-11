@@ -2,27 +2,28 @@
 
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-j") 'dabbrev-expand)
 (global-set-key (kbd "M-j") 'dabbrev-expand)
-(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "C-S-y") 'kill-whole-line)
-(global-set-key (kbd "C-x z") 'repeat-complex-command)
+(global-set-key (kbd "C-x C-a") 'anything-filelist+)
+(global-set-key (kbd "C-x C-w") 'anything-resume)
 
 ;;; Ctrl-z Prefix
-(global-set-key (kbd "C-z r") 'anything-resume)
-(global-set-key (kbd "C-z C-z") 'magit-status)
+(defvar my/ctrl-z-map (make-sparse-keymap)
+  "My original keymap binded to C-z")
+(unless window-system
+  (define-key global-map (kbd "C-z") my/ctrl-z-map))
+(global-set-key (kbd "C-z b") 'anything-bookmarks)
 
 ;; for git
-(global-set-key (kbd "C-z a") 'sgit:add)
-(global-set-key (kbd "C-z C-c") 'sgit:commit)
 (global-set-key (kbd "C-z d") 'sgit:diff)
+(global-set-key (kbd "C-z l") 'sgit:log)
 (global-set-key (kbd "C-z s") 'sgit:status)
 (global-set-key (kbd "C-z g") 'anything-git-grep)
 
 ;; for anything-project
-(global-set-key (kbd "C-z f") 'anything-project)
+(global-set-key (kbd "C-z C-f") 'anything-project)
 (global-set-key (kbd "C-z C-g") 'anything-project-grep)
 
 (setq my/anything-c-source-buffer+
@@ -66,7 +67,7 @@
         ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
-(global-set-key (kbd "C-x %") 'goto-match-paren)
+(global-set-key (kbd "M-C-o") 'goto-match-paren)
 
 ;; Moving per symbol
 (global-set-key (kbd "M-F") 'forward-symbol)
@@ -112,14 +113,6 @@
 
 (global-set-key "\C-xrN" 'number-rectangle)
 
-(defun switch-to-minibuffer-window ()
-  "switch to minibuffer window (if active)"
-  (interactive)
-  (when (active-minibuffer-window)
-    (select-window (active-minibuffer-window))))
-
-(global-set-key (kbd "C-M-o") 'switch-to-minibuffer-window)
-
 ;; document
 (defmacro major-mode-eql (mode)
   `(eql major-mode ,mode))
@@ -139,13 +132,6 @@
       (man input))))
 
 (global-set-key (kbd "<f1>") 'my/man)
-
-;; goto-column
-(defun my/goto-column (column)
-  (interactive
-   (list (read-string "Goto Column: ")))
-  (move-to-column (string-to-int column)))
-(global-set-key (kbd "M-g c") 'my/goto-column)
 
 ;;; switch last-buffer
 (defvar last-buffer-saved nil)
@@ -207,18 +193,12 @@
 (defalias 'my/ctrl-q-prefix my/ctrl-q-map)
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-(define-key my/ctrl-q-map (kbd "w") 'copy-symbol)
-(define-key my/ctrl-q-map (kbd "k") 'kill-symbol)
-(define-key my/ctrl-q-map (kbd "s") 'copy-string)
-(define-key my/ctrl-q-map (kbd "u") 'copy-url)
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
-(define-key my/ctrl-q-map (kbd "m") 'moccur)
 (define-key my/ctrl-q-map (kbd "t") 'text-translator)
 (define-key my/ctrl-q-map (kbd "l") 'align)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "C-t") 'org-remember)
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
@@ -272,31 +252,24 @@
 (define-key my/ctrl-q-map (kbd "<down>") 'windmove-down)
 (define-key my/ctrl-q-map (kbd "<up>") 'windmove-up)
 
-(defun my/insert-indent-beginning-line (num)
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (dotimes (n (* num 2))
-      (insert " "))))
-
-(define-key my/ctrl-q-map (kbd "<tab>")
-  (lambda () (interactive) (my/insert-indent-beginning-line 1)))
-
-(defun my/insert-pair-to-symbol ()
-  (interactive)
-  (mark-symbol)
-  (call-interactively 'insert-pair-region))
-
-(define-key my/ctrl-q-map (kbd "`") 'my/insert-pair-to-symbol)
-
 ;; for scroll other window
 (smartrep-define-key
- global-map "C-q" '(("n" . (lambda () (scroll-other-window 1)))
-                    ("p" . (lambda () (scroll-other-window -1)))
-                    ("N" . 'scroll-other-window)
-                    ("P" . (lambda () (scroll-other-window '-)))
-                    ("a" . (lambda () (beginning-of-buffer-other-window 0)))
-                    ("e" . (lambda () (end-of-buffer-other-window 0)))))
+    global-map "C-q" '(("n" . (scroll-other-window 1))
+                       ("p" . (scroll-other-window -1))
+                       ("N" . 'scroll-other-window)
+                       ("P" . (scroll-other-window '-))
+                       ("a" . (beginning-of-buffer-other-window 0))
+                       ("e" . (end-of-buffer-other-window 0))))
+
+;; for move paragraph
+(smartrep-define-key
+    global-map "C-q" '(("[" . (backward-paragraph))
+                       ("]" . (forward-paragraph))))
+
+;; for bm-next, bm-previous
+(smartrep-define-key
+    global-map "C-q" '((">" . (bm-next))
+                       ("<" . (bm-previous))))
 
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)
@@ -307,33 +280,11 @@
 (define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 (global-set-key (kbd "M-g y") 'repeat-yank)
 
-;; Ctrl-t map
-(defvar my/ctrl-t-map (make-sparse-keymap)
-  "My original keymap binded to C-t.")
-(defalias 'my/ctrl-t-prefix my/ctrl-t-map)
-(define-key global-map (kbd "C-t") 'my/ctrl-t-prefix)
-(define-key my/ctrl-t-map (kbd "C-f") 'forward-symbol)
-
-(defun my/backward-symbol ()
-  (interactive)
-  (forward-symbol -1))
-
-(define-key my/ctrl-t-map (kbd "C-b") 'my/backward-symbol)
-
-
 ;;;; hitahint
 ;; jaunte
 (require 'jaunte)
 (define-key my/ctrl-q-map (kbd "j") 'jaunte)
-
-;; yafastnav
-(require 'yafastnav)
-(define-key my/ctrl-q-map (kbd "h") 'yafastnav-jump-to-current-screen)
-(define-key my/ctrl-q-map (kbd "f") 'yafastnav-jump-to-forward)
-(define-key my/ctrl-q-map (kbd "b") 'yafastnav-jump-to-backward)
-(set-face-attribute 'yafastnav-shortcut-key-face-type nil
-                    :background "blue" :foreground "white"
-                    :weight 'extra-bold)
+(setq jaunte-global-hint-unit 'whitespace)
 
 ;; cycle buffer
 (require 'cycle-buffer)
