@@ -32,3 +32,7 @@ df = diff
 lg = log -p
 ls = ls-files
 tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+
+[tig "bind"]
+generic = g move-first-line
+generic = G move-last-line
