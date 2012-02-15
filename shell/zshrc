@@ -27,7 +27,7 @@ bindkey '^S' history-incremental-pattern-search-forward
 
 # not complete command, these completion is too long.
 compdef -d java
-compdef -d git
+#compdef -d git
 
 # not exit Ctrl-D
 setopt ignoreeof
@@ -351,5 +351,5 @@ zstyle ':completion:*' recent-dirs-insert both
 if [ -e ~/dot_files/shell/submodules/zaw/zaw.zsh ]
 then
     source ~/dot_files/shell/submodules/zaw/zaw.zsh
-    bindkey '^@' zaw-cdr
+    bindkey '^[@' zaw-cdr
 fi
