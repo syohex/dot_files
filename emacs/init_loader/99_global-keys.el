@@ -2,7 +2,7 @@
 
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "M-j") 'dabbrev-expand)
+(global-set-key (kbd "M-=") 'dabbrev-expand)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
 (global-set-key (kbd "C-S-y") 'kill-whole-line)
@@ -283,10 +283,10 @@
 ;;;; hitahint
 ;; jaunte
 (require 'jaunte)
-(define-key my/ctrl-q-map (kbd "j") 'jaunte)
-(setq jaunte-global-hint-unit 'whitespace)
+(define-key my/ctrl-q-map (kbd "h") 'jaunte)
+(setq jaunte-hint-unit 'whitespace)
 
-;; cycle buffer
+;; buffer
 (require 'cycle-buffer)
 (global-set-key (kbd "M-o") 'cycle-buffer)
 (global-set-key (kbd "M-O") 'cycle-buffer-backward)
