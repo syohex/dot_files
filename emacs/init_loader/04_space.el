@@ -46,7 +46,8 @@
 (require 'cl)
 (defun toggle-delete-trailing-whitespace-setting ()
   (interactive)
-  (cond ((find 'delete-trailing-whitespace before-save-hook)
-         (remove-hook 'before-save-hook 'delete-trailing-whitespace))
+  (dolist (func '(delete-trailing-whitespace my/delete-trailing-blank-lines)))
+  (cond ((find func before-save-hook)
+         (remove-hook 'before-save-hook func))
         (t
-         (add-hook 'before-save-hook 'delete-trailing-whitespace))))
+         (add-hook 'before-save-hook func))))
