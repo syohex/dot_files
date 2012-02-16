@@ -6,4 +6,6 @@
   "Most superior minir mode"
   t  ;; default is enable
   "" ;; Not display mode-line
-  `((,(kbd "C-j") . dabbrev-expand)))
+  `((,(kbd "C-j") . dabbrev-expand)
+    (,(kbd "M-e") . flymake-goto-next-error)
+    (,(kbd "M-E") . flymake-goto-prev-error)))

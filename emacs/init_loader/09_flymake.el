@@ -1,9 +1,6 @@
 ;; setting for flymake
 (require 'flymake)
 
-(global-set-key (kbd "M-e") 'flymake-goto-next-error)
-(global-set-key (kbd "M-E") 'flymake-goto-prev-error)
-
 ;; Show error message under current line
 (require 'popup)
 (defun flymake-display-err-menu-for-current-line ()
