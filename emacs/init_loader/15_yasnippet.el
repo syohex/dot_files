@@ -8,7 +8,7 @@
   (yas/setup "~/.emacs.d/plugins/yasnippet")
   (require 'anything-c-yasnippet)
   (setq anything-c-yas-space-match-any-greedy t)
-  (global-set-key (kbd "C-=") 'anything-c-yas-complete))
+  (global-set-key (kbd "M-=") 'anything-c-yas-complete))
 
 ;; utility functions
 (defun yas/perl-package-name ()
