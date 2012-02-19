@@ -263,3 +263,7 @@
 
 ;; wrap-region
 (install-elisp "https://raw.github.com/rejeep/wrap-region/master/wrap-region.el")
+
+;; rust-mode
+(install-elisp "https://raw.github.com/marijnh/rust-mode/master/rust-mode.el")
+(install-elisp "https://raw.github.com/marijnh/rust-mode/master/cm-mode.el")
