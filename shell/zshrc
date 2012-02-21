@@ -323,9 +323,21 @@ precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+    topdir=`git rev-parse --show-toplevel 2>/dev/null`
+    if [ $? -eq 0 ]
+    then
+        stashes=$(git stash list 2>/dev/null | wc -l)
+        if [ ${stashes} -eq 0 ]
+        then
+            psvar[2]=""
+        else
+            psvar[2]="@${stashes// /}"
+        fi
+    fi
 }
 _DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
-RPROMPT=%B"%1(v|%F{magenta}%1v%f|)"%b${_DIRPART}
+RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
 
 ## for emacs ansi-term. notify pwd to ansi-term
 function chpwd_emacs_ansi_term() {
