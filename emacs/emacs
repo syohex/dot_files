@@ -2,8 +2,8 @@
 (add-to-list 'load-path "~/.emacs.d/auto-install")
 (add-to-list 'load-path "~/.emacs.d/elisps")
 
-;; set load-path elisps downloaded from git repository
-(load-file (expand-file-name "~/.emacs.d/repos/repos.el"))
+;; set load-path elisps to myelisp
+(load-file (expand-file-name "~/.emacs.d/myelisp/install"))
 
 ;; load environment value
 (load-file (expand-file-name "~/.emacs.d/shellenv.el"))
