@@ -365,3 +365,8 @@ then
     source ~/dot_files/shell/submodules/zaw/zaw.zsh
     bindkey '^[@' zaw-cdr
 fi
+
+# for git completion(too slowly in big repository)
+__git_files () {
+    _wanted files expl ‘local files’ _files
+}
