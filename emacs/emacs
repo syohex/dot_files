@@ -9,8 +9,8 @@
 (dolist (path (reverse (split-string (getenv "PATH") ":")))
   (add-to-list 'exec-path path))
 
-(add-to-list 'load-path "~/.emacs.d/myelisp/install")
-(load "~/.emacs.d/myelisp/load.el")
+(if (file-exists-p "~/.emacs.d/myelisp/load.el")
+    (load "~/.emacs.d/myelisp/load.el"))
 
 ;; for auto-install
 (require 'auto-install)

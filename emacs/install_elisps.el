@@ -232,7 +232,10 @@
 (install-elisp "https://raw.github.com/k1LoW/anything-hatena-bookmark/master/anything-hatena-bookmark.el")
 
 ;; anything-git-grep
-(install-elisp "https://raw.github.com/m2ym/anything-git-el/master/anything-git.el")
+(install-elisp "https://raw.github.com/mechairoi/config/master/.emacs.d/elisp/screen-base.el")
+(install-elisp "https://raw.github.com/mechairoi/config/master/.emacs.d/elisp/screen-vc.el")
+(install-elisp "https://raw.github.com/mechairoi/config/master/.emacs.d/elisp/screen-vc-anything.el")
+(install-elisp "https://raw.github.com/mechairoi/config/master/.emacs.d/elisp/anything-git-grep.el")
 
 ;; direx(new dired)
 (install-elisp "https://raw.github.com/m2ym/direx-el/master/direx.el")
@@ -265,5 +268,5 @@
 (install-elisp "https://raw.github.com/rejeep/wrap-region/master/wrap-region.el")
 
 ;; rust-mode
-(install-elisp "https://raw.github.com/marijnh/rust-mode/master/rust-mode.el")
 (install-elisp "https://raw.github.com/marijnh/rust-mode/master/cm-mode.el")
+(install-elisp "https://raw.github.com/marijnh/rust-mode/master/rust-mode.el")
