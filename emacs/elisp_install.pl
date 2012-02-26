@@ -2,12 +2,11 @@
 use strict;
 use warnings;
 
-use Furl;
+use LWP::UserAgent;
 use File::Basename qw/basename/;
 use File::Path qw/make_path/;
 use File::Spec;
 use Cwd;
-use File::Find;
 use File::Copy qw/copy/;
 use Getopt::Long;
 use Time::HiRes;
@@ -35,6 +34,8 @@ if (@packages) {
     map { $package{$_} = 1; } @packages;
 }
 
+my @load_pathes;
+
 main();
 
 sub main {
@@ -51,7 +52,6 @@ sub main {
     }
 
     get_git_package($conf->{git});
-    get_direct_package($conf->{direct});
 
     get_direct_package($conf->{tar}, sub {
         my $filename = shift;
@@ -61,11 +61,31 @@ sub main {
         unlink $filename;
     });
 
-    collect_elisp_files($conf->{exclude});
-
     if ($bytecompile_flag) {
         bytecompile();
     }
+
+    generate_path_file();
+}
+
+sub generate_path_file {
+    my $orig_dir = Cwd::getcwd;
+
+    chdir $elisp_dir{repos};
+    opendir my $dh, $elisp_dir{repos} or die "Can't opendir: $!";
+    for my $dir (readdir $dh) {
+        next if $dir eq '.' || $dir eq '..';
+        push @load_pathes, File::Spec->catfile($elisp_dir{repos}, $dir);
+    }
+    closedir $dh;
+    chdir $orig_dir;
+
+    my $load_file = File::Spec->catfile($elisp_base, 'load.el');
+    open my $fh, '>', $load_file or die "Can't open $load_file: $!";
+    for my $load_path (@load_pathes) {
+        print {$fh} qq{(add-to-list 'load-path "$load_path")\n};
+    }
+    close $fh;
 }
 
 sub clean_compiled_files {
@@ -86,25 +106,6 @@ sub clean_dirs {
         print "  $dir\n";
         File::Path::remove_tree($dir) or die "Can't remove $dir: $!";
     }
-}
-
-sub collect_elisp_files {
-    my $excludes = shift;
-
-    my $wanted = sub {
-        my $src = $File::Find::name;
-        unless ($src =~ m{\.elc?$} && -f $src) {
-            return;
-        }
-
-        for my $regexp (@{$excludes}) {
-            return 0 if $src =~ $regexp;
-        }
-
-        copy($src, $elisp_dir{install}) or die "Can't copy $src";
-    };
-
-    find($wanted, $elisp_dir{repos});
 }
 
 sub init {
@@ -155,57 +156,62 @@ sub get_git_package {
     chdir $elisp_dir{repos} or die "Can't chdir $elisp_dir{repos}";
 
     my @fails;
-    while (my ($name, $urls_ref) = each %{$conf}) {
+    while (my ($name, $repo_info) = each %{$conf}) {
         if (@packages) {
             next unless exists $package{$name};
         }
 
         print "Git repository: '$name'\n";
 
-        for my $url (@{$urls_ref}) {
-            my $repo_dir = File::Basename::basename($url);
-            $repo_dir =~ s{\.git$}{};
+        my $url = $repo_info->{url};
+        my $repo_dir = File::Basename::basename($url);
+        $repo_dir =~ s{\.git$}{};
 
-            my $is_clone = 0;
-            my $orig_dir = Cwd::getcwd;
+        my $is_clone = 0;
+        my $orig_dir = Cwd::getcwd;
 
-            my @cmd;
-            unless(-d $repo_dir) {
-                next if $download_only;
-                @cmd = (qw/git clone/, $url);
+        my @cmd;
+        unless(-d $repo_dir) {
+            next if $download_only;
+            @cmd = (qw/git clone/, $url);
 
-                print "@cmd\n";
-                my $status = system @cmd;
-                if ($status != 0) {
-                    warn "Failed '@cmd'\n";
-                    push @fails, $name;
-                }
-
-                $is_clone = 1;
+            print "@cmd\n";
+            my $status = system @cmd;
+            if ($status != 0) {
+                warn "Failed '@cmd'\n";
+                push @fails, $name;
             }
 
-            chdir $repo_dir or die "Can't chdir $repo_dir: $!";
-
-            unless ($is_clone) {
-                @cmd = qw/git pull origin master/;
-                my $status = system @cmd;
-                if ($status != 0) {
-                    warn "Failed '@cmd'\n";
-                    push @fails, $name;
-                }
-            }
-
-            if (-e 'Makefile') {
-                my $status = system qw/make/;
-                if ($status != 0) {
-                    warn "Failed 'make'\n";
-                    push @fails, $name;
-                }
-            }
-
-            chdir $orig_dir or die "Can't chdir $orig_dir: $!";
-            sleep 0.5;
+            $is_clone = 1;
         }
+
+        chdir $repo_dir or die "Can't chdir $repo_dir: $!";
+
+        unless ($is_clone) {
+            @cmd = qw/git pull origin master/;
+            my $status = system @cmd;
+            if ($status != 0) {
+                warn "Failed '@cmd'\n";
+                push @fails, $name;
+            }
+        }
+
+        if (-e 'Makefile') {
+            my $status = system qw/make/;
+            if ($status != 0) {
+                warn "Failed 'make'\n";
+                push @fails, $name;
+            }
+        }
+
+        for my $rel_path (@{$repo_info->{path}}) {
+            my $load_path = File::Spec->catfile(Cwd::getcwd, $rel_path);
+            push @load_pathes, $load_path;
+        }
+
+        chdir $orig_dir or die "Can't chdir $orig_dir: $!";
+
+        sleep 0.5;
     }
     chdir $orid_dir;
 
@@ -216,7 +222,7 @@ sub get_git_package {
 
 sub get_direct_package {
     my ($conf, $cb) = @_;
-    my $furl = Furl->new;
+    my $ua = LWP::UserAgent->new;
 
     my @fails;
     while (my ($name, $urls) = each %{$conf}) {
@@ -238,7 +244,7 @@ sub get_direct_package {
                 next if -e $output_name;
             }
 
-            my $res = $furl->get($url);
+            my $res = $ua->get($url);
 
             unless ($res->is_success) {
                 warn "  Can't download $url\n";

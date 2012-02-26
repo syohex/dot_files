@@ -49,11 +49,3 @@ rm -f emacsclient.sh
 wget https://raw.github.com/syohex/emacsclient_focus/master/emacsclient.sh
 chmod 755 emacsclient.sh
 
-# install snippet
-cd ~/.emacs.d
-if [ ! -d plugins ]
-then
-    mkdir -p plugins
-fi
-
-git clone syohei@59.106.183.161:git/yasnippet.git yasnippet
