@@ -270,3 +270,6 @@
 ;; rust-mode
 (install-elisp "https://raw.github.com/marijnh/rust-mode/master/cm-mode.el")
 (install-elisp "https://raw.github.com/marijnh/rust-mode/master/rust-mode.el")
+
+;; lua-mode
+(install-elisp "https://raw.github.com/immerrr/lua-mode/master/lua-mode.el")
