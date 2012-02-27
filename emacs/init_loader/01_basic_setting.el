@@ -3,7 +3,8 @@
 
 ;; temp directory
 (when (system-linux-p)
-  (setq temporary-file-directory "/mnt/ramdisk"))
+  (if (file-exists-p "/mnt/ramdisk")
+   (setq temporary-file-directory "/mnt/ramdisk")))
 
 ;; cursor
 (when window-system
