@@ -1,18 +1,15 @@
 ;; font-setting for Linux(Ubuntu)
 (when (and window-system (system-linux-p))
   (progn
-    (set-default-font "VL ゴシック-10")
+    (let* ((xdimention (getenv "XDIMENTION"))
+           (width (or (and xdimention (string-to-int xdimention))
+                      0)))
+      (cond
+       ((>= width 1900) (set-default-font "VL ゴシック-12"))
+       (t (set-default-font "VL ゴシック-10"))))
     (set-fontset-font (frame-parameter nil 'font)
                       'japanese-jisx0208
                       '("VL ゴシック" . "unicode-bmp"))))
-
-(defun set-big-font ()
-  (interactive)
-  (set-default-font "VL ゴシック-12"))
-
-(defun set-normal-font ()
-  (interactive)
-  (set-default-font "VL ゴシック-10"))
 
 ;; font-setting for Mac OSX
 (when (and window-system (system-macosx-p))

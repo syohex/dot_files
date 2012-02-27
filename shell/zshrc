@@ -262,10 +262,18 @@ then
     source ${SHELL_DIR}/cdd.zsh
 fi
 
+## display dimension
+XDIMENTION="0"
+if which xdpyinfo >/dev/null 2>&1
+then
+    XDIMENTION=`xdpyinfo| perl -wln -e 'm{dimensions:\s+(\d+)} and print $1'`
+fi
+export XDIMENTION
+
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH GEM_PATH GEM_HOME CLOJURE_EXT \
+    PATH GEM_PATH GEM_HOME CLOJURE_EXT XDIMENTION \
     > ~/.emacs.d/shellenv.el
 
 ## utils between Emacs and shell
