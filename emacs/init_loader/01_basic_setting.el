@@ -138,10 +138,6 @@
   (delete-indentation))
 (global-set-key (kbd "M-K") 'my/delete-indentation)
 
-;; show key bindings in current-mode with anything-interface
-(require 'descbinds-anything)
-(descbinds-anything-install)
-
 ;; fill-mode
 (setq fill-column 80)
 

@@ -72,7 +72,8 @@
 ;; aliases
 (eval-after-load "em-alias"
   '(progn
-     (eshell/alias "cdp" "cd {git rev-parse --show-toplevel}")))
+     (eshell/alias "cdp" "cd {git rev-parse --show-toplevel}")
+     (eshell/alias "e" "find-file")))
 
 ;; pcomplete for git
 (defconst pcmpl-git-commands

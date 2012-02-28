@@ -1,7 +1,8 @@
 ;; setting for emacs-lisp
 (find-function-setup-keys)
 
-;; eldoc
+;;;; eldoc
+;; (install-elisp-from-emacswiki "eldoc-extension.el")
 (when (require 'eldoc-extension nil t)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
@@ -18,7 +19,3 @@
   (kbd "M-C-i") 'anything-lisp-complete-symbol-partial-match)
 (define-key lisp-interaction-mode-map
   (kbd "M-C-i") 'anything-lisp-complete-symbol-partial-match)
-
-;; lispxmp
-(require 'lispxmp)
-(define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)

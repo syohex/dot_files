@@ -1,4 +1,5 @@
-;; popwin
+;;;; popwin
+;; (install-elisp "https://github.com/m2ym/popwin-el/raw/master/popwin.el")
 (require 'popwin)
 (defvar popwin:special-display-config-backup popwin:special-display-config)
 (setq display-buffer-function 'popwin:display-buffer)

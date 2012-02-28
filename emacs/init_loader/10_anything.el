@@ -1,4 +1,5 @@
-;; anything
+;;;; anything
+;; (auto-install-batch "anything")
 (require 'anything-gtags)
 (require 'anything-match-plugin)
 (require 'anything-complete)

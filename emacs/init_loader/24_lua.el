@@ -1,5 +1,3 @@
-;; setting for Lua programming
-(add-to-list 'load-path "~/.emacs.d/lua-mode")
-
-(require 'lua-mode)
-
+;;;; Lua
+;; (install-elisp "https://raw.github.com/immerrr/lua-mode/master/lua-mode.el")
+(autoload 'lua-mode "lua-mode" nil t)

@@ -1,6 +1,4 @@
 ;; elscreen
-(add-to-list 'load-path "~/.emacs.d/elscreen")
-
 (if (system-macosx-p)
     (add-to-list 'load-path "~/.emacs.d/apel"))
 (if window-system

@@ -7,6 +7,7 @@
 (setenv "CCL_DEFAULT_DIRECTORY" (expand-file-name "~/local/ccl"))
 
 ;; for indent
+;; (install-elisp "http://boinkor.net/lisp/cl-indent-patches.el")
 (when (require 'cl-indent-patches nil t)
   (setq lisp-indent-function
         (lambda (&rest args)

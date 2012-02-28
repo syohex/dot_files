@@ -1,9 +1,7 @@
 ;; setting haskell language
-(add-to-list 'load-path "~/.emacs.d/haskell-mode")
-(add-to-list 'load-path "~/.emacs.d/ghc-mod")
 (setq ghc-module-command "~/.cabal/bin/ghc-mod")
 
-(load "~/.emacs.d/haskell-mode/haskell-site-file")
+(load "haskell-site-file") ;; load haskell-mode/haskell-site-file.el
 
 (when (require 'ghc nil t)
   (autoload 'ghc-init "ghc" nil t))

@@ -1,4 +1,5 @@
-;; GNU gtags
+;;;; GNU gtags
+;; (install-elisp "http://cvs.savannah.gnu.org/viewvc/*checkout*/global/gtags.el?root=global")
 (require 'gtags)
 (setq gtags-mode-hook
       '(lambda ()

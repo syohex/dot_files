@@ -1,6 +1,12 @@
 ;; setting for scheme
-(setq scheme-program-name "gosh")
-(require 'cmuscheme)
+(autoload 'scheme-mode "scheme" nil t)
+
+(eval-after-load "scheme"
+  '(progn
+     (setq scheme-program-name "gosh")
+     (require 'cmuscheme)
+     (define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
+     (define-key global-map "\C-xH" 'gauche-info-index)))
 
 (defun scheme-other-window ()
   "Run scheme on other window"
@@ -8,8 +14,6 @@
   (switch-to-buffer-other-window
    (get-buffer-create "*scheme*"))
   (run-scheme scheme-program-name))
-
-(define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
 
 (defun gauche-info-index (topic)
   (interactive
@@ -19,5 +23,3 @@
   (switch-to-buffer-other-window (get-buffer-create "*info*"))
   (info "/usr/share/info/gauche-refe.info.gz")
   (Info-index topic))
-
-(define-key global-map "\C-xH" 'gauche-info-index)

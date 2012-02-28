@@ -1,3 +1,3 @@
 ;; quickrun
-(require 'quickrun)
-(global-set-key (kbd "<f5>") 'quickrun)
+;; (auto-install-from-url "https://raw.github.com/syohex/emacs-quickrun/master/quickrun.el")
+(autoload 'quickrun "quickrun" nil t)

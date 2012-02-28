@@ -1,6 +1,5 @@
 ;; css-mode
-(require 'css-mode)
-(autoload 'css-mode "css-mode")
+(autoload 'css-mode "css-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 ;; for auto-complete
@@ -13,5 +12,7 @@
   (add-to-list 'ac-sources 'ac-source-css-property-names))
 (add-hook 'css-mode-hook 'my-css-mode-hook)
 
-;; sass-mode
-(require 'sass-mode)
+;;;; sass-mode
+;; (install-elisp "https://raw.github.com/nex3/sass-mode/master/sass-mode.el")
+(autoload 'sass-mode "sass-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))

@@ -1,6 +1,7 @@
 ;; Io programming language
-(require 'io-mode)
-(require 'io-mode-inf)
-
+(autoload 'io-mode "io-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.io$" . io-mode))
-(setq io-tab-width 4)
+
+(eval-after-load "io-mode"
+  '(progn
+     (setq io-tab-width 4)))

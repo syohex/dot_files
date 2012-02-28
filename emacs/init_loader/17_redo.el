@@ -1,4 +1,5 @@
-;; redo+
+;;;; redo+
+;; (install-elisp-from-emacswiki "redo+.el")
 (require 'redo+)
 (global-set-key (kbd "C-`") 'undo)
 (global-set-key (kbd "C-M-/") 'redo)

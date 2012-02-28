@@ -14,10 +14,9 @@
     (list "jslint" (list "--no-es5" local-file))))
 (defun flymake-js-load ()
   (interactive)
-  (setq flymake-err-line-patterns
-        (cons '("^ *[[:digit:]] \\([[:digit:]]+\\),\\([[:digit:]]+\\)\: \\(.+\\)$"
-                nil 1 2 3)
-              flymake-err-line-patterns))
+  (add-to-list 'flymake-err-line-patterns
+               '("^ *[[:digit:]] \\([[:digit:]]+\\),\\([[:digit:]]+\\)\: \\(.+\\)$"
+                 nil 1 2 3))
   (flymake-mode t))
 
 (add-hook 'js-mode-hook
