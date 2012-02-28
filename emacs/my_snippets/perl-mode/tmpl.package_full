@@ -1,4 +1,5 @@
-#name : Template package with document
+# name : Package Template with Document
+# key  : tmpl
 # --
 package ${1:`(yas/perl-package-name)`};
 use strict;

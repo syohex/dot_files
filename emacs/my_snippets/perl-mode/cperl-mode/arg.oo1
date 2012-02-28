@@ -1,4 +1,5 @@
-#name : my $self = shift
+# name : my $self = shift
+# key  : argo
 # --
 my \$self = shift;
 $0

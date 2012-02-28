@@ -1,4 +1,5 @@
-#name : open file with read mode
+# name : open $h, '<', $file or die "...";
+# key  : open
 # --
 open my \$fh, '<', \$${1:file} or die "Can't open \$$1";
 $0

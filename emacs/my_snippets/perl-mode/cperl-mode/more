@@ -1,4 +1,5 @@
-#name : Test::More; and done_testing
+# name : use Test::More; and done_testing
+# key  : more
 # --
 use Test::More;
 

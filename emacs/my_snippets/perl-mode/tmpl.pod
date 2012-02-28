@@ -1,4 +1,5 @@
-#name : Template POD
+# name : POD template
+# key  : pod
 # --
 $0
 =head1 NAME

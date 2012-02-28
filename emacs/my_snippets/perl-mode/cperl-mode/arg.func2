@@ -1,4 +1,5 @@
-#name : my ($arg1, $arg2 ...) = @_;
+# name : my ($arg1, $arg2 ...) = @_;
+# key  : argf
 # --
 my (\$${1:arg1}) = @_;
 $0

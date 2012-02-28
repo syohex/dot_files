@@ -1,4 +1,5 @@
-#name : Shebang Ruby
+# name : #!/usr/bin/env ruby -*- coding:utf-8 -*-
+# key  : sheban
 # --
 #!/usr/bin/env ruby
 # -*- coding:utf-8 -*-

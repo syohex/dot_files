@@ -1,4 +1,5 @@
-#name : strict and warnings enable
+# name : use strict; use warnings;
+# key  : strict
 # --
 use strict;
 use warnings;

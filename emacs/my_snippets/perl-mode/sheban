@@ -1,4 +1,5 @@
-#name : Shebang Perl
+# name : #!perl use strict; use warnings;
+# key  : sheban
 # --
 #!perl
 use strict;

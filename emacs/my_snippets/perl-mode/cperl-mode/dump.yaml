@@ -1,3 +1,4 @@
-#name : Dump YAML and die
+# name : use YAML; die YAML::Dump($var);
+# key  : dump
 # --
 use YAML; die YAML::Dump($1);
