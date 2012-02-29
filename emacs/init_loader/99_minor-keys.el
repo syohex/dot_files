@@ -1,5 +1,6 @@
 ;;;; minor key setting
-(eval-after-load 'hs-minor-mode
+(autoload 'hs-minor-mode "hideshow" nil t)
+(eval-after-load "hideshow"
   '(progn
      (define-key hs-minor-mode-map (kbd "C-#") 'hs-toggle-hiding)))
 

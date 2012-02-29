@@ -15,8 +15,6 @@
      (define-key cperl-mode-map (kbd "M-<up>") 'cperl/move-import-block)
      (define-key cperl-mode-map (kbd "M-<down>") 'cperl/back-to-last-marker)
 
-     (hs-minor-mode 1)
-
      ;; faces
      (set-face-bold-p 'cperl-array-face nil)
      (set-face-background 'cperl-array-face nil)
@@ -93,6 +91,7 @@
             (defvar plcmp-default-lighter  " PLC")
             (perl-completion-mode t)
             (flymake-mode t)
+            (hs-minor-mode 1)
             (when (boundp 'auto-complete-mode)
               (defvar ac-source-my-perl-completion
                 '((candidates . plcmp-ac-make-cands)))
