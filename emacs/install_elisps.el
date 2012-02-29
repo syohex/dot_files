@@ -28,9 +28,6 @@
 ;; redo+. undoの逆を行う.
 (install-elisp-from-emacswiki "redo+.el")
 
-;; js2-mode moozさんによるフォーク版
-;;(install-elisp "https://github.com/mooz/js2-mode/raw/master/js2-mode.el")
-
 ;; bm.el 行を任意の行を強調表示できる. 強調表示した行の移動もできる
 (install-elisp "http://cvs.savannah.gnu.org/viewvc/*checkout*/bm/bm/bm.el")
 
@@ -65,15 +62,6 @@
 ;; dmacro.el
 (install-elisp "http://www.pitecan.com/papers/JSSSTDmacro/dmacro.el")
 
-;; scala-mode
-;; please install scala 'http://www.scala-lang.org/'
-
-;; point-undo. 前のポイントに移動する
-;;(install-elisp-from-emacswiki "point-undo.el")
-
-;; goto-chg.el 最後の変更箇所に移動する
-;;(install-elisp-from-emacswiki "goto-chg.el")
-
 ;; elscreen, elscreen-wl
 ;; elscreen url ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/
 
@@ -97,10 +85,6 @@
 (install-elisp
  "https://github.com/rafl/git-commit-mode/raw/master/git-commit.el")
 
-;; smart-compile
-;;(install-elisp
-;; "http://sourceforge.jp/projects/macwiki/svn/view/zenitani/elisp/smart-compile.el?view=co&root=macwiki")
-
 ;; markdown-mode
 (install-elisp
  "http://jblevins.org/projects/markdown-mode/markdown-mode.el")
@@ -111,15 +95,8 @@
 (install-elisp
  "https://github.com/kiwanami/emacs-deferred/raw/master/concurrent.el")
 
-;;;; deferred.el demo program
-;; (install-elisp
-;;  "http://github.com/kiwanami/emacs-inertial-scroll/raw/master/inertial-scroll.el")
-
 ;; eldoc-extension
 (install-elisp-from-emacswiki "eldoc-extension.el")
-
-;; yasnippet
-(install-elisp "http://www.emacswiki.org/emacs/download/yasnippet-config.el")
 
 ;; savekill
 (install-elisp "http://www.emacswiki.org/cgi-bin/wiki/download/savekill.el")
@@ -164,9 +141,6 @@
 ;; perl-completion
 (install-elisp "http://www.emacswiki.org/emacs/download/perl-completion.el")
 
-;; auto-complete-yasnippet
-(install-elisp "http://svn.coderepos.org/share/lang/elisp/anything-c-yasnippet/anything-c-yasnippet.el")
-
 ;; thing-opt
 (install-elisp "http://www.emacswiki.org/emacs/download/thing-opt.el")
 
@@ -176,14 +150,8 @@
 ;; coffee-mode.el
 (install-elisp "https://raw.github.com/defunkt/coffee-mode/master/coffee-mode.el")
 
-;; auto-async-byte-compile
-;;(install-elisp "http://www.emacswiki.org/emacs/download/auto-async-byte-compile.el")
-
 ;; popwin:w3m
 (install-elisp "https://raw.github.com/m2ym/popwin-el/v0.3/misc/popwin-w3m.el")
-
-;; descbinds-anything
-(install-elisp "http://www.emacswiki.org/cgi-bin/emacs/download/descbinds-anything.el")
 
 ;; xs-mode
 (install-elisp "http://www.emacswiki.org/emacs/download/xs-mode.el")
@@ -193,9 +161,6 @@
 
 ;; ac-python
 (install-elisp "http://chrispoole.com/downloads/ac-python.el")
-
-;; lispxmp
-(install-elisp "http://www.emacswiki.org/emacs/download/lispxmp.el")
 
 ;; haml-mode and sass-mode
 (install-elisp "https://raw.github.com/nex3/haml-mode/master/haml-mode.el")
