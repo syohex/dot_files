@@ -1,4 +1,5 @@
 ;; python-setting
+(autoload 'python-mode "python" nil t)
 (defadvice run-python (around run-python-no-sit activate)
   "Suppress absurd sit-for in run-python of python.el"
   (let ((process-launched (or (ad-get-arg 2) ; corresponds to `new`

@@ -3,7 +3,8 @@
 (setq recentf-max-saved-items 2000)
 
 (require 'recentf-ext)
-(setq recentf-exclude '("/auto-install/" ".recentf" "/repos/"))
+(setq recentf-exclude '("/auto-install/" ".recentf" "/repos/"
+                        "\\.mime-example" "\\.ido.last"))
 (setq recentf-auto-cleanup 10)
 (global-set-key (kbd "C-x C-r") 'anything-recentf)
 (if window-system

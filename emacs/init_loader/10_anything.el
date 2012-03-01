@@ -51,6 +51,12 @@
  :include-regexp '("\\.pm$" "\\.t$" "\\.pl$" "\\.PL$" "\\.xs$" "Changes")
  :exclude-regexp '("/inc" "/blib"))
 
+(ap:add-project
+ :name 'ruby
+ :look-for '("Gemfile" "Rakefile")
+ :include-regexp '("\\.rb$" "Gemfile" "Rakefile")
+ :exclude-regexp '())
+
 ;; anything
 (require 'anything-git-grep)
 

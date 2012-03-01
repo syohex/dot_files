@@ -1,27 +1,25 @@
 ;;; slime
-(autoload 'slime "slime" nil t)
-(eval-after-load 'slime
-  '(progn
-     (slime-setup '(slime-repl slime-fancy slime-banner))
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner))
 
-     ;; encoding
-     (setq slime-net-coding-system 'utf-8-unix)
+;; encoding
+(setq slime-net-coding-system 'utf-8-unix)
 
-     ;; popwin for slime
-     (push '("*slime-apropos*") popwin:special-display-config)
-     (push '("*slime-macroexpansion*") popwin:special-display-config)
-     (push '("*slime-description*") popwin:special-display-config)
-     (push '("*slime-compilation*" :noselect t) popwin:special-display-config)
-     (push '("*slime-xref*") popwin:special-display-config)
-     (push '(sldb-mode :stick t) popwin:special-display-config)
-     (push '(slime-repl-mode :stick t) popwin:special-display-config)
-     (push '(slime-connection-list-mode) popwin:special-display-config)
+;; popwin for slime
+(push '("*slime-apropos*") popwin:special-display-config)
+(push '("*slime-macroexpansion*") popwin:special-display-config)
+(push '("*slime-description*") popwin:special-display-config)
+(push '("*slime-compilation*" :noselect t) popwin:special-display-config)
+(push '("*slime-xref*") popwin:special-display-config)
+(push '(sldb-mode :stick t) popwin:special-display-config)
+(push '(slime-repl-mode :stick t) popwin:special-display-config)
+(push '(slime-connection-list-mode) popwin:special-display-config)
 
-     ;; for clojure
-     (setq slime-protocol-version 'ignore)
+;; for clojure
+(setq slime-protocol-version 'ignore)
 
-     ;; face
-     (set-face-foreground 'slime-repl-inputed-output-face "pink1")))
+;; face
+(set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
 ;;;; ac-slime
 ;; (install-elisp "https://github.com/purcell/ac-slime/raw/master/ac-slime.el")
