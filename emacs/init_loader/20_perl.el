@@ -1,5 +1,5 @@
 ;;;; cperl-mode
-;; (install-elisp "http://www.emacswiki.org/emacs/download/perl-completion.el")
+;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/perl-completion.el")
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist
          '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)$" . cperl-mode))
@@ -109,7 +109,7 @@
      (define-key plcmp-mode-map (kbd "M-C-o") 'plcmp-cmd-smart-complete)))
 
 ;; XS
-;; (install-elisp "http://www.emacswiki.org/emacs/download/xs-mode.el")
+;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/xs-mode.el")
 (add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
 (eval-after-load "xs-mode"
   '(progn

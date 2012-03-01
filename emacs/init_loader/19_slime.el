@@ -22,7 +22,7 @@
 (set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
 ;;;; ac-slime
-;; (install-elisp "https://github.com/purcell/ac-slime/raw/master/ac-slime.el")
+;; (auto-install-from-url "https://github.com/purcell/ac-slime/raw/master/ac-slime.el")
 (autoload 'slime "ac-slime")
 (eval-after-load "ac-slime"
   '(progn
@@ -33,7 +33,7 @@
   '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; popwin-w3m for hyperspec
-;; (install-elisp "https://raw.github.com/m2ym/popwin-el/v0.3/misc/popwin-w3m.el")
+;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/v0.3/misc/popwin-w3m.el")
 (autoload 'slime "popwin-w3m" nil t)
 (eval-after-load "popwin-w3m"
   '(progn

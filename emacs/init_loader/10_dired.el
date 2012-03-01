@@ -29,5 +29,5 @@
 (define-key dired-mode-map (kbd "p") 'my/anything-dired)
 
 ;;;; direx
-;; (install-elisp "https://raw.github.com/m2ym/direx-el/master/direx.el")
+;; (auto-install-from-url "https://raw.github.com/m2ym/direx-el/master/direx.el")
 (require 'direx)

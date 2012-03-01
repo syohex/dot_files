@@ -27,7 +27,7 @@
              (define-key ruby-mode-map (kbd "C-<return>") 'auto-complete)
 
              ;;;; yari
-             ;;  (install-elisp "http://www.emacswiki.org/emacs/download/yari.el")
+             ;;  (auto-install-from-url "http://www.emacswiki.org/emacs/download/yari.el")
              (require 'yari)
              (define-key ruby-mode-map (kbd "C-c C-d") 'yari-anything)))
 
@@ -40,5 +40,5 @@
      (setq ruby-electric-expand-delimiters-list '())))
 
 ;; flymake
-;; (install-elisp "https://raw.github.com/purcell/flymake-ruby/master/flymake-ruby.el")
+;; (auto-install-from-url "https://raw.github.com/purcell/flymake-ruby/master/flymake-ruby.el")
 (autoload 'flymake-ruby-load "flymake-ruby")

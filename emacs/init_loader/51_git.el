@@ -1,5 +1,5 @@
 ;;;; git-commit-mode
-;; (install-elisp "https://github.com/rafl/git-commit-mode/raw/master/git-commit.el")
+;; (auto-install-from-url "https://github.com/rafl/git-commit-mode/raw/master/git-commit.el")
 (require 'git-commit)
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
 (set-face-foreground 'git-commit-summary-face nil)

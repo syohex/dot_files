@@ -47,7 +47,7 @@
                               (forward-symbol (- arg))))
 
 ;;;; jaunte hit-a-hint
-;; (install-elisp "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
+;; (auto-install-from-url "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
 (require 'jaunte)
 (setq-default jaunte-hint-unit 'whitespace)
 

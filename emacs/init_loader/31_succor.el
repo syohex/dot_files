@@ -1,5 +1,5 @@
 ;;;; succor.el for source code reading
-;; (install-elisp "https://raw.github.com/takaishi/succor/master/succor.el")
+;; (auto-install-from-url "https://raw.github.com/takaishi/succor/master/succor.el")
 (require 'succor)
 
 ;; Directory in notes

@@ -13,6 +13,6 @@
 (add-hook 'css-mode-hook 'my-css-mode-hook)
 
 ;;;; sass-mode
-;; (install-elisp "https://raw.github.com/nex3/sass-mode/master/sass-mode.el")
+;; (auto-install-from-url "https://raw.github.com/nex3/sass-mode/master/sass-mode.el")
 (autoload 'sass-mode "sass-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))

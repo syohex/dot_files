@@ -1,5 +1,5 @@
 ;;;; recentf-ext
-;; (install-elisp-from-emacswiki "recentf-ext.el")
+;; (auto-install-from-url-from-emacswiki "recentf-ext.el")
 (setq recentf-max-saved-items 2000)
 
 (require 'recentf-ext)
