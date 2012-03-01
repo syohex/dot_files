@@ -1,15 +1,17 @@
 ;; font-setting for Linux(Ubuntu)
+
 (when (and window-system (system-linux-p))
-  (progn
-    (let* ((xdimention (getenv "XDIMENTION"))
-           (width (or (and xdimention (string-to-int xdimention))
-                      0)))
-      (cond
-       ((>= width 1900) (set-default-font "VL ゴシック-12"))
-       (t (set-default-font "VL ゴシック-10"))))
-    (set-fontset-font (frame-parameter nil 'font)
-                      'japanese-jisx0208
-                      '("VL ゴシック" . "unicode-bmp"))))
+  (with-temp-buffer
+    (shell-command "xdpyinfo" t)
+    (goto-char (point-min))
+    (when (re-search-forward "dimensions:\s+\\([0-9]+\\)x\\([0-9]+\\)" nil t)
+      (let ((width (string-to-int (buffer-substring-no-properties
+                                   (match-beginning 1) (match-end 1))))
+            (height (string-to-int (buffer-substring-no-properties
+                                    (match-beginning 2) (match-end 2)))))
+        (cond
+         ((>= width 1900) (set-default-font "VL ゴシック-12"))
+         (t (set-default-font "VL ゴシック-10")))))))
 
 ;; font-setting for Mac OSX
 (when (and window-system (system-macosx-p))
