@@ -10,14 +10,10 @@
   (add-to-list 'exec-path path))
 
 (if (file-exists-p "~/.emacs.d/myelisp/load.el")
-    (load "~/.emacs.d/myelisp/load.el"))
+    (load-file (expand-file-name "~/.emacs.d/myelisp/load.el")))
 
-;; for auto-install
+;; for install_package
 (require 'auto-install)
-(when (not (getenv "HTTP_PROXY"))
-  (auto-install-update-emacswiki-package-name t)
-  (auto-install-compatibility-setup)
-  (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
 ;; init-loader
 (require 'init-loader)

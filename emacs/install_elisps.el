@@ -2,8 +2,10 @@
 
 ;; first eval this code block
 (add-to-list 'load-path "~/.emacs.d/auto-install")
+;; for auto-install
 (require 'auto-install)
 (auto-install-compatibility-setup)
+(auto-install-update-emacswiki-package-name t)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; for installing el-get
