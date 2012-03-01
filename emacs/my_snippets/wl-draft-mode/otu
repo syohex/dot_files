@@ -1,4 +1,5 @@
-#name : Otukare-sama-desu
+# name : Otukare-sama-desu
+# key  : otu
 # --
 ${1:なまえ}さん
 
