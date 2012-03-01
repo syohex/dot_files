@@ -49,7 +49,7 @@
 ;;;; jaunte hit-a-hint
 ;; (install-elisp "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
 (require 'jaunte)
-(setq jaunte-hint-unit 'whitespace)
+(setq-default jaunte-hint-unit 'whitespace)
 
 ;; edit rectangle
 ;; number-rectangle
