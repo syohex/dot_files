@@ -34,7 +34,7 @@
 (setq ruby-deep-indent-paren nil)
 
 ;; ruby-electric.el --- electric editing commands for ruby files
-(autoload 'ruby-electric-mode "ruby-electric")
+(autoload 'ruby-electric-mode "ruby-electric" nil t)
 (eval-after-load "ruby-electric"
   '(progn
      (setq ruby-electric-expand-delimiters-list '())))
