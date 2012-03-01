@@ -25,7 +25,7 @@ fi
 emacs --batch -Q -f batch-byte-compile auto-install.el
 
 # install init-loader.el
-wget http://coderepos.org/share/export/38912/lang/elisp/init-loader/init-loader.el
+wget https://raw.github.com/gist/1021706/b9aff51e7e40afa7abb3c7d6ef7708993ad93b04/init-loader.el
 
 # byte compile init-loader.el
 emacs --batch -Q -f batch-byte-compile init-loader.el
@@ -48,4 +48,3 @@ chmod 755 emacs_serverstart.pl
 rm -f emacsclient.sh
 wget https://raw.github.com/syohex/emacsclient_focus/master/emacsclient.sh
 chmod 755 emacsclient.sh
-
