@@ -12,12 +12,17 @@
   "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
           '(lambda ()
+             (setq ruby-deep-indent-paren nil)
              (ruby-electric-mode t)
              (flymake-ruby-load)
              (inf-ruby-keys)
 
              ;; rsense
              (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
+             ;; rurema
+             (setq rsense-rurema-home "~/src/rurema")
+             (custom-set-variables
+              '(rsense-rurema-refe "refe-1_9_2"))
              (add-to-list 'load-path (concat rsense-home "/etc"))
              (require 'rsense)
              (add-to-list 'ac-sources ac-source-rsense-method)
@@ -25,13 +30,20 @@
 
              (define-key ruby-mode-map (kbd "<tab>") 'yas/expand)
              (define-key ruby-mode-map (kbd "C-<return>") 'auto-complete)
+             (define-key ruby-mode-map (kbd "C-c d") 'refe2)
 
              ;;;; yari
              ;;  (auto-install-from-url "http://www.emacswiki.org/emacs/download/yari.el")
              (require 'yari)
              (define-key ruby-mode-map (kbd "C-c C-d") 'yari-anything)))
 
-(setq ruby-deep-indent-paren nil)
+(defvar refe2-buffer "*refe2*")
+(defun refe2 (cmd)
+  (interactive "sRefe2: ")
+  (if (= (call-process-shell-command (concat "refe2 " cmd) nil refe2-buffer) 0)
+      (pop-to-buffer refe2-buffer)
+    (message "Not found: '%s' document" cmd)))
+(push '("*refe2*" :stick t) popwin:special-display-config)
 
 ;; ruby-electric.el --- electric editing commands for ruby files
 (autoload 'ruby-electric-mode "ruby-electric" nil t)
