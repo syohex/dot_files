@@ -38,26 +38,6 @@
   (anything-other-buffer '(my/anything-c-source-buffer+) "*anything-buffer*"))
 (global-set-key (kbd "C-x b") 'my/anything-buffers+)
 
-;; document
-(defmacro major-mode-eql (mode)
-  `(eql major-mode ,mode))
-
-(defun my/man ()
-  (interactive)
-  (let* ((manual-program
-         (cond
-          ((or (major-mode-eql 'cperl-mode) (major-mode-eql 'perl-mode)) "perldoc")
-          ((or (major-mode-eql  'python-mode) (major-mode-eql 'py-mode)) "pydoc")
-          ((major-mode-eql 'ruby-mode) "ri")
-          (t "man")))
-        (prompt (format "%s entry: " manual-program))
-        (input (read-string prompt)))
-    (if (not (string= manual-program "man"))
-        (manual-entry input)
-      (man input))))
-
-(global-set-key (kbd "<f1>") 'my/man)
-
 ;;; switch last-buffer
 (defvar last-buffer-saved nil)
 (defvar last-buffer-exclude-name-regexp
@@ -126,6 +106,7 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
+(define-key my/ctrl-q-map (kbd "%") 'goto-match-paren)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
 
 (defun my/indent-region ()

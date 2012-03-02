@@ -38,7 +38,6 @@
         ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
-(global-set-key (kbd "M-C-o") 'goto-match-paren)
 
 ;; Symbol mapping(movind, deleting ...)
 (global-set-key (kbd "M-F") 'forward-symbol)
