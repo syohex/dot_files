@@ -50,6 +50,11 @@
 (require 'jaunte)
 (setq-default jaunte-hint-unit 'whitespace)
 
+;;;; jump by one character
+;; (auto-install-from-url "https://raw.github.com/winterTTr/ace-jump-mode/master/ace-jump-mode.el")
+(require 'ace-jump-mode)
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+
 ;; edit rectangle
 ;; number-rectangle
 (eval-when-compile (require 'cl))

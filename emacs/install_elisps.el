@@ -240,3 +240,6 @@
 
 ;; lua-mode
 (install-elisp "https://raw.github.com/immerrr/lua-mode/master/lua-mode.el")
+
+;; jump
+(auto-install-from-url "https://raw.github.com/winterTTr/ace-jump-mode/master/ace-jump-mode.el")
