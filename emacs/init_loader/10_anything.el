@@ -5,7 +5,6 @@
 (require 'anything-complete)
 (require 'anything-config)
 (require 'anything-migemo)
-(require 'anything-grep)
 (require 'anything)
 
 ;; configuration anything variable
@@ -58,10 +57,29 @@
  :exclude-regexp '())
 
 ;; anything
-(require 'anything-git-grep)
+(autoload 'anything-git-grep "anything-git-grep")
 
-;; M-x anything-grep-by-name
-(setq anything-grep-alist
-      '(("auto-install" ("grep -Hin %s *.el" "~/.emacs.d/auto-install/"))
-        ("emacs-config" ("grep -Hin %s *.el" "~/.emacs.d/init_loader/"))
-        ("todo" ("grep -Hin %s notes.org" "~/.emacs.d/"))))
+;; List files in git repos
+(defun anything-c-sources-git-project-for (pwd)
+  (loop for elt in
+        '(("Modified files (%s)" . "--modified")
+          ("Untracked files (%s)" . "--others --exclude-standard")
+          ("All controlled files in this project (%s)" . ""))
+        collect
+        `((name . ,(format (car elt) pwd))
+          (init . (lambda ()
+                    (unless (and ,(string= (cdr elt) "")
+                                 (anything-candidate-buffer))
+                      (with-current-buffer (anything-candidate-buffer 'global)
+                        (shell-command
+                         ,(format "git ls-files $(git rev-parse --show-cdup) %s" (cdr elt))
+                         t)))))
+          (candidates-in-buffer)
+          (type . file))))
+
+(defun anything-git-project ()
+  (interactive)
+  (let ((sources (anything-c-sources-git-project-for default-directory)))
+    (anything-other-buffer sources
+     (format "*Anything git project in %s*" default-directory))))
+(define-key global-map (kbd "C-;") 'anything-git-project)
