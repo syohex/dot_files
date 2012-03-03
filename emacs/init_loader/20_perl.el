@@ -27,6 +27,70 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-close-paren-offset -4))
 
+;; pod-mode
+(add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
+
+;; move point to 'use section or package'
+(defvar cperl/mib-orig-marker (make-marker))
+(defun cperl/move-import-block ()
+  (interactive)
+  (progn
+    (set-marker cperl/mib-orig-marker (point-marker))
+    (if (re-search-backward "^\\(use\\|package\\)\[ \n\]+\[^;\]+;" nil t)
+        (progn
+          (goto-char (match-end 0))
+          (next-line))
+      (goto-char (point-min)))))
+
+(defun cperl/back-to-last-marker ()
+  (interactive)
+  (goto-char cperl/mib-orig-marker))
+
+;; perl completion
+(autoload 'perl-completion-mode "perl-completion" nil t)
+(eval-after-load "perl-completion"
+  '(progn
+     (defadvice flymake-start-syntax-check-process (around flymake-start-syntax-check-lib-path activate)
+       (plcmp-with-set-perl5-lib ad-do-it))
+     (defalias 'perldoc 'plcmp-cmd-show-doc)
+     (define-key cperl-mode-map (kbd "C-c C-d") 'plcmp-cmd-show-doc)
+     (define-key cperl-mode-map (kbd "C-c C-a") 'plcmp-cmd-show-doc-at-point)
+     (define-key plcmp-mode-map (kbd "M-C-o") 'plcmp-cmd-smart-complete)))
+
+;; completion
+(add-hook 'cperl-mode-hook
+          (lambda ()
+            (defvar plcmp-default-lighter  " PLC")
+            (perl-completion-mode t)
+            (flymake-mode t)
+            (hs-minor-mode 1)
+            (when (boundp 'auto-complete-mode)
+              (defvar ac-source-my-perl-completion
+                '((candidates . plcmp-ac-make-cands)))
+              (add-to-list 'ac-sources 'ac-source-my-perl-completion))))
+
+;; XS
+;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/xs-mode.el")
+(add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
+(eval-after-load "xs-mode"
+  '(progn
+     (lambda ()
+       (c-toggle-electric-state -1)
+       (setq c-auto-newline nil)
+       (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
+       (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc))))
+
+(defun xs-perldoc ()
+  (interactive)
+  (let* ((docs-alist '(("perlapi") ("perlxs") ("perlguts")
+                 ("perlcall") ("perlclib") ("perlxstut")))
+         (manual-program "perldoc")
+         (input (completing-read "perldoc entry: " docs-alist)))
+    (if input
+        (manual-entry input)
+      (error "no input"))))
+
+;; Perl utility functions
 ;; exec 'perldoc -m'
 (defun perldoc-m ()
   (interactive)
@@ -65,66 +129,3 @@
   (interactive)
   (save-excursion (mark-defun)
                   (perltidy-region)))
-
-;; pod-mode
-(add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
-
-;; move point to 'use section or package'
-(defvar cperl/mib-orig-marker (make-marker))
-(defun cperl/move-import-block ()
-  (interactive)
-  (progn
-    (set-marker cperl/mib-orig-marker (point-marker))
-    (if (re-search-backward "^\\(use\\|package\\)\[ \n\]+\[^;\]+;" nil t)
-        (progn
-          (goto-char (match-end 0))
-          (next-line))
-      (goto-char (point-min)))))
-
-(defun cperl/back-to-last-marker ()
-  (interactive)
-  (goto-char cperl/mib-orig-marker))
-
-;; completion
-(add-hook 'cperl-mode-hook
-          (lambda ()
-            (defvar plcmp-default-lighter  " PLC")
-            (perl-completion-mode t)
-            (flymake-mode t)
-            (hs-minor-mode 1)
-            (when (boundp 'auto-complete-mode)
-              (defvar ac-source-my-perl-completion
-                '((candidates . plcmp-ac-make-cands)))
-              (add-to-list 'ac-sources 'ac-source-my-perl-completion))))
-
-;; perl completion
-(autoload 'perl-completion-mode "perl-completion" nil t)
-(eval-after-load "perl-completion"
-  '(progn
-     (defadvice flymake-start-syntax-check-process (around flymake-start-syntax-check-lib-path activate)
-       (plcmp-with-set-perl5-lib ad-do-it))
-     (defalias 'perldoc 'plcmp-cmd-show-doc)
-     (define-key cperl-mode-map (kbd "C-c C-d") 'plcmp-cmd-show-doc)
-     (define-key cperl-mode-map (kbd "C-c C-a") 'plcmp-cmd-show-doc-at-point)
-     (define-key plcmp-mode-map (kbd "M-C-o") 'plcmp-cmd-smart-complete)))
-
-;; XS
-;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/xs-mode.el")
-(add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
-(eval-after-load "xs-mode"
-  '(progn
-     (lambda ()
-       (c-toggle-electric-state -1)
-       (setq c-auto-newline nil)
-       (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
-       (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc))))
-
-(defun xs-perldoc ()
-  (interactive)
-  (let* ((docs-alist '(("perlapi") ("perlxs") ("perlguts")
-                 ("perlcall") ("perlclib") ("perlxstut")))
-         (manual-program "perldoc")
-         (input (completing-read "perldoc entry: " docs-alist)))
-    (if input
-        (manual-entry input)
-      (error "no input"))))
