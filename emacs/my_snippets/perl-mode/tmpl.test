@@ -1,5 +1,5 @@
 # name : Test Template
-# key  : tmpl
+# key  : test
 # --
 use strict;
 use warnings;

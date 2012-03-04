@@ -1,5 +1,5 @@
 # name : Script Template
-# key  : tmpl
+# key  : script
 # --
 #!perl
 use strict;
