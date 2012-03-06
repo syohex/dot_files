@@ -3,23 +3,24 @@
           'comint-watch-for-password-prompt)
 
 ;; emux
-(require 'emux)
-(global-set-key (kbd "C-!") 'emux:term)
-
-;; avoid abnormal exit
-(defvar emux:term-last-dir nil)
-(defadvice emux:term (before emux:term-save-last-directory activate)
-  (setq emux:term-last-dir default-directory))
+(autoload 'emux "emux" nil t)
+(eval-after-load "emux"
+  '(progn
+     (global-set-key (kbd "C-!") 'emux:term)
+     ;; avoid abnormal exit
+     (defvar emux:term-last-dir nil)
+     (defadvice emux:term (before emux:term-save-last-directory activate)
+       (setq emux:term-last-dir default-directory))
+     (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
+     (define-key term-raw-map (kbd "C-c n") 'emux:term-next)
+     (define-key term-raw-map (kbd "C-c p") 'emux:term-previous)
 
 ;; ansi-term
 (add-hook 'term-mode-hook
           '(lambda ()
              (define-key term-raw-map (kbd "M-x") 'nil)
              (define-key term-raw-map (kbd "C-z") 'nil)
-             (define-key term-raw-map (kbd "C-q") 'nil)
-             (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
-             (define-key term-raw-map (kbd "C-c n") 'emux:term-next)
-             (define-key term-raw-map (kbd "C-c p") 'emux:term-previous)))
+             (define-key term-raw-map (kbd "C-q") 'nil)))))
 
 ;; color setting
 (setq ansi-term-color-vector
