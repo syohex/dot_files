@@ -40,22 +40,45 @@
 # - Yuichi Tateno
 #
 
-export CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
+CDD_BASE_DIR=$HOME/.zsh/cdd
+
+if [ "$TMUX" != "" ]; then
+    export CDD_PWD_FILE=$CDD_BASE_DIR/tmux.$(echo $TMUX | cut -d ',' -f 3)
+    export WINDOW=$(tmux respawn-window 2>&1 > /dev/null | cut -d ':' -f 3)
+    if [ "$WINDOW" = "" ]; then
+        export WINDOW=$(tmux respawn-window > /dev/null | cut -d ':' -f 3)
+    fi
+elif [ "$STY" != "" ]; then
+    export CDD_PWD_FILE=$CDD_BASE_DIR/screen.$(echo $STY | cut -d '.' -f 1)
+else
+    export CDD_PWD_FILE=$CDD_BASE_DIR/default
+fi
+
+echo "\n" >>! "$CDD_PWD_FILE";
 
 function _reg_pwd_screennum() {
-    if [ "$STY" != "" ]
-    then
+    if [ "$STY" != "" ] || [ "$TMUX" != "" ]; then
+        if [ ! -f "$CDD_PWD_FILE" ]; then
+            echo "\n" >>! "$CDD_PWD_FILE"
+        fi
         _reg_cdd_pwd "$WINDOW" "$PWD"
     fi
 }
 
 function _reg_cdd_pwd() {
+    if [ ! -f "$CDD_PWD_FILE" ]; then
+        echo "\n" >> "$CDD_PWD_FILE"
+        if [ $? = 1 ]; then
+            echo "Error: Don't wrote $CDD_PWD_FILE."
+            return 1
+        fi
+    fi
     sed -i".t" -e "/^$1:/d" "$CDD_PWD_FILE"
     sed -i".t" -e "1i \\
 $1:$2" "$CDD_PWD_FILE"
 }
 
-function cdadd {
+function _cdadd {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "Usage: cdd add name path"
         echo "Example: cdd add w ~/myworkspace"
@@ -63,20 +86,12 @@ function cdadd {
     fi
 
     local -A real_path
-    if which realpath >/dev/null 2>&1;then
-        real_path=`realpath $2`
-    else
-        if which perl >/dev/null 2>&1;then
-            real_path=`perl -MCwd=realpath -le 'print realpath("$2")'`
-        else
-            echo "cdd add require realpath or perl"
-        fi
-    fi
+    real_path=$(perl -MCwd -e 'print Cwd::realpath("$2")');
     echo "add $1:$real_path"
     _reg_cdd_pwd "$1" "$real_path"
 }
 
-function cddel () {
+function _cddel() {
     if [ -z "$1" ]; then
         echo "Usage: cdd del name"
         return 1
@@ -84,23 +99,22 @@ function cddel () {
     sed -i".t" -e "/^$1:/d" "$CDD_PWD_FILE"
 }
 
-function cdd () {
+function cdd() {
     if [ "$1" = "add" ]; then
         shift
-        cdadd $@
+        _cdadd $@
         return 0
     elif [ "$1" = "del" ]; then
         shift
-        cddel $@
+        _cddel $@
         return 0
     fi
 
-    local -A wid
-    wid=`echo $1|cut -d':' -f1`
-    if \grep "^$wid:" "$CDD_PWD_FILE" > /dev/null 2>&1
-    then
+    local -A arg
+    arg=`echo $1|cut -d':' -f1`
+    if \grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1 ;then
         local -A res
-        res=`\grep "^$wid:" "$CDD_PWD_FILE"|sed -e "s/^$wid://"|tr -d "\n"`
+        res=`\grep "^$arg:" "$CDD_PWD_FILE"|sed -e "s/^$arg://;"|tr -d "\n"`
         echo "$res"
         cd "$res"
     else
@@ -110,9 +124,5 @@ function cdd () {
 
 compctl -K _cdd cdd
 functions _cdd() {
-    reply=(`\grep -v "(^$WINDOW:|^$)" "$CDD_PWD_FILE"|sort -k1 -t: -n`)
-}
-
-function chpwd() {
-    _reg_pwd_screennum
+    reply=(`\grep --color=none -v "^$WINDOW:" "$CDD_PWD_FILE"`)
 }

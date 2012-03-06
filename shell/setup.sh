@@ -9,6 +9,11 @@ then
 fi
 
 CDD_PWD_FILE=$HOME/.zsh/cdd_pwd_list
+if [ ! -d ~/.zsh/cdd ]
+then
+    mkdir -p ~/.zsh/cdd
+fi
+
 if [ ! -f "$CDD_PWD_FILE" ]; then
     echo "\n" > "$CDD_PWD_FILE"
     if [ $? = 1 ]
@@ -19,5 +24,7 @@ if [ ! -f "$CDD_PWD_FILE" ]; then
 fi
 
 # setting for GNU screen
-rm -f ~/.screenrc
-ln -s $PWD/screenrc ~/.screenrc
+ln -sf $PWD/screenrc ~/.screenrc
+
+# setting for tmux
+ln -sf $PWD/tmux.conf ~/.tmux.conf

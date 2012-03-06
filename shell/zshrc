@@ -124,6 +124,7 @@ alias lv='less'
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias minicom='LANG=C minicom'
+alias screen='tmux'
 
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
 then
