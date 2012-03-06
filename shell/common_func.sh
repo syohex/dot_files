@@ -78,3 +78,27 @@ _nw(){
 }
 
 compdef _nw nw
+
+## utils between Emacs and shell
+## Invoke the ``dired'' of current working directory in Emacs buffer.
+dired () {
+    emacsclient -e "(dired \"${1:-$PWD}\")"
+}
+
+## Chdir to the ``default-directory'' of currently opened in Emacs buffer.
+cde () {
+    EMACS_CWD=`emacsclient -e "
+      (if (featurep 'elscreen)
+          (elscreen-current-directory)
+        (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
+
+    echo "chdir to $EMACS_CWD"
+    cd "$EMACS_CWD"
+}
+
+## use only emux:term
+cdl () {
+    EMACS_LAST_DIR=`emacsclient -e "emux:term-last-dir" | sed 's/^"\(.*\)"$/\1/'`
+    echo "chdir to $EMACS_LAST_DIR"
+    cd $EMACS_LAST_DIR
+}

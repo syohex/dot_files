@@ -263,51 +263,15 @@ then
     source ${SHELL_DIR}/cdd.zsh
 fi
 
-## utils between Emacs and shell
-## Invoke the ``dired'' of current working directory in Emacs buffer.
-dired () {
-    emacsclient -e "(dired \"${1:-$PWD}\")"
-}
-
-## Chdir to the ``default-directory'' of currently opened in Emacs buffer.
-cde () {
-    EMACS_CWD=`emacsclient -e "
-      (if (featurep 'elscreen)
-          (elscreen-current-directory)
-        (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
-
-    echo "chdir to $EMACS_CWD"
-    cd "$EMACS_CWD"
-}
-
-## use only emux:term
-cdl () {
-    EMACS_LAST_DIR=`emacsclient -e "emux:term-last-dir" | sed 's/^"\(.*\)"$/\1/'`
-    echo "chdir to $EMACS_LAST_DIR"
-    cd $EMACS_LAST_DIR
-}
-
 ## Chdir top of Perl project
 cdp () {
-    orig_dir=$PWD
-    current_dir=$PWD
-    while [ "$current_dir" != '/' ]
-    do
-        for file in Makefile.PL Build.PL .git .gitignore
-        do
-            if [ -e $current_dir/$file ]
-            then
-                echo "$current_dir"
-                cd $current_dir
-                return 0
-            fi
-        done
-
-        current_dir=`dirname $current_dir`
-    done
-
-    echo "$orig_dir is not Perl Project Directory"
-    return 1
+    dir=`git rev-parse --show-toplevel 2>/dev/null`
+    if [ $? -eq 0 ]
+    then
+        cd $dir
+    else
+        echo "'$PWD' is not git repos"
+    fi
 }
 
 ## show git branch at right prompt
