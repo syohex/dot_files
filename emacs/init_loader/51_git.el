@@ -1,19 +1,22 @@
 ;;;; git-commit-mode
 ;; (auto-install-from-url "https://github.com/rafl/git-commit-mode/raw/master/git-commit.el")
-(require 'git-commit)
+(autoload 'git-commit-mode "git-commit" nil t)
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
-(set-face-foreground 'git-commit-summary-face nil)
-(set-face-underline  'git-commit-summary-face t)
-(set-face-foreground 'git-commit-nonempty-second-line-face nil)
-(set-face-bold-p     'git-commit-nonempty-second-line-face nil)
+(eval-after-load "git-commit"
+  '(progn
+     (set-face-foreground 'git-commit-summary-face nil)
+     (set-face-underline  'git-commit-summary-face t)
+     (set-face-foreground 'git-commit-nonempty-second-line-face nil)
+     (set-face-bold-p     'git-commit-nonempty-second-line-face nil)))
 
 ;; gist
 (require 'gist)
 
 ;; magit
-(require 'magit)
-(set-face-foreground 'magit-diff-add "green")
-(set-face-foreground 'magit-diff-del "red")
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green")
+     (set-face-foreground 'magit-diff-del "red")     ))
 
 ;; for simple-git
 (defvar sgit:buffer-name "*sgit*")
