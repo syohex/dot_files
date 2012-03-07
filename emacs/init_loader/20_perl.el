@@ -12,8 +12,7 @@
      (define-key cperl-mode-map (kbd "(") nil)
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "[") nil)
-     (define-key cperl-mode-map (kbd "M-<up>") 'cperl/move-import-block)
-     (define-key cperl-mode-map (kbd "M-<down>") 'cperl/back-to-last-marker)
+     (define-key cperl-mode-map (kbd "C-c C-m") 'cperl-insert-use-statement)
 
      ;; faces
      (set-face-bold-p 'cperl-array-face nil)
@@ -27,24 +26,30 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-close-paren-offset -4))
 
+;; insert 'use Module' which is at cursor.
+(defun cperl-insert-use-statement ()
+  "use statement auto-insertion."
+  (interactive)
+  (let ((module-name (cperl-word-at-point))
+        (insert-point (cperl-detect-insert-point)))
+    (save-excursion
+      (let ((use-statement (concat "\nuse " module-name ";")))
+        (if (not (search-backward use-statement nil t))
+            (progn
+              (goto-char insert-point)
+              (insert use-statement))
+          (error "'%s' is already imported" module-name))))))
+
+(defun cperl-detect-insert-point ()
+  (save-excursion
+    (if (re-search-backward "use .+;" 1 t)
+        (match-end 0)
+      (progn
+        (string-match "^$" (buffer-string))
+        (match-end 0)))))
+
 ;; pod-mode
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
-
-;; move point to 'use section or package'
-(defvar cperl/mib-orig-marker (make-marker))
-(defun cperl/move-import-block ()
-  (interactive)
-  (progn
-    (set-marker cperl/mib-orig-marker (point-marker))
-    (if (re-search-backward "^\\(use\\|package\\)\[ \n\]+\[^;\]+;" nil t)
-        (progn
-          (goto-char (match-end 0))
-          (next-line))
-      (goto-char (point-min)))))
-
-(defun cperl/back-to-last-marker ()
-  (interactive)
-  (goto-char cperl/mib-orig-marker))
 
 ;; perl completion
 (autoload 'perl-completion-mode "perl-completion" nil t)
