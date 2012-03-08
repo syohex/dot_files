@@ -5,6 +5,7 @@
   '(progn
      (setq scheme-program-name "gosh")
      (require 'cmuscheme)
+     (push '("*scheme*" :stick t) popwin:special-display-config)
      (define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
      (define-key global-map "\C-xH" 'gauche-info-index)))
 

@@ -1,5 +1,5 @@
 ;; setup for clojure
-(require 'clojure-mode)
+(autoloadd 'clojure-mode "clojure-mode")
 
 (defun my/clojure-mode-hook ()
   (if (featurep 'slime-mode)
@@ -7,7 +7,7 @@
 
 (add-hook 'clojure-mode-hook #'my/clojure-mode-hook)
 
-(push '("*clojure*" :stick t) popwin:special-display-config)
-
-;; inferior-clojure
-(require 'inf-clojure)
+(eval-after-load "clojure-mode"
+  '(progn
+     (require 'inf-clojure)
+     (push '("*clojure*" :stick t) popwin:special-display-config)))
