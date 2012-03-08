@@ -1,5 +1,5 @@
 ;; setup for clojure
-(autoloadd 'clojure-mode "clojure-mode")
+(autoload 'clojure-mode "clojure-mode")
 
 (defun my/clojure-mode-hook ()
   (if (featurep 'slime-mode)
