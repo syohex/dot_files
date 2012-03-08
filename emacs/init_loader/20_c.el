@@ -1,9 +1,16 @@
 ;; C coding style
+(autoload 'c-trun-on-eldoc-mode "c-eldoc" nil t)
+
 (defun my/c-mode-init ()
   (c-set-style "k&r")
   (c-toggle-electric-state -1)
   (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
   (hs-minor-mode 1)
+
+  ;; c-eldoc
+  (set (make-local-variable 'eldoc-idle-delay) 0.2)
+  (set (make-local-variable 'eldoc-minor-mode-string) "")
+  (c-turn-on-eldoc-mode)
   (if window-system
       (setq c-basic-offset 4)
     (setq c-basic-offset 8)))
