@@ -243,3 +243,6 @@
 
 ;; jump
 (auto-install-from-url "https://raw.github.com/winterTTr/ace-jump-mode/master/ace-jump-mode.el")
+
+;; c-eldoc.el
+(auto-install-from-emacswiki "c-eldoc.el")
