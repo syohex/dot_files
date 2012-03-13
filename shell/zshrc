@@ -337,6 +337,18 @@ if [ -e ~/.zsh/etc/profile.d/autojump.zsh ]; then
 fi
 fpath=($fpath ~/.zsh/functions(N))
 
+# elixir on Erlang
+if [ -d ~/src/elixir/bin ]
+then
+    export PATH=~/src/elixir/bin:$PATH
+fi
+
+# depot(eg. gclient) Google Development Utilities
+if [ -d ~/src/depot_tools ]
+then
+    export PATH=~/src/depot_tools:$PATH
+fi
+
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \

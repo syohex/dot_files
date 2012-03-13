@@ -222,9 +222,6 @@
 ;; terminal multiplexer
 (install-elisp "https://raw.github.com/m2ym/emux-el/master/emux.el")
 
-;; switch-window visualy
-(install-elisp "https://raw.github.com/dimitri/switch-window/master/switch-window.el")
-
 ;; for source code reading
 (install-elisp "https://raw.github.com/takaishi/succor/master/succor.el")
 
@@ -246,3 +243,6 @@
 
 ;; c-eldoc.el
 (auto-install-from-emacswiki "c-eldoc.el")
+
+;; elixer-mode
+(auto-install-from-url "https://raw.github.com/secondplanet/elixir-mode/master/elixir-mode.el")
