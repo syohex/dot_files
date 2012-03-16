@@ -7,6 +7,15 @@
   (interactive "p")
   (delete-word (- arg)))
 
+(defun delete-cursor-word-or-region ()
+  (interactive)
+  (if (use-region-p)
+      (call-interactively #'kill-region)
+    (progn
+      (backward-word)
+      (delete-word 1))))
+
+(global-set-key (kbd "C-w") 'delete-cursor-word-or-region)
 (global-set-key (kbd "M-d") 'delete-word)
 (global-set-key [C-backspace] 'backward-M-delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
