@@ -89,10 +89,6 @@
   (set-face-foreground 'bm-face "grey15")
   (set-face-bold-p 'bm-face t))
 
-;; trump
-(require 'tramp)
-(setq tramp-shell-prompt-pattern "syohei@.*: *")
-
 ;; move physical line
 (setq line-move-visual nil)
 
@@ -167,6 +163,3 @@
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (global-set-key (kbd "C-M-@") 'er/contract-region)
-
-;; indirect region
-(require 'indirect-region)
