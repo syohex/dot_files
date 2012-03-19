@@ -349,6 +349,12 @@ then
     export PATH=~/src/depot_tools:$PATH
 fi
 
+# dart
+if [ -d ~/src/dart-sdk/bin ]
+then
+    export PATH=~/src/dart-sdk/bin:$PATH
+fi
+
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
