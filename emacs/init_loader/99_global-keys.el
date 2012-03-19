@@ -112,6 +112,9 @@
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "%") 'goto-match-paren)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
+(define-key my/ctrl-q-map (kbd "o") 'edit-next-line)
+(define-key my/ctrl-q-map (kbd "O") 'edit-previous-line)
+
 
 (defun my/indent-region ()
   (interactive)

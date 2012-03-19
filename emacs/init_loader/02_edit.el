@@ -89,3 +89,17 @@
   (goto-char start))
 
 (global-set-key "\C-xrN" 'number-rectangle)
+
+;; like Vim's "o"
+(defun edit-next-line ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+;; like Vim's "O(large 'o')"
+(defun edit-previous-line ()
+  (interactive)
+  (forward-line -1)
+  (if (not (= (current-line) 1))
+      (end-of-line))
+  (newline-and-indent))
