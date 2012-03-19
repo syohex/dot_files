@@ -246,3 +246,6 @@
 
 ;; elixer-mode
 (auto-install-from-url "https://raw.github.com/secondplanet/elixir-mode/master/elixir-mode.el")
+
+;; dart-mode
+(auto-install-from-url "https://raw.github.com/nex3/dart-mode/master/dart-mode.el")
