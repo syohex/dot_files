@@ -115,7 +115,6 @@
 (define-key my/ctrl-q-map (kbd "o") 'edit-next-line)
 (define-key my/ctrl-q-map (kbd "O") 'edit-previous-line)
 
-
 (defun my/indent-region ()
   (interactive)
   (let ((cur (point)))
@@ -200,3 +199,20 @@
 
 (setq cycle-buffer-filter
       (cons '(not (string-match "^*" (buffer-name))) cycle-buffer-filter))
+
+;; Open directory
+(defvar my/commonly-directories-alist
+  '(("auto-install" . "~/.emacs.d/auto-install")
+    (".emacs.d"     . "~/.emacs.d/")
+    ("junk"         . "~/junk")
+    ("program"      . "~/program")))
+
+(defun my/open-commonly-directory ()
+  (interactive)
+  (let* ((key (completing-read "Select: " my/commonly-directories-alist))
+         (dir (assoc-default key my/commonly-directories-alist)))
+    (unless (file-exists-p dir)
+      (error "'%s' is not existed"))
+    (find-file dir)))
+
+(global-set-key (kbd "<f10>") 'my/open-commonly-directory)
