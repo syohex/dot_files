@@ -192,11 +192,6 @@
 (define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 (global-set-key (kbd "M-g y") 'repeat-yank)
 
-;; buffer
-(require 'cycle-buffer)
-(global-set-key (kbd "M-o") 'cycle-buffer)
-(global-set-key (kbd "M-O") 'cycle-buffer-backward)
-
 (setq cycle-buffer-filter
       (cons '(not (string-match "^*" (buffer-name))) cycle-buffer-filter))
 
