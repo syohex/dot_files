@@ -8,10 +8,10 @@
 
 ;; cursor
 (when window-system
-    (set-cursor-color "chartreuse2")
-    (setq blink-cursor-interval 0.5)
-    (setq blink-cursor-delay 1.5)
-    (blink-cursor-mode t))
+  (set-cursor-color "chartreuse2")
+  (setq blink-cursor-interval 0.2)
+  (setq blink-cursor-delay 1.5)
+  (blink-cursor-mode t))
 
 ;; for GC
 (setq gc-cons-threshold (* gc-cons-threshold 10))
