@@ -29,7 +29,7 @@
              (add-to-list 'ac-sources ac-source-rsense-constant)
 
              (define-key ruby-mode-map (kbd "<tab>") 'yas/expand)
-             (define-key ruby-mode-map (kbd "C-<return>") 'auto-complete)
+             (define-key ruby-mode-map (kbd "C-M-i") 'auto-complete)
              (define-key ruby-mode-map (kbd "C-c d") 'refe2)
 
              ;;;; yari
