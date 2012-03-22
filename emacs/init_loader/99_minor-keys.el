@@ -11,8 +11,7 @@
   "" ;; Not display mode-line
   `((,(kbd "C-j") . dabbrev-expand)
     (,(kbd "M-j") . jaunte)
-    (,(kbd "M-q") . quickrun)
-    (,(kbd "C-=") . auto-complete)
-    (,(kbd "C-c C-f") . anything-project)
+    (,(kbd "M-q") . toggle-read-only)
+    (,(kbd "C-c C-q") . quickrun)
     (,(kbd "M-e") . flymake-goto-next-error)
     (,(kbd "M-E") . flymake-goto-prev-error)))
