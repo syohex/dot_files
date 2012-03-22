@@ -58,10 +58,11 @@
 
 (defun my/view-insert-prev-line ()
   (interactive)
-  (beginning-of-line)
+  (forward-line -1)
   (toggle-read-only)
-  (save-excursion
-    (newline)))
+  (if (not (= (current-line) 1))
+      (end-of-line))
+  (newline-and-indent))
 (define-key view-mode-map (kbd "O") 'my/view-insert-prev-line)
 
 ;; Changeing mode-line color when view-mode is enable
@@ -70,3 +71,10 @@
 (setq viewer-modeline-color-unwritable "#9400d3"
       viewer-modeline-color-view       "light green")
 (viewer-change-modeline-color-setup)
+
+;; top priority view-mode
+(add-hook 'view-mode-hook
+          (lambda ()
+            (let ((vm (assq 'view-mode minor-mode-map-alist)))
+              (setq minor-mode-map-alist
+                    (cons vm (delete vm minor-mode-map-alist))))))
