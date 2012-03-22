@@ -15,7 +15,5 @@
 (set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
 
 ;; for completion
-(define-key emacs-lisp-mode-map
-  (kbd "M-C-i") 'anything-lisp-complete-symbol-partial-match)
-(define-key lisp-interaction-mode-map
-  (kbd "M-C-i") 'anything-lisp-complete-symbol-partial-match)
+(define-key emacs-lisp-mode-map (kbd "M-C-i") 'auto-complete)
+(define-key lisp-interaction-mode-map (kbd "M-C-i") 'auto-complete)
