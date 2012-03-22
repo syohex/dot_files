@@ -9,7 +9,7 @@
   "Most superior minir mode"
   t  ;; default is enable
   "" ;; Not display mode-line
-  `((,(kbd "C-j") . dabbrev-expand)
+  `((,(kbd "C-M-j") . dabbrev-expand)
     (,(kbd "M-j") . jaunte)
     (,(kbd "M-q") . toggle-read-only)
     (,(kbd "C-c C-q") . quickrun)
