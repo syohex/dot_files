@@ -1,12 +1,2 @@
 ;; aliases
 (defalias 'exit 'save-buffers-kill-emacs)
-(defalias 'mo 'moccur)
-(defalias 'dm 'dmoccur)
-(defalias 'am 'anything-c-moccur-occur-by-moccur)
-(defalias 'ad 'anything-c-moccur-dmoccur)
-(defalias 'ag 'anything-git-grep)
-(defalias 'dx 'direx:jump-to-directory)
-(defalias 'a 'anything-buffers+)
-(defalias 'b 'my/anything-bookmark)
-(defalias 'ms 'magit-status)
-(defalias 'agn 'anything-grep-by-name)
