@@ -41,21 +41,6 @@
   (set-face-background 'highlight 'nil)
   (set-face-underline-p 'highlight t))
 
-;; anything-project
-(require 'anything-project)
-
-(ap:add-project
- :name 'perl
- :look-for '("Makefile.PL" "Build.PL")
- :include-regexp '("\\.pm$" "\\.t$" "\\.pl$" "\\.PL$" "\\.xs$" "Changes")
- :exclude-regexp '("/inc" "/blib"))
-
-(ap:add-project
- :name 'ruby
- :look-for '("Gemfile" "Rakefile")
- :include-regexp '("\\.rb$" "Gemfile" "Rakefile")
- :exclude-regexp '())
-
 ;; anything
 (autoload 'anything-git-grep "anything-git-grep")
 
