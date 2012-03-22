@@ -25,13 +25,13 @@
   (interactive "p")
   (save-excursion
     (let (start end)
-      (if (use-region-p)
-          (setq start (region-beginning) end (region-end))
-        (progn
-          (beginning-of-line)
-          (setq start (point))
-          (forward-line)
-          (setq end (point))))
+      (cond ((use-region-p)
+             (setq start (region-beginning) end (region-end)))
+            (t
+             (beginning-of-line)
+             (setq start (point))
+             (forward-line)
+             (setq end (point))))
       (kill-ring-save start end)
       (dotimes (i (or n 1))
         (yank)))))
