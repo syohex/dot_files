@@ -22,9 +22,6 @@
 (global-set-key (kbd "C-z s") 'sgit:status)
 (global-set-key (kbd "C-z g") 'anything-git-grep)
 
-;; for anything-project
-(global-set-key (kbd "C-z C-g") 'anything-project-grep)
-
 (setq my/anything-c-source-buffer+
       '((name . "anything-buffer")
         (candidates . (lambda ()
@@ -112,8 +109,6 @@
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "%") 'goto-match-paren)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
-(define-key my/ctrl-q-map (kbd "o") 'edit-next-line)
-(define-key my/ctrl-q-map (kbd "O") 'edit-previous-line)
 
 (defun my/indent-region ()
   (interactive)
@@ -191,9 +186,6 @@
     (insert "\n")))
 (define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 (global-set-key (kbd "M-g y") 'repeat-yank)
-
-(setq cycle-buffer-filter
-      (cons '(not (string-match "^*" (buffer-name))) cycle-buffer-filter))
 
 ;; Open directory
 (defvar my/commonly-directories-alist
