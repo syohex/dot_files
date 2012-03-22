@@ -24,8 +24,12 @@
   (interactive "p")
   (save-excursion
     (let (start end)
-      (cond ((use-region-p)
-             (setq start (region-beginning) end (region-end)))
+      (cond (mark-active
+             (setq start (region-beginning))
+             (goto-char (region-end))
+             (unless (bolp)
+               (forward-line))
+             (setq end (point)))
             (t
              (beginning-of-line)
              (setq start (point))
