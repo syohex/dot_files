@@ -21,22 +21,22 @@
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
 ;; duplicate current line
-(defun duplicate-current-line (&optional n)
-  "duplicate current line, make more than 1 copy given a numeric argument"
+(defun duplicate-thing (n)
   (interactive "p")
   (save-excursion
-    (let ((nb (or n 1))
-          (current-line (thing-at-point 'line)))
-      ;; when on last line, insert a newline first
-      (when (or (= 1 (forward-line 1)) (eq (point) (point-max)))
-        (insert "\n"))
+    (let (start end)
+      (if (use-region-p)
+          (setq start (region-beginning) end (region-end))
+        (progn
+          (beginning-of-line)
+          (setq start (point))
+          (forward-line)
+          (setq end (point))))
+      (kill-ring-save start end)
+      (dotimes (i (or n 1))
+        (yank)))))
 
-      ;; now insert as many time as requested
-      (while (> n 0)
-        (insert current-line)
-        (decf n)))))
-
-(global-set-key (kbd "C-S-d") 'duplicate-current-line)
+(global-set-key (kbd "M-c") 'duplicate-thing)
 
 ;; moving match paren
 (defun goto-match-paren (arg)
