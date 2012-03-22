@@ -17,7 +17,6 @@
 
 (global-set-key (kbd "C-w") 'delete-cursor-word-or-region)
 (global-set-key (kbd "M-d") 'delete-word)
-(global-set-key [C-backspace] 'backward-M-delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
 ;; duplicate current line
