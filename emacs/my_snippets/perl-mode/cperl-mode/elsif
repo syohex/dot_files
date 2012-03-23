@@ -1,0 +1,6 @@
+# name: elsif (...) { ... }
+# key: elsif
+# --
+elsif ($1) {
+    $2
+}
