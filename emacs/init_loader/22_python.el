@@ -19,10 +19,24 @@
              (append ac-modes '(python-3-mode python-2-mode))))
 
      ;; binding
+     (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)
      ;; Activate flymake unless buffer is a tmp buffer for the interpreter
      (unless (eq buffer-file-name nil)
        (flymake-mode t))))
+
+(defun python-newline-and-indent ()
+  (interactive)
+  (let (current-line-is-open-block)
+    (when (and (eolp) (not (char-equal ?: (preceding-char))))
+      (save-excursion
+        (back-to-indentation)
+        (if (python-open-block-statement-p t)
+            (setq current-line-is-open-block t))))
+    (when current-line-is-open-block
+      (skip-chars-backward " \t")
+      (insert ":")))
+  (newline-and-indent))
 
 ;; back indent
 (defun python-back-indent ()
