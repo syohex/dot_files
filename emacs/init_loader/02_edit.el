@@ -25,11 +25,7 @@
   (save-excursion
     (let (start end)
       (cond (mark-active
-             (setq start (region-beginning))
-             (goto-char (region-end))
-             (unless (bolp)
-               (forward-line))
-             (setq end (point)))
+             (setq start (region-beginning) end (region-end)))
             (t
              (beginning-of-line)
              (setq start (point))
