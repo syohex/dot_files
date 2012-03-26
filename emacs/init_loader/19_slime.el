@@ -1,5 +1,6 @@
 ;;; slime
 (require 'slime)
+(define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
 (slime-setup '(slime-repl slime-fancy slime-banner))
 
 ;; encoding
@@ -23,11 +24,10 @@
 
 ;;;; ac-slime
 ;; (auto-install-from-url "https://github.com/purcell/ac-slime/raw/master/ac-slime.el")
-(autoload 'slime "ac-slime")
-(eval-after-load "ac-slime"
-  '(progn
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+(require 'ac-slime)
+(progn
+  (add-hook 'slime-mode-hook 'set-up-slime-ac)
+  (add-hook 'slime-repl-mode-hook 'set-up-slime-ac))
 
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
