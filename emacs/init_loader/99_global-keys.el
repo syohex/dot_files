@@ -13,6 +13,8 @@
   "My original keymap binded to C-z")
 (unless window-system
   (define-key global-map (kbd "C-z") my/ctrl-z-map))
+
+(global-set-key (kbd "C-z C-q") 'quickrun)
 (global-set-key (kbd "C-z b") 'anything-bookmarks)
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
 
