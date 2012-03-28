@@ -330,12 +330,12 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-# autojump
-if [ -e ~/.zsh/etc/profile.d/autojump.zsh ]; then
-    PATH=~/.zsh/bin:$PATH
-    source ~/.zsh/etc/profile.d/autojump.zsh
-fi
-fpath=($fpath ~/.zsh/functions(N))
+## autojump
+#if [ -e ~/.zsh/etc/profile.d/autojump.zsh ]; then
+#    PATH=~/.zsh/bin:$PATH
+#    source ~/.zsh/etc/profile.d/autojump.zsh
+#fi
+#fpath=($fpath ~/.zsh/functions(N))
 
 # elixir on Erlang
 if [ -d ~/src/elixir/bin ]
