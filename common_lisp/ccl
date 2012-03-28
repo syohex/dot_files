@@ -1,0 +1,38 @@
+#!/bin/sh
+# -*- mode:sh -*-
+
+CCL_HOME="$HOME/local/ccl"
+
+OS=`uname -s`
+MARCH=`uname -m`
+
+if [ "$OS" = "Linux" ]
+then
+    if [ "$MARCH" = x86_64 ]
+    then
+        bin=lx86cl64
+    else
+        bin=lx86cl
+    fi
+elif [ "$OS" = Darwin ]
+then
+    if [ "$MARCH" = x86_64 ]; then
+        bin=dx86cl64
+    else
+        bin=dx86cl
+    fi
+fi
+
+if [ -z "$bin" ]
+        then
+    echo "$0: $OS $MARCH is unknown"
+    exit 1
+fi
+
+
+if [ "$TERM" != "dumb" ] && which rlwrap >/dev/null 2>&1
+then
+    exec rlwrap "$CCL_HOME/$bin" "$@"
+else
+    exec "$CCL_HOME/$bin" "$@"
+fi
