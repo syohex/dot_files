@@ -126,3 +126,7 @@ compctl -K _cdd cdd
 functions _cdd() {
     reply=(`\grep --color=none -v "^$WINDOW:" "$CDD_PWD_FILE"`)
 }
+
+function chpwd() {
+    _reg_pwd_screennum
+}
