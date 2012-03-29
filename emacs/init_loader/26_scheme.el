@@ -7,7 +7,7 @@
      (require 'cmuscheme)
      (push '("*scheme*" :stick t) popwin:special-display-config)
      (define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
-     (define-key global-map "\C-xH" 'gauche-info-index)))
+     (define-key global-map (kbd "C-c C-d") 'gauche-info-index)))
 
 (defun scheme-other-window ()
   "Run scheme on other window"
