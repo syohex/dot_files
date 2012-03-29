@@ -29,16 +29,19 @@
               obarray)
     symbols))
 
-(when (require 'hyperspec nil t)
-  (setq anything-c-source-hyperspec
-        `((name . "Lookup Hyperspec")
-          (candidates . ,(lambda ()
-                           (mapcar #'symbol-name
-                                   (obarray-to-list common-lisp-hyperspec-symbols))))
-          (action . (("Show Hyperspec" . hyperspec-lookup))))))
+;; hyperspec with anything
+(setq anything-c-source-hyperspec
+      `((name . "Lookup Hyperspec")
+        (candidates . ,(lambda ()
+                         (mapcar #'symbol-name
+                                 (obarray-to-list common-lisp-hyperspec-symbols))))
+        (action . (("Show Hyperspec" . hyperspec-lookup)))))
 
 (defun anything-hyperspec ()
   (interactive)
   (anything 'anything-c-source-hyperspec (thing-at-point 'symbol)))
 
-(global-set-key (kbd "M-l") 'anything-hyperspec)
+(defun my/lisp-mode-hook ()
+  (define-key lisp-mode-map (kbd "C-c C-d C-l") 'anything-hyperspec))
+
+(add-hook 'lisp-mode-hook 'my/lisp-mode-hook)
