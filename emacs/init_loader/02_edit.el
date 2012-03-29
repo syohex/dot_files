@@ -58,11 +58,6 @@
 (require 'jaunte)
 (setq-default jaunte-hint-unit 'whitespace)
 
-;;;; jump by one character
-;; (auto-install-from-url "https://raw.github.com/winterTTr/ace-jump-mode/master/ace-jump-mode.el")
-(require 'ace-jump-mode)
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-
 ;; edit rectangle
 ;; number-rectangle
 (eval-when-compile (require 'cl))
@@ -105,3 +100,17 @@
 
 (global-set-key (kbd "M-o") 'edit-next-line)
 (global-set-key (kbd "M-O") 'edit-previous-line)
+
+;; like Vim's 'f'
+(defun forward-match-char (c)
+  (interactive "cInput Char: ")
+  (forward-char)
+  (skip-chars-forward (format "^%s" (char-to-string c))))
+
+(defun backward-match-char (c)
+  (interactive "cInput Char: ")
+  (skip-chars-backward (format "^%s" (char-to-string c)))
+  (backward-char))
+
+(global-set-key (kbd "M-l") 'forward-match-char)
+(global-set-key (kbd "M-L") 'backward-match-char)
