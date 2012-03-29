@@ -90,15 +90,19 @@
 (global-set-key (kbd "M-O") 'edit-previous-line)
 
 ;; like Vim's 'f'
-(defun forward-match-char (c)
-  (interactive "cInput Char: ")
-  (forward-char)
-  (skip-chars-forward (format "^%s" (char-to-string c))))
+(defun forward-match-char (n)
+  (interactive "p")
+  (let ((c (read-char)))
+    (dotimes (i n)
+      (forward-char)
+      (skip-chars-forward (format "^%s" (char-to-string c))))))
 
-(defun backward-match-char (c)
-  (interactive "cInput Char: ")
-  (skip-chars-backward (format "^%s" (char-to-string c)))
-  (backward-char))
+(defun backward-match-char (n)
+  (interactive "p")
+  (let ((c (read-char)))
+    (dotimes (i n)
+      (skip-chars-backward (format "^%s" (char-to-string c)))
+      (backward-char))))
 
 (global-set-key (kbd "M-l") 'forward-match-char)
 (global-set-key (kbd "M-L") 'backward-match-char)
