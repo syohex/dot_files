@@ -9,9 +9,6 @@
      (set-face-foreground 'git-commit-nonempty-second-line-face nil)
      (set-face-bold-p     'git-commit-nonempty-second-line-face nil)))
 
-;; gist
-(require 'gist)
-
 ;; magit
 (eval-after-load 'magit
   '(progn
