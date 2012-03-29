@@ -10,6 +10,4 @@
   t  ;; default is enable
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
-    (,(kbd "M-q") . toggle-read-only)
-    (,(kbd "M-e") . flymake-goto-next-error)
-    (,(kbd "M-E") . flymake-goto-prev-error)))
+    (,(kbd "M-q") . toggle-read-only)))
