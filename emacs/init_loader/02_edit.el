@@ -60,7 +60,6 @@
 
 ;; edit rectangle
 ;; number-rectangle
-(eval-when-compile (require 'cl))
 (defun number-rectangle (start end format-string from)
   "Delete (don't save) text in the region-rectangle, then number it."
   (interactive
