@@ -263,7 +263,7 @@ then
     source ${SHELL_DIR}/cdd.zsh
 fi
 
-## Chdir top of Perl project
+## Chdir top of git repos
 cdp () {
     dir=`git rev-parse --show-toplevel 2>/dev/null`
     if [ $? -eq 0 ]
@@ -330,13 +330,6 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-## autojump
-#if [ -e ~/.zsh/etc/profile.d/autojump.zsh ]; then
-#    PATH=~/.zsh/bin:$PATH
-#    source ~/.zsh/etc/profile.d/autojump.zsh
-#fi
-#fpath=($fpath ~/.zsh/functions(N))
-
 # elixir on Erlang
 if [ -d ~/src/elixir/bin ]
 then
@@ -355,8 +348,14 @@ then
     export PATH=~/src/dart-sdk/bin:$PATH
 fi
 
+# gisty
+export GISTY_DIR="$HOME/git/gists"
+
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
     PATH GEM_PATH GEM_HOME CLOJURE_EXT \
     > ~/.emacs.d/shellenv.el
+
+# load private data
+source ~/.zsh/private.sh
