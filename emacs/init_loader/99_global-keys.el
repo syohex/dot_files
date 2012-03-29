@@ -3,8 +3,6 @@
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
-(global-set-key (kbd "C-M-<backspace>") 'kill-whole-line)
-(global-set-key (kbd "C-S-y") 'kill-whole-line)
 (global-set-key (kbd "C-x C-a") 'anything-filelist+)
 (global-set-key (kbd "C-x C-w") 'anything-resume)
 
