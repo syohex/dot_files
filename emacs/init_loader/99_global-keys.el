@@ -39,30 +39,13 @@
 (global-set-key (kbd "C-x b") 'my/anything-buffers+)
 
 ;;; switch last-buffer
-(defvar last-buffer-saved nil)
-(defvar last-buffer-exclude-name-regexp
-  (rx (or "*Completions*" "*Org Export/Publishing Help*"
-          (regexp "^ "))))
-(defun record-last-buffer ()
-  (when (and (one-window-p)
-             (not (eq (window-buffer) (car last-buffer-saved)))
-             (not (string-match last-buffer-exclude-name-regexp
-                                (buffer-name (window-buffer)))))
-    (setq last-buffer-saved
-          (cons (window-buffer) (car last-buffer-saved)))))
-(add-hook 'window-configuration-change-hook 'record-last-buffer)
 (defun switch-to-last-buffer ()
   (interactive)
-  (condition-case nil
-      (switch-to-buffer (cdr last-buffer-saved))
-    (error (switch-to-buffer (other-buffer)))))
+  (loop for buf in (cdr (buffer-list))
+        when (not (string-match "^\s*\\*" (buffer-name buf)))
+        return (switch-to-buffer buf)))
 
-(defun switch-to-last-buffer-or-other-window ()
-  (interactive)
-  (if (one-window-p t)
-      (switch-to-last-buffer)
-    (other-window 1)))
-(global-set-key (kbd "M-0") 'switch-to-last-buffer-or-other-window)
+(global-set-key (kbd "M-0") 'switch-to-last-buffer)
 
 ;; open ring file
 (defvar file-ring nil)
@@ -102,10 +85,6 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "t") 'text-translator)
-(define-key my/ctrl-q-map (kbd "h") 'windmove-left)
-(define-key my/ctrl-q-map (kbd "j") 'windmove-down)
-(define-key my/ctrl-q-map (kbd "k") 'windmove-up)
-(define-key my/ctrl-q-map (kbd "l") 'windmove-right)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
@@ -156,10 +135,6 @@
                (throw 'end-flag t)))))))
 
 (define-key my/ctrl-q-map (kbd "C-r") 'my/window-resizer)
-(define-key my/ctrl-q-map (kbd "<right>") 'windmove-right)
-(define-key my/ctrl-q-map (kbd "<left>") 'windmove-left)
-(define-key my/ctrl-q-map (kbd "<down>") 'windmove-down)
-(define-key my/ctrl-q-map (kbd "<up>") 'windmove-up)
 
 ;; for scroll other window
 (smartrep-define-key
