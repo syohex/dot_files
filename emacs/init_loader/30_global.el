@@ -6,7 +6,6 @@
          (local-set-key (kbd "M-t") 'gtags-find-tag)
          (local-set-key (kbd "M-r") 'gtags-find-rtag)
          (local-set-key (kbd "M-s") 'gtags-find-symbol)
-         (local-set-key (kbd "M-p") 'gtags-find-pattern)
          (local-set-key (kbd "C-t") 'gtags-pop-stack)))
 
 ;;; hook for gtags
