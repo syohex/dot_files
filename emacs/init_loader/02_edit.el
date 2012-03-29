@@ -47,17 +47,6 @@
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
 
-;; Symbol mapping(movind, deleting ...)
-(global-set-key (kbd "M-F") 'forward-symbol)
-(global-set-key (kbd "M-B") (lambda (arg)
-                              (interactive "p")
-                              (forward-symbol (- arg))))
-
-;;;; jaunte hit-a-hint
-;; (auto-install-from-url "https://raw.github.com/kawaguchi/jaunte.el/master/jaunte.el")
-(require 'jaunte)
-(setq-default jaunte-hint-unit 'whitespace)
-
 ;; edit rectangle
 ;; number-rectangle
 (defun number-rectangle (start end format-string from)
@@ -81,7 +70,7 @@
           (forward-line 1)))
   (goto-char start))
 
-(global-set-key "\C-xrN" 'number-rectangle)
+(global-set-key (kbd "C-x r N") 'number-rectangle)
 
 ;; like Vim's "o"
 (defun edit-next-line ()
