@@ -29,9 +29,8 @@
 
 ;; shell-pop
 (require 'shell-pop)
-(require 'eshell-pop)
 
-(shell-pop-set-internal-mode "eshell")
+(shell-pop-set-internal-mode "ansi-term")
 (shell-pop-set-window-height 50)
 (shell-pop-set-internal-mode-shell shell-file-name)
 (shell-pop-set-window-position "bottom")
