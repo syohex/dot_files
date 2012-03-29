@@ -42,7 +42,9 @@
 (defun switch-to-last-buffer ()
   (interactive)
   (loop for buf in (cdr (buffer-list))
-        when (not (string-match "^\s*\\*" (buffer-name buf)))
+        when (and (not (string-match "^\s*\\*" (buffer-name buf)))
+                  (and (buffer-file-name buf)
+                       (not (file-directory-p (buffer-file-name buf)))))
         return (switch-to-buffer buf)))
 
 (global-set-key (kbd "M-0") 'switch-to-last-buffer)
