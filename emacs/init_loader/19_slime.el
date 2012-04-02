@@ -1,6 +1,10 @@
 ;;; slime
 (require 'slime)
 (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
+
+;; SLIME REPL
+(define-key slime-repl-mode-map (kbd "TAB") nil)
+(define-key slime-repl-mode-map (kbd "C-M-i") 'auto-complete)
 (slime-setup '(slime-repl slime-fancy slime-banner))
 
 ;; encoding
