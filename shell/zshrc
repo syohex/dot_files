@@ -16,6 +16,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt hist_ignore_dups
+setopt hist_ignore_space
 setopt share_history
 
 # key-type is Emacs
