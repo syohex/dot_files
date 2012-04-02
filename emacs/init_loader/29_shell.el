@@ -11,7 +11,7 @@
   (setq emux:term-last-dir default-directory))
 
 ;; ansi-term
-(defun my/term-mode-hook
+(defun my/term-mode-hook ()
   (define-key term-raw-map (kbd "M-x") 'nil)
   (define-key term-raw-map (kbd "C-z") 'nil)
   (define-key term-raw-map (kbd "C-q") 'nil)
@@ -35,3 +35,12 @@
 (shell-pop-set-internal-mode-shell shell-file-name)
 (shell-pop-set-window-position "bottom")
 (global-set-key (kbd "C-x C-z") 'shell-pop)
+
+(defadvice shell-pop-up (around shell-pop-up-around activate)
+  (let ((cwd default-directory))
+    ad-do-it
+    (term-send-raw-string " ")
+    (if (string-match "zsh" shell-pop-internal-mode-shell)
+        (term-send-raw-string "\eq"))
+    (term-send-raw-string (concat "cd " cwd "\n"))
+    (term-send-raw-string "\C-l")))
