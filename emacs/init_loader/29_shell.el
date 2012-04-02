@@ -15,6 +15,7 @@
   (define-key term-raw-map (kbd "M-x") 'nil)
   (define-key term-raw-map (kbd "C-z") 'nil)
   (define-key term-raw-map (kbd "C-q") 'nil)
+  (define-key term-raw-map (kbd "C-x C-z") 'shell-pop)
 
   (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
   (define-key term-raw-map (kbd "C-c n") 'emux:term-next)
@@ -39,8 +40,8 @@
 (defadvice shell-pop-up (around shell-pop-up-around activate)
   (let ((cwd default-directory))
     ad-do-it
-    (term-send-raw-string " ")
-    (if (string-match "zsh" shell-pop-internal-mode-shell)
-        (term-send-raw-string "\eq"))
-    (term-send-raw-string (concat "cd " cwd "\n"))
-    (term-send-raw-string "\C-l")))
+    (unless (string= cwd default-directory)
+      (if (string-match "zsh" shell-pop-internal-mode-shell)
+          (term-send-raw-string "\eq"))
+      (term-send-raw-string (concat " cd " cwd "\n"))
+      (term-send-raw-string "\C-l"))))
