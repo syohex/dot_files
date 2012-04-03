@@ -1,5 +1,0 @@
-# name : my $arg = shift
-# key  : argf
-# --
-my \$${1:arg} = shift;
-$0

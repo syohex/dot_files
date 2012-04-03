@@ -1,5 +1,0 @@
-# name : my ($self, @args) = @_;
-# key  : argo
-# --
-my (\$self, \$${1:arg1}) = @_;
-$0
