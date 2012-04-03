@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: if (...) { ... } else { ... }
+# key: ifelse
+# --
+if (${1:cond}) {
+    ${2:// true...}
+}
+else {
+    ${3:// false...}
+}

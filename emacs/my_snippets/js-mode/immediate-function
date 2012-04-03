@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: (function () { ... }()) // immediate
+# key: function
+# --
+(function () {
+    $0
+}());
