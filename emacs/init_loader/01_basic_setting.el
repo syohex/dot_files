@@ -72,7 +72,8 @@
 ;; ignore upper or lower
 (setq read-file-name-completion-ignore-case t)
 
-;; window間移動
+;; move other window
+(global-set-key (kbd "M-C-o") 'other-window)
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
 
