@@ -6,8 +6,7 @@
 (require 'yasnippet)
 (custom-set-variables
  '(yas/trigger-key "TAB")
- '(yas/snippet-dirs '("~/.emacs.d/plugins/yasnippet/snippets"
-                      "~/dot_files/emacs/my_snippets")))
+ '(yas/snippet-dirs '("~/dot_files/emacs/my_snippets")))
 (yas/global-mode t)
 
 ;; anything interface
