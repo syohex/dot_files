@@ -13,8 +13,9 @@
 (setq ac-auto-start nil)
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(define-key ac-complete-mode-map "\C-s" 'ac-isearch)
+(setq ac-use-menu-map t)
+(define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
+(define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
+(define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (define-key ac-completing-map "\t" 'ac-complete)
 (setq ac-quick-help-delay 0.5)
