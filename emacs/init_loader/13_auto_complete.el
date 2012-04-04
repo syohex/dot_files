@@ -8,6 +8,7 @@
 (require 'pos-tip)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/myelisp/repos/auto-complete/dict")
+(add-to-list 'ac-dictionary-directories "~/dot_files/emacs/ac-dict")
 (ac-config-default)
 
 (setq ac-auto-start nil)
