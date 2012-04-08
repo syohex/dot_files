@@ -88,7 +88,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
-(define-key my/ctrl-q-map (kbd "%") 'goto-match-paren)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
 
 (defun my/indent-region ()

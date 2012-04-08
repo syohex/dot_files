@@ -46,6 +46,7 @@
         ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
+(global-set-key (kbd "C-x %") 'goto-match-paren)
 
 ;; edit rectangle
 ;; number-rectangle
