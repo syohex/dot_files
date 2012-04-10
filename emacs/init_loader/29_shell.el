@@ -5,20 +5,18 @@
 ;; emux
 (require 'emux)
 (global-set-key (kbd "C-!") 'emux:term)
-;; avoid abnormal exit
-(defvar emux:term-last-dir nil)
-(defadvice emux:term (before emux:term-save-last-directory activate)
-  (setq emux:term-last-dir default-directory))
+(set-face-background 'emux:tab-bar-face "SpringGreen1")
 
 ;; ansi-term
 (defun my/term-mode-hook ()
   (define-key term-raw-map (kbd "M-x") 'nil)
+  (define-key term-raw-map (kbd "M-0") 'nil)
   (define-key term-raw-map (kbd "C-z") 'nil)
   (define-key term-raw-map (kbd "C-q") 'nil)
 
   (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
-  (define-key term-raw-map (kbd "C-c n") 'emux:term-next)
-  (define-key term-raw-map (kbd "C-c p") 'emux:term-previous))
+  (define-key term-raw-map (kbd "C-c ,") 'emux:term-rename)
+  (define-key term-raw-map (kbd "C-c x") 'emux:term-kill))
 
 (add-hook 'term-mode-hook 'my/term-mode-hook)
 
