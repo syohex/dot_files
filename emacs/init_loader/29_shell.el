@@ -15,7 +15,6 @@
   (define-key term-raw-map (kbd "M-x") 'nil)
   (define-key term-raw-map (kbd "C-z") 'nil)
   (define-key term-raw-map (kbd "C-q") 'nil)
-  (define-key term-raw-map (kbd "C-x C-z") 'shell-pop)
 
   (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
   (define-key term-raw-map (kbd "C-c n") 'emux:term-next)
@@ -27,21 +26,3 @@
 (setq ansi-term-color-vector
       [unspecified "black" "red1" "lime green" "yellow2"
                    "DeepSkyBlue3" "magenta2" "cyan2" "white"])
-
-;; shell-pop
-(require 'shell-pop)
-
-(shell-pop-set-internal-mode "ansi-term")
-(shell-pop-set-window-height 50)
-(shell-pop-set-internal-mode-shell shell-file-name)
-(shell-pop-set-window-position "bottom")
-(global-set-key (kbd "C-x C-z") 'shell-pop)
-
-(defadvice shell-pop-up (around shell-pop-up-around activate)
-  (let ((cwd default-directory))
-    ad-do-it
-    (unless (string= cwd default-directory)
-      (if (string-match "zsh" shell-pop-internal-mode-shell)
-          (term-send-raw-string "\eq"))
-      (term-send-raw-string (concat " cd " cwd "\n"))
-      (term-send-raw-string "\C-l"))))
