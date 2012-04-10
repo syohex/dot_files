@@ -72,7 +72,7 @@
           (insert (format-time-string "%Y年 %m月 %d日(%a)"))))
       daily-file)))
 
-(make-file-ring '("~/.emacs.d/notes.org" my/daily-file "~/.emacs.d/book.org"))
+(make-file-ring '("~/.emacs.d/notes.org" my/daily-file "~/.emacs.d/zanken.org"))
 (global-set-key (kbd "<f12>") #'my/open-file-ring)
 
 ;; Ctrl-q map
@@ -86,16 +86,8 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "t") 'text-translator)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "\\") 'my/indent-region)
 (define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
-
-(defun my/indent-region ()
-  (interactive)
-  (let ((cur (point)))
-   (save-excursion
-     (call-interactively 'goto-match-paren)
-     (indent-region cur (point)))))
 
 ;; window-resizer
 (defun my/window-resizer ()
