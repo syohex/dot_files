@@ -13,6 +13,7 @@
   (define-key term-raw-map (kbd "M-0") 'nil)
   (define-key term-raw-map (kbd "C-z") 'nil)
   (define-key term-raw-map (kbd "C-q") 'nil)
+  (define-key term-raw-map (kbd "C-M-o") 'nil)
 
   (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
   (define-key term-raw-map (kbd "C-c ,") 'emux:term-rename)
