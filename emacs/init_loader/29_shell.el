@@ -3,21 +3,31 @@
           'comint-watch-for-password-prompt)
 
 ;; emux
-(require 'emux)
-(global-set-key (kbd "C-!") 'emux:term)
-(set-face-background 'emux:tab-bar-face "SpringGreen1")
+(autoload 'emux:term "emux" nil t)
+(autoload 'emux:term-other-window "emux" nil t)
+(global-set-key (kbd "C-!") 'emux:term-other-window)
+(push '(term-mode :height 0.5 :stick t) popwin:special-display-config)
+
+(defun term-toggle-mode ()
+  (interactive)
+  (if (term-in-char-mode)
+      (term-line-mode)
+    (term-char-mode)))
 
 ;; ansi-term
 (defun my/term-mode-hook ()
   (define-key term-raw-map (kbd "M-x") 'nil)
-  (define-key term-raw-map (kbd "M-0") 'nil)
-  (define-key term-raw-map (kbd "C-z") 'nil)
-  (define-key term-raw-map (kbd "C-q") 'nil)
-  (define-key term-raw-map (kbd "C-M-o") 'nil)
+  (define-key term-raw-map (kbd "C-x") 'nil)
+  (define-key term-raw-map (kbd "C-g") 'nil)
+
+  (define-key term-mode-map (kbd "C-c C-j") 'term-toggle-mode)
+  (define-key term-raw-escape-map (kbd "C-j") 'term-toggle-mode)
 
   (define-key term-raw-map (kbd "C-c c") 'emux:term-new)
   (define-key term-raw-map (kbd "C-c ,") 'emux:term-rename)
-  (define-key term-raw-map (kbd "C-c x") 'emux:term-kill))
+  (define-key term-raw-map (kbd "C-c x") 'emux:term-kill)
+
+  (set-face-background 'emux:tab-bar-face "SpringGreen1"))
 
 (add-hook 'term-mode-hook 'my/term-mode-hook)
 
