@@ -42,10 +42,14 @@
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'right)
 
-;; Disable scroll bar and tool bar
+;; Disable default scroll bar and tool bar
 (when window-system
     (set-scroll-bar-mode 'nil)
     (tool-bar-mode 0))
+
+;; enable yascrollbar
+(require 'yascroll)
+(global-yascroll-bar-mode)
 
 ;; not create backup file
 (setq backup-inhibited t)
