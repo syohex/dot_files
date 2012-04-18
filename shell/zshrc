@@ -297,7 +297,10 @@ precmd () {
     fi
 }
 _DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
-RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
+if [ "$EMACS" == "" ]
+then
+    RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
+fi
 
 ## for emacs ansi-term. notify pwd to ansi-term
 function chpwd_emacs_ansi_term() {
