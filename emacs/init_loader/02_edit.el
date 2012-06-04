@@ -19,6 +19,12 @@
 (global-set-key (kbd "M-d") 'delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
+;; move per symbol
+(global-set-key (kbd "M-e") 'forward-symbol)
+(global-set-key (kbd "M-a") (lambda (arg)
+                              (interactive "p")
+                              (forward-symbol (- arg))))
+
 ;; duplicate current line
 (defun duplicate-thing (n)
   (interactive "p")
@@ -107,3 +113,29 @@
 
 (global-set-key (kbd "M-l") 'forward-match-char)
 (global-set-key (kbd "M-L") 'backward-match-char)
+
+;; moving with ace-jump-mode
+(require 'ace-jump-mode)
+
+(defvar my/alt-z-map (make-sparse-keymap)
+  "My original keymap binded to M-z.")
+(defalias 'my/alt-z-prefix my/alt-z-map)
+(define-key global-map (kbd "M-z") 'my/alt-z-prefix)
+
+(defun add-hyper-char-to-ace-jump-word-mode (c)
+  (define-key my/alt-z-map
+    (read-kbd-macro (string c))
+    `(lambda ()
+       (interactive)
+       (setq ace-jump-query-char ,c)
+       (setq ace-jump-current-mode 'ace-jump-word-mode)
+       (ace-jump-do (concat "\\b"
+                            (regexp-quote (make-string 1 ,c)))))))
+
+(loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
+
+(set-face-foreground 'ace-jump-face-foreground "lime green")
+(set-face-bold-p 'ace-jump-face-foreground t)
+(set-face-underline-p 'ace-jump-face-foreground t)
