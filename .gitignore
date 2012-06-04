@@ -4,3 +4,4 @@ netrc
 emacs/init_loader/52_gist.el
 emacs/init_loader/68_twitter.el
 emacs/init_loader/99_private.el
+emacs/init_loader/99_myfunc.el
