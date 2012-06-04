@@ -59,8 +59,7 @@
        (plcmp-with-set-perl5-lib ad-do-it))
      (defalias 'perldoc 'plcmp-cmd-show-doc)
      (define-key cperl-mode-map (kbd "C-c C-d") 'plcmp-cmd-show-doc)
-     (define-key cperl-mode-map (kbd "C-c C-a") 'plcmp-cmd-show-doc-at-point)
-     (define-key plcmp-mode-map (kbd "M-C-o") 'plcmp-cmd-smart-complete)))
+     (define-key cperl-mode-map (kbd "C-c C-a") 'plcmp-cmd-show-doc-at-point)))
 
 ;; completion
 (add-hook 'cperl-mode-hook
