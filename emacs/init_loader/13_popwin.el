@@ -7,3 +7,4 @@
       (append '(("*Apropos*") ("*quickrun*" :stick t)
                 ("*Faces*" :stick t) ("*Colors*" :stick t) ("*Help*" :stick t))
               popwin:special-display-config))
+(push '("*grep*" :stick t) popwin:special-display-config)
