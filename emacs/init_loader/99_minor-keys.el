@@ -10,4 +10,5 @@
   t  ;; default is enable
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
+    (,(kbd "M-C-o") . other-window)
     (,(kbd "M-q") . toggle-read-only)))
