@@ -76,14 +76,6 @@
 ;; ignore upper or lower
 (setq read-file-name-completion-ignore-case t)
 
-;; move other window
-(setq windmove-wrap-around t)
-(windmove-default-keybindings)
-
-;; naming of same name file
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
 ;; yes-or-no-p
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -103,13 +95,6 @@
 (set-face-foreground 'which-func "chocolate4")
 (set-face-bold-p 'which-func t)
 (which-func-mode t)
-
-;; auto-save
-(require 'auto-save-buffers)
-(run-with-idle-timer 5 t 'auto-save-buffers)
-
-;; smartchr
-(require 'smartchr)
 
 ;; invisible mouse cursor when editing text
 (setq make-pointer-invisible t)

@@ -1,12 +1,9 @@
 ;; elscreen
-(if (system-macosx-p)
-    (add-to-list 'load-path "~/.emacs.d/apel"))
 (if window-system
     (progn
-      (setq elscreen-prefix-key "\C-z")
+      (elscreen-start)
       (setq elscreen-tab-width nil)
       (setq elscreen-tab-display-kill-screen nil)
-      (load "elscreen" "ElScreen" t)
       (elscreen-toggle-display-tab)))
 
 ;; ウインドウのタイトルにタグ名を反映

@@ -3,19 +3,16 @@
 (add-to-list 'load-path "~/.emacs.d/rcodetools")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 
-(autoload 'ruby-mode "ruby-mode")
+;;(autoload 'ruby-mode "ruby-mode")
+;;(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process" t)
+;;(autoload 'inf-ruby-keys "inf-ruby" "" t)
 
 ;; inf-ruby.el
-(autoload 'run-ruby "inf-ruby"
-  "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (setq ruby-deep-indent-paren nil)
-             (ruby-electric-mode t)
+             (ruby-end-mode)
              (flymake-ruby-load)
-             (inf-ruby-keys)
 
              ;; rsense
              (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
@@ -33,7 +30,6 @@
              (define-key ruby-mode-map (kbd "C-c d") 'refe2)
 
              ;;;; yari
-             ;;  (auto-install-from-url "http://www.emacswiki.org/emacs/download/yari.el")
              (require 'yari)
              (define-key ruby-mode-map (kbd "C-c C-d") 'yari-anything)))
 
@@ -45,12 +41,5 @@
     (message "Not found: '%s' document" cmd)))
 (push '("*refe2*" :stick t) popwin:special-display-config)
 
-;; ruby-electric.el --- electric editing commands for ruby files
-(autoload 'ruby-electric-mode "ruby-electric" nil t)
-(eval-after-load "ruby-electric"
-  '(progn
-     (setq ruby-electric-expand-delimiters-list '())))
-
 ;; flymake
-;; (auto-install-from-url "https://raw.github.com/purcell/flymake-ruby/master/flymake-ruby.el")
 (autoload 'flymake-ruby-load "flymake-ruby")

@@ -12,6 +12,9 @@
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-indent)
   (ghc-init)
-  (flymake-mode))
+  (flymake-mode)
+
+  ;; for auto-complete
+  (push 'ac-source-ghc-mod ac-sources))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)

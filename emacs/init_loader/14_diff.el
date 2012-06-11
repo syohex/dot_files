@@ -1,4 +1,4 @@
-;; setting for diff-mode
+;; setting for diff-mode and ediff
 (require 'diff-mode)
 
 (set-face-attribute 'diff-added-face nil
@@ -21,3 +21,8 @@
 ;; key bindings
 (define-key diff-mode-map (kbd "C-M-n") 'diff-file-next)
 (define-key diff-mode-map (kbd "C-M-p") 'diff-file-prev)
+
+;; ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-diff-options "-twB")

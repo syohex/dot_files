@@ -1,4 +1,7 @@
 ;;; slime
+(add-to-list 'load-path "~/.emacs.d/elisps/slime")
+(add-to-list 'load-path "~/.emacs.d/elisps/slime/contrib")
+
 (require 'slime)
 (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
 
@@ -36,14 +39,3 @@
 
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
-
-;; popwin-w3m for hyperspec
-;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/v0.3/misc/popwin-w3m.el")
-(autoload 'slime "popwin-w3m" nil t)
-(eval-after-load "popwin-w3m"
-  '(progn
-     (push '("^file://.*HyperSpec.*\\.htm$" :height 0.4)
-           popwin:w3m-special-display-config)
-     (defadvice slime-hyperspec-lookup (around hyperspec-lookup-around activate)
-       (let ((browse-url-browser-function 'popwin:w3m-browse-url))
-         ad-do-it))))
