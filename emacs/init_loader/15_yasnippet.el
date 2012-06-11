@@ -1,8 +1,4 @@
 ;;;; yasnippet
-;; (or (file-exists-p "~/.emacs.d/plugins") (mkdir "~/emacs.d/plugins" t))
-;; (shell-command "git clone https://github.com/capitaomorte/yasnippet.git ~/.emacs.d/plugins/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-
 (require 'yasnippet)
 (custom-set-variables
  '(yas/trigger-key "TAB")
