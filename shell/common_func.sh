@@ -102,3 +102,13 @@ cdl () {
     echo "chdir to $EMACS_LAST_DIR"
     cd $EMACS_LAST_DIR
 }
+
+cdp () {
+    dir=`git rev-parse --show-toplevel 2>/dev/null`
+    if [ $? -eq 0 ]
+    then
+        cd $dir
+    else
+        echo "'$PWD' is not git repos"
+    fi
+}

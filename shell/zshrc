@@ -125,7 +125,6 @@ alias lv='less'
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias minicom='LANG=C minicom'
-alias screen='tmux'
 
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
 then
@@ -216,37 +215,13 @@ case $OSTYPE in
         ;;
 esac
 
-# llvm setting
-export PATH=~/local/llvm/bin:$PATH
-
 # haskell setting
 export PATH=~/.cabal/bin:$PATH
 
-# scala setting
-export PATH=~/src/scala/bin:$PATH
-
-# clojure setting
-export CLOJURE_EXT=~/.clojure
-export PATH=~/src/clojure-contrib/launchers/bash:$PATH
-alias clj=clj-env-dir
-
-## setup Clozure CL(ccl)
-export CCL_DEFAULT_DIRECTORY=~/local/ccl
-
-# for mlterm setting
-if [ "$TERM" != "xterm" ]
-then
-    alias ssh='TERM=xterm ssh'
-else
-    export TERM=xterm-256color
-fi
+export TERM=xterm-256color
 
 # loading common function for any platform
-SHELL_DIR=~/dot_files/shell
-if [ -e ${SHELL_DIR}/common_func.sh ]
-then
-    source ${SHELL_DIR}/common_func.sh
-fi
+source ~/dot_files/shell/common_func.sh
 
 # loading MacOSX function
 case "$OSTYPE" in
@@ -259,21 +234,7 @@ darwin*)
 esac
 
 ## for setting cdd
-if [ -e ${SHELL_DIR}/cdd.zsh ]
-then
-    source ${SHELL_DIR}/cdd.zsh
-fi
-
-## Chdir top of git repos
-cdp () {
-    dir=`git rev-parse --show-toplevel 2>/dev/null`
-    if [ $? -eq 0 ]
-    then
-        cd $dir
-    else
-        echo "'$PWD' is not git repos"
-    fi
-}
+source ${SHELL_DIR}/cdd.zsh
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
@@ -334,22 +295,10 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
-# elixir on Erlang
-if [ -d ~/src/elixir/bin ]
-then
-    export PATH=~/src/elixir/bin:$PATH
-fi
-
 # depot(eg. gclient) Google Development Utilities
 if [ -d ~/src/depot_tools ]
 then
     export PATH=~/src/depot_tools:$PATH
-fi
-
-# dart
-if [ -d ~/src/dart-sdk/bin ]
-then
-    export PATH=~/src/dart-sdk/bin:$PATH
 fi
 
 # gisty
