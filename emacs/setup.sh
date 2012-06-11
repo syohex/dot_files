@@ -4,7 +4,7 @@ set -e
 
 initialize () {
     echo -n "Checking command installed >> "
-    for command in emacs git curl paco
+    for command in emacs git curl paco cvs
     do
         if [ which $command >/dev/null 2>&1 ]
         then
@@ -19,7 +19,7 @@ initialize () {
     ln -sf ~/dot_files/emacs/init.el ~/.emacs.d/init.el
 
     echo "Create directies"
-    for dir in ~/.emacs.d/auto-install ~/bin ~/emacs.d/elisps ~/src
+    for dir in ~/.emacs.d/auto-install ~/bin ~/.emacs.d/elisps ~/src
     do
         if [ ! -d $dir ]
         then
@@ -81,7 +81,7 @@ setup_init_loader () {
     emacs --batch -Q -f batch-byte-compile init-loader.el
 
     echo "Create symlink ~/dot_files/init_loader ==> ~/.emacs.d "
-    ln -sf ~/dot_files/init_loader ~/.emacs.d
+    ln -sf ~/dot_files/emacs/init_loader ~/.emacs.d
 }
 
 # Emacsclient utilities
@@ -91,8 +91,8 @@ setup_emacs_server () {
     echo "Download Emacs server utilities"
 
     rm -f emacs_serverstart.pl emacsclient.sh
-    curl -O https://raw.github.com/syohex/emacsclient_focus/master/emacs_serverstart.pl \
-            https://raw.github.com/syohex/emacsclient_focus/master/emacsclient.sh
+    curl -O https://raw.github.com/syohex/emacsclient_focus/master/emacs_serverstart.pl
+    curl -O https://raw.github.com/syohex/emacsclient_focus/master/emacsclient.sh
     chmod 755 emacs_serverstart.pl emacsclient.sh
 }
 
@@ -101,8 +101,10 @@ setup_elscreen () {
     cd ~/.emacs.d/elisps
 
     ## utilities of ELSCREEN
-    curl -O ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-server-0.2.0.tar.gz \
-            ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-wl-0.8.0.tar.gz
+    for file in elscreen-server-0.2.0.tar.gz elscreen-wl-0.8.0.tar.gz
+    do
+        curl -O ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/$file
+    done
 
     tar xvf elscreen-server-0.2.0.tar.gz
     mv elscreen-server-0.2.0/*.el .
@@ -118,19 +120,20 @@ setup_elscreen () {
 setup_wanderlust () {
     echo "Setting for Wanderlust"
 
-    cd ~/src
-
     for package in apel flim semi wanderlust
     do
+        cd ~/src
         if [ ! -d $package ]
         then
             echo "Install $package"
             git clone http://git.chise.org/git/elisp/${package}.git
-            (cd $package && make && sudo paco -D make install)
+            cd $package
+            make
+            sudo paco -D make install
         fi
     done
 
-    cp wanderlust/utils/ssl.el ~/.emacs.d/elisps
+    cp ~/src/wanderlust/utils/ssl.el ~/.emacs.d/elisps
 }
 
 setup_sdic () {
@@ -142,18 +145,41 @@ setup_sdic () {
     curl -O http://www.namazu.org/~tsuchiya/sdic/$package
 
     tar xf $package
-    (cd ${package%%.tar.gz} && make && sudo paco -D make install)
+    mv $package archive
+    cd ${package%%.tar.gz}
+    ./configure
+    make
+    sudo paco -D make install
 }
 
 setup_misc () {
-    cd ~/src
+    cd ~/.emacs.d/elisps
 
     ## slime
     git clone https://github.com/nablaone/slime.git
+
+    ## emacs w3m
+    cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login
+    cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+    cd emacs-w3m
+    autoconf
+    ./configure
+    make
+    sudo paco -D make install
+}
+
+install_package () {
+    cd ~/.emacs.d/auto-install
+
+    for elisp in `cat $CWD/elisp.list | grep -v '^#'`
+    do
+        echo "Download $elisp"
+        curl -O $elisp
+    done
 }
 
 ## main
-PWD=`pwd`
+CWD=`pwd`
 
 initialize
 setup_auto_install
@@ -164,6 +190,8 @@ setup_wanderlust
 setup_sdic
 setup_misc
 
+install_package
+
 ## Install package
-cd $PWD
+cd $CWD
 emacs -Q install_elisp.el
