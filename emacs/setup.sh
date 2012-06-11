@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ ! -d ~/.emacs.d ]
+then
+    mkdir ~/.emacs.d
+fi
+
 # setup auto-install.el
 sh $PWD/install_auto_install.sh
 
@@ -19,8 +24,9 @@ darwin*)
 esac
 
 # Create symbolic link .emacs
-rm -f ~/.emacs
-ln -s $PWD/emacs ~/.emacs
+INIT_FILE=~/.emacs.d/init.el
+rm -f $INIT_FILE
+ln -s $PWD/emacs $INIT_FILE
 
 # Create init_loader symbolic link
 rm -f ~/.emacs.d/init_loader
