@@ -9,7 +9,7 @@ fi
 
 PACKAGES= zsh git emacs vim subversion \
           emacs-mozc emacs-mozc-bin ibus-mozc mozc-server mozc-utils-gui \
-          dia diffutils
+          dia diffutils nkf lv cvs cvs-utils w3m
 
 echo "Install packages:"
 sudo aptitude install $PACKAGES
