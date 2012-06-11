@@ -153,6 +153,8 @@ setup_misc () {
 }
 
 ## main
+PWD=`pwd`
+
 initialize
 setup_auto_install
 setup_init_loader
@@ -163,4 +165,5 @@ setup_sdic
 setup_misc
 
 ## Install package
-emacs -Q -L ~/.emacs.d/auto-install
+cd $PWD
+emacs -Q install_elisp.el
