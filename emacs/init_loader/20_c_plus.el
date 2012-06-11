@@ -7,7 +7,7 @@
   (setq c-basic-offset 4)
   ;; for auto-complete using clang
   (require 'auto-complete-clang)
-  (ac-clang-set-prefix-header "~/dot_files/emacs/stdafx_cpp.pch")
+  (ac-clang-set-prefix-header "~/dot_files/emacs/c_complete/stdafx_cpp.pch")
   (push ac-source-clang ac-sources))
 
 (add-hook 'c++-mode-hook #'my/c++-mode-init)
