@@ -26,9 +26,9 @@ bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
-# not complete command, these completion is too long.
+# Disable completion command
+# following command completion is too long.
 compdef -d java
-#compdef -d git
 
 # not exit Ctrl-D
 setopt ignoreeof
@@ -49,10 +49,6 @@ zstyle ':completion:*' use-cache true
 # with slash
 setopt noautoremoveslash
 
-# auto-cd
-setopt auto_pushd
-setopt PUSHD_IGNORE_DUPS
-
 # glob expand
 setopt null_glob no_nomatch
 
@@ -63,10 +59,6 @@ unsetopt promptcr
 setopt NO_beep
 setopt nolistbeep
 
-# zmv
-autoload -Uz zmv
-alias zmv='noglob zmv -W'
-
 # key binding of command history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -76,9 +68,6 @@ bindkey "^N" history-beginning-search-forward-end
 
 # setting LANG, this should be UTF-8
 export LANG=ja_JP.UTF-8
-
-# PATH
-export PATH=~/bin:$PATH
 
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
@@ -98,32 +87,10 @@ else
     fi
 fi
 
-# setting for emacs and java
-case "$OSTYPE" in
-darwin*)
-        # emacs and emacsclient is symbolic link for Cocoa Emacs
-
-        # java setting for using iterm on mac
-        alias javac='javac -J-Dfile.encoding=UTF-8'
-        alias java='java -Dfile.encoding=UTF-8'
-        ;;
-esac
-
-launch_emacs () {
-    local pwd=$PWD
-    cd ${HOME}
-    case "$OSTYPE" in
-        darwin*)
-            open -n /Applications/Emacs.app --args --reverse
-            ;;
-    esac
-    cd ${pwd}
-}
-
 # alias
 alias lv='less'
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias minicom='LANG=C minicom'
 
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
@@ -134,12 +101,6 @@ else
 fi
 
 alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
-
-## alias for perl
-alias pad="plackup -MPlack::App::Directory \
-           -e 'Plack::App::Directory->new->to_app'"
-alias doclife_md="plackup -MDocLife::Markdown -e \
-                  'DocLife::Markdown->new( root => \".\", suffix => \".md\")->to_app'"
 
 # global alias
 alias -g L='|less -R'
@@ -168,17 +129,9 @@ PROMPT="%B%{${fg[yellow]}%}%n@%m:%{${reset_color}%}%b%# "
 # EDITOR
 export EDITOR="emacsclient"
 
-# Subversion log editor
-export SVN_EDITOR='emacsclient'
-
 # PAGER setting
 export PAGER='less'
 export LESSCHARSET=utf-8
-case $OSTYPE in
-    darwin*)
-        export LESS='-r'
-        ;;
-esac
 
 # load perlbrew config file
 if [ -e ~/perl5/perlbrew/etc/bashrc ]
@@ -208,13 +161,6 @@ then
     source ${VIRTUALENV_ACTIVE}
 fi
 
-# for Homebrew at MacOSX
-case $OSTYPE in
-    darwin*)
-        export PATH=/usr/local/share/python:$PATH
-        ;;
-esac
-
 # haskell setting
 export PATH=~/.cabal/bin:$PATH
 
@@ -226,15 +172,12 @@ source ~/dot_files/shell/common_func.sh
 # loading MacOSX function
 case "$OSTYPE" in
 darwin*)
-        if [ -e ${SHELL_DIR}/mac_func.sh ]
-        then
-            source ${SHELL_DIR}/mac_func.sh
-        fi
+        source ~/dot_files/shell/mymac.zsh
         ;;
 esac
 
 ## for setting cdd
-source ${SHELL_DIR}/cdd.zsh
+source ~/dot_files/shell/cdd.zsh
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
@@ -307,7 +250,7 @@ export GISTY_DIR="$HOME/git/gists"
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH GEM_PATH GEM_HOME CLOJURE_EXT \
+    PATH GEM_PATH GEM_HOME \
     > ~/.emacs.d/shellenv.el
 
 # load private data
