@@ -152,6 +152,13 @@ setup_sdic () {
     sudo paco -D make install
 }
 
+setup_ruby () {
+    local package=rsense
+
+    cd ~/.emacs.d
+    git clone https://github.com/m2ym/rsense.git
+}
+
 setup_misc () {
     cd ~/.emacs.d/elisps
 
