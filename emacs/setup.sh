@@ -156,7 +156,37 @@ setup_ruby () {
     local package=rsense
 
     cd ~/.emacs.d
-    git clone https://github.com/m2ym/rsense.git
+    if [ ! -d rsense ]
+    then
+        git clone https://github.com/m2ym/rsense.git
+    fi
+}
+
+setup_python () {
+    local version=`python --version 2>&1 | perl -ne 'm{(\d+\.\d+\.\d+)} and print \$1'`
+    local docname="python-${version}-docs-html"
+
+    cd ~/.emacs.d
+    if [ ! -d pylookup ]
+    then
+        git clone https://github.com/tsgates/pylookup.git
+    fi
+
+    cd pylookup
+
+    is_python2=`expr $version : '^2\.'`
+    if [ $is_python2 != "0" ]
+    then
+        docurl="http://docs.python.org/archives/${docname}.zip"
+    else
+        docurl="http://docs.python.org/py3k/archives/${docname}.zip"
+    fi
+
+    curl -O $docurl
+    unzip $docname.zip
+    rm -f $docname.zip
+
+    ./pylookup.py -u $docname
 }
 
 setup_misc () {
@@ -195,6 +225,8 @@ setup_emacs_server
 setup_elscreen
 setup_wanderlust
 setup_sdic
+setup_ruby
+setup_python
 setup_misc
 
 install_package
