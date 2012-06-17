@@ -18,6 +18,23 @@
        (setq ac-modes
              (append ac-modes '(python-3-mode python-2-mode))))
 
+     ;; pylookup
+     (require 'pylookup)
+     (setq pylookup-dir "~/.emacs.d/pylookup")
+     (add-to-list 'load-path pylookup-dir)
+
+     ;; set executable file and db file
+     (setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+     (setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+
+     ;; to speedup, just load it on demand
+     (autoload 'pylookup-lookup "pylookup"
+       "Lookup SEARCH-TERM in the Python HTML indexes." t)
+     (autoload 'pylookup-update "pylookup"
+       "Run pylookup-update and create the database at `pylookup-db-file'." t)
+
+     (define-key python-mode-map (kbd "C-c C-d") 'pylookup-lookup)
+
      ;; binding
      (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)
