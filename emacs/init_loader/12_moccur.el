@@ -5,6 +5,8 @@
 (setq moccur-following-mode-toggle t)
 (setq moccur-kill-moccur-buffer t)
 
+(global-set-key (kbd "M-g M-m") 'moccur)
+
 ;; moccur-edit
 (require 'moccur-edit)
 
