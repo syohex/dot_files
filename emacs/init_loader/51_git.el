@@ -9,12 +9,6 @@
      (set-face-foreground 'git-commit-nonempty-second-line-face nil)
      (set-face-bold-p     'git-commit-nonempty-second-line-face nil)))
 
-;; magit
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "green")
-     (set-face-foreground 'magit-diff-del "red")     ))
-
 ;; for simple-git
 (defvar sgit:buffer-name "*sgit*")
 
