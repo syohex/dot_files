@@ -1,6 +1,4 @@
 ;; C coding style
-(autoload 'c-trun-on-eldoc-mode "c-eldoc" nil t)
-
 (defun my/c-mode-init ()
   (c-set-style "k&r")
   (c-toggle-electric-state -1)
