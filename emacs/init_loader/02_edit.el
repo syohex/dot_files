@@ -19,12 +19,6 @@
 (global-set-key (kbd "M-d") 'delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
-;; move per symbol
-(global-set-key (kbd "M-e") 'forward-symbol)
-(global-set-key (kbd "M-a") (lambda (arg)
-                              (interactive "p")
-                              (forward-symbol (- arg))))
-
 ;; duplicate current line
 (defun duplicate-thing (n)
   (interactive "p")
@@ -96,24 +90,6 @@
 (global-set-key (kbd "M-o") 'edit-next-line)
 (global-set-key (kbd "M-O") 'edit-previous-line)
 
-;; like Vim's 'f'
-(defun forward-match-char (n)
-  (interactive "p")
-  (let ((c (read-char)))
-    (dotimes (i n)
-      (forward-char)
-      (skip-chars-forward (format "^%s" (char-to-string c))))))
-
-(defun backward-match-char (n)
-  (interactive "p")
-  (let ((c (read-char)))
-    (dotimes (i n)
-      (skip-chars-backward (format "^%s" (char-to-string c)))
-      (backward-char))))
-
-(global-set-key (kbd "M-l") 'forward-match-char)
-(global-set-key (kbd "M-L") 'backward-match-char)
-
 ;; goto last-chg
 (require 'goto-chg)
 (global-set-key (kbd "M-z") 'goto-last-change)
@@ -123,3 +99,10 @@
 (set-face-foreground 'ace-jump-face-foreground "lime green")
 (set-face-bold-p 'ace-jump-face-foreground t)
 (set-face-underline-p 'ace-jump-face-foreground t)
+
+;; thingopt
+(require 'thing-opt)
+(define-thing-commands)
+
+;; quick-jump
+(require 'quick-jump)
