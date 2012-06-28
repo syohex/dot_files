@@ -63,3 +63,6 @@ http://www.emacswiki.org/emacs/download/eldoc-extension.el
 
 # goto-chg
 http://www.emacswiki.org/cgi-bin/wiki/download/goto-chg.el
+
+# quick-jump
+https://raw.github.com/jixiuf/quick-jump/master/quick-jump.el
