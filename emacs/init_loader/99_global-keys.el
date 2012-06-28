@@ -82,11 +82,7 @@
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
-(define-key my/ctrl-q-map (kbd "C-f") 'ffap)
-(define-key my/ctrl-q-map (kbd "t") 'text-translator)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "@") 'bm-toggle)
-(define-key my/ctrl-q-map (kbd "<backspace>") 'delete-region)
 
 ;; window-resizer
 (defun my/window-resizer ()
@@ -135,16 +131,6 @@
                        ("a" . (beginning-of-buffer-other-window 0))
                        ("e" . (end-of-buffer-other-window 0))))
 
-;; for move paragraph
-(smartrep-define-key
-    global-map "C-q" '(("[" . (backward-paragraph))
-                       ("]" . (forward-paragraph))))
-
-;; for bm-next, bm-previous
-(smartrep-define-key
-    global-map "C-q" '((">" . (bm-next))
-                       ("<" . (bm-previous))))
-
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)
   (interactive "NRepeat Count > ")
@@ -154,19 +140,33 @@
 (define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 (global-set-key (kbd "M-g y") 'repeat-yank)
 
-;; Open directory
-(defvar my/commonly-directories-alist
-  '(("auto-install" . "~/.emacs.d/auto-install")
-    (".emacs.d"     . "~/.emacs.d/")
-    ("junk"         . "~/junk")
-    ("program"      . "~/program")))
+;; M-g mapping
+(global-set-key (kbd "M-g M-g") 'find-grep)
 
-(defun my/open-commonly-directory ()
-  (interactive)
-  (let* ((key (completing-read "Select: " my/commonly-directories-alist))
-         (dir (assoc-default key my/commonly-directories-alist)))
-    (unless (file-exists-p dir)
-      (error "'%s' is not existed"))
-    (find-file dir)))
+(global-set-key (kbd "M-g C-f") 'ffap)
+(global-set-key (kbd "M-g <backspace>") 'delete-region)
 
-(global-set-key (kbd "<f10>") 'my/open-commonly-directory)
+;; for move PARAGRAPH
+(smartrep-define-key
+    global-map "M-g" '(("f" . (forward-whitespace 1))
+                       ("b" . (forward-whitespace -1))
+                       ("[" . (backward-paragraph))
+                       ("]" . (forward-paragraph))))
+
+(require 'thing-opt)
+(define-thing-commands)
+(smartrep-define-key
+    global-map "M-g" '(("w" . (copy-word))
+                       ("W" . (copy-symbol))
+                       ("k" . (kill-word))
+                       ("K" . (forward-paragraph))))
+
+;; for bm-next, bm-previous
+(global-set-key (kbd "M-g @") 'bm-toggle)
+(smartrep-define-key
+    global-map "M-g" '((">" . (bm-next))
+                       ("<" . (bm-previous))))
+
+;; quick-jump
+(global-set-key (kbd "M-g .") 'quick-jump-push-marker)
+(global-set-key (kbd "M-g ,") 'quick-jump-go-back)
