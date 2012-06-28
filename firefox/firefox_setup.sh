@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ln -s $PWD/keysnail.js ~/.keysnail.js
+ln -sf $PWD/keysnail.js ~/.keysnail.js
