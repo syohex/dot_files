@@ -148,18 +148,32 @@
 
 ;; for move PARAGRAPH
 (smartrep-define-key
-    global-map "M-g" '(("f" . (forward-whitespace 1))
-                       ("b" . (forward-whitespace -1))
+    global-map "M-g" '(("M-f" . (forward-whitespace 1))
+                       ("M-b" . (forward-whitespace -1))
                        ("[" . (backward-paragraph))
                        ("]" . (forward-paragraph))))
 
-(require 'thing-opt)
-(define-thing-commands)
-(smartrep-define-key
-    global-map "M-g" '(("w" . (copy-word))
-                       ("W" . (copy-symbol))
-                       ("k" . (kill-word))
-                       ("K" . (forward-paragraph))))
+;; like Vim's 'f'
+(defun forward-match-char (n)
+  (interactive "p")
+  (let ((c (read-char)))
+    (dotimes (i n)
+      (forward-char)
+      (skip-chars-forward (format "^%s" (char-to-string c))))))
+
+(defun backward-match-char (n)
+  (interactive "p")
+  (let ((c (read-char)))
+    (dotimes (i n)
+      (skip-chars-backward (format "^%s" (char-to-string c)))
+      (backward-char))))
+
+(global-set-key (kbd "M-g f") 'forward-match-char)
+(global-set-key (kbd "M-g F") 'backward-match-char)
+
+;; copy, kill operations
+(global-set-key (kbd "M-g w") 'copy-word)
+(global-set-key (kbd "M-g W") 'copy-symbol)
 
 ;; for bm-next, bm-previous
 (global-set-key (kbd "M-g @") 'bm-toggle)
@@ -170,3 +184,22 @@
 ;; quick-jump
 (global-set-key (kbd "M-g .") 'quick-jump-push-marker)
 (global-set-key (kbd "M-g ,") 'quick-jump-go-back)
+
+;; duplicate current line
+(defun duplicate-thing (n)
+  (interactive "p")
+  (save-excursion
+    (let (start end)
+      (cond (mark-active
+             (setq start (region-beginning) end (region-end)))
+            (t
+             (beginning-of-line)
+             (setq start (point))
+             (forward-line)
+             (setq end (point))))
+      (kill-ring-save start end)
+      (dotimes (i (or n 1))
+        (yank)))))
+
+(smartrep-define-key
+    global-map "M-g" '(("c" . (call-interactively 'duplicate-thing))))

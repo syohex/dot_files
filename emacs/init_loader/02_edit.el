@@ -19,24 +19,6 @@
 (global-set-key (kbd "M-d") 'delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
-;; duplicate current line
-(defun duplicate-thing (n)
-  (interactive "p")
-  (save-excursion
-    (let (start end)
-      (cond (mark-active
-             (setq start (region-beginning) end (region-end)))
-            (t
-             (beginning-of-line)
-             (setq start (point))
-             (forward-line)
-             (setq end (point))))
-      (kill-ring-save start end)
-      (dotimes (i (or n 1))
-        (yank)))))
-
-(global-set-key (kbd "M-c") 'duplicate-thing)
-
 ;; moving match paren
 (defun goto-match-paren (arg)
   "Go to the matching  if on (){}[], similar to vi style of % "
