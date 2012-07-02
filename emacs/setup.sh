@@ -158,7 +158,10 @@ setup_ruby () {
     cd ~/.emacs.d
     if [ ! -d rsense ]
     then
-        git clone https://github.com/m2ym/rsense.git
+        curl -O http://cx4a.org/pub/rsense/rsense-0.3.zip
+        unzip rsense-0.3.zip
+        mv rsense-0.3 rsense
+        rm -f rsense-0.3.zip
     fi
 }
 
