@@ -4,6 +4,10 @@
  ;; This value should be set before loading `mozc.el'
 (setq mozc-leim-title "[も]")
 
+;; change cursor color 'enable input method' / 'disable input method'
+(add-hook 'input-method-activate-hook '(lambda () (set-cursor-color "gold")))
+(add-hook 'input-method-inactivate-hook '(lambda () (set-cursor-color "chartreuse2")))
+
 (when (require 'mozc nil t)
   (setq is-setup-mozc t)
   (setq default-input-method "japanese-mozc")
