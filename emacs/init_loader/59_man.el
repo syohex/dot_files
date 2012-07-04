@@ -10,12 +10,3 @@
 (defadvice woman-really-find-file (around woman-split-window activate)
   (switch-to-buffer-other-window (get-buffer-create "*woman-dummy*"))
   ad-do-it)
-
-(defun my/anything-man ()
-  (interactive)
-  (anything-other-buffer
-   '(anything-c-source-man-pages
-     anything-c-source-info-pages)
-   " *anything-man*"))
-
-(global-set-key (kbd "M-<f1>") 'my/anything-man)
