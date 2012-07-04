@@ -231,7 +231,7 @@ if [ -e ~/dot_files/shell/submodules/zaw/zaw.zsh ]
 then
     source ~/dot_files/shell/submodules/zaw/zaw.zsh
     bindkey '^[@' zaw-cdr
-    bindkey '^U' zaw-gitdir
+    bindkey '^[#' zaw-gitdir
 fi
 
 # for git completion(too slowly in big repository)
