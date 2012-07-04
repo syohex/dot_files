@@ -17,16 +17,17 @@
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
-;; anything in dired
-(defun my/anything-dired ()
+;; helm in dired
+(defun my/helm-dired ()
   (interactive)
   (let ((curbuf (current-buffer)))
-    (if (anything-other-buffer
-         '(anything-c-source-files-in-current-dir+)
-         " *anything-dired*")
+    (if (helm-other-buffer
+         'helm-c-source-files-in-current-dir
+         "*helm-dired*")
         (kill-buffer curbuf))))
 
-(define-key dired-mode-map (kbd "p") 'my/anything-dired)
+(define-key dired-mode-map (kbd "p") 'my/helm-dired)
+(global-set-key (kbd "C-x C-p") 'my/helm-dired)
 
 ;;;; direx
 ;; (auto-install-from-url "https://raw.github.com/m2ym/direx-el/master/direx.el")

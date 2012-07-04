@@ -3,8 +3,15 @@
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
-(global-set-key (kbd "C-x C-a") 'anything-filelist+)
-(global-set-key (kbd "C-x C-w") 'anything-resume)
+
+;; helm binding
+(global-set-key (kbd "C-x C-a")    'helm-buffers-list)
+(global-set-key (kbd "C-x C-w")    'helm-resume)
+(global-set-key (kbd "C-x C-c")    'helm-M-x)
+(global-set-key (kbd "M-y")        'helm-show-kill-ring)
+(global-set-key (kbd "C-h a")      'helm-c-apropos)
+(global-set-key (kbd "C-x C-i")    'helm-imenu)
+(global-set-key (kbd "C-M-s")      'helm-occur)
 
 ;;; Ctrl-z Prefix
 (defvar my/ctrl-z-map (make-sparse-keymap)
@@ -12,28 +19,12 @@
 (unless window-system
   (define-key global-map (kbd "C-z") my/ctrl-z-map))
 
-(global-set-key (kbd "C-z b") 'anything-bookmarks)
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
 
 ;; for git
 (global-set-key (kbd "C-z d") 'sgit:diff)
 (global-set-key (kbd "C-z l") 'sgit:log)
 (global-set-key (kbd "C-z s") 'sgit:status)
-(global-set-key (kbd "C-z g") 'anything-git-grep)
-
-(setq my/anything-c-source-buffer+
-      '((name . "anything-buffer")
-        (candidates . (lambda ()
-                        (mapcar 'buffer-name
-                                (remove-if (lambda (b)
-                                             (string-match "^\s*\\*" (buffer-name b)))
-                                           (buffer-list)))))
-        (type . buffer)))
-
-(defun my/anything-buffers+ ()
-  (interactive)
-  (anything-other-buffer '(my/anything-c-source-buffer+) "*anything-buffer*"))
-(global-set-key (kbd "C-x b") 'my/anything-buffers+)
 
 ;;; switch last-buffer
 (defun switch-to-last-buffer ()
@@ -84,44 +75,6 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 
-;; window-resizer
-(defun my/window-resizer ()
-  "Control window size and position."
-  (interactive)
-  (let ((window-obj (selected-window))
-        (current-width (window-width))
-        (current-height (window-height))
-        (dx (if (= (nth 0 (window-edges)) 0) 1
-              -1))
-        (dy (if (= (nth 1 (window-edges)) 0) 1
-              -1))
-        action c)
-    (catch 'end-flag
-      (while t
-        (setq action
-              (read-key-sequence-vector (format "size[%dx%d]"
-                                                (window-width)
-                                                (window-height))))
-        (setq c (aref action 0))
-        (cond ((= c ?l)
-               (enlarge-window-horizontally dx))
-              ((= c ?h)
-               (shrink-window-horizontally dx))
-              ((= c ?j)
-               (enlarge-window dy))
-              ((= c ?k)
-               (shrink-window dy))
-              ;; otherwise
-              (t
-               (let ((last-command-char (aref action 0))
-                     (command (key-binding action)))
-                 (when command
-                   (call-interactively command)))
-               (message "Quit")
-               (throw 'end-flag t)))))))
-
-(define-key my/ctrl-q-map (kbd "C-r") 'my/window-resizer)
-
 ;; for scroll other window
 (smartrep-define-key
     global-map "C-q" '(("n" . (scroll-other-window 1))
@@ -148,9 +101,7 @@
 
 ;; for move PARAGRAPH
 (smartrep-define-key
-    global-map "M-g" '(("M-f" . (forward-whitespace 1))
-                       ("M-b" . (forward-whitespace -1))
-                       ("[" . (backward-paragraph))
+    global-map "M-g" '(("[" . (backward-paragraph))
                        ("]" . (forward-paragraph))))
 
 ;; like Vim's 'f'

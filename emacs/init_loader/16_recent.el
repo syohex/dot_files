@@ -6,7 +6,7 @@
 (setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
                         "\\.mime-example" "\\.ido.last"))
 (setq recentf-auto-cleanup 10)
-(global-set-key (kbd "C-x C-r") 'anything-recentf)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 (if window-system
     (run-at-time t 600 'recentf-save-list))
 
