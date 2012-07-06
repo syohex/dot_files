@@ -1,4 +1,4 @@
-# -*- mode:sh-mode -*-
+# -*- mode:shell-script -*-
 # completion
 fpath=($HOME/.zsh/mycomp $fpath)
 autoload -U compinit
