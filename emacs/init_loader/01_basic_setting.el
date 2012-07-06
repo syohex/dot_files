@@ -153,3 +153,6 @@
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (global-set-key (kbd "C-M-@") 'er/contract-region)
+
+;; for popular file type
+(require 'generic-x)
