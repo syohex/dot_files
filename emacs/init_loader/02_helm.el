@@ -13,10 +13,12 @@
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 
 ;; helm faces
-(when (not window-system)
-  (set-face-background 'helm-visible-mark "orange")
-  (set-face-background 'highlight 'nil)
-  (set-face-underline-p 'highlight t))
+(require 'helm-files)
+(set-face-attribute 'helm-ff-file nil
+                    :foreground "white" :background nil)
+(set-face-attribute 'helm-ff-directory nil
+                    :foreground "tomato" :background nil
+                    :underline t)
 
 ;; List files in git repos
 (defun helm-c-sources-git-project-for (pwd)
