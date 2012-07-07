@@ -13,6 +13,7 @@
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "[") nil)
      (define-key cperl-mode-map (kbd "C-c C-m") 'cperl-insert-use-statement)
+     (define-key cperl-mode-map (kbd "C-c C-d") 'cperl-perldoc)
 
      ;; faces
      (set-face-bold-p 'cperl-array-face nil)
@@ -50,28 +51,6 @@
 
 ;; pod-mode
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
-
-;; perl completion
-(autoload 'perl-completion-mode "perl-completion" nil t)
-(eval-after-load "perl-completion"
-  '(progn
-     (defadvice flymake-start-syntax-check-process (around flymake-start-syntax-check-lib-path activate)
-       (plcmp-with-set-perl5-lib ad-do-it))
-     (defalias 'perldoc 'plcmp-cmd-show-doc)
-     (define-key cperl-mode-map (kbd "C-c C-d") 'plcmp-cmd-show-doc)
-     (define-key cperl-mode-map (kbd "C-c C-a") 'plcmp-cmd-show-doc-at-point)))
-
-;; completion
-(add-hook 'cperl-mode-hook
-          (lambda ()
-            (defvar plcmp-default-lighter  " PLC")
-            (perl-completion-mode t)
-            (flymake-mode t)
-            (hs-minor-mode 1)
-            (when (boundp 'auto-complete-mode)
-              (defvar ac-source-my-perl-completion
-                '((candidates . plcmp-ac-make-cands)))
-              (add-to-list 'ac-sources 'ac-source-my-perl-completion))))
 
 ;; XS
 ;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/xs-mode.el")
