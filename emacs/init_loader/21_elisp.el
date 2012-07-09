@@ -17,3 +17,13 @@
 ;; for completion
 (define-key emacs-lisp-mode-map (kbd "M-C-i") 'auto-complete)
 (define-key lisp-interaction-mode-map (kbd "M-C-i") 'auto-complete)
+
+;; ielm
+(defun ielm-other-window ()
+  "Run ielm on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+   (get-buffer-create "*ielm*"))
+  (call-interactively 'ielm))
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm-other-window)
