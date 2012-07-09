@@ -21,5 +21,8 @@ then
     mkdir -p $COMPDIR
 fi
 
+# setting for zsh zaw
+(cd ~/.zsh && git clone git@github.com:syohex/zaw.git && git checkout origin/syohex)
+
 curl -o $COMPDIR/_perlbrew  https://raw.github.com/lapis25/dotfiles/master/.zsh/functions/_perlbrew
 curl -o $COMPDIR/_gisty https://raw.github.com/swdyh/gisty/master/_gisty

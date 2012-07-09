@@ -139,10 +139,11 @@ then
     source ~/perl5/perlbrew/etc/bashrc
 fi
 
-# load rvm(like perlbrew in Ruby language)
-if [ -e ~/.rvm/scripts/rvm ]
+# load rbenv
+if [ -d ~/.rbenv/bin ]
 then
-    source ~/.rvm/scripts/rvm
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
 fi
 
 # load nvm(node.js manager)
@@ -227,9 +228,9 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 
 # zaw : anything
-if [ -e ~/dot_files/shell/submodules/zaw/zaw.zsh ]
+if [ -e ~/.zsh/zaw/zaw.zsh ]
 then
-    source ~/dot_files/shell/submodules/zaw/zaw.zsh
+    source ~/.zsh/zaw/zaw.zsh
     bindkey '^[@' zaw-cdr
     bindkey '^[#' zaw-gitdir
 fi
