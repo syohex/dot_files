@@ -38,9 +38,19 @@
           (candidates-in-buffer)
           (type . file))))
 
+(defun helm-git-project-topdir ()
+  (file-name-as-directory
+   (replace-regexp-in-string
+    "\n" ""
+    (shell-command-to-string "git rev-parse --show-toplevel"))))
+
 (defun helm-git-project ()
   (interactive)
-  (let ((sources (helm-c-sources-git-project-for default-directory)))
-    (helm-other-buffer sources
-     (format "*helm git project in %s*" default-directory))))
+  (let ((topdir (helm-git-project-topdir)))
+    (unless (file-directory-p topdir)
+      (error "I'm not in Git Repository!!"))
+    (let* ((default-directory topdir)
+           (sources (helm-c-sources-git-project-for default-directory)))
+      (helm-other-buffer sources
+                         (format "*helm git project in %s*" default-directory)))))
 (define-key global-map (kbd "C-;") 'helm-git-project)
