@@ -21,13 +21,18 @@
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;; helm in dired
+(defvar my/helm-c-current-directory-source
+  `((name . "Current Directory Files")
+    (candidates . (lambda ()
+                    (with-helm-current-buffer
+                      (directory-files (helm-c-current-directory)))))
+    (type . file)))
+
 (defun my/helm-dired ()
   (interactive)
   (let ((curbuf (current-buffer)))
-    (if (helm-other-buffer
-         'helm-c-source-files-in-current-dir
-         "*helm-dired*")
-        (kill-buffer curbuf))))
+    (if (helm-other-buffer 'my/helm-c-current-directory-source "*helm-dired*")
+        (and (eq major-mode 'dired-mode) (kill-buffer curbuf)))))
 
 (define-key dired-mode-map (kbd "p") 'my/helm-dired)
 (global-set-key (kbd "C-x C-p") 'my/helm-dired)
