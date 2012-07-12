@@ -3,7 +3,7 @@
           'comint-watch-for-password-prompt)
 
 (defun eshell-other-window ()
-  "Run eshll on other window"
+  "Run eshell on other window"
   (interactive)
   (let ((eshell-buffer-name "*eshell pop*"))
     (switch-to-buffer-other-window
