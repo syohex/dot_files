@@ -12,47 +12,6 @@
 ;; for simple-git
 (defvar sgit:buffer-name "*sgit*")
 
-;; git status
-(defun sgit:status ()
-  (interactive)
-  (let ((limit nil))
-    (if (get-buffer sgit:buffer-name)
-        (kill-buffer sgit:buffer-name))
-    (with-current-buffer (get-buffer-create sgit:buffer-name)
-      (setq buffer-read-only nil)
-      (erase-buffer)
-      (call-process "git" nil t nil "status")
-      (goto-char (point-min))
-      (save-excursion
-        (if (re-search-forward "Changes not staged for commit:" nil t)
-            (setq limit (point))))
-      (when (re-search-forward "Changes to be committed:" limit t)
-        (while (re-search-forward "modified:\s+" limit t)
-          (let ((cur-point (match-beginning 0)))
-            (end-of-line)
-            (add-text-properties cur-point (point)
-                                 `(face ((foreground-color . "green")
-                                         (weight . bold)))))))
-      (when (re-search-forward "Changes not staged for commit:" nil t)
-        (while (re-search-forward "modified:\s+" nil t)
-          (let ((cur-point (match-beginning 0)))
-            (end-of-line)
-            (add-text-properties cur-point (point)
-                                 `(face ((foreground-color . "firebrick1")))))))
-      (if limit
-          (goto-char limit))
-      (when (re-search-forward "Untracked files:" nil t)
-        (forward-line 2)
-        (while (re-search-forward "^#[\s\t]+\\([^\s\t]+\\)$" nil t)
-          (end-of-line)
-          (add-text-properties (match-beginning 1) (match-end 1)
-                               `(face ((foreground-color . "cyan")
-                                       (weight . bold))))))
-      (goto-char (point-min))
-      (setq buffer-read-only t))
-    (pop-to-buffer sgit:buffer-name)
-    (view-mode)))
-
 ;; git diff
 (defun sgit:diff ()
   (interactive)
@@ -89,4 +48,12 @@
   (diff-mode)
   (view-mode)))
 
+(set-face-attribute 'diff-context nil
+                    :background nil :foreground "gray"
+                    :weight 'normal)
+
 (push '("*sgit*" :height 20) popwin:special-display-config)
+
+;; binding
+(global-set-key (kbd "C-x v d") 'sgit:diff)
+(global-set-key (kbd "C-x v l") 'sgit:log)

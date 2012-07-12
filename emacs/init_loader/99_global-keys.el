@@ -13,18 +13,8 @@
 (global-set-key (kbd "C-x C-i")    'helm-imenu)
 (global-set-key (kbd "C-M-s")      'helm-occur)
 
-;;; Ctrl-z Prefix
-(defvar my/ctrl-z-map (make-sparse-keymap)
-  "My original keymap binded to C-z")
-(unless window-system
-  (define-key global-map (kbd "C-z") my/ctrl-z-map))
-
-(global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
-
-;; for git
-(global-set-key (kbd "C-z d") 'sgit:diff)
-(global-set-key (kbd "C-z l") 'sgit:log)
-(global-set-key (kbd "C-z s") 'sgit:status)
+(if (featurep 'elscreen)
+    (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname))
 
 ;;; switch last-buffer
 (defun switch-to-last-buffer ()
