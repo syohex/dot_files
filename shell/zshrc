@@ -202,24 +202,7 @@ precmd () {
     fi
 }
 _DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
-if [ "$EMACS" == "" ]
-then
-    RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
-fi
-
-## for emacs ansi-term. notify pwd to ansi-term
-function chpwd_emacs_ansi_term() {
-    echo '\033AnSiTc' $PWD
-}
-
-if [[ $EMACS =~ "(term:.*)" ]]
-then
-    chpwd_functions=($chpwd_functions chpwd_emacs_ansi_term)
-
-    echo "\033AnSiTu" $USER
-    echo "\033AnSiTh" $HOST
-    chpwd_emacs_ansi_term
-fi
+RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
 
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
