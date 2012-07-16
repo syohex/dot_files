@@ -1,5 +1,4 @@
-(eval-when-compile
-  (require 'cl))
+(require 'cl)
 
 ;; predicate, Is your system Mac OSX
 (defun system-macosx-p ()
