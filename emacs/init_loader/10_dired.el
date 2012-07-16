@@ -25,7 +25,9 @@
   `((name . "Current Directory Files")
     (candidates . (lambda ()
                     (with-helm-current-buffer
-                      (directory-files (helm-c-current-directory)))))
+                      (let ((dirs (directory-files (helm-c-current-directory)))
+                            (filter (lambda (d) (string-match "^\.\.?$" d))))
+                        (remove-if filter dirs)))))
     (type . file)))
 
 (defun my/helm-dired ()
@@ -38,5 +40,4 @@
 (global-set-key (kbd "C-x C-p") 'my/helm-dired)
 
 ;;;; direx
-;; (auto-install-from-url "https://raw.github.com/m2ym/direx-el/master/direx.el")
 (require 'direx)
