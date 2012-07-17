@@ -113,8 +113,8 @@
 (global-set-key (kbd "M-g F") 'backward-match-char)
 
 ;; copy, kill operations
+(global-set-key (kbd "M-g s") 'copy-symbol)
 (global-set-key (kbd "M-g w") 'copy-word)
-(global-set-key (kbd "M-g W") 'copy-symbol)
 
 ;; for bm-next, bm-previous
 (global-set-key (kbd "M-g @") 'bm-toggle)
