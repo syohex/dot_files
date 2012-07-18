@@ -90,7 +90,7 @@ fi
 # alias
 alias lv='less'
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
-alias grep='grep --color=auto'
+alias grep='grep --color=always'
 alias minicom='LANG=C minicom'
 
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
@@ -104,10 +104,7 @@ alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
 
 # global alias
 alias -g L='|less -R'
-alias -g V="|\lv -c"
 alias -g G='|grep'
-alias -g T='|tee'
-alias -g U='|nkf -w |less -R'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
