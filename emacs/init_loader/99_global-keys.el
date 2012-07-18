@@ -116,6 +116,10 @@
 (global-set-key (kbd "M-g s") 'copy-symbol)
 (global-set-key (kbd "M-g w") 'copy-word)
 
+(smartrep-define-key
+    global-map "M-g" '(("z" . (call-interactively 'goto-last-change))
+                       ("y" . (call-interactively 'goto-last-change-reverse))))
+
 ;; for bm-next, bm-previous
 (global-set-key (kbd "M-g @") 'bm-toggle)
 (smartrep-define-key

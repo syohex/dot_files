@@ -74,7 +74,6 @@
 
 ;; goto last-chg
 (require 'goto-chg)
-(global-set-key (kbd "M-z") 'goto-last-change)
 
 ;; moving with ace-jump-mode
 (require 'ace-jump-mode)
