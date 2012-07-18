@@ -23,18 +23,18 @@
 ;; List files in git repos
 (defun helm-c-sources-git-project-for (pwd)
   (loop for elt in
-        '(("Modified files (%s)" . "--modified")
-          ("Untracked files (%s)" . "--others --exclude-standard")
-          ("All controlled files in this project (%s)" . ""))
+        '(("Modified files" . "--modified")
+          ("Untracked files" . "--others --exclude-standard")
+          ("All controlled files in this project" . nil))
+        for title  = (format "%s (%s)" (car elt) pwd)
+        for option = (cdr elt)
+        for cmd    = (format "git ls-files %s" (or option ""))
         collect
-        `((name . ,(format (car elt) pwd))
+        `((name . ,title)
           (init . (lambda ()
-                    (unless (and ,(string= (cdr elt) "")
-                                 (helm-candidate-buffer))
+                    (unless (and ,option (helm-candidate-buffer))
                       (with-current-buffer (helm-candidate-buffer 'global)
-                        (shell-command
-                         ,(format "git ls-files $(git rev-parse --show-cdup) %s" (cdr elt))
-                         t)))))
+                        (call-process-shell-command ,cmd nil t nil)))))
           (candidates-in-buffer)
           (type . file))))
 
