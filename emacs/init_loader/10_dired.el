@@ -30,14 +30,13 @@
                         (remove-if filter dirs)))))
     (type . file)))
 
-(defun my/helm-dired ()
+(defun my/helm-find-file-current-directory ()
   (interactive)
   (let ((curbuf (current-buffer)))
     (if (helm-other-buffer 'my/helm-c-current-directory-source "*helm-dired*")
         (and (eq major-mode 'dired-mode) (kill-buffer curbuf)))))
 
-(define-key dired-mode-map (kbd "p") 'my/helm-dired)
-(global-set-key (kbd "C-x C-p") 'my/helm-dired)
+(global-set-key (kbd "C-x C-p") 'my/helm-find-file-current-directory)
 
 ;;;; direx
 (require 'direx)
