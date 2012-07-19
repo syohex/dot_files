@@ -32,9 +32,10 @@
 
 (defun my/helm-find-file-current-directory ()
   (interactive)
-  (let ((curbuf (current-buffer)))
+  (let ((curbuf (current-buffer))
+        (orig-major major-mode))
     (if (helm-other-buffer 'my/helm-c-current-directory-source "*helm-dired*")
-        (and (eq major-mode 'dired-mode) (kill-buffer curbuf)))))
+        (and (eq orig-major 'dired-mode) (kill-buffer curbuf)))))
 
 (global-set-key (kbd "C-x C-p") 'my/helm-find-file-current-directory)
 
