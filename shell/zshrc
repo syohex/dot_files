@@ -105,6 +105,7 @@ alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
 # global alias
 alias -g L='|less -R'
 alias -g G='|grep'
+alias -g P='|ptrigger'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
@@ -134,6 +135,7 @@ export LESSCHARSET=utf-8
 if [ -e ~/perl5/perlbrew/etc/bashrc ]
 then
     source ~/perl5/perlbrew/etc/bashrc
+    unset MANPATH
 fi
 
 # load rbenv
@@ -147,7 +149,7 @@ fi
 if [ -e ~/.nvm/nvm.sh ]
 then
     source ~/.nvm/nvm.sh
-    nvm use stable > /dev/null
+    nvm use v0.6.6 > /dev/null
     export NODE_PATH=/home/syohei/.nvm/`node --version`/lib/node_modules:$NODE_PATH
 fi
 
