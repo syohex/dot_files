@@ -10,3 +10,6 @@
 (defadvice woman-really-find-file (around woman-split-window activate)
   (switch-to-buffer-other-window (get-buffer-create "*woman-dummy*"))
   ad-do-it)
+
+;; use popwin
+(push '(Man-mode :stick t :height 20) popwin:special-display-config)
