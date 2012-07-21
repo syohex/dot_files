@@ -64,6 +64,8 @@
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
+(define-key my/ctrl-q-map (kbd ".") 'quick-jump-push-marker)
+(define-key my/ctrl-q-map (kbd ",") 'quick-jump-go-back)
 
 ;; for scroll other window
 (smartrep-define-key
