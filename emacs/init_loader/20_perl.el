@@ -23,6 +23,22 @@
      (set-face-italic-p 'cperl-hash-face nil)
      (set-face-background 'cperl-hash-face nil)))
 
+;; for flymake
+(add-to-list 'flymake-allowed-file-name-masks
+             '("\\(\\.pl\\|\\.pm\\|\\.t\\|\\.psgi\\)$" flymake-perl-init))
+
+(defun flymake-perl-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list "perl" (list "-MProject::Libs" "-wc" local-file))))
+
+(add-hook 'cperl-mode-hook (lambda ()
+                             (flymake-mode t)
+                             (hs-minor-mode 1)))
+
 (custom-set-variables
  '(cperl-indent-parens-as-block t)
  '(cperl-close-paren-offset -4))
