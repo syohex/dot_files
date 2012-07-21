@@ -32,7 +32,7 @@
         collect
         `((name . ,title)
           (init . (lambda ()
-                    (unless (and ,option (helm-candidate-buffer))
+                    (unless (and (not ,option) (helm-candidate-buffer))
                       (with-current-buffer (helm-candidate-buffer 'global)
                         (call-process-shell-command ,cmd nil t nil)))))
           (candidates-in-buffer)
