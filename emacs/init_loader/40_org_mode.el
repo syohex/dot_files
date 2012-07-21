@@ -36,6 +36,7 @@
 
 (defun my/org-mode-hook ()
   (interactive)
+  (local-set-key (kbd "C-t") 'org-mark-ring-goto)
   (local-set-key (kbd "C-M-<return>") 'org-insert-todo-heading)
   (local-unset-key (kbd "M-S-<return>")))
 
