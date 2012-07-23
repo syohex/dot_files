@@ -52,8 +52,6 @@
                     :background nil :foreground "gray"
                     :weight 'normal)
 
-(push '("*sgit*" :height 20) popwin:special-display-config)
-
 ;; binding
 (global-set-key (kbd "C-x v d") 'sgit:diff)
 (global-set-key (kbd "C-x v l") 'sgit:log)

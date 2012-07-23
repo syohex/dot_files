@@ -27,10 +27,6 @@
 (load "saveplace")
 (setq-default save-place t)
 
-;; case insensitive
-(when (system-macosx-p)
-  (setq case-fold-search t)
-  (setq case-replace t))
 (setq dabbrev-case-fold-search nil)
 
 ;; info for japanese

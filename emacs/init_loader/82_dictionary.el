@@ -1,9 +1,8 @@
 ;; SDIC dictonary for Linux
-(when (system-linux-p)
-  (global-set-key "\C-cw" 'sdic-describe-word)
-  (global-set-key "\C-cW" 'sdic-describe-word-at-point)
-  (setq sdic-default-coding-system 'utf-8)
-  (autoload 'sdic-describe-word "sdic" "search word" t nil))
+(global-set-key "\C-cw" 'sdic-describe-word)
+(global-set-key "\C-cW" 'sdic-describe-word-at-point)
+(setq sdic-default-coding-system 'utf-8)
+(autoload 'sdic-describe-word "sdic" "search word" t nil)
 
 (eval-after-load "sdic"
   '(progn
@@ -48,22 +47,3 @@
        (recenter 0))
      (defadvice sdic-backward-item (after sdic-backward-item-always-top activate)
        (recenter 0))))
-
-;; dictionary setting for mac
-(require 'cl)
-(require 'popwin)
-
-(when (system-macosx-p)
-  (require 'popup)
-  (define-key global-map (kbd "C-M-d") 'ns-popup-dictionary))
-
-(defun ns-popup-dictionary ()
-  "Search word from dictionary"
-  (interactive)
-  (let ((word (substring-no-properties (thing-at-point 'word)))
-        (dict-buf (get-buffer-create "*dictionary.app*")))
-    (with-current-buffer dict-buf
-      (erase-buffer)
-      (insert "[" word "]\n")
-      (call-process "dict.py" nil "*dictionary.app*" t word))
-    (popwin:popup-buffer dict-buf)))

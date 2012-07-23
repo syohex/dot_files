@@ -15,4 +15,3 @@
              '("cdp" "cd {git rev-parse --show-toplevel}"))
 
 (global-set-key (kbd "M-g M-s") 'eshell-other-window)
-(push '("*eshell pop*" :stick t) popwin:special-display-config)
