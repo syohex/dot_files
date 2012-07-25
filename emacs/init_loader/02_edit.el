@@ -72,9 +72,6 @@
 (global-set-key (kbd "M-o") 'edit-next-line)
 (global-set-key (kbd "M-O") 'edit-previous-line)
 
-;; goto last-chg
-(require 'goto-chg)
-
 ;; moving with ace-jump-mode
 (require 'ace-jump-mode)
 (set-face-foreground 'ace-jump-face-foreground "lime green")
@@ -84,6 +81,15 @@
 ;; thingopt
 (require 'thing-opt)
 (define-thing-commands)
+
+(defun delete-cursor-symbol ()
+  (interactive)
+  (forward-symbol -1)
+  (let ((start (point)))
+    (forward-symbol 1)
+    (delete-region start (point))))
+
+(global-set-key (kbd "C-M-w") 'delete-cursor-symbol)
 
 ;; quick-jump
 (require 'quick-jump)

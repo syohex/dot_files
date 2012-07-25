@@ -47,3 +47,43 @@
        (recenter 0))
      (defadvice sdic-backward-item (after sdic-backward-item-always-top activate)
        (recenter 0))))
+
+(defvar dictionary-with-ace:orig-point nil)
+
+(defvar dictionary-with-ace:action
+  (lambda (word)
+    (sdic-describe-word word)))
+
+(defun dictionary-with-ace:after-moving ()
+  (let ((word (substring-no-properties (thing-at-point 'word))))
+    (goto-char dictionary-with-ace:orig-point)
+    (funcall dictionary-with-ace:action word)
+    (setq dictionary-with-ace:not-match-one nil)
+    (dictionary-with-ace:remove-hooks)))
+
+(defun dictionary-with-ace:remove-hooks ()
+  (remove-hook 'ace-jump-mode-end-hook 'dictionary-with-ace:after-moving)
+  (remove-hook 'ace-jump-mode-hook 'dictionary-with-ace:check))
+
+(defvar dictionary-with-ace:not-match-one nil)
+
+(defun dictionary-with-ace:check ()
+  (setq dictionary-with-ace:not-match-one t))
+
+(defun dictionary-with-ace ()
+  (interactive)
+  (let ((c (read-char "Input Char >> ")))
+    (setq dictionary-with-ace:orig-point (point))
+    (setq ace-jump-query-char c)
+    (setq ace-jump-current-mode 'ace-jump-word-mode)
+    (add-hook 'ace-jump-mode-hook 'dictionary-with-ace:check)
+    (add-hook 'ace-jump-mode-end-hook 'dictionary-with-ace:after-moving)
+    (let ((noerror (ignore-errors
+                     (ace-jump-do (concat "\\b" (regexp-quote (make-string 1 c))))
+                     t)))
+      (if (not noerror)
+          (dictionary-with-ace:remove-hooks)
+        (if (not dictionary-with-ace:not-match-one)
+            (dictionary-with-ace:after-moving))))))
+
+(global-set-key (kbd "C-c C-w") 'dictionary-with-ace)
