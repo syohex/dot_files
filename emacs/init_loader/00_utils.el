@@ -3,3 +3,10 @@
 
 ;; my utilities
 (require 'pomodoro)
+(defun toggle-pomodoro ()
+  (interactive)
+  (call-interactively (if pomodoro:timer
+                          'pomodoro:stop
+                        'pomodoro:start)))
+
+(global-set-key (kbd "M-g M-p") 'toggle-pomodoro)
