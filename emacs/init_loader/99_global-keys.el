@@ -61,6 +61,7 @@
 (defalias 'my/ctrl-q-prefix my/ctrl-q-map)
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
+(define-key my/ctrl-q-map (kbd "l") 'copy-line)
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
