@@ -1,9 +1,5 @@
+;; use cl functions and macros in my config files.
 (require 'cl)
 
-;; predicate, Is your system Mac OSX
-(defun system-macosx-p ()
-  (string= system-type "darwin"))
-
-;; predicate, Is your system Linux
-(defun system-linux-p ()
-  (string= system-type "gnu/linux"))
+;; my utilities
+(require 'pomodoro)

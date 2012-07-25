@@ -2,9 +2,8 @@
 (global-font-lock-mode t)
 
 ;; temp directory
-(when (system-linux-p)
-  (if (file-exists-p "/mnt/ramdisk")
-   (setq temporary-file-directory "/mnt/ramdisk/")))
+(if (file-exists-p "/mnt/ramdisk")
+    (setq temporary-file-directory "/mnt/ramdisk/"))
 
 ;; cursor
 (when window-system

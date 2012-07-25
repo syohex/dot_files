@@ -4,7 +4,7 @@
 ;; server start for emacs-client
 (require 'server)
 
-(when (and (system-linux-p) window-system)
+(when window-system
   (defadvice server-start
     (after server-start-after-write-window-id ())
     (call-process "emacs_serverstart.pl"
