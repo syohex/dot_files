@@ -2,6 +2,7 @@
 (if window-system
     (progn
       (elscreen-start)
+      (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
       (setq elscreen-tab-width nil)
       (setq elscreen-tab-display-kill-screen nil)
       (elscreen-toggle-display-tab)))
@@ -15,13 +16,13 @@
                    (lambda (screen)
                      (format "%d%s %s"
                              screen (elscreen-status-label screen)
-                             (get-screen-name (get-alist screen screen-to-name-alist))))
+                             (my/get-screen-name (get-alist screen screen-to-name-alist))))
                    screen-list " ")))
       (if (fboundp 'set-frame-name)
           (set-frame-name title)
         (setq frame-title-format title)))))
 
-(defun get-screen-name (screen-name)
+(defun my/get-screen-name (screen-name)
   (let ((case-fold-search nil))
     (cond ((string-match "^WL" screen-name) "Wl(draft)")
           ((string-match "Minibuf" screen-name)
