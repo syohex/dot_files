@@ -15,19 +15,13 @@
 (global-set-key (kbd "M--")        'helm-buffers-list)
 
 ;;; switch last-buffer
-(defvar switch-to-lastbuf nil)
-(defun switch-to-last-buffer (arg)
-  (interactive "p")
-  (cond (switch-to-lastbuf
-         (setq switch-to-lastbuf (car (buffer-list)))
-         (loop for buf in (nthcdr arg (buffer-list))
-               when (and (not (string-match "^\s*\\*" (buffer-name buf)))
-                         (and (buffer-file-name buf)
-                              (not (file-directory-p (buffer-file-name buf)))))
-               return (switch-to-buffer buf)))
-        (t
-         (switch-to-buffer switch-to-lastbuf)
-         (setq switch-to-lastbuf nil))))
+(defun switch-to-last-buffer ()
+  (interactive)
+  (loop for buf in (cdr (buffer-list))
+        when (and (not (string-match "^\s*\\*" (buffer-name buf)))
+                  (and (buffer-file-name buf)
+                       (not (file-directory-p (buffer-file-name buf)))))
+        return (switch-to-buffer buf)))
 
 (global-set-key (kbd "M-0") 'switch-to-last-buffer)
 
