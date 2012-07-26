@@ -1,8 +1,6 @@
 ;; org-mode
 (when (require 'org-install nil t)
   (define-key global-map "\C-cl" 'org-store-link)
-  (define-key global-map "\C-ca" 'org-agenda)
-  (define-key global-map (kbd "<f11>") 'org-remember)
   (setq org-startup-truncated nil)
   (setq org-return-follows-link t)
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -10,10 +8,6 @@
   (setq org-directory  (expand-file-name "~/.emacs.d/"))
   (setq org-default-notes-file (concat org-directory "notes.org"))
   (setq org-agenda-files '("~/.emacs.d/notes.org"))
-  (setq org-remember-templates
-        '(("Todo" ?t "** TODO %?\n  %T" nil nil)
-          ("Bug" ?b "** TODO %?   :bug:\n   %i\n %T" nil nil)
-          ("Idea" ?i "** %?\n  %T\n  %a" nil nil)))
   (setq org-startup-folded 'nofold)
   (setq org-use-fast-todo-selection t)
   (setq org-todo-keywords
