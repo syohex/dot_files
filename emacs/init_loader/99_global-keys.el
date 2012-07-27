@@ -5,14 +5,13 @@
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 
 ;; helm binding
-(global-set-key (kbd "C-x C-a")    'helm-buffers-list)
 (global-set-key (kbd "C-x C-w")    'helm-resume)
 (global-set-key (kbd "C-x C-c")    'helm-M-x)
 (global-set-key (kbd "M-y")        'helm-show-kill-ring)
 (global-set-key (kbd "C-h a")      'helm-c-apropos)
 (global-set-key (kbd "C-x C-i")    'helm-imenu)
 (global-set-key (kbd "C-M-s")      'helm-occur)
-(global-set-key (kbd "M--")        'helm-buffers-list)
+(global-set-key (kbd "C-x b")      'helm-buffers-list)
 
 ;;; switch last-buffer
 (defun switch-to-last-buffer ()
@@ -47,15 +46,8 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd ".") 'quick-jump-push-marker)
 (define-key my/ctrl-q-map (kbd ",") 'quick-jump-go-back)
-
-;; for scroll other window
-(smartrep-define-key
-    global-map "C-q" '(("n" . (scroll-other-window 1))
-                       ("p" . (scroll-other-window -1))
-                       ("N" . 'scroll-other-window)
-                       ("P" . (scroll-other-window '-))
-                       ("a" . (beginning-of-buffer-other-window 0))
-                       ("e" . (end-of-buffer-other-window 0))))
+(define-key my/ctrl-q-map (kbd "w") 'mark-word*)
+(define-key my/ctrl-q-map (kbd "s") 'mark-symbol)
 
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)
@@ -71,11 +63,6 @@
 
 (global-set-key (kbd "M-g C-f") 'ffap)
 (global-set-key (kbd "M-g <backspace>") 'delete-region)
-
-;; for move PARAGRAPH
-(smartrep-define-key
-    global-map "M-g" '(("[" . (backward-paragraph))
-                       ("]" . (forward-paragraph))))
 
 ;; like Vim's 'f'
 (defun forward-match-char (n)
@@ -104,10 +91,6 @@
 (smartrep-define-key
     global-map "M-g" '((">" . (bm-next))
                        ("<" . (bm-previous))))
-
-;; quick-jump
-(global-set-key (kbd "M-g .") 'quick-jump-push-marker)
-(global-set-key (kbd "M-g ,") 'quick-jump-go-back)
 
 ;; duplicate current line
 (defun duplicate-thing (n)
