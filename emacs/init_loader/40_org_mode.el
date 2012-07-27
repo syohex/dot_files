@@ -6,8 +6,6 @@
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   (org-remember-insinuate)
   (setq org-directory  (expand-file-name "~/.emacs.d/"))
-  (setq org-default-notes-file (concat org-directory "notes.org"))
-  (setq org-agenda-files '("~/.emacs.d/notes.org"))
   (setq org-startup-folded 'nofold)
   (setq org-use-fast-todo-selection t)
   (setq org-todo-keywords
@@ -33,9 +31,3 @@
   (local-set-key (kbd "C-t") 'org-mark-ring-goto)
   (local-set-key (kbd "C-M-<return>") 'org-insert-todo-heading)
   (local-unset-key (kbd "M-S-<return>")))
-
-(eval-after-load "org"
-  '(progn
-     (smartrep-define-key
-         org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
-                              ("C-p" . (outline-previous-visible-heading 1))))))
