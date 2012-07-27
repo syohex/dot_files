@@ -1,6 +1,6 @@
 ;; SDIC dictonary for Linux
-(global-set-key "\C-cw" 'sdic-describe-word)
-(global-set-key "\C-cW" 'sdic-describe-word-at-point)
+(global-set-key (kbd "C-c w") 'sdic-describe-word)
+(global-set-key (kbd "C-c W") 'sdic-describe-word-at-point)
 (setq sdic-default-coding-system 'utf-8)
 (autoload 'sdic-describe-word "sdic" "search word" t nil)
 
@@ -85,5 +85,3 @@
           (dictionary-with-ace:remove-hooks)
         (if (not dictionary-with-ace:not-match-one)
             (dictionary-with-ace:after-moving))))))
-
-(global-set-key (kbd "C-c C-w") 'dictionary-with-ace)
