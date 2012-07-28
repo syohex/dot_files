@@ -6,7 +6,6 @@
       (append '(("*Apropos*") ("*quickrun*" :stick t)
                 ("*Faces*" :stick t) ("*Colors*" :stick t) ("*Help*" :stick t))
               popwin:special-display-config))
-(push '("*grep*" :stick t) popwin:special-display-config)
 (push '("*haskell*" :stick t) popwin:special-display-config)
 (push '("*ielm*" :stick t) popwin:special-display-config)
 
@@ -28,3 +27,6 @@
 
 ;; sgit
 (push '("*sgit*" :height 20) popwin:special-display-config)
+
+;; grep-mode
+(push '(grep-mode :stick t :height 20) popwin:special-display-config)
