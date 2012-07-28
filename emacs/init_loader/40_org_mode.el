@@ -1,6 +1,6 @@
 ;; org-mode
 (when (require 'org-install nil t)
-  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map (kbd "C-c l") 'org-store-link)
   (setq org-startup-truncated nil)
   (setq org-return-follows-link t)
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
