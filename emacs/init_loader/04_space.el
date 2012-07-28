@@ -43,7 +43,6 @@
     (add-hook 'before-save-hook 'my/delete-trailing-blank-lines))
 
 ;; for toggle delete-trailing-whitespace
-(require 'cl)
 (defun toggle-delete-trailing-whitespace-setting ()
   (interactive)
   (dolist (func '(delete-trailing-whitespace my/delete-trailing-blank-lines))
