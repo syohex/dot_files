@@ -3,6 +3,7 @@
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
+(global-set-key (kbd "M-C-SPC") 'mark-sexp*)
 
 ;; helm binding
 (global-set-key (kbd "C-x C-w")    'helm-resume)
