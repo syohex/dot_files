@@ -7,6 +7,7 @@
 (eval-after-load "cperl-mode"
   '(progn
      (cperl-set-style "PerlStyle")
+     (setq cperl-auto-newline nil)
 
      ;; bindings
      (define-key cperl-mode-map (kbd "(") nil)
