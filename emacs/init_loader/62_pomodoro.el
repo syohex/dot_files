@@ -28,10 +28,3 @@
 (global-set-key (kbd "<f11>") (lambda ()
                                 (interactive)
                                 (find-file pomodoro:file)))
-
-(defun toggle-pomodoro ()
-  (interactive)
-  (call-interactively (if (eq pomodoro:current-state 'working)
-                          'pomodoro:stop
-                        'pomodoro:start)))
-(global-set-key (kbd "M-g M-p") 'toggle-pomodoro)
