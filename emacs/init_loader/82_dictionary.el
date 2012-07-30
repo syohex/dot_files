@@ -48,6 +48,11 @@
      (defadvice sdic-backward-item (after sdic-backward-item-always-top activate)
        (recenter 0))))
 
+(defun sdic-popup-last-word ()
+  (interactive)
+  (pop-to-buffer "*sdic*"))
+
+;;;; dictionary-with-ace
 (defvar dictionary-with-ace:orig-point nil)
 
 (defvar dictionary-with-ace:action
