@@ -49,6 +49,7 @@
 (define-key my/ctrl-q-map (kbd ",") 'quick-jump-go-back)
 (define-key my/ctrl-q-map (kbd "w") 'mark-word*)
 (define-key my/ctrl-q-map (kbd "s") 'mark-symbol)
+(define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 
 (smartrep-define-key
     global-map "C-q" '(("[" . (call-interactively 'backward-paragraph))
