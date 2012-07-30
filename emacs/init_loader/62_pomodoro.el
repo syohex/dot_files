@@ -28,3 +28,14 @@
 (global-set-key (kbd "<f11>") (lambda ()
                                 (interactive)
                                 (find-file pomodoro:file)))
+
+(defun show-todo (target)
+  (interactive
+   (list (completing-read "Target >> " '("work" "private") nil t)))
+  (cond ((string= target "work")
+         (find-file "~/Dropbox/emacs/todo/work.org"))
+        ((string= target "private")
+         (find-file "~/Dropbox/emacs/todo/private.org"))
+        (t (error "Never reach here!!"))))
+
+(global-set-key (kbd "<f10>") 'show-todo)
