@@ -18,6 +18,7 @@
           ("WAITING"   . (:foreground "orange" :weight bold))))
 
   ;; faces
+  (set-face-foreground 'org-block "green")
   (set-face-foreground 'org-tag "green yellow")
 
   ;; function of org-open-at-point
