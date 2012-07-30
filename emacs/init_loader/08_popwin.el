@@ -6,6 +6,7 @@
       (append '(("*Apropos*") ("*quickrun*" :stick t)
                 ("*Faces*" :stick t) ("*Colors*" :stick t) ("*Help*" :stick t))
               popwin:special-display-config))
+(push '("*sdic*" :stick t) popwin:special-display-config)
 (push '("*haskell*" :stick t) popwin:special-display-config)
 (push '("*ielm*" :stick t) popwin:special-display-config)
 
