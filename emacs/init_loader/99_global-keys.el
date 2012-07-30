@@ -50,6 +50,10 @@
 (define-key my/ctrl-q-map (kbd "w") 'mark-word*)
 (define-key my/ctrl-q-map (kbd "s") 'mark-symbol)
 
+(smartrep-define-key
+    global-map "C-q" '(("[" . (call-interactively 'backward-paragraph))
+                       ("]" . (call-interactively 'forward-paragraph))))
+
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)
   (interactive "NRepeat Count > ")
