@@ -8,7 +8,10 @@
 (defun simple-grep ()
   (interactive)
   (let ((cmd (read-string "Grep: " simple-grep-default-command))
-        (buf (get-buffer-create "*Simple Grep*")))
+        buf (get-buffer "*Simple Grep*"))
+    (if buf
+        (kill-buffer buf))
+    (setq buf (get-buffer-create "*Simple Grep*"))
     (with-current-buffer buf
       (setq buffer-read-only nil)
       (erase-buffer)
