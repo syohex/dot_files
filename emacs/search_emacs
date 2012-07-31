@@ -11,6 +11,7 @@
 (set-default-font "VL ゴシック-10")
 (tool-bar-mode 0)
 (menu-bar-mode -1)
+(set-scroll-bar-mode 'nil)
 
 ;; load environment value
 (load-file (expand-file-name "~/.emacs.d/shellenv.el"))
