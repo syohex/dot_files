@@ -4,3 +4,6 @@
   (add-to-list 'exec-path path))
 
 (require 'dired-x)
+
+;; disable vc-mode
+(setq vc-handled-backends ())
