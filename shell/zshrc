@@ -101,6 +101,7 @@ else
 fi
 
 alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
+alias search-emacs="emacs -Q -l --reverse ~/dot_files/emacs/search_emacs"
 
 # global alias
 alias -g L='|less -R'
