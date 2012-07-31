@@ -32,11 +32,14 @@
 ;; based on http://ergoemacs.org/emacs/elisp_examples.html
 (defvar my/cycle-buffer-limit 30)
 
+(defun my/buffer-not-switch-p ()
+  (or (string-match "^*" (buffer-name)) (eq major-mode 'dired-mode)))
+
 (defun my/next-buffer ()
   (interactive)
   (next-buffer)
   (let ((i 0))
-    (while (and (string-match "^*" (buffer-name)) (< i my/cycle-buffer-limit))
+    (while (and (my/buffer-not-switch-p) (< i my/cycle-buffer-limit))
       (incf i)
       (next-buffer))))
 
@@ -44,9 +47,9 @@
   (interactive)
   (previous-buffer)
   (let ((i 0))
-    (while (and (string-match "^*" (buffer-name)) (< i my/cycle-buffer-limit))
+    (while (and (my/buffer-not-switch-p) (< i my/cycle-buffer-limit))
       (incf i)
       (previous-buffer))))
 
-(global-set-key (kbd "M-0") 'my/next-buffer)
-(global-set-key (kbd "M-9") 'my/previous-buffer)
+(global-set-key (kbd "M-9") 'my/next-buffer)
+(global-set-key (kbd "M-0") 'my/previous-buffer)

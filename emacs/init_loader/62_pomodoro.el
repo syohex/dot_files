@@ -16,7 +16,7 @@
 
 (add-hook 'pomodoro:long-rest-hook
           (lambda ()
-            (my/pomodoro-notification :body "Long Break time is finished")))
+            (my/pomodoro-notification :body "Long Break time now")))
 
 (defun my/pomodoro-insert-check (arg)
   (interactive "p")
