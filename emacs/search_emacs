@@ -1,0 +1,50 @@
+(cd (getenv "HOME"))
+
+;; Add load path of emacs lisps
+(add-to-list 'load-path "~/.emacs.d/auto-install")
+(add-to-list 'load-path "~/.emacs.d/elisps")
+
+;; Emacs package system
+(require 'package)
+(package-initialize)
+
+(set-default-font "VL ゴシック-10")
+(tool-bar-mode 0)
+(menu-bar-mode -1)
+
+;; load environment value
+(load-file (expand-file-name "~/.emacs.d/shellenv.el"))
+(dolist (path (reverse (split-string (getenv "PATH") ":")))
+  (add-to-list 'exec-path path))
+
+(require 'dired-x)
+
+;; for helm-gtags setting
+(require 'helm-config)
+(require 'helm-gtags)
+
+;; configuration helm variable
+(setq helm-idle-delay 0.2)
+(setq helm-input-idle-delay 0)
+(setq helm-candidate-number-limit 100)
+
+(define-key helm-map (kbd "C-p")   'helm-previous-line)
+(define-key helm-map (kbd "C-n")   'helm-next-line)
+(define-key helm-map (kbd "C-M-n") 'helm-next-source)
+(define-key helm-map (kbd "C-M-p") 'helm-previous-source)
+
+;;;; GNU gtags
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+             (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+             (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+             (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
+
+;;; hook for gtags
+(add-hook 'c-mode-common-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode 'helm-gtags-mode)
+
+;; disable vc-mode
+(setq vc-handled-backends ())
