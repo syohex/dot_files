@@ -49,3 +49,17 @@
 
 ;; disable vc-mode
 (setq vc-handled-backends ())
+
+;; which-func
+(require 'which-func)
+(setq which-func-modes (append which-func-modes '(cperl-mode)))
+(set-face-foreground 'which-func "chocolate4")
+(set-face-bold-p 'which-func t)
+(which-func-mode t)
+
+;; naming of same name file
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+(iswitchb-mode)
+(setq iswitchb-buffer-ignore '("\\*.+"))
