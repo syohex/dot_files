@@ -30,31 +30,6 @@
         (t nil)))
 (global-set-key (kbd "C-x %") 'goto-match-paren)
 
-;; edit rectangle
-;; number-rectangle
-(defun number-rectangle (start end format-string from)
-  "Delete (don't save) text in the region-rectangle, then number it."
-  (interactive
-   (list (region-beginning) (region-end)
-         (read-string "Number rectangle: " (if (looking-back "^ *") "%d. " "%d"))
-         (read-number "From: " 1)))
-  (save-excursion
-    (goto-char start)
-    (setq start (point-marker))
-    (goto-char end)
-    (setq end (point-marker))
-    (delete-rectangle start end)
-    (goto-char start)
-    (loop with column = (current-column)
-          while (and (<= (point) end) (not (eobp)))
-          for i from from   do
-          (move-to-column column t)
-          (insert (format format-string i))
-          (forward-line 1)))
-  (goto-char start))
-
-(global-set-key (kbd "C-x r N") 'number-rectangle)
-
 ;; like Vim's "o"
 (defun edit-next-line ()
   (interactive)
