@@ -15,7 +15,6 @@
   (flymake-mode)
 
   ;; for auto-complete
-  (push 'ac-source-ghc-mod ac-sources)
-  (define-key haskell-mode-map (kbd "C-M-i") 'auto-complete))
+  (push 'ac-source-ghc-mod ac-sources))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)

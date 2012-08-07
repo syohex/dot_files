@@ -14,10 +14,6 @@
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
 (set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
 
-;; for completion
-(define-key emacs-lisp-mode-map (kbd "M-C-i") 'auto-complete)
-(define-key lisp-interaction-mode-map (kbd "M-C-i") 'auto-complete)
-
 ;; ielm
 (defun ielm-other-window ()
   "Run ielm on other window"

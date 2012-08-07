@@ -16,7 +16,6 @@
              (add-to-list 'ac-sources ac-source-rsense-constant)
 
              (define-key ruby-mode-map (kbd "<tab>") 'yas/expand)
-             (define-key ruby-mode-map (kbd "C-M-i") 'auto-complete)
 
              ;;;; yari
              (require 'yari)

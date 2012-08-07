@@ -1,13 +1,8 @@
 ;; setting of auto-complete
-;; (shell-command "git clone https://github.com/m2ym/auto-complete.git ~/.emacs.d/myelisp/repos/auto-complete")
-;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/pos-tip.el")
-;; (auto-install-from-url "https://github.com/m2ym/popup-el/raw/master/popup.el")
-;; (auto-install-from-url "https://raw.github.com/m2ym/fuzzy-el/master/fuzzy.el")
 (require 'popup)
 (require 'fuzzy)
 (require 'pos-tip)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/myelisp/repos/auto-complete/dict")
 (add-to-list 'ac-dictionary-directories "~/dot_files/emacs/ac-dict")
 (ac-config-default)
 
