@@ -63,3 +63,6 @@
 
 (iswitchb-mode)
 (setq iswitchb-buffer-ignore '("\\*.+"))
+
+;; key bindings
+(global-set-key (kbd "C-M-o") 'other-window)
