@@ -15,8 +15,6 @@
              (add-to-list 'ac-sources ac-source-rsense-method)
              (add-to-list 'ac-sources ac-source-rsense-constant)
 
-             (define-key ruby-mode-map (kbd "<tab>") 'yas/expand)
-
              ;;;; yari
              (require 'yari)
              (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
