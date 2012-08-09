@@ -63,6 +63,36 @@
 
 (iswitchb-mode)
 (setq iswitchb-buffer-ignore '("\\*.+"))
+(add-hook 'iswitchb-define-mode-map-hook 'my/iswitchb-my-keys)
+
+(defun my/iswitchb-my-keys ()
+  (define-key iswitchb-mode-map [right] 'iswitchb-next-match)
+  (define-key iswitchb-mode-map [left] 'iswitchb-prev-match)
+  (define-key iswitchb-mode-map (kbd "C-f") 'iswitchb-next-match)
+  (define-key iswitchb-mode-map (kbd " ") 'iswitchb-next-match)
+  (define-key iswitchb-mode-map (kbd "C-b") 'iswitchb-prev-match))
+
 
 ;; key bindings
 (global-set-key (kbd "C-M-o") 'other-window)
+
+;; helm in dired
+(defvar my/helm-c-current-directory-source
+  `((name . "Current Directory Files")
+    (candidates . (lambda ()
+                    (with-helm-current-buffer
+                      (let ((dirs (directory-files (helm-c-current-directory)))
+                            (filter (lambda (d) (string-match "^\.\.?$" d))))
+                        (remove-if filter dirs)))))
+    (action . (("Open File" . helm-c-find-file-or-marked)
+               ("Open File at New Tab(elscreen)"
+                . (lambda (candidate) (elscreen-find-file candidate)))))))
+
+(defun my/helm-find-file-current-directory ()
+  (interactive)
+  (let ((curbuf (current-buffer))
+        (orig-major major-mode))
+    (if (helm-other-buffer 'my/helm-c-current-directory-source "*helm-dired*")
+        (and (eq orig-major 'dired-mode) (kill-buffer curbuf)))))
+
+(global-set-key (kbd "C-x C-p") 'my/helm-find-file-current-directory)
