@@ -23,6 +23,7 @@
 ;; for helm-gtags setting
 (require 'helm-config)
 (require 'helm-gtags)
+(require 'helm-files)
 
 ;; configuration helm variable
 (setq helm-idle-delay 0.2)
