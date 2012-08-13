@@ -5,6 +5,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/dot_files/emacs/ac-dict")
 (ac-config-default)
+(global-auto-complete-mode t)
 
 (setq ac-auto-start nil)
 (define-key ac-mode-map (kbd "M-/") 'auto-complete)
