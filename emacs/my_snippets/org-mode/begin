@@ -1,6 +1,6 @@
 # name : BEGIN_SRC section
 # key  : begin
 # --
-#+BEGIN_SRC
+#+BEGIN_SRC ${1:Lang}
 $0
 #+END_SRC
