@@ -70,7 +70,6 @@
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
 
 ;; XS
-;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/xs-mode.el")
 (add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
 (eval-after-load "xs-mode"
   '(progn
