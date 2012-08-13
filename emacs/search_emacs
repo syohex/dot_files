@@ -77,6 +77,9 @@
 ;; key bindings
 (global-set-key (kbd "C-M-o") 'other-window)
 
+(require 'dired)
+(define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
+
 ;; helm in dired
 (defvar my/helm-c-current-directory-source
   `((name . "Current Directory Files")
