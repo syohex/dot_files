@@ -66,6 +66,9 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# show processing time for long run process
+REPORTTIME=10
+
 # setting LANG, this should be UTF-8
 export LANG=ja_JP.UTF-8
 
