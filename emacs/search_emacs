@@ -75,6 +75,7 @@
 
 
 ;; key bindings
+(global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-M-o") 'other-window)
 
 (require 'dired)
