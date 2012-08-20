@@ -42,7 +42,8 @@
 
 (custom-set-variables
  '(cperl-indent-parens-as-block t)
- '(cperl-close-paren-offset -4))
+ '(cperl-close-paren-offset -4)
+ '(cperl-indent-subs-specially nil))
 
 ;; insert 'use Module' which is at cursor.
 (defun cperl-insert-use-statement ()
