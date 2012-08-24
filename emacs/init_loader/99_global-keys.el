@@ -36,12 +36,16 @@
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd ".") 'quick-jump-push-marker)
-(define-key my/ctrl-q-map (kbd ",") 'quick-jump-go-back)
 (define-key my/ctrl-q-map (kbd "w") 'mark-word*)
 (define-key my/ctrl-q-map (kbd "s") 'mark-symbol)
 (define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
+
+;; quick-jump setting
+(define-key my/ctrl-q-map (kbd "<SPC>") 'quick-jump-push-marker)
+(smartrep-define-key
+    global-map "C-q" '(("<" . (call-interactively 'quick-jump-go-back))
+                       (">" . (call-interactively 'quick-jump-go-forward))))
 
 (smartrep-define-key
     global-map "C-q" '(("[" . (call-interactively 'backward-paragraph))
