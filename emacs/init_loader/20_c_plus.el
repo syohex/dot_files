@@ -5,6 +5,7 @@
   (c-toggle-electric-state -1)
   (hs-minor-mode 1)
   (setq c-basic-offset 4)
+  (my/setup-symbol-moving)
   ;; for auto-complete using clang
   (require 'auto-complete-clang)
   (ac-clang-set-prefix-header "~/dot_files/emacs/c_complete/stdafx_cpp.pch")

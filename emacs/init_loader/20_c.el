@@ -4,6 +4,7 @@
   (c-toggle-electric-state -1)
   (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
   (hs-minor-mode 1)
+  (my/setup-symbol-moving)
 
   ;; c-eldoc
   (set (make-local-variable 'eldoc-idle-delay) 0.2)

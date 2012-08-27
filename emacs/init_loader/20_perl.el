@@ -38,6 +38,7 @@
 
 (add-hook 'cperl-mode-hook (lambda ()
                              (flymake-mode t)
+                             (my/setup-symbol-moving)
                              (hs-minor-mode 1)))
 
 (custom-set-variables

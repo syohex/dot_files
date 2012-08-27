@@ -57,6 +57,14 @@
 (require 'thing-opt)
 (define-thing-commands)
 
+(defun backward-symbol ()
+  (interactive)
+  (forward-symbol -1))
+
+(defun my/setup-symbol-moving ()
+  (local-set-key (kbd "C-M-f") 'forward-symbol)
+  (local-set-key (kbd "C-M-b") 'backward-symbol))
+
 (defun delete-cursor-symbol ()
   (interactive)
   (forward-symbol -1)
