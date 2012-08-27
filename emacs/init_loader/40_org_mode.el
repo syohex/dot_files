@@ -6,7 +6,7 @@
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   (org-remember-insinuate)
   (setq org-directory  (expand-file-name "~/.emacs.d/"))
-  (setq org-startup-folded 'nofold)
+;;  (setq org-startup-folded 'nofold)
   (setq org-use-fast-todo-selection t)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)")
