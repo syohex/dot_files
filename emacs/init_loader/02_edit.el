@@ -57,9 +57,9 @@
 (require 'thing-opt)
 (define-thing-commands)
 
-(defun backward-symbol ()
-  (interactive)
-  (forward-symbol -1))
+(defun backward-symbol (arg)
+  (interactive "p")
+  (forward-symbol (- arg)))
 
 (defun my/setup-symbol-moving ()
   (local-set-key (kbd "C-M-f") 'forward-symbol)
