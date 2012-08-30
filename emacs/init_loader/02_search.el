@@ -13,9 +13,12 @@
 (setq migemo-user-dictionary nil)
 (setq migemo-regex-dictionary nil)
 (setq migemo-coding-system 'utf-8-unix)
-(load-library "migemo")
-(migemo-init)
-(setq migemo-isearch-enable-p nil)
+
+(load "migemo" 'noerror)
+(eval-after-load
+    '(progn
+       (migemo-init)
+       (setq migemo-isearch-enable-p nil)))
 
 (defadvice isearch-done (after migemo-search-ad activate)
   "Disable migemo"
