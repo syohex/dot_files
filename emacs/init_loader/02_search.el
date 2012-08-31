@@ -15,7 +15,7 @@
 (setq migemo-coding-system 'utf-8-unix)
 
 (load "migemo" 'noerror)
-(eval-after-load
+(eval-after-load "migemo"
     '(progn
        (migemo-init)
        (setq migemo-isearch-enable-p nil)))
