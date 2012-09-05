@@ -1,6 +1,6 @@
 ;; font-setting for Linux(Ubuntu)
 
-(when window-system
+(when (and window-system (not (macosx-p)))
   (with-temp-buffer
     (shell-command "xdpyinfo" t)
     (goto-char (point-min))

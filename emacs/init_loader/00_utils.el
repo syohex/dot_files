@@ -3,3 +3,7 @@
 
 ;; I use notification anywhere
 (require 'notifications)
+
+;; decide system is MacOSX
+(defun macosx-p ()
+  (eq system-type 'darwin))

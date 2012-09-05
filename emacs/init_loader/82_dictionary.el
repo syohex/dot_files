@@ -1,11 +1,12 @@
 ;; SDIC dictonary for Linux
-(global-set-key (kbd "C-c w") 'sdic-describe-word)
-(global-set-key (kbd "C-c W") 'sdic-describe-word-at-point)
-(setq sdic-default-coding-system 'utf-8)
 (autoload 'sdic-describe-word "sdic" "search word" t nil)
 
 (eval-after-load "sdic"
   '(progn
+     (global-set-key (kbd "C-c w") 'sdic-describe-word)
+     (global-set-key (kbd "C-c W") 'sdic-describe-word-at-point)
+     (setq sdic-default-coding-system 'utf-8)
+
      (setq sdicf-array-command "/usr/bin/sary") ;; my modified sary command path
      (setq sdic-eiwa-dictionary-list
            '((sdicf-client "/home/syohei/local/dict/eijiro127.sdic"
