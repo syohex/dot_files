@@ -24,6 +24,9 @@
 (load "saveplace")
 (setq-default save-place t)
 
+;; savekill
+(require 'savekill)
+
 (setq dabbrev-case-fold-search nil)
 
 ;; info for japanese
