@@ -1,10 +1,20 @@
 #!/bin/sh
 
 set -e
+set -x
+
+make_install () {
+    if [ which paco > /dev/null 2>&1 ]
+    then
+        sudo paco -D make install
+    else
+        sudo make install
+    fi
+}
 
 initialize () {
     echo -n "Checking command installed >> "
-    for command in emacs git curl paco cvs
+    for command in emacs git curl cvs
     do
         if [ which $command >/dev/null 2>&1 ]
         then
@@ -19,7 +29,7 @@ initialize () {
     ln -sf ~/dot_files/emacs/init.el ~/.emacs.d/init.el
 
     echo "Create directies"
-    for dir in ~/.emacs.d/auto-install ~/bin ~/.emacs.d/elisps ~/src
+    for dir in ~/bin ~/src ~/.emacs.d/elisps ~/program/elisp
     do
         if [ ! -d $dir ]
         then
@@ -40,31 +50,8 @@ initialize () {
     esac
 }
 
-setup_auto_install () {
-    cd ~/.emacs.d/auto-install
-
-    echo "Setup auto-install.el"
-
-    ##  init-loader.el
-    if [ -e auto-install.el ]
-    then
-        rm -f auto-install.el
-    fi
-
-    echo "Install auto-install.el"
-    curl -O http://www.emacswiki.org/emacs/download/auto-install.el
-
-    if [ "$?" -ne 0 ]
-    then
-        echo "Can't download auto-install.el"
-    fi
-
-    # byte compile auto-install.el
-    emacs --batch -Q -f batch-byte-compile auto-install.el
-}
-
 setup_init_loader () {
-    cd ~/.emacs.d/auto-install
+    cd ~/.emacs.d/elisps
 
     echo "Setup init-loader.el"
 
@@ -120,6 +107,11 @@ setup_elscreen () {
 setup_wanderlust () {
     echo "Setting for Wanderlust"
 
+    if [ "$OSTYPE" != "linux-gnu" ]
+    then
+        return
+    fi
+
     for package in apel flim semi wanderlust
     do
         cd ~/src
@@ -129,7 +121,7 @@ setup_wanderlust () {
             git clone http://git.chise.org/git/elisp/${package}.git
             cd $package
             make
-            sudo paco -D make install
+            make_install
         fi
     done
 
@@ -149,7 +141,7 @@ setup_sdic () {
     cd ${package%%.tar.gz}
     ./configure
     make
-    sudo paco -D make install
+    make_install
 }
 
 setup_ruby () {
@@ -192,11 +184,18 @@ setup_python () {
     ./pylookup.py -u $docname
 }
 
+setup_utils () {
+    cd ~/program/elisp
+
+    echo "Download my emacs utilities"
+    git clone git@github.com:syohex/emacs-utils.git
+
+    cd emacs-utils
+    ./setup.sh
+}
+
 setup_misc () {
     cd ~/.emacs.d/elisps
-
-    ## slime
-    git clone https://github.com/nablaone/slime.git
 
     ## emacs w3m
     cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login
@@ -205,11 +204,11 @@ setup_misc () {
     autoconf
     ./configure
     make
-    sudo paco -D make install
+    make_install
 }
 
 install_package () {
-    cd ~/.emacs.d/auto-install
+    cd ~/.emacs.d/elisps
 
     for elisp in `cat $CWD/elisp.list | grep -v '^#'`
     do
@@ -222,7 +221,6 @@ install_package () {
 CWD=`pwd`
 
 initialize
-setup_auto_install
 setup_init_loader
 setup_emacs_server
 setup_elscreen
@@ -230,6 +228,7 @@ setup_wanderlust
 setup_sdic
 setup_ruby
 setup_python
+setup_utils
 setup_misc
 
 install_package

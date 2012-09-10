@@ -1,7 +1,6 @@
 (cd (getenv "HOME"))
 
 ;; Add load path of emacs lisps
-(add-to-list 'load-path "~/.emacs.d/auto-install")
 (add-to-list 'load-path "~/.emacs.d/elisps")
 
 ;; Emacs package system
