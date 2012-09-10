@@ -1,0 +1,9 @@
+# name : sheban
+# key  : sheban
+# --
+#!/bin/sh
+
+set -e
+set -x
+
+$0
