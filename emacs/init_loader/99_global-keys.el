@@ -92,10 +92,6 @@
 (global-set-key (kbd "M-g f") 'forward-match-char)
 (global-set-key (kbd "M-g F") 'backward-match-char)
 
-;; copy, kill operations
-(global-set-key (kbd "M-g s") 'copy-symbol)
-(global-set-key (kbd "M-g w") 'copy-word)
-
 ;; for bm-next, bm-previous
 (global-set-key (kbd "M-g @") 'bm-toggle)
 (smartrep-define-key
