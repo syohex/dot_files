@@ -31,3 +31,4 @@
 
 ;; grep-mode
 (push '(grep-mode :stick t :height 20) popwin:special-display-config)
+(push '("*Simple Grep*" :height 20) popwin:special-display-config)
