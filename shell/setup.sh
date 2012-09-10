@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+set -x
+
 ln -sf $PWD/zshrc ~/.zshrc
 
 # for cdd
@@ -20,6 +23,15 @@ if [ ! -d $COMPDIR ]
 then
     mkdir -p $COMPDIR
 fi
+
+# my utilities
+if [ ! -d ~/program/utils ]
+then
+    mkdir -p ~/program/utils
+fi
+git clone git@github.com:syohex/my-command-utilities.git
+cd my-command-utilities
+./setup.sh
 
 # setting for zsh zaw
 (cd ~/.zsh && git clone git@github.com:syohex/zaw.git && cd zaw && git checkout origin/syohex)
