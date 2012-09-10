@@ -1,9 +1,9 @@
 ;; SDIC dictonary for Linux
 (autoload 'sdic-describe-word "sdic" "search word" t nil)
+(global-set-key (kbd "C-c w") 'sdic-describe-word)
 
 (eval-after-load "sdic"
   '(progn
-     (global-set-key (kbd "C-c w") 'sdic-describe-word)
      (global-set-key (kbd "C-c W") 'sdic-describe-word-at-point)
      (setq sdic-default-coding-system 'utf-8)
 
