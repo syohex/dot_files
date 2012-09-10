@@ -3,9 +3,9 @@
 (require 'helm-gtags)
 
 ;; configuration helm variable
-(setq helm-idle-delay 0.2)
+(setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
-(setq helm-candidate-number-limit 100)
+(setq helm-candidate-number-limit 500)
 
 (define-key helm-map (kbd "C-p")   'helm-previous-line)
 (define-key helm-map (kbd "C-n")   'helm-next-line)
