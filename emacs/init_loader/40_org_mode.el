@@ -24,11 +24,29 @@
   ;; function of org-open-at-point
   (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
+  ;; org-capture
+  (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/Dropbox/emacs/todo.org" "Inbox")
+             "** TODO %?\n   %i\n   %a\n   %t")
+        ("n" "Note" entry (file+headline "~/Dropbox/emacs/memo.org" "Notes")
+             "** %?\n   %i\n   %a\n   %t")))
+
   ;; hooks
   (add-hook 'org-mode-hook 'my/org-mode-hook))
 
+(eval-after-load "org"
+  '(progn
+     (smartrep-define-key
+         org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
+                              ("C-p" . (outline-previous-visible-heading 1))))))
+
 (defun my/org-mode-hook ()
-  (interactive)
   (local-set-key (kbd "C-t") 'org-mark-ring-goto)
   (local-set-key (kbd "C-M-<return>") 'org-insert-todo-heading)
+  (local-set-key (kbd "C-c C-i") 'my/org-insert-pomodoro-template)
   (local-unset-key (kbd "M-S-<return>")))
+
+(defun my/org-insert-pomodoro-template ()
+  (interactive)
+  (let ((date-str (format-time-string "<%Y-%m-%d %a>" (current-time))))
+    (insert (format "** %s [/]\n  - " date-str))))
