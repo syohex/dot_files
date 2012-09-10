@@ -17,4 +17,13 @@
   (set-face-attribute 'mozc-cand-overlay-odd-face 'nil
                       :background "aquamarine" :foreground "black")
 
+  ;; key
+  (define-key mozc-mode-map (kbd "C-c C-o") 'my/toggle-mozc-style)
+
   (global-set-key (kbd "C-o") 'toggle-input-method))
+
+(defun my/toggle-mozc-style ()
+  (interactive)
+  (if (eq mozc-candidate-style 'echo-area)
+      (setq mozc-candidate-style 'overlay)
+    (setq mozc-candidate-style 'echo-area)))
