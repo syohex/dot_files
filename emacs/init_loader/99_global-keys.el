@@ -36,7 +36,7 @@
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 (defun my/upcase-previous-word (arg)
-  (interactive "P")
+  (interactive "p")
   (backward-word arg)
   (upcase-word arg))
 (define-key my/ctrl-q-map (kbd "u") 'my/upcase-previous-word)
