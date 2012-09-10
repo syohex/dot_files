@@ -34,6 +34,13 @@
       (kill-ring-save start (point)))))
 
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
+
+(defun my/upcase-previous-word (arg)
+  (interactive "P")
+  (backward-word arg)
+  (upcase-word arg))
+(define-key my/ctrl-q-map (kbd "u") 'my/upcase-previous-word)
+
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
