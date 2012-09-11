@@ -46,6 +46,7 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "w") 'mark-word*)
 (define-key my/ctrl-q-map (kbd "s") 'mark-symbol)
+(define-key my/ctrl-q-map (kbd "e") 'copy-sexp)
 (define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 
