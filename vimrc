@@ -1,3 +1,5 @@
+autocmd!
+
 syntax on
 set ignorecase
 set notitle
@@ -20,3 +22,5 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 syntax on
 set term=xterm-256color
 set t_Co=256
+
+autocmd FileType * setlocal formatoptions-=ro
