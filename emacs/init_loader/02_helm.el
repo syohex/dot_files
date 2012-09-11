@@ -17,8 +17,7 @@
 (set-face-attribute 'helm-ff-file nil
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
-                    :foreground "tomato" :background nil
-                    :underline t)
+                    :foreground "white" :background nil :underline t)
 
 ;; List files in git repos
 (defun helm-c-sources-git-project-for (pwd)
