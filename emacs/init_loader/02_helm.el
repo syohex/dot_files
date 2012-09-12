@@ -55,7 +55,7 @@
 (define-key global-map (kbd "C-;") 'helm-git-project)
 
 ;; helm recentf only directories
-(defvar helm-c-recentf-directory
+(defvar helm-c-recentf-directory-source
   '((name . "Recentf Directry")
     (candidates . (lambda ()
                     (loop for file in recentf-list
@@ -66,5 +66,5 @@
 (defun my/helm-recentf (arg)
   (interactive "P")
   (if current-prefix-arg
-      (helm-other-buffer helm-c-recentf-directory "*helm recentf*")
+      (helm-other-buffer helm-c-recentf-directory-source "*helm recentf*")
     (call-interactively 'helm-recentf)))
