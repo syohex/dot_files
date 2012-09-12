@@ -14,6 +14,10 @@
 (dolist (path (reverse (split-string (getenv "PATH") ":")))
   (add-to-list 'exec-path path))
 
+;; setup theme
+(load-theme 'reverse t t)
+(enable-theme 'reverse)
+
 ;; init-loader
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/init_loader")

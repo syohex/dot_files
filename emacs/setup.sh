@@ -71,6 +71,13 @@ setup_init_loader () {
     ln -sf ~/dot_files/emacs/init_loader ~/.emacs.d
 }
 
+setup_theme () {
+    cd ~/.emacs.d/
+
+    echo "Setup theme"
+    curl -O https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el
+}
+
 # Emacsclient utilities
 setup_emacs_server () {
     cd ~/bin
@@ -222,6 +229,7 @@ CWD=`pwd`
 
 initialize
 setup_init_loader
+setup_theme
 setup_emacs_server
 setup_elscreen
 setup_wanderlust
