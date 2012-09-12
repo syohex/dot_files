@@ -138,6 +138,11 @@ setup_wanderlust () {
 setup_sdic () {
     local package="sdic-2.1.3.tar.gz"
 
+    if [ "$OSTYPE" != "linux-gnu" ]
+    then
+        return
+    fi
+
     cd ~/src
 
     echo "Setup $package"
