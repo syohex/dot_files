@@ -25,10 +25,12 @@ then
 fi
 
 # my utilities
-if [ ! -d ~/program/utils ]
+UTILDIR=~/program/utils
+if [ ! -d $UTILDIR ]
 then
-    mkdir -p ~/program/utils
+    mkdir -p $UTILDIR
 fi
+cd $UTILDIR
 git clone git@github.com:syohex/my-command-utilities.git
 cd my-command-utilities
 ./setup.sh
