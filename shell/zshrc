@@ -147,7 +147,7 @@ fi
 if [ -d ~/.rbenv/bin ]
 then
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    eval "$(rbenv init - zsh)"
 fi
 
 # load nvm(node.js manager)
