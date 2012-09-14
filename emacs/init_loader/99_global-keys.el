@@ -6,7 +6,7 @@
 (global-set-key (kbd "M-C-SPC") 'mark-sexp*)
 
 ;; helm binding
-(global-set-key (kbd "C-x C-w")    'helm-resume)
+(global-set-key (kbd "C-M-z")      'helm-resume)
 (global-set-key (kbd "C-x C-r")    'my/helm-recentf)
 (global-set-key (kbd "C-x C-a")    'helm-bookmarks)
 (global-set-key (kbd "C-x C-c")    'helm-M-x)
