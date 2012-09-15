@@ -1,7 +1,6 @@
 ;;;; yasnippet
 (require 'yasnippet)
 (custom-set-variables
- '(yas/trigger-key "TAB")
  '(yas/snippet-dirs '("~/dot_files/emacs/my_snippets")))
 (yas/global-mode t)
 
