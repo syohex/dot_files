@@ -44,7 +44,7 @@ initialize () {
             echo "Set up for MacOSX"
             if [ ! -e ~/bin/emacsclient ]
             then
-                ln -s ${EC_PATH} ~/bin/emacsclient
+                ln -sf ${EC_PATH} ~/bin/emacsclient
             fi
             ;;
     esac
@@ -193,7 +193,7 @@ setup_python () {
     unzip $docname.zip
     rm -f $docname.zip
 
-    ./pylookup.py -u $docname
+    python pylookup.py -u $docname
 }
 
 setup_utils () {
@@ -216,7 +216,7 @@ setup_misc () {
     autoconf
     ./configure
     make
-    make_install
+    ##make_install
 }
 
 install_package () {
@@ -248,4 +248,4 @@ install_package
 
 ## Install package
 cd $CWD
-emacs -Q install_elisp.el
+emacs -Q install_elisps.el
