@@ -31,7 +31,7 @@ https://raw.github.com/takaishi/succor/master/succor.el
 http://www.emacswiki.org/cgi-bin/wiki/download/savekill.el
 
 # common lisp
-http://boinkor.net/lisp/cl-indent-patches.el
+http://static.boinkor.net/lisp/cl-indent-patches.el
 
 # buffer
 http://0xcc.net/misc/auto-save/auto-save-buffers.el
