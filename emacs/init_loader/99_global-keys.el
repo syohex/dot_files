@@ -49,15 +49,14 @@
 (define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 
-;; quick-jump setting
-(define-key my/ctrl-q-map (kbd "<SPC>") 'quick-jump-push-marker)
+;; goto-chg setting
 (smartrep-define-key
-    global-map "C-q" '(("<" . (call-interactively 'quick-jump-go-back))
-                       (">" . (call-interactively 'quick-jump-go-forward))))
+    global-map "C-q" '(("<" . 'goto-last-change)
+                       (">" . 'goto-last-change-reverse)))
 
 (smartrep-define-key
-    global-map "C-q" '(("[" . (call-interactively 'backward-paragraph))
-                       ("]" . (call-interactively 'forward-paragraph))))
+   global-map "C-q" '(("[" . 'backward-paragraph)
+                      ("]" . 'forward-paragraph)))
 
 ;; repeat yank. Because C-y can't accept `C-u Number' prefix
 (defun repeat-yank (num)

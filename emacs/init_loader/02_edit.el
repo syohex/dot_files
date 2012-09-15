@@ -1,3 +1,8 @@
+;; moving word
+(require 'misc)
+(global-set-key (kbd "M-f") 'forward-to-word)
+(global-set-key (kbd "M-b") 'backward-to-word)
+
 ;; for word delete instead of kill-word and backward-kill-word
 (defun delete-word (arg)
   (interactive "p")
@@ -97,5 +102,5 @@
 
 (global-set-key (kbd "C-x r N") 'number-rectangle)
 
-;; quick-jump
-(require 'quick-jump)
+;; goto-chg
+(require 'goto-chg)

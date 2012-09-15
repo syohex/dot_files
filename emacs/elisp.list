@@ -39,5 +39,5 @@ http://0xcc.net/misc/auto-save/auto-save-buffers.el
 # elisp
 http://www.emacswiki.org/emacs/download/eldoc-extension.el
 
-# quick-jump
-https://raw.github.com/jixiuf/quick-jump/master/quick-jump.el
+# goto-chg
+http://emacswiki.org/emacs/download/goto-chg.el
