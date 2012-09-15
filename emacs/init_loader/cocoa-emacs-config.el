@@ -14,10 +14,10 @@
       '((width . 115) (height . 42) (top . 28) (left . 0)))
 
 ;; font setting
-(when (and window-system (system-macosx-p))
+(when window-system
   (set-face-attribute 'default nil
                       :family "monaco"
-                      :height 120)
+                      :height 140)
   (set-fontset-font
    (frame-parameter nil 'font)
    'japanese-jisx0208

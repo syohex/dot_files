@@ -59,7 +59,7 @@
 (set-face-underline-p 'ace-jump-face-foreground t)
 
 ;; thingopt
-(require 'thing-opt)
+(require 'thingopt)
 (define-thing-commands)
 
 (defun backward-symbol (arg)
