@@ -102,5 +102,29 @@
 
 (global-set-key (kbd "C-x r N") 'number-rectangle)
 
+;; moving block
+(defvar my/backward-up-list-regexp
+  "[{\"(\[]")
+(make-variable-buffer-local 'my/backward-up-list-regexp)
+
+(defvar my/down-list-regexp
+  "[{\"(\[]")
+(make-variable-buffer-local 'my/down-list-regexp)
+
+(defun my/backward-up-list (arg)
+  (interactive "p")
+  (unless (ignore-errors
+            (backward-up-list arg) t)
+    (re-search-backward my/backward-up-list-regexp nil t)))
+
+(defun my/down-list (arg)
+  (interactive "p")
+  (unless (ignore-errors
+            (down-list arg) t)
+    (re-search-forward my/down-list-regexp nil t)))
+
+(global-set-key (kbd "C-M-u") 'my/backward-up-list)
+(global-set-key (kbd "C-M-d") 'my/down-list)
+
 ;; goto-chg
 (require 'goto-chg)
