@@ -52,7 +52,7 @@
     ;;;; markup language
     haml-mode htmlize
     markdown-mode markdown-mode+
-    scss-mode yaml-mode
+    scss-mode yaml-mode zencoding-mode
 
     ;; helm
     helm helm-gtags

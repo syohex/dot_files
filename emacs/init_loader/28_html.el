@@ -8,13 +8,7 @@
     (setq html-mode-map (make-sparse-keymap))
     (define-key html-mode-map (kbd "C-c b") 'html-mode-insert-br))
 
-;; htmlize
-(require 'htmlize)
-
 ;; zen-coding
 (when (require 'zencoding-mode nil t)
   (add-hook 'sgml-mode-hook 'zencoding-mode)
   (add-hook 'html-mode-hook 'zencoding-mode))
-
-;; haml
-(require 'haml-mode)
