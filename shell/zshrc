@@ -69,6 +69,18 @@ bindkey "^N" history-beginning-search-forward-end
 # show processing time for long run process
 REPORTTIME=10
 
+# Setting for MacOSX
+case "$OSTYPE" in
+darwin*)
+        export PATH="~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+        # java setting for using iterm on mac
+        alias javac='javac -J-Dfile.encoding=UTF-8'
+        alias java='java -Dfile.encoding=UTF-8'
+        export LESS='-r'
+        ;;
+esac
+
 # setting LANG, this should be UTF-8
 export LANG=ja_JP.UTF-8
 
@@ -173,13 +185,6 @@ export TERM=xterm-256color
 
 # loading common function for any platform
 source ~/dot_files/shell/common_func.sh
-
-# loading MacOSX function
-case "$OSTYPE" in
-darwin*)
-        source ~/dot_files/shell/mymac.zsh
-        ;;
-esac
 
 ## for setting cdd
 source ~/dot_files/shell/cdd.zsh
