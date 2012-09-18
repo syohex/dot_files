@@ -125,8 +125,8 @@ alias -g P='|ptrigger'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
-   # Mac
-   alias -g C='| pbcopy'
+   # Mac (for tmux. pbcopy and pbpaste don't work well on tmux session)
+   alias -g C='| ssh 127.0.0.1 pbcopy'
 elif which xsel >/dev/null 2>&1 ; then
    # Linux
    alias -g C='| xsel --input --clipboard'
