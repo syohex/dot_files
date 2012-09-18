@@ -72,7 +72,7 @@ REPORTTIME=10
 # Setting for MacOSX
 case "$OSTYPE" in
 darwin*)
-        export PATH="~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
@@ -126,7 +126,7 @@ alias -g P='|ptrigger'
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
    # Mac (for tmux. pbcopy and pbpaste don't work well on tmux session)
-   alias -g C='| ssh 127.0.0.1 pbcopy'
+    alias -g C='| ssh 127.0.0.1 pbcopy'
 elif which xsel >/dev/null 2>&1 ; then
    # Linux
    alias -g C='| xsel --input --clipboard'
