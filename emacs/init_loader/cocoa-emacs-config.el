@@ -4,7 +4,6 @@
 
 ;; input method
 (setq default-input-method "MacOSX")
-(global-set-key (kbd "C-o") 'toggle-input-method)
 
 ;; for ansi-term
 (setq system-uses-terminfo nil)
