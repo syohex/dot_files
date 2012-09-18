@@ -25,7 +25,6 @@
     (read-kbd-macro (string c))
     `(lambda ()
        (interactive)
-       (quick-jump-push-marker)
        (setq ace-jump-query-char ,c)
        (setq ace-jump-current-mode 'ace-jump-word-mode)
        (ace-jump-do (concat "\\b"
