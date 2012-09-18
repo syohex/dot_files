@@ -16,11 +16,11 @@
 
 (load "migemo" 'noerror)
 (eval-after-load "migemo"
-    '(progn
-       (migemo-init)
-       (setq migemo-isearch-enable-p nil)))
+  '(progn
+     (migemo-init)
+     (setq migemo-isearch-enable-p nil)
 
-(defadvice isearch-done (after migemo-search-ad activate)
-  "Disable migemo"
-  (if migemo-isearch-enable-p
-      (setq migemo-isearch-enable-p nil)))
+     (defadvice isearch-done (after migemo-search-ad activate)
+       "Disable migemo"
+       (if migemo-isearch-enable-p
+           (setq migemo-isearch-enable-p nil)))))
