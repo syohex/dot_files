@@ -77,7 +77,6 @@ darwin*)
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
         alias java='java -Dfile.encoding=UTF-8'
-        export LESS='-r'
         ;;
 esac
 
