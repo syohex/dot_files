@@ -1,7 +1,10 @@
 ;; moving word
-(require 'misc)
-(global-set-key (kbd "M-f") 'forward-to-word)
-(global-set-key (kbd "M-b") 'backward-to-word)
+(defun my/forward-to-word (arg)
+  (interactive "p")
+  (or (re-search-forward (if (> arg 0) "\\(\\W\\b\\|.$\\)" "\\b\\W") nil t arg)
+      (goto-char (if (> arg 0) (point-max) (point-min)))))
+
+(global-set-key (kbd "M-f") 'my/forward-to-word)
 
 ;; for word delete instead of kill-word and backward-kill-word
 (defun delete-word (arg)
