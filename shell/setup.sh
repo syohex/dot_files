@@ -3,13 +3,18 @@
 set -e
 set -x
 
+mkdir_if_not_exist () {
+    local dir = $1
+    if [ ! -d $dir ]
+    then
+        mkdir $dir
+    fi
+}
+
 ln -sf $PWD/zshrc ~/.zshrc
 
 # for cdd
-if [ ! -d ~/.zsh/cdd ]
-then
-    mkdir -p ~/.zsh/cdd
-fi
+mkdir_if_not_exist "${HOME}/.zsh/cdd"
 
 # setting for GNU screen
 ln -sf $PWD/screenrc ~/.screenrc
@@ -18,18 +23,12 @@ ln -sf $PWD/screenrc ~/.screenrc
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 
 # for completion file
-COMPDIR=~/.zsh/mycomp
-if [ ! -d $COMPDIR ]
-then
-    mkdir -p $COMPDIR
-fi
+mkdir_if_not_exist "${HOME}/.zsh/mycomp"
 
 # my utilities
-UTILDIR=~/program/utils
-if [ ! -d $UTILDIR ]
-then
-    mkdir -p $UTILDIR
-fi
+UTILDIR="${HOME}/program/utils"
+mkdir_if_not_exist $UTILDIR
+
 cd $UTILDIR
 git clone git@github.com:syohex/my-command-utilities.git
 cd my-command-utilities
