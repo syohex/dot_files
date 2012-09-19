@@ -1,10 +1,14 @@
 #!/bin/sh
 
-# PAUSE configuration file
-rm -f ~/.pause
-ln -s $PWD/pause ~/.pause
-chmod 600 ~/.pause
-
 # ack configuration file
-rm -f ~/.ackrc
-ln -s $PWD/ackrc ~/.ackrc
+ln -sf $PWD/ackrc ~/.ackrc
+
+# clone my_pmsetup
+PERLDIR="${HOME}/program/perl"
+if [ -d $PERLDIR ]
+then
+    mkdir $PERLDIR
+fi
+
+cd $PERLDIR
+git clone git@github.com:syohex/my-pmsetup.git
