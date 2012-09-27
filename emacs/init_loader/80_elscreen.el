@@ -3,12 +3,14 @@
     (progn
       (elscreen-start)
       (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
+      (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
       (setq elscreen-tab-width nil)
       (setq elscreen-tab-display-kill-screen nil)
       (elscreen-toggle-display-tab)))
 
-;; ウインドウのタイトルにタグ名を反映
+;; update frame title to window names
 (defun elscreen-frame-title-update ()
+  (interactive)
   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
     (let* ((screen-list (sort (elscreen-get-screen-list) '<))
            (screen-to-name-alist (elscreen-get-screen-to-name-alist))
