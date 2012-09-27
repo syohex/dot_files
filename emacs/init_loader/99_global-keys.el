@@ -69,7 +69,7 @@
 (global-set-key (kbd "M-g y") 'repeat-yank)
 
 ;; M-g mapping
-(global-set-key (kbd "M-g M-g") 'simple-grep)
+(global-set-key (kbd "M-g M-g") 'helm-ack)
 
 (global-set-key (kbd "M-g C-f") 'ffap)
 (global-set-key (kbd "M-g <backspace>") 'delete-region)

@@ -28,7 +28,3 @@
 
 ;; sgit
 (push '("*sgit*" :height 20) popwin:special-display-config)
-
-;; grep-mode
-(push '(grep-mode :stick t :height 20) popwin:special-display-config)
-(push '("*Simple Grep*" :height 20) popwin:special-display-config)

@@ -1,6 +1,7 @@
 ;;;; helm
 (require 'helm-config)
 (require 'helm-gtags)
+(require 'helm-ack)
 
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
