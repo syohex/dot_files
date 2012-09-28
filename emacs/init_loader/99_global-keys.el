@@ -4,6 +4,7 @@
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "M-C-SPC") 'mark-sexp*)
+(global-set-key (kbd "C-M-w") 'copy-list*)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")      'helm-resume)
@@ -44,7 +45,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "w") 'copy-word*)
 (define-key my/ctrl-q-map (kbd "s") 'copy-symbol)
-(define-key my/ctrl-q-map (kbd "e") 'copy-list*)
 (define-key my/ctrl-q-map (kbd "m") 'copy-string)
 (define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)

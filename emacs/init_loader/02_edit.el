@@ -73,15 +73,6 @@
   (local-set-key (kbd "C-M-f") 'forward-symbol)
   (local-set-key (kbd "C-M-b") 'backward-symbol))
 
-(defun delete-cursor-symbol ()
-  (interactive)
-  (forward-symbol -1)
-  (let ((start (point)))
-    (forward-symbol 1)
-    (delete-region start (point))))
-
-(global-set-key (kbd "C-M-w") 'delete-cursor-symbol)
-
 (defun number-rectangle (start end format-string from)
   "Delete (don't save) text in the region-rectangle, then number it."
   (interactive
