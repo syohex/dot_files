@@ -1,7 +1,7 @@
 ;; Emacs lisp install file
 
 ;; first eval this code block
-(add-to-list 'load-path "~/.emacs.d/auto-install")
+(add-to-list 'load-path "~/.emacs.d/elisps")
 
 ;; Emacs package system
 (require 'package)
@@ -18,10 +18,10 @@
     ace-jump-mode bm vline col-highlight
 
     ;;;; git
-    gh gist git-commit
+    git-commit
 
     ;;;; editing utilities
-    expand-region key-chord wrap-region
+    expand-region wrap-region
     undo-tree mark-multiple redo+ smartrep
     yasnipppet
 
