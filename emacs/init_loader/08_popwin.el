@@ -25,6 +25,3 @@
 
 ;; eshell
 (push '("*eshell pop*" :stick t) popwin:special-display-config)
-
-;; sgit
-(push '("*sgit*" :height 20) popwin:special-display-config)
