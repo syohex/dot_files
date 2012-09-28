@@ -74,6 +74,9 @@ case "$OSTYPE" in
 darwin*)
         export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+        # Only Perl 5.16 problem??
+        export PERLDOC_PAGER='less -r'
+
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
         alias java='java -Dfile.encoding=UTF-8'
@@ -117,11 +120,6 @@ fi
 
 alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
 alias search-emacs="emacs -Q -l --reverse ~/dot_files/emacs/search_emacs"
-
-# global alias
-alias -g L='|less -R'
-alias -g G='|grep'
-alias -g P='|ptrigger'
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
@@ -236,9 +234,6 @@ then
     export PATH=~/src/depot_tools:$PATH
 fi
 
-# gisty
-export GISTY_DIR="$HOME/git/gists"
-
 # for tmux complete
 _tmux_pane_words() {
   local expl
@@ -267,3 +262,9 @@ perl -wle \
 
 # load private data
 source ~/.zsh/private.sh
+
+## Last
+# setting global alias for avoiding conflict variable name
+alias -g L='|less -R'
+alias -g G='|grep'
+alias -g P='|ptrigger'
