@@ -1,6 +1,3 @@
-# moccur-edit
-http://www.emacswiki.org/emacs/download/moccur-edit.el
-
 # redo+.el
 http://emacswiki.org/emacs/download/redo%2b.el
 
@@ -24,9 +21,6 @@ http://chrispoole.com/downloads/ac-python.el
 # direx-el
 https://raw.github.com/m2ym/direx-el/master/direx.el
 
-# source code reading
-https://raw.github.com/takaishi/succor/master/succor.el
-
 # saving
 http://www.emacswiki.org/cgi-bin/wiki/download/savekill.el
 
@@ -38,6 +32,3 @@ http://0xcc.net/misc/auto-save/auto-save-buffers.el
 
 # elisp
 http://www.emacswiki.org/emacs/download/eldoc-extension.el
-
-# goto-chg
-http://emacswiki.org/emacs/download/goto-chg.el
