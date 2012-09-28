@@ -8,7 +8,6 @@
 ;; helm binding
 (global-set-key (kbd "C-M-z")      'helm-resume)
 (global-set-key (kbd "C-x C-r")    'my/helm-recentf)
-(global-set-key (kbd "C-x C-a")    'helm-bookmarks)
 (global-set-key (kbd "C-x C-c")    'helm-M-x)
 (global-set-key (kbd "M-y")        'helm-show-kill-ring)
 (global-set-key (kbd "C-h a")      'helm-c-apropos)
@@ -69,7 +68,8 @@
 (global-set-key (kbd "M-g y") 'repeat-yank)
 
 ;; M-g mapping
-(global-set-key (kbd "M-g M-g") 'helm-ack)
+(global-set-key (kbd "M-g .") 'helm-ack)
+(global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
 
 (global-set-key (kbd "M-g C-f") 'ffap)
 (global-set-key (kbd "M-g <backspace>") 'delete-region)
