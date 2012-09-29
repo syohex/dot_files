@@ -28,13 +28,25 @@
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\(\\.pl\\|\\.pm\\|\\.t\\|\\.psgi\\)$" flymake-perl-init))
 
+(defun flymake-perl-add-topdir-option ()
+  (with-temp-buffer
+    (let ((ret (call-process-shell-command "git rev-parse --show-toplevel" nil t)))
+      (cond ((zerop ret)
+             (goto-char (point-min))
+             (format "-I%s"
+                     (buffer-substring-no-properties (point) (line-end-position))))
+            (t nil)))))
+
 (defun flymake-perl-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                      'flymake-create-temp-inplace))
          (local-file (file-relative-name
                       temp-file
-                      (file-name-directory buffer-file-name))))
-    (list "perl" (list "-MProject::Libs" "-wc" local-file))))
+                      (file-name-directory buffer-file-name)))
+         (topdir (flymake-perl-add-topdir-option)))
+    (if topdir
+        `("perl" ,(list "-MProject::Libs" topdir "-wc" local-file))
+      `("perl" ,(list "-MProject::Libs" "-wc" local-file)))))
 
 (add-hook 'cperl-mode-hook (lambda ()
                              (flymake-mode t)
