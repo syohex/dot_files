@@ -48,7 +48,7 @@
 (defun edit-previous-line ()
   (interactive)
   (forward-line -1)
-  (if (not (= (current-line) 1))
+  (if (not (= (line-number-at-pos) 1))
       (end-of-line))
   (newline-and-indent))
 
