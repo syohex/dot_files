@@ -1,0 +1,6 @@
+# name : subtest 'test' => sub {};
+# key  : subtest
+# --
+subtest '$1' => sub {
+    $0
+};
