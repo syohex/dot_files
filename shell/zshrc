@@ -75,7 +75,7 @@ darwin*)
         export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
         # Only Perl 5.16 problem??
-        export PERLDOC_PAGER='less -r'
+        export PERLDOC_PAGER='less -f -r'
 
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
