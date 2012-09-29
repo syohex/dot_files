@@ -1,4 +1,4 @@
-# name : env
+# name : #!/usr/bin/env perl use strict; use warnings;
 # key  : env
 # --
 #!/usr/bin/env perl
