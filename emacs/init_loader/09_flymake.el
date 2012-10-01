@@ -54,3 +54,22 @@
 
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
+
+;; helm flymake
+(defvar helm-c-flymake-source
+  '((name . "Error and Warnings")
+    (candidates . (lambda ()
+                    (with-current-buffer helm-current-buffer
+                      (loop for err in flymake-err-info
+                            for line   = (car err)
+                            for detail = (caar (cdr err))
+                            for msg    = (format "%5d: %s" line (aref detail 4))
+                            collect (cons msg line)))))
+    (action . (lambda (c)
+                (goto-line c helm-current-buffer)))
+    (valatile)))
+
+(defun helm-flymake ()
+  (interactive)
+  (helm :sources '(helm-c-flymake-source)
+        :buffer (get-buffer-create "*helm flymake*")))
