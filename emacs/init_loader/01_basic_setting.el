@@ -40,8 +40,8 @@
 
 ;; Disable default scroll bar and tool bar
 (when window-system
-    (set-scroll-bar-mode 'nil)
-    (tool-bar-mode 0))
+  (set-scroll-bar-mode 'nil)
+  (tool-bar-mode 0))
 
 ;; enable yascrollbar
 (require 'yascroll)
