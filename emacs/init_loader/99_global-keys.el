@@ -49,6 +49,14 @@
 (define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 
+(defun my/align-command ()
+  (interactive)
+  (if current-prefix-arg
+      (let ((current-prefix-arg nil))
+        (call-interactively 'align-regexp))
+    (call-interactively 'align)))
+(define-key my/ctrl-q-map (kbd "\\") 'my/align-command)
+
 ;; goto-chg setting
 (smartrep-define-key
     global-map "C-q" '(("<" . 'goto-last-change)
