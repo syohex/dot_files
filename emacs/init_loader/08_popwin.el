@@ -25,3 +25,6 @@
 
 ;; eshell
 (push '("*eshell pop*" :stick t) popwin:special-display-config)
+
+;; pry
+(push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
