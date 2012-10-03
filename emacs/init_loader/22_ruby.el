@@ -8,6 +8,10 @@
              (ruby-end-mode)
              (flymake-ruby-load)
 
+             (require 'ruby-electric)
+             (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+             (setq ruby-electric-expand-delimiters-list nil)
+
              ;; rsense
              (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
              (add-to-list 'load-path (concat rsense-home "/etc"))
