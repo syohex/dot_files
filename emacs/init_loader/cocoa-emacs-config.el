@@ -8,10 +8,6 @@
 ;; for ansi-term
 (setq system-uses-terminfo nil)
 
-;; frame setting
-(setq default-frame-alist
-      '((width . 115) (height . 42) (top . 28) (left . 0)))
-
 ;; font setting
 (when window-system
   (set-face-attribute 'default nil

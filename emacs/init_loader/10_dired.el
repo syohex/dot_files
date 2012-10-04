@@ -40,6 +40,3 @@
         (and (eq orig-major 'dired-mode) (kill-buffer curbuf)))))
 
 (global-set-key (kbd "C-x C-p") 'my/helm-find-file-current-directory)
-
-;;;; direx
-(require 'direx)

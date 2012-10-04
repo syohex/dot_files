@@ -23,12 +23,6 @@
 (if window-system
     (setq-default indent-tabs-mode nil))
 
-(defun toggle-indent-tab-mode ()
-  (interactive)
-  (if indent-tabs-mode
-      (setq-default indent-tabs-mode nil)
-    (setq-default indent-tabs-mode t)))
-
 ;; delete trailling space and blank line tail of file
 (defun my/delete-trailing-blank-lines ()
   (interactive)
@@ -39,14 +33,5 @@
       (delete-blank-lines))))
 
 (when window-system
-    (add-hook 'before-save-hook 'delete-trailing-whitespace)
-    (add-hook 'before-save-hook 'my/delete-trailing-blank-lines))
-
-;; for toggle delete-trailing-whitespace
-(defun toggle-delete-trailing-whitespace-setting ()
-  (interactive)
-  (dolist (func '(delete-trailing-whitespace my/delete-trailing-blank-lines))
-    (cond ((find func before-save-hook)
-           (remove-hook 'before-save-hook func))
-          (t
-           (add-hook 'before-save-hook func)))))
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (add-hook 'before-save-hook 'my/delete-trailing-blank-lines))

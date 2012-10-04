@@ -47,7 +47,8 @@
 (define-key my/ctrl-q-map (kbd "s") 'copy-symbol)
 (define-key my/ctrl-q-map (kbd "m") 'copy-string)
 (define-key my/ctrl-q-map (kbd "f") 'helm-flymake)
-(define-key my/ctrl-q-map (kbd "DEL") 'kill-whole-line)
+(define-key my/ctrl-q-map (kbd "C-f") 'ffap)
+(define-key my/ctrl-q-map (kbd "DEL") 'delete-region)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 
 (defun my/align-command ()
@@ -79,27 +80,6 @@
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ack)
 (global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
-
-(global-set-key (kbd "M-g C-f") 'ffap)
-(global-set-key (kbd "M-g <backspace>") 'delete-region)
-
-;; like Vim's 'f'
-(defun forward-match-char (n)
-  (interactive "p")
-  (let ((c (read-char)))
-    (dotimes (i n)
-      (forward-char)
-      (skip-chars-forward (format "^%s" (char-to-string c))))))
-
-(defun backward-match-char (n)
-  (interactive "p")
-  (let ((c (read-char)))
-    (dotimes (i n)
-      (skip-chars-backward (format "^%s" (char-to-string c)))
-      (backward-char))))
-
-(global-set-key (kbd "M-g f") 'forward-match-char)
-(global-set-key (kbd "M-g F") 'backward-match-char)
 
 ;; for bm-next, bm-previous
 (global-set-key (kbd "M-g @") 'bm-toggle)

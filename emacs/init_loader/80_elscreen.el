@@ -1,12 +1,11 @@
 ;; elscreen
-(if window-system
-    (progn
-      (elscreen-start)
-      (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
-      (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
-      (setq elscreen-tab-width nil)
-      (setq elscreen-tab-display-kill-screen nil)
-      (elscreen-toggle-display-tab)))
+(when window-system
+  (elscreen-start)
+  (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
+  (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
+  (setq elscreen-tab-width nil)
+  (setq elscreen-tab-display-kill-screen nil)
+  (elscreen-toggle-display-tab))
 
 ;; update frame title to window names
 (defun elscreen-frame-title-update ()
