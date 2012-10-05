@@ -90,26 +90,6 @@ setup_emacs_server () {
     chmod 755 emacs_serverstart.pl emacsclient.sh
 }
 
-## download packages manually
-setup_elscreen () {
-    cd ~/.emacs.d/elisps
-
-    ## utilities of ELSCREEN
-    for file in elscreen-server-0.2.0.tar.gz elscreen-wl-0.8.0.tar.gz
-    do
-        curl -O ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/$file
-    done
-
-    tar xvf elscreen-server-0.2.0.tar.gz
-    mv elscreen-server-0.2.0/*.el .
-
-    tar xvf elscreen-wl-0.8.0.tar.gz
-    mv elscreen-wl-0.8.0/*.el .
-
-    rm -rf elscreen-server-0.2.0.tar.gz elscreen-server-0.2.0 \
-           elscreen-wl-0.8.0.tar.gz elscreen-wl-0.8.0
-}
-
 ## Wanderlust
 setup_wanderlust () {
     echo "Setting for Wanderlust"
@@ -236,7 +216,6 @@ initialize
 setup_init_loader
 setup_theme
 setup_emacs_server
-setup_elscreen
 setup_wanderlust
 setup_sdic
 setup_ruby

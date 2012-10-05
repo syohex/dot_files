@@ -62,13 +62,3 @@
     (if active-file-name
         (file-name-directory active-file-name)
       current-dir)))
-
-;; open draft in new tab
-(when window-system
-  (if (featurep 'wl)
-      (require 'elscreen-wl nil t))
-  (require 'elscreen-server nil t))
-
-(eval-after-load "elscreen-server"
-  '(defadvice server-edit (after server-edit-after activate)
-     (elscreen-kill)))
