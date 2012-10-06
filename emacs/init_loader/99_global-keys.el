@@ -4,7 +4,8 @@
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
 (global-set-key (kbd "M-C-SPC") 'mark-sexp*)
-(global-set-key (kbd "C-M-w") 'copy-list*)
+(global-set-key (kbd "C-M-w") 'kill-symbol)
+(global-set-key (kbd "C-M-r") 'copy-list*)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")      'helm-resume)

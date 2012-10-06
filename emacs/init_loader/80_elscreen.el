@@ -2,6 +2,7 @@
 (when window-system
   (elscreen-start)
   (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
+  (run-with-idle-timer 5 t 'elscreen-frame-title-update)
   (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
   (setq elscreen-tab-width nil)
   (setq elscreen-tab-display-kill-screen nil)
