@@ -60,6 +60,22 @@
     (call-interactively 'align)))
 (define-key my/ctrl-q-map (kbd "\\") 'my/align-command)
 
+(defun my/copy-to-end-of-line ()
+  (interactive)
+  (kill-ring-save (point) (point-at-eol)))
+(define-key my/ctrl-q-map (kbd "k") 'my/copy-to-end-of-line)
+
+(defun my/delete-to-char ()
+  (interactive)
+  (let ((chr (read-char "Delete to: ")))
+    (unless chr
+      (error "Please input character"))
+   (save-excursion
+     (let ((cur-point (point))
+           (del-point (or (search-forward (char-to-string chr) nil t))))
+       (delete-region cur-point (1- del-point))))))
+(define-key my/ctrl-q-map (kbd "d") 'my/delete-to-char)
+
 ;; goto-chg setting
 (smartrep-define-key
     global-map "C-q" '(("<" . 'goto-last-change)
