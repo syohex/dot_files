@@ -122,3 +122,9 @@
 
 ;; goto-chg
 (require 'goto-chg)
+
+;; instead of just-one-space
+(defun my/just-zero-space ()
+  (interactive)
+  (just-one-space 0))
+(global-set-key (kbd "M-SPC") 'my/just-zero-space)
