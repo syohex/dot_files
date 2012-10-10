@@ -78,8 +78,8 @@
 
 ;; goto-chg setting
 (smartrep-define-key
-    global-map "C-q" '(("<" . 'goto-last-change)
-                       (">" . 'goto-last-change-reverse)))
+    global-map "C-q" '(("-" . 'goto-last-change)
+                       ("+" . 'goto-last-change-reverse)))
 
 (smartrep-define-key
    global-map "C-q" '(("[" . 'backward-paragraph)
