@@ -111,6 +111,13 @@ alias grep='grep --color=always'
 alias minicom='LANG=C minicom'
 alias gg='git grep'
 
+# dstat
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
+
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
 then
     alias e='emacsclient.sh'
