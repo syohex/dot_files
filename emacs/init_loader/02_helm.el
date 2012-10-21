@@ -53,8 +53,7 @@
       (error "I'm not in Git Repository!!"))
     (let* ((default-directory topdir)
            (sources (helm-c-sources-git-project-for default-directory)))
-      (helm-other-buffer sources
-                         (format "*helm git project in %s*" default-directory)))))
+      (helm-other-buffer sources "*helm git project*"))))
 (define-key global-map (kbd "C-;") 'helm-git-project)
 
 ;; helm recentf only directories
