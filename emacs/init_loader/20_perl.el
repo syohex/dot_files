@@ -1,5 +1,4 @@
 ;;;; cperl-mode
-;; (auto-install-from-url "http://www.emacswiki.org/emacs/download/perl-completion.el")
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist
          '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)$" . cperl-mode))

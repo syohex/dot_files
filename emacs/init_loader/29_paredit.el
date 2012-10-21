@@ -1,5 +1,4 @@
 ;;;; Paredit
-;; (auto-install-from-url "http://mumble.net/~campbell/emacs/paredit.el")
 (require 'paredit)
 
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)

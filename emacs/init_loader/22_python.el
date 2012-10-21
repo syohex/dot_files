@@ -12,7 +12,6 @@
 (eval-after-load "python-mode"
   '(progn
      ;; auto-complete mode for python
-     ;; (auto-install-from-url "http://chrispoole.com/downloads/ac-python.el")
      (require 'ac-python)
      (when (boundp 'ac-modes)
        (setq ac-modes

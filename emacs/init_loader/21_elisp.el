@@ -2,7 +2,6 @@
 (find-function-setup-keys)
 
 ;;;; eldoc
-;; (auto-install-from-url-from-emacswiki "eldoc-extension.el")
 (when (require 'eldoc-extension nil t)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
