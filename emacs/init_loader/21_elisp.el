@@ -21,4 +21,6 @@
    (get-buffer-create "*ielm*"))
   (call-interactively 'ielm))
 
+;; keymap
+(define-key emacs-lisp-mode-map (kbd "C-M-i") 'auto-complete)
 (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm-other-window)
