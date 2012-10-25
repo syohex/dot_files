@@ -52,4 +52,4 @@
 (defun my/org-insert-pomodoro-template ()
   (interactive)
   (let ((date-str (format-time-string "<%Y-%m-%d %a>" (current-time))))
-    (insert (format "** %s [/]\n  - " date-str))))
+    (insert (format "** %s [/]\n   - " date-str))))
