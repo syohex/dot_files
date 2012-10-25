@@ -28,9 +28,8 @@
                       (let ((dirs (directory-files (helm-c-current-directory)))
                             (filter (lambda (d) (string-match "^\.\.?$" d))))
                         (remove-if filter dirs)))))
-    (action . (("Open File" . helm-c-find-file-or-marked)
-               ("Open File at New Tab(elscreen)"
-                . (lambda (candidate) (elscreen-find-file candidate)))))))
+    (action . (("Open File" . (lambda (c)
+                                (find-file c)))))))
 
 (defun my/helm-find-file-current-directory ()
   (interactive)
