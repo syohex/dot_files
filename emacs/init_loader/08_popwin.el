@@ -11,14 +11,7 @@
 (push '("*ielm*" :stick t) popwin:special-display-config)
 
 ;; popwin for slime
-(push '("*slime-apropos*") popwin:special-display-config)
-(push '("*slime-macroexpansion*") popwin:special-display-config)
-(push '("*slime-description*") popwin:special-display-config)
-(push '("*slime-compilation*" :noselect t) popwin:special-display-config)
-(push '("*slime-xref*") popwin:special-display-config)
-(push '(sldb-mode :stick t) popwin:special-display-config)
 (push '(slime-repl-mode :stick t) popwin:special-display-config)
-(push '(slime-connection-list-mode) popwin:special-display-config)
 
 ;; man
 (push '(Man-mode :stick t :height 20) popwin:special-display-config)
@@ -28,3 +21,6 @@
 
 ;; pry
 (push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
+
+;; python
+(push '("*jedi:doc*" :stick t) popwin:special-display-config)
