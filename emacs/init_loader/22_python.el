@@ -9,17 +9,18 @@
                       (accept-process-output (get-buffer-process python-buffer)))))
       ad-do-it)))
 
-(eval-after-load "python-mode"
+(eval-after-load "python"
   '(progn
      ;; auto-complete mode for python
-     (require 'ac-python)
-     (when (boundp 'ac-modes)
-       (setq ac-modes
-             (append ac-modes '(python-3-mode python-2-mode))))
+     (add-to-list 'load-path "~/.emacs.d/emacs-jedi/")
+     (require 'jedi)
+     (local-unset-key (kbd "C-M-i"))
+     (define-key python-mode-map (kbd "C-M-i") 'jedi:complete)
+     (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
 
      ;; pylookup
      (require 'pylookup)
-     (setq pylookup-dir "~/.emacs.d/pylookup")
+     (setq pylookup-dir "~/.emacs.d/pylookup/")
      (add-to-list 'load-path pylookup-dir)
 
      ;; set executable file and db file
@@ -32,7 +33,7 @@
      (autoload 'pylookup-update "pylookup"
        "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
-     (define-key python-mode-map (kbd "C-c C-d") 'pylookup-lookup)
+     (define-key python-mode-map (kbd "C-c C-l") 'pylookup-lookup)
 
      ;; binding
      (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
@@ -89,4 +90,5 @@
               flymake-err-line-patterns))
   (flymake-mode t))
 
+(add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook '(lambda () (flymake-python-load)))
