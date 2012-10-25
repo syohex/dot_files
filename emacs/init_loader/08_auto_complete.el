@@ -8,7 +8,6 @@
 (global-auto-complete-mode t)
 
 (setq ac-auto-start nil)
-(define-key ac-mode-map (kbd "M-/") 'auto-complete)
 
 (setq ac-use-menu-map t)
 (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)

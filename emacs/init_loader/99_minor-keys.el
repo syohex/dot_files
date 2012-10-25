@@ -10,7 +10,6 @@
   t  ;; default is enable
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
-    (,(kbd "C-M-i") . auto-complete)
     (,(kbd "M-C-o") . other-window)
     (,(kbd "<f12>") . dictionary-with-ace)
     (,(kbd "S-<f12>") . sdic-popup-last-word)))
