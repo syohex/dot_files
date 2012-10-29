@@ -35,12 +35,12 @@
 
      (define-key python-mode-map (kbd "C-c C-l") 'pylookup-lookup)
 
+     ;; flymake by flycheck
+     (add-hook 'python-mode-hook 'flycheck-mode)
+
      ;; binding
      (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
-     (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)
-     ;; Activate flymake unless buffer is a tmp buffer for the interpreter
-     (unless (eq buffer-file-name nil)
-       (flymake-mode t))))
+     (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
 (defun python-newline-and-indent ()
   (interactive)
@@ -66,29 +66,4 @@
        (beginning-of-line)
        (delete-char python-indent)))))
 
-;; flymake setting(need to install 'pyflakes': pip install pyflakes)
-(defun flymake-python-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list "pyflakes" (list local-file))))
-
-(defconst flymake-allowed-python-file-name-masks '(("\\.py$" flymake-python-init)))
-
-(defun flymake-python-load ()
-  (interactive)
-  (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
-    (setq flymake-check-was-interrupted t))
-  (ad-activate 'flymake-post-syntax-check)
-  (setq flymake-allowed-file-name-masks
-        (append flymake-allowed-file-name-masks
-                flymake-allowed-python-file-name-masks))
-  (setq flymake-python-err-line-patterns
-        (cons '("\\(.*\\):\\([0-9]+\\):\\(.*\\)" 1 2 nil 3)
-              flymake-err-line-patterns))
-  (flymake-mode t))
-
 (add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook '(lambda () (flymake-python-load)))
