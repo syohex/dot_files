@@ -174,6 +174,7 @@ setup_python () {
     rm -f $docname.zip
 
     python pylookup.py -u $docname
+    cp -a pylookup.el ~/.emacs.d/elisps
 }
 
 setup_utils () {
