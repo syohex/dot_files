@@ -13,6 +13,7 @@
   (turn-on-haskell-indent)
   (ghc-init)
   (flymake-mode)
+  (define-key haskell-mode-map (kbd "C-M-i") 'auto-complete)
 
   ;; for auto-complete
   (push 'ac-source-ghc-mod ac-sources))
