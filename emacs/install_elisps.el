@@ -5,7 +5,6 @@
 
 ;; Emacs package system
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
@@ -32,8 +31,11 @@
     ;; haskell
     haskell-mode ghc ghci-completion
 
+    ;; flymake
+    flycheck flymake-jslint
+
     ;; coffee-script
-    coffee-mode flymake-coffee
+    coffee-mode
 
     ;; ruby
     ruby-block ruby-compilation ruby-end ruby-interpolation

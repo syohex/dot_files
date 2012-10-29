@@ -1,5 +1,6 @@
 ;; setting for flymake
 (require 'flymake)
+(require 'flycheck)
 
 ;; Show error message under current line
 (require 'popup)
