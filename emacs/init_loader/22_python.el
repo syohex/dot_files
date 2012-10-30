@@ -38,6 +38,9 @@
      ;; flymake by flycheck
      (add-hook 'python-mode-hook 'flycheck-mode)
 
+     ;; auto-pair
+     (add-hook 'python-mode-hook 'my/wrap-region-as-autopair)
+
      ;; binding
      (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))

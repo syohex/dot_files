@@ -49,10 +49,13 @@
         `("perl" ,(list "-MProject::Libs" topdir "-wc" local-file))
       `("perl" ,(list "-MProject::Libs" "-wc" local-file)))))
 
-(add-hook 'cperl-mode-hook (lambda ()
-                             (flymake-mode t)
-                             (my/setup-symbol-moving)
-                             (hs-minor-mode 1)))
+(defun my/cperl-mode-hook ()
+  (flymake-mode t)
+  (my/wrap-region-as-autopair)
+  (my/setup-symbol-moving)
+  (hs-minor-mode 1))
+
+(add-hook 'cperl-mode-hook 'my/cperl-mode-hook)
 
 (custom-set-variables
  '(cperl-indent-parens-as-block t)

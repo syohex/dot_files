@@ -13,6 +13,21 @@
 
 (add-hook 'wrap-region-after-wrap-hook 'my/wrap-region-zero-width)
 
+(defun my/wrap-region-trigger (input)
+  `(lambda ()
+     (interactive)
+     (unless (use-region-p)
+       (set-mark (point)))
+     (let ((last-input-event ,(string-to-char input)))
+       (wrap-region-trigger 1 ,input))))
+
+(defun my/wrap-region-as-autopair ()
+  (local-set-key (kbd "M-\"") (my/wrap-region-trigger "\""))
+  (local-set-key (kbd "M-'")  (my/wrap-region-trigger "'"))
+  (local-set-key (kbd "M-(")  (my/wrap-region-trigger "("))
+  (local-set-key (kbd "M-[")  (my/wrap-region-trigger "["))
+  (local-set-key (kbd "M-{")  (my/wrap-region-trigger "{")))
+
 ;; disable paredit enable mode
 (add-to-list 'wrap-region-except-modes 'emacs-lisp-mode)
 (add-to-list 'wrap-region-except-modes 'scheme-mode)
