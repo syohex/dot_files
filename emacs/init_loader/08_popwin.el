@@ -23,4 +23,5 @@
 (push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
 
 ;; python
+(push '("*Python*"   :stick t) popwin:special-display-config)
 (push '("*jedi:doc*" :stick t) popwin:special-display-config)

@@ -42,21 +42,36 @@
      (add-hook 'python-mode-hook 'my/wrap-region-as-autopair)
 
      ;; binding
-     (define-key python-mode-map (kbd "C-j") 'python-newline-and-indent)
+     (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
+     (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
+     (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
-(defun python-newline-and-indent ()
+(defvar my/python-block-regexp
+  "\\<\\(for\\|if\\|while\\|try\\|class\\|def\\)\\s-")
+
+(defun my/python-next-block ()
   (interactive)
-  (let (current-line-is-open-block)
-    (when (and (eolp) (not (char-equal ?: (preceding-char))))
-      (save-excursion
-        (back-to-indentation)
-        (if (python-open-block-statement-p t)
-            (setq current-line-is-open-block t))))
-    (when current-line-is-open-block
-      (skip-chars-backward " \t")
-      (insert ":")))
-  (newline-and-indent))
+  (let ((orig (point))
+        (new nil))
+    (save-excursion
+      (forward-char)
+      (if (re-search-forward my/python-block-regexp nil t)
+          (setq new (point))))
+    (when new
+      (goto-char new)
+      (backward-word))))
+
+(defun my/python-up-block ()
+  (interactive)
+  (let ((orig (point))
+        (new nil))
+    (save-excursion
+      (backward-char)
+      (if (re-search-backward my/python-block-regexp nil t)
+          (setq new (point))))
+    (when new
+      (goto-char new))))
 
 ;; back indent
 (defun python-back-indent ()
