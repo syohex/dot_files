@@ -14,7 +14,8 @@
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (define-key ac-completing-map "\t" 'ac-complete)
-(setq ac-quick-help-delay 0.5)
+
+(setq ac-quick-help-delay 0.1)
 
 ;; look command with auto-complete
 (defun my/ac-look ()
