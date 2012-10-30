@@ -1,0 +1,5 @@
+# name : elif condition : body
+# key  : elif
+# --
+elif $1:
+    $0

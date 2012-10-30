@@ -1,0 +1,5 @@
+# name : if __name__ == '__main__':
+# key  : main
+# --
+if __name__ == '__main__':
+    $0
