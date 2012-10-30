@@ -81,6 +81,9 @@ darwin*)
         alias javac='javac -J-Dfile.encoding=UTF-8'
         alias java='java -Dfile.encoding=UTF-8'
         ;;
+linux-gnu)
+        export BROWSER=firefox
+        ;;
 esac
 
 # setting LANG, this should be UTF-8
