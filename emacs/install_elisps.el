@@ -14,7 +14,7 @@
     auto-complete fuzzy popup ac-slime pos-tip
 
     ;;;; highlight
-    ace-jump-mode bm vline col-highlight
+    ace-jump-mode vline col-highlight
 
     ;;;; git
     git-commit
