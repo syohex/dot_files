@@ -98,12 +98,6 @@
 (global-set-key (kbd "M-g .") 'helm-ack)
 (global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
 
-;; for bm-next, bm-previous
-(global-set-key (kbd "M-g @") 'bm-toggle)
-(smartrep-define-key
-    global-map "M-g" '((">" . (bm-next))
-                       ("<" . (bm-previous))))
-
 ;; duplicate current line
 (defun duplicate-thing (n)
   (interactive "p")

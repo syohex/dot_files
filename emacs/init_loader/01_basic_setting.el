@@ -75,13 +75,6 @@
 ;; yes-or-no-p
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; bm-mode
-(when window-system
-  (require 'bm nil t)
-  (set-face-background 'bm-face "DarkOrange1")
-  (set-face-foreground 'bm-face "grey15")
-  (set-face-bold-p 'bm-face t))
-
 ;; move physical line
 (setq line-move-visual nil)
 
