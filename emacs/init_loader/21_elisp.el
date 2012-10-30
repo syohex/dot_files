@@ -21,6 +21,11 @@
    (get-buffer-create "*ielm*"))
   (call-interactively 'ielm))
 
-;; keymap
-(define-key emacs-lisp-mode-map (kbd "C-M-i") 'auto-complete)
-(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm-other-window)
+;; Setting keymap for emacs-lisp-mode and lisp-interaction-mode
+(defmacro my/set-elisp-map (keymap)
+  `(progn
+     (define-key ,keymap (kbd "C-M-i") 'auto-complete)
+     (define-key ,keymap (kbd "C-c C-z") 'ielm-other-window)))
+
+(my/set-elisp-map emacs-lisp-mode-map)
+(my/set-elisp-map lisp-interaction-mode-map)
