@@ -63,5 +63,8 @@
     logito
 ))
 
+(package-refresh-contents)
+
 (dolist (pack my/install-packages)
-  (package-install pack))
+  (unless (package-installed-p pack)
+    (package-install pack)))
