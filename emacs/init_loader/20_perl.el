@@ -12,7 +12,7 @@
      (define-key cperl-mode-map (kbd "(") nil)
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "[") nil)
-     (define-key cperl-mode-map (kbd "C-c C-m") 'cperl-insert-use-statement)
+     (define-key cperl-mode-map (kbd "C-c C-i") 'cperl-insert-use-statement)
      (define-key cperl-mode-map (kbd "C-c C-d") 'cperl-perldoc)
 
      ;; faces
