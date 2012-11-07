@@ -1,4 +1,4 @@
-# name : #!/usr/bin/env python
+# name : #!/usr/bin/env python # Shebang
 # key  : sheban
 # --
 #!/usr/bin/env python

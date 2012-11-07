@@ -1,0 +1,5 @@
+# name : class Class(SuperClass): # Class Definition
+# key  : def
+# --
+class ${1:class}():
+      $0

@@ -1,0 +1,5 @@
+# name : def __special__(args): # Special Function Definiton
+# key  : __def
+# --
+def __${1:special}__:
+    $0
