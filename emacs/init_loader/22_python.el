@@ -41,6 +41,12 @@
      ;; auto-pair
      (add-hook 'python-mode-hook 'my/wrap-region-as-autopair)
 
+     ;; eldoc
+     (require 'jedi-eldoc)
+     (add-hook 'python-mode-hook 'jedi-eldoc-mode)
+     (set-face-attribute 'jedi-eldoc:highlight-function-argument nil
+                         :foreground "green")
+
      ;; binding
      (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
