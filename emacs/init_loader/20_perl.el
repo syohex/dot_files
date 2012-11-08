@@ -49,11 +49,31 @@
         `("perl" ,(list "-MProject::Libs" topdir "-wc" local-file))
       `("perl" ,(list "-MProject::Libs" "-wc" local-file)))))
 
+(defun my/cperl-imenu-create-index ()
+  (let (index)
+    ;; collect subroutine
+    (goto-char (point-min))
+    (while (re-search-forward "^\\s-*sub\\s-+\\([^ ]+\\)" nil t)
+      (push (cons (format "Function: %s" (match-string 1))
+                  (match-beginning 1)) index))
+
+    ;; collect subtest
+    (goto-char (point-min))
+    (let ((desc-re "^\\s-*subtest\\s-+\\(['\"]\\)\\([^\1\r\n]+\\)\\1"))
+      (while (re-search-forward desc-re nil t)
+        (push (cons (format "Subtest: %s" (match-string 2))
+                    (match-beginning 0)) index)))
+    (nreverse index)))
+
 (defun my/cperl-mode-hook ()
   (flymake-mode t)
   (my/wrap-region-as-autopair)
   (my/setup-symbol-moving)
-  (hs-minor-mode 1))
+  (hs-minor-mode 1)
+
+  ;; my own imenu. cperl imenu is too many information for me
+  (set (make-local-variable 'imenu-create-index-function)
+       'my/cperl-imenu-create-index))
 
 (add-hook 'cperl-mode-hook 'my/cperl-mode-hook)
 
