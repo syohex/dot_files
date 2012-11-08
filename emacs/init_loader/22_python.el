@@ -18,6 +18,11 @@
      (define-key python-mode-map (kbd "C-M-i") 'jedi:complete)
      (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
 
+     ;; show-doc
+     (setq jedi:tooltip-method 'nil)
+     (set-face-attribute 'jedi:highlight-function-argument nil
+                         :foreground "green")
+
      ;; pylookup
      (require 'pylookup)
      (setq pylookup-dir "~/.emacs.d/pylookup/")
@@ -40,12 +45,6 @@
 
      ;; auto-pair
      (add-hook 'python-mode-hook 'my/wrap-region-as-autopair)
-
-     ;; eldoc
-     (require 'jedi-eldoc)
-     (add-hook 'python-mode-hook 'jedi-eldoc-mode)
-     (set-face-attribute 'jedi-eldoc:highlight-function-argument nil
-                         :foreground "green")
 
      ;; binding
      (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)
