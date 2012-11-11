@@ -7,7 +7,7 @@
   (setq elscreen-tab-width nil)
   (setq elscreen-tab-display-kill-screen nil)
   (require 'helm-elscreen)
-  (global-set-key (kbd "C-z ;") 'helm-elscreen)
+  (global-set-key (kbd "C-z C-z") 'helm-elscreen)
   (elscreen-toggle-display-tab))
 
 ;; update frame title to window names
