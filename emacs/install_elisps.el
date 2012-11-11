@@ -16,9 +16,6 @@
     ;;;; highlight
     ace-jump-mode vline col-highlight
 
-    ;;;; git
-    git-commit
-
     ;;;; editing utilities
     expand-region wrap-region
     undo-tree mark-multiple redo+ smartrep

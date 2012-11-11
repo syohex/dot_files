@@ -26,3 +26,6 @@ http://0xcc.net/misc/auto-save/auto-save-buffers.el
 
 # elisp
 http://www.emacswiki.org/emacs/download/eldoc-extension.el
+
+# git-commit-mode
+https://raw.github.com/syohex/git-commit-mode/diff-face/git-commit.el
