@@ -184,6 +184,7 @@ then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     source ${VIRTUALENV_ACTIVE}
 fi
+export PYTHONSTARTUP=~/.pythonsetup
 
 # haskell setting
 export PATH=~/.cabal/bin:$PATH
