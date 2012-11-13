@@ -4,6 +4,10 @@
 (require 'auto-save-buffers)
 (run-with-idle-timer 5 t 'auto-save-buffers)
 
+;; winner-mode
+(require 'winner)
+(winner-mode t)
+
 ;; move other window
 (setq windmove-wrap-around t)
 (windmove-default-keybindings)
