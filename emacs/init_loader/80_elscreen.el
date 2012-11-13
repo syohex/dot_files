@@ -1,11 +1,13 @@
 ;; elscreen
 (when window-system
+  (require 'elscreen)
   (elscreen-start)
   (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
   (run-with-idle-timer 5 t 'elscreen-frame-title-update)
   (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
   (setq elscreen-tab-width nil)
   (setq elscreen-tab-display-kill-screen nil)
+  (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
   (require 'helm-elscreen)
   (global-set-key (kbd "C-z C-z") 'helm-elscreen)
   (elscreen-toggle-display-tab))
@@ -22,9 +24,7 @@
                              screen (elscreen-status-label screen)
                              (my/get-screen-name (get-alist screen screen-to-name-alist))))
                    screen-list " ")))
-      (if (fboundp 'set-frame-name)
-          (set-frame-name title)
-        (setq frame-title-format title)))))
+      (set-frame-name title))))
 
 (defun my/get-screen-name (screen-name)
   (let ((case-fold-search nil))
@@ -33,35 +33,24 @@
            (replace-regexp-in-string "\\*Minibuf-\\w\\*" "" screen-name))
           (t screen-name))))
 
-(if window-system
-    (eval-after-load "elscreen"
-      '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)))
+;; for `cde' command. move to directorycurrent buffer
+(defun elscreen-get-current-directory (buf)
+  (with-current-buffer buf
+    (let ((bufname (buffer-file-name)))
+      (if bufname
+          (file-name-directory bufname)
+        (expand-file-name (cadr (split-string (pwd))))))))
 
 (defun elscreen-current-directory ()
-  (let* (current-dir
-        (active-file-name
-         (with-current-buffer
-             (let* ((current-screen (car (elscreen-get-conf-list 'screen-history)))
-                    (property (cadr (assoc current-screen
-                                           (elscreen-get-conf-list 'screen-property)))))
-               (marker-buffer (nth 2 property)))
-           (progn
-             (setq current-dir (expand-file-name (cadr (split-string (pwd)))))
-             (buffer-file-name)))))
-    (if active-file-name
-        (file-name-directory active-file-name)
-      current-dir)))
+  (let* ((screen-history  (elscreen-get-conf-list 'screen-history))
+         (screen-property (elscreen-get-conf-list 'screen-property))
+         (current-screen (car screen-history))
+         (property (cadr (assoc current-screen screen-property)))
+         (curbuf (marker-buffer (nth 2 property))))
+    (elscreen-get-current-directory curbuf)))
 
 (defun non-elscreen-current-directory ()
-  (let* (current-dir
-         (current-buffer
-          (nth 1 (assoc 'buffer-list
-                        (nth 1 (nth 1 (current-frame-configuration))))))
-         (active-file-name
-          (with-current-buffer current-buffer
-            (progn
-              (setq current-dir (expand-file-name (cadr (split-string (pwd)))))
-              (buffer-file-name)))))
-    (if active-file-name
-        (file-name-directory active-file-name)
-      current-dir)))
+  (let* ((frame-info (cadr (cadr (current-frame-configuration))))
+         (buflist (cadr (assoc 'buffer-list frame-info)))
+         (curbuf (nth 1 buflist)))
+    (elscreen-get-current-directory curbuf)))
