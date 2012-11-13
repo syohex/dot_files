@@ -8,14 +8,14 @@
 (global-set-key (kbd "C-M-r") 'copy-list*)
 
 ;; helm binding
-(global-set-key (kbd "C-M-z")      'helm-resume)
-(global-set-key (kbd "C-x C-r")    'my/helm-recentf)
-(global-set-key (kbd "C-x C-c")    'helm-M-x)
-(global-set-key (kbd "M-y")        'helm-show-kill-ring)
-(global-set-key (kbd "C-h a")      'helm-c-apropos)
-(global-set-key (kbd "C-x C-i")    'helm-imenu)
-(global-set-key (kbd "C-M-s")      'helm-occur)
-(global-set-key (kbd "C-x b")      'helm-buffers-list)
+(global-set-key (kbd "C-M-z")   'helm-resume)
+(global-set-key (kbd "C-x C-r") 'my/helm-recentf)
+(global-set-key (kbd "C-x C-c") 'helm-M-x)
+(global-set-key (kbd "M-y")     'helm-show-kill-ring)
+(global-set-key (kbd "C-h a")   'helm-c-apropos)
+(global-set-key (kbd "C-x C-i") 'helm-imenu)
+(global-set-key (kbd "C-M-s")   'helm-occur)
+(global-set-key (kbd "C-x b")   'helm-buffers-list)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -51,6 +51,10 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "DEL") 'delete-region)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
+(define-key my/ctrl-q-map (kbd "|") 'winner-undo)
+(define-key my/ctrl-q-map (kbd "r") '(lambda ()
+                                       (interactive)
+                                       (revert-buffer nil t)))
 
 (defun my/align-command ()
   (interactive)
@@ -75,6 +79,16 @@
            (del-point (or (search-forward (char-to-string chr) nil t))))
        (delete-region cur-point (1- del-point))))))
 (define-key my/ctrl-q-map (kbd "d") 'my/delete-to-char)
+
+(defun swap-buffers ()
+  (interactive)
+  (let ((curwin (selected-window))
+        (curbuf (window-buffer)))
+    (other-window 1)
+    (set-window-buffer curwin (window-buffer))
+    (set-window-buffer (selected-window) curbuf)))
+
+(define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
 
 ;; goto-chg setting
 (smartrep-define-key
