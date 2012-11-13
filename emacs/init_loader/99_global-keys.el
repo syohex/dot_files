@@ -120,6 +120,7 @@
                    (buffer-substring (region-beginning) (region-end))
                  (buffer-substring (line-beginning-position)
                                    (line-end-position)))))
+      (forward-line 1)
       (dotimes (i (or n 1))
         (insert str "\n")))))
 
