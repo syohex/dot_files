@@ -1,3 +1,7 @@
+;; encoding
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8-unix)
+
 ;; Coloring
 (global-font-lock-mode t)
 
