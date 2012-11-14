@@ -1,4 +1,4 @@
-# name : file slurp. do {local $/; <$fh> };
+# name : do {local $/; <$fh> }; # File slurp
 # key  : slurp
 # --
 do {
