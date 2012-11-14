@@ -92,8 +92,7 @@ export LANG=ja_JP.UTF-8
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
-if [ "$OSTYPE" == "linux-gnu" ]
-then
+if [ "$OSTYPE" == "linux-gnu" ]; then
     alias ls='ls --color -F'
     if [ ! -e ~/.dir_colors ]
     then
@@ -101,8 +100,7 @@ then
     fi
     eval `dircolors ~/.dir_colors -b`
 else
-    if which gls > /dev/null 2>&1
-    then
+    if which gls > /dev/null 2>&1; then
         alias ls='gls --color -F'
     fi
 fi
@@ -121,8 +119,7 @@ alias dstat-cpu='dstat -Tclr'
 alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 
-if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1
-then
+if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1; then
     alias e='emacsclient.sh'
 else
     alias e='emacsclient'
@@ -156,22 +153,19 @@ export PAGER='less'
 export LESSCHARSET=utf-8
 
 # load perlbrew config file
-if [ -e ~/perl5/perlbrew/etc/bashrc ]
-then
+if [ -e ~/perl5/perlbrew/etc/bashrc ]; then
     source ~/perl5/perlbrew/etc/bashrc
     unset MANPATH
 fi
 
 # load rbenv
-if [ -d ~/.rbenv/bin ]
-then
+if [ -d ~/.rbenv/bin ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init - zsh)"
 fi
 
 # load nvm(node.js manager)
-if [ -e ~/.nvm/nvm.sh ]
-then
+if [ -e ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
     nvm use myuse > /dev/null
     export NODE_PATH=/home/syohei/.nvm/`node --version`/lib/node_modules:$NODE_PATH
@@ -179,8 +173,7 @@ fi
 
 # setting for python virtual env
 VIRTUALENV_ACTIVE=~/virtual_env/bin/activate
-if [ -e ${VIRTUALENV_ACTIVE} ]
-then
+if [ -e ${VIRTUALENV_ACTIVE} ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     source ${VIRTUALENV_ACTIVE}
 fi
@@ -206,11 +199,9 @@ precmd () {
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1
-    then
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         stashes=$(git stash list 2>/dev/null | wc -l)
-        if [ ${stashes} -eq 0 ]
-        then
+        if [ ${stashes} -eq 0 ]; then
             psvar[2]=""
         else
             psvar[2]="@${stashes// /}"
@@ -227,8 +218,7 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 
 # zaw : anything
-if [ -e ~/.zsh/zaw/zaw.zsh ]
-then
+if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     source ~/.zsh/zaw/zaw.zsh
     bindkey '^[@' zaw-cdr
     bindkey '^[#' zaw-gitdir
@@ -240,8 +230,7 @@ __git_files () {
 }
 
 # depot(eg. gclient) Google Development Utilities
-if [ -d ~/src/depot_tools ]
-then
+if [ -d ~/src/depot_tools ]; then
     export PATH=~/src/depot_tools:$PATH
 fi
 
