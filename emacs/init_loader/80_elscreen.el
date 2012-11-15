@@ -49,8 +49,10 @@
          (curbuf (marker-buffer (nth 2 property))))
     (elscreen-get-current-directory curbuf)))
 
-(defun non-elscreen-current-directory ()
-  (let* ((frame-info (cadr (cadr (current-frame-configuration))))
-         (buflist (cadr (assoc 'buffer-list frame-info)))
-         (curbuf (nth 1 buflist)))
-    (elscreen-get-current-directory curbuf)))
+(defun cde-not-elscreen ()
+  (let* ((bufsinfo (cadr (cadr (current-frame-configuration))))
+         (bufname-list (assoc-default 'buffer-list bufsinfo)))
+    (loop for buf in bufname-list
+          for file = (buffer-file-name buf)
+          if file
+          return (file-name-directory file))))
