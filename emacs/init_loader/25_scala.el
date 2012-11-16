@@ -1,5 +1,5 @@
 ;;;; Scala language setting
-(require 'scala-mode-auto)
+;;(require 'scala-mode-auto)
 
 (eval-after-load "scala-mode"
   '(progn
