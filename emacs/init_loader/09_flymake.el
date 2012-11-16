@@ -60,15 +60,19 @@
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
 
 ;; helm flymake
+(defun helm-c-flymake-init ()
+  (with-current-buffer helm-current-buffer
+    (loop with eof-char = (char-to-string 0)
+          for err in flymake-err-info
+          for line   = (car err)
+          for detail = (aref (caar (cdr err)) 4)
+          for msg    = (replace-regexp-in-string eof-char " " detail)
+          for errmsg = (format "%5d: %s" line msg)
+          collect (cons errmsg line))))
+
 (defvar helm-c-flymake-source
   '((name . "Error and Warnings")
-    (candidates . (lambda ()
-                    (with-current-buffer helm-current-buffer
-                      (loop for err in flymake-err-info
-                            for line   = (car err)
-                            for detail = (caar (cdr err))
-                            for msg    = (format "%5d: %s" line (aref detail 4))
-                            collect (cons msg line)))))
+    (candidates . helm-c-flymake-init)
     (action . (lambda (c)
                 (goto-line c helm-current-buffer)))
     (valatile)))
