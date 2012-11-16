@@ -1,5 +1,17 @@
 ;;;; editing operations
 
+;; thingopt
+(require 'thingopt)
+(define-thing-commands)
+
+;; copy sexp
+(defun my/copy-sexp ()
+  (interactive)
+  (copy-sexp)
+  (message "%s" (thing-at-point 'sexp)))
+
+(global-set-key (kbd "M-C-SPC") 'my/copy-sexp)
+
 ;; delete-speces
 (defun delete-following-spaces ()
   (interactive)
@@ -80,10 +92,6 @@
 (set-face-foreground 'ace-jump-face-foreground "lime green")
 (set-face-bold-p 'ace-jump-face-foreground t)
 (set-face-underline-p 'ace-jump-face-foreground t)
-
-;; thingopt
-(require 'thingopt)
-(define-thing-commands)
 
 (defun backward-symbol (arg)
   (interactive "p")

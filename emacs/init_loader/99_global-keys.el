@@ -3,7 +3,6 @@
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
-(global-set-key (kbd "M-C-SPC") 'copy-sexp)
 (global-set-key (kbd "C-M-w") 'kill-symbol)
 
 ;; helm binding
@@ -25,12 +24,7 @@
 
 (defun my/copy-line ()
   (interactive)
-  (save-excursion
-    (let (start)
-      (beginning-of-line)
-      (setq start (point))
-      (end-of-line)
-      (kill-ring-save start (point)))))
+  (kill-ring-save (line-beginning-position) (line-end-position)))
 
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
@@ -43,11 +37,9 @@
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "w") 'copy-word*)
-(define-key my/ctrl-q-map (kbd "s") 'copy-string)
+(define-key my/ctrl-q-map (kbd "w") 'copy-word)
 (define-key my/ctrl-q-map (kbd "f") 'helm-flymake)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
-(define-key my/ctrl-q-map (kbd "DEL") 'delete-region)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "r") '(lambda ()
