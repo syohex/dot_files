@@ -1,5 +1,10 @@
 ;;;; region setting
 
+;; multimark
+(require 'mark-more-like-this)
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
+
 ;; wrap-region
 (require 'wrap-region)
 (wrap-region-global-mode t)
