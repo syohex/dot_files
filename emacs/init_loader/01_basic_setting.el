@@ -23,6 +23,9 @@
 ;; large file
 (setq large-file-warning-threshold (* 25 1024 1024))
 
+;; I never use C-x C-c
+(defalias 'exit 'save-buffers-kill-emacs)
+
 ;; saveplace
 (savehist-mode 1)
 (load "saveplace")
@@ -36,6 +39,7 @@
 ;; info for japanese
 (auto-compression-mode t)
 
+;; highlight mark region
 (transient-mark-mode t)
 
 ;; indicate last line
@@ -99,23 +103,6 @@
 
 (define-key undo-tree-map (kbd "C-x u") 'undo-tree-undo)
 (define-key undo-tree-map (kbd "C-/") 'undo-tree-visualize)
-
-(defun kill-following-spaces ()
-  (interactive)
-  (let ((orig-point (point)))
-    (save-excursion
-      (if current-prefix-arg
-          (skip-chars-backward " \t")
-       (skip-chars-forward " \t"))
-      (delete-region orig-point (point)))))
-
-(global-set-key (kbd "M-k") 'kill-following-spaces)
-
-(defun my/delete-indentation ()
-  (interactive)
-  (forward-line)
-  (delete-indentation))
-(global-set-key (kbd "M-K") 'my/delete-indentation)
 
 ;; fill-mode
 (setq fill-column 80)
