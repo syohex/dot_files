@@ -10,9 +10,7 @@
   t  ;; default is enable
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
-    (,(kbd "M-C-o") . other-window)
-    (,(kbd "<f12>") . dictionary-with-ace)
-    (,(kbd "S-<f12>") . sdic-popup-last-word)))
+    (,(kbd "M-C-o") . other-window)))
 
 (defvar my/alt-q-map (make-sparse-keymap)
   "My original keymap binded to M-q.")
