@@ -12,7 +12,7 @@
   (flet ((write-file (file &optional confirm)
                      (let ((str (buffer-string)))
                        (with-temp-file file
-                                      (insert str)))))
+                         (insert str)))))
     ad-do-it))
 
 (recentf-mode 1)
