@@ -38,6 +38,7 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "w") 'copy-word)
+(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "f") 'helm-flymake)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
@@ -52,12 +53,7 @@
       (let ((current-prefix-arg nil))
         (call-interactively 'align-regexp))
     (call-interactively 'align)))
-(define-key my/ctrl-q-map (kbd "\\") 'my/align-command)
-
-(defun my/copy-to-end-of-line ()
-  (interactive)
-  (kill-ring-save (point) (point-at-eol)))
-(define-key my/ctrl-q-map (kbd "k") 'my/copy-to-end-of-line)
+(define-key my/ctrl-q-map (kbd "\\") 'my/align-)
 
 (defun my/delete-to-char ()
   (interactive)
