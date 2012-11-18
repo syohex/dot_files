@@ -79,40 +79,36 @@
     (when new
       (goto-char new))))
 
+;; Insert import statement
+(defun my/python-search-duplicate-import (module)
+  (save-excursion
+    (let ((regexp (format "^\\(from\\|import\\)\\s-+%s" module)))
+      (re-search-backward regexp nil t))))
+
 (defun my/python-insert-import-statement ()
   (interactive)
   (save-excursion
     (skip-chars-backward "^ \n")
-    (let ((exp (thing-at-point 'symbol)))
-      (when (string-match "^\\([^.]+\\)" exp)
-        (let ((module (match-string 1 exp)))
-          (save-excursion
-            (if (re-search-backward (format "import %s" module) nil t)
-                (error (format "already imported '%s'" module))))
-          (if (re-search-backward "^import\\s-+" nil t)
-              (forward-line 1)
-            (progn
-              (goto-char (point-min))
-              (loop while (string-match "^#" (thing-at-point 'line))
-                    do
-                    (forward-line 1))))
-          (let* ((imported (read-string "Import module: " module))
-                 (import-statement (format "import %s\n" imported)))
-            (insert import-statement)))))))
-
-;; insert 'use Module' which is at cursor.
-(defun cperl-insert-use-statement ()
-  "use statement auto-insertion."
-  (interactive)
-  (let ((module-name (cperl-word-at-point))
-        (insert-point (cperl-detect-insert-point)))
-    (save-excursion
-      (let ((use-statement (concat "\nuse " module-name ";")))
-        (if (not (search-backward use-statement nil t))
-            (progn
-              (goto-char insert-point)
-              (insert use-statement))
-          (error "'%s' is already imported" module-name))))))
+    (let ((exp (thing-at-point 'symbol))
+          (module nil))
+      (when (and exp (string-match "^\\([^.]+\\)" exp))
+        (setq module (match-string 1 exp)))
+      (if (re-search-backward "^\\(import\\|from\\)\\s-+" nil t)
+          (forward-line 1)
+        (progn
+          (goto-char (point-min))
+          (loop while (string-match "^#" (thing-at-point 'line))
+                do
+                (forward-line 1))))
+      (let* ((prompt (if current-prefix-arg
+                         "Import from module: "
+                       "import module: "))
+             (imported (read-string prompt module nil module)))
+        (when (my/python-search-duplicate-import imported)
+          (error (format "'%s' is already imported" imported)))
+        (insert (format "%s %s"
+                        (if current-prefix-arg "from" "import")
+                        imported))))))
 
 ;; back indent
 (defun python-back-indent ()
