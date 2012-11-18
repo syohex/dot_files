@@ -2,12 +2,15 @@
 (find-function-setup-keys)
 
 ;;;; eldoc
-(when (require 'eldoc-extension nil t)
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
-  (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-  (setq eldoc-idle-delay 0.2)
-  (setq eldoc-minor-mode-string ""))
+(require 'eldoc-extension)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+(setq eldoc-idle-delay 0.2)
+(setq eldoc-minor-mode-string "")
+(set-face-attribute 'eldoc-highlight-function-argument nil
+                    :underline t :foreground "green"
+                    :weight 'bold)
 
 ;; for regexp color
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
