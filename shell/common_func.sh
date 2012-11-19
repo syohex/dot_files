@@ -107,6 +107,7 @@ cdp () {
     dir=`git rev-parse --show-toplevel 2>/dev/null`
     if [ $? -eq 0 ]
     then
+        CDP=$dir
         cd $dir
     else
         echo "'$PWD' is not git repos"
