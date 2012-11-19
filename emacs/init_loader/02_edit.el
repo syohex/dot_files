@@ -59,34 +59,6 @@
 (global-set-key (kbd "M-d") 'delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
-;; moving match paren
-(defun goto-match-paren (arg)
-  "Go to the matching  if on (){}[], similar to vi style of % "
-  (interactive "p")
-  (cond ((looking-at "[\[\(\{]") (forward-sexp))
-        ((looking-back "[\]\)\}]" 1) (backward-sexp))
-        ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
-        ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
-        (t nil)))
-(global-set-key (kbd "C-x %") 'goto-match-paren)
-
-;; like Vim's "o"
-(defun edit-next-line ()
-  (interactive)
-  (end-of-line)
-  (newline-and-indent))
-
-;; like Vim's "O(large 'o')"
-(defun edit-previous-line ()
-  (interactive)
-  (forward-line -1)
-  (if (not (= (line-number-at-pos) 1))
-      (end-of-line))
-  (newline-and-indent))
-
-(global-set-key (kbd "M-o") 'edit-next-line)
-(global-set-key (kbd "M-O") 'edit-previous-line)
-
 ;; moving with ace-jump-mode
 (require 'ace-jump-mode)
 (set-face-foreground 'ace-jump-face-foreground "lime green")
