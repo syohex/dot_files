@@ -15,7 +15,11 @@
   (flymake-mode)
   (define-key haskell-mode-map (kbd "C-M-i") 'auto-complete)
 
+  ;; insert pair
+  (my/wrap-region-as-autopair)
+
   ;; for auto-complete
   (push 'ac-source-ghc-mod ac-sources))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)
+(add-hook 'inferior-haskell-hook 'my/wrap-region-as-autopair)
