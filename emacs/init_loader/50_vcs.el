@@ -11,10 +11,10 @@
 
 ;; git-commit-mode
 (autoload 'git-commit-mode "git-commit" nil t)
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
 
 (eval-after-load "git-commit"
   '(progn
-     (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))
      (add-hook 'git-commit-mode-hook 'flyspell-mode)
      (set-face-foreground 'git-commit-summary-face nil)
      (set-face-underline  'git-commit-summary-face t)
