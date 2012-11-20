@@ -67,7 +67,6 @@
 
 (defun my/cperl-mode-hook ()
   (flymake-mode t)
-  (my/wrap-region-as-autopair)
   (my/setup-symbol-moving)
   (hs-minor-mode 1)
 

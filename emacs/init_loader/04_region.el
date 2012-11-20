@@ -18,6 +18,13 @@
 
 (add-hook 'wrap-region-after-wrap-hook 'my/wrap-region-zero-width)
 
+;; disable paredit enable mode
+(add-to-list 'wrap-region-except-modes 'emacs-lisp-mode)
+(add-to-list 'wrap-region-except-modes 'scheme-mode)
+(add-to-list 'wrap-region-except-modes 'lisp-mode)
+(add-to-list 'wrap-region-except-modes 'clojure-mode)
+
+;; my own autoinsert implementation with wrap-region
 (defun my/wrap-region-trigger (input)
   `(lambda ()
      (interactive)
@@ -33,8 +40,12 @@
   (local-set-key (kbd "M-[")  (my/wrap-region-trigger "["))
   (local-set-key (kbd "M-{")  (my/wrap-region-trigger "{")))
 
-;; disable paredit enable mode
-(add-to-list 'wrap-region-except-modes 'emacs-lisp-mode)
-(add-to-list 'wrap-region-except-modes 'scheme-mode)
-(add-to-list 'wrap-region-except-modes 'lisp-mode)
-(add-to-list 'wrap-region-except-modes 'clojure-mode)
+(defvar my/autopair-enable-modes
+  '(c-mode c++-mode cperl-mode python-mode
+           haskell-mode inferior-haskell-mode))
+
+(defun my/autopair-prog-mode-hook ()
+  (when (memq major-mode my/autopair-enable-modes)
+    (my/wrap-region-as-autopair)))
+
+(add-hook 'prog-mode-hook 'my/autopair-prog-mode-hook)

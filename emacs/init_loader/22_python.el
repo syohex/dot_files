@@ -43,9 +43,6 @@
      ;; flymake by flycheck
      (add-hook 'python-mode-hook 'flycheck-mode)
 
-     ;; auto-pair
-     (add-hook 'python-mode-hook 'my/wrap-region-as-autopair)
-
      ;; binding
      (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
