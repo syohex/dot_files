@@ -86,14 +86,13 @@
 (defun cperl-insert-use-statement ()
   "use statement auto-insertion."
   (interactive)
-  (let ((module-name (cperl-word-at-point))
+  (let ((module-name (read-string "Import Module: " (cperl-word-at-point)))
         (insert-point (cperl-detect-insert-point)))
     (save-excursion
       (let ((use-statement (concat "\nuse " module-name ";")))
-        (if (not (search-backward use-statement nil t))
-            (progn
-              (goto-char insert-point)
-              (insert use-statement))
+        (when (not (search-backward use-statement nil t))
+          (goto-char insert-point)
+          (insert use-statement)
           (error "'%s' is already imported" module-name))))))
 
 (defun cperl-detect-insert-point ()
