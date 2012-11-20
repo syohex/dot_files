@@ -40,9 +40,9 @@
   (local-set-key (kbd "M-[")  (my/wrap-region-trigger "["))
   (local-set-key (kbd "M-{")  (my/wrap-region-trigger "{")))
 
+;; set majar mode derived `prog-mode'
 (defvar my/autopair-enable-modes
-  '(c-mode c++-mode cperl-mode python-mode
-           haskell-mode inferior-haskell-mode))
+  '(c-mode c++-mode python-mode))
 
 (defun my/autopair-prog-mode-hook ()
   (when (memq major-mode my/autopair-enable-modes)
