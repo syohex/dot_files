@@ -18,6 +18,17 @@
 (define-key ctrl-z-d-map (kbd "s") 'kill-string)
 (define-key ctrl-z-d-map (kbd "$") 'kill-line)
 
+(defun my/delete-to-char ()
+  (interactive)
+  (let ((chr (read-char "Delete to: ")))
+    (unless chr
+      (error "Please input character"))
+    (save-excursion
+      (let ((cur-point (point))
+            (del-point (or (search-forward (char-to-string chr) nil t))))
+        (delete-region cur-point (1- del-point))))))
+(define-key ctrl-z-d-map (kbd "f") 'my/delete-to-char)
+
 ;; Copying('C-z y' prefix)
 (defvar ctrl-z-y-map (make-sparse-keymap)
   "Key map for subcommands of C-z y")
@@ -55,18 +66,27 @@
         (t nil)))
 (define-key ctrl-z-map (kbd "%") 'goto-match-paren)
 
-;; Move next searched char('f')
-(defun forward-match-char ()
-  (interactive)
-  (let ((c (read-char)))
-    (forward-char)
-    (skip-chars-forward (format "^%s" (char-to-string c)))))
+;; paste
+(defun repeat-yank (arg)
+  (interactive "p")
+  (dotimes (i arg)
+    (yank)))
+(define-key ctrl-z-map (kbd "p") 'repeat-yank)
 
-(defun backward-match-char ()
+;; Move next searched char('f')
+(defun forward-match-char (arg)
+  (interactive "p")
+  (let ((c (read-char)))
+    (dotimes (i arg)
+      (forward-char)
+      (skip-chars-forward (format "^%s" (char-to-string c))))))
+
+(defun backward-match-char (arg)
   (interactive)
   (let ((c (read-char)))
-    (skip-chars-backward (format "^%s" (char-to-string c)))
-    (backward-char)))
+    (dotimes (i arg)
+      (skip-chars-backward (format "^%s" (char-to-string c)))
+      (backward-char))))
 
 (define-key ctrl-z-map (kbd "f") 'forward-match-char)
 (define-key ctrl-z-map (kbd "F") 'backward-match-char)

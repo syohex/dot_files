@@ -53,18 +53,7 @@
       (let ((current-prefix-arg nil))
         (call-interactively 'align-regexp))
     (call-interactively 'align)))
-(define-key my/ctrl-q-map (kbd "\\") 'my/align-)
-
-(defun my/delete-to-char ()
-  (interactive)
-  (let ((chr (read-char "Delete to: ")))
-    (unless chr
-      (error "Please input character"))
-   (save-excursion
-     (let ((cur-point (point))
-           (del-point (or (search-forward (char-to-string chr) nil t))))
-       (delete-region cur-point (1- del-point))))))
-(define-key my/ctrl-q-map (kbd "d") 'my/delete-to-char)
+(define-key my/ctrl-q-map (kbd "\\") 'my/align-command)
 
 (defun swap-buffers ()
   (interactive)
@@ -75,15 +64,6 @@
     (set-window-buffer (selected-window) curbuf)))
 
 (define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
-
-;; repeat yank. Because C-y can't accept `C-u Number' prefix
-(defun repeat-yank (num)
-  (interactive "NRepeat Count > ")
-  (dotimes (i num)
-    (yank)
-    (insert "\n")))
-(define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
-(global-set-key (kbd "M-g y") 'repeat-yank)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ack)
