@@ -37,7 +37,15 @@
 
 (define-key ctrl-z-y-map (kbd "w") 'copy-word)
 (define-key ctrl-z-y-map (kbd "s") 'copy-string)
-(define-key ctrl-z-y-map (kbd "y") 'copy-line)
+
+(defun my/copy-line (arg)
+  (interactive "p")
+  (save-excursion
+    (beginning-of-line)
+    (let ((start (point)))
+      (forward-line arg)
+      (kill-ring-save start (point)))))
+(define-key ctrl-z-y-map (kbd "y") 'my/copy-line)
 
 ;; Insert next line and previous line('o' and 'O')
 (defun edit-next-line ()
