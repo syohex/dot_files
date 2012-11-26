@@ -9,7 +9,7 @@
   (let* ((line (flymake-current-line-no))
          (line-err-info (flymake-find-err-info flymake-err-info line))
          (error-infos (nth 0 line-err-info))
-         (eof-char (char-to-string 0)))
+         (nul-char (char-to-string 0)))
     (when error-infos
       (loop for error-info in error-infos
             for message = (flymake-ler-text error-info)
@@ -17,9 +17,11 @@
             for line    = (flymake-ler-line error-info)
             for filemsg = (or (and file " - %s(%d)" file line) "")
 
-            ;; @@ haskell error message contain EOF
-            for removed-eof = (replace-regexp-in-string eof-char "\n" message)
-            collect (format "%s%s" removed-eof filemsg) into messages
+            ;; @@ haskell error message contain NUL
+            for removed-nul = (replace-regexp-in-string nul-char "\n" message)
+            for chomped     = (replace-regexp-in-string "\n$" "" removed-nul)
+
+            collect (concat chomped filemsg) into messages
             finally
             (popup-tip (mapconcat 'identity
                                   (delete-duplicates messages :test #'string=)
@@ -62,11 +64,11 @@
 ;; helm flymake
 (defun helm-c-flymake-init ()
   (with-current-buffer helm-current-buffer
-    (loop with eof-char = (char-to-string 0)
+    (loop with nul-char = (char-to-string 0)
           for err in flymake-err-info
           for line   = (car err)
           for detail = (aref (caar (cdr err)) 4)
-          for msg    = (replace-regexp-in-string eof-char " " detail)
+          for msg    = (replace-regexp-in-string nul-char " " detail)
           for errmsg = (format "%5d: %s" line msg)
           collect (cons errmsg line))))
 
