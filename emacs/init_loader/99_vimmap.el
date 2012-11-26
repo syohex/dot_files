@@ -7,6 +7,24 @@
 (defalias 'ctrl-z-prefix ctrl-z-map)
 (define-key global-map (kbd "C-z") 'ctrl-z-prefix)
 
+;; move by word
+(defun vim-forward-word (arg)
+  (interactive "p")
+  (cond
+   ((region-active-p) (forward-word arg))
+   (t
+    (or (re-search-forward (if (> arg 0) "\\W\\b") nil t arg)
+        (goto-char (if (> arg 0) (point-max) (point-min)))))))
+(global-set-key (kbd "M-f") 'vim-forward-word)
+
+;; paragraph moving('[' and ']')
+(smartrep-define-key
+    global-map "C-z" '(("w" . 'vim-forward-word)
+                       ("e" . 'forward-word)
+                       ("b" . 'backward-word)))
+
+(define-key ctrl-z-map (kbd "w") 'vim-forward-word)
+
 ;; Deletion('C-z d' prefix)
 (defvar ctrl-z-d-map (make-sparse-keymap)
   "Key map for subcommands of C-z d")

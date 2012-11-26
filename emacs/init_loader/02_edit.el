@@ -30,14 +30,6 @@
   (delete-indentation))
 (global-set-key (kbd "M-K") 'my/delete-indentation)
 
-;; moving word
-(defun my/forward-to-word (arg)
-  (interactive "p")
-  (or (re-search-forward (if (> arg 0) "\\(\\W\\b\\|.$\\)" "\\b\\W") nil t arg)
-      (goto-char (if (> arg 0) (point-max) (point-min)))))
-
-(global-set-key (kbd "M-f") 'my/forward-to-word)
-
 ;; for word delete instead of kill-word and backward-kill-word
 (defun delete-word (arg)
   (interactive "p")
