@@ -14,10 +14,37 @@
   (ghc-init)
   (flymake-mode)
   (my/wrap-region-as-autopair)
+
+  ;; bindings
   (define-key haskell-mode-map (kbd "C-M-i") 'auto-complete)
+  (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
 
   ;; for auto-complete
   (push 'ac-source-ghc-mod ac-sources))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)
 (add-hook 'inferior-haskell-hook 'my/wrap-region-as-autopair)
+
+;; find document
+(defvar helm-c-source-ghc-mod
+  '((name . "GHC Browse Documennt")
+    (init . helm-c-source-ghc-mod)
+    (candidates-in-buffer)
+    (candidate-number-limit . 9999)
+    (action . helm-c-source-ghc-mod-action)))
+
+(defun helm-c-source-ghc-mod ()
+  (with-current-buffer (helm-candidate-buffer 'global)
+    (unless (call-process-shell-command "ghc-mod list" nil t t)
+      (error "Failed 'ghc-mod list'"))))
+
+(defun helm-c-source-ghc-mod-action (candidate)
+  (let ((pkg (ghc-resolve-package-name candidate)))
+    (if (and pkg candidate)
+        (ghc-display-document pkg candidate nil)
+      (error (format "Not found %s(Package %s)" candidate pkg)))))
+
+(defun helm-ghc-browse-document ()
+  (interactive)
+  (helm :sources '(helm-c-source-ghc-mod)
+        :buffer (get-buffer-create "*helm-ghc-document*")))
