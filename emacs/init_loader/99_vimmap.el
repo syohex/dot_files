@@ -78,6 +78,8 @@
       (end-of-line))
   (newline-and-indent))
 
+(global-set-key (kbd "M-o") 'edit-next-line)
+(global-set-key (kbd "M-O") 'edit-previous-line)
 (define-key ctrl-z-map (kbd "o") 'edit-next-line)
 (define-key ctrl-z-map (kbd "O") 'edit-previous-line)
 
@@ -91,13 +93,6 @@
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
 (define-key ctrl-z-map (kbd "%") 'goto-match-paren)
-
-;; paste
-(defun repeat-yank (arg)
-  (interactive "p")
-  (dotimes (i arg)
-    (yank)))
-(define-key ctrl-z-map (kbd "p") 'repeat-yank)
 
 ;; Move next searched char('f')
 (defun forward-match-char (arg)

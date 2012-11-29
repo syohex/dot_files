@@ -7,7 +7,7 @@
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
-(global-set-key (kbd "C-x C-r") 'my/helm-recentf)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-h a")   'helm-c-apropos)
@@ -25,8 +25,14 @@
 (defun my/copy-line ()
   (interactive)
   (kill-ring-save (line-beginning-position) (line-end-position)))
-
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
+
+;; paste
+(defun repeat-yank (arg)
+  (interactive "p")
+  (dotimes (i arg)
+    (yank)))
+(define-key my/ctrl-q-map (kbd "p") 'repeat-yank)
 
 (defun my/upcase-previous-word (arg)
   (interactive "p")

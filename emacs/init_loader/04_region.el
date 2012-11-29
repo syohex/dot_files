@@ -1,5 +1,11 @@
 ;;;; region setting
 
+;; expand region
+(require 'expand-region)
+(global-set-key (kbd "M-SPC") 'er/expand-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "C-M-@") 'er/contract-region)
+
 ;; multimark
 (require 'mark-more-like-this)
 (global-set-key (kbd "C-<") 'mark-previous-like-this)

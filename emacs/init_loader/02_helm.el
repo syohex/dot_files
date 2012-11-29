@@ -55,18 +55,3 @@
            (sources (helm-c-sources-git-project-for default-directory)))
       (helm-other-buffer sources "*helm git project*"))))
 (define-key global-map (kbd "C-;") 'helm-git-project)
-
-;; helm recentf only directories
-(defvar helm-c-recentf-directory-source
-  '((name . "Recentf Directry")
-    (candidates . (lambda ()
-                    (loop for file in recentf-list
-                          when (file-directory-p file)
-                          collect file)))
-    (type . file)))
-
-(defun my/helm-recentf (arg)
-  (interactive "P")
-  (if current-prefix-arg
-      (helm-other-buffer helm-c-recentf-directory-source "*helm recentf*")
-    (call-interactively 'helm-recentf)))

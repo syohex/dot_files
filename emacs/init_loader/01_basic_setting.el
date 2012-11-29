@@ -6,8 +6,8 @@
 (global-font-lock-mode t)
 
 ;; temp directory
-(if (file-exists-p "/mnt/ramdisk")
-    (setq temporary-file-directory "/mnt/ramdisk/"))
+(when (file-exists-p "/mnt/ramdisk")
+  (setq temporary-file-directory "/mnt/ramdisk/"))
 
 ;; cursor
 (when window-system
@@ -128,11 +128,6 @@
 
 ;; expand symbolic link
 (setq-default find-file-visit-truename t)
-
-;; expand region
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-(global-set-key (kbd "C-M-@") 'er/contract-region)
 
 ;; for popular file type
 (require 'generic-x)
