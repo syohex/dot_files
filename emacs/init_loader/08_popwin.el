@@ -25,3 +25,6 @@
 ;; python
 (push '("*Python*"   :stick t) popwin:special-display-config)
 (push '("*jedi:doc*" :stick t) popwin:special-display-config)
+
+;; Haskell
+(push '("*GHC Info*") popwin:special-display-config)

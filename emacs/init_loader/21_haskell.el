@@ -25,6 +25,18 @@
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)
 (add-hook 'inferior-haskell-hook 'my/wrap-region-as-autopair)
 
+;; Wrap region with block comment
+(defun haskell-block-commend-region (start end)
+  (interactive "r")
+  (save-excursion
+    (let (end-marker)
+      (goto-char end)
+      (setq end-marker (point-marker))
+      (goto-char start)
+      (insert "{-\n")
+      (goto-char (marker-position end-marker))
+      (insert "-}"))))
+
 ;; find document
 (defvar helm-c-source-ghc-mod
   '((name . "GHC Browse Documennt")
