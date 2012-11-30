@@ -22,6 +22,11 @@ setopt share_history
 # key-type is Emacs
 bindkey -e
 
+# removed keys(for miss typing)
+# I want to bind good function for these keys!!
+bindkey -r '^O'
+bindkey -r '^J'
+
 # for incremental search
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
