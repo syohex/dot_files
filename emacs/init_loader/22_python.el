@@ -44,11 +44,14 @@
      (add-hook 'python-mode-hook 'flycheck-mode)
 
      ;; binding
+     (define-key python-mode-map (kbd "C-c C-a") 'my/python-help)
      (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
      (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
+
+(add-hook 'python-mode-hook 'jedi:setup)
 
 (defvar my/python-block-regexp
   "\\<\\(for\\|if\\|while\\|try\\|class\\|def\\)\\s-")
@@ -118,4 +121,13 @@
        (beginning-of-line)
        (delete-char python-indent)))))
 
-(add-hook 'python-mode-hook 'jedi:setup)
+;; help utilities
+(defun my/python-help ()
+  (interactive)
+  (let ((module (read-string "Pydoc module: " ))
+        (buf (get-buffer-create "*Python Help*")))
+    (with-current-buffer (get-buffer-create buf)
+      (erase-buffer)
+      (call-process-shell-command (format "pydoc %s" module) nil t t)
+      (goto-char (point-min)))
+    (pop-to-buffer buf)))

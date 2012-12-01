@@ -24,6 +24,7 @@
 
 ;; python
 (push '("*Python*"   :stick t) popwin:special-display-config)
+(push '("*Python Help*" :stick t :height 20) popwin:special-display-config)
 (push '("*jedi:doc*" :stick t) popwin:special-display-config)
 
 ;; Haskell
