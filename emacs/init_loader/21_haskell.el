@@ -18,6 +18,7 @@
   ;; bindings
   (define-key haskell-mode-map (kbd "C-M-i") 'auto-complete)
   (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
+  (local-unset-key (kbd "C-M-d"))
 
   ;; for auto-complete
   (push 'ac-source-ghc-mod ac-sources))
