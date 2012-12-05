@@ -79,13 +79,18 @@
 (defun duplicate-thing (n)
   (interactive "p")
   (save-excursion
-    (let ((str (if mark-active
+    (let ((orig-line (line-number-at-pos))
+          (str (if mark-active
                    (buffer-substring (region-beginning) (region-end))
                  (buffer-substring (line-beginning-position)
                                    (line-end-position)))))
       (forward-line 1)
+      ;; maybe last line
+      (when (= orig-line (line-number-at-pos))
+        (insert "\n"))
       (dotimes (i (or n 1))
-        (insert str "\n")))))
+        (insert str "\n"))))
+  (forward-line 1))
 
 (smartrep-define-key
-    global-map "M-g" '(("c" . (call-interactively 'duplicate-thing))))
+    global-map "M-g" '(("c" . duplicate-thing)))
