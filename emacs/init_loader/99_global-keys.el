@@ -3,7 +3,6 @@
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'newline-and-indent)
-(global-set-key (kbd "C-M-w") 'kill-symbol)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
@@ -45,7 +44,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "w") 'copy-word)
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
-(define-key my/ctrl-q-map (kbd "f") 'helm-flymake)
 (define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)

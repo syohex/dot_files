@@ -30,3 +30,4 @@
 (loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-word-mode c))
 (loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
 (loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c in '(?_ ?+ ?-) do (add-hyper-char-to-ace-jump-word-mode c))
