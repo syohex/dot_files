@@ -39,8 +39,3 @@
 (defun helm-hyperspec ()
   (interactive)
   (helm 'helm-c-source-hyperspec (thing-at-point 'symbol)))
-
-(defun my/lisp-mode-hook ()
-  (define-key lisp-mode-map (kbd "C-c C-d C-l") 'helm-hyperspec))
-
-(add-hook 'lisp-mode-hook 'my/lisp-mode-hook)
