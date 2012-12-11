@@ -13,7 +13,7 @@
   (cond
    ((region-active-p) (forward-word arg))
    (t
-    (or (re-search-forward (if (> arg 0) "\\W\\b") nil t arg)
+    (or (re-search-forward (if (> arg 0) "\\(\\W\\b\\|.$\\)") nil t arg)
         (goto-char (if (> arg 0) (point-max) (point-min)))))))
 (global-set-key (kbd "M-f") 'vim-forward-word)
 
