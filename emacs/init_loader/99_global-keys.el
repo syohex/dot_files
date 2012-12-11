@@ -66,8 +66,20 @@
     (other-window 1)
     (set-window-buffer curwin (window-buffer))
     (set-window-buffer (selected-window) curbuf)))
-
 (define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
+
+(defun my/dict ()
+  (interactive)
+  (let ((word (read-string "Word: " (thing-at-point 'word))))
+    (with-current-buffer (get-buffer-create "*dict*")
+      (erase-buffer)
+      (let* ((cmd (format "dict %s" word))
+             (ret (call-process-shell-command cmd nil t)))
+        (unless (= ret 0)
+          (error ("Failed command: %s")))
+        (pop-to-buffer (get-buffer "*dict*"))
+        (goto-char (point-min))))))
+(define-key my/ctrl-q-map (kbd "C-d") 'my/dict)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ack)
