@@ -1,4 +1,4 @@
 # name : ;;;###autoload # autoload annotation
-# key  : template
+# key  : autoload
 # --
 ;;;###autoload

@@ -1,5 +1,5 @@
 # name : Package Template
-# key  : template
+# key  : package
 # --
 ;;; `(file-name-nondirectory (buffer-file-name))` ---
 
