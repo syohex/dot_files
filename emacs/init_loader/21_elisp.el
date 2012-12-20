@@ -12,6 +12,10 @@
                     :underline t :foreground "green"
                     :weight 'bold)
 
+;; slimenav
+(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+(add-hook 'lisp-interaction-mode-hook 'elisp-slime-nav-mode)
+
 ;; for regexp color
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
 (set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
