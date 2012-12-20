@@ -44,7 +44,7 @@
 
 ;; set majar mode derived `prog-mode'
 (defvar my/autopair-enable-modes
-  '(c-mode c++-mode python-mode))
+  '(c-mode c++-mode python-mode ruby-mode))
 
 (defun my/autopair-prog-mode-hook ()
   (when (memq major-mode my/autopair-enable-modes)
