@@ -7,6 +7,7 @@
 (defun my/coffee-mode-hook ()
   (setq coffee-tab-width 2)
   (local-unset-key (kbd "C-m"))
-  (my/wrap-region-as-autopair))
+  (my/wrap-region-as-autopair)
+  (flycheck-mode))
 
 (add-hook 'coffee-mode-hook 'my/coffee-mode-hook)
