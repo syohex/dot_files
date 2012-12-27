@@ -1,5 +1,5 @@
 # name: sub {} # Anonymous function
-# key: sub
+# key: anon
 # --
 sub {
     my (${1:$var}) = @_;
