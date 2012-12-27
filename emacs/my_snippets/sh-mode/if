@@ -1,7 +1,6 @@
-# name: if
+# name: if # if cond; then Body fi
 # key: if
 # --
-if $0
-then
+if $0; then
 
 fi
