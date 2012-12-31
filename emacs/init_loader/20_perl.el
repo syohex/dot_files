@@ -12,8 +12,7 @@
      (define-key cperl-mode-map (kbd "(") nil)
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "[") nil)
-     (define-key cperl-mode-map (kbd "C-c C-i") 'cperl-insert-use-statement)
-     (define-key cperl-mode-map (kbd "C-c C-d") 'cperl-perldoc)
+     (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
 
      ;; faces
      (set-face-bold-p 'cperl-array-face nil)
@@ -65,11 +64,15 @@
                     (match-beginning 0)) index)))
     (nreverse index)))
 
+(autoload 'helm-perldoc:setup "helm-perldoc")
+
 (defun my/cperl-mode-hook ()
   (flymake-mode t)
   (my/wrap-region-as-autopair)
   (my/setup-symbol-moving)
   (hs-minor-mode 1)
+
+  (helm-perldoc:setup)
 
   ;; my own imenu. cperl imenu is too many information for me
   (set (make-local-variable 'imenu-create-index-function)
@@ -81,27 +84,6 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-close-paren-offset -4)
  '(cperl-indent-subs-specially nil))
-
-;; insert 'use Module' which is at cursor.
-(defun cperl-insert-use-statement ()
-  "use statement auto-insertion."
-  (interactive)
-  (let ((module-name (read-string "Import Module: " (cperl-word-at-point)))
-        (insert-point (cperl-detect-insert-point)))
-    (save-excursion
-      (let ((use-statement (concat "\nuse " module-name ";")))
-        (when (not (search-backward use-statement nil t))
-          (goto-char insert-point)
-          (insert use-statement)
-          (error "'%s' is already imported" module-name))))))
-
-(defun cperl-detect-insert-point ()
-  (save-excursion
-    (if (re-search-backward "use .+;" 1 t)
-        (match-end 0)
-      (progn
-        (string-match "^$" (buffer-string))
-        (match-end 0)))))
 
 ;; pod-mode
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
@@ -127,42 +109,9 @@
         (manual-entry input)
       (error "no input"))))
 
-;; Perl utility functions
-;; exec 'perldoc -m'
-(defun perldoc-m ()
-  (interactive)
-  (let ((module (thing-at-point 'perl-module-thing))
-        (pop-up-windows t)
-        (cperl-mode-hook nil))
-    (when (string= module "")
-      (setq module (read-string "Module Name: ")))
-    (let ((result (substring (shell-command-to-string
-                              (concat "perldoc -m " module)) 0 -1))
-          (buffer (get-buffer-create (concat "*Perl " module "*")))
-          (pop-or-set-flag (string-match "*Perl " (buffer-name))))
-      (if (string-match "No module found for" result)
-          (message "%s" result)
-        (progn
-          (with-current-buffer buffer
-            (toggle-read-only -1)
-            (erase-buffer)
-            (insert result)
-            (goto-char (point-min))
-            (cperl-mode)
-            (toggle-read-only 1))
-          (if pop-or-set-flag
-              (switch-to-buffer buffer)
-            (display-buffer buffer)))))))
-
 ;; perltidy
 (defun perltidy-region ()
-   "Run perltidy on the current region."
-   (interactive)
-   (save-excursion
-     (shell-command-on-region (point) (mark) "perltidy -q" nil t)))
-
-(defun perltidy-defun ()
-  "Run perltidy on the current defun."
+  "Run perltidy on the current region."
   (interactive)
-  (save-excursion (mark-defun)
-                  (perltidy-region)))
+  (save-excursion
+    (shell-command-on-region (point) (mark) "perltidy -q" nil t)))
