@@ -24,6 +24,8 @@
 
 ;;; Commentary:
 
+$0
+
 ;;; Code:
 
 (provide '`(file-name-sans-extension (file-name-nondirectory (buffer-file-name)))`)
