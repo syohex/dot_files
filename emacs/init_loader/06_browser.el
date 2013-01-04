@@ -3,7 +3,8 @@
 (require 'w3m-load)
 
 ;; set default browser
-(setq browse-url-browser-function 'browse-url-firefox)
+(when (macosx-p)
+  (setq browse-url-browser-function 'browse-url-firefox))
 
 ;; alc
 (defun alc (word)
