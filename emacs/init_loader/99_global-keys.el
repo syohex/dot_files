@@ -44,7 +44,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "w") 'copy-word)
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
-(define-key my/ctrl-q-map (kbd "C-f") 'ffap)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "r") '(lambda ()
@@ -87,6 +86,7 @@
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ack)
 (global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
+(global-set-key (kbd "M-g M-f") 'ffap)
 
 ;; duplicate current line
 (defun duplicate-thing (n)
