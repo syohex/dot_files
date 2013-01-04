@@ -29,9 +29,7 @@
      (ruby-end-mode)
 
      ;; auto insert pair
-     (require 'ruby-electric)
-     (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-     (setq ruby-electric-expand-delimiters-list nil)
+     (my/autopair-prog-mode-hook)
 
      ;; rsense
      (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
@@ -39,6 +37,7 @@
      (require 'rsense)
      (add-to-list 'ac-sources ac-source-rsense-method)
      (add-to-list 'ac-sources ac-source-rsense-constant)
+     (define-key ruby-mode-map (kbd "C-M-i") 'ac-complete-rsense)
 
      ;; flymake by flycheck
      (add-hook 'ruby-mode-hook 'flycheck-mode)
