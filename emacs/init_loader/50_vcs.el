@@ -13,6 +13,7 @@
 (global-set-key (kbd "C-x v g") 'sgit:grep)
 (global-set-key (kbd "C-x v l") 'sgit:log)
 (global-set-key (kbd "C-x v d") 'sgit:diff)
+(global-set-key (kbd "C-x v s") 'sgit:status)
 
 ;; List files in git repos
 (defun helm-c-sources-git-project-for (pwd)
