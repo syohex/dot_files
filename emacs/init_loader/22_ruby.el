@@ -7,6 +7,10 @@
      ;; style
      (setq ruby-deep-indent-paren nil)
 
+     ;; binding
+     (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
+     (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
+
      ;; indentation
      (setq ruby-deep-indent-paren nil)
      (defadvice ruby-indent-line (after unindent-closing-paren activate)
@@ -58,3 +62,18 @@
   (interactive (list current-prefix-arg))
   (when current-prefix-arg (yari-ruby-obarray rehash))
   (helm :sources 'yari-helm-source-ri-pages :buffer "*yari*"))
+
+;; Ruby's move defun
+(defun my/ruby-beginning-of-defun (&optional arg)
+  (interactive "p")
+  (and (re-search-backward (concat "^\\s-+\\(" ruby-block-beg-re "\\)\\_>")
+                           nil 'move)
+       (progn (back-to-indentation) t)))
+
+(defun my/ruby-end-of-defun (&optional arg)
+  (interactive "p")
+  (and (re-search-forward (concat "^\\s-+\\(" ruby-block-end-re "\\)\\($\\|\\b[^_]\\)")
+                          nil 'move (or arg 1))
+       (progn (beginning-of-line) t))
+  (forward-line 1)
+  (back-to-indentation))
