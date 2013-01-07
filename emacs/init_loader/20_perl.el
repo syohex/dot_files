@@ -72,7 +72,7 @@
   (my/setup-symbol-moving)
   (hs-minor-mode 1)
 
-  (helm-perldoc:setup)
+  (run-at-time 0 nil 'helm-perldoc:setup)
 
   ;; my own imenu. cperl imenu is too many information for me
   (set (make-local-variable 'imenu-create-index-function)
