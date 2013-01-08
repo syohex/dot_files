@@ -81,8 +81,9 @@
         (goto-char (point-min))))))
 (define-key my/ctrl-q-map (kbd "C-d") 'my/dict)
 
-(define-key my/ctrl-q-map (kbd "-") 'goto-last-change)
-(define-key my/ctrl-q-map (kbd "+") 'goto-last-change-reverse)
+(smartrep-define-key
+    global-map "C-q" '(("-" . 'goto-last-change)
+                       ("+" . 'goto-last-change-reverse)))
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ack)
