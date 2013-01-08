@@ -1,0 +1,6 @@
+# name : (defgroup group-name ...)
+# key  : defgroup
+# --
+(defgroup $0 nil
+  ""
+  :group ')
