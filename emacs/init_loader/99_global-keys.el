@@ -46,6 +46,7 @@
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
+(define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
 (define-key my/ctrl-q-map (kbd "r") '(lambda ()
                                        (interactive)
                                        (revert-buffer nil t)))
