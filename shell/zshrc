@@ -111,11 +111,10 @@ else
 fi
 
 # alias
-alias lv='less'
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
-alias minicom='LANG=C minicom'
 alias gg='git grep'
+alias gl='git ls-files'
 
 # dstat
 alias dstat-full='dstat -Tclmdrn'
