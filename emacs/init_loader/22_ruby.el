@@ -35,7 +35,8 @@
      ;; auto insert pair
      (require 'ruby-electric)
      (setq ruby-electric-expand-delimiters-list nil)
-     (my/autopair-prog-mode-hook)
+     (add-hook 'ruby-mode-hook 'my/wrap-region-as-autopair)
+     (define-key ruby-mode-map (kbd "M-|") 'my/insert-vertical-bar)
 
      ;; rsense
      (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
@@ -64,6 +65,11 @@
   (interactive (list current-prefix-arg))
   (when current-prefix-arg (yari-ruby-obarray rehash))
   (helm :sources 'yari-helm-source-ri-pages :buffer "*yari*"))
+
+(defun my/insert-vertical-bar ()
+  (interactive)
+  (insert "||")
+  (backward-char 1))
 
 ;; Ruby's move defun
 (defun my/ruby-beginning-of-defun (&optional arg)
