@@ -33,6 +33,8 @@
      (ruby-end-mode)
 
      ;; auto insert pair
+     (require 'ruby-electric)
+     (setq ruby-electric-expand-delimiters-list nil)
      (my/autopair-prog-mode-hook)
 
      ;; rsense
