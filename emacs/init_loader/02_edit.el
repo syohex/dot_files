@@ -9,7 +9,6 @@
   (interactive)
   (copy-sexp)
   (message "%s" (thing-at-point 'sexp)))
-
 (global-set-key (kbd "M-C-SPC") 'my/copy-sexp)
 
 ;; delete-speces
@@ -21,7 +20,6 @@
           (skip-chars-backward " \t")
         (skip-chars-forward " \t"))
       (delete-region orig-point (point)))))
-
 (global-set-key (kbd "M-k") 'delete-following-spaces)
 
 (defun my/delete-indentation ()
@@ -114,3 +112,15 @@
 
 ;; goto-chg
 (require 'goto-chg)
+
+;; like Vim 'f'
+(defun my/move-specified-char (arg)
+  (interactive "p")
+  (let ((regexp (char-to-string (read-char))))
+    (cond ((and current-prefix-arg (listp current-prefix-arg))
+           (re-search-backward regexp nil t))
+          (t
+           (forward-char 1)
+           (re-search-forward regexp nil t arg)
+           (backward-char 1)))))
+(global-set-key (kbd "C-M-r") 'my/move-specified-char)
