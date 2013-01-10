@@ -93,11 +93,10 @@
 (add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
 (eval-after-load "xs-mode"
   '(progn
-     (lambda ()
-       (c-toggle-electric-state -1)
-       (setq c-auto-newline nil)
-       (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
-       (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc))))
+     (c-toggle-electric-state -1)
+     (setq c-auto-newline nil)
+     (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
+     (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc)))
 
 (defun xs-perldoc ()
   (interactive)
@@ -105,9 +104,9 @@
                  ("perlcall") ("perlclib") ("perlxstut")))
          (manual-program "perldoc")
          (input (completing-read "perldoc entry: " docs-alist)))
-    (if input
-        (manual-entry input)
-      (error "no input"))))
+    (unless input
+      (error "xs-perldoc: no input!!"))
+    (manual-entry input)))
 
 ;; perltidy
 (defun perltidy-region ()

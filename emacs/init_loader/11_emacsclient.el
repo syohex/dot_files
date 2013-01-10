@@ -1,6 +1,3 @@
-;; install emacsclient scripts
-;; $ git clone git@github.com:syohex/emacsclient_focus.git
-
 ;; server start for emacs-client
 (require 'server)
 

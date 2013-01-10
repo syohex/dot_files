@@ -24,3 +24,29 @@
   (switch-to-buffer-other-window (get-buffer-create "*info*"))
   (info "/usr/share/info/gauche-refe.info.gz")
   (Info-index topic))
+
+;; not insert unneeded space for scheme-mode
+(defvar my-paredit-paren-prefix-pat-gauche
+  (mapconcat
+   #'identity
+   '(
+     "#[suf]\\(8\\|16\\|32\\|64\\)"     ; SRFI-4
+     "#[0-9]+="                         ; SRFI-38
+     "(\\^"                             ; (^(x y) ...)
+     "#\\?="                            ; debug-print
+     "#vu8"                             ; R6RS bytevector
+     )
+   "\\|"))
+
+(defun paredit-space-for-delimiter-p-gauche (endp delimiter)
+  (or endp
+      (if (= (char-syntax delimiter) ?\()
+          (not (looking-back my-paredit-paren-prefix-pat-gauche))
+        t)))
+
+(defun my/scheme-mode-hook ()
+  (set (make-variable-buffer-local
+        'paredit-space-for-delimiter-predicates)
+       (list #'paredit-space-for-delimiter-p-gauche)))
+
+(add-hook 'scheme-mode-hook 'my/scheme-mode-hook)

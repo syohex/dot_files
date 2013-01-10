@@ -1,3 +1,4 @@
+;; setting for eshell
 (defvar eshell-pop-buffer "*eshell pop*")
 (defun eshell-pop ()
   (interactive)

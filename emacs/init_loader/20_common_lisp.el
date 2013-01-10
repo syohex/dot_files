@@ -12,7 +12,7 @@
         (lambda (&rest args)
           (apply (if (memq major-mode '(emacs-lisp-mode lisp-interaction-mode))
                      'lisp-indent-function
-                     'common-lisp-indent-function)
+                   'common-lisp-indent-function)
                  args))))
 
 ;; hyperspec document
@@ -29,12 +29,13 @@
     symbols))
 
 ;; hyperspec with helm
-(setq helm-c-source-hyperspec
-      `((name . "Lookup Hyperspec")
-        (candidates . ,(lambda ()
-                         (mapcar #'symbol-name
-                                 (obarray-to-list common-lisp-hyperspec-symbols))))
-        (action . (("Show Hyperspec" . hyperspec-lookup)))))
+(defvar helm-c-source-hyperspec
+  `((name . "Lookup Hyperspec")
+    (candidates . ,(lambda ()
+                     (mapcar #'symbol-name
+                             (obarray-to-list common-lisp-hyperspec-symbols))))
+    (action . (("Show Hyperspec" . hyperspec-lookup))))
+  "helm ")
 
 (defun helm-hyperspec ()
   (interactive)

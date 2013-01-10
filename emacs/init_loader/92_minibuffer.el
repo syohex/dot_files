@@ -11,4 +11,5 @@
            (back-to-indentation)
            (delete-region (point) current-pt)))))
 
-(define-key minibuffer-local-map (kbd "M-<backspace>") 'my/minibuffer-delete-parent-directory)
+(define-key minibuffer-local-map  (kbd "M-<backspace>")
+  'my/minibuffer-delete-parent-directory)

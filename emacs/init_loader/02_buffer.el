@@ -22,7 +22,8 @@
 ;; mark 'D'(delete) for matching buffer
 (require 'ibuffer)
 (defun ibuffer-menu-grep-delete (str)
-  (interactive "sregexp: ")
+  (interactive
+   (list (read-string "Delete Mark Regexp: ")))
   (save-excursion
     (goto-char (point-min))
     (forward-line 2)

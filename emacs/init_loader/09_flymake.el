@@ -29,10 +29,10 @@
 
 ;; If you don't set :height, :bold face parameter of 'pop-tip-face,
 ;; then seting those default values
-(if (eq 'unspecified (face-attribute 'popup-tip-face :height))
-    (set-face-attribute 'popup-tip-face nil :height 1.0))
-(if (eq 'unspecified (face-attribute 'popup-tip-face :weight))
-    (set-face-attribute 'popup-tip-face nil :weight 'normal))
+(when (eq 'unspecified (face-attribute 'popup-tip-face :height))
+  (set-face-attribute 'popup-tip-face nil :height 1.0))
+(when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
+  (set-face-attribute 'popup-tip-face nil :weight 'normal))
 
 (defun my/display-error-message ()
   (let ((orig-face (face-attr-construct 'popup-tip-face)))

@@ -24,47 +24,6 @@
 (define-key view-mode-map (kbd "J") 'View-scroll-line-forward)
 (define-key view-mode-map (kbd "K") 'View-scroll-line-backward)
 
-;; insert-mode
-(defun my/view-insert ()
-  (interactive)
-  (toggle-read-only))
-(define-key view-mode-map (kbd "i") 'my/view-insert)
-
-(defun my/view-insert-bol ()
-  (interactive)
-  (back-to-indentation)
-  (toggle-read-only))
-(define-key view-mode-map (kbd "I") 'my/view-insert-bol)
-
-(defun my/view-insert-after ()
-  (interactive)
-  (unless (eolp)
-      (forward-char))
-  (toggle-read-only))
-(define-key view-mode-map (kbd "a") 'my/view-insert-after)
-
-(defun my/view-insert-eol ()
-  (interactive)
-  (end-of-line)
-  (toggle-read-only))
-(define-key view-mode-map (kbd "A") 'my/view-insert-eol)
-
-(defun my/view-insert-next-line ()
-  (interactive)
-  (toggle-read-only)
-  (end-of-line)
-  (newline-and-indent))
-(define-key view-mode-map (kbd "o") 'my/view-insert-next-line)
-
-(defun my/view-insert-prev-line ()
-  (interactive)
-  (forward-line -1)
-  (toggle-read-only)
-  (if (not (= (current-line) 1))
-      (end-of-line))
-  (newline-and-indent))
-(define-key view-mode-map (kbd "O") 'my/view-insert-prev-line)
-
 ;; Changeing mode-line color when view-mode is enable
 (require 'viewer)
 (viewer-stay-in-setup)
