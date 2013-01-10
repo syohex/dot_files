@@ -22,20 +22,17 @@
   (set-face-foreground 'org-tag "green yellow")
 
   ;; function of org-open-at-point
-  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
-
-  ;; org-capture
-  (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Dropbox/emacs/todo.org" "Inbox")
-             "** TODO %?\n   %i\n   %a\n   %t")
-        ("n" "Note" entry (file+headline "~/Dropbox/emacs/memo.org" "Notes")
-             "** %?\n   %i\n   %a\n   %t")))
-
-  ;; hooks
-  (add-hook 'org-mode-hook 'my/org-mode-hook))
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file))
 
 (eval-after-load "org"
   '(progn
+     (define-key org-mode-map (kbd "C-t") 'org-mark-ring-goto)
+     (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
+     (define-key org-mode-map (kbd "C-c C-i") 'my/org-insert-pomodoro-template)
+     (define-key org-mode-map (kbd "C-t") 'org-mark-ring-goto)
+     (define-key org-mode-map (kbd "C-M-<tab>") 'show-all)
+     (local-unset-key (kbd "M-S-<return>"))
+
      (smartrep-define-key
          org-mode-map "C-c" '(("f" . 'org-shiftright)
                               ("b" . 'org-shiftleft)))
@@ -43,11 +40,6 @@
          org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
                               ("C-p" . (outline-previous-visible-heading 1))))))
 
-(defun my/org-mode-hook ()
-  (local-set-key (kbd "C-t") 'org-mark-ring-goto)
-  (local-set-key (kbd "C-M-<return>") 'org-insert-todo-heading)
-  (local-set-key (kbd "C-c C-i") 'my/org-insert-pomodoro-template)
-  (local-unset-key (kbd "M-S-<return>")))
 
 (defun my/org-insert-pomodoro-template ()
   (interactive)
