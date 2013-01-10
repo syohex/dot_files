@@ -15,6 +15,9 @@
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 
+;; helm-ack
+(setq helm-c-ack-insert-at-point 'symbol)
+
 ;; helm faces
 (require 'helm-files)
 (set-face-attribute 'helm-ff-file nil
