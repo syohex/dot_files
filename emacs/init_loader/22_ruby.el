@@ -44,7 +44,6 @@
      (require 'rsense)
      (add-to-list 'ac-sources ac-source-rsense-method)
      (add-to-list 'ac-sources ac-source-rsense-constant)
-     (define-key ruby-mode-map (kbd "C-M-i") 'ac-complete-rsense)
 
      ;; flymake by flycheck
      (add-hook 'ruby-mode-hook 'flycheck-mode)

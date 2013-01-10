@@ -21,6 +21,13 @@
 
 (setq ac-quick-help-delay 0.1)
 
+;; for global minor mode
+(defun my/auto-complete ()
+  (case major-mode
+    (ruby-mode (ac-complete-rsense))
+    (python-mode (jedi:complete))
+    (otherwise (auto-complete))))
+
 ;; look command with auto-complete
 (defun my/ac-look ()
   "`look' command with auto-completelook"

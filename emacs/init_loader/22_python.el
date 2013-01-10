@@ -14,8 +14,6 @@
      ;; auto-complete mode for python
      (add-to-list 'load-path "~/.emacs.d/emacs-jedi/")
      (require 'jedi)
-     (local-unset-key (kbd "C-M-i"))
-     (define-key python-mode-map (kbd "C-M-i") 'jedi:complete)
      (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
 
      ;; show-doc
