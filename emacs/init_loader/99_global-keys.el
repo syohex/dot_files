@@ -21,6 +21,11 @@
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 
+(defun my/delete-line ()
+  (interactive)
+  (delete-region (line-beginning-position) (line-end-position)))
+(define-key my/ctrl-q-map (kbd "k") 'my/delete-line)
+
 (defun my/copy-line ()
   (interactive)
   (kill-ring-save (line-beginning-position) (line-end-position)))
@@ -42,22 +47,9 @@
 (require 'col-highlight)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "w") 'copy-word)
-(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
-(define-key my/ctrl-q-map (kbd "r") '(lambda ()
-                                       (interactive)
-                                       (revert-buffer nil t)))
-
-(defun my/align-command ()
-  (interactive)
-  (if current-prefix-arg
-      (let ((current-prefix-arg nil))
-        (call-interactively 'align-regexp))
-    (call-interactively 'align)))
-(define-key my/ctrl-q-map (kbd "\\") 'my/align-command)
 
 (defun swap-buffers ()
   (interactive)
@@ -67,19 +59,6 @@
     (set-window-buffer curwin (window-buffer))
     (set-window-buffer (selected-window) curbuf)))
 (define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
-
-(defun my/dict ()
-  (interactive)
-  (let ((word (read-string "Word: " (thing-at-point 'word))))
-    (with-current-buffer (get-buffer-create "*dict*")
-      (erase-buffer)
-      (let* ((cmd (format "dict %s" word))
-             (ret (call-process-shell-command cmd nil t)))
-        (unless (= ret 0)
-          (error ("Failed command: %s")))
-        (pop-to-buffer (get-buffer "*dict*"))
-        (goto-char (point-min))))))
-(define-key my/ctrl-q-map (kbd "C-d") 'my/dict)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
