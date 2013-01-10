@@ -8,7 +8,8 @@
 (ac-config-default)
 
 ;; other modes to be enable auto-complete
-(push 'git-commit-mode ac-modes)
+(add-to-list 'ac-modes 'git-commit-mode)
+(add-to-list 'ac-modes 'markdown-mode)
 
 (setq ac-auto-start nil)
 
@@ -16,7 +17,7 @@
 (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
-(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map (kbd "<tab>") 'ac-complete)
 
 (setq ac-quick-help-delay 0.1)
 

@@ -20,7 +20,7 @@
   (local-unset-key (kbd "C-M-d"))
 
   ;; for auto-complete
-  (push 'ac-source-ghc-mod ac-sources))
+  (add-to-list 'ac-sources 'ac-source-ghc-mod))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)
 (add-hook 'inferior-haskell-hook 'my/wrap-region-as-autopair)
