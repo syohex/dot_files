@@ -10,6 +10,7 @@
   t  ;; default is enable
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
+    (,(kbd "C-M-i") . auto-complete)
     (,(kbd "M-C-o") . other-window)))
 
 (defvar my/alt-q-map (make-sparse-keymap)

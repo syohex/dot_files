@@ -14,7 +14,6 @@
      (setq slime-protocol-version 'ignore)
 
      (defun my/slime-mode-hook ()
-       (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
        (define-key slime-mode-map (kbd "C-c C-d C-l") 'helm-hyperspec))
      (add-hook 'slime-mode-hook 'my/slime-mode-hook)
 
@@ -24,5 +23,4 @@
       ;;;; ac-slime
      (require 'ac-slime)
      (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-     (define-key slime-repl-mode-map (kbd "C-M-i") 'auto-complete)))
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
