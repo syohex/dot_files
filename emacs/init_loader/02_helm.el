@@ -3,6 +3,7 @@
 (require 'helm-gtags)
 (require 'helm-ack)
 (require 'helm-descbinds)
+(require 'helm-myutils)
 
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
