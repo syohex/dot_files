@@ -2,7 +2,7 @@
 (when window-system
   (require 'elscreen)
   (elscreen-start)
-  (global-set-key (kbd "C-z C-x") 'elscreen-toggle)
+  (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
   (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
   (run-with-idle-timer 5 t 'elscreen-frame-title-update)
   (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
@@ -10,7 +10,7 @@
         elscreen-tab-display-kill-screen nil)
   (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
   (require 'helm-elscreen)
-  (global-set-key (kbd "C-z C-z") 'helm-elscreen)
+  (global-set-key (kbd "C-z C-l") 'helm-elscreen)
   (elscreen-toggle-display-tab))
 
 ;; update frame title to window names
