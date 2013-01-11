@@ -58,9 +58,6 @@
   (setq flymake-check-was-interrupted t))
 (ad-activate 'flymake-post-syntax-check)
 
-(global-set-key (kbd "M-n") 'flymake-goto-next-error)
-(global-set-key (kbd "M-p") 'flymake-goto-prev-error)
-
 ;; helm flymake
 (defun helm-c-flymake-init ()
   (with-current-buffer helm-current-buffer
