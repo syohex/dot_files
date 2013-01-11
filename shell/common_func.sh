@@ -4,11 +4,9 @@
 us_keyboard () {
     setxkbmap -model us -layout us
 
-    if [ "$1" = "think" ]
-    then
+    if [ "$1" = "think" ]; then
         xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
-    elif [ "$1" = "happy" ]
-    then
+    elif [ "$1" = "happy" ]; then
         xmodmap ~/dot_files/keyboard/hhk_xmodmap
     else
         select type in hhk thinkpad
@@ -37,14 +35,18 @@ cde () {
           (elscreen-current-directory)
         (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
 
+    if [ "$EMACS_CWD" eq "nil" ]; then
+        echo "Failed cde"
+        exit
+    fi
+
     echo "chdir to $EMACS_CWD"
     cd "$EMACS_CWD"
 }
 
 cdp () {
-    dir=`git rev-parse --show-toplevel 2>/dev/null`
-    if [ $? -eq 0 ]
-    then
+    dir=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [ $? -eq 0 ]; then
         CDP=$dir
         cd $dir
     else
