@@ -23,6 +23,7 @@
 
 ;; for global minor mode
 (defun my/auto-complete ()
+  (interactive)
   (case major-mode
     (ruby-mode (ac-complete-rsense))
     (python-mode (jedi:complete))
