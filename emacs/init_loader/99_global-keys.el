@@ -38,14 +38,10 @@
     (yank)))
 (define-key my/ctrl-q-map (kbd "p") 'repeat-yank)
 
-(defun my/upcase-previous-word (arg)
-  (interactive "p")
-  (backward-word arg)
-  (upcase-word arg))
-(define-key my/ctrl-q-map (kbd "u") 'my/upcase-previous-word)
-
-(require 'col-highlight)
+;; col-highlight
+(autoload 'col-highlight-mode "col-highlight" nil t)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
+
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
@@ -88,3 +84,8 @@
 
 (smartrep-define-key
     global-map "M-g" '(("c" . duplicate-thing)))
+
+;; flymake
+(smartrep-define-key
+    global-map "M-g" '(("M-n" . 'flymake-goto-next-error)
+                       ("M-p" . 'flymake-goto-prev-error)))
