@@ -11,3 +11,10 @@
 ;; I use notification anywhere
 (when (linux-p)
   (require 'notifications))
+
+;; anaphoric macro
+(defmacro aif (test then &rest else)
+  "Anaphoric if."
+  (declare (indent 2))
+  `(let ((it ,test))
+     (if it ,then ,@else)))
