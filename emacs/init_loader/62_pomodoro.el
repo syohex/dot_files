@@ -1,33 +1,32 @@
 ;; Pomodoro technique in Emacs
-(require 'pomodoro)
+(autoload 'pomodoro:start "pomodoro" nil t)
+(eval-after-load "pomodoro"
+  '(progn
+     (add-hook 'pomodoro:finish-work-hook
+               (my/pomodoro-notification :body "Work is Finish"))
+
+     (add-hook 'pomodoro:finish-rest-hook
+               (my/pomodoro-notification :body "Break time is finished"))
+
+     (add-hook 'pomodoro:long-rest-hook
+               (my/pomodoro-notification :body "Long Break time now"))
+
+     (global-set-key (kbd "M-g M-i") 'my/pomodoro-insert-check)))
 
 (defun* my/pomodoro-notification (&key (title "Pomodoro")
                                        body
                                        (urgency 'critical))
-  (notifications-notify :title title :body body :urgency urgency))
-
-(add-hook 'pomodoro:finish-work-hook
-          (lambda ()
-            (my/pomodoro-notification :body "Work is Finish")))
-
-(add-hook 'pomodoro:finish-rest-hook
-          (lambda ()
-            (my/pomodoro-notification :body "Break time is finished")))
-
-(add-hook 'pomodoro:long-rest-hook
-          (lambda ()
-            (my/pomodoro-notification :body "Long Break time now")))
+  (lambda ()
+    (notifications-notify :title title :body body :urgency urgency)))
 
 (defun my/pomodoro-insert-check (arg)
   (interactive "p")
   (dotimes (i arg)
     (insert "✓")))
 
-(global-set-key (kbd "M-g M-i") 'my/pomodoro-insert-check)
-
 (global-set-key (kbd "<f11>") (lambda ()
                                 (interactive)
-                                (find-file pomodoro:file)))
+                                (find-file "~/.emacs.d/pomodoro.org")))
 
 (global-set-key (kbd "<f10>") (lambda ()
                                 (interactive)
