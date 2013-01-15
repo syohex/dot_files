@@ -27,7 +27,3 @@
 (global-set-key (kbd "<f11>") (lambda ()
                                 (interactive)
                                 (find-file "~/.emacs.d/pomodoro.org")))
-
-(global-set-key (kbd "<f10>") (lambda ()
-                                (interactive)
-                                (find-file "~/Dropbox/emacs/memo.org")))
