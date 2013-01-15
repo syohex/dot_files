@@ -35,7 +35,7 @@ cde () {
           (elscreen-current-directory)
         (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
 
-    if [ "$EMACS_CWD" eq "nil" ]; then
+    if [ "$EMACS_CWD" == "nil" ]; then
         echo "Failed cde"
         exit
     fi
