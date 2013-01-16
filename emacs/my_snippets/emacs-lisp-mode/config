@@ -1,0 +1,14 @@
+# name : Test configuration file
+# key  : conf
+# --
+(set-default-font "VL Gothic 12")
+
+(add-to-list 'load-path "~/program/elisp/helm")
+(add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
+
+(set-scroll-bar-mode 'nil)
+(tool-bar-mode 0)
+(menu-bar-mode -1)
+
+(setq default-frame-alist
+       '((width . 72) (height . 24) (top . 28) (left . 0)))
