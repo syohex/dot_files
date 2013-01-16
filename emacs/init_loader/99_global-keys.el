@@ -49,6 +49,8 @@
 
 (defun swap-buffers ()
   (interactive)
+  (when (one-window-p)
+    (error "Frame is not splitted!!"))
   (let ((curwin (selected-window))
         (curbuf (window-buffer)))
     (other-window 1)
