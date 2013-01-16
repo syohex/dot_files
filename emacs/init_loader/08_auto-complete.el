@@ -35,13 +35,10 @@
   (interactive)
   (unless (executable-find "look")
     (error "Please install `look' command"))
-  (let ((word (thing-at-point 'word)))
-    (unless word
-      (error "not found word"))
-    (let ((cmd (format "look %s" word)))
-      (with-temp-buffer
-        (call-process-shell-command cmd nil t)
-        (split-string-and-unquote (buffer-string) "\n")))))
+  (let ((cmd (format "look %s" ac-prefix)))
+    (with-temp-buffer
+      (call-process-shell-command cmd nil t)
+      (split-string-and-unquote (buffer-string) "\n"))))
 
 (defun ac-look ()
   (interactive)
