@@ -30,24 +30,20 @@
     (otherwise (auto-complete))))
 
 ;; look command with auto-complete
-(defun my/ac-look ()
-  "`look' command with auto-completelook"
-  (interactive)
+(defun ac-look-candidates ()
   (unless (executable-find "look")
     (error "Please install `look' command"))
   (let ((cmd (format "look %s" ac-prefix)))
-    (with-temp-buffer
-      (call-process-shell-command cmd nil t)
-      (split-string-and-unquote (buffer-string) "\n"))))
+    (ignore-errors
+      (split-string
+       (shell-command-to-string cmd) "\n"))))
 
 (defun ac-look ()
   (interactive)
-  (let ((ac-menu-height 50)
-        (ac-candidate-limit t))
-  (auto-complete '(ac-source-look))))
+  (auto-complete '(ac-source-look)))
 
-(defvar ac-source-look
-  '((candidates . my/ac-look)
+(ac-define-source look
+  '((candidates . ac-look-candidates)
     (requires . 2)))
 
 (global-set-key (kbd "C-M-l") 'ac-look)
