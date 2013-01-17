@@ -112,11 +112,6 @@
 (define-key ctrl-z-map (kbd "f") 'forward-match-char)
 (define-key ctrl-z-map (kbd "F") 'backward-match-char)
 
-;; paragraph moving('[' and ']')
-(smartrep-define-key
-    global-map "C-z" '(("[" . 'backward-paragraph)
-                       ("]" . 'forward-paragraph)))
-
 ;; move point('C-o' and 'C-i')
 (smartrep-define-key
     global-map "C-z" '(("C-o" . 'goto-last-change)
