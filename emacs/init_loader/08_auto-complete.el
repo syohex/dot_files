@@ -19,7 +19,7 @@
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (define-key ac-completing-map (kbd "<tab>") 'ac-complete)
 
-(setq ac-quick-help-delay 0.1)
+(setq ac-quick-help-delay 1.0)
 
 ;; for global minor mode
 (defun my/auto-complete ()
