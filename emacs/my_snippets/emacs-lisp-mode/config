@@ -1,9 +1,16 @@
-# name : Test configuration file
+# name : Base of test configuration file
 # key  : conf
 # --
 (set-default-font "VL Gothic 12")
 
+;; for helm
 (add-to-list 'load-path "~/program/elisp/helm")
+
+;; for auto-complete
+(add-to-list 'load-path "~/program/elisp/auto-complete")
+(add-to-list 'load-path "~/program/elisp/popup-el")
+
+;; current-directory
 (add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
 
 (set-scroll-bar-mode 'nil)
