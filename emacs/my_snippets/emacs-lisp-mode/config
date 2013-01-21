@@ -10,6 +10,11 @@
 (add-to-list 'load-path "~/program/elisp/auto-complete")
 (add-to-list 'load-path "~/program/elisp/popup-el")
 
+(require 'popup)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(ac-config-default)
+
 ;; current-directory
 (add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
 
