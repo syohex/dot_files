@@ -42,15 +42,21 @@
      (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
      (add-to-list 'load-path (concat rsense-home "/etc"))
      (require 'rsense)
-     (add-to-list 'ac-sources ac-source-rsense-method)
-     (add-to-list 'ac-sources ac-source-rsense-constant)
 
      ;; flymake by flycheck
      (add-hook 'ruby-mode-hook 'flycheck-mode)
 
+     ;; my hook
+     (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
+
      ;; yari
      (require 'yari)
      (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
+
+(defun my/ruby-mode-hook ()
+  ;; auto-complete rsense
+  (add-to-list 'ac-sources ac-source-rsense-method)
+  (add-to-list 'ac-sources ac-source-rsense-constant))
 
 (defvar yari-helm-source-ri-pages
   '((name . "RI documentation")
