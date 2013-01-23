@@ -13,3 +13,8 @@ if [ ! -d $IPYTHON_DIR ]; then
 fi
 
 ln -sf $PWD/ipython_config.py $IPYTHON_DIR
+
+# percol
+PERCOL_DIR=~/.percol.d
+[ ! -d ${PERCOL_DIR} ] && mkdir $PERCOL_DIR
+ln -sf $PWD/percolrc.py ${PERCOL_DIR}/rc.py
