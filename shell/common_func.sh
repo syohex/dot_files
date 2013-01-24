@@ -37,7 +37,7 @@ cde () {
 
     if [ "$EMACS_CWD" == "nil" ]; then
         echo "Failed cde"
-        exit
+        return 1
     fi
 
     echo "chdir to $EMACS_CWD"
