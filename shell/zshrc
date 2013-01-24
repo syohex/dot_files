@@ -24,8 +24,9 @@ bindkey -e
 
 # removed keys(for miss typing)
 # I want to bind good function for these keys!!
-bindkey -r '^O'
 bindkey -r '^J'
+
+bindkey '^O' list-choices
 
 # for incremental search
 bindkey '^R' history-incremental-pattern-search-backward
