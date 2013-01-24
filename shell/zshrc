@@ -183,8 +183,21 @@ if [ -e ${VIRTUALENV_ACTIVE} ]; then
 fi
 export PYTHONSTARTUP=~/.pythonsetup
 
+# depot(eg. gclient) Google Development Utilities
+if [ -d ~/src/depot_tools ]; then
+    export PATH=~/src/depot_tools:$PATH
+fi
+
 # haskell setting
-export PATH=~/.cabal/bin:$PATH
+if [ -d ~/.cabal/bin ]; then
+    export PATH=~/.cabal/bin:$PATH
+fi
+
+# Emacs Lisp Carton setting
+if [ -d ~/.carton ]; then
+    # Don't conflict Perl's carton
+    alias ecarton="${HOME}/.carton/bin/carton"
+fi
 
 export TERM=xterm-256color
 
@@ -232,11 +245,6 @@ fi
 __git_files () {
     _wanted files expl 'local files' _files
 }
-
-# depot(eg. gclient) Google Development Utilities
-if [ -d ~/src/depot_tools ]; then
-    export PATH=~/src/depot_tools:$PATH
-fi
 
 # for tmux complete
 _tmux_pane_words() {
