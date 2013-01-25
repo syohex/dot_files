@@ -36,3 +36,7 @@
 
 ;; magit
 (global-set-key (kbd "M-g M-g") 'magit-status)
+(eval-after-load "magit"
+  '(progn
+     (set-face-attribute 'magit-item-highlight nil
+                         :background "gray3")))
