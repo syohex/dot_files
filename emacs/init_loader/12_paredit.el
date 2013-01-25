@@ -10,3 +10,6 @@
                 clojure-mode-hook
                 slime-repl-mode-hook))
   (add-hook hook 'enable-paredit-mode))
+
+(define-key paredit-mode-map (kbd "C-(") 'paredit-forward-barf-sexp)
+(define-key paredit-mode-map (kbd "C-)") 'paredit-forward-slurp-sexp)
