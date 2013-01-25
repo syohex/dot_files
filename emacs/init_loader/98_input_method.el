@@ -8,7 +8,8 @@
 (add-hook 'input-method-inactivate-hook
           '(lambda () (set-cursor-color "chartreuse2")))
 
-(require 'mozc)
-(setq default-input-method "japanese-mozc")
-(setq mozc-candidate-style 'echo-area) ;; overlay is too slow
-(global-set-key (kbd "C-o") 'toggle-input-method)
+(when (linux-p)
+  (require 'mozc)
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-candidate-style 'echo-area) ;; overlay is too slow
+  (global-set-key (kbd "C-o") 'toggle-input-method))
