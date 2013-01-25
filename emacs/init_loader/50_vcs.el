@@ -10,7 +10,6 @@
 ;;; Setting for Git
 ;; sgit
 (require 'sgit)
-(global-set-key (kbd "C-x v g") 'sgit:grep)
 (global-set-key (kbd "C-x v l") 'sgit:log)
 (global-set-key (kbd "C-x v d") 'sgit:diff)
 (global-set-key (kbd "C-x v s") 'sgit:status)
@@ -27,3 +26,10 @@
      (set-face-underline  'git-commit-summary-face t)
      (set-face-foreground 'git-commit-nonempty-second-line-face nil)
      (set-face-bold-p     'git-commit-nonempty-second-line-face nil)))
+
+;; git-gutter
+(global-set-key (kbd "C-x v g") 'git-gutter)
+(eval-after-load "git-gutter"
+  '(progn
+     (setq git-gutter:modified-sign " ")
+     (set-face-background 'git-gutter:modified "purple")))
