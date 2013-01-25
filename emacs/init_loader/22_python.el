@@ -38,9 +38,6 @@
 
      (define-key python-mode-map (kbd "C-c C-l") 'pylookup-lookup)
 
-     ;; flymake by flycheck
-     (add-hook 'python-mode-hook 'flycheck-mode)
-
      ;; binding
      (define-key python-mode-map (kbd "C-c C-a") 'my/python-help)
      (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)

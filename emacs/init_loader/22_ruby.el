@@ -35,16 +35,12 @@
      ;; auto insert pair
      (require 'ruby-electric)
      (setq ruby-electric-expand-delimiters-list nil)
-     (add-hook 'ruby-mode-hook 'my/wrap-region-as-autopair)
      (define-key ruby-mode-map (kbd "M-|") 'my/insert-vertical-bar)
 
      ;; rsense
      (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
      (add-to-list 'load-path (concat rsense-home "/etc"))
      (require 'rsense)
-
-     ;; flymake by flycheck
-     (add-hook 'ruby-mode-hook 'flycheck-mode)
 
      ;; my hook
      (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)

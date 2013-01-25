@@ -13,7 +13,6 @@
   (turn-on-haskell-indent)
   (ghc-init)
   (flymake-mode)
-  (my/wrap-region-as-autopair)
 
   ;; bindings
   (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)

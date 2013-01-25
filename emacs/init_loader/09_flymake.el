@@ -2,8 +2,13 @@
 (require 'flymake)
 (require 'flycheck)
 
+;; enable flycheck
+(dolist (hook '(coffee-mode-hook
+                python-mode-hook
+                ruby-mode-hook))
+  (add-hook hook 'flycheck-mode))
+
 ;; Show error message under current line
-(require 'popup)
 (defun flymake-display-err-menu-for-current-line ()
   (interactive)
   (let* ((line (flymake-current-line-no))
