@@ -1,12 +1,12 @@
 ;;;; Paredit
 (require 'paredit)
 
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'ielm-mode-hook 'enable-paredit-mode)
-(add-hook 'scheme-mode-hook 'enable-paredit-mode)
-(add-hook 'inferior-scheme-mode-hook 'enable-paredit-mode)
-(add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
-(add-hook 'inferior-clojure-mode-hook 'enable-paredit-mode)
+(dolist (hook '(emacs-lisp-mode-hook
+                lisp-interaction-mode-hook
+                lisp-mode-hook
+                ielm-mode-hook
+                scheme-mode-hook
+                inferior-scheme-mode-hook
+                clojure-mode-hook
+                slime-repl-mode-hook))
+  (add-hook hook 'enable-paredit-mode))
