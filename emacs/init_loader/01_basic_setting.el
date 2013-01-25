@@ -52,7 +52,6 @@
   (tool-bar-mode 0))
 
 ;; enable yascrollbar
-(require 'yascroll)
 (global-yascroll-bar-mode)
 
 ;; not create backup file
