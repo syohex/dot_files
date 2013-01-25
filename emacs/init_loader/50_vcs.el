@@ -33,3 +33,6 @@
   '(progn
      (setq git-gutter:modified-sign " ")
      (set-face-background 'git-gutter:modified "purple")))
+
+;; magit
+(global-set-key (kbd "M-g M-g") 'magit-status)
