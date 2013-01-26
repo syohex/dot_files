@@ -151,3 +151,6 @@
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
 (define-key ctl-x-map (kbd "%") 'goto-match-paren)
+
+;; grep
+(setq grep-command "ack --nocolor --nogroup ")
