@@ -1,6 +1,7 @@
 ;; elscreen
 (when window-system
   (require 'elscreen)
+  (require 'elscreen-wl)
   (elscreen-start)
   (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
   (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
