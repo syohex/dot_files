@@ -9,7 +9,6 @@
     (save-window-excursion
       (pop-to-buffer (get-buffer-create eshell-pop-buffer))
       (eshell-mode)))
-  (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20))
   (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t))
 (global-set-key (kbd "M-g M-s") 'eshell-pop)
 
@@ -30,3 +29,10 @@
                 (buffer-substring-no-properties
                  (point) (line-end-position)))))
     (eshell/cd dir)))
+
+(defun eshell/e (file)
+  (let ((curwin (get-buffer-window))
+        (filepath (concat default-directory file)))
+    (other-window 1)
+    (find-file filepath)
+    (delete-window curwin)))
