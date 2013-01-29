@@ -11,6 +11,9 @@
 (set-face-attribute 'diff-file-header-face nil
                     :background nil :weight 'extra-bold)
 
+(set-face-attribute 'diff-refine-change nil
+                    :background nil)
+
 (set-face-attribute 'diff-header-face nil
                     :background nil :weight 'extra-bold)
 (set-face-attribute 'diff-hunk-header-face nil
