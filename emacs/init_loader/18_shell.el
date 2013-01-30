@@ -1,4 +1,9 @@
 ;; eshell
+(eval-after-load "em-prompt"
+  '(progn
+     (set-face-attribute 'eshell-prompt nil
+                         :foreground "yellow")))
+
 (defvar eshell-pop-buffer "*eshell-pop*")
 (defvar eshell-prev-buffer nil)
 
