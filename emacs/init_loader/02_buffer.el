@@ -56,5 +56,5 @@
       (incf i)
       (previous-buffer))))
 
-(global-set-key (kbd "M-0") 'my/next-buffer)
-(global-set-key (kbd "M-9") 'my/previous-buffer)
+(global-set-key (kbd "M-9") 'my/next-buffer)
+(global-set-key (kbd "M-0") 'my/previous-buffer)
