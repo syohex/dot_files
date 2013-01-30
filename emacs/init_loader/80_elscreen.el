@@ -8,6 +8,10 @@
   (global-set-key (kbd "C-z u") 'elscreen-frame-title-update)
   (setq elscreen-tab-width nil
         elscreen-tab-display-kill-screen nil)
+
+  ;; Don't show tab number in mode-line
+  (setq-default elscreen-e21-mode-line-string nil)
+  (remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
   (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
   (require 'helm-elscreen)
   (global-set-key (kbd "C-z C-l") 'helm-elscreen)
