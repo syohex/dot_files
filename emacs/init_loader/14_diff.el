@@ -19,13 +19,14 @@
      (set-face-attribute 'diff-hunk-header-face nil
                          :foreground "turquoise"
                          :weight 'extra-bold
-                         :underline t)))
-
-;; key bindings
-(define-key diff-mode-map (kbd "C-M-n") 'diff-file-next)
-(define-key diff-mode-map (kbd "C-M-p") 'diff-file-prev)
+                         :underline t)
+     ;; key bindings
+     (define-key diff-mode-map (kbd "C-M-n") 'diff-file-next)
+     (define-key diff-mode-map (kbd "C-M-p") 'diff-file-prev)))
 
 ;; ediff
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-diff-options "-twB")
+(eval-after-load "ediff"
+  '(progn
+     (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+     (setq ediff-split-window-function 'split-window-horizontally)
+     (setq ediff-diff-options "-twB")))
