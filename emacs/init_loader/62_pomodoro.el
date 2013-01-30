@@ -24,6 +24,11 @@
   (dotimes (i arg)
     (insert "✓")))
 
-(global-set-key (kbd "<f11>") (lambda ()
-                                (interactive)
-                                (find-file "~/.emacs.d/pomodoro.org")))
+(defun my/pomodoro-find-file ()
+  (interactive)
+  (let ((file "~/.emacs.d/pomodoro.org"))
+    (if current-prefix-arg
+        (elscreen-find-file file)
+      (find-file file))))
+
+(global-set-key (kbd "<f11>") 'my/pomodoro-find-file)
