@@ -97,7 +97,6 @@
 
 ;; undo-tree
 (require 'undo-tree)
-(setq undo-tree-mode-lighter " UT")
 (global-undo-tree-mode)
 
 (define-key undo-tree-map (kbd "C-x u") 'undo-tree-undo)
