@@ -1,6 +1,6 @@
 ;; setting for modeline
 (defvar mode-line-cleaner-alist
-  '( ;; first char is 'space' to minor mode
+  '( ;; For minor-mode, first char is 'space'
     (yas-minor-mode . " Ys")
     (paredit-mode . " Pe")
     (eldoc-mode . "")
@@ -8,11 +8,11 @@
     (undo-tree-mode . " Ut")
     (elisp-slime-nav-mode . " EN")
     (helm-gtags-mode . " HG")
+    (flymake-mode . " Fm")
     ;; Major modes
     (lisp-interaction-mode . "Li")
     (python-mode . "Py")
     (ruby-mode   . "Rb")
-    (cperl-mode  . "Cp")
     (emacs-lisp-mode . "El")
     (markdown-mode . "Md")))
 
