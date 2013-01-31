@@ -5,7 +5,6 @@
 (eval-after-load "markdown-mode"
   '(progn
      (setq markdown-command "Markdown.pl")
-
      (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)))
 
 (defun my/markdown-mode-hook ()
