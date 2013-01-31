@@ -28,8 +28,8 @@
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3")))
 
-(defun my/magit-log-mode-hook ()
+(defun my/magit-log-edit-mode-hook ()
   (when (eq major-mode 'magit-log-edit-mode)
     (flyspell-mode t)))
 
-(add-hook 'after-change-major-mode-hook 'my/magit-log-mode-hook)
+(add-hook 'after-change-major-mode-hook 'my/magit-log-edit-mode-hook)
