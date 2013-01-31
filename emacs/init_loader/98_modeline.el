@@ -42,7 +42,7 @@
 
 (defun my/update-git-branch-mode-line ()
   (let* ((branch (replace-regexp-in-string
-                  "\r?\n?$" ""
+                  "[\r\n]+\\'" ""
                   (shell-command-to-string "git symbolic-ref -q HEAD")))
          (mode-line-str (if (string-match "^refs/heads/" branch)
                             (format "[%s]" (substring branch 11))
