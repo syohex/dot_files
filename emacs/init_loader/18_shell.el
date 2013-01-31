@@ -4,6 +4,10 @@
      (set-face-attribute 'eshell-prompt nil
                          :foreground "yellow")))
 
+(defun my/eshell-mode-hook ()
+  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
+(add-hook 'eshell-mode-hook 'my/eshell-mode-hook)
+
 (defvar eshell-pop-buffer "*eshell-pop*")
 (defvar eshell-prev-buffer nil)
 
