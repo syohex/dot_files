@@ -28,4 +28,5 @@
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3")))
 
+(add-hook 'magit-mode-hook (lambda () (yas-minor-mode -1)))
 (add-hook 'magit-log-edit-mode-hook 'flyspell-mode)
