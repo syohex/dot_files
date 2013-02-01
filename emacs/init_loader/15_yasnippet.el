@@ -2,7 +2,19 @@
 (require 'yasnippet)
 (custom-set-variables
  '(yas/snippet-dirs '("~/dot_files/emacs/my_snippets")))
-(yas/global-mode t)
+
+;; enable yasnippet mode
+(dolist (hook '(c-mode-hook
+                c++-mode-hook
+                cperl-mode-hook
+                emacs-lisp-mode-hook
+                js-mode-hook
+                org-mode-hook
+                python-mode-hook
+                ruby-mode-hook
+                sh-mode-hook
+                wl-draft-mode-hook))
+  (add-hook hook 'yas/minor-mode-on))
 
 ;; helm interface
 (eval-after-load "helm-config"
