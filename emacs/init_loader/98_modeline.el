@@ -36,10 +36,6 @@
   (unless (member newcdr mode-line-format)
     (setcdr cell (cons newcdr (cdr cell)))))
 
-(defface my/git-branch-mode-line
-  '((t (:foreground "Dark green" :weight bold)))
-  "Face for Git branch in mode-line")
-
 (defun my/update-git-branch-mode-line ()
   (let* ((branch (replace-regexp-in-string
                   "[\r\n]+\\'" ""
@@ -47,4 +43,5 @@
          (mode-line-str (if (string-match "^refs/heads/" branch)
                             (format "[%s]" (substring branch 11))
                           "[Not Repo]")))
-    (propertize mode-line-str 'face 'my/git-branch-mode-line)))
+    (propertize mode-line-str
+                'face '((:foreground "Dark green" :weight bold)))))
