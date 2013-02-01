@@ -33,10 +33,6 @@
   (interactive "p")
   (delete-region (point) (progn (forward-word arg) (point))))
 
-(defun backward-delete-word (arg)
-  (interactive "p")
-  (delete-word (- arg)))
-
 (defun delete-cursor-word-or-region ()
   (interactive)
   (if (use-region-p)
@@ -45,9 +41,21 @@
       (backward-word)
       (delete-word 1))))
 
+(defun my/backward-kill-word (args)
+  (interactive "p")
+  (let ((from (save-excursion
+                (forward-word -1)
+                (point)))
+        (limit (save-excursion
+                 (back-to-indentation)
+                 (point))))
+    (cond ((bolp) (backward-kill-word args))
+          (t
+           (delete-region (max from limit) (point))))))
+
 (global-set-key (kbd "C-w") 'delete-cursor-word-or-region)
 (global-set-key (kbd "M-d") 'delete-word)
-(global-set-key (kbd "M-DEL") 'backward-delete-word)
+(global-set-key (kbd "M-<backspace>") 'my/backward-kill-word)
 
 ;; moving with ace-jump-mode
 (require 'ace-jump-mode)
