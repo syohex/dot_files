@@ -17,6 +17,9 @@
 
 (defun toggle-cleanup-spaces ()
   (interactive)
-  (if (memq 'my/cleanup-for-spaces before-save-hook)
-      (remove-hook 'before-save-hook 'my/cleanup-for-spaces)
-    (add-hook 'before-save-hook 'my/cleanup-for-spaces )))
+  (cond ((memq 'my/cleanup-for-spaces before-save-hook)
+         (message "Disable spaces cleanup hooks")
+         (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
+        (t
+         (message "Enable spaces cleanup hooks")
+         (add-hook 'before-save-hook 'my/cleanup-for-spaces ))))
