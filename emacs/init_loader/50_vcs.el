@@ -29,4 +29,8 @@
                          :background "gray3")))
 
 (add-hook 'magit-mode-hook (lambda () (yas-minor-mode -1)))
-(add-hook 'magit-log-edit-mode-hook 'flyspell-mode)
+
+(defun my/magit-log-edit-mode-hook ()
+  (flyspell-mode t)
+  (push 'ac-look ac-sources))
+(add-hook 'magit-log-edit-mode-hook 'my/magit-log-edit-mode-hook)

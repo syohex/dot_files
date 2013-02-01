@@ -8,7 +8,7 @@
 (ac-config-default)
 
 ;; other modes to be enable auto-complete
-(add-to-list 'ac-modes 'git-commit-mode)
+(add-to-list 'ac-modes 'magit-log-edit-mode)
 (add-to-list 'ac-modes 'markdown-mode)
 
 (setq ac-auto-start nil)
