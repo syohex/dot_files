@@ -38,7 +38,8 @@
 (defvar my/cycle-buffer-limit 30)
 
 (defun my/buffer-not-switch-p ()
-  (or (string-match "^*" (buffer-name)) (eq major-mode 'dired-mode)))
+  (or (string-match "^*" (buffer-name)) (eq major-mode 'dired-mode)
+      (eq major-mode 'direx:direx-mode)))
 
 (defun my/next-buffer ()
   (interactive)
