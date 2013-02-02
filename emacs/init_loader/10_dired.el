@@ -26,8 +26,12 @@
 (require 'direx-project)
 (defun my/dired-jump ()
   (interactive)
-  (cond ((or current-prefix-arg (not (one-window-p)))
+  (cond (current-prefix-arg
          (dired-jump))
+        ((not (one-window-p))
+         (or (ignore-errors
+               (direx-project:jump-to-project-root) t)
+             (direx:jump-to-directory)))
         (t
          (or (ignore-errors
                (direx-project:jump-to-project-root-other-window) t)
