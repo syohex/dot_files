@@ -128,6 +128,7 @@
 
 ;; smart repetition
 (require 'smartrep)
+(setq smartrep-mode-line-string-activated "<<< SmartRep >>>")
 
 ;; expand symbolic link
 (setq-default find-file-visit-truename t)
