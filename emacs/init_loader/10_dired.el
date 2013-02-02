@@ -17,5 +17,20 @@
 (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
 
 ;; wdired
-(require 'wdired)
-(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+(eval-after-load "wdired"
+  '(progn
+     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
+
+;; direx
+(require 'direx)
+(require 'direx-project)
+(defun my/dired-jump ()
+  (interactive)
+  (cond ((or current-prefix-arg (not (one-window-p)))
+         (dired-jump))
+        (t
+         (or (ignore-errors
+               (direx-project:jump-to-project-root-other-window) t)
+             (direx:jump-to-directory-other-window)))))
+
+(global-set-key (kbd "C-x C-j") 'my/dired-jump)
