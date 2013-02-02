@@ -93,3 +93,10 @@
 (smartrep-define-key
     global-map "M-g" '(("M-n" . 'flymake-goto-next-error)
                        ("M-p" . 'flymake-goto-prev-error)))
+
+;; adjust buffer
+(smartrep-define-key
+    global-map "C-q" '(("<left>" . (lambda () (shrink-window-horizontally 1)))
+                       ("<right>" . (lambda () (enlarge-window-horizontally 1)))
+                       ("<up>" . (lambda () (shrink-window 1)))
+                       ("<down>" . (lambda () (enlarge-window 1)))))
