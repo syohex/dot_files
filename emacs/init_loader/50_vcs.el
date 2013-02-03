@@ -34,7 +34,7 @@
 
 (defun my/magit-log-edit-mode-hook ()
   (flyspell-mode t)
-  (push 'ac-look ac-sources))
+  (push 'ac-source-look ac-sources))
 (add-hook 'magit-log-edit-mode-hook 'my/magit-log-edit-mode-hook)
 
 (defun magit-browse ()
