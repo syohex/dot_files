@@ -19,7 +19,7 @@
     ;;;; editing utilities
     expand-region wrap-region
     undo-tree mark-multiple redo+ smartrep
-    yasnipppet
+    yasnipppet goto-chg
 
     ;;;; buffer utils
     popwin elscreen yascroll
@@ -31,19 +31,28 @@
     ;; flymake
     flycheck flymake-jslint
 
+    ;; clojure
+    clojure-mode
+
     ;; coffee-script
     coffee-mode
+
+    ;; perl
+    cperl-mode
+
+    ;; python
+    jedi
 
     ;; ruby
     ruby-block ruby-compilation ruby-end ruby-interpolation
     ruby-mode ruby-test-mode ruby-tools inf-ruby
     yari
 
+    ;; emacs-lisp
+    elisp-slime-nav
+
     ;; Common Lisp
     paredit
-
-    ;; scala
-    scala-mode
 
     ;; common utility
     quickrun
@@ -54,7 +63,10 @@
     scss-mode yaml-mode zencoding-mode
 
     ;; helm
-    helm helm-gtags
+    helm helm-gtags helm-descbinds helm-thems
+
+    ;; git
+    magit git-gutter
 
     ;;;; misc
     logito
