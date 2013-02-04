@@ -5,10 +5,13 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-(setq eldoc-idle-delay 0.2)
-(set-face-attribute 'eldoc-highlight-function-argument nil
-                    :underline t :foreground "green"
-                    :weight 'bold)
+
+(eval-after-load "eldoc"
+  '(progn
+     (setq eldoc-idle-delay 0.2)
+     (set-face-attribute 'eldoc-highlight-function-argument nil
+                         :underline t :foreground "green"
+                         :weight 'bold)))
 
 ;; slimenav
 (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
