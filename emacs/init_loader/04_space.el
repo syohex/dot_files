@@ -24,9 +24,9 @@
 (defun toggle-cleanup-spaces ()
   (interactive)
   (cond ((memq 'my/cleanup-for-spaces before-save-hook)
-         (setq my/current-cleanup-state "")
+         (setq my/current-cleanup-state
+               (propertize "[DT-]" 'face '((:foreground "red" :weight bold))))
          (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
         (t
-         (setq my/current-cleanup-state
-               (propertize "[DT]" 'face '((:foreground "red" :weight bold))))
-         (add-hook 'before-save-hook 'my/cleanup-for-spaces ))))
+         (setq my/current-cleanup-state "")
+         (add-hook 'before-save-hook 'my/cleanup-for-spaces))))
