@@ -15,11 +15,18 @@
 (when window-system
   (add-hook 'before-save-hook 'my/cleanup-for-spaces))
 
+(defvar my/current-cleanup-state "")
+
+(setq-default mode-line-format
+              (cons '(:eval my/current-cleanup-state)
+                    mode-line-format))
+
 (defun toggle-cleanup-spaces ()
   (interactive)
   (cond ((memq 'my/cleanup-for-spaces before-save-hook)
-         (message "Disable spaces cleanup hooks")
+         (setq my/current-cleanup-state "")
          (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
         (t
-         (message "Enable spaces cleanup hooks")
+         (setq my/current-cleanup-state
+               (propertize "[DT]" 'face '((:foreground "red" :weight bold))))
          (add-hook 'before-save-hook 'my/cleanup-for-spaces ))))
