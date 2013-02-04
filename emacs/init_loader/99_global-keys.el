@@ -6,7 +6,6 @@
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
-(global-set-key (kbd "C-x C-a") 'git-gutter:toggle)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
