@@ -23,17 +23,3 @@
 (define-key view-mode-map (kbd "]") 'forward-paragraph)
 (define-key view-mode-map (kbd "J") 'View-scroll-line-forward)
 (define-key view-mode-map (kbd "K") 'View-scroll-line-backward)
-
-;; Changeing mode-line color when view-mode is enable
-(require 'viewer)
-(viewer-stay-in-setup)
-(setq viewer-modeline-color-unwritable "#9400d3"
-      viewer-modeline-color-view       "light green")
-(viewer-change-modeline-color-setup)
-
-;; top priority view-mode
-(add-hook 'view-mode-hook
-          (lambda ()
-            (let ((vm (assq 'view-mode minor-mode-map-alist)))
-              (setq minor-mode-map-alist
-                    (cons vm (delete vm minor-mode-map-alist))))))

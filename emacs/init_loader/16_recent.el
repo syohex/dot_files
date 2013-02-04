@@ -1,7 +1,6 @@
 ;;;; recentf-ext
 (setq recentf-max-saved-items 2000)
 
-(require 'recentf-ext)
 (setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
                         "\\.mime-example" "\\.ido.last" "COMMIT_EDITMSG"))
 (setq recentf-auto-cleanup 10)
