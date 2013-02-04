@@ -7,7 +7,7 @@
 ;; multimark
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-x C-SPC") 'mc/edit-lines)
+(global-set-key (kbd "C-x r e") 'mc/edit-lines)
 
 ;; wrap-region
 (require 'wrap-region)
