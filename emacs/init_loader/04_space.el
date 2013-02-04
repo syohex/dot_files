@@ -29,4 +29,5 @@
          (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
         (t
          (setq my/current-cleanup-state "")
-         (add-hook 'before-save-hook 'my/cleanup-for-spaces))))
+         (add-hook 'before-save-hook 'my/cleanup-for-spaces)))
+  (force-mode-line-update))
