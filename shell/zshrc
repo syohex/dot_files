@@ -157,6 +157,9 @@ export EDITOR="emacsclient"
 export PAGER='less'
 export LESSCHARSET=utf-8
 
+# info
+export INFOPATH=/usr/local/share/info:/usr/share/info
+
 # load perlbrew config file
 if [ -e ~/perl5/perlbrew/etc/bashrc ]; then
     source ~/perl5/perlbrew/etc/bashrc
