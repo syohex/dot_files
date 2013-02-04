@@ -27,6 +27,9 @@
   '(progn
      (define-key magit-mode-map (kbd "C-c C-b") 'magit-browse)
 
+     ;; faces
+     (set-face-attribute 'magit-branch nil
+                         :foreground "yellow" :weight 'bold :underline t)
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3")))
 
