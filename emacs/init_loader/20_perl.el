@@ -50,19 +50,20 @@
 
 (defun my/cperl-imenu-create-index ()
   (let (index)
-    ;; collect subroutine
-    (goto-char (point-min))
-    (while (re-search-forward "^\\s-*sub\\s-+\\([^ ]+\\)" nil t)
-      (push (cons (format "Function: %s" (match-string 1))
-                  (match-beginning 1)) index))
+    (save-excursion
+      ;; collect subroutine
+      (goto-char (point-min))
+      (while (re-search-forward "^\\s-*sub\\s-+\\([^ ]+\\)" nil t)
+        (push (cons (format "Function: %s" (match-string 1))
+                    (match-beginning 1)) index))
 
-    ;; collect subtest
-    (goto-char (point-min))
-    (let ((desc-re "^\\s-*subtest\\s-+\\(['\"]\\)\\([^\1\r\n]+\\)\\1"))
-      (while (re-search-forward desc-re nil t)
-        (push (cons (format "Subtest: %s" (match-string 2))
-                    (match-beginning 0)) index)))
-    (nreverse index)))
+      ;; collect subtest
+      (goto-char (point-min))
+      (let ((desc-re "^\\s-*subtest\\s-+\\(['\"]\\)\\([^\1\r\n]+\\)\\1"))
+        (while (re-search-forward desc-re nil t)
+          (push (cons (format "Subtest: %s" (match-string 2))
+                      (match-beginning 0)) index)))
+      (nreverse index))))
 
 (autoload 'helm-perldoc:setup "helm-perldoc")
 
