@@ -5,8 +5,10 @@
 
 ;; Emacs package system
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
+
+(package-refresh-contents)
 
 (defvar my/install-packages
   '(
@@ -29,10 +31,10 @@
     haskell-mode ghc ghci-completion
 
     ;; flymake
-    flycheck flymake-jslint
+    flycheck
 
     ;; clojure
-    clojure-mode
+    clojure-mode nrepl
 
     ;; coffee-script
     coffee-mode
@@ -49,30 +51,25 @@
     yari
 
     ;; emacs-lisp
-    elisp-slime-nav
+    elisp-slime-nav thingopt
 
     ;; Common Lisp
-    paredit
+    slime paredit
 
     ;; common utility
     quickrun
 
     ;;;; markup language
-    haml-mode htmlize
+    haml-mode sass-mode htmlize
     markdown-mode markdown-mode+
     scss-mode yaml-mode zencoding-mode
 
     ;; helm
-    helm helm-gtags helm-descbinds helm-thems
+    helm helm-gtags helm-descbinds helm-themes
 
     ;; git
     magit git-gutter
-
-    ;;;; misc
-    logito
 ))
-
-(package-refresh-contents)
 
 (dolist (pack my/install-packages)
   (unless (package-installed-p pack)
