@@ -16,6 +16,8 @@
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 
+(remove-hook 'kill-emacs-hook 'helm-c-adaptive-save-history)
+
 ;; helm-ack
 (setq helm-c-ack-insert-at-point 'symbol)
 
