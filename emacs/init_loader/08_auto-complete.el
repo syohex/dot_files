@@ -7,9 +7,10 @@
 (global-auto-complete-mode t)
 (ac-config-default)
 
-;; other modes to be enable auto-complete
-(add-to-list 'ac-modes 'magit-log-edit-mode)
-(add-to-list 'ac-modes 'markdown-mode)
+;; Enable auto-complete mode other than default enable modes
+(dolist (mode '(magit-log-edit-mode
+                markdown-mode))
+  (add-to-list 'ac-modes mode))
 
 (setq ac-auto-start nil)
 
