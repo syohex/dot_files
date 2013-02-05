@@ -4,8 +4,7 @@ set -e
 set -x
 
 make_install () {
-    if [ which paco > /dev/null 2>&1 ]
-    then
+    if [ which paco > /dev/null 2>&1 ]; then
         sudo paco -D make install
     else
         sudo make install
@@ -14,16 +13,19 @@ make_install () {
 
 initialize () {
     echo -n "Checking command installed >> "
-    for command in emacs git curl cvs
+
+    PACO=
+    if [ "$OSTYPE" = "linux-gnu" ]; then
+        PACO=paco
+    fi
+
+    for command in emacs git curl cvs $PACO
     do
-        if [ which $command >/dev/null 2>&1 ]
-        then
+        if [ which $command >/dev/null 2>&1 ]; then
             echo "Please install command: $command"
             exit
         fi
     done
-
-    echo "OK"
 
     # Create symbolic link .emacs
     ln -sf ~/dot_files/emacs/init.el ~/.emacs.d/init.el
@@ -31,8 +33,7 @@ initialize () {
     echo "Create directies"
     for dir in ~/bin ~/src ~/.emacs.d/elisps ~/program/elisp
     do
-        if [ ! -d $dir ]
-        then
+        if [ ! -d $dir ]; then
             echo "  mkdir $dir"
             mkdir -p $dir
         fi
@@ -42,8 +43,7 @@ initialize () {
     case "$OSTYPE" in
         darwin*)
             echo "Set up for MacOSX"
-            if [ ! -e ~/bin/emacsclient ]
-            then
+            if [ ! -e ~/bin/emacsclient ] then;
                 ln -sf ${EC_PATH} ~/bin/emacsclient
             fi
             ;;
@@ -56,8 +56,7 @@ setup_init_loader () {
     echo "Setup init-loader.el"
 
     ##  init-loader.el
-    if [ -e init-loader.el]
-    then
+    if [ -e init-loader.el]; then
         rm -f init-loader.el
     fi
 
@@ -94,18 +93,16 @@ setup_emacs_server () {
 setup_wanderlust () {
     echo "Setting for Wanderlust"
 
-    if [ "$OSTYPE" != "linux-gnu" ]
-    then
+    if [ "$OSTYPE" != "linux-gnu" ]; then
         return
     fi
 
     for package in apel flim semi wanderlust
     do
         cd ~/src
-        if [ ! -d $package ]
-        then
+        if [ ! -d $package ]; then
             echo "Install $package"
-            git clone http://git.chise.org/git/elisp/${package}.git
+            git clone git://github.com/wanderlust/${package}.git
             cd $package
             make
             make_install
@@ -118,8 +115,7 @@ setup_wanderlust () {
 setup_sdic () {
     local package="sdic-2.1.3.tar.gz"
 
-    if [ "$OSTYPE" != "linux-gnu" ]
-    then
+    if [ "$OSTYPE" != "linux-gnu" ]; then
         return
     fi
 
@@ -140,8 +136,7 @@ setup_ruby () {
     local package=rsense
 
     cd ~/.emacs.d
-    if [ ! -d rsense ]
-    then
+    if [ ! -d rsense ]; then
         curl -O http://cx4a.org/pub/rsense/rsense-0.3.zip
         unzip rsense-0.3.zip
         mv rsense-0.3 rsense
@@ -154,16 +149,14 @@ setup_python () {
     local docname="python-${version}-docs-html"
 
     cd ~/.emacs.d
-    if [ ! -d pylookup ]
-    then
+    if [ ! -d pylookup ]; then
         git clone https://github.com/tsgates/pylookup.git
     fi
 
     cd pylookup
 
     is_python2=`expr $version : '^2\.'`
-    if [ $is_python2 != "0" ]
-    then
+    if [ $is_python2 != "0" ]; then
         docurl="http://docs.python.org/archives/${docname}.zip"
     else
         docurl="http://docs.python.org/py3k/archives/${docname}.zip"
@@ -200,10 +193,10 @@ setup_misc () {
     ##make_install
 }
 
-install_package () {
+install_not_elpa_packages () {
     cd ~/.emacs.d/elisps
 
-    for elisp in `cat $CWD/elisp.list | grep -v '^#'`
+    for elisp in $(cat $CWD/elisp.list | grep -v '^#')
     do
         echo "Download $elisp"
         curl -O $elisp
@@ -224,7 +217,7 @@ setup_python
 setup_utils
 setup_misc
 
-install_package
+install_not_elpa_packages
 
 ## Install package
 cd $CWD
