@@ -89,7 +89,6 @@
 
 ;; which-func
 (require 'which-func)
-(setq which-func-modes (append which-func-modes '(cperl-mode)))
 (set-face-foreground 'which-func "chocolate4")
 (set-face-bold-p 'which-func t)
 (which-func-mode t)
