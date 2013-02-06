@@ -1,8 +1,17 @@
 ;;;; setting about `buffer'
 
 ;; auto-save
-(require 'auto-save-buffers)
-(run-with-idle-timer 5 t 'auto-save-buffers)
+(defun my/auto-save-buffers ()
+  (save-excursion
+    (dolist (buffer (buffer-list))
+      (set-buffer buffer)
+      (when (and (buffer-file-name)
+                 (buffer-modified-p)
+                 (not buffer-read-only)
+                 (file-writable-p (buffer-file-name)))
+        (save-buffer)))))
+
+(run-with-idle-timer 10 t 'my/auto-save-buffers)
 
 ;; winner-mode
 (require 'winner)

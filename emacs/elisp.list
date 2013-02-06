@@ -8,6 +8,3 @@ http://www.emacswiki.org/emacs/download/xs-mode.el
 
 # common lisp
 http://static.boinkor.net/lisp/cl-indent-patches.el
-
-# buffer
-http://0xcc.net/misc/auto-save/auto-save-buffers.el
