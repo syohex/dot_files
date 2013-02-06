@@ -3,7 +3,8 @@
 (eval-after-load "slime"
   '(progn
      ;; SLIME REPL
-     (slime-setup '(slime-repl slime-fancy slime-banner))
+     (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
+;;slime-presentations
 
      (define-key slime-repl-mode-map (kbd "TAB") nil)
 
@@ -14,6 +15,7 @@
      (setq slime-protocol-version 'ignore)
 
      (defun my/slime-mode-hook ()
+       (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
        (define-key slime-mode-map (kbd "C-c C-d C-l") 'helm-hyperspec))
      (add-hook 'slime-mode-hook 'my/slime-mode-hook)
 
@@ -24,3 +26,6 @@
      (require 'ac-slime)
      (add-hook 'slime-mode-hook 'set-up-slime-ac)
      (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+
+(dolist (hook '(lisp-mode-hook))
+  (add-hook hook 'slime-mode))
