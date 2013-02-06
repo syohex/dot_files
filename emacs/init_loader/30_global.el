@@ -6,8 +6,9 @@
              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
              (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
 
-;;; hook for gtags
-(add-hook 'c-mode-common-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'java-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode 'helm-gtags-mode)
+;;; Enable helm-gtags-mode
+(dolist (hook '(c-mode-common-hook
+                c++-mode-hook
+                java-mode-hook
+                asm-mode))
+  (add-hook hook 'helm-gtags-mode))
