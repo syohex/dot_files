@@ -187,11 +187,6 @@ if [ -e ${VIRTUALENV_ACTIVE} ]; then
 fi
 export PYTHONSTARTUP=~/.pythonsetup
 
-# depot(eg. gclient) Google Development Utilities
-if [ -d ~/src/depot_tools ]; then
-    export PATH=~/src/depot_tools:$PATH
-fi
-
 # haskell setting
 if [ -d ~/.cabal/bin ]; then
     export PATH=~/.cabal/bin:$PATH
