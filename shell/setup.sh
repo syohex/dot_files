@@ -6,7 +6,7 @@ set -x
 mkdir_if_not_exist () {
     local dir = $1
     if [ ! -d $dir ]; then
-        mkdir $dir
+        mkdir -p $dir
     fi
 }
 
@@ -26,14 +26,12 @@ UTILDIR="${HOME}/program/utils"
 mkdir_if_not_exist $UTILDIR
 
 cd $UTILDIR
-git clone git@github.com:syohex/my-command-utilities.git
-cd my-command-utilities
-./setup.sh
+(git clone git@github.com:syohex/my-command-utilities.git && cd my-command-utilities && ./setup.sh)
 
 # setting for zsh zaw
-(cd ~/.zsh && git clone git@github.com:syohex/zaw.git && cd zaw && git checkout origin/syohex)
+(cd "${HOME}/.zsh" && git clone git@github.com:syohex/zaw.git && cd zaw && git checkout origin/syohex)
 
 # completion
-MYCOMPDIR=~/.zsh/mycomp
+MYCOMPDIR="${HOME}/.zsh/mycomp"
 curl -o $MYCOMPDIR/_perlbrew  https://raw.github.com/lapis25/dotfiles/master/.zsh/functions/_perlbrew
-(cd ~/.zsh && git://github.com/zsh-users/zsh-completions.git)
+(cd "${HOME}/.zsh" && git://github.com/zsh-users/zsh-completions.git)
