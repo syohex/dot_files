@@ -3,7 +3,7 @@
 
 (setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
                         "\\.mime-example" "\\.ido.last" "COMMIT_EDITMSG"))
-(setq recentf-auto-cleanup 10)
+(setq recentf-auto-cleanup 600)
 (when window-system
   (run-at-time t 600 'recentf-save-list))
 
