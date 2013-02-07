@@ -12,15 +12,10 @@
 (global-set-key (kbd "M-C-SPC") 'my/copy-sexp)
 
 ;; delete-speces
-(defun delete-following-spaces ()
+(defun my/join-line ()
   (interactive)
-  (let ((orig-point (point)))
-    (save-excursion
-      (if current-prefix-arg
-          (skip-chars-backward " \t")
-        (skip-chars-forward " \t"))
-      (delete-region orig-point (point)))))
-(global-set-key (kbd "M-k") 'delete-following-spaces)
+  (join-line -1))
+(global-set-key (kbd "M-k") 'my/join-line)
 
 (defun my/delete-indentation ()
   (interactive)
