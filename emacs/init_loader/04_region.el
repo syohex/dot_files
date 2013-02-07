@@ -9,6 +9,10 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-x r e") 'mc/edit-lines)
 
+(dolist (command '(delete-cursor-word-or-region
+                   cperl-electric-semi))
+  (add-to-list 'mc/cmds-to-run-for-all 'command))
+
 ;; wrap-region
 (require 'wrap-region)
 (wrap-region-global-mode t)

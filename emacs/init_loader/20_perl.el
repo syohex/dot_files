@@ -9,6 +9,7 @@
      (setq cperl-auto-newline nil)
 
      ;; bindings
+     (define-key cperl-mode-map "\177" nil)
      (define-key cperl-mode-map (kbd "(") nil)
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "[") nil)
