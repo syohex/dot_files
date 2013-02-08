@@ -31,6 +31,7 @@
 (eval-after-load "magit"
   '(progn
      (define-key magit-mode-map (kbd "C-c C-b") 'magit-browse)
+     (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
 
      ;; faces
      (set-face-attribute 'magit-branch nil
@@ -38,7 +39,21 @@
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3")))
 
-(add-hook 'magit-mode-hook (lambda () (yas-minor-mode -1)))
+(defun magit-toggle-whitespace ()
+  (interactive)
+  (if (member "-w" magit-diff-options)
+      (magit-dont-ignore-whitespace)
+    (magit-ignore-whitespace)))
+
+(defun magit-ignore-whitespace ()
+  (interactive)
+  (add-to-list 'magit-diff-options "-w")
+  (magit-refresh))
+
+(defun magit-dont-ignore-whitespace ()
+  (interactive)
+  (setq magit-diff-options (remove "-w" magit-diff-options))
+  (magit-refresh))
 
 (defun my/magit-log-edit-mode-hook ()
   (flyspell-mode t)
