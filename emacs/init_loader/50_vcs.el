@@ -14,12 +14,8 @@
 (global-set-key (kbd "C-x v s") 'sgit:status)
 
 ;; git-gutter
-(defun my/git-gutter ()
-  (interactive)
-  (if current-prefix-arg
-      (git-gutter)
-    (git-gutter:toggle)))
-(global-set-key (kbd "C-x C-a") 'my/git-gutter)
+(global-git-gutter-mode t)
+(global-set-key (kbd "C-x C-a") 'git-gutter:toggle)
 
 (eval-after-load "git-gutter"
   '(progn
