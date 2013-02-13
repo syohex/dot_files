@@ -9,6 +9,7 @@
     (elisp-slime-nav-mode . " EN")
     (helm-gtags-mode . " HG")
     (flymake-mode . " Fm")
+    (git-gutter-mode . " GG")
     ;; Major modes
     (lisp-interaction-mode . "Li")
     (python-mode . "Py")
