@@ -37,7 +37,8 @@
 (push '("*GHC Info*") popwin:special-display-config)
 
 ;; sgit
-(push '("*sgit*" :position right :width 0.5) popwin:special-display-config)
+(push '("*sgit*" :position right :width 0.5 :stick t)
+      popwin:special-display-config)
 
 ;; direx
 (push '(direx:direx-mode :position left :width 40 :dedicated t)
