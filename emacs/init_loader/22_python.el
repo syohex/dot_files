@@ -45,7 +45,7 @@
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
-(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 
 (defvar my/python-block-regexp
   "\\<\\(for\\|if\\|while\\|try\\|class\\|def\\)\\s-")
