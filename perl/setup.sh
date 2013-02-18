@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# ack configuration file
-ln -sf $PWD/ackrc ~/.ackrc
-
 # clone my_pmsetup
 PERLDIR="${HOME}/program/perl"
 if [ -d $PERLDIR ]
