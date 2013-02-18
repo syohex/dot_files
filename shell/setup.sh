@@ -10,13 +10,8 @@ mkdir_if_not_exist () {
     fi
 }
 
-ln -sf $PWD/zshrc ~/.zshrc
-
 # for cdd
 mkdir_if_not_exist "${HOME}/.zsh/cdd"
-
-# setting for tmux
-ln -sf $PWD/tmux.conf ~/.tmux.conf
 
 # for completion file
 mkdir_if_not_exist "${HOME}/.zsh/mycomp"
