@@ -1,10 +1,14 @@
 ;; Emacs lisp install file
 
+(when load-file-name
+  (setq user-emacs-directory (file-name-nondirectory load-file-name)))
+
 ;; first eval this code block
-(add-to-list 'load-path "~/.emacs.d/elisps")
+(add-to-list 'load-path (concat user-emacs-directory "elisps"))
 
 ;; Emacs package system
 (require 'package)
+(setq package-user-dir (concat user-emacs-directory "elpa"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 

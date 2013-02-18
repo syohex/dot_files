@@ -1,7 +1,9 @@
-(cd (getenv "HOME"))
+;; for lancher
+(unless load-file-name
+  (cd (getenv "HOME")))
 
 ;; Add load path of emacs lisps
-(add-to-list 'load-path "~/.emacs.d/elisps")
+(add-to-list 'load-path (concat user-emacs-directory "elisps"))
 
 ;; Emacs package system
 (require 'package)
@@ -9,9 +11,10 @@
 (package-initialize)
 
 ;; load environment value
-(load-file (expand-file-name "~/.emacs.d/shellenv.el"))
-(dolist (path (reverse (split-string (getenv "PATH") ":")))
-  (add-to-list 'exec-path path))
+(let ((shellenv (concat user-emacs-directory "shellenv.el")))
+  (when (file-exists-p shellenv)
+    (dolist (path (reverse (split-string (getenv "PATH") ":")))
+      (add-to-list 'exec-path path))))
 
 ;; setup theme
 (load-theme 'reverse t t)
@@ -19,4 +22,4 @@
 
 ;; init-loader
 (require 'init-loader)
-(init-loader-load "~/.emacs.d/init_loader")
+(init-loader-load (concat user-emacs-directory "init_loader"))
