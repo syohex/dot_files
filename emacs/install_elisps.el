@@ -1,10 +1,17 @@
 ;; Emacs lisp install file
 
+(require 'cl)
+
 (when load-file-name
   (setq user-emacs-directory (file-name-nondirectory load-file-name)))
 
 ;; first eval this code block
 (add-to-list 'load-path (concat user-emacs-directory "elisps"))
+
+;; check commands
+(dolist (cmd '("emacs" "git" "curl" "cvs"))
+  (unless (executable-find cmd)
+    (error "Please install %s" cmd)))
 
 ;; Emacs package system
 (require 'package)
