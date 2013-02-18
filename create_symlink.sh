@@ -14,6 +14,15 @@ mkdir_if_not_exist () {
 mkdir_if_not_exist ~/.emacs.d
 ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
 
+## Use Emacs.app instead of pre-installed emacs on MacOSX
+EMACS_CLIENT_APP_PATH='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+case "$OSTYPE" in
+    darwin*)
+        echo "Set up for MacOSX"
+        ln -sf ${EMACS_CLIENT_APP_PATH} ~/bin/emacsclient
+        ;;
+esac
+
 # zsh
 ln -sf $PWD/shell/zshrc ~/.zshrc
 
