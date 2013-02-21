@@ -27,3 +27,11 @@
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
                     :foreground "white" :background nil :underline t)
+
+;; helm ack for the file
+(defun helm-ack-current-file ()
+  (interactive)
+  (unless (buffer-file-name)
+    (error "This is not file!!"))
+  (helm-ack -1))
+(global-set-key (kbd "C-M-s") 'helm-ack-current-file)
