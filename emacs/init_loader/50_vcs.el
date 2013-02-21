@@ -20,6 +20,8 @@
 (eval-after-load "git-gutter"
   '(progn
      (setq git-gutter:modified-sign " ")
+     (setq git-gutter:deleted-sign-sign " ")
+     (set-face-background 'git-gutter:deleted  "red")
      (set-face-background 'git-gutter:modified "purple")))
 
 ;; magit
