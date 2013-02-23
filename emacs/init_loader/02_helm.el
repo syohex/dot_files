@@ -15,6 +15,9 @@
 (define-key helm-map (kbd "C-n")   'helm-next-line)
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
+(global-set-key (kbd "C-;") 'helm-myutils:git-project)
+(global-set-key (kbd "<f10>") 'helm-myutils:dropbox)
+(global-set-key (kbd "C-x C-p") 'helm-myutils:files-in-curdir)
 
 (remove-hook 'kill-emacs-hook 'helm-c-adaptive-save-history)
 

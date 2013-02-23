@@ -24,6 +24,10 @@
      (set-face-background 'git-gutter:deleted  "red")
      (set-face-background 'git-gutter:modified "purple")))
 
+(smartrep-define-key
+    global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
+                        ("n" . 'git-gutter:next-diff)))
+
 ;; magit
 (global-set-key (kbd "M-g M-g") 'magit-status)
 (eval-after-load "magit"
