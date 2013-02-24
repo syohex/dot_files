@@ -34,7 +34,7 @@
 (defun ac-look-candidates ()
   (unless (executable-find "look")
     (error "Please install `look' command"))
-  (let ((cmd (format "look %s" ac-prefix)))
+  (let ((cmd (format "look -f %s" ac-prefix)))
     (ignore-errors
       (split-string
        (shell-command-to-string cmd) "\n"))))
