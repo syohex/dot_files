@@ -36,5 +36,6 @@
   (interactive)
   (unless (buffer-file-name)
     (error "This is not file!!"))
-  (helm-ack -1))
+  (let ((helm-c-ack-insert-at-point nil))
+    (helm-ack -1)))
 (global-set-key (kbd "C-M-s") 'helm-ack-current-file)
