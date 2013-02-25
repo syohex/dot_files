@@ -3,7 +3,8 @@
 (require 'fuzzy)
 (require 'pos-tip)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/dot_files/emacs/ac-dict")
+(add-to-list 'ac-dictionary-directories
+             (concat user-emacs-directory "ac-dict"))
 (global-auto-complete-mode t)
 (ac-config-default)
 

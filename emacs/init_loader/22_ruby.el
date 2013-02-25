@@ -38,7 +38,7 @@
      (define-key ruby-mode-map (kbd "M-|") 'my/insert-vertical-bar)
 
      ;; rsense
-     (setq rsense-home (expand-file-name "~/.emacs.d/rsense"))
+     (setq rsense-home (concat user-emacs-directory "elisps/rsense"))
      (add-to-list 'load-path (concat rsense-home "/etc"))
      (require 'rsense)
 

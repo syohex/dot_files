@@ -1,7 +1,7 @@
 ;;;; yasnippet
 (require 'yasnippet)
 (custom-set-variables
- '(yas/snippet-dirs '("~/dot_files/emacs/my_snippets")))
+ '(yas/snippet-dirs `(,(concat user-emacs-directory "my_snippets"))))
 
 ;; enable yasnippet mode
 (dolist (hook '(c-mode-hook
