@@ -5,7 +5,7 @@
   (setq org-return-follows-link t)
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   (org-remember-insinuate)
-  (setq org-directory  (expand-file-name "~/.emacs.d/"))
+  (setq org-directory user-emacs-directory)
 ;;  (setq org-startup-folded 'nofold)
   (setq org-use-fast-todo-selection t)
   (setq org-todo-keywords

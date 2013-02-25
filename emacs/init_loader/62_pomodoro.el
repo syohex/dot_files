@@ -26,7 +26,7 @@
 
 (defun my/pomodoro-find-file ()
   (interactive)
-  (let ((file "~/.emacs.d/pomodoro.org"))
+  (let ((file (concat user-emacs-directory "pomodoro.org")))
     (if current-prefix-arg
         (elscreen-find-file file)
       (find-file file))))
