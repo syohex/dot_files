@@ -20,15 +20,6 @@
      (set-face-attribute 'jedi:highlight-function-argument nil
                          :foreground "green")
 
-     ;; pylookup
-     (require 'pylookup)
-     (setq pylookup-dir "~/.emacs.d/pylookup/")
-     (add-to-list 'load-path pylookup-dir)
-
-     ;; set executable file and db file
-     (setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-     (setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
-
      ;; to speedup, just load it on demand
      (autoload 'pylookup-lookup "pylookup"
        "Lookup SEARCH-TERM in the Python HTML indexes." t)
