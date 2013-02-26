@@ -7,9 +7,9 @@
 
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name))
-  (setq custom-theme-directory user-emacs-directory))
+  (setq custom-theme-directory (concat user-emacs-directory "elisps/")))
 
-(setq my/elisp-directory (concat user-emacs-directory "elisps"))
+(setq my/elisp-directory (concat user-emacs-directory "elisps/"))
 (unless (file-directory-p my/elisp-directory)
   (make-directory my/elisp-directory))
 
@@ -46,14 +46,14 @@
     ;;;; editing utilities
     expand-region wrap-region
     undo-tree mark-multiple redo+ smartrep
-    yasnipppet goto-chg
+    yasnippet goto-chg
 
     ;;;; buffer utils
     popwin elscreen yascroll
 
     ;;;; programming
     ;; haskell
-    haskell-mode ghc ghci-completion
+    haskell-mode
 
     ;; flymake
     flycheck
@@ -109,6 +109,7 @@
     (message "Failed Download %s" url)))
 
 (defun my/system (cmd)
+  (message "Execute '%s'" cmd)
   (unless (zerop (call-process-shell-command cmd))
     (error "%s is failed!!" cmd)))
 
@@ -136,6 +137,7 @@
 ;; rsense
 (let ((default-directory my/elisp-directory))
   (when (not (file-directory-p "rsense"))
+    (message "Install rsense(Wait a minute)")
     (my/system "curl -O http://cx4a.org/pub/rsense/rsense-0.3.zip")
     (my/system "unzip rsense-0.3.zip")
     (my/system "mv rsense-0.3 rsense")
@@ -144,7 +146,8 @@
 ;; w3m
 (let ((default-directory my/elisp-directory))
   (when (not (file-directory-p "emacs-w3m"))
-    (my/system "cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login")
+    (message "Install emacs-w3m(Wait a minute)")
+;;    (my/system "cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login")
     (my/system "cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m")
     (let ((default-directory (concat default-directory "emacs-w3m")))
       (my/system "autoconf && ./configure && make"))))
@@ -152,14 +155,18 @@
 ;; Hyperspec
 (let ((default-directory my/elisp-directory))
   (when (not (file-directory-p "HyperSpec"))
-    (my/download-url "ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz")
+    (message "Install HyperSpec(Wait a minute)")
+    (unless (file-exists-p "HyperSpec-7-0.tar.gz")
+      (my/download-url "ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz"))
     (my/system "tar xf HyperSpec-7-0.tar.gz")
     (my/system "rm -f HyperSpec-7-0.tar.gz")))
 
 ;; setup theme
 (let ((default-directory custom-theme-directory))
-  (my/download-url
-   "https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el"))
+  (when (not (file-exists-p "reverse-theme.el"))
+    (message "Install reverse theme")
+    (my/download-url
+     "https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el")))
 
 (load-theme 'reverse t t)
 (enable-theme 'reverse)

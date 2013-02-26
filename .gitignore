@@ -2,3 +2,9 @@
 *.pch
 netrc
 emacs/init_loader/99_myfunc.el
+
+# for trial my emacs environment
+emacs/ac-comphist.dat
+emacs/elisps/
+emacs/elpa/
+emacs/history
