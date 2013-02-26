@@ -1,7 +1,7 @@
 # My Emacs Configuration Files
 
 
-## To use configuration
+## Launch Emacs same as my configuration
 
 Please execute following command
 
