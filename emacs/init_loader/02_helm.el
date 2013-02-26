@@ -1,9 +1,11 @@
 ;;;; helm
 (require 'helm-config)
-(require 'helm-gtags)
-(require 'helm-ack)
 (require 'helm-descbinds)
 (require 'helm-myutils)
+
+;; autoload
+(autoload 'helm-ack "helm-ack" nil t)
+(autoload 'helm-ack-current-file "helm-ack" nil t)
 
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
