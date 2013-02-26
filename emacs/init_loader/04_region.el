@@ -3,6 +3,7 @@
 ;; expand region
 (global-set-key (kbd "C-@") 'er/expand-region)
 (global-set-key (kbd "C-M-@") 'er/contract-region)
+(global-set-key (kbd "<mouse-2>") 'mc/add-cursor-on-click)
 
 ;; multimark
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
