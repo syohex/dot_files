@@ -4,9 +4,6 @@
   '(progn
      ;; SLIME REPL
      (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
-;;slime-presentations
-
-     (define-key slime-repl-mode-map (kbd "TAB") nil)
 
      ;; encoding
      (setq slime-net-coding-system 'utf-8-unix)
@@ -26,6 +23,11 @@
      (require 'ac-slime)
      (add-hook 'slime-mode-hook 'set-up-slime-ac)
      (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+
+(eval-after-load "slime-repl"
+  '(progn
+     (define-key slime-repl-mode-map (kbd "TAB") nil)
+     (define-key slime-repl-mode-map (kbd "C-M-i") 'auto-complete)))
 
 (dolist (hook '(lisp-mode-hook))
   (add-hook hook 'slime-mode))
