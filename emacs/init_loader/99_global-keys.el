@@ -90,6 +90,10 @@
 
 ;; flymake
 (smartrep-define-key
+    global-map "M-g" '(("n" . 'next-error)
+                       ("p" . 'previous-error)))
+
+(smartrep-define-key
     global-map "M-g" '(("M-n" . 'flymake-goto-next-error)
                        ("M-p" . 'flymake-goto-prev-error)))
 

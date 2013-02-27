@@ -1,6 +1,5 @@
 ;; setting for flymake
 (require 'flymake)
-(require 'flycheck)
 
 ;; enable flycheck
 (dolist (hook '(coffee-mode-hook
@@ -63,25 +62,12 @@
   (setq flymake-check-was-interrupted t))
 (ad-activate 'flymake-post-syntax-check)
 
-;; helm flymake
-(defun helm-c-flymake-init ()
-  (with-current-buffer helm-current-buffer
-    (loop with nul-char = (char-to-string 0)
-          for err in flymake-err-info
-          for line   = (car err)
-          for detail = (aref (caar (cdr err)) 4)
-          for msg    = (replace-regexp-in-string nul-char " " detail)
-          for errmsg = (format "%5d: %s" line msg)
-          collect (cons errmsg line))))
-
-(defvar helm-c-flymake-source
-  '((name . "Error and Warnings")
-    (candidates . helm-c-flymake-init)
-    (action . (lambda (c)
-                (goto-line c helm-current-buffer)))
-    (valatile)))
-
-(defun helm-flymake ()
-  (interactive)
-  (helm :sources '(helm-c-flymake-source)
-        :buffer (get-buffer-create "*helm flymake*")))
+;; flycheck faces
+(eval-after-load "flycheck"
+  '(progn
+     (set-face-attribute 'flycheck-error-face nil
+                         :foreground "yellow" :weight 'bold
+                         :background "red")
+     (set-face-attribute 'flycheck-warning-face nil
+                         :foreground "white" :weight 'bold
+                         :background "dark orange")))
