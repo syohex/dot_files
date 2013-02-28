@@ -40,6 +40,10 @@
 (push '("*sgit*" :position right :width 0.5 :stick t)
       popwin:special-display-config)
 
+;; git-gutter
+(push '("*git-gutter:diff*" :position right :width 0.5 :stick t)
+      popwin:special-display-config)
+
 ;; direx
 (push '(direx:direx-mode :position left :width 40 :dedicated t)
       popwin:special-display-config)

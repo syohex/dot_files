@@ -16,6 +16,7 @@
 ;; git-gutter
 (global-git-gutter-mode t)
 (global-set-key (kbd "C-x C-a") 'git-gutter:toggle)
+(global-set-key (kbd "C-x v =") 'git-gutter:popup-diff)
 
 (eval-after-load "git-gutter"
   '(progn
