@@ -3,10 +3,10 @@
   '(progn
      (set-face-attribute 'diff-added-face nil
                          :background nil :foreground "green"
-                         :weight 'semi-bold)
+                         :weight 'normal)
      (set-face-attribute 'diff-removed-face nil
                          :background nil :foreground "firebrick1"
-                         :weight 'semi-bold)
+                         :weight 'normal)
 
      (set-face-attribute 'diff-file-header-face nil
                          :background nil :weight 'extra-bold)
