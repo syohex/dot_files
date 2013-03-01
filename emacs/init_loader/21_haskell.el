@@ -37,19 +37,19 @@
       (insert "-}"))))
 
 ;; find document
-(defvar helm-c-source-ghc-mod
+(defvar helm-ghc-mod-source
   '((name . "GHC Browse Documennt")
-    (init . helm-c-source-ghc-mod)
+    (init . helm-ghc-mod-init)
     (candidates-in-buffer)
     (candidate-number-limit . 9999)
-    (action . helm-c-source-ghc-mod-action)))
+    (action . helm-ghc-mod-action-display-document)))
 
-(defun helm-c-source-ghc-mod ()
+(defun helm-ghc-mod-init ()
   (with-current-buffer (helm-candidate-buffer 'global)
     (unless (call-process-shell-command "ghc-mod list" nil t t)
       (error "Failed 'ghc-mod list'"))))
 
-(defun helm-c-source-ghc-mod-action (candidate)
+(defun helm-ghc-mod-action-display-document (candidate)
   (let ((pkg (ghc-resolve-package-name candidate)))
     (if (and pkg candidate)
         (ghc-display-document pkg candidate nil)
@@ -57,5 +57,4 @@
 
 (defun helm-ghc-browse-document ()
   (interactive)
-  (helm :sources '(helm-c-source-ghc-mod)
-        :buffer (get-buffer-create "*helm-ghc-document*")))
+  (helm :sources '(helm-ghc-mod-source) :buffer "*helm-ghc-document*"))

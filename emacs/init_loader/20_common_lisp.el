@@ -29,7 +29,7 @@
     symbols))
 
 ;; hyperspec with helm
-(defvar helm-c-source-hyperspec
+(defvar helm-hyperspec-source
   `((name . "Lookup Hyperspec")
     (candidates . ,(lambda ()
                      (mapcar #'symbol-name
@@ -39,4 +39,4 @@
 
 (defun helm-hyperspec ()
   (interactive)
-  (helm 'helm-c-source-hyperspec (thing-at-point 'symbol)))
+  (helm 'helm-hyperspec-source (thing-at-point 'symbol)))

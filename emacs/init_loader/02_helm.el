@@ -21,7 +21,7 @@
 (global-set-key (kbd "<f10>") 'helm-myutils:dropbox)
 (global-set-key (kbd "C-x C-p") 'helm-myutils:files-in-curdir)
 
-(remove-hook 'kill-emacs-hook 'helm-c-adaptive-save-history)
+(remove-hook 'kill-emacs-hook 'helm-adaptive-save-history)
 
 ;; helm-ack
 (setq helm-c-ack-insert-at-point 'symbol)

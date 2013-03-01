@@ -9,7 +9,7 @@
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
-(global-set-key (kbd "C-h a")   'helm-c-apropos)
+(global-set-key (kbd "C-h a")   'helm-apropos)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
 
