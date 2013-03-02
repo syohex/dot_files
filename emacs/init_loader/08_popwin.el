@@ -41,7 +41,7 @@
       popwin:special-display-config)
 
 ;; git-gutter
-(push '("*git-gutter:diff*" :position right :width 0.5 :stick t)
+(push '("*git-gutter:diff*" :width 0.5 :stick t)
       popwin:special-display-config)
 
 ;; direx
