@@ -64,8 +64,8 @@
                        ("+" . 'goto-last-change-reverse)))
 
 ;; M-g mapping
-(global-set-key (kbd "M-g .") 'helm-ack)
-(global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
+(global-set-key (kbd "M-g .") 'helm-ag)
+(global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-f") 'ffap)
 
 ;; duplicate current line

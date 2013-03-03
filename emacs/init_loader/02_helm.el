@@ -4,8 +4,8 @@
 (require 'helm-myutils)
 
 ;; autoload
-(autoload 'helm-ack "helm-ack" nil t)
-(autoload 'helm-ack-current-file "helm-ack" nil t)
+(autoload 'helm-ag "helm-ag" nil t)
+(autoload 'helm-ag-this-file "helm-ag" nil t)
 
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
@@ -32,12 +32,3 @@
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
                     :foreground "white" :background nil :underline t)
-
-;; helm ack for the file
-(defun helm-ack-current-file ()
-  (interactive)
-  (unless (buffer-file-name)
-    (error "This is not file!!"))
-  (let ((helm-c-ack-insert-at-point nil))
-    (helm-ack -1)))
-(global-set-key (kbd "C-M-s") 'helm-ack-current-file)
