@@ -116,7 +116,6 @@
 (defvar my/nonelpa-packages-url
   '(
     ;; my own utilities
-    "https://raw.github.com/syohex/emacs-helm-ag/master/helm-ag.el"
     "https://raw.github.com/syohex/emacs-utils/master/pomodoro.el"
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
     "https://raw.github.com/syohex/emacs-utils/master/helm-myutils.el"
