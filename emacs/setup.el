@@ -90,7 +90,7 @@
     scss-mode yaml-mode zencoding-mode
 
     ;; helm
-    helm helm-gtags helm-descbinds helm-themes
+    helm helm-gtags helm-descbinds helm-themes helm-ag
 
     ;; git
     magit git-gutter
