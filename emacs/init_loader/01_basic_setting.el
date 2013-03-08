@@ -96,7 +96,12 @@
 ;; invisible mouse cursor when editing text
 (setq make-pointer-invisible t)
 
-;; undo-tree
+;; undo setting
+(setq undo-no-redo t)
+(setq undo-limit 600000)
+(setq undo-strong-limit 900000)
+
+;;;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
 
