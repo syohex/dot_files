@@ -12,6 +12,9 @@
 (eval-after-load "multiple-cursors-core"
   '(progn
      (dolist (command '(delete-cursor-word-or-region
+                        paredit-forward-delete
+                        paredit-forward-kill-word
+                        my/backward-kill-word
                         cperl-electric-semi))
        (add-to-list 'mc/cmds-to-run-for-all 'command))))
 
