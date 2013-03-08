@@ -45,7 +45,7 @@
 
     ;;;; editing utilities
     expand-region wrap-region
-    undo-tree mark-multiple redo+ smartrep
+    undo-tree mark-multiple smartrep
     yasnippet goto-chg
 
     ;;;; buffer utils
