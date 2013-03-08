@@ -22,7 +22,8 @@
   '(progn
      (setq git-gutter:modified-sign " ")
      (setq git-gutter:deleted-sign-sign " ")
-     (set-face-background 'git-gutter:deleted  "red")))
+     (set-face-background 'git-gutter:deleted  "red")
+     (set-face-background 'git-gutter:modified "magenta")))
 
 (smartrep-define-key
     global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
