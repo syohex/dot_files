@@ -15,11 +15,7 @@
 
 ;; binding
 (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
-
-;; wdired
-(eval-after-load "wdired"
-  '(progn
-     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
+(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;; direx
 (require 'direx)
