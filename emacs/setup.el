@@ -95,12 +95,15 @@
     ;; git
     magit git-gutter
 
+    ;; directory operation
+    direx
+
     init-loader
 ))
 
-(dolist (pack my/install-packages)
-  (unless (package-installed-p pack)
-    (package-install pack)))
+(dolist (package my/install-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (defun my/download-url (url)
   (assert (stringp url))
