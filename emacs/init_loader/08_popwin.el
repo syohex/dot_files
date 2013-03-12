@@ -7,13 +7,6 @@
                 ("*Colors*" :stick t) ("*Help*" :stick t))
               popwin:special-display-config))
 
-;; quickrun
-(push '("*quickrun*" :stick t) popwin:special-display-config)
-
-;; dictionaly
-(push '("*dict*" :stick t) popwin:special-display-config)
-(push '("*sdic*" :stick t) popwin:special-display-config)
-
 ;; popwin for slime
 (push '(slime-repl-mode :stick t) popwin:special-display-config)
 
@@ -38,10 +31,6 @@
 
 ;; sgit
 (push '("*sgit*" :position right :width 0.5 :stick t)
-      popwin:special-display-config)
-
-;; git-gutter
-(push '("*git-gutter:diff*" :width 0.5 :stick t)
       popwin:special-display-config)
 
 ;; direx
