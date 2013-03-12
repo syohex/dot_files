@@ -62,6 +62,15 @@
   (setq flymake-check-was-interrupted t))
 (ad-activate 'flymake-post-syntax-check)
 
+(eval-after-load "flymake"
+  '(progn
+     (set-face-attribute 'flymake-errline nil
+                         :foreground "yellow" :weight 'bold
+                         :background "red1")
+     (set-face-attribute 'flymake-warnline nil
+                         :foreground "white" :weight 'bold
+                         :background "dark orange")))
+
 ;; flycheck faces
 (eval-after-load "flycheck"
   '(progn
