@@ -237,7 +237,7 @@ zstyle ':completion:*' recent-dirs-insert both
 if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     source ~/.zsh/zaw/zaw.zsh
     bindkey '^[@' zaw-cdr
-    bindkey '^[#' zaw-gitdir
+    bindkey '^[#' zaw-git-directories
 fi
 
 # for git completion(too slowly in big repository)
