@@ -1,3 +1,6 @@
+;; shellscript mode
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+
 ;; eshell
 (eval-after-load "em-prompt"
   '(progn
