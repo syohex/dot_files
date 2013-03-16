@@ -7,6 +7,10 @@
 (autoload 'helm-ag "helm-ag" nil t)
 (autoload 'helm-ag-this-file "helm-ag" nil t)
 
+(eval-after-load "helm-ag"
+  '(progn
+     (setq helm-ag-insert-at-point 'symbol)))
+
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
