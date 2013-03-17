@@ -129,6 +129,7 @@
 
 ;; smart repetition
 (require 'smartrep)
+(setq smartrep-mode-line-active-bg nil)
 (setq smartrep-mode-line-string-activated "<<< SmartRep >>>")
 
 ;; expand symbolic link
