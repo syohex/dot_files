@@ -34,3 +34,6 @@
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
                     :foreground "white" :background nil :underline t)
+
+(set-face-attribute 'helm-source-header nil
+                    :height 1.0)
