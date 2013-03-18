@@ -3,10 +3,7 @@
 (require 'helm-descbinds)
 (require 'helm-myutils)
 
-;; autoload
-(autoload 'helm-ag "helm-ag" nil t)
-(autoload 'helm-ag-this-file "helm-ag" nil t)
-
+;; helm-ag
 (eval-after-load "helm-ag"
   '(progn
      (setq helm-ag-insert-at-point 'symbol)))
