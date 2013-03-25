@@ -7,8 +7,8 @@
 (load-library "ls-lisp")
 (setq ls-lisp-dirs-first t)
 ;; recursive copy, remove
-(setq dired-recursive-copies 'always)
-(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always
+      dired-recursive-deletes 'always)
 
 ;; dired-x
 (load "dired-x")

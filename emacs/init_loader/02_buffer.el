@@ -47,7 +47,7 @@
 (defvar my/cycle-buffer-limit 30)
 
 (defun my/buffer-not-switch-p ()
-  (or (string-match "^*" (buffer-name)) (eq major-mode 'dired-mode)
+  (or (string-match "\\`*" (buffer-name)) (eq major-mode 'dired-mode)
       (eq major-mode 'direx:direx-mode)))
 
 (defun my/next-buffer ()
@@ -68,9 +68,3 @@
 
 (global-set-key (kbd "M-9") 'my/next-buffer)
 (global-set-key (kbd "M-0") 'my/previous-buffer)
-
-(defun my/push-mark ()
-  (interactive)
-  (push-mark))
-(global-set-key (kbd "C-x C-SPC") 'my/push-mark)
-(global-set-key (kbd "C-x C-x") 'pop-global-mark)

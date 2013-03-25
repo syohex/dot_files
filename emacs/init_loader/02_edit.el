@@ -117,19 +117,16 @@
 (global-set-key (kbd "C-M-u") 'my/backward-up-list)
 (global-set-key (kbd "C-M-d") 'my/down-list)
 
-;; goto-chg
-(require 'goto-chg)
-
 ;; like Vim 'f'
 (defun my/move-specified-char (arg)
   (interactive "p")
   (let ((regexp (char-to-string (read-char))))
-    (cond ((and current-prefix-arg (listp current-prefix-arg))
-           (re-search-backward regexp nil t))
-          (t
-           (forward-char 1)
-           (re-search-forward regexp nil t arg)
-           (backward-char 1)))))
+    (if (and current-prefix-arg (listp current-prefix-arg))
+        (re-search-backward regexp nil t)
+      (forward-char 1)
+      (re-search-forward regexp nil t arg)
+      (backward-char 1))))
+
 (global-set-key (kbd "C-M-r") 'my/move-specified-char)
 
 ;; Insert next line and previous line('o' and 'O')
@@ -158,9 +155,6 @@
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
 (define-key ctl-x-map (kbd "%") 'goto-match-paren)
-
-;; grep
-(setq grep-command "ag --nocolor --nogroup ")
 
 ;; autopair
 (eval-after-load "autopair"

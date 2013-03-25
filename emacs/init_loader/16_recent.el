@@ -1,9 +1,9 @@
 ;;;; recentf-ext
-(setq recentf-max-saved-items 2000)
-
-(setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
+(setq recentf-max-saved-items 2000
+      recentf-auto-cleanup 600
+      recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
                         "\\.mime-example" "\\.ido.last" "COMMIT_EDITMSG"))
-(setq recentf-auto-cleanup 600)
+
 (when window-system
   (run-at-time t 600 'recentf-save-list))
 

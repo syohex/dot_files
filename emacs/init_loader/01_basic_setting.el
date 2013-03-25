@@ -56,11 +56,9 @@
 ;; enable yascrollbar
 (global-yascroll-bar-mode)
 
-;; not create backup file
-(setq backup-inhibited t)
-
-;; not create auto save file
-(setq delete-auto-save-files t)
+;; not create backup file and not create auto save file
+(setq backup-inhibited t
+      delete-auto-save-files)
 
 ;; Disable menu bar
 (menu-bar-mode -1)
@@ -97,9 +95,9 @@
 (setq make-pointer-invisible t)
 
 ;; undo setting
-(setq undo-no-redo t)
-(setq undo-limit 600000)
-(setq undo-strong-limit 900000)
+(setq undo-no-redo t
+      undo-limit 600000
+      undo-strong-limit 900000)
 
 ;;;; undo-tree
 (require 'undo-tree)
