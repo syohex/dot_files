@@ -1,12 +1,16 @@
 ;;;; cperl-mode
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist
-         '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)$" . cperl-mode))
+         '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
+
+(autoload 'helm-perldoc:setup "helm-perldoc")
 
 (eval-after-load "cperl-mode"
   '(progn
      (cperl-set-style "PerlStyle")
      (setq cperl-auto-newline nil)
+
+     (helm-perldoc:setup)
 
      ;; bindings
      (define-key cperl-mode-map "\177" nil)
@@ -27,18 +31,19 @@
 
 ;; for flymake
 (add-to-list 'flymake-allowed-file-name-masks
-             '("\\(\\.pl\\|\\.pm\\|\\.t\\|\\.psgi\\)$" flymake-perl-init))
+             '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" flymake-perl-init))
+
+(defun flymake-perl-root-directory ()
+  (loop with curdir = default-directory
+        for file in '("Makefile.PL" "Build.PL" "cpanfile")
+        when (locate-dominating-file curdir file)
+        return (directory-file-name (expand-file-name it))))
 
 (defun flymake-perl-add-topdir-option ()
-  (let ((curdir (directory-file-name (file-name-directory (buffer-file-name)))))
-    (with-temp-buffer
-      (let ((ret (call-process-shell-command "git rev-parse --show-toplevel" nil t)))
-        (cond ((zerop ret)
-               (goto-char (point-min))
-               (let ((topdir (buffer-substring-no-properties (point) (line-end-position))))
-                 (unless (string= topdir curdir)
-                   (format "-I%s" topdir))))
-              (t nil))))))
+  (let ((curdir (directory-file-name (file-name-directory (buffer-file-name))))
+        (rootdir (flymake-perl-root-directory)))
+    (when (and rootdir (not (string= curdir rootdir)))
+      (format "-I%s" rootdir))))
 
 (defun flymake-perl-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -68,14 +73,10 @@
                       (match-beginning 0)) index)))
       (nreverse index))))
 
-(autoload 'helm-perldoc:setup "helm-perldoc")
-
 (defun my/cperl-mode-hook ()
   (flymake-mode t)
   (my/setup-symbol-moving)
   (hs-minor-mode 1)
-
-  (run-with-idle-timer 1 nil 'helm-perldoc:setup)
 
   ;; my own imenu. cperl imenu is too many information for me
   (set (make-local-variable 'imenu-create-index-function)
