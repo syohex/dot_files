@@ -58,7 +58,7 @@
 
 ;; not create backup file and not create auto save file
 (setq backup-inhibited t
-      delete-auto-save-files)
+      delete-auto-save-files t)
 
 ;; Disable menu bar
 (menu-bar-mode -1)
