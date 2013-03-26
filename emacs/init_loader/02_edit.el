@@ -169,3 +169,11 @@
                 coffee-mode-hook
                 cperl-mode-hook))
   (add-hook hook 'autopair-mode))
+
+;; highlight specified words
+(defun my/add-watchwords ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIXME\\|TODO\\|XXX\\|REFACTOR\\)"
+          1 '((:foreground "pink") (:weight bold)) t))))
+
+(add-hook 'prog-mode-hook 'my/add-watchwords)
