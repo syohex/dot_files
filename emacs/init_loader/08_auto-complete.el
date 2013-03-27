@@ -10,6 +10,7 @@
 
 ;; Enable auto-complete mode other than default enable modes
 (dolist (mode '(magit-log-edit-mode
+                coffee-mode
                 markdown-mode))
   (add-to-list 'ac-modes mode))
 
