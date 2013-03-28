@@ -1,7 +1,7 @@
 *~
 *.pch
 netrc
-emacs/init_loader/99_myfunc.el
+emacs/init_loader/99_private.el
 
 # for trial my emacs environment
 emacs/ac-comphist.dat
