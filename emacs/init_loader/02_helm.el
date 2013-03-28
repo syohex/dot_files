@@ -20,7 +20,6 @@
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 (global-set-key (kbd "C-;") 'helm-myutils:git-project)
 (global-set-key (kbd "<f10>") 'helm-myutils:dropbox)
-(global-set-key (kbd "C-x C-p") 'helm-myutils:files-in-curdir)
 (global-set-key (kbd "C-M-s") 'helm-ag-this-file)
 
 (remove-hook 'kill-emacs-hook 'helm-adaptive-save-history)
