@@ -151,3 +151,5 @@
                     :foreground "orange" :weight 'semi-bold)
 (set-face-attribute 'ido-only-match nil
                     :foreground "orange" :weight 'semi-bold)
+(set-face-attribute 'ido-subdir nil
+                    :foreground "cyan" :weight 'semi-bold)
