@@ -173,7 +173,7 @@
 ;; highlight specified words
 (defun my/add-watchwords ()
   (font-lock-add-keywords
-   nil '(("\\<\\(FIXME\\|TODO\\|XXX\\|REFACTOR\\)"
+   nil '(("\\<\\(FIXME\\|TODO\\|XXX\\|@@@\\)\\>"
           1 '((:foreground "pink") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook 'my/add-watchwords)
