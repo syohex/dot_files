@@ -142,7 +142,8 @@
 (setcdr (cdar (cddr ido-minor-mode-map-entry)) nil)
 (defun my/ido-find-file ()
   (interactive)
-  (let ((ido-mode t))
+  (let ((ido-mode t)
+        (ido-max-prospects 8))
     (ido-find-file-in-dir default-directory)))
 (global-set-key (kbd "C-x C-p") 'my/ido-find-file)
 
