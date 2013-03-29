@@ -45,7 +45,7 @@
 
     ;;;; editing utilities
     expand-region wrap-region
-    undo-tree mark-multiple smartrep
+    undo-tree multiple-cursors smartrep
     yasnippet goto-chg
 
     ;;;; buffer utils
@@ -102,7 +102,8 @@
 ))
 
 (dolist (package my/install-packages)
-  (unless (package-installed-p package)
+  (if (or (not (package-installed-p package))
+          (memq package '(cperl-mode ruby-mode))) ;; Don't use built-in version
     (package-install package)))
 
 (defun my/download-url (url)
