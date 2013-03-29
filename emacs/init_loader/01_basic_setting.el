@@ -135,3 +135,20 @@
 
 ;; for popular file type
 (require 'generic-x)
+
+;; ido
+(ido-mode 'file)
+;;; Disable override some keybinds(eg. find-file)
+(setcdr (cdar (cddr ido-minor-mode-map-entry)) nil)
+(defun my/ido-find-file ()
+  (interactive)
+  (let ((ido-mode t))
+    (ido-find-file-in-dir default-directory)))
+(global-set-key (kbd "C-x C-p") 'my/ido-find-file)
+
+(set-face-attribute 'ido-first-match nil
+                    :foreground "orange" :weight 'semi-bold)
+(set-face-attribute 'ido-only-match nil
+                    :foreground "orange" :weight 'semi-bold)
+(set-face-attribute 'ido-subdir nil
+                    :foreground "cyan" :weight 'semi-bold)
