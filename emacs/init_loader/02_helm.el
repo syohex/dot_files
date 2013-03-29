@@ -4,14 +4,13 @@
 (require 'helm-myutils)
 
 ;; helm-ag
-(eval-after-load "helm-ag"
-  '(progn
-     (setq helm-ag-insert-at-point 'symbol)))
+(custom-set-variables
+ '(helm-ag-insert-at-point 'symbol))
 
 ;; configuration helm variable
-(setq helm-idle-delay 0.1)
-(setq helm-input-idle-delay 0)
-(setq helm-candidate-number-limit 500)
+(setq helm-idle-delay 0.1
+      helm-input-idle-delay 0
+      helm-candidate-number-limit 500)
 (helm-descbinds-install)
 
 (define-key helm-map (kbd "C-p")   'helm-previous-line)
