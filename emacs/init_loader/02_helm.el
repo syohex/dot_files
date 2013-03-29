@@ -18,7 +18,7 @@
 (define-key helm-map (kbd "C-n")   'helm-next-line)
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
-(global-set-key (kbd "C-x C-p") 'helm-find-file)
+(global-set-key (kbd "C-x C-p") 'helm-find-files)
 (global-set-key (kbd "C-;") 'helm-myutils:git-project)
 (global-set-key (kbd "<f10>") 'helm-myutils:dropbox)
 (global-set-key (kbd "C-M-s") 'helm-ag-this-file)
@@ -30,7 +30,7 @@
 (set-face-attribute 'helm-ff-file nil
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
-                    :foreground "white" :background nil :underline t)
+                    :foreground "cyan" :background nil :underline t)
 
 (set-face-attribute 'helm-source-header nil
                     :height 1.0)
