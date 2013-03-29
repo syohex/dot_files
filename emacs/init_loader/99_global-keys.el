@@ -20,11 +20,6 @@
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 
-(defun my/delete-line ()
-  (interactive)
-  (delete-region (line-beginning-position) (line-end-position)))
-(define-key my/ctrl-q-map (kbd "k") 'my/delete-line)
-
 (defun my/copy-line ()
   (interactive)
   (kill-ring-save (line-beginning-position) (line-end-position)))
@@ -35,7 +30,7 @@
   (interactive "p")
   (dotimes (i arg)
     (yank)))
-(define-key my/ctrl-q-map (kbd "p") 'repeat-yank)
+(define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
 
 ;; col-highlight
 (autoload 'col-highlight-mode "col-highlight" nil t)
@@ -98,10 +93,3 @@
 (smartrep-define-key
     global-map "M-g" '(("M-n" . 'flymake-goto-next-error)
                        ("M-p" . 'flymake-goto-prev-error)))
-
-;; adjust buffer
-(smartrep-define-key
-    global-map "C-q" '(("<left>" . (lambda () (shrink-window-horizontally 1)))
-                       ("<right>" . (lambda () (enlarge-window-horizontally 1)))
-                       ("<up>" . (lambda () (shrink-window 1)))
-                       ("<down>" . (lambda () (enlarge-window 1)))))
