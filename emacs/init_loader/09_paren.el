@@ -7,6 +7,9 @@
                       :background nil :foreground nil
                       :underline "#ffff00" :weight 'extra-bold))
 
+;; insert paren
+(setq parens-require-spaces nil)
+
 ;;;; Paredit
 (require 'paredit)
 
