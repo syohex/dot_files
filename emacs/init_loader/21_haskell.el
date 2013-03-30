@@ -22,7 +22,6 @@
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
 
 (add-hook 'haskell-mode-hook 'haskell-individual-setup)
-(add-hook 'inferior-haskell-hook 'my/wrap-region-as-autopair)
 
 ;; Wrap region with block comment
 (defun haskell-block-commend-region (start end)
