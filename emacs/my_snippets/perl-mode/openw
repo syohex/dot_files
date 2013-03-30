@@ -1,6 +1,6 @@
 # name : open $h, '>' file or die "..." # File write open
 # key  : openw
 # --
-open my \$fh, '>', $0 or die "Can't open file $:";
+open my \$fh, '>', $0 or die "Can't open file \$:";
 
 close \$fh;
