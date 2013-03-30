@@ -39,7 +39,6 @@
 
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
-(define-key my/ctrl-q-map (kbd "C-p") 'pomodoro:start)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
