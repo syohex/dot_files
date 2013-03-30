@@ -1,6 +1,6 @@
 # name : open $h, '<', $file or die "..."; # File read open
-# key  : open
+# key  : openr
 # --
-open my \$fh, '<', ${1:file} or die "Can't open \$$1";
-$0
+open my \$fh, '<', $0 or die "Can't open file: $!";
+
 close \$fh;
