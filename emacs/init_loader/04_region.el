@@ -27,6 +27,9 @@
 (wrap-region-add-wrapper "/" "/" nil 'org-mode)
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)
 
+(wrap-region-add-wrapper "`" "`" nil 'markdown-mode)
+(wrap-region-add-wrapper "*" "*" nil 'markdown-mode)
+
 ;; disable paredit enable mode
 (dolist (mode '(emacs-lisp-mode
                 scheme-mode
