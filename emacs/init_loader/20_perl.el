@@ -91,11 +91,11 @@
  '(cperl-indent-subs-specially nil))
 
 ;; pod-mode
-(add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
+(add-to-list 'auto-mode-alist '("\\.pod\\'" . pod-mode))
 
 ;; XS
 (autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
-(add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
+(add-to-list 'auto-mode-alist '("\\.xs\\'" . xs-mode))
 (eval-after-load "xs-mode"
   '(progn
      (c-toggle-electric-state -1)

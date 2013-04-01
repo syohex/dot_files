@@ -1,6 +1,5 @@
 ;; setting markdown-mode
-(add-to-list 'auto-mode-alist '("\\.\\(md\\|mdt\\|mdwn\\)$" . markdown-mode))
-(autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\|mdwn\\)\\'" . markdown-mode))
 
 (eval-after-load "markdown-mode"
   '(progn

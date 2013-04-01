@@ -1,6 +1,6 @@
 ;; setting for ruby
 (autoload 'ruby-mode "ruby-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 
 (eval-after-load "ruby-mode"
   '(progn

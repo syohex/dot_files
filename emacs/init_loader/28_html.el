@@ -14,7 +14,7 @@
 
 ;; css-mode
 (autoload 'css-mode "css-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 
 ;; for auto-complete
 (defvar ac-source-css-property-names

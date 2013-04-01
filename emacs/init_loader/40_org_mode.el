@@ -5,7 +5,7 @@
      (define-key global-map (kbd "C-c l") 'org-store-link)
      (setq org-startup-truncated nil)
      (setq org-return-follows-link t)
-     (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+     (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
      (setq org-directory user-emacs-directory)
      ;;  (setq org-startup-folded 'nofold)
      (setq org-use-fast-todo-selection t)
