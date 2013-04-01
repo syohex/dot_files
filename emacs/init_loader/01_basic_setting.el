@@ -87,8 +87,8 @@
 
 ;; which-func
 (require 'which-func)
-(set-face-foreground 'which-func "chocolate4")
-(set-face-bold-p 'which-func t)
+(set-face-attribute 'which-func nil
+                    :foreground "pink" :weight 'bold)
 (which-func-mode t)
 
 ;; invisible mouse cursor when editing text

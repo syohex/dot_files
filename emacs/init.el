@@ -18,8 +18,10 @@
       (add-to-list 'exec-path path))))
 
 ;; setup theme
-(load-theme 'reverse t t)
-(enable-theme 'reverse)
+;(load-theme 'reverse t t)
+;(enable-theme 'reverse)
+(load-theme 'tomorrow-night-paradise t t)
+(enable-theme 'tomorrow-night-paradise)
 
 ;; init-loader
 (require 'init-loader)
