@@ -15,6 +15,7 @@ select-word-style bash
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
+setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt share_history
@@ -52,6 +53,9 @@ zstyle ':completion:*:default' menu select=1
 # completion use cache
 zstyle ':completion:*' use-cache true
 
+# completion after '='(like --prefix=/usr)
+setopt magic_equal_subst
+
 # with slash
 setopt noautoremoveslash
 
@@ -64,6 +68,12 @@ unsetopt promptcr
 # Not bell
 setopt NO_beep
 setopt nolistbeep
+
+# Check before rm with '*'
+setopt rm_star_wait
+
+# String behind '#' is comment.
+setopt interactive_comments
 
 # key binding of command history
 autoload history-search-end
