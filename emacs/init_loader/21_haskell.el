@@ -6,7 +6,7 @@
 (load "haskell-site-file") ;; load haskell-mode/haskell-site-file.el
 
 (add-to-list 'auto-mode-alist
-         '("\\.\\(hs\\|hi\\|gs\\)$" . haskell-mode))
+         '("\\.\\(hs\\|hi\\|gs\\)\\'" . haskell-mode))
 
 (defun haskell-individual-setup ()
   (turn-on-haskell-doc-mode)
