@@ -169,9 +169,16 @@
   (when (not (file-exists-p "reverse-theme.el"))
     (message "Install reverse theme")
     (my/download-url
-     "https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el")))
+     "https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el"))
 
-(load-theme 'reverse t t)
-(enable-theme 'reverse)
+  (when (not (file-exists-p "tomorrow-night-paradise-theme.el"))
+    (message "Install tomorrow-night-paradise theme")
+    (my/download-url
+     "https://raw.github.com/syohex/tomorrow-night-paradise-theme.el/syohex/tomorrow-night-paradise-theme.el")))
+
+;;(load-theme 'reverse t t)
+;;(enable-theme 'reverse)
+(load-theme 'tomorrow-night-paradise t t)
+(enable-theme 'tomorrow-night-paradise)
 
 (init-loader-load my/init-loader-directory)
