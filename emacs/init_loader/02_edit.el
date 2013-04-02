@@ -168,6 +168,7 @@
     python-mode
     haskell-mode
     ruby-mode
+    sh-mode
     coffee-mode
     cperl-mode))
 
