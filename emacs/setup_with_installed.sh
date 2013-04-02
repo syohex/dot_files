@@ -61,7 +61,7 @@ setup_wanderlust () {
         fi
     done
 
-    cp ~/src/wanderlust/utils/ssl.el ${DOT_EMACSD}/elisps
+    cp ~/src/wanderlust/utils/ssl.el ~/.emacs.d/elisps/
 }
 
 for dir in ~/bin ~/src
