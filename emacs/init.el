@@ -18,10 +18,10 @@
       (add-to-list 'exec-path path))))
 
 ;;;; setup theme
-;;(load-theme 'reverse t t)
-;;(enable-theme 'reverse)
-(load-theme 'syohex-reverse t t)
-(enable-theme 'syohex-reverse)
+(load-theme 'reverse t t)
+(enable-theme 'reverse)
+;;(load-theme 'syohex-reverse t t)
+;;(enable-theme 'syohex-reverse)
 
 ;; init-loader
 (require 'init-loader)

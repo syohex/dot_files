@@ -46,4 +46,4 @@
                             (format "[%s]" (substring branch 11))
                           "[Not Repo]")))
     (propertize mode-line-str
-                'face '((:foreground "LawnGreen" :weight bold)))))
+                'face '((:foreground "DarkGreen" :weight bold)))))
