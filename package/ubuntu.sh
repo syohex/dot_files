@@ -2,10 +2,11 @@
 
 set -e
 
-PACKAGES= zsh git-svn emacs vim subversion build-essential \
+PACKAGES=zsh git-svn emacs vim subversion build-essential \
     emacs-mozc emacs-mozc-bin ibus-mozc mozc-server mozc-utils-gui \
-    dia diffutils nkf lv cvs cvs-utils w3m gtk-recordmydesktop \
-    shutter lftp aspell ispell minicom
+    dia diffutils nkf lv cvs cvsutils w3m gtk-recordmydesktop \
+    curl shutter lftp aspell ispell minicom ttf-vlgothic \
+    wmctrl paco
 
 echo "Install packages:"
 sudo aptitude install $PACKAGES
