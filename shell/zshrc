@@ -1,4 +1,14 @@
 # -*- mode:shell-script -*-
+path=(
+    $HOME/bin
+    /usr/local/sbin
+    /usr/local/bin
+    /usr/sbin
+    /usr/bin
+    /sbin
+    /bin
+)
+
 # completion
 fpath=(~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
 autoload -U compinit
@@ -88,8 +98,6 @@ REPORTTIME=10
 # Setting for MacOSX
 case "$OSTYPE" in
 darwin*)
-        export PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
         # Only Perl 5.16 problem??
         export PERLDOC_PAGER='less -f -r'
 
@@ -104,6 +112,7 @@ esac
 
 # setting LANG, this should be UTF-8
 export LANG=ja_JP.UTF-8
+export TERM=xterm-256color
 
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
@@ -141,7 +150,6 @@ else
 fi
 
 alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
-alias search-emacs="emacs -Q -l --reverse ~/dot_files/emacs/search_emacs"
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
@@ -150,9 +158,6 @@ if which pbcopy >/dev/null 2>&1 ; then
 elif which xsel >/dev/null 2>&1 ; then
    # Linux
    alias -g C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then
-   # Cygwin
-   alias -g C='| putclip'
 fi
 
 # PROMPT
@@ -178,7 +183,7 @@ fi
 
 # load rbenv
 if [ -d ~/.rbenv/bin ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
+    path=($HOME/.rbenv/bin $path)
     eval "$(rbenv init - zsh)"
 fi
 
@@ -189,6 +194,9 @@ if [ -e ~/.nvm/nvm.sh ]; then
     export NODE_PATH=/home/syohei/.nvm/`node --version`/lib/node_modules:$NODE_PATH
 fi
 
+# pythonz
+[[ -e ~/.pythonz/etc/bashrc ]] && source ~/.pythonz/etc/bashrc
+
 # setting for python virtual env
 VIRTUALENV_ACTIVE=~/virtual_env/bin/activate
 if [ -e ${VIRTUALENV_ACTIVE} ]; then
@@ -198,17 +206,10 @@ fi
 export PYTHONSTARTUP=~/.pythonsetup
 
 # haskell setting
-if [ -d ~/.cabal/bin ]; then
-    export PATH=~/.cabal/bin:$PATH
-fi
+[[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
 
-# Emacs Lisp Carton setting
-if [ -d ~/.carton ]; then
-    # Don't conflict Perl's carton
-    alias ecarton="${HOME}/.carton/bin/carton"
-fi
-
-export TERM=xterm-256color
+# Emacs Lisp Carton setting, # Don't conflict Perl's carton
+[[ -d ~/.carton ]] && alias ecarton="${HOME}/.carton/bin/carton"
 
 # loading common function for any platform
 source ~/dot_files/shell/common_func.sh
@@ -257,14 +258,14 @@ __git_files () {
 
 # for tmux complete
 _tmux_pane_words() {
-  local expl
-  local -a w
-  if [[ -z "$TMUX_PANE" ]]; then
-    _message "not running inside tmux!"
-    return 1
-  fi
-  w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
-  _wanted values expl 'words from current tmux pane' compadd -a w
+    local expl
+    local -a w
+    if [[ -z "$TMUX_PANE" ]]; then
+        _message "not running inside tmux!"
+        return 1
+    fi
+    w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
+    _wanted values expl 'words from current tmux pane' compadd -a w
 }
 
 zle -C tmux-pane-words-prefix   complete-word _generic
