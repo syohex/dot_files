@@ -65,7 +65,6 @@ ln -sf $PWD/ruby/pryrc ~/.pryrc
 # For Common Lisp
 ##  CCL
 ln -sf $PWD/common_lisp/ccl-init.lisp ~/.ccl-init.lisp
-ln -sf $PWD/common_lisp/ccl ~/bin/ccl
 
 ## CLISP
 ln -sf $PWD/common_lisp/clisprc.lisp ~/.clisprc.lisp
