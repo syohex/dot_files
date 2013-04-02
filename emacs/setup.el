@@ -23,7 +23,7 @@
 (add-to-list 'load-path my/elisp-directory)
 
 ;; check commands
-(dolist (cmd '("curl" "cvs"))
+(dolist (cmd '("curl"))
   (unless (executable-find cmd)
     (error "Please install %s" cmd)))
 
@@ -142,7 +142,7 @@
 
     ;; 3rd pirty
     "http://homepage1.nifty.com/bmonkey/emacs/elisp/iman.el"
-    "https://github.com/renormalist/emacs-pod-mode/raw/master/pod-mode.el"
+    "https://raw.github.com/renormalist/emacs-pod-mode/master/pod-mode.el"
     "http://www.emacswiki.org/emacs/download/xs-mode.el"
     "http://static.boinkor.net/lisp/cl-indent-patches.el"
     ))
@@ -161,15 +161,6 @@
     (my/system "unzip rsense-0.3.zip")
     (my/system "mv rsense-0.3 rsense")
     (my/system "rm -f rsense-0.3.zip")))
-
-;; w3m
-(let ((default-directory my/elisp-directory))
-  (when (not (file-directory-p "emacs-w3m"))
-    (message "Install emacs-w3m(Wait a minute)")
-;;    (my/system "cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login")
-    (my/system "cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m")
-    (let ((default-directory (concat default-directory "emacs-w3m")))
-      (my/system "autoconf && ./configure && make"))))
 
 ;; Hyperspec
 (let ((default-directory my/elisp-directory))

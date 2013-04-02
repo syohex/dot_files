@@ -64,7 +64,17 @@ setup_wanderlust () {
     cp ~/src/wanderlust/utils/ssl.el ~/.emacs.d/elisps/
 }
 
-for dir in ~/bin ~/src
+setup_w3m () {
+    cd ~/.emacs.d/elisps
+
+    cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
+    cd emacs-w3m
+    autoconf
+    ./configure
+    make
+}
+
+for dir in ~/bin ~/src ~/.emacs.d/elisps
 do
     echo "mkdir $dir"
     [ ! -d $dir ] && mkdir -p $dir
