@@ -1,5 +1,22 @@
 ;;;; editing operations
 
+;; move lines
+(defun my/move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun my/move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key [(control shift up)] 'my/move-line-up)
+(global-set-key [(control shift down)] 'my/move-line-down)
+
 ;; thingopt
 (require 'thingopt)
 (define-thing-commands)
