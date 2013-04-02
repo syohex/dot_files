@@ -35,10 +35,10 @@
 
 (package-refresh-contents)
 
-(defvar my/install-packages
+(defvar base-packages
   '(
     ;;;; for auto-complete
-    auto-complete fuzzy popup ac-slime pos-tip
+    auto-complete fuzzy popup pos-tip
 
     ;;;; highlight
     ace-jump-mode vline col-highlight
@@ -90,7 +90,7 @@
     scss-mode yaml-mode zencoding-mode
 
     ;; helm
-    helm helm-gtags helm-descbinds helm-themes helm-ag
+    helm
 
     ;; git
     magit git-gutter
@@ -99,11 +99,27 @@
     direx
 
     init-loader
-))
+    ))
 
-(dolist (package my/install-packages)
-  (if (or (not (package-installed-p package))
-          (memq package '(cperl-mode ruby-mode))) ;; Don't use built-in version
+(defvar sub-packages
+  '(
+    ;; slime
+    ac-slime
+
+    ;; popwin
+    import-popwin
+
+    ;; helm
+    helm-gtags helm-descbinds helm-themes helm-ag
+    ))
+
+(dolist (package base-packages)
+  (when (or (not (package-installed-p package))
+            (memq package '(cperl-mode ruby-mode)))
+    (package-install package)))
+
+(dolist (package sub-packages)
+  (unless (package-installed-p package)
     (package-install package)))
 
 (defun my/download-url (url)
