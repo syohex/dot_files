@@ -88,19 +88,19 @@
 ;; flymake
 (defun my/flymake-goto-next-error (arg)
   (interactive "P")
-  (if flycheck-mode
+  (if (and (boundp 'flycheck-mode) flycheck-mode)
       (next-error arg)
     (flymake-goto-next-error)))
 
 (defun my/flymake-goto-previous-error (arg)
   (interactive "P")
-  (if flycheck-mode
+  (if (and (boundp 'flycheck-mode) flycheck-mode)
       (previous-error arg)
     (flymake-goto-prev-error)))
 
 (smartrep-define-key
     global-map "M-g" '(("M-n" . 'my/flymake-goto-next-error)
-                       ("M-p" . 'my/flymake-goto-prev-error)))
+                       ("M-p" . 'my/flymake-goto-previous-error)))
 
 (defun my/open-junk ()
   (interactive)
