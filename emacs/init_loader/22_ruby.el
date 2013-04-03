@@ -29,12 +29,6 @@
            (indent-line-to indent)
            (and (> offset 0) (forward-char offset)))))
 
-     ;; auto insert `end'
-     (ruby-end-mode)
-
-     ;; auto insert pair
-     (define-key ruby-mode-map (kbd "M-|") 'my/insert-vertical-bar)
-
      ;; rsense
      (setq rsense-home (concat user-emacs-directory "elisps/rsense"))
      (add-to-list 'load-path (concat rsense-home "/etc"))
@@ -52,8 +46,11 @@
   (add-to-list 'ac-sources ac-source-rsense-method)
   (add-to-list 'ac-sources ac-source-rsense-constant)
 
+  ;; auto insert `end'
+  (ruby-end-mode 1)
+
   ;; autopair
-  (push '(?| . ?|) (getf autopair-extra-pairs :code)))
+  (ruby-electric-mode 1))
 
 (defvar yari-helm-source-ri-pages
   '((name . "RI documentation")
