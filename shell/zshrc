@@ -79,9 +79,6 @@ unsetopt promptcr
 setopt NO_beep
 setopt nolistbeep
 
-# Check before rm with '*'
-setopt rm_star_wait
-
 # String behind '#' is comment.
 setopt interactive_comments
 
@@ -134,6 +131,7 @@ alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias gg='git grep'
 alias gl='git ls-files'
+alias be='bundle exec'
 
 # dstat
 alias dstat-full='dstat -Tclmdrn'
