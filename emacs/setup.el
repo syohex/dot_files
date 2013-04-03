@@ -44,7 +44,7 @@
     ace-jump-mode vline col-highlight
 
     ;;;; editing utilities
-    expand-region wrap-region
+    autopair expand-region wrap-region
     undo-tree multiple-cursors smartrep
     yasnippet goto-chg
 
