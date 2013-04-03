@@ -33,8 +33,6 @@
      (ruby-end-mode)
 
      ;; auto insert pair
-     (require 'ruby-electric)
-     (setq ruby-electric-expand-delimiters-list nil)
      (define-key ruby-mode-map (kbd "M-|") 'my/insert-vertical-bar)
 
      ;; rsense
@@ -52,7 +50,10 @@
 (defun my/ruby-mode-hook ()
   ;; auto-complete rsense
   (add-to-list 'ac-sources ac-source-rsense-method)
-  (add-to-list 'ac-sources ac-source-rsense-constant))
+  (add-to-list 'ac-sources ac-source-rsense-constant)
+
+  ;; autopair
+  (push '(?| . ?|) (getf autopair-extra-pairs :code)))
 
 (defvar yari-helm-source-ri-pages
   '((name . "RI documentation")
@@ -66,11 +67,6 @@
   (interactive (list current-prefix-arg))
   (when current-prefix-arg (yari-ruby-obarray rehash))
   (helm :sources 'yari-helm-source-ri-pages :buffer "*yari*"))
-
-(defun my/insert-vertical-bar ()
-  (interactive)
-  (insert "||")
-  (backward-char 1))
 
 ;; Ruby's move defun
 (defun my/ruby-beginning-of-defun (&optional arg)

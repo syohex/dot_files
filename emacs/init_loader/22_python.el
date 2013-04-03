@@ -1,5 +1,4 @@
 ;; python-setting
-(autoload 'python-mode "python" nil t)
 (defadvice run-python (around run-python-no-sit activate)
   "Suppress absurd sit-for in run-python of python.el"
   (let ((process-launched (or (ad-get-arg 2) ; corresponds to `new`
@@ -36,7 +35,14 @@
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
-(add-hook 'python-mode-hook 'jedi:ac-setup)
+(defun my/python-mode-hook ()
+  (jedi:ac-setup)
+
+  ;; autopair
+  (setq autopair-handle-action-fns
+        '(autopair-default-handle-action autopair-python-triple-quote-action)))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
 
 (defvar my/python-block-regexp
   "\\<\\(for\\|if\\|while\\|try\\|class\\|def\\)\\s-")
