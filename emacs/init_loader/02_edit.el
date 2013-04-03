@@ -159,6 +159,7 @@
       (end-of-line))
   (newline-and-indent))
 
+(global-set-key [(shift return)] 'edit-next-line)
 (global-set-key (kbd "M-o") 'edit-next-line)
 (global-set-key (kbd "M-O") 'edit-previous-line)
 
