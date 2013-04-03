@@ -86,10 +86,24 @@
     global-map "M-g" '(("c" . duplicate-thing)))
 
 ;; flymake
-(smartrep-define-key
-    global-map "M-g" '(("n" . 'next-error)
-                       ("p" . 'previous-error)))
+(defun my/flymake-goto-next-error (arg)
+  (interactive "P")
+  (if flycheck-mode
+      (next-error arg)
+    (flymake-goto-next-error)))
+
+(defun my/flymake-goto-previous-error (arg)
+  (interactive "P")
+  (if flycheck-mode
+      (previous-error arg)
+    (flymake-goto-prev-error)))
 
 (smartrep-define-key
-    global-map "M-g" '(("M-n" . 'flymake-goto-next-error)
-                       ("M-p" . 'flymake-goto-prev-error)))
+    global-map "M-g" '(("M-n" . 'my/flymake-goto-next-error)
+                       ("M-p" . 'my/flymake-goto-prev-error)))
+
+(defun my/open-junk ()
+  (interactive)
+  (let ((filename (read-file-name "Junk File: " "~/junk/")))
+    (find-file filename)))
+(global-set-key (kbd "M-g M-j") 'my/open-junk)
