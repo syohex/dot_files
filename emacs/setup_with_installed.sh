@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 set -e
 
@@ -82,3 +82,4 @@ done
 
 setup_sdic
 setup_wanderlust
+setup_w3m
