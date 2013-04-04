@@ -56,7 +56,7 @@
     haskell-mode
 
     ;; flymake
-    flycheck
+    flycheck flymake-jslint
 
     ;; clojure
     clojure-mode nrepl

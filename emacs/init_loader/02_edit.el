@@ -185,6 +185,7 @@
     python-mode
     haskell-mode
     sh-mode
+    js-mode
     coffee-mode
     cperl-mode))
 
