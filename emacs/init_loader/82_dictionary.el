@@ -8,11 +8,11 @@
      (setq sdic-default-coding-system 'utf-8
            sdicf-array-command "/usr/bin/sary"
            sdic-eiwa-dictionary-list
-           '((sdicf-client (expand-file-name "~/local/dict/eijiro127.sdic")
+           `((sdicf-client ,(expand-file-name "~/local/dict/eijiro127.sdic")
                            (strategy array)))
 
            sdic-waei-dictionary-list
-           '((sdicf-client (expand-file-name "~/local/dict/eijiro127.sdic")
+           `((sdicf-client ,(expand-file-name "~/local/dict/eijiro127.sdic")
                            (strategy array))))
 
      ;; saryを直接使用できるように sdicf.el 内に定義されている
