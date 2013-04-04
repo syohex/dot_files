@@ -177,6 +177,7 @@
 ;; autopair
 (eval-after-load "autopair"
   '(progn
+     (setq-default autopair-blink nil)
      (setq-default autopair-blink-delay 0)))
 
 (defvar my/autopair-enabled-modes
