@@ -2,4 +2,4 @@
 # name: require
 # key: require
 # --
-var $1 = require('${1:module}');
+var $0 = require('');
