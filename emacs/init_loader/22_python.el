@@ -8,6 +8,8 @@
                       (accept-process-output (get-buffer-process python-buffer)))))
       ad-do-it)))
 
+(autoload 'helm-pydoc "helm-pydoc")
+
 (eval-after-load "python"
   '(progn
      ;; auto-complete mode for python
@@ -19,17 +21,10 @@
      (set-face-attribute 'jedi:highlight-function-argument nil
                          :foreground "green")
 
-     ;; to speedup, just load it on demand
-     (autoload 'pylookup-lookup "pylookup"
-       "Lookup SEARCH-TERM in the Python HTML indexes." t)
-     (autoload 'pylookup-update "pylookup"
-       "Run pylookup-update and create the database at `pylookup-db-file'." t)
-
      (define-key python-mode-map (kbd "C-c C-l") 'pylookup-lookup)
 
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-a") 'my/python-help)
-     (define-key python-mode-map (kbd "C-c C-i") 'my/python-insert-import-statement)
+     (define-key python-mode-map (kbd "C-c C-a") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
      (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
@@ -70,37 +65,6 @@
     (when new
       (goto-char new))))
 
-;; Insert import statement
-(defun my/python-search-duplicate-import (module)
-  (save-excursion
-    (let ((regexp (format "^\\(from\\|import\\)\\s-+%s" module)))
-      (re-search-backward regexp nil t))))
-
-(defun my/python-insert-import-statement ()
-  (interactive)
-  (save-excursion
-    (skip-chars-backward "^ \n")
-    (let ((exp (thing-at-point 'symbol))
-          (module nil))
-      (when (and exp (string-match "^\\([^.]+\\)" exp))
-        (setq module (match-string 1 exp)))
-      (if (re-search-backward "^\\(import\\|from\\)\\s-+" nil t)
-          (forward-line 1)
-        (progn
-          (goto-char (point-min))
-          (loop while (string-match "^#" (thing-at-point 'line))
-                do
-                (forward-line 1))))
-      (let* ((prompt (if current-prefix-arg
-                         "Import from module: "
-                       "import module: "))
-             (imported (read-string prompt module nil module)))
-        (when (my/python-search-duplicate-import imported)
-          (error (format "'%s' is already imported" imported)))
-        (insert (format "%s %s"
-                        (if current-prefix-arg "from" "import")
-                        imported))))))
-
 ;; back indent
 (defun python-back-indent ()
   (interactive)
@@ -111,14 +75,3 @@
      (when (re-search-forward regexp-str current-pos t)
        (beginning-of-line)
        (delete-char python-indent)))))
-
-;; help utilities
-(defun my/python-help ()
-  (interactive)
-  (let ((module (read-string "Pydoc module: " ))
-        (buf (get-buffer-create "*Python Help*")))
-    (with-current-buffer (get-buffer-create buf)
-      (erase-buffer)
-      (call-process-shell-command (format "pydoc %s" module) nil t t)
-      (goto-char (point-min)))
-    (pop-to-buffer buf)))
