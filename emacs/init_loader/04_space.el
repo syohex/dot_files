@@ -25,7 +25,7 @@
   (interactive)
   (cond ((memq 'my/cleanup-for-spaces before-save-hook)
          (setq my/current-cleanup-state
-               (propertize "[DT-]" 'face '((:foreground "red" :weight bold))))
+               (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
          (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
         (t
          (setq my/current-cleanup-state "")
