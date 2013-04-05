@@ -13,6 +13,7 @@
 (global-set-key (kbd "C-h e")   'popwin:messages)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
+(global-set-key (kbd "C-x C-d") 'dired-jump)
 (global-set-key (kbd "C-x C-z") 'duplicate-thing)
 
 ;; Ctrl-q map
