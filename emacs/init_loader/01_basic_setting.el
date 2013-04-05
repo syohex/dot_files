@@ -55,6 +55,7 @@
 
 ;; enable yascrollbar
 (global-yascroll-bar-mode)
+(setq yascroll:disabled-modes '(eshell-mode magit-status-mode))
 
 ;; not create backup file and not create auto save file
 (setq backup-inhibited t
