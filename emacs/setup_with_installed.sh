@@ -3,7 +3,7 @@
 set -e
 
 make_install () {
-    if [ which paco > /dev/null 2>&1 ]; then
+    if which paco > /dev/null 2>&1; then
         sudo paco -D make install
     else
         sudo make install
@@ -62,6 +62,7 @@ setup_wanderlust () {
     done
 
     cp ~/src/wanderlust/utils/ssl.el ~/.emacs.d/elisps/
+    curl -o ~/.emacs.d/elisps/elscreen-wl.el 'https://raw.github.com/syohex/emacs-elscreen-wl/master/elscreen-wl.el'
 }
 
 setup_w3m () {
