@@ -2,6 +2,7 @@
 
 set -e
 
+# Install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
-brew install zsh git
+sudo brew install zsh git ispell ag coreutils
