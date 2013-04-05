@@ -41,7 +41,7 @@
     auto-complete fuzzy popup pos-tip
 
     ;;;; highlight
-    ace-jump-mode vline col-highlight
+    ace-jump-mode vline col-highlight rainbow-mode
 
     ;;;; editing utilities
     autopair expand-region wrap-region
