@@ -93,6 +93,7 @@ bindkey "^N" history-beginning-search-forward-end
 REPORTTIME=10
 
 # Setting for MacOSX
+TEST_CONFIG=${HOME}/dot_files/emacs/test_emacs
 case "$OSTYPE" in
 darwin*)
         # Only Perl 5.16 problem??
@@ -101,9 +102,12 @@ darwin*)
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
         alias java='java -Dfile.encoding=UTF-8'
+        EMACSAPP="/Applications/Emacs.app/Contents/MacOS/Emacs"
+        alias test-emacs="$EMACSAPP -Q -l $TEST_CONFIG"
         ;;
 linux-gnu)
         export BROWSER=firefox
+        alias test-emacs="emacs -Q -l $TEST_CONFIG"
         ;;
 esac
 
@@ -145,8 +149,6 @@ if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1; then
 else
     alias e='emacsclient'
 fi
-
-alias test-emacs="emacs -Q -l ~/dot_files/emacs/test_emacs"
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
