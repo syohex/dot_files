@@ -33,13 +33,10 @@
     (eshell/cd dir)))
 
 (defun eshell/cdp ()
-  (let* ((cmd "git rev-parse --show-toplevel")
-         (dir (with-temp-buffer
-                (unless (call-process-shell-command cmd nil t)
-                  (error "Here is not Git Repository"))
-                (goto-char (point-min))
-                (buffer-substring-no-properties
-                 (point) (line-end-position)))))
+  (let ((dir (loop with cwd = default-directory
+                   for d in '(".git" ".hg" ".svn")
+                   when (locate-dominating-file d cwd)
+                   return (file-name-directory it))))
     (eshell/cd dir)))
 
 (defun eshell/e (file)
