@@ -4,6 +4,8 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 ;; display directories by first
+(when (executable-find "gls")
+  (setq insert-directory-program "gls"))
 (load-library "ls-lisp")
 (setq ls-lisp-dirs-first t)
 ;; recursive copy, remove
