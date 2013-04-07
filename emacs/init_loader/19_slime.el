@@ -11,11 +11,6 @@
      ;; for clojure
      (setq slime-protocol-version 'ignore)
 
-     (defun my/slime-mode-hook ()
-       (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
-       (define-key slime-mode-map (kbd "C-c C-d C-l") 'helm-hyperspec))
-     (add-hook 'slime-mode-hook 'my/slime-mode-hook)
-
      ;; face
      (set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
@@ -23,6 +18,12 @@
      (require 'ac-slime)
      (add-hook 'slime-mode-hook 'set-up-slime-ac)
      (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)))
+
+(defun my/slime-mode-hook ()
+  (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
+  (define-key slime-mode-map (kbd "C-c C-d C-a") 'helm-hyperspec))
+
+(add-hook 'slime-mode-hook 'my/slime-mode-hook)
 
 (eval-after-load "slime-repl"
   '(progn

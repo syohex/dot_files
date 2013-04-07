@@ -8,10 +8,11 @@
 (eval-after-load "lisp-mode"
   '(progn
      (require 'hyperspec)
-     (let ((hyperspec-dir (concat user-emacs-directory "elisps/HyperSpec/")))
-      (setq common-lisp-hyperspec-root (concat "file://" hyperspec-dir))
-      (setq common-lisp-hyperspec-symbol-table
-            (concat hyperspec-dir "Data/Map_Sym.txt")))
+     (let ((hyperspec-dir (expand-file-name
+                           (concat user-emacs-directory "elisps/HyperSpec/"))))
+       (setq common-lisp-hyperspec-root (concat "file://" hyperspec-dir))
+       (setq common-lisp-hyperspec-symbol-table
+             (concat hyperspec-dir "Data/Map_Sym.txt")))
 
      ;; indent
      (require 'cl-indent-patches)
@@ -32,11 +33,13 @@
 (defvar helm-hyperspec-source
   `((name . "Lookup Hyperspec")
     (candidates . ,(lambda ()
-                     (mapcar #'symbol-name
+                     (mapcar 'symbol-name
                              (my/obarray-to-list common-lisp-hyperspec-symbols))))
     (action . (("Show Hyperspec" . hyperspec-lookup))))
   "helm ")
 
 (defun helm-hyperspec ()
   (interactive)
-  (helm 'helm-hyperspec-source (thing-at-point 'symbol)))
+  (helm :sources '(helm-hyperspec-source)
+        :default (thing-at-point 'symbol)
+        :buffer (get-buffer-create "*helm HyperSpec*")))
