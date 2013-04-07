@@ -21,15 +21,17 @@
      (define-key cperl-mode-map (kbd "{") nil)
      (define-key cperl-mode-map (kbd "}") nil)
      (define-key cperl-mode-map (kbd "[") nil)
+
      (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
+     (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
 
      ;; faces
-     (set-face-bold-p 'cperl-array-face nil)
-     (set-face-background 'cperl-array-face nil)
-     (set-face-bold-p 'cperl-hash-face nil)
-     (set-face-foreground 'cperl-hash-face "DarkOliveGreen3")
-     (set-face-italic-p 'cperl-hash-face nil)
-     (set-face-background 'cperl-hash-face nil)))
+     (set-face-attribute 'cperl-array-face nil
+                         :background nil :weight 'normal)
+     (set-face-attribute 'cperl-hash-face nil
+                         :foreground "DarkOliveGreen3"
+                         :background nil
+                         :weight 'normal :italic nil)))
 
 ;; for flymake
 (add-to-list 'flymake-allowed-file-name-masks
