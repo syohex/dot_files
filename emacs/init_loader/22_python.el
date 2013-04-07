@@ -17,13 +17,12 @@
      (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
 
      ;; show-doc
-     (setq jedi:tooltip-method 'nil)
+     (setq jedi:tooltip-method nil)
      (set-face-attribute 'jedi:highlight-function-argument nil
                          :foreground "green")
 
-     (define-key python-mode-map (kbd "C-c C-l") 'pylookup-lookup)
-
      ;; binding
+     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
      (define-key python-mode-map (kbd "C-c C-a") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
      (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
