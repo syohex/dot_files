@@ -65,8 +65,8 @@
                          :foreground "yellow" :weight 'bold
                          :background "red1")
      (set-face-attribute 'flymake-warnline nil
-                         :foreground "white" :weight 'bold
-                         :background "dark orange")))
+                         :foreground "red3" :weight 'bold
+                         :background "yellow3")))
 
 ;; flycheck faces
 (eval-after-load "flycheck"
