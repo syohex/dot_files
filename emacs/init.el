@@ -23,11 +23,6 @@
 ;;(load-theme 'syohex-reverse t t)
 ;;(enable-theme 'syohex-reverse)
 
-(set-face-attribute 'mode-line nil
-                    :background "#333333" :foreground "#cccccd")
-(set-face-attribute 'mode-line-buffer-id nil
-                    :foreground "orange" :weight 'bold)
-
 ;; init-loader
 (require 'init-loader)
 (init-loader-load (concat user-emacs-directory "init_loader"))
