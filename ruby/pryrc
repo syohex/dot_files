@@ -1,3 +1,0 @@
-# -*- mode:ruby -*-
-Pry.config.commands.alias_command "?", "show-method"
-Pry.config.commands.alias_command "$", "show-source"
