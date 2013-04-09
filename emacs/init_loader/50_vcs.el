@@ -15,6 +15,8 @@
 
 ;; git-gutter
 (global-git-gutter-mode t)
+(global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
+(global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
@@ -24,10 +26,6 @@
            git-gutter:deleted-sign-sign " ")
      (set-face-background 'git-gutter:deleted  "red")
      (set-face-background 'git-gutter:modified "magenta")))
-
-(smartrep-define-key
-    global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
-                        ("n" . 'git-gutter:next-diff)))
 
 ;; magit
 (global-set-key (kbd "M-g M-g") 'magit-status)
