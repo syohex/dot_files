@@ -102,9 +102,7 @@
       undo-strong-limit 900000)
 
 ;;;; undo-tree
-(require 'undo-tree)
 (global-undo-tree-mode)
-
 (define-key undo-tree-map (kbd "C-x u") 'undo-tree-undo)
 (define-key undo-tree-map (kbd "C-/") 'undo-tree-visualize)
 
