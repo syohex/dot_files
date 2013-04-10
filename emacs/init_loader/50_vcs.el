@@ -15,10 +15,12 @@
 
 ;; git-gutter
 (global-git-gutter-mode t)
-(global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
-(global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+
+(smartrep-define-key
+    global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
+                        ("n" . 'git-gutter:next-diff)))
 
 (eval-after-load "git-gutter"
   '(progn
