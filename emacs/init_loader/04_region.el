@@ -15,8 +15,9 @@
                         paredit-forward-delete
                         paredit-forward-kill-word
                         my/backward-kill-word
+                        delete-word
                         cperl-electric-semi))
-       (add-to-list 'mc/cmds-to-run-for-all 'command))))
+       (add-to-list 'mc/cmds-to-run-for-all command))))
 
 ;; wrap-region
 (require 'wrap-region)
