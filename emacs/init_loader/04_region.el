@@ -15,7 +15,7 @@
                         paredit-forward-delete
                         paredit-forward-kill-word
                         my/backward-kill-word
-                        delete-word
+                        my/delete-word
                         cperl-electric-semi))
        (add-to-list 'mc/cmds-to-run-for-all command))))
 

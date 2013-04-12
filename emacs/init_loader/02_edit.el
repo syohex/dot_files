@@ -45,17 +45,17 @@
 (global-set-key (kbd "M-K") 'my/join-line)
 
 ;; for word delete instead of kill-word and backward-kill-word
-(defun delete-word (arg)
+(defun my/delete-word (arg)
   (interactive "p")
   (delete-region (point) (progn (forward-word arg) (point))))
 
-(defun delete-cursor-word-or-region ()
+(defun my/delete-cursor-word-or-region ()
   (interactive)
   (if (use-region-p)
       (call-interactively #'kill-region)
     (progn
       (backward-word)
-      (delete-word 1))))
+      (my/delete-word 1))))
 
 (defun my/backward-kill-word (args)
   (interactive "p")
@@ -69,8 +69,8 @@
           (t
            (delete-region (max from limit) (point))))))
 
-(global-set-key (kbd "C-w") 'delete-cursor-word-or-region)
-(global-set-key (kbd "M-d") 'delete-word)
+(global-set-key (kbd "C-w") 'my/delete-cursor-word-or-region)
+(global-set-key (kbd "M-d") 'my/delete-word)
 (global-set-key (kbd "M-<backspace>") 'my/backward-kill-word)
 
 ;; moving with ace-jump-mode

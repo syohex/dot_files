@@ -2,16 +2,15 @@
 (eval-after-load "org"
   '(progn
      (require 'org-install)
+
      (define-key global-map (kbd "C-c l") 'org-store-link)
-     (setq org-startup-truncated nil)
-     (setq org-return-follows-link t)
-     (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-     (setq org-directory user-emacs-directory)
-     ;;  (setq org-startup-folded 'nofold)
-     (setq org-use-fast-todo-selection t)
-     (setq org-todo-keywords
-           '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)")
-             (sequence "APPT(a)" "|" "DONE(x)" "CANCEL(c)")))
+     (setq org-startup-truncated nil
+           org-return-follows-link t
+           org-directory user-emacs-directory
+           org-use-fast-todo-selection t)
+
+     (setq org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)")
+                               (sequence "APPT(a)" "|" "DONE(x)" "CANCEL(c)")))
      (setq org-todo-keyword-faces
            '(("TODO"      . org-warning)
              ("STARTED"   . (:foreground "deep sky blue" :weight bold))
@@ -27,6 +26,7 @@
      (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
      (define-key org-mode-map (kbd "C-t") 'org-mark-ring-goto)
+     (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
      (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
      (define-key org-mode-map (kbd "C-c C-i") 'my/org-insert-pomodoro-template)
      (define-key org-mode-map (kbd "C-M-<tab>") 'show-all)

@@ -106,8 +106,7 @@
     global-map "M-g" '(("M-n" . 'my/flymake-goto-next-error)
                        ("M-p" . 'my/flymake-goto-previous-error)))
 
-(defun my/open-junk ()
+(defun open-junk ()
   (interactive)
   (let ((filename (read-file-name "Junk File: " "~/junk/")))
     (find-file filename)))
-(global-set-key (kbd "M-g M-j") 'my/open-junk)
