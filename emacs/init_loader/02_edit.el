@@ -200,3 +200,25 @@
           1 '((:foreground "pink") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook 'my/add-watchwords)
+
+;; unwrap
+(defvar my/unwrap-pair
+  '(("(" . ")") ("[" . "]") ("{" . "}") ("'" . "'") ("\"" . "\"")
+    ("<" . ">") ("|" . "|")))
+
+(defsubst my/unwrap-counterpart (sign)
+  (assoc-default sign my/unwrap-pair))
+
+(defun my/unwrap-at-point (arg)
+  (interactive "p")
+  (save-excursion
+    (when (re-search-backward "\\([(\[{'\"<]\\)" (point-min) t arg)
+      (let ((start (point))
+            (pair (my/unwrap-counterpart (match-string 1))))
+        (forward-char 1)
+        (when (re-search-forward pair nil t arg)
+          (backward-char)
+          (delete-char 1)
+          (goto-char start)
+          (delete-char 1))))))
+(global-set-key (kbd "M-s") 'my/unwrap-at-point)
