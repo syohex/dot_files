@@ -14,7 +14,7 @@
 (global-set-key (kbd "C-h e")   'popwin:messages)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
-(global-set-key (kbd "C-x C-d") 'dired-jump)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -44,6 +44,7 @@
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
+(define-key my/ctrl-q-map (kbd "\\") 'align)
 
 (defun swap-buffers ()
   (interactive)
