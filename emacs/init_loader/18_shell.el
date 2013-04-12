@@ -16,12 +16,16 @@
 
 (defun eshell-pop ()
   (interactive)
-  (setq eshell-prev-buffer (current-buffer))
-  (unless (get-buffer eshell-pop-buffer)
-    (save-window-excursion
-      (pop-to-buffer (get-buffer-create eshell-pop-buffer))
-      (eshell-mode)))
-  (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t))
+  (let ((curdir default-directory))
+    (setq eshell-prev-buffer (current-buffer))
+    (unless (get-buffer eshell-pop-buffer)
+      (save-window-excursion
+        (pop-to-buffer (get-buffer-create eshell-pop-buffer))
+        (eshell-mode)))
+    (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t)
+    (when current-prefix-arg
+      (insert curdir)
+      (eshell-send-input))))
 (global-set-key (kbd "M-g M-s") 'eshell-pop)
 
 (defun eshell/cde ()
