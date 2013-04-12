@@ -136,6 +136,10 @@
 ;; for popular file type
 (require 'generic-x)
 
+;; compile
+(custom-set-variables
+ '(compile-command ""))
+
 ;; ido
 (ido-mode 'file)
 ;;; Disable override some keybinds(eg. find-file)
