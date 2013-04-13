@@ -147,24 +147,24 @@
 (global-set-key (kbd "C-M-r") 'my/move-specified-char)
 
 ;; Insert next line and previous line('o' and 'O')
-(defun edit-next-line ()
+(defun my/edit-next-line ()
   (interactive)
   (end-of-line)
   (newline-and-indent))
 
-(defun edit-previous-line ()
+(defun my/edit-previous-line ()
   (interactive)
   (forward-line -1)
   (if (not (= (line-number-at-pos) 1))
       (end-of-line))
   (newline-and-indent))
 
-(global-set-key [(shift return)] 'edit-next-line)
-(global-set-key (kbd "M-o") 'edit-next-line)
-(global-set-key (kbd "M-O") 'edit-previous-line)
+(global-set-key [(shift return)] 'my/edit-next-line)
+(global-set-key (kbd "M-o") 'my/edit-next-line)
+(global-set-key (kbd "M-O") 'my/edit-previous-line)
 
 ;; Move matched paren('%')
-(defun goto-match-paren (arg)
+(defun my/goto-match-paren (arg)
   "Go to the matching  if on (){}[], similar to vi style of % "
   (interactive "p")
   (cond ((looking-at "[\[\(\{]") (forward-sexp))
@@ -172,13 +172,13 @@
         ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
         ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
         (t nil)))
-(define-key ctl-x-map (kbd "%") 'goto-match-paren)
+(define-key ctl-x-map (kbd "%") 'my/goto-match-paren)
 
 ;; autopair
 (eval-after-load "autopair"
   '(progn
-     (setq-default autopair-blink nil)
-     (setq-default autopair-blink-delay 0)))
+     (setq-default autopair-blink nil
+                   autopair-blink-delay 0)))
 
 (defvar my/autopair-enabled-modes
   '(c-mode

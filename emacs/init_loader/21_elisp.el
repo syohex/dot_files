@@ -1,10 +1,12 @@
 ;; setting for emacs-lisp
 (find-function-setup-keys)
 
-;;;; eldoc
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+;;;; eldoc & slimenav
+(dolist (hook '(emacs-lisp-mode-hook
+                lisp-interaction-mode-hook
+                ielm-mode-hook))
+  (add-hook hook 'turn-on-eldoc-mode)
+  (add-hook hook 'elisp-slime-nav-mode))
 
 (eval-after-load "eldoc"
   '(progn
@@ -12,10 +14,6 @@
      (set-face-attribute 'eldoc-highlight-function-argument nil
                          :underline t :foreground "green"
                          :weight 'bold)))
-
-;; slimenav
-(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
-(add-hook 'lisp-interaction-mode-hook 'elisp-slime-nav-mode)
 
 ;; for regexp color
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")

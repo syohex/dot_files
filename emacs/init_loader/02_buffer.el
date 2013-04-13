@@ -14,7 +14,6 @@
 (run-with-idle-timer 10 t 'my/auto-save-buffers)
 
 ;; winner-mode
-(require 'winner)
 (winner-mode t)
 
 ;; move other window

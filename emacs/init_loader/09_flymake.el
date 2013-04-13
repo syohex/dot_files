@@ -1,5 +1,4 @@
 ;; setting for flymake
-(require 'flymake)
 
 ;; enable flycheck
 (dolist (hook '(coffee-mode-hook
@@ -33,10 +32,12 @@
 
 ;; If you don't set :height, :bold face parameter of 'pop-tip-face,
 ;; then seting those default values
-(when (eq 'unspecified (face-attribute 'popup-tip-face :height))
-  (set-face-attribute 'popup-tip-face nil :height 1.0))
-(when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
-  (set-face-attribute 'popup-tip-face nil :weight 'normal))
+(eval-after-load "popup"
+  '(progn
+     (when (eq 'unspecified (face-attribute 'popup-tip-face :height))
+       (set-face-attribute 'popup-tip-face nil :height 1.0))
+     (when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
+       (set-face-attribute 'popup-tip-face nil :weight 'normal))))
 
 (defun my/display-error-message ()
   (let ((orig-face (face-attr-construct 'popup-tip-face)))
@@ -49,16 +50,6 @@
         (set-face-attribute 'popup-tip-face nil (car orig-face) (cadr orig-face))
         (setq orig-face (cddr orig-face))))))
 
-(defadvice flymake-goto-prev-error (after flymake-goto-prev-error-display-message activate)
-  (my/display-error-message))
-(defadvice flymake-goto-next-error (after flymake-goto-next-error-display-message activate)
-  (my/display-error-message))
-
-;; avoid abnormal exit
-(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
-  (setq flymake-check-was-interrupted t))
-(ad-activate 'flymake-post-syntax-check)
-
 (eval-after-load "flymake"
   '(progn
      (set-face-attribute 'flymake-errline nil
@@ -66,7 +57,22 @@
                          :background "red1")
      (set-face-attribute 'flymake-warnline nil
                          :foreground "red3" :weight 'bold
-                         :background "yellow3")))
+                         :background "yellow3")
+
+     (defadvice flymake-goto-prev-error (after
+                                         flymake-goto-prev-error-display-message
+                                         activate)
+       (my/display-error-message))
+     (defadvice flymake-goto-next-error (after
+                                         flymake-goto-next-error-display-message
+                                         activate)
+       (my/display-error-message))
+
+     ;; avoid abnormal exit
+     (defadvice flymake-post-syntax-check (before
+                                           flymake-force-check-was-interrupted
+                                           activate)
+       (setq flymake-check-was-interrupted t))))
 
 ;; flycheck faces
 (eval-after-load "flycheck"

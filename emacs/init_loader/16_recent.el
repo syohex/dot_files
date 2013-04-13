@@ -13,5 +13,4 @@
                        (with-temp-file file
                          (insert str)))))
     ad-do-it))
-
 (recentf-mode 1)

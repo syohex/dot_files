@@ -10,7 +10,7 @@
       (setq c-basic-offset 4)
     (setq c-basic-offset 8)))
 
-(add-hook 'c-mode-hook #'my/c-mode-init)
+(add-hook 'c-mode-hook 'my/c-mode-init)
 
 ;; C++ coding style
 (defun my/c++-mode-init ()
@@ -21,4 +21,4 @@
   (setq c-basic-offset 4)
   (my/setup-symbol-moving))
 
-(add-hook 'c++-mode-hook #'my/c++-mode-init)
+(add-hook 'c++-mode-hook 'my/c++-mode-init)

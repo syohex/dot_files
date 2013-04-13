@@ -45,8 +45,8 @@
 (transient-mark-mode t)
 
 ;; indicate last line
-(setq-default indicate-empty-lines t)
-(setq-default indicate-buffer-boundaries 'right)
+(setq-default indicate-empty-lines t
+              indicate-buffer-boundaries 'right)
 
 ;; Disable default scroll bar and tool bar
 (when window-system

@@ -29,11 +29,11 @@
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 ;; paste
-(defun repeat-yank (arg)
+(defun my/repeat-yank (arg)
   (interactive "p")
   (dotimes (i arg)
     (yank)))
-(define-key my/ctrl-q-map (kbd "y") 'repeat-yank)
+(define-key my/ctrl-q-map (kbd "y") 'my/repeat-yank)
 
 ;; col-highlight
 (autoload 'col-highlight-mode "col-highlight" nil t)
@@ -46,7 +46,7 @@
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 
-(defun swap-buffers ()
+(defun my/swap-buffers ()
   (interactive)
   (when (one-window-p)
     (error "Frame is not splitted!!"))
@@ -55,7 +55,7 @@
     (other-window 1)
     (set-window-buffer curwin (window-buffer))
     (set-window-buffer (selected-window) curbuf)))
-(define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
+(define-key my/ctrl-q-map (kbd "b") 'my/swap-buffers)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
@@ -69,7 +69,7 @@
 (global-set-key (kbd "M-g M-f") 'ffap)
 
 ;; duplicate current line
-(defun duplicate-thing (n)
+(defun my/duplicate-thing (n)
   (interactive "p")
   (let ((orig-column (current-column)))
     (save-excursion
@@ -88,7 +88,7 @@
     (move-to-column orig-column)))
 
 (smartrep-define-key
-    global-map "M-g" '(("c" . duplicate-thing)))
+    global-map "M-g" '(("c" . my/duplicate-thing)))
 
 ;; flymake
 (defun my/flymake-goto-next-error (arg)
