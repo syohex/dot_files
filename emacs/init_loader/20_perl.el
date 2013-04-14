@@ -34,8 +34,10 @@
                          :weight 'normal :italic nil)))
 
 ;; for flymake
-(add-to-list 'flymake-allowed-file-name-masks
-             '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" flymake-perl-init))
+(eval-after-load "flymake"
+  '(progn
+     (add-to-list 'flymake-allowed-file-name-masks
+                  '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" flymake-perl-init))))
 
 (defun flymake-perl-root-directory ()
   (loop with curdir = default-directory
