@@ -24,6 +24,7 @@
         (eshell-mode)))
     (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t)
     (when current-prefix-arg
+      (eshell-kill-input)
       (insert curdir)
       (eshell-send-input))))
 (global-set-key (kbd "M-g M-s") 'eshell-pop)
