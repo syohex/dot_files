@@ -84,3 +84,4 @@ done
 setup_sdic
 setup_wanderlust
 setup_w3m
+setup_emacs_server
