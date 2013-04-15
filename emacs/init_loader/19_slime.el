@@ -1,5 +1,5 @@
 ;;; slime
-(autoload 'slime "slime" nil t)
+(require 'slime-autoloads)
 (eval-after-load "slime"
   '(progn
      ;; SLIME REPL
