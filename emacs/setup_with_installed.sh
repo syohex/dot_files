@@ -10,18 +10,6 @@ make_install () {
     fi
 }
 
-# Emacsclient utilities
-setup_emacs_server () {
-    cd ~/bin
-
-    echo "Download Emacs server utilities"
-
-    rm -f emacs_serverstart.pl emacsclient.sh
-    curl -O https://raw.github.com/syohex/emacsclient_focus/master/emacs_serverstart.pl
-    curl -O https://raw.github.com/syohex/emacsclient_focus/master/emacsclient.sh
-    chmod 755 emacs_serverstart.pl emacsclient.sh
-}
-
 ## sdic
 setup_sdic () {
     local package="sdic-2.1.3.tar.gz"
@@ -84,4 +72,3 @@ done
 setup_sdic
 setup_wanderlust
 setup_w3m
-setup_emacs_server
