@@ -1,5 +1,5 @@
 # name : Package template
-# key  : tmpl
+# key  : packaget
 # --
 package `(yas/perl-package-name)`;
 use strict;
