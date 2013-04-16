@@ -6,6 +6,8 @@
                 ruby-mode-hook))
   (add-hook hook 'flycheck-mode))
 
+(require 'flymake)
+
 ;; Show error message under current line
 (defun flymake-display-err-menu-for-current-line ()
   (interactive)
@@ -50,29 +52,27 @@
         (set-face-attribute 'popup-tip-face nil (car orig-face) (cadr orig-face))
         (setq orig-face (cddr orig-face))))))
 
-(eval-after-load "flymake"
-  '(progn
-     (set-face-attribute 'flymake-errline nil
-                         :foreground "yellow" :weight 'bold
-                         :background "red1")
-     (set-face-attribute 'flymake-warnline nil
-                         :foreground "red3" :weight 'bold
-                         :background "yellow3")
+(set-face-attribute 'flymake-errline nil
+                    :foreground "yellow" :weight 'bold
+                    :background "red1")
+(set-face-attribute 'flymake-warnline nil
+                    :foreground "red3" :weight 'bold
+                    :background "yellow3")
 
-     (defadvice flymake-goto-prev-error (after
-                                         flymake-goto-prev-error-display-message
-                                         activate)
-       (my/display-error-message))
-     (defadvice flymake-goto-next-error (after
-                                         flymake-goto-next-error-display-message
-                                         activate)
-       (my/display-error-message))
+(defadvice flymake-goto-prev-error (after
+                                    flymake-goto-prev-error-display-message
+                                    activate)
+  (my/display-error-message))
+(defadvice flymake-goto-next-error (after
+                                    flymake-goto-next-error-display-message
+                                    activate)
+  (my/display-error-message))
 
-     ;; avoid abnormal exit
-     (defadvice flymake-post-syntax-check (before
-                                           flymake-force-check-was-interrupted
-                                           activate)
-       (setq flymake-check-was-interrupted t))))
+;; avoid abnormal exit
+(defadvice flymake-post-syntax-check (before
+                                      flymake-force-check-was-interrupted
+                                      activate)
+  (setq flymake-check-was-interrupted t))
 
 ;; flycheck faces
 (eval-after-load "flycheck"
