@@ -71,7 +71,11 @@
 ;; duplicate current line
 (defun my/duplicate-thing (n)
   (interactive "p")
-  (let ((orig-column (current-column)))
+  (let ((orig-column (current-column))
+        (lines (if mark-active
+                   (1+ (- (line-number-at-pos (region-end))
+                          (line-number-at-pos (region-beginning))))
+                 1)))
     (save-excursion
       (let ((orig-line (line-number-at-pos))
             (str (if mark-active
@@ -84,7 +88,7 @@
           (insert "\n"))
         (dotimes (i (or n 1))
           (insert str "\n"))))
-    (forward-line 1)
+    (forward-line lines)
     (move-to-column orig-column)))
 
 (smartrep-define-key
