@@ -1,0 +1,4 @@
+# name : Package name snippet
+# key  : package
+# --
+package `(yas/perl-package-name)`;
