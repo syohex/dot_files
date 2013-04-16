@@ -24,13 +24,13 @@
 (require 'wrap-region)
 (wrap-region-global-mode t)
 
-(wrap-region-add-wrapper "*" "*" nil 'org-mode)
-(wrap-region-add-wrapper "_" "_" nil 'org-mode)
-(wrap-region-add-wrapper "/" "/" nil 'org-mode)
-(wrap-region-add-wrapper "+" "+" nil 'org-mode)
+;; org-mode
+(dolist (sign '("*" "_" "/" "+"))
+  (wrap-region-add-wrapper sign sign nil 'org-mode))
 
-(wrap-region-add-wrapper "`" "`" nil 'markdown-mode)
-(wrap-region-add-wrapper "*" "*" nil 'markdown-mode)
+;; markdown-mode
+(dolist (sign '("`" "*"))
+  (wrap-region-add-wrapper sign sign nil 'markdown-mode))
 
 ;; disable paredit enable mode
 (dolist (mode (append '(emacs-lisp-mode scheme-mode lisp-mode clojure-mode)
