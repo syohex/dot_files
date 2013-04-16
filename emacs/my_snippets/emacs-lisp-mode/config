@@ -5,6 +5,7 @@
 
 ;; for helm
 (add-to-list 'load-path "~/program/elisp/helm")
+(require 'helm-config)
 
 ;; for auto-complete
 (add-to-list 'load-path "~/program/elisp/auto-complete")
