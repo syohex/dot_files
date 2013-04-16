@@ -45,6 +45,7 @@
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
+(define-key my/ctrl-q-map (kbd "p") (lambda () (interactive) (push-mark)))
 
 (defun my/swap-buffers ()
   (interactive)
