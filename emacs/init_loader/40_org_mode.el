@@ -21,6 +21,7 @@
      (require 'org-faces)
      (set-face-foreground 'org-block "green")
      (set-face-foreground 'org-tag "green yellow")
+     (set-face-foreground 'org-checkbox "LawnGreen")
 
      ;; function of org-open-at-point
      (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
