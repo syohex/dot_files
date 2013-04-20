@@ -92,8 +92,12 @@ bindkey "^N" history-beginning-search-forward-end
 # show processing time for long run process
 REPORTTIME=10
 
+# Directories where I often visit.
+hash -d ELISPS=~/.emacs.d/elisps
+
 # Setting for MacOSX
 TEST_CONFIG=${HOME}/dot_files/emacs/test_emacs
+KERNEL_EMACS_CONFIG=${HOME}/dot_files/emacs/kernel-emacs.el
 case "$OSTYPE" in
 darwin*)
         # Only Perl 5.16 problem??
@@ -104,10 +108,12 @@ darwin*)
         alias java='java -Dfile.encoding=UTF-8'
         EMACSAPP="/Applications/Emacs.app/Contents/MacOS/Emacs"
         alias test-emacs="$EMACSAPP -Q -l $TEST_CONFIG"
+        alias kernel-emacs="$EMACSAPP -Q -l $KERNEL_EMACS_CONFIG"
         ;;
 linux-gnu)
         export BROWSER=firefox
         alias test-emacs="emacs -Q -l $TEST_CONFIG"
+        alias kernel-emacs="emacs -Q -l $KERNEL_EMACS_CONFIG"
         ;;
 esac
 

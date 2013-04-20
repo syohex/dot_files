@@ -118,10 +118,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
-;; server start for emacs-client
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 (defalias 'exit 'save-buffers-kill-emacs)
 
 ;; ignore upper or lower
