@@ -67,8 +67,8 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-(global-set-key (kbd "M-g .") 'helm-ack)
-(global-set-key (kbd "M-g ,") 'helm-ack-pop-stack)
+(global-set-key (kbd "M-g .") 'helm-ag)
+(global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-f") 'ffap)
 
 (setq dabbrev-case-fold-search nil)
@@ -214,7 +214,7 @@
 ;; helm
 (require 'helm-config)
 (require 'helm-gtags)
-(require 'helm-ack)
+(require 'helm-ag)
 
 (define-key helm-map (kbd "C-q") 'helm-execute-persistent-action)
 
