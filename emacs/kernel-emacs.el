@@ -245,7 +245,6 @@
 ;; helm in dired
 (setq-default split-width-threshold 0)
 
-(global-set-key (kbd "C-x C-p") 'helm-find-files)
 (define-key helm-map (kbd "C-p") 'helm-previous-line)
 (define-key helm-map (kbd "C-n") 'helm-next-line)
 
@@ -650,6 +649,24 @@
                 (buffer-substring-no-properties
                  (point) (line-end-position)))))
     (eshell/cd dir)))
+
+;; ido
+(ido-mode 'file)
+;;; Disable override some keybinds(eg. find-file)
+(setcdr (cdar (cddr ido-minor-mode-map-entry)) nil)
+(defun my/ido-find-file ()
+  (interactive)
+  (let ((ido-mode t)
+        (ido-max-prospects 8))
+    (ido-find-file-in-dir default-directory)))
+(global-set-key (kbd "C-x C-p") 'my/ido-find-file)
+
+(set-face-attribute 'ido-first-match nil
+                    :foreground "orange" :weight 'semi-bold)
+(set-face-attribute 'ido-only-match nil
+                    :foreground "orange" :weight 'semi-bold)
+(set-face-attribute 'ido-subdir nil
+                    :foreground "cyan" :weight 'semi-bold)
 
 (progn
   (set-face-attribute 'show-paren-match nil
