@@ -4,7 +4,8 @@
 (defun my/query-replace ()
   (interactive)
   (if current-prefix-arg
-      (call-interactively 'query-replace-regexp)
+      (let ((current-prefix-arg nil))
+        (call-interactively 'query-replace-regexp))
     (call-interactively 'query-replace)))
 (global-set-key (kbd "M-%") 'my/query-replace)
 
