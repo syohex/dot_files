@@ -31,6 +31,9 @@
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
+;; enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
+
 ;; saveplace
 (savehist-mode 1)
 (load "saveplace")
