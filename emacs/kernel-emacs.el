@@ -269,7 +269,8 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; recentf-ext
-(setq recentf-max-saved-items 1000)
+(setq recentf-max-saved-items 1000
+      recentf-save-file "~/.recentf-kernel")
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (run-at-time t 600 'recentf-save-list)
 (setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
