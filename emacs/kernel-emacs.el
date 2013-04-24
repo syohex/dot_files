@@ -665,6 +665,9 @@
 (set-face-attribute 'ido-subdir nil
                     :foreground "cyan" :weight 'semi-bold)
 
+(require 'import-popwin)
+(global-set-key (kbd "M-g M-i") 'import-popwin)
+
 (progn
   (set-face-attribute 'show-paren-match nil
 		      :background nil :foreground nil
