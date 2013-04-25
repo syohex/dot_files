@@ -42,17 +42,6 @@
 (load "saveplace")
 (setq-default save-place t)
 
-;; moving word
-(defun my/forward-to-word (arg)
-  (interactive "p")
-  (cond ((region-active-p) (forward-word arg))
-	(t
-	 (or (re-search-forward (if (> arg 0)
-				    "\\([ \t]+\\|.$\\)"
-				  "\\W\\b") nil t arg)
-	     (goto-char (if (> arg 0) (point-max) (point-min)))))))
-(global-set-key (kbd "M-f") 'my/forward-to-word)
-
 (defun my/other-window-reverse (arg)
   (interactive "p")
   (other-window (- arg)))
