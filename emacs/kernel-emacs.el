@@ -48,7 +48,6 @@
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
 ;; my key mapping
-(global-set-key (kbd "C-x O") 'my/other-window-reverse)
 (global-set-key (kbd "M-C-o") 'other-window)
 (global-set-key (kbd "C-M-z") 'helm-resume)
 (global-set-key (kbd "C-M-j") 'dabbrev-expand)
