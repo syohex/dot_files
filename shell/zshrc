@@ -148,6 +148,9 @@ alias dstat-cpu='dstat -Tclr'
 alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 
+# tmux
+alias tmux-refresh='tmux a -d'
+
 if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1; then
     alias e='emacsclient.sh'
 else
