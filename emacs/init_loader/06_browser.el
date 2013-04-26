@@ -4,4 +4,5 @@
 
 ;; set default browser
 (unless (macosx-p)
-  (setq browse-url-browser-function 'browse-url-firefox))
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "/opt/google/chrome/google-chrome"))
