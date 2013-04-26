@@ -42,9 +42,10 @@
 (load "saveplace")
 (setq-default save-place t)
 
-(defun my/other-window-reverse (arg)
-  (interactive "p")
-  (other-window (- arg)))
+;; Use regexp version as Default
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "M-%") 'query-replace-regexp)
 
 ;; my key mapping
 (global-set-key (kbd "C-x O") 'my/other-window-reverse)
