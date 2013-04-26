@@ -236,8 +236,9 @@
 ;; helm-show-kill-ring
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
-;; apropos with helm
-(global-set-key (kbd "C-h a") 'helm-c-apropos)
+;; apropos with helm and man
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-h m") 'helm-man-woman)
 
 ;; helm faces
 (when (not window-system)
