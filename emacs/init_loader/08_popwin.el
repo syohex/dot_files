@@ -42,5 +42,6 @@
                        :height 0.4 :position 'bottom)
   (case major-mode
     ((c-mode c++-mode) (c-beginning-of-defun))
-    (otherwise (beginning-of-defun))))
+    (otherwise (beginning-of-defun)))
+  (forward-paragraph 1))
 (global-set-key (kbd "M-g M-a") 'popup-beginning-of-defun)

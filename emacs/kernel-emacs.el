@@ -304,13 +304,14 @@
 (push '(Man-mode :stick t :height 20) popwin:special-display-config)
 (push '("*sgit*" :width 0.5 :position right :stick t) popwin:special-display-config)
 
-(defun my/popup-beginning-of-defun
+(defun my/popup-beginning-of-defun ()
   (interactive)
   (popwin:popup-buffer (current-buffer)
                        :height 0.4 :position 'bottom)
   (case major-mode
     ((c-mode c++-mode) (c-beginning-of-defun))
-    (otherwise (beginning-of-defun))))
+    (otherwise (beginning-of-defun)))
+  (forward-paragraph))
 (global-set-key (kbd "M-g M-a") 'my/popup-beginning-of-defun)
 
 ;; savekill
