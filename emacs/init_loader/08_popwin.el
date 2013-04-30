@@ -36,11 +36,11 @@
 (push '(direx:direx-mode :position left :width 40 :dedicated t)
       popwin:special-display-config)
 
-(defun my/popup-begin-defun ()
+(defun my/popup-beginning-of-defun ()
   (interactive)
   (popwin:popup-buffer (current-buffer)
                        :height 0.4 :position 'bottom)
   (case major-mode
     ((c-mode c++-mode) (c-beginning-of-defun))
     (otherwise (beginning-of-defun))))
-(global-set-key (kbd "M-g M-a") 'my/popup-begin-defun)
+(global-set-key (kbd "M-g M-a") 'popup-beginning-of-defun)
