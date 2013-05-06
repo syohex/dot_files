@@ -11,7 +11,7 @@
 (setq helm-idle-delay 0.1
       helm-input-idle-delay 0
       helm-candidate-number-limit 500)
-(helm-descbinds-install)
+(helm-descbinds-mode)
 
 (define-key helm-map (kbd "C-p")   'helm-previous-line)
 (define-key helm-map (kbd "C-n")   'helm-next-line)
