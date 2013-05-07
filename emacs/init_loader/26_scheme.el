@@ -22,7 +22,7 @@
 	  (concat "Gauche help topic : ")
           (current-word))))
   (switch-to-buffer-other-window (get-buffer-create "*info*"))
-  (info "/usr/share/info/gauche-refe.info.gz")
+  (info "/usr/local/share/info/gauche-refe.info.gz")
   (Info-index topic))
 
 ;; not insert unneeded space for scheme-mode
