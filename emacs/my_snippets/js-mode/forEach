@@ -2,6 +2,6 @@
 # name: forEach
 # key: forEach
 # --
-forEach(function () {
-    $0
+forEach(function ($0) {
+
 });

@@ -2,6 +2,6 @@
 # name: map
 # key: map
 # --
-map(function () {
-    $0
+map(function ($0) {
+
 });
