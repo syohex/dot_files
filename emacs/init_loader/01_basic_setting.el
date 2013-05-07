@@ -151,7 +151,9 @@
   (interactive)
   (let ((ido-mode t)
         (ido-max-prospects 8))
-    (ido-find-file-in-dir default-directory)))
+    (if current-prefix-arg
+        (ido-find-file-other-window)
+      (ido-find-file-in-dir default-directory))))
 (global-set-key (kbd "C-x C-p") 'my/ido-find-file)
 
 (set-face-attribute 'ido-first-match nil
