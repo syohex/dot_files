@@ -227,3 +227,15 @@
           (goto-char start)
           (delete-char 1))))))
 (global-set-key (kbd "M-s") 'my/unwrap-at-point)
+
+(defun my/zap-to-char (arg char)
+  (interactive "p\ncZap to char: ")
+  (with-no-warnings
+    (when (char-table-p translation-table-for-input)
+      (setq char (or (aref translation-table-for-input char) char))))
+  (kill-region (point)
+               (progn
+                 (search-forward (char-to-string char) nil nil arg)
+                 (backward-char 1)
+                 (point))))
+(global-set-key (kbd "M-z") 'my/zap-to-char)
