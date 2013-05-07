@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: (function () { ... }()) // wrap function
-# key: wrapfunc
+# key: ifunc
 # --
 (function () {
     $0
