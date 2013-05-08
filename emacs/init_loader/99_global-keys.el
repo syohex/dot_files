@@ -37,7 +37,6 @@
 (define-key my/ctrl-q-map (kbd "y") 'my/repeat-yank)
 
 ;; col-highlight
-(autoload 'col-highlight-mode "col-highlight" nil t)
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
@@ -47,6 +46,18 @@
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "p") (lambda () (interactive) (push-mark)))
+
+(defun my/forward-to-char (arg char)
+  (interactive "p\ncForward to char: ")
+  (search-forward (char-to-string char) nil nil arg)
+  (backward-char 1))
+
+(defun my/backward-to-char (arg char)
+  (interactive "p\ncBackward to char: ")
+  (search-backward (char-to-string char) nil nil arg))
+
+(define-key my/ctrl-q-map (kbd "s") 'my/forward-to-char)
+(define-key my/ctrl-q-map (kbd "r") 'my/backward-to-char)
 
 (defun my/swap-buffers ()
   (interactive)
