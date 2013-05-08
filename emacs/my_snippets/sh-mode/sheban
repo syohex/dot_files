@@ -1,5 +1,5 @@
 # name : #!/bin/sh # Shebang
-# key  : shebang
+# key  : sheban
 # --
 #!/bin/sh
 
