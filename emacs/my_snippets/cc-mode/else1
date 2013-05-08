@@ -1,0 +1,5 @@
+# name: else () ...
+# key: else1
+# --
+else
+     $0

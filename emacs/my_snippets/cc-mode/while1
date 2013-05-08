@@ -1,0 +1,5 @@
+# name: while () ...
+# key: while1
+# --
+while ($0)
+      
