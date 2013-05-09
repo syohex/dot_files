@@ -1,8 +1,4 @@
 ;; setting haskell language
-(add-to-list 'load-path (expand-file-name "~/.cabal/share/ghc-mod"))
-(setq ghc-module-command (expand-file-name "~/.cabal/bin/ghc-mod"))
-
-(autoload 'ghc-init "ghc" nil t)
 (load "haskell-site-file") ;; load haskell-mode/haskell-site-file.el
 
 (add-to-list 'auto-mode-alist
