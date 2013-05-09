@@ -457,6 +457,7 @@
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
+(define-key my/ctrl-q-map (kbd "l") 'mark-line)
 
 (defun my/find-file-other-window (file)
   (interactive
@@ -493,12 +494,6 @@
     (set-window-buffer curwin (window-buffer))
     (set-window-buffer (selected-window) curbuf)))
 (define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
-
-(defun my/copy-line ()
-  (interactive)
-  (kill-ring-save
-   (line-beginning-position) (line-end-position)))
-(define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 (defun my/delete-line ()
   (interactive)
