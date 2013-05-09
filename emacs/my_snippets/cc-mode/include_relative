@@ -1,0 +1,4 @@
+# name: #include "header"
+# key: linc
+# --
+#include "$0"
