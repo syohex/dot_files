@@ -53,7 +53,7 @@
 
     ;;;; programming
     ;; haskell
-    haskell-mode
+    haskell-mode ghc
 
     ;; flymake
     flycheck flymake-jslint
