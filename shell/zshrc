@@ -39,6 +39,9 @@ bindkey -r '^J'
 
 bindkey '^O' list-choices
 
+# view man page
+bindkey '^H' run-help
+
 # for incremental search
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
