@@ -24,8 +24,12 @@
 
 (eval-after-load "git-gutter"
   '(progn
-     (setq git-gutter:modified-sign " "
-           git-gutter:deleted-sign-sign " ")
+     (if (macosx-p)
+         (setq git-gutter:added-sign "+ "
+               git-gutter:deleted-sign "  "
+               git-gutter:modified-sign "  ")
+       (setq git-gutter:modified-sign " "
+             git-gutter:deleted-sign " "))
      (set-face-background 'git-gutter:deleted  "red")
      (set-face-background 'git-gutter:modified "magenta")))
 
