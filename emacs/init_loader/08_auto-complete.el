@@ -29,7 +29,10 @@
   (case major-mode
     (ruby-mode (ac-complete-rsense))
     (python-mode (jedi:complete))
-    (otherwise (auto-complete))))
+    (otherwise
+     (if auto-complete-mode
+         (auto-complete)
+       (call-interactively 'dabbrev-expand)))))
 
 ;; look command with auto-complete
 (defun ac-look-candidates ()
