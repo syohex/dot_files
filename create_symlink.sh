@@ -42,8 +42,8 @@ ln -sf $PWD/aspell.conf ~/.aspell.conf
 mkdir_if_not_exist ~/.config/fontconfig
 ln -sf $PWD/evince/fonts.conf ~/.config/fontconfig/fonts.conf
 
-# App::ack
-ln -sf $PWD/perl/ackrc ~/.ackrc
+# Spellunker
+ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 
 # Python
 ## REPL
