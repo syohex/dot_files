@@ -68,3 +68,6 @@ ln -sf $PWD/common_lisp/ccl-init.lisp ~/.ccl-init.lisp
 
 ## CLISP
 ln -sf $PWD/common_lisp/clisprc.lisp ~/.clisprc.lisp
+
+# haskell
+ln -sf $PWD/haskell/ghci ~/.ghci
