@@ -98,7 +98,7 @@
     ;; directory operation
     direx
 
-    init-loader
+    init-loader reverse-theme
     ))
 
 (defvar sub-packages
@@ -174,21 +174,7 @@
     (my/system "tar xf HyperSpec-7-0.tar.gz")
     (my/system "rm -f HyperSpec-7-0.tar.gz")))
 
-;; setup theme
-(let ((default-directory custom-theme-directory))
-  (when (not (file-exists-p "reverse-theme.el"))
-    (message "Install reverse theme")
-    (my/download-url
-     "https://raw.github.com/syohex/emacs-reverse-theme/master/reverse-theme.el"))
-
-  (when (not (file-exists-p "syohex-reverse-theme.el"))
-    (message "Install syohex-reverse-theme")
-    (my/download-url
-     "https://raw.github.com/syohex/emacs-reverse-theme/master/syohex-reverse-theme.el")))
-
-;;(load-theme 'reverse t t)
-;;(enable-theme 'reverse)
-(load-theme 'syohex-reverse t t)
-(enable-theme 'syohex-reverse)
+(load-theme 'reverse t t)
+(enable-theme 'reverse)
 
 (init-loader-load my/init-loader-directory)
