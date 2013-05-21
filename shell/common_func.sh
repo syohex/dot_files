@@ -53,3 +53,9 @@ cdp () {
         echo "'$PWD' is not git repos"
     fi
 }
+
+cdep () {
+    cde > /dev/null
+    cdp
+    echo "chdir to $PWD"
+}
