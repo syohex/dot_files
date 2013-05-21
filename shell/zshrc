@@ -103,9 +103,6 @@ TEST_CONFIG=${HOME}/dot_files/emacs/test_emacs
 KERNEL_EMACS_CONFIG=${HOME}/dot_files/emacs/kernel-emacs.el
 case "$OSTYPE" in
 darwin*)
-        # Only Perl 5.16 problem??
-        export PERLDOC_PAGER='less -f -r'
-
         # java setting for using iterm on mac
         alias javac='javac -J-Dfile.encoding=UTF-8'
         alias java='java -Dfile.encoding=UTF-8'
@@ -185,6 +182,7 @@ export LESSCHARSET=utf-8
 export INFOPATH=/usr/local/share/info:/usr/share/info
 
 # load perlbrew config file
+export PERLDOC_PAGER='less -R' # Only Perl 5.16 problem??
 if [ -e ~/perl5/perlbrew/etc/bashrc ]; then
     source ~/perl5/perlbrew/etc/bashrc
     unset MANPATH
