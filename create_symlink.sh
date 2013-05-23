@@ -63,9 +63,6 @@ ln -sf $PWD/python/percolrc.py ${PERCOL_DIR}/rc.py
 ln -sf $PWD/ruby/pryrc ~/.pryrc
 
 # For Common Lisp
-##  CCL
-ln -sf $PWD/common_lisp/ccl-init.lisp ~/.ccl-init.lisp
-
 ## CLISP
 ln -sf $PWD/common_lisp/clisprc.lisp ~/.clisprc.lisp
 
