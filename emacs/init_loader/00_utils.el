@@ -18,3 +18,11 @@
   (declare (indent 2))
   `(let ((it ,test))
      (if it ,then ,@else)))
+
+;; create temp buffer
+(defun create-temporary-buffer (bufname)
+  (interactive
+   (list (read-string "Buffer Name: ")))
+  (switch-to-buffer (generate-new-buffer (format "*%s*" bufname)))
+  (erase-buffer)
+  (setq buffer-offer-save nil))
