@@ -26,8 +26,8 @@
   '(progn
      (if (macosx-p)
          (setq git-gutter:added-sign "+ "
-               git-gutter:deleted-sign "  "
-               git-gutter:modified-sign "  ")
+               git-gutter:deleted-sign " "
+               git-gutter:modified-sign " ")
        (setq git-gutter:modified-sign " "
              git-gutter:deleted-sign " "))
      (set-face-background 'git-gutter:deleted  "red")
