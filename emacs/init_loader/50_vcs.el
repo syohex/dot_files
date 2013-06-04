@@ -44,7 +44,7 @@
      (set-face-attribute 'magit-branch nil
                          :foreground "yellow" :weight 'bold :underline t)
      (set-face-attribute 'magit-item-highlight nil
-                         :background "gray3")))
+                         :background "gray3" :weight 'normal)))
 
 (defun magit-toggle-whitespace ()
   (interactive)
