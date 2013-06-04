@@ -118,8 +118,7 @@
 (global-set-key [delete] 'delete-char)
 
 ;; backspace
-(when (not window-system)
-  (normal-erase-is-backspace-mode 0))
+(normal-erase-is-backspace-mode 0)
 
 (require 'autopair)
 (setq-default autopair-blink-delay 0)
@@ -144,9 +143,7 @@
   (autopair-mode)
   (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
   (c-toggle-electric-state -1)
-  (if window-system
-      (setq c-basic-offset 4)
-    (setq c-basic-offset 8))
+  (setq c-basic-offset 8)
   (helm-gtags-mode))
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
@@ -243,18 +240,17 @@
 (global-set-key (kbd "C-h m") 'helm-man-woman)
 
 ;; helm faces
-(when (not window-system)
-  (require 'helm-files)
-  (set-face-background 'helm-selection "pink")
-  (set-face-foreground 'helm-selection "black")
-  (set-face-foreground 'helm-ff-file "white")
-  (set-face-bold-p 'helm-ff-file nil)
-  (set-face-foreground 'helm-ff-directory "cyan")
-  (set-face-background 'helm-ff-directory nil)
+(require 'helm-files)
+(set-face-background 'helm-selection "pink")
+(set-face-foreground 'helm-selection "black")
+(set-face-foreground 'helm-ff-file "white")
+(set-face-bold-p 'helm-ff-file nil)
+(set-face-foreground 'helm-ff-directory "cyan")
+(set-face-background 'helm-ff-directory nil)
 
-  (set-face-foreground 'highlight nil)
-  (set-face-background 'highlight "green")
-  (set-face-underline-p 'highlight t))
+(set-face-foreground 'highlight nil)
+(set-face-background 'highlight "green")
+(set-face-underline-p 'highlight t)
 
 ;; naming of same name file
 (require 'uniquify)
@@ -270,9 +266,9 @@
 
 ;; for virsion control system
 (global-auto-revert-mode 1)
-(setq auto-revert-interval 10)
-(setq vc-follow-symlinks t)
-(setq auto-revert-check-vc-info t)
+(setq auto-revert-interval 10
+      vc-follow-symlinks t
+      auto-revert-check-vc-info t)
 
 ;; disable vc-mode
 (setq vc-handled-backends '())
