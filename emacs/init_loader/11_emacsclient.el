@@ -4,12 +4,10 @@
 (when (and (not (macosx-p)) (executable-find "emacs_serverstart.pl"))
   (defadvice server-start
     (after server-start-after-write-window-id ())
-    (call-process "emacs_serverstart.pl"
-                  nil nil nil
-                  (number-to-string (emacs-pid))
-                  (if window-system
-                      "x"
-                    "nox")))
+    (let* ((x-param (if window-system "x" "nox"))
+           (pid (emacs-pid))
+           (cmd (format "emacs_serverstart.pl %d %s" pid x-param)))
+      (call-process-shell-command cmd)))
   (ad-activate 'server-start))
 
 (unless (server-running-p)
