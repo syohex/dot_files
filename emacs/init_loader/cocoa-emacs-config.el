@@ -1,12 +1,8 @@
-;; Mac keyboard layout
-(setq ns-command-modifier (quote meta))
-(setq ns-alternate-modifier (quote super))
-
-;; input method
-(setq default-input-method "MacOSX")
-
-;; for ansi-term
-(setq system-uses-terminfo nil)
+;; Mac specified setting(Meta key, input method, terminfo)
+(setq ns-command-modifier (quote meta)
+      ns-alternate-modifier (quote super)
+      default-input-method "MacOSX"
+      system-uses-terminfo nil)
 
 ;; font setting
 (when window-system

@@ -12,7 +12,6 @@
   (setq-default elscreen-e21-mode-line-string nil)
   (remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
   (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
-  (require 'helm-elscreen)
   (global-set-key (kbd "C-z C-l") 'helm-elscreen)
   (elscreen-toggle-display-tab))
 

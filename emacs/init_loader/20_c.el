@@ -6,9 +6,7 @@
   (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
   (hs-minor-mode 1)
   (my/setup-symbol-moving)
-  (if window-system
-      (setq c-basic-offset 4)
-    (setq c-basic-offset 8)))
+  (setq c-basic-offset 4))
 
 (add-hook 'c-mode-hook 'my/c-mode-init)
 

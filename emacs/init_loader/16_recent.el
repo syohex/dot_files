@@ -5,8 +5,7 @@
                         "\\.mime-example" "\\.ido.last"
                         "COMMIT_EDITMSG" "MERGE_MSG"))
 
-(when window-system
-  (run-at-time t 600 'recentf-save-list))
+(run-at-time t 600 'recentf-save-list)
 
 (defadvice recentf-save-list (around no-message activate)
   (flet ((write-file (file &optional confirm)
