@@ -15,6 +15,8 @@
 ;; for editing config files
 (require 'generic-x)
 
+(delete-selection-mode t)
+
 ;; restore construction of windows
 (require 'winner)
 (winner-mode t)
