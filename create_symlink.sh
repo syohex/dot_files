@@ -15,10 +15,10 @@ mkdir_if_not_exist ~/.emacs.d
 ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
 
 ## yasnippet
-ln -sf ${PWD}/emacs/my_snippets ~/.emacs.d/my_snippets
+ln -sf ${PWD}/emacs/my_snippets ~/.emacs.d/
 
 ## auto-complete dictionary
-ln -sf ${PWD}/emacs/ac-dict ~/.emacs.d/ac-dict
+ln -sf ${PWD}/emacs/ac-dict ~/.emacs.d/
 
 ## Use Emacs.app instead of pre-installed emacs on MacOSX
 EMACS_CLIENT_APP_PATH='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
