@@ -1,7 +1,7 @@
 ;; Common Lisp
 (setq inferior-lisp-program
       (cond
-       ((executable-find "ccl") "ccl")
+       ((executable-find "sbcl") "sbcl")
        ((executable-find "clisp") "clisp")))
 
 ;; hyperspec document
