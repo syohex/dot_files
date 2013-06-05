@@ -21,7 +21,8 @@
 
 (defun my/slime-mode-hook ()
   (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
-  (define-key slime-mode-map (kbd "C-c C-d C-a") 'helm-hyperspec))
+  (define-key slime-mode-map (kbd "C-c C-d C-a") 'helm-hyperspec)
+  (define-key slime-mode-map (kbd "C-c C-d C-d") 'common-lisp-hyperspec))
 
 (add-hook 'slime-mode-hook 'my/slime-mode-hook)
 
