@@ -64,6 +64,9 @@
     ;; coffee-script
     coffee-mode
 
+    ;; wisp
+    wisp-mode
+
     ;; perl
     cperl-mode
 
