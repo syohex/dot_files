@@ -7,6 +7,16 @@
 (setq vc-handled-backends '())
 
 ;;; Setting for Git
+(defun my/git-intent-to-add ()
+  (interactive)
+  (save-buffer)
+  (let* ((file (file-name-nondirectory (buffer-file-name)))
+         (cmd (format "git add -N %s" file)))
+    (unless (zerop (call-process-shell-command cmd))
+      (error "Failed: %s" cmd))
+    (message "Success: %s" cmd)))
+(global-set-key (kbd "C-x v N") 'my/git-intent-to-add)
+
 ;; sgit
 (require 'sgit)
 (global-set-key (kbd "C-x v l") 'sgit:log)
