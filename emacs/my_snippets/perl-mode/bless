@@ -1,0 +1,6 @@
+# name : bless {} class
+# key  : bless
+# --
+bless {
+    
+}, $class;
