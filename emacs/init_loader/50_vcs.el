@@ -46,35 +46,7 @@
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3" :weight 'normal)))
 
-(defun magit-toggle-whitespace ()
-  (interactive)
-  (if (member "-w" magit-diff-options)
-      (magit-dont-ignore-whitespace)
-    (magit-ignore-whitespace)))
-
-(defun magit-ignore-whitespace ()
-  (interactive)
-  (add-to-list 'magit-diff-options "-w")
-  (magit-refresh))
-
-(defun magit-dont-ignore-whitespace ()
-  (interactive)
-  (setq magit-diff-options (remove "-w" magit-diff-options))
-  (magit-refresh))
-
 (defun my/magit-log-edit-mode-hook ()
   (flyspell-mode t)
   (push 'ac-source-look ac-sources))
 (add-hook 'magit-log-edit-mode-hook 'my/magit-log-edit-mode-hook)
-
-(defun magit-browse ()
-  (interactive)
-  (let ((url (with-temp-buffer
-               (unless (zerop (call-process-shell-command "git remote -v" nil t))
-                 (error "Failed: 'git remote -v'"))
-               (goto-char (point-min))
-               (when (re-search-forward "github\\.com[:/]\\(.+?\\)\\.git" nil t)
-                 (format "https://github.com/%s" (match-string 1))))))
-    (unless url
-      (error "Can't find repository URL"))
-    (browse-url url)))
