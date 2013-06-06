@@ -9,3 +9,5 @@
   '(progn
      (define-key flyspell-mode-map (kbd "M-n") 'flyspell-goto-next-error)
      (define-key flyspell-mode-map (kbd "M-.") 'ispell-word)))
+
+(add-to-list 'auto-mode-alist '("Changes\\'" . flyspell-mode))
