@@ -1,6 +1,4 @@
 ;;;; editing operations
-(delete-selection-mode t)
-
 ;; Use regexp version as Default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
