@@ -14,7 +14,8 @@
          (cmd (format "git add -N %s" file)))
     (unless (zerop (call-process-shell-command cmd))
       (error "Failed: %s" cmd))
-    (message "Success: %s" cmd)))
+    (message "Success: %s" cmd))
+  (git-gutter))
 (global-set-key (kbd "C-x v N") 'my/git-intent-to-add)
 
 ;; sgit
