@@ -7,7 +7,8 @@
      (setq org-startup-truncated nil
            org-return-follows-link t
            org-directory user-emacs-directory
-           org-use-fast-todo-selection t)
+           org-use-fast-todo-selection t
+           org-src-fontify-natively t)
 
      (setq org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)")
                                (sequence "APPT(a)" "|" "DONE(x)" "CANCEL(c)")))
