@@ -5,11 +5,6 @@
 (add-hook 'js-mode-hook 'flymake-jslint-load)
 
 ;; coffeescript
-(eval-after-load "coffee-mode"
-  '(progn
-     (set-face-foreground 'coffee-mode-class-name "GreenYellow")
-     (set-face-foreground 'coffee-mode-function-param "violet")))
-
 (defun my/coffee-mode-hook ()
   (setq coffee-tab-width 2)
   (local-unset-key (kbd "C-m")))
