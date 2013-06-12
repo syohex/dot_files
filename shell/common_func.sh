@@ -16,9 +16,7 @@ us_keyboard () {
         done
     fi
 
-    if [ "$DISPLAY" != "" ];then
-        xset r rate 195 62
-    fi
+    xset r rate 195 62
 }
 
 # Set keyboard for Japanese keymap
