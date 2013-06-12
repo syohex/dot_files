@@ -1,6 +1,6 @@
 # Common functions used any operating system
 
-# Set keyboard for US keymap
+# Set keyboard for US keymap and key repeat
 us_keyboard () {
     setxkbmap -model us -layout us
 
@@ -14,6 +14,10 @@ us_keyboard () {
             xmodmap ~/dot_files/keyboard/${type}_xmodmap
             break
         done
+    fi
+
+    if [ "$DISPLAY" != "" ];then
+        xset r rate 195 62
     fi
 }
 
