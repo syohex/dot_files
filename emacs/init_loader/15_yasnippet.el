@@ -8,6 +8,7 @@
                 c++-mode-hook
                 cperl-mode-hook
                 emacs-lisp-mode-hook
+                html-mode
                 js-mode-hook
                 org-mode-hook
                 python-mode-hook
