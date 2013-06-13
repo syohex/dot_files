@@ -215,9 +215,6 @@ export PYTHONSTARTUP=~/.pythonsetup
 # haskell setting
 [[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
 
-# Emacs Lisp Carton setting, # Don't conflict Perl's carton
-[[ -d ~/.carton ]] && alias ecarton="${HOME}/.carton/bin/carton"
-
 # loading common function for any platform
 source ~/dot_files/shell/common_func.sh
 
