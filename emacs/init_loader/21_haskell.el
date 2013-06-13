@@ -1,9 +1,5 @@
 ;; setting haskell language
-(load "haskell-site-file") ;; load haskell-mode/haskell-site-file.el
 (setq ghc-module-command (expand-file-name "~/.cabal/bin/ghc-mod"))
-
-(add-to-list 'auto-mode-alist
-         '("\\.\\(hs\\|hi\\|gs\\)\\'" . haskell-mode))
 
 (defun haskell-individual-setup ()
   (turn-on-haskell-doc-mode)
