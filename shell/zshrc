@@ -215,6 +215,13 @@ export PYTHONSTARTUP=~/.pythonsetup
 # haskell setting
 [[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
 
+# golang
+if [ -d /opt/go ]; then
+    path=($HOME/local/go/bin /opt/go/bin $path)
+    export GOROOT=/opt/go
+    export GOPATH=$HOME/local/go
+fi
+
 # loading common function for any platform
 source ~/dot_files/shell/common_func.sh
 
@@ -283,7 +290,7 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH GEM_PATH GEM_HOME VIRTUAL_ENV \
+    PATH GEM_PATH GEM_HOME VIRTUAL_ENV GOROOT \
     > ~/.emacs.d/shellenv.el
 
 # load private data
