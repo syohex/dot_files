@@ -184,18 +184,15 @@
      (setq-default autopair-blink nil
                    autopair-blink-delay 0)))
 
-(defvar my/autopair-enabled-modes
-  '(c-mode
-    c++-mode
-    python-mode
-    haskell-mode
-    sh-mode
-    js-mode
-    coffee-mode
-    cperl-mode))
-
-(dolist (mode my/autopair-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
+(dolist (hook '(c-mode-hook
+                c++-mode-hook
+                python-mode-hook
+                sh-mode-hook
+                js-mode-hook
+                coffee-mode-hook
+                cperl-mode-hook
+                go-mode-hook))
+  (add-hook hook 'autopair-mode))
 
 ;; highlight specified words
 (defun my/add-watchwords ()
