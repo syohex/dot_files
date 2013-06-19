@@ -3,6 +3,7 @@
 ;; enable flycheck
 (dolist (hook '(coffee-mode-hook
                 python-mode-hook
+                go-mode-hook
                 ruby-mode-hook))
   (add-hook hook 'flycheck-mode))
 
