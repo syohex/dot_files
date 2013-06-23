@@ -70,6 +70,9 @@
     ;; perl
     cperl-mode
 
+    ;; go
+    go-mode
+
     ;; python
     jedi
 
@@ -106,8 +109,8 @@
 
 (defvar sub-packages
   '(
-    ;; slime
-    ac-slime
+    ;; auto-complete
+    ac-slime go-autocomplete
 
     ;; popwin
     import-popwin
