@@ -13,6 +13,7 @@
                 org-mode-hook
                 python-mode-hook
                 ruby-mode-hook
+                go-mode-hook
                 sh-mode-hook
                 wl-draft-mode-hook))
   (add-hook hook 'yas/minor-mode-on))
