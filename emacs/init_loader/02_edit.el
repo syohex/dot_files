@@ -196,7 +196,7 @@
     cperl-mode))
 
 (dolist (mode my/autopair-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'autopair-mode)
+  (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
 
 ;; highlight specified words
 (defun my/add-watchwords ()
