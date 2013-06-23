@@ -1,0 +1,10 @@
+# name: main
+# key: main
+# --
+package main
+
+$0
+
+func main () {
+
+}

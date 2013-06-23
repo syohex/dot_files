@@ -1,0 +1,6 @@
+# name: type interface
+# key: interface
+# --
+type $0 interface {
+     
+}

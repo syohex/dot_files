@@ -1,0 +1,6 @@
+# name: switch
+# key: switch
+# --
+switch $0 {
+       default:
+}
