@@ -2,5 +2,5 @@
 # key: struct
 # --
 struct {
-
+       $0
 }
