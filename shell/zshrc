@@ -217,9 +217,12 @@ export PYTHONSTARTUP=~/.pythonsetup
 
 # golang
 if [ -d /opt/go ]; then
-    path=($HOME/local/go/bin /opt/go/bin $path)
+    [[ -d /opt/go ]] && path=(/opt/go/bin $path)
     export GOROOT=/opt/go
+fi
+if \which go >/dev/null 2>&1; then
     export GOPATH=$HOME/local/go
+    path=($GOPATH/bin $path)
 fi
 
 # loading common function for any platform
