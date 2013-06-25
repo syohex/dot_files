@@ -293,7 +293,7 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 ## create emacs env file
 perl -wle \
     'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH GEM_PATH GEM_HOME VIRTUAL_ENV GOROOT \
+    PATH GEM_PATH GEM_HOME VIRTUAL_ENV GOROOT GOPATH \
     > ~/.emacs.d/shellenv.el
 
 # load private data
