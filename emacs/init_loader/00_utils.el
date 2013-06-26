@@ -8,10 +8,6 @@
 (defun linux-p ()
   (eq system-type 'gnu/linux))
 
-;; I use notification anywhere
-(when (linux-p)
-  (require 'notifications))
-
 ;; anaphoric macro
 (defmacro aif (test then &rest else)
   "Anaphoric if."

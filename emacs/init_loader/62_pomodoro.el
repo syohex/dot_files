@@ -2,6 +2,8 @@
 (autoload 'pomodoro:start "pomodoro" nil t)
 (eval-after-load "pomodoro"
   '(progn
+     (when (linux-p)
+       (require 'notifications))
      (add-hook 'pomodoro:finish-work-hook
                (my/pomodoro-notification :body "Work is Finish"))
 
