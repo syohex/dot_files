@@ -1,0 +1,6 @@
+# name: else if
+# key: else if condition
+# --
+else if $0 {
+     
+}
