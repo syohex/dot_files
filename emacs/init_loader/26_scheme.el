@@ -1,10 +1,11 @@
 ;; setting for scheme
-(autoload 'scheme-mode "scheme" nil t)
-
 (eval-after-load "scheme"
   '(progn
-     (setq scheme-program-name "gosh")
+     (require 'quack)
+     (require 'scheme-complete)
      (require 'cmuscheme)
+     (setq scheme-program-name "gosh"
+           quack-default-program "gosh")
      (push '("*scheme*" :stick t) popwin:special-display-config)
      (define-key scheme-mode-map (kbd "C-c S") 'scheme-other-window)
      (define-key global-map (kbd "C-c C-d") 'gauche-info-index)))
@@ -45,8 +46,10 @@
         t)))
 
 (defun my/scheme-mode-hook ()
+  (setq eldoc-documentation-function 'scheme-get-current-symbol-info
+        lisp-indent-function 'scheme-smart-indent-function)
   (set (make-variable-buffer-local
         'paredit-space-for-delimiter-predicates)
-       (list #'paredit-space-for-delimiter-p-gauche)))
+       (list 'paredit-space-for-delimiter-p-gauche)))
 
 (add-hook 'scheme-mode-hook 'my/scheme-mode-hook)

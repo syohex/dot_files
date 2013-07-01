@@ -87,6 +87,9 @@
     ;; Common Lisp
     slime paredit
 
+    ;; scheme
+    scheme-complete
+
     ;; common utility
     quickrun
 
@@ -154,6 +157,7 @@
     "https://raw.github.com/renormalist/emacs-pod-mode/master/pod-mode.el"
     "http://www.emacswiki.org/emacs/download/xs-mode.el"
     "http://static.boinkor.net/lisp/cl-indent-patches.el"
+    "http://www.neilvandyke.org/quack/quack.el"
     ))
 
 ;; setup nonelpa packages
