@@ -17,6 +17,10 @@
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
+(smartrep-define-key
+    global-map "C-x" '(("[" . backward-page)
+                       ("]" . forward-page)))
+
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
   "My original keymap binded to C-q.")
