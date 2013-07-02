@@ -46,10 +46,11 @@
         t)))
 
 (defun my/scheme-mode-hook ()
-  (setq eldoc-documentation-function 'scheme-get-current-symbol-info
-        lisp-indent-function 'scheme-smart-indent-function)
-  (set (make-variable-buffer-local
-        'paredit-space-for-delimiter-predicates)
-       (list 'paredit-space-for-delimiter-p-gauche)))
+  ;; buffer local variables
+  (set (make-variable-buffer-local 'eldoc-documentation-function)
+       'scheme-get-current-symbol-info)
+  (set (make-variable-buffer-local 'paredit-space-for-delimiter-predicates)
+       (list 'paredit-space-for-delimiter-p-gauche))
+  (setq lisp-indent-function 'scheme-smart-indent-function))
 
 (add-hook 'scheme-mode-hook 'my/scheme-mode-hook)
