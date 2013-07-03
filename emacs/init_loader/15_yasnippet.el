@@ -44,3 +44,7 @@
     (if (string-match "lib/\\(.+\\)\\'" file-path)
         (replace-regexp-in-string "/" "::" (match-string 1 file-path))
       (file-name-nondirectory file-path))))
+
+(defun my-yas/parent-directory ()
+  (let ((curdir (directory-file-name (file-name-directory (buffer-file-name)))))
+    (file-name-nondirectory curdir)))

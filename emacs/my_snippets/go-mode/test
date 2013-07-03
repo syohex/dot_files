@@ -1,0 +1,10 @@
+# name: Test template
+# key: test
+# --
+package `(my-yas/parent-directory)`
+
+import (
+	"testing"
+)
+
+$0
