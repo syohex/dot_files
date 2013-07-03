@@ -8,7 +8,7 @@
 
 =head1 NAME
 
-${1:`(yas/perl-package-name)`} - $0
+${1:`(my-yas/perl-package-name)`} - $0
 
 =head1 SYNOPSIS
 

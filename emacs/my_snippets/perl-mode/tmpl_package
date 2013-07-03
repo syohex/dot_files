@@ -1,7 +1,7 @@
 # name : Package template
 # key  : packaget
 # --
-package `(yas/perl-package-name)`;
+package `(my-yas/perl-package-name)`;
 use strict;
 use warnings;
 
