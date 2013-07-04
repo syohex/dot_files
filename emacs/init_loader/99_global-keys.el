@@ -27,7 +27,10 @@
 (defalias 'my/ctrl-q-prefix my/ctrl-q-map)
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-(define-key my/ctrl-q-map (kbd "l") 'mark-line)
+(defun my/copy-line ()
+  (interactive)
+  (kill-ring-save (line-beginning-position) (line-end-position)))
+(define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 ;; paste
 (defun my/repeat-yank (arg)
