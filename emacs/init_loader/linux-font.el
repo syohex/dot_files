@@ -1,6 +1,10 @@
 ;; font-setting for Linux(Ubuntu)
 
-;; (set-frame-font "VL ゴシック-12")
+(defun change-font-size (size)
+  (interactive
+   (list (read-number "Size: ")))
+  (set-frame-font (format "VL ゴシック-%d" size)))
+
 (when window-system
   (with-temp-buffer
     (call-process "xdpyinfo" nil t)
