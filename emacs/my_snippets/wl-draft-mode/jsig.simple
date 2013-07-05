@@ -1,6 +1,9 @@
 # name : Signature Simple Axe
 # key  : jsig
 # --
+
+$0
+
 --
 AXE, Inc.
  Yoshida Syohei <syoshida@axe-inc.co.jp>
