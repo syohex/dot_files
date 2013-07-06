@@ -118,6 +118,9 @@
     ;; popwin
     import-popwin
 
+    ;; go
+    go-eldoc
+
     ;; helm
     helm-gtags helm-descbinds helm-themes helm-ag
     ))
