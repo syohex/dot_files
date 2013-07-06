@@ -1,7 +1,6 @@
 (eval-after-load "go-mode"
   '(progn
      (require 'go-autocomplete)
-     (require 'go-eldoc) ;; until ELPA registerd
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
