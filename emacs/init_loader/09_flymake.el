@@ -1,13 +1,22 @@
 ;; setting for flymake
 
 ;; enable flycheck
-(dolist (hook '(coffee-mode-hook
-                python-mode-hook
-                go-mode-hook
-                ruby-mode-hook))
-  (add-hook hook 'flycheck-mode))
+(defvar my/flycheck-enable-modes
+  '(coffee-mode
+    python-mode
+    go-mode
+    ruby-mode))
+
+(dolist (hook my/flycheck-enable-modes)
+  (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
 
 (require 'flymake)
+
+(defun my/toggle-flymake ()
+  (interactive)
+  (if (memq major-mode my/flycheck-enable-modes)
+      (call-interactively 'flycheck-mode)
+    (call-interactively 'flymake-mode)))
 
 ;; Show error message under current line
 (defun flymake-display-err-menu-for-current-line ()
