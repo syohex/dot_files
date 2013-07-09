@@ -219,7 +219,7 @@ if [ -d /opt/go ]; then
     export GOROOT=/opt/go
 fi
 if \which go >/dev/null 2>&1; then
-    export GOPATH=$HOME/local/go
+    export GOPATH=$HOME/local/go:$HOME/program/go
     path=($GOPATH/bin $path)
 fi
 
