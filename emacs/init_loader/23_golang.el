@@ -5,7 +5,8 @@
 
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'my/helm-go)
-     (define-key go-mode-map (kbd "M-.") 'godef-jump)))
+     (define-key go-mode-map (kbd "M-.") 'godef-jump)
+     (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
 
 (defvar my/helm-go-source
   '((name . "Helm Go")
