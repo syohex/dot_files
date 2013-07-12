@@ -7,7 +7,7 @@
     go-mode
     ruby-mode))
 
-(dolist (hook my/flycheck-enable-modes)
+(dolist (mode my/flycheck-enable-modes)
   (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
 
 (require 'flymake)
