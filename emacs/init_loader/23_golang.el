@@ -3,6 +3,8 @@
      (require 'go-autocomplete)
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+     (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
+     (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'my/helm-go)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
@@ -32,3 +34,21 @@
       (if (string-match "_test" file)
           (funcall find-func (replace-regexp-in-string "_test" "" basename))
         (funcall find-func (replace-regexp-in-string "\\.go\\'" "_test.go" basename))))))
+
+(defun my/go-cleanup ()
+  (interactive)
+  (go-remove-unused-imports nil)
+  (gofmt)
+  (save-buffer))
+
+(defun my/go-test ()
+  (interactive)
+  (let ((package (save-excursion
+                   (goto-char (point-min))
+                   (let ((regexp (concat "package\\s-+\\(" go-identifier-regexp "\\)")))
+                     (if (re-search-forward regexp nil t)
+                         (match-string-no-properties 1)
+                       (error "Error: Can't find package name"))))))
+    (let ((compilation-scroll-output t)
+          (cmd (concat "go test " package)))
+      (compile cmd))))
