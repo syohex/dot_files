@@ -26,14 +26,15 @@
 
 (defun my/go-toggle-test-file ()
   (interactive)
-  (let ((file (buffer-file-name))
-        (find-func (if current-prefix-arg 'find-file-other-window 'find-file)))
+  (let ((file (buffer-file-name)))
     (unless file
       (error "Error: this buffer is not related to real file"))
-    (let ((basename (file-name-nondirectory file)))
-      (if (string-match "_test" file)
-          (funcall find-func (replace-regexp-in-string "_test" "" basename))
-        (funcall find-func (replace-regexp-in-string "\\.go\\'" "_test.go" basename))))))
+    (let* ((basename (file-name-nondirectory file))
+           (switched-file (if (string-match "_test" file)
+                              (replace-regexp-in-string "_test" "" basename)
+                            (replace-regexp-in-string "\\.go\\'" "_test.go" basename)))
+           (find-func (if current-prefix-arg 'find-file-other-window 'find-file)))
+      (funcall find-func switched-file))))
 
 (defun my/go-cleanup ()
   (interactive)
