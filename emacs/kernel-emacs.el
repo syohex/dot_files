@@ -312,9 +312,6 @@
   (forward-paragraph))
 (global-set-key (kbd "M-g M-a") 'my/popup-beginning-of-defun)
 
-;; savekill
-(require 'savekill)
-
 ;; flyspell
 (require 'flyspell)
 (define-key flyspell-mode-map (kbd "M-.") 'flyspell-auto-correct-word)

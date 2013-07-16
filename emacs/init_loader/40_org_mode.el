@@ -1,8 +1,6 @@
 ;; org-mode
 (eval-after-load "org"
   '(progn
-     (require 'org-install)
-
      (define-key global-map (kbd "C-c l") 'org-store-link)
      (setq org-startup-truncated nil
            org-return-follows-link t
@@ -25,7 +23,7 @@
      (set-face-foreground 'org-checkbox "LawnGreen")
 
      ;; function of org-open-at-point
-     (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+     ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
      (define-key org-mode-map (kbd "C-t") 'org-mark-ring-goto)
      (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
@@ -40,8 +38,3 @@
      (smartrep-define-key
          org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
                               ("C-p" . (outline-previous-visible-heading 1))))))
-
-(defun my/org-insert-pomodoro-template ()
-  (interactive)
-  (let ((date-str (format-time-string "<%Y-%m-%d %a>" (current-time))))
-    (insert (format "** %s [/]\n   - " date-str))))

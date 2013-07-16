@@ -21,8 +21,6 @@
 (global-set-key (kbd "C-x v g") 'helm-myutils:git-grep)
 (global-set-key (kbd "C-M-s") 'helm-ag-this-file)
 
-(remove-hook 'kill-emacs-hook 'helm-adaptive-save-history)
-
 ;; helm faces
 (require 'helm-files)
 (set-face-attribute 'helm-ff-file nil
