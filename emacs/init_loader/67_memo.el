@@ -12,7 +12,7 @@
              (created (file-exists-p file)))
         (find-file file)
         (unless created
-          (insert (format-time-string "%Y年%b %e日 タスクリスト")))
+          (insert (format-time-string "* %Y年%b %e日 タスクリスト")))
         (show-all)))))
 
 (global-set-key (kbd "<f11>") 'my/open-daily-memo)
