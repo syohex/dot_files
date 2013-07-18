@@ -107,7 +107,8 @@
     ;; directory operation
     direx
 
-    init-loader reverse-theme
+    ;; basic
+    init-loader reverse-theme exec-path-from-shell
     ))
 
 (defvar sub-packages

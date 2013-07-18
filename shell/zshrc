@@ -1,13 +1,5 @@
 # -*- mode:shell-script -*-
-path=(
-    $HOME/bin
-    /usr/local/sbin
-    /usr/local/bin
-    /usr/sbin
-    /usr/bin
-    /sbin
-    /bin
-)
+path=($HOME/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
 
 # completion
 fpath=(~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
@@ -306,12 +298,6 @@ ls_and_git_status() {
 }
 zle -N ls_and_git_status
 bindkey '^O' ls_and_git_status
-
-## create emacs env file
-perl -wle \
-    'do { print qq/(setenv "$_" "$ENV{$_}")/ if exists $ENV{$_} } for @ARGV' \
-    PATH GEM_PATH GEM_HOME VIRTUAL_ENV GOROOT GOPATH \
-    > ~/.emacs.d/shellenv.el
 
 # load private data
 source ~/.zsh/private.sh

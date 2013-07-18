@@ -10,18 +10,13 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
-;; load environment value
-(let ((shellenv (concat user-emacs-directory "shellenv.el")))
-  (when (file-exists-p shellenv)
-    (load-file shellenv)
-    (dolist (path (reverse (split-string (getenv "PATH") ":")))
-      (add-to-list 'exec-path path))))
+;; load environment variables
+(let ((envs '("PATH" "GEM_PATH" "GEM_HOME" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
+  (exec-path-from-shell-copy-envs envs))
 
 ;;;; setup theme
 (load-theme 'reverse t t)
 (enable-theme 'reverse)
-;;(load-theme 'syohex-reverse t t)
-;;(enable-theme 'syohex-reverse)
 
 ;; init-loader
 (require 'init-loader)
