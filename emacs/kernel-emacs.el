@@ -91,6 +91,18 @@
 (setq show-paren-delay 0
       show-paren-style 'expression)
 
+;; kill buffer
+(defun my/kill-buffer ()
+  (interactive)
+  (if (not current-prefix-arg)
+      (call-interactively 'kill-buffer)
+    (save-window-excursion
+      (other-window 1)
+      (let ((buf (current-buffer)))
+        (when (y-or-n-p (format "kill buffer: %s" buf))
+           (kill-buffer buf))))))
+(global-set-key (kbd "C-x k") 'my/kill-buffer)
+
 (defun kill-following-spaces ()
   (interactive)
   (let ((orig-point (point)))
@@ -201,8 +213,6 @@
 
 ;; helm
 (require 'helm-config)
-(require 'helm-gtags)
-(require 'helm-ag)
 
 (define-key helm-map (kbd "C-q") 'helm-execute-persistent-action)
 
@@ -302,20 +312,11 @@
 (push '(Man-mode :stick t :height 20) popwin:special-display-config)
 (push '("*sgit*" :width 0.5 :position right :stick t) popwin:special-display-config)
 
-(defun my/popup-beginning-of-defun ()
-  (interactive)
-  (popwin:popup-buffer (current-buffer)
-                       :height 0.4 :position 'bottom)
-  (case major-mode
-    ((c-mode c++-mode) (c-beginning-of-defun))
-    (otherwise (beginning-of-defun)))
-  (forward-paragraph))
-(global-set-key (kbd "M-g M-a") 'my/popup-beginning-of-defun)
-
 ;; flyspell
-(require 'flyspell)
-(define-key flyspell-mode-map (kbd "M-.") 'flyspell-auto-correct-word)
-(define-key flyspell-mode-map (kbd "M-,") 'flyspell-goto-next-error)
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mode-map (kbd "M-.") 'flyspell-auto-correct-word)
+     (define-key flyspell-mode-map (kbd "M-,") 'flyspell-goto-next-error)))
 
 ;; fixed line position after scrollup, scrolldown
 (defadvice scroll-up (around scroll-up-relative activate)
@@ -398,26 +399,16 @@
 	  return (file-name-directory it))))
 
 ;; ace-jump-mode
-(require 'ace-jump-mode)
-
-(set-face-foreground 'ace-jump-face-foreground "green")
-(set-face-bold-p 'ace-jump-face-foreground t)
-(set-face-underline-p 'ace-jump-face-foreground t)
-(set-face-foreground 'ace-jump-face-background "grey40")
+(eval-after-load "ace-jump-mode"
+  '(progn
+     (set-face-foreground 'ace-jump-face-foreground "green")
+     (set-face-bold-p 'ace-jump-face-foreground t)
+     (set-face-underline-p 'ace-jump-face-foreground t)
+     (set-face-foreground 'ace-jump-face-background "grey40")))
 
 ;; switch next/previous buffer
 (global-set-key (kbd "M-9") 'bs-cycle-next)
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
-
-(defun goto-match-paren (arg)
-  "Go to the matching  if on (){}[], similar to vi style of % "
-  (interactive "p")
-  (cond ((looking-at "[\[\(\{]") (forward-sexp))
-        ((looking-back "[\]\)\}]" 1) (backward-sexp))
-        ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
-        ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
-        (t nil)))
-(global-set-key (kbd "C-x %") 'goto-match-paren)
 
 ;; scroll bar
 (require 'yascroll)
