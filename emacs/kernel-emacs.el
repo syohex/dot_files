@@ -214,13 +214,16 @@
 ;; helm
 (require 'helm-config)
 
-(define-key helm-map (kbd "C-q") 'helm-execute-persistent-action)
+(eval-after-load "helm"
+  '(progn
+     (define-key helm-map (kbd "C-q") 'helm-execute-persistent-action)
+     (setq helm-idle-delay 0.1)
+     (setq helm-input-idle-delay 0)
+     (setq helm-candidate-number-limit 500)))
 
-(setq helm-c-ack-insert-at-point 'symbol)
-
-(setq helm-idle-delay 0.1)
-(setq helm-input-idle-delay 0)
-(setq helm-candidate-number-limit 500)
+(eval-after-load "helm-ag"
+  '(progn
+     (setq helm-ag-insert-at-point 'symbol)))
 
 (require 'helm-descbinds)
 (helm-descbinds-install)
