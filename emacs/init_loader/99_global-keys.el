@@ -127,8 +127,3 @@
 (smartrep-define-key
     global-map "M-g" '(("M-n" . 'my/flymake-goto-next-error)
                        ("M-p" . 'my/flymake-goto-previous-error)))
-
-(defun open-junk ()
-  (interactive)
-  (let ((filename (read-file-name "Junk File: " "~/junk/")))
-    (find-file filename)))

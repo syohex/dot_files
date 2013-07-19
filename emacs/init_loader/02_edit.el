@@ -167,17 +167,6 @@
 (global-set-key (kbd "M-o") 'my/edit-next-line)
 (global-set-key (kbd "M-O") 'my/edit-previous-line)
 
-;; Move matched paren('%')
-(defun my/goto-match-paren (arg)
-  "Go to the matching  if on (){}[], similar to vi style of % "
-  (interactive "p")
-  (cond ((looking-at "[\[\(\{]") (forward-sexp))
-        ((looking-back "[\]\)\}]" 1) (backward-sexp))
-        ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
-        ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
-        (t nil)))
-(define-key ctl-x-map (kbd "%") 'my/goto-match-paren)
-
 ;; autopair
 (eval-after-load "autopair"
   '(progn
