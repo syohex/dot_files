@@ -270,6 +270,7 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; recentf-ext
+(recentf-mode 1)
 (setq recentf-max-saved-items 1000
       recentf-save-file "~/.recentf-kernel")
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
