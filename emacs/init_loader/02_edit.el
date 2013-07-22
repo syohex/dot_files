@@ -90,11 +90,10 @@
 (global-set-key (kbd "M-<backspace>") 'my/backward-kill-word)
 
 ;; moving with ace-jump-mode
-(eval-after-load "ace-jump-mode"
-  '(progn
-     (set-face-foreground 'ace-jump-face-foreground "lime green")
-     (set-face-bold-p 'ace-jump-face-foreground t)
-     (set-face-underline-p 'ace-jump-face-foreground t)))
+(require 'ace-jump-mode)
+(set-face-foreground 'ace-jump-face-foreground "lime green")
+(set-face-bold-p 'ace-jump-face-foreground t)
+(set-face-underline-p 'ace-jump-face-foreground t)
 
 (defun backward-symbol (arg)
   (interactive "p")
