@@ -38,6 +38,7 @@
 
 (defun my/go-cleanup ()
   (interactive)
+  (save-buffer)
   (go-remove-unused-imports nil)
   (gofmt)
   (save-buffer))
