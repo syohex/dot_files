@@ -103,7 +103,7 @@ darwin*)
 linux-gnu)
         export BROWSER=firefox
         alias test-emacs="emacs -Q -l $TEST_CONFIG"
-        alias kernel-emacs="emacs -Q -l $KERNEL_EMACS_CONFIG"
+        alias kernel-emacs="TERM=xterm emacs -Q -l $KERNEL_EMACS_CONFIG"
         ;;
 esac
 
