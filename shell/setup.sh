@@ -32,4 +32,3 @@ cd $UTILDIR
 MYCOMPDIR="${HOME}/.zsh/mycomp"
 curl -o $MYCOMPDIR/_perlbrew  https://raw.github.com/lapis25/dotfiles/master/.zsh/functions/_perlbrew
 (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zsh-completions.git)
-
