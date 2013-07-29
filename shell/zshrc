@@ -251,6 +251,7 @@ zstyle ':completion:*' recent-dirs-insert both
 # zaw : anything
 if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     source ~/.zsh/zaw/zaw.zsh
+    bindkey '^[$' zaw-history
     bindkey '^[@' zaw-cdr
     bindkey '^[#' zaw-git-directories
 fi
