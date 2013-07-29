@@ -3,6 +3,7 @@
      (require 'go-autocomplete)
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+     (define-key go-mode-map (kbd "C-c C-c") 'go-errcheck)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
@@ -41,6 +42,7 @@
   (save-buffer)
   (go-remove-unused-imports nil)
   (gofmt)
+  (call-interactively 'go-errcheck)
   (save-buffer))
 
 (defun my/go-test ()

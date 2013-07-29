@@ -4,7 +4,6 @@
 (defvar my/flycheck-enable-modes
   '(coffee-mode
     python-mode
-    go-mode
     ruby-mode))
 
 (dolist (mode my/flycheck-enable-modes)
