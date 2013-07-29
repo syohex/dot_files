@@ -120,7 +120,7 @@
     import-popwin
 
     ;; go
-    go-eldoc
+    go-eldoc go-errcheck
 
     ;; helm
     helm-gtags helm-descbinds helm-themes helm-ag
