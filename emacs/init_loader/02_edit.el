@@ -16,6 +16,19 @@
            (kill-buffer buf))))))
 (global-set-key (kbd "C-x k") 'my/kill-buffer)
 
+;; Vim's 'f', 'F'
+(defun my/forward-to-char (arg char)
+  (interactive "p\ncForward to char: ")
+  (search-forward (char-to-string char) nil nil arg)
+  (backward-char 1))
+
+(defun my/backward-to-char (arg char)
+  (interactive "p\ncBackward to char: ")
+  (search-backward (char-to-string char) nil nil arg))
+
+(global-set-key (kbd "C-x c f") 'my/forward-to-char)
+(global-set-key (kbd "C-x c b") 'my/backward-to-char)
+
 ;; move lines
 (defun my/move-line-up ()
   (interactive)

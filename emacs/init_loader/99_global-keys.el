@@ -51,18 +51,6 @@
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "p") (lambda () (interactive) (push-mark)))
 
-(defun my/forward-to-char (arg char)
-  (interactive "p\ncForward to char: ")
-  (search-forward (char-to-string char) nil nil arg)
-  (backward-char 1))
-
-(defun my/backward-to-char (arg char)
-  (interactive "p\ncBackward to char: ")
-  (search-backward (char-to-string char) nil nil arg))
-
-(define-key my/ctrl-q-map (kbd "s") 'my/forward-to-char)
-(define-key my/ctrl-q-map (kbd "r") 'my/backward-to-char)
-
 (defun my/swap-buffers ()
   (interactive)
   (when (one-window-p)
