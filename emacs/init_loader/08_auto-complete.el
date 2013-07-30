@@ -19,6 +19,7 @@
       ac-use-menu-map t
       ac-quick-help-delay 1.0)
 
+(global-set-key (kbd "C-x l") 'ac-last-quick-help)
 (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
