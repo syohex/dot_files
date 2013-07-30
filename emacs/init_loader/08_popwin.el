@@ -28,9 +28,6 @@
 (push '("*haskell*" :stick t) popwin:special-display-config)
 (push '("*GHC Info*") popwin:special-display-config)
 
-;; quickrun
-(push '("*quickrun*" :stick t :noselect t) popwin:special-display-config)
-
 ;; sgit
 (push '("*sgit*" :position right :width 0.5 :stick t)
       popwin:special-display-config)
