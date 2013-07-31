@@ -244,6 +244,8 @@
 
 (define-key helm-map (kbd "C-p") 'helm-previous-line)
 (define-key helm-map (kbd "C-n") 'helm-next-line)
+(define-key helm-map (kbd "C-M-n") 'helm-next-source)
+(define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 
 ;; helm-show-kill-ring
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
