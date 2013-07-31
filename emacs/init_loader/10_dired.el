@@ -12,16 +12,22 @@
 (setq dired-recursive-copies 'always
       dired-recursive-deletes 'always)
 
-;; dired-x
-(load "dired-x")
-
 ;; binding
 (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
+;; dired-x
+(defun my/dired-jump ()
+  (interactive)
+  (if current-prefix-arg
+      (dired-jump t)
+    (dired-jump)))
+
+(global-set-key (kbd "C-x C-j") 'my/dired-jump)
+
 ;; direx
-(require 'direx)
-(require 'direx-project)
+(autoload 'my/dired-jump "direx" nil t)
+(autoload 'my/dired-jump "direx-project" nil t)
 (defun my/dired-jump ()
   (interactive)
   (cond ((not (one-window-p))
