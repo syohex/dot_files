@@ -19,7 +19,6 @@
 (global-set-key (kbd "C-;") 'helm-myutils:git-project)
 (global-set-key (kbd "<f10>") 'helm-myutils:dropbox)
 (global-set-key (kbd "C-x v g") 'helm-myutils:git-grep)
-(global-set-key (kbd "C-M-s") 'helm-ag-this-file)
 
 ;; helm faces
 (require 'helm-files)
