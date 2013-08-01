@@ -1,5 +1,3 @@
-;; mozc
-
 ;; change cursor color 'enable input method' / 'disable input method'
 (defun my/input-method-active-hook ()
   (when (memq major-mode my/autopair-enabled-modes)
