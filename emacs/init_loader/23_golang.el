@@ -3,7 +3,7 @@
      (require 'go-autocomplete)
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-     (define-key go-mode-map (kbd "C-c C-c") 'quickrun-compile-only)
+     (define-key go-mode-map (kbd "C-c C-c") 'my/helm-go-build)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
@@ -56,3 +56,37 @@
     (let ((compilation-scroll-output t)
           (cmd (concat "go test " package)))
       (compile cmd))))
+
+(defun helm-go-build-init ()
+  (let ((cmd (format "go build -o /dev/null %s"
+                     (with-helm-current-buffer
+                       (buffer-file-name)))))
+    (with-temp-buffer
+      (call-process-shell-command cmd nil t)
+      (goto-char (point-min))
+      (loop with lines = nil
+            while (not (eobp))
+            for line = (buffer-substring-no-properties
+                        (line-beginning-position) (line-end-position))
+            do
+            (progn
+              (when (not (string-match "^#" line))
+                (push line lines))
+              (forward-line 1))
+            finally return (if (zerop (length lines))
+                               (progn (message "no errors") nil)
+                             (reverse lines))))))
+
+(defvar helm-go-build-source
+  '((name . "Go Build")
+    (candidates . helm-go-build-init)
+    (volatile)
+    (action . (lambda (c)
+                (let ((fields (split-string c ":")))
+                  (goto-char (point-min))
+                  (forward-line (1- (string-to-number (nth 1 fields)))))))))
+
+(defun my/helm-go-build ()
+  (interactive)
+  (let ((helm-quit-if-no-candidate t))
+    (helm :sources '(helm-go-build-source) :buffer "*helm-go-build*")))
