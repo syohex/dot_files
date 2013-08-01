@@ -26,8 +26,8 @@
   (interactive "p\ncBackward to char: ")
   (search-backward (char-to-string char) nil nil arg))
 
-(global-set-key (kbd "C-x c f") 'my/forward-to-char)
-(global-set-key (kbd "C-x c b") 'my/backward-to-char)
+(global-set-key (kbd "C-M-s") 'my/forward-to-char)
+(global-set-key (kbd "C-M-r") 'my/backward-to-char)
 
 ;; move lines
 (defun my/move-line-up ()
@@ -162,18 +162,6 @@
 
 (global-set-key (kbd "C-M-u") 'my/backward-up-list)
 (global-set-key (kbd "C-M-d") 'my/down-list)
-
-;; like Vim 'f'
-(defun my/move-specified-char (arg)
-  (interactive "p")
-  (let ((regexp (char-to-string (read-char))))
-    (if (and current-prefix-arg (listp current-prefix-arg))
-        (re-search-backward regexp nil t)
-      (forward-char 1)
-      (re-search-forward regexp nil t arg)
-      (backward-char 1))))
-
-(global-set-key (kbd "C-M-r") 'my/move-specified-char)
 
 ;; Insert next line and previous line('o' and 'O')
 (defun my/edit-next-line ()
