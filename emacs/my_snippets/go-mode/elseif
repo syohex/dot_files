@@ -1,5 +1,5 @@
 # name: else if
-# key: else if condition
+# key: elseif
 # --
 else if $0 {
      
