@@ -19,6 +19,7 @@
 ;; Vim's 'f', 'F'
 (defun my/forward-to-char (arg char)
   (interactive "p\ncForward to char: ")
+  (forward-char 1)
   (search-forward (char-to-string char) nil nil arg)
   (backward-char 1))
 
