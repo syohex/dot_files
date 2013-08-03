@@ -42,7 +42,6 @@
   (save-buffer)
   (go-remove-unused-imports nil)
   (gofmt)
-  (call-interactively 'go-errcheck)
   (save-buffer))
 
 (defun my/go-test ()
