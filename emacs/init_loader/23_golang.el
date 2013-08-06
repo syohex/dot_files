@@ -3,6 +3,7 @@
      (require 'go-autocomplete)
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+     (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/helm-go-build)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
