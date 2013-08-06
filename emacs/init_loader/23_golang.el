@@ -13,7 +13,8 @@
 
 (defvar my/helm-go-source
   '((name . "Helm Go")
-    (candidates . go-packages)
+    (candidates . (lambda ()
+                    (cons "builtin" (go-packages))))
     (action . (("Show document" . godoc)
                ("Import package" . my/helm-go-import-add)))))
 
