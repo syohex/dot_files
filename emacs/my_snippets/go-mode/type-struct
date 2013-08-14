@@ -1,4 +1,6 @@
-# name: type
-# key: ty
+# name: type struct
+# key: types
 # --
-type $0
+type $1 struct {
+     $0
+}
