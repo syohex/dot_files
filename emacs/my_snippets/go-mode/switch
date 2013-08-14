@@ -2,5 +2,5 @@
 # key: switch
 # --
 switch $0 {
-       default:
+
 }
