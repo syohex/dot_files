@@ -1,6 +1,6 @@
 # name: function for test
 # key: funct
 # --
-func $0(t *testing.T) {
+func Test$0(t *testing.T) {
 
 }
