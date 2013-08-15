@@ -13,7 +13,8 @@
 
 (defun my/toggle-flymake ()
   (interactive)
-  (if (memq major-mode my/flycheck-enable-modes)
+  (if (or (memq major-mode my/flycheck-enable-modes)
+          (memq major-mode '(go-mode)))
       (call-interactively 'flycheck-mode)
     (call-interactively 'flymake-mode)))
 
