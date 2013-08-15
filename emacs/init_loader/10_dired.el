@@ -26,8 +26,10 @@
 (global-set-key (kbd "C-x C-j") 'my/dired-jump)
 
 ;; direx
-(autoload 'my/dired-jump "direx" nil t)
-(autoload 'my/dired-jump "direx-project" nil t)
+(autoload 'direx:jump-to-directory "direx" nil t)
+(autoload 'direx:jump-to-directory-other-window "direx" nil t)
+(autoload 'direx-project:jump-to-project-root "direx-project" nil t)
+(autoload 'direx-project:jump-to-project-root-other-window "direx-project" nil t)
 (defun my/direx-jump ()
   (interactive)
   (cond ((not (one-window-p))
