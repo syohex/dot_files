@@ -12,22 +12,23 @@
 
 (eval-after-load "python"
   '(progn
-     ;; auto-complete mode for python
-     (require 'jedi)
-     (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
-
-     ;; show-doc
-     (setq jedi:tooltip-method nil)
-     (set-face-attribute 'jedi:highlight-function-argument nil
-                         :foreground "green")
-
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
      (define-key python-mode-map (kbd "C-c C-a") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
      (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
+
+(eval-after-load "jedi"
+  '(progn
+     ;; binding
+     (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
+     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
+
+     ;; show-doc
+     (setq jedi:tooltip-method nil)
+     (set-face-attribute 'jedi:highlight-function-argument nil
+                         :foreground "green")))
 
 (defun my/python-mode-hook ()
   (jedi:ac-setup)
