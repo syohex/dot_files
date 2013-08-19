@@ -9,4 +9,5 @@
     (,(kbd "M-e") . forward-paragraph)
     (,(kbd "C-M-j") . dabbrev-expand)
     (,(kbd "C-M-i") . my/auto-complete)
+    (,(kbd "M-q") . ace-jump-word-mode)
     (,(kbd "M-C-o") . other-window)))

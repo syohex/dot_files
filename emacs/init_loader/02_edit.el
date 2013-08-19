@@ -104,7 +104,6 @@
 (global-set-key (kbd "M-<backspace>") 'my/backward-kill-word)
 
 ;; moving with ace-jump-mode
-(global-set-key (kbd "M-g M-a") 'ace-jump-word-mode)
 (eval-after-load "ace-jump-mode"
   '(progn
      (set-face-foreground 'ace-jump-face-foreground "lime green")
