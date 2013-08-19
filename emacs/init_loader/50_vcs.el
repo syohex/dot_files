@@ -59,7 +59,7 @@
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3" :weight 'normal)))
 
-(defun my/magit-log-edit-mode-hook ()
+(defun my/git-commit-mode-hook ()
   (flyspell-mode t)
   (push 'ac-source-look ac-sources))
-(add-hook 'magit-log-edit-mode-hook 'my/magit-log-edit-mode-hook)
+(add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
