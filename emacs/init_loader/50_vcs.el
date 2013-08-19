@@ -62,3 +62,6 @@
   (flyspell-mode t)
   (push 'ac-source-look ac-sources))
 (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
+
+(defadvice git-commit-commit (after move-to-magit-buffer activate)
+  (other-window 1))
