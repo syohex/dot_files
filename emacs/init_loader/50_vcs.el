@@ -19,7 +19,9 @@
 (global-set-key (kbd "C-x v N") 'my/git-intent-to-add)
 
 ;; sgit
-(require 'sgit)
+(autoload 'sgit:log "sgit" nil t)
+(autoload 'sgit:diff "sgit" nil t)
+(autoload 'sgit:status "sgit" nil t)
 (global-set-key (kbd "C-x v l") 'sgit:log)
 (global-set-key (kbd "C-x v d") 'sgit:diff)
 (global-set-key (kbd "C-x v s") 'sgit:status)
