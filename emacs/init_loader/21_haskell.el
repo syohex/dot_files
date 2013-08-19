@@ -9,6 +9,7 @@
 
   ;; bindings
   (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
+  (define-key haskell-mode-map (kbd "C-<return>") 'my/edit-next-line-no-indent)
   (local-unset-key (kbd "C-M-d"))
 
   ;; for auto-complete

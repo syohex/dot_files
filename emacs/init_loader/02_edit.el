@@ -170,6 +170,11 @@
   (end-of-line)
   (newline-and-indent))
 
+(defun my/edit-next-line-no-indent ()
+  (interactive)
+  (end-of-line)
+  (newline))
+
 (defun my/edit-previous-line ()
   (interactive)
   (forward-line -1)
