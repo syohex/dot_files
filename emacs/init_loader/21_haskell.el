@@ -6,6 +6,7 @@
   (turn-on-haskell-indent)
   (ghc-init)
   (flymake-mode)
+  (autopair-mode)
 
   ;; bindings
   (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
