@@ -1,5 +1,12 @@
 ;; setting haskell language
-(setq ghc-module-command (expand-file-name "~/.cabal/bin/ghc-mod"))
+(eval-after-load "haskell-mode"
+  '(progn
+     ;; ghc
+     (setq ghc-module-command (expand-file-name "~/.cabal/bin/ghc-mod"))
+
+     ;; bindings
+     (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
+     (define-key haskell-mode-map (kbd "C-<return>") 'my/edit-next-line-no-indent)))
 
 (defun haskell-individual-setup ()
   (turn-on-haskell-doc-mode)
@@ -9,8 +16,6 @@
   (autopair-mode)
 
   ;; bindings
-  (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
-  (define-key haskell-mode-map (kbd "C-<return>") 'my/edit-next-line-no-indent)
   (local-unset-key (kbd "C-M-d"))
 
   ;; for auto-complete
