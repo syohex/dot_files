@@ -17,6 +17,7 @@
 
   ;; bindings
   (local-unset-key (kbd "C-M-d"))
+  (local-unset-key (kbd "M-s"))
 
   ;; for auto-complete
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
