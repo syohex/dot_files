@@ -11,8 +11,6 @@
 (setq parens-require-spaces nil)
 
 ;;;; Paredit
-(require 'paredit)
-
 (dolist (hook '(emacs-lisp-mode-hook
                 lisp-interaction-mode-hook
                 lisp-mode-hook

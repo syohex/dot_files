@@ -1,7 +1,8 @@
 ;; org-mode
+(define-key global-map (kbd "C-c l") 'org-store-link)
+
 (eval-after-load "org"
   '(progn
-     (define-key global-map (kbd "C-c l") 'org-store-link)
      (setq org-startup-truncated nil
            org-return-follows-link t
            org-directory user-emacs-directory
@@ -12,15 +13,9 @@
                                (sequence "APPT(a)" "|" "DONE(x)" "CANCEL(c)")))
      (setq org-todo-keyword-faces
            '(("TODO"      . org-warning)
-             ("STARTED"   . (:foreground "deep sky blue" :weight bold))
+             ("STARTED"   . (:foreground "DeepSkyBlue" :weight bold))
              ("DONE"      . (:foreground "SpringGreen1" :weight bold))
              ("WAITING"   . (:foreground "orange" :weight bold))))
-
-     ;; faces
-     (require 'org-faces)
-     (set-face-foreground 'org-block "green")
-     (set-face-foreground 'org-tag "green yellow")
-     (set-face-foreground 'org-checkbox "LawnGreen")
 
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
@@ -38,3 +33,9 @@
      (smartrep-define-key
          org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
                               ("C-p" . (outline-previous-visible-heading 1))))))
+
+(eval-after-load "org-faces"
+  '(progn
+     (set-face-foreground 'org-block "green")
+     (set-face-foreground 'org-tag "green yellow")
+     (set-face-foreground 'org-checkbox "LawnGreen")))
