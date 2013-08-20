@@ -68,6 +68,7 @@
 
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
+(global-set-key (kbd "M-g M-b") 'helm-buffers-list)
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
