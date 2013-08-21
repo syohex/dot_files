@@ -9,7 +9,7 @@
 (ac-config-default)
 
 ;; Enable auto-complete mode other than default enable modes
-(dolist (mode '(magit-log-edit-mode
+(dolist (mode '(git-commit-mode
                 coffee-mode
                 go-mode
                 markdown-mode))
