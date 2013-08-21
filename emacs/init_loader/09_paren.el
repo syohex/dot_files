@@ -20,3 +20,7 @@
                 clojure-mode-hook
                 slime-repl-mode-hook))
   (add-hook hook 'enable-paredit-mode))
+
+(eval-after-load "paredit"
+  '(progn
+     (define-key paredit-mode-map (kbd "M-q") 'ace-jump-word-mode)))
