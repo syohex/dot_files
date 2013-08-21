@@ -12,7 +12,10 @@
 (dolist (mode '(git-commit-mode
                 coffee-mode
                 go-mode
-                markdown-mode))
+                markdown-mode
+                fundamental-mode
+                org-mode
+                text-mode))
   (add-to-list 'ac-modes mode))
 
 (setq ac-auto-start nil
