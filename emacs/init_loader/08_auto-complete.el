@@ -40,13 +40,20 @@
        (call-interactively 'dabbrev-expand)))))
 
 ;; look command with auto-complete
+(defun ac-look--judge-case (str)
+  (let ((case-fold-search nil))
+    (cond ((string-match "\\`[A-Z]\\{2\\}" str) 'upcase)
+          ((string-match "\\`[A-Z]\\{1\\}" str) 'capitalize)
+          (t 'identity))))
+
 (defun ac-look-candidates ()
   (if (not (executable-find "look"))
       (message "Error: not found `look'")
-    (let ((cmd (format "look -f %s" ac-prefix)))
+    (let ((result (format "look -f %s" ac-prefix))
+          (case-func (ac-look--judge-case ac-prefix)))
       (ignore-errors
-        (split-string
-         (shell-command-to-string cmd) "\n")))))
+        (mapcar case-func
+                (split-string (shell-command-to-string result) "\n"))))))
 
 (defun ac-look ()
   (interactive)
