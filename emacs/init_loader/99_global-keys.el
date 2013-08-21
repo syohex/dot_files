@@ -2,7 +2,7 @@
 
 ;; my key mapping
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "M-<return>") 'newline-and-indent)
+(global-set-key (kbd "M-<return>") 'my/edit-next-line-no-indent)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
