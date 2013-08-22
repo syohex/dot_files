@@ -61,7 +61,7 @@
                        ("+" . 'goto-last-change-reverse)))
 
 (smartrep-define-key
-    global-map "C-q" '(("+" . 'evil-numbers/inc-at-pt)
+    global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
 ;; M-g mapping
