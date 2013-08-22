@@ -32,13 +32,6 @@
   (kill-ring-save (line-beginning-position) (line-end-position)))
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
-;; paste
-(defun my/repeat-yank (arg)
-  (interactive "p")
-  (dotimes (i arg)
-    (yank)))
-(define-key my/ctrl-q-map (kbd "y") 'my/repeat-yank)
-
 ;; col-highlight
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 

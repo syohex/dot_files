@@ -16,6 +16,21 @@
            (kill-buffer buf))))))
 (global-set-key (kbd "C-x k") 'my/kill-buffer)
 
+(defun my/yank (&optional arg)
+  (interactive "*P")
+  (setq yank-window-start (window-start))
+  (setq this-command t)
+  (push-mark (point))
+  (let ((str (current-kill 0)))
+   (insert-for-yank str)
+   (when (numberp arg)
+     (dotimes (i (1- arg))
+       (insert-for-yank str))))
+  (when (eq this-command t)
+    (setq this-command 'yank))
+  nil)
+(global-set-key (kbd "C-y") 'my/yank)
+
 ;; Vim's 'f', 'F'
 (defun my/forward-to-char (arg char)
   (interactive "p\ncForward to char: ")
