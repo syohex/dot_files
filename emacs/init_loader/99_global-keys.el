@@ -29,7 +29,8 @@
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 (defun my/copy-line ()
   (interactive)
-  (kill-ring-save (line-beginning-position) (line-end-position)))
+  (let ((n (if current-prefix-arg 1 0)))
+    (kill-ring-save (line-beginning-position) (+ n (line-end-position)))))
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 ;; col-highlight
@@ -39,7 +40,7 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
-(define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
+(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "p") (lambda () (interactive) (push-mark)))
