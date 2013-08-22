@@ -66,9 +66,12 @@
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
 
+(smartrep-define-key
+    global-map "C-q" '(("+" . 'evil-numbers/inc-at-pt)
+                       ("-" . 'evil-numbers/dec-at-pt)))
+
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
-(global-set-key (kbd "M-g M-b") 'helm-buffers-list)
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
