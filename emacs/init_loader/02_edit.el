@@ -198,6 +198,7 @@
     c++-mode
     python-mode
     haskell-mode
+    inferior-haskell-mode
     sh-mode
     js-mode
     go-mode
