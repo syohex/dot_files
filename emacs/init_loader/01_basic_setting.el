@@ -143,6 +143,12 @@
 (custom-set-variables
  '(compile-command ""))
 
+;; comint
+(eval-after-load "comint"
+  '(progn
+     (set-face-attribute 'comint-highlight-input nil
+                         :foreground "DarkOrange1" :weight 'semi-bold)))
+
 ;; ido
 (ido-mode 'file)
 ;;; Disable override some keybinds(eg. find-file)
