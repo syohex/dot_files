@@ -260,6 +260,7 @@
       (setq char (or (aref translation-table-for-input char) char))))
   (kill-region (point)
                (progn
+                 (forward-char 1)
                  (search-forward (char-to-string char) nil nil arg)
                  (backward-char 1)
                  (point))))
