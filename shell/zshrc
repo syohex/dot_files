@@ -172,7 +172,7 @@ export LESSCHARSET=utf-8
 export INFOPATH=/usr/local/share/info:/usr/share/info
 
 # load perlbrew config file
-export PERLDOC_PAGER='less -R' # Only Perl 5.16 problem??
+export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
 if [ -e ~/perl5/perlbrew/etc/bashrc ]; then
     source ~/perl5/perlbrew/etc/bashrc
     unset MANPATH
