@@ -21,7 +21,6 @@
        (add-to-list 'mc/cmds-to-run-for-all command))))
 
 ;; wrap-region
-(require 'wrap-region)
 (wrap-region-global-mode t)
 
 ;; org-mode
