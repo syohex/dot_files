@@ -131,6 +131,8 @@
   (local-set-key (kbd "C-M-f") 'forward-symbol)
   (local-set-key (kbd "C-M-b") 'backward-symbol))
 
+(put 'set-goal-column 'disabled nil)
+
 (defun number-rectangle (start end format-string from)
   "Delete (don't save) text in the region-rectangle, then number it."
   (interactive
