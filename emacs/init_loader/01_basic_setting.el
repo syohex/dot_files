@@ -150,17 +150,9 @@
                          :foreground "DarkOrange1" :weight 'semi-bold)))
 
 ;; ido
-(ido-mode 'file)
-;;; Disable override some keybinds(eg. find-file)
-(setcdr (cdar (cddr ido-minor-mode-map-entry)) nil)
-(defun my/ido-find-file ()
-  (interactive)
-  (let ((ido-mode t)
-        (ido-max-prospects 8))
-    (if current-prefix-arg
-        (ido-find-file-other-window)
-      (ido-find-file-in-dir default-directory))))
-(global-set-key (kbd "C-x C-p") 'my/ido-find-file)
+(ido-mode t)
+(global-set-key (kbd "C-x C-p") 'ido-find-file)
+(define-key minibuffer-local-map (kbd "C-h") 'backward-delete-char)
 
 (set-face-attribute 'ido-first-match nil
                     :foreground "orange" :weight 'semi-bold)
