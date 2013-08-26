@@ -59,6 +59,8 @@
                          :background "gray3" :weight 'normal)))
 
 (defun my/git-commit-mode-hook ()
+  (when (looking-at "\n")
+    (open-line 1))
   (flyspell-mode t)
   (push 'ac-source-look ac-sources))
 (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
