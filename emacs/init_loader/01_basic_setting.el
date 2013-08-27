@@ -151,6 +151,10 @@
 
 ;; ido
 (ido-mode t)
+(setq ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-max-prospects 8
+      ido-default-file-method 'selected-window)
 (global-set-key (kbd "C-x C-p") 'ido-find-file)
 (define-key minibuffer-local-map (kbd "C-h") 'backward-delete-char)
 
