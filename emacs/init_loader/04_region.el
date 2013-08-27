@@ -23,14 +23,6 @@
 ;; wrap-region
 (wrap-region-global-mode t)
 
-;; org-mode
-(dolist (sign '("*" "_" "/" "+"))
-  (wrap-region-add-wrapper sign sign nil 'org-mode))
-
-;; markdown-mode
-(dolist (sign '("`" "*"))
-  (wrap-region-add-wrapper sign sign nil 'markdown-mode))
-
 ;; disable paredit enable mode
 (dolist (mode (append '(emacs-lisp-mode scheme-mode lisp-mode clojure-mode)
                       my/autopair-enabled-modes))
