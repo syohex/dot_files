@@ -151,7 +151,7 @@
 
 ;; ido
 (ido-mode t)
-(setq ido-enable-flex-matching t
+(setq ido-enable-flex-matching nil
       ido-create-new-buffer 'always
       ido-max-prospects 8
       ido-default-file-method 'selected-window
