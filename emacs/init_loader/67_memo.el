@@ -15,4 +15,14 @@
           (insert (format-time-string "* %Y年%b %e日 タスクリスト [/]")))
         (show-all)))))
 
-(global-set-key (kbd "<f11>") 'my/open-daily-memo)
+(defun my/open-memo ()
+  (interactive)
+  (find-file (expand-file-name "~/Dropbox/daily.org")))
+
+(defun my/org-insert-memo-template ()
+  (interactive)
+  (insert (format "** %s" (format-time-string "%Y-%m-%e [/]\n")))
+  (insert "  - [ ] "))
+
+(global-set-key (kbd "<f11>") 'my/open-memo)
+(global-set-key (kbd "S-<f11>") 'my/open-daily-memo)
