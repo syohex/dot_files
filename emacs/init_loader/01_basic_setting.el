@@ -157,7 +157,9 @@
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1)
 (global-set-key (kbd "C-x C-p") 'ido-find-file)
-(define-key minibuffer-local-map (kbd "C-h") 'backward-delete-char)
+(define-key ido-file-dir-completion-map (kbd "C-h") 'backward-delete-char)
+(define-key ido-file-dir-completion-map (kbd "<backspace>") 'backward-delete-char)
+(define-key ido-file-dir-completion-map (kbd "C-M-u") 'ido-up-directory)
 
 (set-face-attribute 'ido-first-match nil
                     :foreground "orange" :weight 'semi-bold)
