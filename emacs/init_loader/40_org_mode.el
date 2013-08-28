@@ -9,13 +9,22 @@
            org-use-fast-todo-selection t
            org-src-fontify-natively t)
 
-     (setq org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)")
-                               (sequence "APPT(a)" "|" "DONE(x)" "CANCEL(c)")))
+     (setq org-todo-keywords
+           '((sequence "TODO(t)" "DOING(s)" "BLOCKED(w)" "|" "DONE(x)" "ARCHIVED(c)")
+             (sequence "FIX" "BUG" "ISSUES" "PR" "|" "DONE(x)" "CANCEL(c)")))
+
      (setq org-todo-keyword-faces
-           '(("TODO"      . org-warning)
-             ("STARTED"   . (:foreground "DeepSkyBlue" :weight bold))
-             ("DONE"      . (:foreground "SpringGreen1" :weight bold))
-             ("WAITING"   . (:foreground "orange" :weight bold))))
+           '(("TODO" . org-warning)
+             ("DOING" . "yellow") ("BLOCKED" . "red")
+             ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "blue")
+             ("FIX" . "orange") ("BUG" . "orange") ("ISSUES" . "orange")
+             ("PR" . "orange")))
+
+     ;; faces
+     (set-face-attribute 'org-warning nil :foreground "hotpink")
+     (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
+     (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
+     (set-face-attribute 'org-level-4 nil :foreground "grey80")
 
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
