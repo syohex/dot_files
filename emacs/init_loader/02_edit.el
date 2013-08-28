@@ -33,12 +33,14 @@
 (defun my/forward-to-char (arg char)
   (interactive "p\ncForward to char: ")
   (forward-char 1)
-  (search-forward (char-to-string char) nil nil arg)
+  (let ((case-fold-search nil))
+    (search-forward (char-to-string char) nil nil arg))
   (backward-char 1))
 
 (defun my/backward-to-char (arg char)
   (interactive "p\ncBackward to char: ")
-  (search-backward (char-to-string char) nil nil arg))
+  (let ((case-fold-search nil))
+   (search-backward (char-to-string char) nil nil arg)))
 
 (global-set-key (kbd "C-M-s") 'my/forward-to-char)
 (global-set-key (kbd "C-M-r") 'my/backward-to-char)
