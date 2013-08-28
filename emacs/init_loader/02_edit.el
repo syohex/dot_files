@@ -193,6 +193,15 @@
   (end-of-line)
   (newline))
 
+(defun my/edit-next-line-same-column ()
+  (interactive)
+  (let ((col (save-excursion
+               (back-to-indentation)
+               (current-column))))
+    (end-of-line)
+    (newline)
+    (move-to-column col t)))
+
 (defun my/edit-previous-line ()
   (interactive)
   (forward-line -1)
