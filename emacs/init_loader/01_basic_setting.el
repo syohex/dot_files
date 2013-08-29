@@ -154,6 +154,7 @@
 (setq ido-enable-flex-matching nil
       ido-create-new-buffer 'always
       ido-max-prospects 8
+      ido-case-fold nil
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1)
 (global-set-key (kbd "C-x C-p") 'ido-find-file)
