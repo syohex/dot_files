@@ -5,7 +5,8 @@
   '(progn
      (setq org-startup-truncated nil
            org-return-follows-link t
-           org-directory user-emacs-directory
+           org-directory (expand-file-name "~/Dropbox/")
+           org-agenda-files (list org-directory)
            org-use-fast-todo-selection t
            org-src-fontify-natively t)
 
@@ -15,16 +16,10 @@
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
-             ("DOING" . "yellow") ("BLOCKED" . "red")
+             ("DOING" . "yellow") ("BLOCKED" . "firebrick1")
              ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "blue")
              ("FIX" . "orange") ("BUG" . "orange") ("ISSUES" . "orange")
              ("PR" . "orange")))
-
-     ;; faces
-     (set-face-attribute 'org-warning nil :foreground "hotpink")
-     (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
-     (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
-     (set-face-attribute 'org-level-4 nil :foreground "grey80")
 
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
@@ -46,4 +41,9 @@
   '(progn
      (set-face-foreground 'org-block "green")
      (set-face-foreground 'org-tag "green yellow")
-     (set-face-foreground 'org-checkbox "LawnGreen")))
+     (set-face-foreground 'org-checkbox "LawnGreen")
+
+     (set-face-attribute 'org-warning nil :foreground "hotpink")
+     (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
+     (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
+     (set-face-attribute 'org-level-4 nil :foreground "grey80")))
