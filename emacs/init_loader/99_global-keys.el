@@ -64,6 +64,22 @@
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
+;; Vim's '*'
+(defun my/search-at-word ()
+  (interactive)
+  (let ((start (if (looking-at "\\<")
+                   (point)
+                 (save-excursion
+                   (backward-word 1)
+                   (point))))
+        (end (save-excursion
+               (forward-word 1)
+               (point))))
+    (kill-ring-save start end)
+    (isearch-mode t nil nil nil)
+    (isearch-yank-pop)))
+(define-key my/ctrl-q-map (kbd "C-s") 'my/search-at-word)
+
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
 (global-set-key (kbd "M-g .") 'helm-ag)
