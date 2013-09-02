@@ -272,7 +272,7 @@
 ;; unwrap
 (defvar my/unwrap-pair
   '(("(" . ")") ("[" . "]") ("{" . "}") ("'" . "'") ("\"" . "\"")
-    ("<" . ">") ("|" . "|")))
+    ("<" . ">") ("|" . "|") ("`" . "`")))
 
 (defsubst my/unwrap-counterpart (sign)
   (assoc-default sign my/unwrap-pair))
@@ -280,7 +280,7 @@
 (defun my/unwrap-at-point (arg)
   (interactive "p")
   (save-excursion
-    (when (re-search-backward "\\([(\[{'\"<]\\)" (point-min) t arg)
+    (when (re-search-backward "\\([(\[{'\"`|<]\\)" (point-min) t arg)
       (let ((start (point))
             (pair (my/unwrap-counterpart (match-string 1))))
         (forward-char 1)
