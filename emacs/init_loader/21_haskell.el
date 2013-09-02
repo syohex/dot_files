@@ -17,7 +17,7 @@
   ;; bindings
   (local-unset-key (kbd "C-M-d"))
   (local-unset-key (kbd "M-s"))
-  (define-key haskell-mode-map (kbd "C-M-<return>") 'my/edit-next-line-same-column)
+  (define-key haskell-mode-map (kbd "M-o") 'my/edit-next-line-same-column)
 
   ;; for auto-complete
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
