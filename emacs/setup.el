@@ -49,7 +49,7 @@
     yasnippet goto-chg
 
     ;;;; buffer utils
-    popwin elscreen yascroll
+    popwin elscreen yascroll buffer-move
 
     ;;;; programming
     ;; haskell

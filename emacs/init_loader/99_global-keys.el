@@ -45,17 +45,6 @@
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "C-k") 'kill-whole-line)
 
-(defun my/swap-buffers ()
-  (interactive)
-  (when (one-window-p)
-    (error "Frame is not splitted!!"))
-  (let ((curwin (selected-window))
-        (curbuf (window-buffer)))
-    (other-window 1)
-    (set-window-buffer curwin (window-buffer))
-    (set-window-buffer (selected-window) curbuf)))
-(define-key my/ctrl-q-map (kbd "b") 'my/swap-buffers)
-
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
@@ -86,6 +75,12 @@
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
+
+;;; buffer-move
+(global-set-key (kbd "M-g h") 'buf-move-left)
+(global-set-key (kbd "M-g j") 'buf-move-down)
+(global-set-key (kbd "M-g k") 'buf-move-up)
+(global-set-key (kbd "M-g l") 'buf-move-right)
 
 ;; duplicate current line
 (defun my/duplicate-thing (n)
