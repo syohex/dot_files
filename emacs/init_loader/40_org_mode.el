@@ -16,7 +16,8 @@
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
-             ("DOING" . "yellow") ("BLOCKED" . "firebrick1")
+             ("DOING" . (:foreground "yellow" :underline t :weight bold))
+             ("BLOCKED" . "firebrick1")
              ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "blue")
              ("FIX" . "orange") ("BUG" . "orange") ("ISSUES" . "orange")
              ("PR" . "orange")))
