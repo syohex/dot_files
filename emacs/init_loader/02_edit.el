@@ -249,6 +249,7 @@
 (defvar my/autopair-enabled-modes
   '(c-mode
     c++-mode
+    java-mode
     python-mode
     haskell-mode
     inferior-haskell-mode
