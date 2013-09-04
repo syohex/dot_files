@@ -157,7 +157,6 @@
       ido-case-fold nil
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1)
-(global-set-key (kbd "C-x C-p") 'ido-find-file)
 (define-key ido-file-dir-completion-map (kbd "C-h") 'backward-delete-char)
 (define-key ido-file-dir-completion-map (kbd "<backspace>") 'backward-delete-char)
 (define-key ido-file-dir-completion-map (kbd "C-M-u") 'ido-up-directory)
