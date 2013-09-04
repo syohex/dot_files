@@ -66,5 +66,4 @@
 (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
 
 (defadvice git-commit-commit (after move-to-magit-buffer activate)
-  (unless (string-match "\\`\*magit:" (buffer-name))
-    (other-window 1)))
+  (delete-window))
