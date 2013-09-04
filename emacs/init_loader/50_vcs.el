@@ -49,14 +49,27 @@
 (global-set-key (kbd "M-g M-g") 'magit-status)
 (eval-after-load "magit"
   '(progn
+
+     (defadvice magit-status (around magit-fullscreen activate)
+       (window-configuration-to-register :magit-fullscreen)
+       ad-do-it
+       (delete-other-windows))
+
      (define-key magit-mode-map (kbd "C-c C-b") 'magit-browse)
+
      (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
+     (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
 
      ;; faces
      (set-face-attribute 'magit-branch nil
                          :foreground "yellow" :weight 'bold :underline t)
      (set-face-attribute 'magit-item-highlight nil
                          :background "gray3" :weight 'normal)))
+
+(defun my/magit-quit-session ()
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
 
 (defun my/git-commit-mode-hook ()
   (when (looking-at "\n")
