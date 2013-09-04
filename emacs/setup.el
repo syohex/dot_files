@@ -105,7 +105,7 @@
     direx
 
     ;; basic
-    init-loader reverse-theme exec-path-from-shell
+    init-loader reverse-theme exec-path-from-shell keyfreq
     ))
 
 (defvar sub-packages
