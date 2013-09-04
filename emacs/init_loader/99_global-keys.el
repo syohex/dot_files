@@ -54,6 +54,17 @@
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
+(defun my/pushd ()
+  (interactive)
+  (point-to-register :my-pushd))
+
+(defun my/popd ()
+  (interactive)
+  (jump-to-register :my-pushd))
+
+(define-key my/ctrl-q-map (kbd "p") 'my/pushd)
+(define-key my/ctrl-q-map (kbd "P") 'my/popd)
+
 ;; Vim's '*'
 (defun my/search-at-word ()
   (interactive)
