@@ -13,13 +13,6 @@
 
 (run-with-idle-timer 10 t 'my/auto-save-buffers)
 
-;; winner-mode
-(winner-mode t)
-
-;; move other window
-(setq windmove-wrap-around t)
-(windmove-default-keybindings)
-
 ;; naming of same name file
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
