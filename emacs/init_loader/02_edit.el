@@ -209,6 +209,12 @@
 (global-set-key (kbd "C-M-u") 'my/backward-up-list)
 (global-set-key (kbd "C-M-d") 'my/down-list)
 
+;; kill backward sexp
+(defun my/kill-sexp-backward (arg)
+  (interactive "p")
+  (kill-sexp (- arg)))
+(global-set-key (kbd "C-M-<backspace>") 'my/kill-sexp-backward)
+
 ;; Insert next line and previous line('o' and 'O')
 (defun my/edit-next-line ()
   (interactive)
