@@ -38,6 +38,8 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
+(define-key my/ctrl-q-map (kbd "C-n") 'forward-paragraph)
+(define-key my/ctrl-q-map (kbd "C-p") 'backward-paragraph)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
