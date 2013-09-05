@@ -42,10 +42,14 @@
 (defvar my/fullscreen-enabled nil)
 (defun my/fullscreen-temporary ()
   (interactive)
-  (unless (and (one-window-p) (not my/fullscreen-enabled))
-    (if my/fullscreen-enabled
-        (jump-to-register :fullscreen-temporary)
-      (window-configuration-to-register :fullscreen-temporary)
-      (delete-other-windows))
-    (setq my/fullscreen-enabled (not my/fullscreen-enabled))))
+  (if current-prefix-arg
+      (progn
+        (message "Clear fullscreen state")
+        (setq my/fullscreen-enabled nil))
+    (unless (and (one-window-p) (not my/fullscreen-enabled))
+      (if my/fullscreen-enabled
+          (jump-to-register :fullscreen-temporary)
+        (window-configuration-to-register :fullscreen-temporary)
+        (delete-other-windows))
+      (setq my/fullscreen-enabled (not my/fullscreen-enabled)))))
 (global-set-key (kbd "C-x C-x") 'my/fullscreen-temporary)
