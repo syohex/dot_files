@@ -93,7 +93,7 @@
     ;;;; markup language
     haml-mode sass-mode htmlize
     markdown-mode markdown-mode+
-    scss-mode yaml-mode zencoding-mode
+    scss-mode yaml-mode emmet-mode
 
     ;; helm
     helm

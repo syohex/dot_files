@@ -7,9 +7,9 @@
   '(progn
      (define-key html-mode-map (kbd "C-c b") 'html-mode-insert-br)))
 
-;; zen-coding
-(add-hook 'sgml-mode-hook 'zencoding-mode)
-(add-hook 'html-mode-hook 'zencoding-mode)
+;; emmet-coding
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'html-mode-hook 'emmet-mode)
 
 ;; auto-complete for CSS
 (defvar ac-source-css-property-names
