@@ -187,12 +187,20 @@
 
 ;; moving block
 (defvar my/backward-up-list-regexp
-  "[{\"(\[]")
+  "[{\"(\[`']")
 (make-variable-buffer-local 'my/backward-up-list-regexp)
 
 (defvar my/down-list-regexp
-  "[{\"(\[]")
+  "[{\"(\[`']")
 (make-variable-buffer-local 'my/down-list-regexp)
+
+(defvar my/forward-list-regexp
+  "[\]})\"'`]")
+(make-variable-buffer-local 'my/forward-list-regexp)
+
+(defvar my/backward-list-regexp
+  "[{\"(\[`']")
+(make-variable-buffer-local 'my/backward-list-regexp)
 
 (defun my/backward-up-list (arg)
   (interactive "p")
@@ -206,8 +214,22 @@
             (down-list arg) t)
     (re-search-forward my/down-list-regexp nil t)))
 
+(defun my/forward-list (arg)
+  (interactive "p")
+  (unless (ignore-errors
+            (forward-list arg) t)
+    (re-search-forward my/forward-list-regexp nil t)))
+
+(defun my/backward-list (arg)
+  (interactive "p")
+  (unless (ignore-errors
+            (backward-list arg) t)
+    (re-search-backward my/backward-list-regexp nil t)))
+
 (global-set-key (kbd "C-M-u") 'my/backward-up-list)
 (global-set-key (kbd "C-M-d") 'my/down-list)
+(global-set-key (kbd "C-M-n") 'my/forward-list)
+(global-set-key (kbd "C-M-p") 'my/backward-list)
 
 ;; Insert next line and previous line('o' and 'O')
 (defun my/edit-next-line ()
