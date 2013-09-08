@@ -4,6 +4,9 @@
 
 (eval-after-load "ruby-mode"
   '(progn
+     ;; rbenv
+     (global-rbenv-mode t)
+
      ;; style
      (setq ruby-deep-indent-paren nil)
 
@@ -69,3 +72,9 @@
        (progn (beginning-of-line) t))
   (forward-line 1)
   (back-to-indentation))
+
+;; rbenv
+(eval-after-load "rbenv"
+  '(progn
+     (set-face-attribute 'rbenv-active-ruby-face nil
+                         :foreground "yellow")))
