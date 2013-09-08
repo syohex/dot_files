@@ -12,9 +12,9 @@
      (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
      ;; rsense
-     (setq rsense-home (concat user-emacs-directory "elisps/rsense"))
-     (add-to-list 'load-path (concat rsense-home "/etc"))
-     (require 'rsense)
+;;;     (setq rsense-home (concat user-emacs-directory "elisps/rsense"))
+;;;     (add-to-list 'load-path (concat rsense-home "/etc"))
+;;;     (require 'rsense)
 
      ;; my hook
      (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)

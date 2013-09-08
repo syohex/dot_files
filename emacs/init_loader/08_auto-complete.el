@@ -32,7 +32,7 @@
 (defun my/auto-complete ()
   (interactive)
   (case major-mode
-    (ruby-mode (ac-complete-rsense))
+    ;;(ruby-mode (ac-complete-rsense))
     (python-mode (jedi:complete))
     (otherwise
      (if auto-complete-mode
