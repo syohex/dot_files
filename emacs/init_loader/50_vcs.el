@@ -55,8 +55,6 @@
        ad-do-it
        (delete-other-windows))
 
-     (define-key magit-mode-map (kbd "C-c C-b") 'magit-browse)
-
      (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
      (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
 
