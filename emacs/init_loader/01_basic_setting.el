@@ -98,6 +98,10 @@
 ;; move physical line
 (setq line-move-visual nil)
 
+;; run server
+(unless (server-running-p)
+  (server-start))
+
 ;; which-func
 (require 'which-func)
 (set-face-attribute 'which-func nil

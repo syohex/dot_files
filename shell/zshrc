@@ -129,6 +129,7 @@ fi
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias be='bundle exec'
+alias e='emacsclient'
 
 # dstat
 alias dstat-full='dstat -Tclmdrn'
@@ -136,15 +137,6 @@ alias dstat-mem='dstat -Tclm'
 alias dstat-cpu='dstat -Tclr'
 alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
-
-# tmux
-alias tmux-refresh='tmux a -d'
-
-if [ "$OSTYPE" == "linux-gnu" ] && which emacsclient.sh >/dev/null 2>&1; then
-    alias e='emacsclient.sh'
-else
-    alias e='emacsclient'
-fi
 
 # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
