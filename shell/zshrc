@@ -171,11 +171,11 @@ export LESSCHARSET=utf-8
 # info
 export INFOPATH=/usr/local/share/info:/usr/share/info
 
-# load perlbrew config file
+# load plenv config file
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
-if [ -e ~/perl5/perlbrew/etc/bashrc ]; then
-    source ~/perl5/perlbrew/etc/bashrc
-    unset MANPATH
+if [ -e ~/.plenv/bin ]; then
+    path=($HOME/.plenv/bin $path)
+    eval "$(plenv init -)"
 fi
 
 # load rbenv
