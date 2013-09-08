@@ -20,9 +20,6 @@
      (add-to-list 'load-path (concat rsense-home "/etc"))
      (require 'rsense)
 
-     ;; my hook
-     (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
-
      ;; yari
      (require 'yari)
      (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
@@ -44,6 +41,8 @@
   (local-set-key "]" nil)
   (local-set-key "\"" nil)
   (local-set-key "'" nil))
+
+(add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
 
 (defvar yari-helm-source-ri-pages
   '((name . "RI documentation")
