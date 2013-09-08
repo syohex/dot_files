@@ -11,7 +11,7 @@
 (package-initialize)
 
 ;; load environment variables
-(let ((envs '("PATH" "GEM_PATH" "GEM_HOME" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
+(let ((envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
   (exec-path-from-shell-copy-envs envs))
 
 ;;;; setup theme
