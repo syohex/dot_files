@@ -273,6 +273,7 @@
     c++-mode
     java-mode
     python-mode
+    ruby-mode
     haskell-mode
     inferior-haskell-mode
     sh-mode

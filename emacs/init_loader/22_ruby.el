@@ -27,13 +27,20 @@
 (defun my/ruby-mode-hook ()
   ;; auto-complete rsense
   (add-to-list 'ac-sources ac-source-rsense-method)
-  (add-to-list 'ac-sources ac-source-rsense-constant)
+  ;;(add-to-list 'ac-sources ac-source-rsense-constant)
 
   ;; auto insert `end'
   (ruby-end-mode 1)
 
   ;; autopair
-  (ruby-electric-mode 1))
+  (local-set-key "(" nil)
+  (local-set-key ")" nil)
+  (local-set-key "{" nil)
+  (local-set-key "}" nil)
+  (local-set-key "[" nil)
+  (local-set-key "]" nil)
+  (local-set-key "\"" nil)
+  (local-set-key "'" nil))
 
 (defvar yari-helm-source-ri-pages
   '((name . "RI documentation")
