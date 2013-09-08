@@ -18,7 +18,7 @@
            '(("TODO" . org-warning)
              ("DOING" . (:foreground "yellow" :underline t :weight bold))
              ("BLOCKED" . "firebrick1")
-             ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "blue")
+             ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "SteelBlue")
              ("FIX" . "orange") ("BUG" . "orange") ("ISSUES" . "orange")
              ("PR" . "orange")))
 
