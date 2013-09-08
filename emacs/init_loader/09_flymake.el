@@ -91,5 +91,5 @@
                          :foreground "yellow" :weight 'bold
                          :background "red")
      (set-face-attribute 'flycheck-warning nil
-                         :foreground "white" :weight 'bold
-                         :background "dark orange")))
+                         :weight 'bold :underline "darkorange"
+                         :foreground nil :background nil)))
