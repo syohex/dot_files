@@ -14,6 +14,16 @@
      (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
      (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
+     ;; autopair
+     (define-key ruby-mode-map "(" nil)
+     (define-key ruby-mode-map ")" nil)
+     (define-key ruby-mode-map "{" nil)
+     (define-key ruby-mode-map "}" nil)
+     (define-key ruby-mode-map "[" nil)
+     (define-key ruby-mode-map "]" nil)
+     (define-key ruby-mode-map "\"" nil)
+     (define-key ruby-mode-map "'" nil)
+
      ;; rsense
      (setq rsense-home
            (expand-file-name (concat user-emacs-directory "elisps/rsense")))
@@ -30,17 +40,7 @@
   ;;(add-to-list 'ac-sources ac-source-rsense-constant)
 
   ;; auto insert `end'
-  (ruby-end-mode 1)
-
-  ;; autopair
-  (local-set-key "(" nil)
-  (local-set-key ")" nil)
-  (local-set-key "{" nil)
-  (local-set-key "}" nil)
-  (local-set-key "[" nil)
-  (local-set-key "]" nil)
-  (local-set-key "\"" nil)
-  (local-set-key "'" nil))
+  (ruby-end-mode 1))
 
 (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
 
