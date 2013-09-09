@@ -11,6 +11,7 @@
      (setq ruby-deep-indent-paren nil)
 
      ;; binding
+     (define-key ruby-mode-map (kbd "|") 'my/ruby-insert-bar)
      (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
      (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
@@ -72,6 +73,15 @@
   (interactive (list current-prefix-arg))
   (when current-prefix-arg (yari-ruby-obarray rehash))
   (helm :sources 'yari-helm-source-ri-pages :buffer "*yari*"))
+
+;; insert "|"
+(defun my/ruby-insert-bar ()
+  (interactive)
+  (if (looking-back "\\(do\\|{\\) +")
+      (progn
+        (insert "||")
+        (backward-char 1))
+    (insert "|")))
 
 ;; Ruby's move defun
 (defun my/ruby-beginning-of-defun (&optional arg)
