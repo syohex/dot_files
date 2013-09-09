@@ -42,6 +42,11 @@
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "C-k") 'kill-whole-line)
+(define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
+(define-key my/ctrl-q-map (kbd ">") 'highlight-symbol-next)
+(define-key my/ctrl-q-map (kbd "<") 'highlight-symbol-prev)
+(define-key my/ctrl-q-map (kbd "%") 'highlight-symbol-query-replace)
+(define-key my/ctrl-q-map (kbd "<backspace>") 'highlight-symbol-remove-all)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
