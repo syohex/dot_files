@@ -99,6 +99,7 @@
 (setq line-move-visual nil)
 
 ;; run server
+(require 'server)
 (unless (server-running-p)
   (server-start))
 
