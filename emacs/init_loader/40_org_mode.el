@@ -11,16 +11,12 @@
            org-src-fontify-natively t)
 
      (setq org-todo-keywords
-           '((sequence "TODO(t)" "DOING(s)" "BLOCKED(w)" "|" "DONE(x)" "ARCHIVED(c)")
-             (sequence "FIX" "BUG" "ISSUES" "PR" "|" "DONE(x)" "CANCEL(c)")))
+           '((sequence "TODO(t)" "DOING(s)" "BLOCKED(w)" "|" "DONE(x)" "CANCEL(c)")))
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
              ("DOING" . (:foreground "yellow" :underline t :weight bold))
-             ("BLOCKED" . "firebrick1")
-             ("REVIEW" . "orange") ("DONE" . "green") ("ARCHIVED" . "SteelBlue")
-             ("FIX" . "orange") ("BUG" . "orange") ("ISSUES" . "orange")
-             ("PR" . "orange")))
+             ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue")))
 
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
