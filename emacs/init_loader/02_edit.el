@@ -41,13 +41,12 @@
   (forward-char 1)
   (let ((case-fold-search nil))
     (search-forward (char-to-string char) nil nil arg))
-  (backward-char 1))
+  (when (> arg 0)
+    (backward-char 1)))
 
 (defun my/backward-to-char (arg char)
   (interactive "p\ncBackward to char: ")
-  (my/save-last-char arg char)
-  (let ((case-fold-search nil))
-    (search-backward (char-to-string char) nil nil arg)))
+  (my/forward-to-char (- arg) char))
 
 (defun my/repeat-find-char ()
   (interactive)
