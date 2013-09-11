@@ -31,7 +31,7 @@
                          :foreground "green")))
 
 (defun my/python-mode-hook ()
-  (jedi:ac-setup)
+  (jedi:setup)
 
   ;; autopair
   (setq autopair-handle-action-fns
