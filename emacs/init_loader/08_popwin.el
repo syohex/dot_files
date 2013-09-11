@@ -19,6 +19,9 @@
 ;; pry
 (push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
 
+;; prolog
+(push '(prolog-inferior-mode :stick t :height 20) popwin:special-display-config)
+
 ;; python
 (push '("*Python*"   :stick t) popwin:special-display-config)
 (push '("*Python Help*" :stick t :height 20) popwin:special-display-config)
