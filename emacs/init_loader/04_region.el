@@ -1,13 +1,8 @@
 ;;;; region setting
 
-;; expand region
-(global-set-key (kbd "C-@") 'er/expand-region)
-(global-set-key (kbd "C-M-@") 'er/contract-region)
-
 ;; multimark
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-x r e") 'mc/edit-lines)
 
 (eval-after-load "multiple-cursors-core"
   '(progn

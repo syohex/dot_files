@@ -53,19 +53,14 @@
                        ("+" . 'goto-last-change-reverse)))
 
 (smartrep-define-key
+    global-map "C-q" '(("@" . 'er/expand-region)))
+
+(smartrep-define-key
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
-(defun my/pushd ()
-  (interactive)
-  (point-to-register :my-pushd))
-
-(defun my/popd ()
-  (interactive)
-  (jump-to-register :my-pushd))
-
-(define-key my/ctrl-q-map (kbd "p") 'my/pushd)
-(define-key my/ctrl-q-map (kbd "P") 'my/popd)
+(define-key my/ctrl-q-map (kbd "<SPC>") 'point-to-register)
+(define-key my/ctrl-q-map (kbd "P") 'jump-to-register)
 
 ;; Vim's '*'
 (defun my/search-at-word ()
