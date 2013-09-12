@@ -209,9 +209,6 @@ fi
 # loading common function for any platform
 source ~/dot_files/shell/common_func.sh
 
-## for setting cdd
-source ~/dot_files/shell/cdd.zsh
-
 ## show git branch at right prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
