@@ -15,7 +15,7 @@
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
-             ("DOING" . (:foreground "yellow" :underline t :weight bold))
+             ("DOING" . (:foreground "orange" :underline t :weight bold))
              ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue")))
 
      ;; function of org-open-at-point
