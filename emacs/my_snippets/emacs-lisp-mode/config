@@ -1,7 +1,7 @@
 # name : Base of test configuration file
 # key  : conf
 # --
-(set-default-font "VL Gothic 12")
+(set-frame-font "VL Gothic 12")
 
 ;; for helm
 (add-to-list 'load-path "~/program/elisp/helm")
