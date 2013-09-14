@@ -1,10 +1,5 @@
 ;; setting for modeline
 
-(set-face-attribute 'mode-line nil
-                    :background "#333333" :foreground "#cccccd")
-(set-face-attribute 'mode-line-buffer-id nil
-                    :foreground "orange" :weight 'bold)
-
 ;; Change lighter of major-mode and minor-mode
 (defvar mode-line-cleaner-alist
   '( ;; For minor-mode, first char is 'space'

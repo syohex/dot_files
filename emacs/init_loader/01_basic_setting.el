@@ -5,6 +5,12 @@
 ;; Coloring
 (global-font-lock-mode t)
 
+;; mode-line color
+(set-face-attribute 'mode-line nil
+                    :background "#333333" :foreground "#cccccd")
+(set-face-attribute 'mode-line-buffer-id nil
+                    :foreground "orange" :weight 'bold)
+
 ;; temp directory
 (when (file-exists-p "/mnt/ramdisk")
   (setq temporary-file-directory "/mnt/ramdisk/"))
