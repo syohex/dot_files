@@ -39,17 +39,12 @@
 (global-set-key (kbd "M-9") 'bs-cycle-next)
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
 
-(defvar my/fullscreen-enabled nil)
-(defun my/fullscreen-temporary ()
-  (interactive)
-  (if current-prefix-arg
-      (progn
-        (message "Clear fullscreen state")
-        (setq my/fullscreen-enabled nil))
-    (unless (and (one-window-p) (not my/fullscreen-enabled))
-      (if my/fullscreen-enabled
-          (jump-to-register :fullscreen-temporary)
-        (window-configuration-to-register :fullscreen-temporary)
-        (delete-other-windows))
-      (setq my/fullscreen-enabled (not my/fullscreen-enabled)))))
-(global-set-key (kbd "C-x C-x") 'my/fullscreen-temporary)
+(require 'zoom-window)
+(setq zoom-window-mode-line-color "DarkGreen"
+      zoom-window-use-elscreen t)
+
+(eval-after-load "elscreen"
+ '(progn
+    (zoom-window-setup)))
+
+(global-set-key (kbd "C-x C-x") 'zoom-window-zoom)
