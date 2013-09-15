@@ -62,7 +62,7 @@
                        ("-" . 'evil-numbers/dec-at-pt)))
 
 (define-key my/ctrl-q-map (kbd "<SPC>") 'point-to-register)
-(define-key my/ctrl-q-map (kbd "P") 'jump-to-register)
+(define-key my/ctrl-q-map (kbd "j") 'jump-to-register)
 
 ;; Vim's '*'
 (defun my/search-at-word ()
