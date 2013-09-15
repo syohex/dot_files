@@ -1,16 +1,6 @@
-;; setting for flymake
-
-;; enable flycheck
-(defvar my/flycheck-enable-modes
-  '(coffee-mode
-    python-mode
-    ruby-mode))
-
-(dolist (mode my/flycheck-enable-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
-
 (require 'flymake)
 
+;; setting for flymake
 (defun my/toggle-flymake ()
   (interactive)
   (if (or (memq major-mode my/flycheck-enable-modes)
@@ -42,25 +32,25 @@
                                   (delete-duplicates messages :test #'string=)
                                   "\n"))))))
 
-;; If you don't set :height, :bold face parameter of 'pop-tip-face,
-;; then seting those default values
-(eval-after-load "popup"
-  '(progn
-     (when (eq 'unspecified (face-attribute 'popup-tip-face :height))
-       (set-face-attribute 'popup-tip-face nil :height 1.0))
-     (when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
-       (set-face-attribute 'popup-tip-face nil :weight 'normal))))
-
-(defun my/display-error-message ()
+(defun my/display-error-message-common (message-func)
   (let ((orig-face (face-attr-construct 'popup-tip-face)))
     (set-face-attribute 'popup-tip-face nil
                         :height 1.5 :foreground "firebrick"
                         :background "LightGoldenrod1" :bold t)
     (unwind-protect
-        (flymake-display-err-menu-for-current-line)
+        (funcall message-func)
       (while orig-face
         (set-face-attribute 'popup-tip-face nil (car orig-face) (cadr orig-face))
         (setq orig-face (cddr orig-face))))))
+
+(defun my/display-error-message ()
+  (my/display-error-message-common 'flymake-display-err-menu-for-current-line))
+
+(defun my/flycheck-display-error-message (errors)
+  (lexical-let* ((messages (-keep 'flycheck-error-message errors))
+                 (msg-func (lambda () (popup-tip (s-join "\n\n" messages)))))
+    (when messages
+      (my/display-error-message-common msg-func))))
 
 (set-face-attribute 'flymake-errline nil
                     :foreground "yellow" :weight 'bold
@@ -80,9 +70,30 @@
 
 ;; avoid abnormal exit
 (defadvice flymake-post-syntax-check (before
-                                      flymake-force-check-was-interrupted
-                                      activate)
-  (setq flymake-check-was-interrupted t))
+                                           flymake-force-check-was-interrupted
+                                           activate)
+       (setq flymake-check-was-interrupted t))
+
+(eval-after-load "popup"
+  '(progn
+     (when (eq 'unspecified (face-attribute 'popup-tip-face :height))
+       (set-face-attribute 'popup-tip-face nil :height 1.0))
+     (when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
+       (set-face-attribute 'popup-tip-face nil :weight 'normal))))
+
+;; flycheck
+;; enable flycheck
+(defvar my/flycheck-enable-modes
+  '(coffee-mode
+    python-mode
+    ruby-mode))
+
+(dolist (mode my/flycheck-enable-modes)
+  (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
+
+(defun my/flycheck-mode-hook ()
+  (setq flycheck-display-errors-function 'my/flycheck-display-error-message))
+(add-hook 'flycheck-mode-hook 'my/flycheck-mode-hook)
 
 ;; flycheck faces
 (eval-after-load "flycheck"
