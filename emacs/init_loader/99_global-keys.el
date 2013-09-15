@@ -5,11 +5,13 @@
 (global-set-key (kbd "M-<return>") 'my/edit-next-line-no-indent)
 (global-set-key (kbd "C-h e")   'popwin:messages)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-p") 'helm-find-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
+(global-set-key (kbd "C-x C-l") 'helm-locate)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-h a")   'helm-apropos)
