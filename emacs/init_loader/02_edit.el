@@ -30,46 +30,36 @@
 (global-set-key (kbd "C-y") 'my/yank)
 
 ;; Vim's 'f', 'F'
-(defvar my/last-find-char nil)
-
-(defsubst my/save-last-char (arg char)
-  (setq my/last-find-char (list :count arg :char char)))
-
+(defvar my/last-search-char nil)
 (defun my/forward-to-char (arg char)
   (interactive "p\ncForward to char: ")
-  (my/save-last-char arg char)
-  (forward-char 1)
+  (setq my/last-search-char char)
+  (when (>= arg 0)
+    (forward-char 1))
   (let ((case-fold-search nil))
     (search-forward (char-to-string char) nil nil arg))
-  (when (> arg 0)
+  (when (>= arg 0)
     (backward-char 1)))
 
 (defun my/backward-to-char (arg char)
   (interactive "p\ncBackward to char: ")
+  (backward-char 1)
   (my/forward-to-char (- arg) char))
 
-(defun my/repeat-find-char ()
+(defun my/forward-last-char ()
   (interactive)
-  (when (null my/last-find-char)
-    (error "Last find char is not found"))
-  (let ((count (plist-get my/last-find-char :count))
-        (char (plist-get my/last-find-char :char)))
-    (my/forward-to-char count char)))
+  (my/forward-to-char 1 my/last-search-char))
 
-(defun my/repeat-find-char-reverse ()
+(defun my/backward-last-char ()
   (interactive)
-  (when (null my/last-find-char)
-    (error "Last find char is not found"))
-  (let ((count (plist-get my/last-find-char :count))
-        (char (plist-get my/last-find-char :char)))
-    (my/backward-to-char count char)))
+  (my/backward-to-char 1 my/last-search-char))
 
 (global-set-key (kbd "C-M-s") 'my/forward-to-char)
 (global-set-key (kbd "C-M-r") 'my/backward-to-char)
 
 (smartrep-define-key
-    global-map  "C-x" '((">" . 'my/repeat-find-char)
-                        ("<" . 'my/repeat-find-char-reverse)))
+    global-map  "C-x" '((";" . 'my/forward-last-char)
+                        (":" . 'my/backward-last-char)))
 
 ;; move lines
 (defun my/move-line-up ()
