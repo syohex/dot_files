@@ -36,9 +36,6 @@
 (custom-set-variables '(yas/prompt-functions '(my-yas/prompt)))
 (global-set-key (kbd "M-=") 'yas/insert-snippet)
 
-;; snippet-mode for *.yasnippet files
-(add-to-list 'auto-mode-alist '("\\.yasnippet\\'" . snippet-mode))
-
 ;; utility functions
 (defun my-yas/perl-package-name ()
   (let ((file-path (file-name-sans-extension (buffer-file-name))))
