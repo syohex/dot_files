@@ -1,7 +1,7 @@
 ;;;; yasnippet
 
 ;; enable yasnippet mode
-(autoload 'yas/minor-mode-on "yasnippet" nil t)
+(autoload 'yas-minor-mode-on "yasnippet" nil t)
 (dolist (hook '(c-mode-hook
                 c++-mode-hook
                 java-mode-hook
@@ -14,7 +14,7 @@
                 go-mode-hook
                 sh-mode-hook
                 wl-draft-mode-hook))
-  (add-hook hook 'yas/minor-mode-on))
+  (add-hook hook 'yas-minor-mode-on))
 
 ;; helm interface
 (defun my-yas/prompt (prompt choices &optional display-fn)
@@ -30,12 +30,13 @@
         (nth (position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(global-set-key (kbd "M-=") 'yas/insert-snippet)
+(global-set-key (kbd "M-=") 'yas-insert-snippet)
 
 (eval-after-load "yasnippet"
   '(progn
-     (setq yas-snippet-dirs (concat user-emacs-directory "my_snippets"))
-     (setq yas-prompt-functions '(my-yas/prompt))))
+     (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
+                   yas-prompt-functions '(my-yas/prompt))
+     (yas-reload-all)))
 
 ;; utility functions
 (defun my-yas/perl-package-name ()
