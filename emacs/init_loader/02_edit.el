@@ -265,6 +265,7 @@
     python-mode
     ruby-mode
     erlang-mode
+    prolog-mode
     haskell-mode
     inferior-haskell-mode
     sh-mode
