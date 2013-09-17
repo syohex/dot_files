@@ -16,7 +16,7 @@
      (if it ,then ,@else)))
 
 ;; my memo utility
-(defun my/open-daily-momo ()
+(defun my/open-daily-memo ()
   (interactive)
   (find-file (expand-file-name "~/Dropbox/daily.org")))
 
