@@ -137,6 +137,7 @@
 ;; moving with ace-jump-mode
 (eval-after-load "ace-jump-mode"
   '(progn
+     (setq ace-jump-mode-case-fold nil)
      (set-face-foreground 'ace-jump-face-foreground "lime green")
      (set-face-bold-p 'ace-jump-face-foreground t
                       (set-face-underline-p 'ace-jump-face-foreground t))))
