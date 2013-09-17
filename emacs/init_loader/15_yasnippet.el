@@ -1,9 +1,7 @@
 ;;;; yasnippet
-(require 'yasnippet)
-(custom-set-variables
- '(yas/snippet-dirs `(,(concat user-emacs-directory "my_snippets"))))
 
 ;; enable yasnippet mode
+(autoload 'yas/minor-mode-on "yasnippet" nil t)
 (dolist (hook '(c-mode-hook
                 c++-mode-hook
                 java-mode-hook
@@ -11,7 +9,6 @@
                 emacs-lisp-mode-hook
                 html-mode
                 js-mode-hook
-                org-mode-hook
                 python-mode-hook
                 ruby-mode-hook
                 go-mode-hook
@@ -33,7 +30,9 @@
         (nth (position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(custom-set-variables '(yas/prompt-functions '(my-yas/prompt)))
+(custom-set-variables
+ '(yas/snippet-dirs `(,(concat user-emacs-directory "my_snippets")))
+ '(yas/prompt-functions '(my-yas/prompt)))
 (global-set-key (kbd "M-=") 'yas/insert-snippet)
 
 ;; utility functions
