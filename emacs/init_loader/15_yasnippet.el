@@ -30,10 +30,12 @@
         (nth (position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(custom-set-variables
- '(yas/snippet-dirs `(,(concat user-emacs-directory "my_snippets")))
- '(yas/prompt-functions '(my-yas/prompt)))
 (global-set-key (kbd "M-=") 'yas/insert-snippet)
+
+(eval-after-load "yasnippet"
+  '(progn
+     (setq yas/snippet-dirs (concat user-emacs-directory "my_snippets/"))
+     (setq yas/prompt-functions '(my-yas/prompt))))
 
 ;; utility functions
 (defun my-yas/perl-package-name ()
