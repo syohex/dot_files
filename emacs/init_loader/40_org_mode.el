@@ -1,5 +1,5 @@
 ;; org-mode
-(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-x l") 'org-store-link)
 
 (eval-after-load "org"
   '(progn
@@ -28,8 +28,12 @@
      (local-unset-key (kbd "M-S-<return>"))
 
      (smartrep-define-key
-         org-mode-map "C-c" '(("f" . 'org-shiftright)
-                              ("b" . 'org-shiftleft)))
+         org-mode-map "C-c" '(("l" . 'org-shiftright)
+                              ("h" . 'org-shiftleft)))
+
+     (smartrep-define-key
+         org-mode-map "C-c" '(("j" . 'org-metadown)
+                              ("k" . 'org-metaup)))
      (smartrep-define-key
          org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
                               ("C-p" . (outline-previous-visible-heading 1))))))
