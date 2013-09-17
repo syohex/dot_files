@@ -11,7 +11,7 @@
            org-src-fontify-natively t)
 
      (setq org-todo-keywords
-           '((sequence "TODO(t)" "DOING(s)" "BLOCKED(w)" "|" "DONE(x)" "CANCEL(c)")))
+           '((sequence "TODO(t)" "DOING(d)" "BLOCKED(b)" "|" "DONE(d)" "CANCEL(c)")))
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
@@ -21,8 +21,8 @@
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
-     (define-key org-mode-map (kbd "C-t") 'org-mark-ring-goto)
-     (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
+     (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
+     (define-key org-mode-map (kbd "C-t") 'org-toggle-link-display)
      (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
      (define-key org-mode-map (kbd "C-M-<tab>") 'show-all)
      (local-unset-key (kbd "M-S-<return>"))
