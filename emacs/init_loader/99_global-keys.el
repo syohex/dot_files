@@ -1,6 +1,8 @@
 ;;;; global key setting
 
 ;; my key mapping
+(global-set-key (kbd "<f11>") 'my/open-task-memo)
+(global-set-key (kbd "<f10>") 'my/open-daily-memo)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'my/edit-next-line-no-indent)
 (global-set-key (kbd "C-h e")   'popwin:messages)
