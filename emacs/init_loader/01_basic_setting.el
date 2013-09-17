@@ -166,8 +166,7 @@
 (eval-after-load "comint"
   '(progn
      (set-face-attribute 'comint-highlight-input nil
-                         :foreground "DarkOrange1" :weight 'semi-bold
-                         :underline "white")))
+                         :foreground "grey80" :weight 'semi-bold :underline t)))
 
 ;; ido
 (ido-mode t)
