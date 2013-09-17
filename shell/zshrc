@@ -179,7 +179,7 @@ fi
 if [ -e ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
     nvm use myuse > /dev/null
-    export NODE_PATH=/home/syohei/.nvm/`node --version`/lib/node_modules:$NODE_PATH
+    export NODE_PATH=${HOME}/.nvm/`node --version`/lib/node_modules:$NODE_PATH
 fi
 
 # pythonz
