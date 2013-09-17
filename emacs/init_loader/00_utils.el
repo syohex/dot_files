@@ -18,7 +18,7 @@
 ;; my memo utility
 (defun my/open-daily-memo ()
   (interactive)
-  (find-file (expand-file-name "~/Dropbox/daily.org")))
+  (find-file (expand-file-name "~/Dropbox/today.org")))
 
 (defun my/open-task-memo ()
   (interactive)
