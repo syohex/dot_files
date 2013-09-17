@@ -39,8 +39,6 @@
 
 (define-key my/ctrl-q-map (kbd "h") 'ac-last-quick-help)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "C-n") 'forward-paragraph)
-(define-key my/ctrl-q-map (kbd "C-p") 'backward-paragraph)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
@@ -52,6 +50,10 @@
 (define-key my/ctrl-q-map (kbd "<") 'highlight-symbol-prev)
 (define-key my/ctrl-q-map (kbd "%") 'highlight-symbol-query-replace)
 (define-key my/ctrl-q-map (kbd "<backspace>") 'highlight-symbol-remove-all)
+
+(smartrep-define-key
+    global-map "C-q" '(("C-n" . 'forward-paragraph)
+                       ("C-p" . 'backward-paragraph)))
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
