@@ -34,7 +34,7 @@
 
 (eval-after-load "yasnippet"
   '(progn
-     (setq yas-snippet-dirs (concat user-emacs-directory "my_snippets/"))
+     (setq yas-snippet-dirs (concat user-emacs-directory "my_snippets"))
      (setq yas-prompt-functions '(my-yas/prompt))))
 
 ;; utility functions
