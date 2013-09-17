@@ -263,6 +263,7 @@
     java-mode
     python-mode
     ruby-mode
+    erlang-mode
     haskell-mode
     inferior-haskell-mode
     sh-mode
