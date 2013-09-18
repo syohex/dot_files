@@ -11,7 +11,7 @@
            org-src-fontify-natively t)
 
      (setq org-todo-keywords
-           '((sequence "TODO(t)" "DOING(d)" "BLOCKED(b)" "|" "DONE(d)" "CANCEL(c)")))
+           '((sequence "TODO(t)" "DOING(d)" "BLOCKED(b)" "|" "DONE(x)" "CANCEL(c)")))
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
@@ -34,6 +34,11 @@
      (smartrep-define-key
          org-mode-map "C-c" '(("j" . 'org-metadown)
                               ("k" . 'org-metaup)))
+
+     (smartrep-define-key
+         org-mode-map "C-c" '(("C-f" . (outline-forward-same-level 1))
+                              ("C-b" . (outline-backward-same-level 1))))
+
      (smartrep-define-key
          org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
                               ("C-p" . (outline-previous-visible-heading 1))))))
