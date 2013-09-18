@@ -11,7 +11,7 @@
            org-src-fontify-natively t)
 
      (setq org-todo-keywords
-           '((sequence "TODO(t)" "DOING(d)" "BLOCKED(b)" "|" "DONE(x)" "CANCEL(c)")))
+           '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)")))
 
      (setq org-todo-keyword-faces
            '(("TODO" . org-warning)
