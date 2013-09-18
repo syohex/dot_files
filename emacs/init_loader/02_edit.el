@@ -31,18 +31,26 @@
 
 ;; Vim's 'f', 'F'
 (defvar my/last-search-char nil)
-(defun my/forward-to-char (arg char)
-  (interactive "p\ncForward to char: ")
+(defun my/forward-to-char (arg &optional char)
+  (interactive "p\n")
+  (unless char
+    (if (memq last-command '(my/forward-to-char my/backward-to-char))
+        (setq char my/last-search-char)
+      (setq char (read-char "Forward Char: "))))
   (setq my/last-search-char char)
   (when (>= arg 0)
     (forward-char 1))
   (let ((case-fold-search nil))
-    (search-forward (char-to-string char) nil nil arg))
+    (search-forward (char-to-string char) nil t arg))
   (when (>= arg 0)
     (backward-char 1)))
 
-(defun my/backward-to-char (arg char)
-  (interactive "p\ncBackward to char: ")
+(defun my/backward-to-char (arg &optional char)
+  (interactive "p\n")
+  (unless char
+    (if (memq last-command '(my/forward-to-char my/backward-to-char))
+        (setq char my/last-search-char)
+      (setq char (read-char "Backward Char: "))))
   (backward-char 1)
   (my/forward-to-char (- arg) char))
 
