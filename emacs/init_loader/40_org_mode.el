@@ -22,7 +22,7 @@
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
      (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
-     (define-key org-mode-map (kbd "C-t") 'org-toggle-link-display)
+     (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
      (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
      (define-key org-mode-map (kbd "C-M-<tab>") 'show-all)
      (local-unset-key (kbd "M-S-<return>"))
