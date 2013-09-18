@@ -9,6 +9,11 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
 
+(global-unset-key (kbd "C-x o"))
+(global-set-key (kbd "C-x o C-f") 'find-file-other-window)
+(global-set-key (kbd "C-x o C-b") 'switch-to-buffer-other-window)
+(global-set-key (kbd "C-x o C-j") 'dired-jump-other-window)
+
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-p") 'my/helm-git-project-files)
