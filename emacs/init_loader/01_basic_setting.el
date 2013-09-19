@@ -168,21 +168,17 @@
      (set-face-attribute 'comint-highlight-input nil
                          :foreground "grey80" :weight 'semi-bold :underline t)))
 
-;; ido
-(ido-mode t)
-(setq ido-enable-flex-matching nil
-      ido-create-new-buffer 'always
-      ido-max-prospects 5
-      ido-case-fold t
-      ido-default-file-method 'selected-window
-      ido-auto-merge-work-directories-length -1)
-(define-key ido-file-dir-completion-map (kbd "C-h") 'backward-delete-char)
-(define-key ido-file-dir-completion-map (kbd "<backspace>") 'backward-delete-char)
-(define-key ido-file-dir-completion-map (kbd "C-M-u") 'ido-up-directory)
+;; minibuffer
+(defun my/minibuffer-up-dir ()
+  (interactive)
+  (backward-char 1)
+  (search-backward "/" nil t)
+  (forward-char 1))
 
-(set-face-attribute 'ido-first-match nil
-                    :foreground "orange" :weight 'semi-bold)
-(set-face-attribute 'ido-only-match nil
-                    :foreground "orange" :weight 'semi-bold)
-(set-face-attribute 'ido-subdir nil
-                    :foreground "cyan" :weight 'semi-bold)
+(defun my/minibuffer-down-dir ()
+  (interactive)
+  (search-forward "/" nil t))
+
+(define-key minibuffer-local-map (kbd "C-M-f") 'my/minibuffer-down-dir)
+(define-key minibuffer-local-map (kbd "C-M-b") 'my/minibuffer-up-dir)
+(define-key minibuffer-local-map (kbd "C-M-u") 'my/minibuffer-up-dir)
