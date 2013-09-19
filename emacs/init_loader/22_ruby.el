@@ -5,7 +5,7 @@
 (eval-after-load "ruby-mode"
   '(progn
      ;; rbenv
-     (global-rbenv-mode t)
+     ;;(global-rbenv-mode t) ;; I think it may not be needed
 
      ;; style
      (setq ruby-deep-indent-paren nil)
