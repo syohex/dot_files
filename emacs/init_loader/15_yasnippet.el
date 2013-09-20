@@ -17,7 +17,7 @@
   (add-hook hook 'yas-minor-mode-on))
 
 ;; helm interface
-(defun my-yas/prompt (prompt choices &optional display-fn)
+(defun my/yas-prompt (prompt choices &optional display-fn)
   (let* ((names (loop for choice in choices
                       collect (or (and display-fn (funcall display-fn choice))
                                   coice)))
@@ -35,7 +35,7 @@
 (eval-after-load "yasnippet"
   '(progn
      (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
-                   yas-prompt-functions '(my-yas/prompt))
+                   yas-prompt-functions '(my/yas-prompt))
      (yas-reload-all)))
 
 ;; utility functions
