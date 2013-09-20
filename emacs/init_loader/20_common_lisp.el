@@ -12,16 +12,7 @@
                            (concat user-emacs-directory "elisps/HyperSpec/"))))
        (setq common-lisp-hyperspec-root (concat "file://" hyperspec-dir))
        (setq common-lisp-hyperspec-symbol-table
-             (concat hyperspec-dir "Data/Map_Sym.txt")))
-
-     ;; indent
-     (require 'cl-indent-patches)
-     (setq lisp-indent-function
-           (lambda (&rest args)
-             (apply (if (memq major-mode '(emacs-lisp-mode lisp-interaction-mode))
-                        'lisp-indent-function
-                      'common-lisp-indent-function)
-                    args)))))
+             (concat hyperspec-dir "Data/Map_Sym.txt")))))
 
 (defun my/obarray-to-list (obarray)
   (let (symbols)

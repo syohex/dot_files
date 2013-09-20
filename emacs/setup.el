@@ -155,7 +155,6 @@
     "http://homepage1.nifty.com/bmonkey/emacs/elisp/iman.el"
     "https://raw.github.com/renormalist/emacs-pod-mode/master/pod-mode.el"
     "http://www.emacswiki.org/emacs/download/xs-mode.el"
-    "http://static.boinkor.net/lisp/cl-indent-patches.el"
     "http://www.neilvandyke.org/quack/quack.el"
     ))
 
