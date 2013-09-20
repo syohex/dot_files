@@ -155,6 +155,14 @@
 ;; expand symbolic link
 (setq-default find-file-visit-truename t)
 
+;; find-file
+(defun my/find-file ()
+  (interactive)
+  (if current-prefix-arg
+      (let ((current-prefix-arg nil))
+        (call-interactively 'helm-find-files))
+    (call-interactively 'find-file)))
+
 ;; for popular file type
 (require 'generic-x)
 
