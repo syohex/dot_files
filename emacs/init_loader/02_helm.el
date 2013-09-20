@@ -49,10 +49,6 @@
   (let ((topdir (locate-dominating-file default-directory ".git/")))
     (unless topdir
       (error "I'm not in Git Repository!!"))
-    (when current-prefix-arg
-      (setq topdir default-directory))
     (let ((default-directory topdir)
           (sources (my/helm-git-project-source topdir)))
-      (if current-prefix-arg
-          (helm-other-buffer (third sources) "*Helm Git Project*")
-        (helm-other-buffer sources "*Helm Git Project*")))))
+      (helm-other-buffer sources "*Helm Git Project*"))))

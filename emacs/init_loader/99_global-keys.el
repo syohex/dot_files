@@ -17,6 +17,7 @@
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-p") 'my/helm-git-project-files)
+(global-set-key (kbd "C-x .")   'helm-find-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-l") 'helm-locate)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
