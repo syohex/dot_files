@@ -19,6 +19,8 @@
 
 ;; helm faces
 (require 'helm-files)
+(define-key helm-find-files-map (kbd "C-M-u") 'helm-find-files-down-one-level)
+(setq helm-find-files-doc-header "")
 (set-face-attribute 'helm-ff-file nil
                     :foreground "white" :background nil)
 (set-face-attribute 'helm-ff-directory nil
