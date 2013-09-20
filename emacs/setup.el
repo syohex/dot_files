@@ -76,7 +76,7 @@
     ;; ruby
     ruby-block ruby-compilation ruby-end ruby-interpolation
     ruby-mode ruby-test-mode ruby-tools inf-ruby
-    yari rbenv
+    yari
 
     ;; emacs-lisp
     elisp-slime-nav thingopt
