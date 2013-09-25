@@ -73,6 +73,19 @@
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
+;; resize window
+(smartrep-define-key
+    global-map "C-q" '(("H" . 'shrink-window-horizontally)
+                       ("L" . 'enlarge-window-horizontally)))
+
+(defun my/enlarge-window-down (arg)
+  (interactive "p")
+  (enlarge-window (- arg)))
+
+(smartrep-define-key
+    global-map "C-q" '(("J" . 'enlarge-window)
+                       ("K" . 'my/enlarge-window-down)))
+
 (define-key my/ctrl-q-map (kbd "<SPC>") 'point-to-register)
 (define-key my/ctrl-q-map (kbd "j") 'jump-to-register)
 
