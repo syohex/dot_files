@@ -22,5 +22,5 @@
         (condition-case err
             (let ((myfont (format "VL ゴシック-%d" size)))
               (set-frame-font myfont)
-              (add-to-list 'default-frame-alist `((font . ,myfont))))
+              (add-to-list 'default-frame-alist `(font . ,myfont)))
           (error (message "%s" err)))))))
