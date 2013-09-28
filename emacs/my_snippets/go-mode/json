@@ -1,4 +1,4 @@
 # name: json tag
 # key: json
 # --
-`json:"$0"`
+\`json:"$0"\`
