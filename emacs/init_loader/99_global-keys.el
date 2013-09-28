@@ -112,6 +112,7 @@
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
+(global-set-key (kbd "M-g M-m") 'flymake-display-err-menu-for-current-line)
 
 ;;; buffer-move
 (global-set-key (kbd "M-g h") 'buf-move-left)
