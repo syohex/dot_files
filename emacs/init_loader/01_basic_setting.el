@@ -3,7 +3,7 @@
 (prefer-coding-system 'utf-8-unix)
 
 ;; Coloring
-(global-font-lock-mode t)
+(global-font-lock-mode +1)
 
 ;; mode-line color
 (set-face-attribute 'mode-line nil

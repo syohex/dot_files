@@ -6,7 +6,7 @@
 (define-key isearch-mode-map (kbd "C-M-w") 'isearch-yank-symbol)
 
 ;; anzu
-(global-anzu-mode t)
+(global-anzu-mode +1)
 (setq anzu-mode-lighter "")
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow")

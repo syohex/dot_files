@@ -16,7 +16,7 @@
        (add-to-list 'mc/cmds-to-run-for-all command))))
 
 ;; wrap-region
-(wrap-region-global-mode t)
+(wrap-region-global-mode +1)
 
 ;; add wrappers
 (wrap-region-add-wrapper "`" "`")
