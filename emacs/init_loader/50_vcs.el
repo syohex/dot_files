@@ -27,6 +27,7 @@
 
 ;; git-gutter
 (global-git-gutter-mode +1)
+(global-set-key (kbd "C-x v u") 'git-gutter)
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
