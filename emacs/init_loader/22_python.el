@@ -8,7 +8,7 @@
                       (accept-process-output (get-buffer-process python-buffer)))))
       ad-do-it)))
 
-(autoload 'helm-pydoc "helm-pydoc")
+(autoload 'helm-pydoc "helm-pydoc" nil t)
 
 (eval-after-load "python"
   '(progn
