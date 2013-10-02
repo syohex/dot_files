@@ -80,3 +80,9 @@
 
 (defadvice git-commit-commit (after move-to-magit-buffer activate)
   (delete-window))
+
+(defun my/magit-commit ()
+  (interactive)
+  (let ((magit-custom-options '("-v")))
+    (magit-commit)))
+(global-set-key (kbd "C-x v c") 'my/magit-commit)
