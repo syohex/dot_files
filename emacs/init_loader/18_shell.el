@@ -14,6 +14,11 @@
 (defvar eshell-pop-buffer "*eshell-pop*")
 (defvar eshell-prev-buffer nil)
 
+(defun eshell-chdir (dir)
+  (eshell-kill-input)
+  (insert dir)
+  (eshell-send-input))
+
 (defun eshell-pop ()
   (interactive)
   (let ((curdir default-directory))
@@ -24,9 +29,7 @@
         (eshell-mode)))
     (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t)
     (when current-prefix-arg
-      (eshell-kill-input)
-      (insert curdir)
-      (eshell-send-input))))
+      (eshell-chdir curdir))))
 (global-set-key (kbd "M-g M-s") 'eshell-pop)
 
 (defun eshell/cde ()
