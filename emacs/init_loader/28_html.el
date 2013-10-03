@@ -52,8 +52,13 @@
      (define-key html-mode-map (kbd "C-c b") 'html-mode-insert-br)))
 
 ;; emmet-coding
-(add-hook 'sgml-mode-hook 'emmet-mode)
-(add-hook 'html-mode-hook 'emmet-mode)
+(dolist (hook '(sgml-mode-hook html-mode-hook web-mode-hook))
+  (add-hook 'hook 'emmet-mode))
+
+(eval-after-load "emmet-mode"
+  '(progn
+     ;; Preview is disable as default
+     (setq emmet-preview-default nil)))
 
 ;; auto-complete for CSS
 (defvar ac-source-css-property-names
