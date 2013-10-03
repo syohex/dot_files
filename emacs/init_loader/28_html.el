@@ -60,6 +60,10 @@
      ;; Preview is disable as default
      (setq emmet-preview-default nil)))
 
+(defun my/emmet-mode-hook ()
+  (setq emmet-indentation 2))
+(add-hook 'emmet-mode-hook 'my/emmet-mode-hook)
+
 ;; auto-complete for CSS
 (defvar ac-source-css-property-names
   '((candidates . (loop for property in ac-css-property-alist
