@@ -1,4 +1,5 @@
 ;;;; region setting
+(global-set-key (kbd "M-#") 'er/expand-region)
 
 ;; multimark
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
