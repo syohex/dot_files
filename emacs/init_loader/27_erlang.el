@@ -5,6 +5,8 @@
      (require 'erlang-flymake)))
 
 (defun my/erlang-mode-hook ()
+  (setq erlang-electric-commands '(erlang-electric-comma erlang-electric-semicolon))
+  (setq erlang-electric-newline-inhibit-list '(erlang-electric-gt))
   (setq erlang-electric-newline-inhibit t))
 (add-hook 'erlang-mode-hook 'my/erlang-mode-hook)
 
