@@ -14,6 +14,8 @@
      ;; face
      (set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
+     (defalias 'slime-restart-inferior-lisp 'slime-cleanup)
+
       ;;;; ac-slime
      (require 'ac-slime)
      (add-hook 'slime-mode-hook 'set-up-slime-ac)
