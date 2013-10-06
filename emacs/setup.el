@@ -91,7 +91,7 @@
     quickrun
 
     ;;;; markup language
-    haml-mode sass-mode htmlize
+    haml-mode sass-mode htmlize web-mode
     markdown-mode markdown-mode+
     scss-mode yaml-mode emmet-mode
 
@@ -105,7 +105,7 @@
     direx
 
     ;; basic
-    init-loader reverse-theme exec-path-from-shell keyfreq
+    init-loader reverse-theme exec-path-from-shell keyfreq anzu
     ))
 
 (defvar sub-packages
