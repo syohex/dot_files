@@ -28,8 +28,7 @@
         (pop-to-buffer (get-buffer-create eshell-pop-buffer))
         (eshell-mode)))
     (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t)
-    (when current-prefix-arg
-      (eshell-chdir curdir))))
+    (eshell-chdir curdir)))
 (global-set-key (kbd "M-g M-s") 'eshell-pop)
 
 (defun eshell/cde ()
