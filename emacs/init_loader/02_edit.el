@@ -232,8 +232,12 @@
 ;; Insert next line and previous line('o' and 'O')
 (defun my/edit-next-line ()
   (interactive)
-  (end-of-line)
-  (newline-and-indent))
+  (if (not current-prefix-arg)
+      (progn
+        (end-of-line)
+        (newline-and-indent))
+    (let ((current-prefix-arg nil))
+      (my/edit-previous-line))))
 
 (defun my/edit-next-line-no-indent ()
   (interactive)
@@ -258,7 +262,6 @@
 
 (global-set-key [(shift return)] 'my/edit-next-line)
 (global-set-key (kbd "M-o") 'my/edit-next-line)
-(global-set-key (kbd "M-O") 'my/edit-previous-line)
 
 ;; autopair
 (eval-after-load "autopair"
