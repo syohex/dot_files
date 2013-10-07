@@ -4,18 +4,6 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
-;; kill buffer
-(defun my/kill-buffer ()
-  (interactive)
-  (if (not current-prefix-arg)
-      (call-interactively 'kill-buffer)
-    (save-window-excursion
-      (other-window 1)
-      (let ((buf (current-buffer)))
-        (when (y-or-n-p (format "kill buffer: %s" buf))
-           (kill-buffer buf))))))
-(global-set-key (kbd "C-x k") 'my/kill-buffer)
-
 (defun my/yank (arg)
   (interactive "P")
   (setq yank-window-start (window-start))
