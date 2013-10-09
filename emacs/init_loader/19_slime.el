@@ -5,6 +5,8 @@
      ;; SLIME REPL
      (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
 
+     (setq slime-autodoc-delay 0.5)
+
      ;; encoding
      (setq slime-net-coding-system 'utf-8-unix)
 
