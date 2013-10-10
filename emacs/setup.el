@@ -104,6 +104,9 @@
     ;; directory operation
     direx
 
+    ;; parenthesis
+    smartparens
+
     ;; basic
     init-loader reverse-theme exec-path-from-shell keyfreq anzu
     ))
