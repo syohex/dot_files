@@ -31,7 +31,11 @@
                          :foreground "green")))
 
 (defun my/python-mode-hook ()
+  (setq python-indent 4)
   (jedi:setup)
+
+  ;; flycheck
+  (setq flycheck-checker 'python-flake8)
 
   ;; autopair
   (setq autopair-handle-action-fns
