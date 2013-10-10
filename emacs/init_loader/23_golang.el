@@ -75,7 +75,7 @@
                 (push line lines))
               (forward-line 1))
             finally return (if (zerop (length lines))
-                               (progn (message "no errors") nil)
+                               (progn (message "Congratulate: no errors !!!") nil)
                              (reverse lines))))))
 
 (defvar helm-go-build-source
