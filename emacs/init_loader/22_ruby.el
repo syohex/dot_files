@@ -41,6 +41,12 @@
      (define-key ruby-mode-map "\"" nil)
      (define-key ruby-mode-map "'" nil)
 
+     ;; smartparens
+     (require 'smartparens-ruby)
+     (set-face-attribute 'sp-show-pair-match-face nil
+                         :background "grey20" :foreground "green"
+                         :weight 'semi-bold)
+
      ;; rsense
      (setq rsense-home
            (expand-file-name (concat user-emacs-directory "elisps/rsense")))
@@ -55,6 +61,9 @@
   ;; auto-complete rsense
   (add-to-list 'ac-sources ac-source-rsense-method)
   ;;(add-to-list 'ac-sources ac-source-rsense-constant)
+
+  ;; smartparen
+  (show-smartparens-mode +1)
 
   ;; auto insert `end'
   (ruby-end-mode 1))
