@@ -46,12 +46,6 @@
 (defun my/display-error-message ()
   (my/display-error-message-common 'flymake-display-err-menu-for-current-line))
 
-(defun my/flycheck-display-error-message (errors)
-  (lexical-let* ((messages (-keep 'flycheck-error-message errors))
-                 (msg-func (lambda () (popup-tip (s-join "\n\n" messages)))))
-    (when messages
-      (my/display-error-message-common msg-func))))
-
 (set-face-attribute 'flymake-errline nil
                     :foreground "yellow" :weight 'bold
                     :background "red1")
@@ -90,10 +84,6 @@
 
 (dolist (mode my/flycheck-enable-modes)
   (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
-
-(defun my/flycheck-mode-hook ()
-  (setq flycheck-display-errors-function 'my/flycheck-display-error-message))
-(add-hook 'flycheck-mode-hook 'my/flycheck-mode-hook)
 
 ;; flycheck faces
 (eval-after-load "flycheck"
