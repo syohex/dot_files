@@ -15,21 +15,20 @@
      (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
      (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
-     (defface my/ruby-mode-regexp-literal
-       '((t (:foreground "orchid")))
+     (defface my/ruby-mode-special-literal
+       '((t (:foreground "orchid1")))
        "Face of Ruby's regexp"
        :group 'ruby-mode)
-     (set-face-attribute 'my/ruby-mode-regexp-literal nil :foreground "orchid")
 
      (font-lock-add-keywords
-      'ruby-mode '(("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\({[^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*}\\)\\([ixms]+\\)"
-                    (1 'my/ruby-mode-regexp-literal t)
+      'ruby-mode '(("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\({[^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*}\\)\\([ixms]+\\)?"
+                    (1 'my/ruby-mode-special-literal t)
                     (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-regexp-literal t))
-                   ("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\(([^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*)\\)\\([ixms]+\\)"
-                    (1 'my/ruby-mode-regexp-literal t)
+                    (3 'my/ruby-mode-special-literal t))
+                   ("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\(([^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*)\\)\\([ixms]+\\)?"
+                    (1 'my/ruby-mode-special-literal t)
                     (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-regexp-literal t))))
+                    (3 'my/ruby-mode-special-literal t))))
 
      ;; autopair
      (define-key ruby-mode-map "(" nil)
