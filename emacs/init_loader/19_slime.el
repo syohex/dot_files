@@ -16,7 +16,7 @@
      ;; face
      (set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
-     (defalias 'slime-restart-inferior-lisp 'slime-cleanup)
+     (defalias 'slime-cleanup 'slime-restart-inferior-lisp)
 
       ;;;; ac-slime
      (require 'ac-slime)
