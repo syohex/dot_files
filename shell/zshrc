@@ -267,25 +267,6 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
-ls_and_git_status() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-
-    printf "\n"
-    ls
-
-    if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" =  "true" ];then
-        printf "\n"
-        git status -sb .
-    fi
-    zle reset-prompt
-    return 0
-}
-zle -N ls_and_git_status
-bindkey '^O' ls_and_git_status
-
 # load private data
 source ~/.zsh/private.sh
 
