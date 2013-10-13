@@ -85,9 +85,6 @@ bindkey "^N" history-beginning-search-forward-end
 # show processing time for long run process
 REPORTTIME=10
 
-# Directories where I often visit.
-hash -d ELISPS=~/.emacs.d/elisps
-
 # Setting for MacOSX
 TEST_CONFIG=${HOME}/dot_files/emacs/test_emacs
 KERNEL_EMACS_CONFIG=${HOME}/dot_files/emacs/kernel-emacs.el
