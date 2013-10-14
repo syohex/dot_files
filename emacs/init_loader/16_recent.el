@@ -2,7 +2,7 @@
 (setq recentf-max-saved-items 2000
       recentf-auto-cleanup 600
       recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
-                        "\\.mime-example" "\\.ido.last"
+                        "\\.mime-example" "\\.ido.last" "woman_cache.el"
                         "COMMIT_EDITMSG" "MERGE_MSG"))
 
 (run-at-time t 600 'recentf-save-list)
