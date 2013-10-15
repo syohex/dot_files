@@ -19,8 +19,9 @@
 (global-set-key (kbd "C-x v N") 'my/git-intent-to-add)
 
 ;; sgit
-(dolist (sgit-func '(sgit:log sgit:diff sgit:status))
+(dolist (sgit-func '(sgit:log sgit:diff sgit:status sgit:grep))
   (autoload sgit-func "sgit" nil t))
+(global-set-key (kbd "C-x v g") 'sgit:grep)
 (global-set-key (kbd "C-x v l") 'sgit:log)
 (global-set-key (kbd "C-x v d") 'sgit:diff)
 (global-set-key (kbd "C-x v s") 'sgit:status)
