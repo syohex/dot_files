@@ -199,3 +199,6 @@
 (define-key minibuffer-local-map (kbd "C-M-f") 'my/minibuffer-down-dir)
 (define-key minibuffer-local-map (kbd "C-M-b") 'my/minibuffer-up-dir)
 (define-key minibuffer-local-map (kbd "C-M-u") 'my/minibuffer-delete-current-dir)
+
+;; winnner
+(winner-mode +1)
