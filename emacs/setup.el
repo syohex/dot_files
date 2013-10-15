@@ -123,7 +123,7 @@
     go-eldoc go-errcheck
 
     ;; helm
-    helm-gtags helm-descbinds helm-themes helm-ag
+    helm-gtags helm-descbinds helm-themes helm-ag helm-git-grep
     ))
 
 (dolist (package base-packages)
