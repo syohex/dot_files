@@ -47,4 +47,4 @@
  '(progn
     (zoom-window-setup)))
 
-(global-set-key (kbd "C-x C-x") 'zoom-window-zoom)
+(global-set-key (kbd "C-x C-z") 'zoom-window-zoom)
