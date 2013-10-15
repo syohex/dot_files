@@ -89,5 +89,6 @@
 
 (defun my/helm-go-build ()
   (interactive)
+  (save-buffer)
   (let ((helm-quit-if-no-candidate t))
     (helm :sources '(helm-go-build-source) :buffer "*helm-go-build*")))
