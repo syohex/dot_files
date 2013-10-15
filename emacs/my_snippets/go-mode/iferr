@@ -1,7 +1,6 @@
-# name: if err != nil { log.Fatal(err) }
+# name: if err != nil { ... }
 # key: iferr
 # --
 if err != nil {
-	log.Fatal(err)
+	$0
 }
-$0
