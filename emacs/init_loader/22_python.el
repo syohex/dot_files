@@ -13,14 +13,14 @@
 (eval-after-load "python"
   '(progn
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-a") 'helm-pydoc)
+     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
 (eval-after-load "jedi"
   '(progn
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-d") 'jedi:show-doc)
+     (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
      (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
 
      ;; show-doc
