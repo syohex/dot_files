@@ -35,8 +35,8 @@
   (jedi:setup)
 
   ;; flycheck
-  (setq flycheck-checker 'python-flake8)
-  (setq flycheck-flake8rc (expand-file-name "~/.config/flake8"))
+  (setq flycheck-checker 'python-flake8
+        flycheck-flake8rc (expand-file-name "~/.config/flake8"))
 
   ;; autopair
   (setq autopair-handle-action-fns
