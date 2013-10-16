@@ -62,14 +62,6 @@
   (set-scroll-bar-mode 'nil)
   (tool-bar-mode 0))
 
-;; record my commands
-(custom-set-variables
- '(keyfreq-file (concat user-emacs-directory "keyfreq"))
- '(keyfreq-file-lock (concat user-emacs-directory "keyfreq.lock")))
-
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
-
 ;; enable yascrollbar
 (global-yascroll-bar-mode)
 (setq yascroll:disabled-modes

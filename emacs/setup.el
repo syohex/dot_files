@@ -91,9 +91,8 @@
     quickrun
 
     ;;;; markup language
-    haml-mode sass-mode htmlize web-mode
+    htmlize web-mode yaml-mode emmet-mode
     markdown-mode markdown-mode+
-    scss-mode yaml-mode emmet-mode
 
     ;; helm
     helm
@@ -108,7 +107,7 @@
     smartparens
 
     ;; basic
-    init-loader reverse-theme exec-path-from-shell keyfreq anzu
+    init-loader reverse-theme exec-path-from-shell anzu
     ))
 
 (defvar sub-packages
@@ -120,10 +119,10 @@
     import-popwin
 
     ;; go
-    go-eldoc go-errcheck
+    go-eldoc
 
     ;; helm
-    helm-gtags helm-descbinds helm-themes helm-ag helm-git-grep
+    helm-gtags helm-descbinds helm-themes helm-ag
     ))
 
 (dolist (package base-packages)
