@@ -45,3 +45,6 @@
 ;; go-direx
 (push '("^\*go-direx:" :position left :width 0.3 :dedicated t :stick t :regexp t)
       popwin:special-display-config)
+
+;; flycheck
+(push '(flycheck-error-list-mode :stick t) popwin:special-display-config)
