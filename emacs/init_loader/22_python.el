@@ -14,8 +14,6 @@
   '(progn
      ;; binding
      (define-key python-mode-map (kbd "C-c C-a") 'helm-pydoc)
-     (define-key python-mode-map (kbd "C-M-d") 'my/python-next-block)
-     (define-key python-mode-map (kbd "C-M-u") 'my/python-up-block)
      (define-key python-mode-map (kbd "C-c C-z") 'run-python)
      (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
 
