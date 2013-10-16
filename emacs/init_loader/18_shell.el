@@ -1,6 +1,13 @@
 ;; shellscript mode
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
+;; compilation
+(eval-after-load "compile"
+  '(progn
+     (setq compilation-message-face nil)
+     (set-face-attribute 'compilation-error nil :underline nil)
+     (set-face-attribute 'compilation-line-number nil :underline t)))
+
 ;; eshell
 (eval-after-load "em-prompt"
   '(progn
