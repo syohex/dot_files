@@ -48,6 +48,7 @@ ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 # Python
 ## REPL
 ln -sf $PWD/python/pythonsetup ~/.pythonsetup
+ln -sf $PWD/python/flake8 ~/.config/flake8
 
 ## ipython
 IPYTHON_DIR=${HOME}/.config/ipython/profile_default
