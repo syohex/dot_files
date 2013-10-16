@@ -1,4 +1,4 @@
-# name: func
+# name: Standard function
 # key: func
 # --
 func $0() {
