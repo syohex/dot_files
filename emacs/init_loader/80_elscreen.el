@@ -8,6 +8,9 @@
   (setq elscreen-tab-width nil
         elscreen-tab-display-kill-screen nil)
 
+  (custom-set-variables
+   '(elscreen-buffer-to-nickname-alist nil))
+
   ;; Don't show tab number in mode-line
   (setq-default elscreen-e21-mode-line-string nil)
   (remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
