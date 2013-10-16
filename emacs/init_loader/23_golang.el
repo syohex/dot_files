@@ -4,7 +4,8 @@
      (add-hook 'go-mode-hook 'go-eldoc-setup)
 
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
-     (define-key go-mode-map (kbd "C-c C-c") 'my/helm-go-build)
+     (define-key go-mode-map (kbd "C-c C-c") 'my/go-build)
+     (define-key go-mode-map (kbd "C-c C-h") 'my/helm-go-build)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
@@ -92,3 +93,10 @@
   (save-buffer)
   (let ((helm-quit-if-no-candidate t))
     (helm :sources '(helm-go-build-source) :buffer "*helm-go-build*")))
+
+(defun my/go-build ()
+  (interactive)
+  (save-buffer)
+  (let ((command (format "go build -o /dev/null %s"
+                         (expand-file-name (buffer-file-name)))))
+    (compile command)))
