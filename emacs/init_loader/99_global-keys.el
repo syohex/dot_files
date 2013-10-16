@@ -44,6 +44,7 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 
 (define-key my/ctrl-q-map (kbd "h") 'ac-last-quick-help)
+(define-key my/ctrl-q-map (kbd "C-i") 'ac-complete-yasnippet)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
