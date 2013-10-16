@@ -94,3 +94,18 @@
      (set-face-attribute 'flycheck-warning nil
                          :weight 'bold :underline "darkorange"
                          :foreground nil :background nil)))
+
+(defun my/flymake-goto-next-error (arg)
+  (interactive "P")
+  (if (and (boundp 'flycheck-mode) flycheck-mode)
+      (flycheck-next-error arg)
+    (flymake-goto-next-error)))
+
+(defun my/flymake-goto-previous-error (arg)
+  (interactive "P")
+  (if (and (boundp 'flycheck-mode) flycheck-mode)
+      (flycheck-previous-error arg)
+    (flymake-goto-prev-error)))
+
+(global-set-key (kbd "M-g M-n") 'my/flymake-goto-next-error)
+(global-set-key (kbd "M-g M-p") 'my/flymake-goto-previous-error)

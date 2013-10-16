@@ -1,6 +1,8 @@
 ;;;; global key setting
 
 ;; my key mapping
+(global-set-key (kbd "M-,") 'pop-tag-mark)
+(global-set-key (kbd "M-*") 'tags-loop-continue)
 (global-set-key (kbd "<f11>") 'my/open-task-memo)
 (global-set-key (kbd "<f10>") 'my/open-daily-memo)
 (global-set-key [delete] 'delete-char)
@@ -147,20 +149,3 @@
 
 (smartrep-define-key
     global-map "M-g" '(("c" . my/duplicate-thing)))
-
-;; flymake
-(defun my/flymake-goto-next-error (arg)
-  (interactive "P")
-  (if (and (boundp 'flycheck-mode) flycheck-mode)
-      (next-error arg)
-    (flymake-goto-next-error)))
-
-(defun my/flymake-goto-previous-error (arg)
-  (interactive "P")
-  (if (and (boundp 'flycheck-mode) flycheck-mode)
-      (previous-error arg)
-    (flymake-goto-prev-error)))
-
-(smartrep-define-key
-    global-map "M-g" '(("M-n" . 'my/flymake-goto-next-error)
-                       ("M-p" . 'my/flymake-goto-previous-error)))
