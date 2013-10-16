@@ -17,6 +17,7 @@
 (global-set-key (kbd "C-x q C-j") 'dired-jump-other-window)
 
 ;; helm binding
+(global-set-key (kbd "M-.") 'helm-etags-select)
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-x") 'helm-find-files)
 (global-set-key (kbd "C-x C-p") 'my/helm-git-project-files)
