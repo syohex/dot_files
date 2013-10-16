@@ -190,6 +190,9 @@ if [ -e ${VIRTUALENV_ACTIVE} ]; then
 fi
 export PYTHONSTARTUP=~/.pythonsetup
 
+## Cask
+[[ -d ~/.cask/bin ]] && path=(~/.cask/bin $path)
+
 # haskell setting
 [[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
 
