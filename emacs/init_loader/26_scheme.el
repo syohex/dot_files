@@ -23,8 +23,12 @@
 	  (concat "Gauche help topic : ")
           (current-word))))
   (switch-to-buffer-other-window (get-buffer-create "*info*"))
-  (info "/usr/local/share/info/gauche-refe.info.gz")
-  (Info-index topic))
+  (let ((info-file (loop for file in '("/usr/share/info/gauche-refe.info.gz"
+                                       "/usr/local/share/info/gauche-refe.info.gz")
+                         when (file-exists-p file)
+                         return file)))
+    (info info-file)
+    (Info-index topic)))
 
 ;; not insert unneeded space for scheme-mode
 (defvar my-paredit-paren-prefix-pat-gauche
