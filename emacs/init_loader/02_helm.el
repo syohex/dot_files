@@ -65,6 +65,7 @@
       (remhash tag helm-etags-cache))
     (if (and tag (file-exists-p tag))
         (helm :sources 'helm-source-etags-select :keymap helm-etags-map
-              :input (thing-at-point 'symbol) :buffer "*helm etags*"
+              :input (concat (thing-at-point 'symbol) " ")
+              :buffer "*helm etags*"
               :default (concat "\\_<" (thing-at-point 'symbol) "\\_>"))
       (message "Error: No tag file found, please create one with etags shell command."))))
