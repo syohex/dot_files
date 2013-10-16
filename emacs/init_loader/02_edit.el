@@ -109,7 +109,7 @@
 (defun my/delete-cursor-word-or-region ()
   (interactive)
   (if (use-region-p)
-      (call-interactively #'kill-region)
+      (call-interactively 'kill-region)
     (progn
       (backward-word)
       (my/delete-word 1))))
