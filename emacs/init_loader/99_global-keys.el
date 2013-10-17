@@ -70,9 +70,11 @@
                                         query-replace-to-history-variable))))
   (goto-char (beginning-of-thing 'symbol))
   (let ((start (save-excursion (beginning-of-defun) (point)))
-        (end (save-excursion (end-of-defun) (point))))
-    (query-replace-regexp (highlight-symbol-get-symbol) replacement
-                          nil start end)))
+        (end (save-excursion (end-of-defun) (point)))
+        (symbol (highlight-symbol-get-symbol)))
+    (query-replace-regexp symbol replacement nil start end)
+    (highlight-symbol-remove-symbol symbol)
+    (highlight-symbol-add-symbol (regexp-quote replacement))))
 (define-key my/ctrl-q-map (kbd "%") 'my/highlight-symbol-query-replace-in-defun)
 
 (smartrep-define-key
