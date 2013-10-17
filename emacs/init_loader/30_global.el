@@ -10,7 +10,6 @@
 
 ;;; Enable helm-gtags-mode
 (dolist (hook '(c-mode-common-hook
-                c++-mode-hook
                 java-mode-hook
                 asm-mode-hook))
   (add-hook hook 'helm-gtags-mode))
