@@ -59,7 +59,7 @@
     flycheck flymake-jslint
 
     ;; clojure
-    clojure-mode nrepl
+    clojure-mode cider
 
     ;; coffee-script
     coffee-mode
