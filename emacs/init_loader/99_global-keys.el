@@ -73,8 +73,7 @@
         (end (save-excursion (end-of-defun) (point)))
         (symbol (highlight-symbol-get-symbol)))
     (query-replace-regexp symbol replacement nil start end)
-    (highlight-symbol-remove-symbol symbol)
-    (highlight-symbol-add-symbol (regexp-quote replacement))))
+    (highlight-symbol-remove-symbol symbol)))
 (define-key my/ctrl-q-map (kbd "%") 'my/highlight-symbol-query-replace-in-defun)
 
 (smartrep-define-key
