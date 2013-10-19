@@ -2,7 +2,7 @@
 ;; Use regexp version as Default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
 
 (defun my/yank (arg)
   (interactive "P")
