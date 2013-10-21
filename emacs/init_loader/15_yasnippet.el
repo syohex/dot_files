@@ -29,7 +29,14 @@
         (nth (position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(global-set-key (kbd "M-=") 'yas-insert-snippet)
+(defun my/yas-insert-snippet ()
+  (interactive)
+  (let ((sym (thing-at-point 'symbol)))
+    (if sym
+        (call-interactively 'ac-complete-yasnippet)
+      (call-interactively 'yas-insert-snippet))))
+
+(global-set-key (kbd "M-=") 'my/yas-insert-snippet)
 
 (eval-after-load "yasnippet"
   '(progn
