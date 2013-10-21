@@ -19,7 +19,7 @@
 (defun my/yas-prompt (prompt choices &optional display-fn)
   (let* ((names (loop for choice in choices
                       collect (or (and display-fn (funcall display-fn choice))
-                                  coice)))
+                                  choice)))
          (selected (helm-other-buffer
                     `(((name . ,(format "%s" prompt))
                        (candidates . names)
