@@ -1,0 +1,4 @@
+# name: case expr:
+# key: case
+# --
+case $0:

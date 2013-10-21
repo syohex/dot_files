@@ -1,4 +1,4 @@
-# name: for
+# name: for { ... }
 # key: for
 # --
 for $0 {
