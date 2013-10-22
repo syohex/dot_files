@@ -1,22 +1,21 @@
 ;; elscreen
-(when window-system
-  (require 'elscreen)
-  (elscreen-start)
-  (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
-  (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
-  (run-with-idle-timer 20 t 'elscreen-frame-title-update)
-  (setq elscreen-tab-width nil
-        elscreen-tab-display-kill-screen nil)
+(require 'elscreen)
+(elscreen-start)
+(global-set-key (kbd "C-z C-z") 'elscreen-toggle)
+(global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
+(run-with-idle-timer 20 t 'elscreen-frame-title-update)
+(setq elscreen-tab-width nil
+      elscreen-tab-display-kill-screen nil)
 
-  (custom-set-variables
-   '(elscreen-buffer-to-nickname-alist nil))
+(custom-set-variables
+ '(elscreen-buffer-to-nickname-alist nil))
 
-  ;; Don't show tab number in mode-line
-  (setq-default elscreen-e21-mode-line-string nil)
-  (remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
-  (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
-  (global-set-key (kbd "C-z C-l") 'helm-elscreen)
-  (elscreen-toggle-display-tab))
+;; Don't show tab number in mode-line
+(setq-default elscreen-e21-mode-line-string nil)
+(remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
+(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
+(global-set-key (kbd "C-z C-l") 'helm-elscreen)
+(elscreen-toggle-display-tab)
 
 ;; update frame title to window names
 (defun elscreen-frame-title-update ()
