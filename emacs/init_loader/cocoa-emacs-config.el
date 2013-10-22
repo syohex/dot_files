@@ -1,6 +1,7 @@
 ;; Mac specified setting(Meta key, input method, terminfo)
-(setq ns-command-modifier (quote meta)
-      ns-alternate-modifier (quote super)
+(setq ns-command-modifier 'meta
+      ns-alternate-modifier 'super
+      ns-use-native-fullscreen nil ;; Don't use system fullscreen
       default-input-method "MacOSX"
       system-uses-terminfo nil)
 
