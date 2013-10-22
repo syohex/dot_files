@@ -18,8 +18,12 @@
 (delete-selection-mode t)
 
 ;; restore construction of windows
-(require 'winner)
 (winner-mode t)
+
+;; anzu
+(global-anzu-mode +1)
+(setq anzu-mode-lighter ""
+      anzu-search-threshold 1000)
 
 (require 'thingopt)
 (define-thing-commands)
@@ -132,8 +136,11 @@
 ;; backspace
 (normal-erase-is-backspace-mode 0)
 
-(require 'autopair)
-(setq-default autopair-blink-delay 0)
+;; autopair
+(eval-after-load "autopair"
+  '(progn
+     (setq-default autopair-blink nil
+                   autopair-blink-delay 0)))
 
 ;; C coding style
 (defun backward-symbol (arg)
@@ -164,15 +171,15 @@
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
 
 ;; asm-mode
-(add-hook 'asm-mode-hook
-          '(lambda ()
-             (helm-gtags-mode)))
+(defun my/asm-mode-hook ()
+  (helm-gtags-mode))
+
+(add-hook 'asm-mode-hook 'my/asm-mode-hook)
 
 ;; ibuffer
 (defalias 'list-buffers 'ibuffer)
 
 ;; mark 'D'(delete) for matching buffer
-(require 'ibuffer)
 (defun ibuffer-menu-grep-delete (str)
   (interactive "sregexp: ")
   (save-excursion
@@ -182,7 +189,10 @@
       (save-excursion
         (ibuffer-mark-for-delete nil))
       (end-of-line))))
-(define-key ibuffer-mode-map "R" 'ibuffer-menu-grep-delete)
+
+(eval-after-load "ibuffer"
+  '(progn
+     (define-key ibuffer-mode-map "R" 'ibuffer-menu-grep-delete)))
 
 ;; undo tree
 (setq undo-no-redo t
@@ -208,7 +218,6 @@
 (load "dired-x")
 
 ;; wdired
-(require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
 ;; helm
@@ -229,12 +238,12 @@
 (helm-descbinds-install)
 
 ;; gtags
-(add-hook 'helm-gtags-mode-hook
-	  '(lambda ()
-	     (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
-	     (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
-	     (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
-	     (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
+     (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
+     (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack)))
 
 ;; ack
 (setq helm-c-ack-insert-at-point 'symbol)
@@ -353,45 +362,55 @@
 (global-set-key [C-backspace] 'backward-delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
-(global-set-key (kbd "M-e") 'forward-word)
+;; Vim's 'f', 'F'
+(defvar my/last-search-char nil)
+(defun my/forward-to-char (arg &optional char)
+  (interactive "p\n")
+  (unless char
+    (if (memq last-command '(my/forward-to-char my/backward-to-char))
+        (setq char my/last-search-char)
+      (setq char (read-char "Forward Char: "))))
+  (setq my/last-search-char char)
+  (when (>= arg 0)
+    (forward-char 1))
+  (let ((case-fold-search nil))
+    (search-forward (char-to-string char) nil t arg))
+  (when (>= arg 0)
+    (backward-char 1)))
 
-(defun my/move-to-char ()
+(defun my/backward-to-char (arg &optional char)
+  (interactive "p\n")
+  (unless char
+    (if (memq last-command '(my/forward-to-char my/backward-to-char))
+        (setq char my/last-search-char)
+      (setq char (read-char "Backward Char: "))))
+  (backward-char 1)
+  (my/forward-to-char (- arg) char))
+
+(defun my/forward-last-char ()
   (interactive)
-  (let ((regexp (char-to-string (read-char))))
-   (cond (current-prefix-arg
-	  (re-search-backward regexp nil t))
-	 (t
-	  (forward-char 1)
-	  (re-search-forward regexp nil t)
-	  (backward-char 1)))))
-(global-set-key (kbd "C-M-r") 'my/move-to-char)
+  (my/forward-to-char 1 my/last-search-char))
+
+(defun my/backward-last-char ()
+  (interactive)
+  (my/backward-to-char 1 my/last-search-char))
+
+(global-set-key (kbd "C-M-s") 'my/forward-to-char)
+(global-set-key (kbd "C-M-r") 'my/backward-to-char)
 
 ;; (makunbound 'overriding-minor-mode-map)
 (define-minor-mode overriding-minor-mode
   "Most superior minir mode"
   t  ;; default is enable
   "" ;; Not display mode-line
-  `((,(kbd "M-a") . backward-paragraph)
-    (,(kbd "M-e") . forward-paragraph)))
+  `((,(kbd "C-M-j") . dabbrev-expand)
+    (,(kbd "M-q") . ace-jump-word-mode)
+    (,(kbd "M-C-o") . other-window)))
 
 (defvar my/alt-q-map (make-sparse-keymap)
   "My original keymap binded to M-q.")
 (defalias 'my/alt-q-prefix my/alt-q-map)
 (define-key overriding-minor-mode-map (kbd "M-q") 'my/alt-q-prefix)
-
-(defun add-hyper-char-to-ace-jump-char-mode (c)
-  (define-key my/alt-q-map
-    (read-kbd-macro (string c))
-    `(lambda ()
-       (interactive)
-       (setq ace-jump-query-char ,c)
-       (setq ace-jump-current-mode 'ace-jump-char-mode)
-       (ace-jump-do (concat "\\b"
-                            (regexp-quote (make-string 1 ,c)))))))
-
-(loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-char-mode c))
-(loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-char-mode c))
-(loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-char-mode c))
 
 (defun non-elscreen-current-directory ()
   (let* ((bufsinfo (cadr (cadr (current-frame-configuration))))
@@ -426,12 +445,16 @@
 (require 'smartrep)
 
 ;; like Vim's "o"
-(defun edit-next-line ()
+(defun my/edit-next-line ()
   (interactive)
-  (end-of-line)
-  (newline-and-indent))
+  (if (not current-prefix-arg)
+      (progn
+        (end-of-line)
+        (newline-and-indent))
+    (let ((current-prefix-arg nil))
+      (my/edit-previous-line))))
 
-(defun edit-prev-line ()
+(defun my/edit-previous-line ()
   (interactive)
   (forward-line -1)
   (if (not (= (line-number-at-pos) 1))
@@ -439,7 +462,6 @@
   (newline-and-indent))
 
 (global-set-key (kbd "M-o") 'edit-next-line)
-(global-set-key (kbd "M-O") 'edit-prev-line)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -517,7 +539,6 @@
 (global-set-key (kbd "C-M-d") 'my/down-list)
 
 ;; goto-chg
-(require 'goto-chg)
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
@@ -555,7 +576,7 @@
 (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
-(define-key ac-completing-map (kbd "<tab>") 'ac-complete)
+(define-key ac-completing-map (kbd "C-i") 'ac-complete)
 
 (setq ac-quick-help-delay 0.5)
 
@@ -583,24 +604,15 @@
 (global-set-key (kbd "C-M-i") 'auto-complete)
 (global-set-key (kbd "C-M-l") 'ac-look)
 
-;; my point push utilities
-(defun my/push-marker ()
-  (interactive)
-  (push-mark))
-(global-set-key (kbd "C-q p") 'my/push-marker)
-
-;; for diff
-(require 'diff-mode)
-
 ;; eshell
 (eval-after-load "em-prompt"
   '(progn
      (set-face-attribute 'eshell-prompt nil
                          :foreground "yellow")))
 
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)))
+(eval-after-load "esh-mode"
+  '(progn
+     (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)))
 
 (defvar eshell-pop-buffer "*eshell-pop*")
 (defvar eshell-prev-buffer nil)
@@ -634,60 +646,41 @@
                  (point) (line-end-position)))))
     (eshell/cd dir)))
 
-;; ido
-(ido-mode 'file)
-;;; Disable override some keybinds(eg. find-file)
-(setcdr (cdar (cddr ido-minor-mode-map-entry)) nil)
-(defun my/ido-find-file ()
-  (interactive)
-  (let ((ido-mode t)
-        (ido-max-prospects 8))
-    (if current-prefix-arg
-        (ido-find-file-other-window)
-      (ido-find-file-in-dir default-directory))))
-(global-set-key (kbd "C-x C-p") 'my/ido-find-file)
-
-(set-face-attribute 'ido-first-match nil
-                    :foreground "orange" :weight 'semi-bold)
-(set-face-attribute 'ido-only-match nil
-                    :foreground "orange" :weight 'semi-bold)
-(set-face-attribute 'ido-subdir nil
-                    :foreground "cyan" :weight 'semi-bold)
-
-(require 'import-popwin)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
+
+(eval-after-load "diff-mode"
+  '(progn
+     (set-face-attribute 'diff-added nil
+                         :background nil :foreground "green"
+                         :weight 'normal)
+     (set-face-attribute 'diff-removed nil
+                         :background nil :foreground "red"
+                         :weight 'normal)
+
+     (set-face-attribute 'diff-refine-change nil
+                         :background nil :foreground "yellow"
+                         :weight 'normal)
+
+     (set-face-attribute 'diff-file-header nil
+                         :foreground "white"
+                         :background nil :weight 'extra-bold)
+
+     (set-face-attribute 'diff-function nil
+                         :foreground "cyan"
+                         :background nil
+                         :underline nil)
+
+     (set-face-attribute 'diff-header nil
+                         :background nil
+                         :underline nil)
+
+     (set-face-attribute 'diff-hunk-header nil
+                         :foreground "yellow"
+                         :background nil
+                         :weight 'bold
+                         :underline t)))
 
 (progn
   (set-face-attribute 'show-paren-match nil
 		      :background nil :foreground nil
-		      :underline t :weight 'bold)
-
-  (set-face-attribute 'diff-added nil
-		      :background nil :foreground "green"
-		      :weight 'normal)
-  (set-face-attribute 'diff-removed nil
-		      :background nil :foreground "red"
-		      :weight 'normal)
-
-  (set-face-attribute 'diff-refine-change nil
-		      :background nil :foreground "yellow"
-		      :weight 'normal)
-
-  (set-face-attribute 'diff-file-header nil
-		      :foreground "white"
-		      :background nil :weight 'extra-bold)
-
-  (set-face-attribute 'diff-function nil
-		      :foreground "cyan"
-		      :background nil
-		      :underline nil)
-
-  (set-face-attribute 'diff-header nil
-		      :background nil
-		      :underline nil)
-
-  (set-face-attribute 'diff-hunk-header nil
-		      :foreground "yellow"
-		      :background nil
-		      :weight 'bold
-		      :underline t))
+		      :underline t :weight 'bold))
