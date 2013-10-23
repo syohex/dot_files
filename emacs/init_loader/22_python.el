@@ -1,21 +1,21 @@
 ;; python-setting
-(defadvice run-python (around run-python-no-sit activate)
-  "Suppress absurd sit-for in run-python of python.el"
-  (let ((process-launched (or (ad-get-arg 2) ; corresponds to `new`
-                              (not (comint-check-proc python-buffer)))))
-    (flet ((sit-for (seconds &optional nodisp)
-                    (when process-launched
-                      (accept-process-output (get-buffer-process python-buffer)))))
-      ad-do-it)))
+
+;; ipython setting
+(when (linux-p)
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args ""
+        python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+        python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+        python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+        python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
 (autoload 'helm-pydoc "helm-pydoc" nil t)
 
 (eval-after-load "python"
   '(progn
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
-     (define-key python-mode-map (kbd "C-c C-z") 'run-python)
-     (define-key python-mode-map (kbd "<backtab>") 'python-back-indent)))
+     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))
 
 (eval-after-load "jedi"
   '(progn
