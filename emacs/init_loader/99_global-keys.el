@@ -8,7 +8,6 @@
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'my/edit-next-line-no-indent)
 (global-set-key (kbd "C-h e")   'popwin:messages)
-(global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
 
 (global-unset-key (kbd "C-x q"))
@@ -42,6 +41,7 @@
   (let ((n (if current-prefix-arg 1 0)))
     (kill-ring-save (line-beginning-position) (+ n (line-end-position)))))
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
+(define-key my/ctrl-q-map (kbd "C-l") 'mark-line)
 
 ;; col-highlight
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
@@ -50,7 +50,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
-(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "C-k") 'kill-whole-line)
@@ -86,38 +85,6 @@
 (smartrep-define-key
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
-
-;; resize window
-(smartrep-define-key
-    global-map "C-q" '(("H" . 'shrink-window-horizontally)
-                       ("L" . 'enlarge-window-horizontally)))
-
-(defun my/enlarge-window-down (arg)
-  (interactive "p")
-  (enlarge-window (- arg)))
-
-(smartrep-define-key
-    global-map "C-q" '(("J" . 'enlarge-window)
-                       ("K" . 'my/enlarge-window-down)))
-
-(define-key my/ctrl-q-map (kbd "<SPC>") 'point-to-register)
-(define-key my/ctrl-q-map (kbd "j") 'jump-to-register)
-
-;; Vim's '*'
-(defun my/search-at-word ()
-  (interactive)
-  (let ((start (if (looking-at "\\<")
-                   (point)
-                 (save-excursion
-                   (backward-word 1)
-                   (point))))
-        (end (save-excursion
-               (forward-word 1)
-               (point))))
-    (kill-ring-save start end)
-    (isearch-mode t nil nil nil)
-    (isearch-yank-pop)))
-(define-key my/ctrl-q-map (kbd "C-s") 'my/search-at-word)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
