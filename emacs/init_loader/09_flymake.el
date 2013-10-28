@@ -56,13 +56,15 @@
   (interactive "P")
   (if (and (boundp 'flycheck-mode) flycheck-mode)
       (flycheck-next-error arg)
-    (flymake-goto-next-error)))
+    (flymake-goto-next-error)
+    (my/flymake-popup-error-message)))
 
 (defun my/flymake-goto-previous-error (arg)
   (interactive "P")
   (if (and (boundp 'flycheck-mode) flycheck-mode)
       (flycheck-previous-error arg)
-    (flymake-goto-prev-error)))
+    (flymake-goto-prev-error)
+    (my/flymake-popup-error-message)))
 
 (global-set-key (kbd "M-g M-n") 'my/flymake-goto-next-error)
 (global-set-key (kbd "M-g M-p") 'my/flymake-goto-previous-error)
