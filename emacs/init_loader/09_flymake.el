@@ -1,6 +1,11 @@
-(require 'flymake)
-
 ;; setting for flymake
+(require 'flymake)
+;; avoid abnormal exit
+(defadvice flymake-post-syntax-check (before
+                                      flymake-force-check-was-interrupted
+                                      activate)
+  (setq flymake-check-was-interrupted t))
+
 (defun my/toggle-flymake ()
   (interactive)
   (if (or (memq major-mode my/flycheck-enable-modes)
@@ -8,20 +13,21 @@
       (call-interactively 'flycheck-mode)
     (call-interactively 'flymake-mode)))
 
-;; avoid abnormal exit
-(eval-after-load "flymake"
-  '(progn
-     (defadvice flymake-post-syntax-check (before
-                                           flymake-force-check-was-interrupted
-                                           activate)
-       (setq flymake-check-was-interrupted t))))
-
-(eval-after-load "popup"
-  '(progn
-     (when (eq 'unspecified (face-attribute 'popup-tip-face :height))
-       (set-face-attribute 'popup-tip-face nil :height 1.0))
-     (when (eq 'unspecified (face-attribute 'popup-tip-face :weight))
-       (set-face-attribute 'popup-tip-face nil :weight 'normal))))
+(defun my/flymake-popup-error-message ()
+  (interactive)
+  (let* ((line-no (flymake-current-line-no))
+         (cur-err-info (flymake-find-err-info flymake-err-info line-no))
+         (line-err-info-list (nth 0 cur-err-info))
+         (count (length line-err-info-list)))
+    (while (> count 0)
+      (when line-err-info-list
+        (let* ((err-info (nth (1- count) line-err-info-list))
+               (file (flymake-ler-file err-info))
+               (full-file (flymake-ler-full-file err-info))
+               (text (flymake-ler-text err-info))
+               (line (flymake-ler-line err-info)))
+          (popup-tip (format "[%s] %s" line text))))
+      (decf count))))
 
 ;; flycheck
 ;; enable flycheck
