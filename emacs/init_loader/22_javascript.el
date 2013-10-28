@@ -5,8 +5,11 @@
 (add-hook 'js-mode-hook 'flymake-jslint-load)
 
 ;; coffeescript
+(eval-after-load "coffee-mode"
+  '(progn
+     (setq coffee-tab-width 2)))
+
 (defun my/coffee-mode-hook ()
-  (setq coffee-tab-width 2)
   (local-unset-key (kbd "C-m")))
 
 (add-hook 'coffee-mode-hook 'my/coffee-mode-hook)
