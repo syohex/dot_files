@@ -161,9 +161,6 @@
     (call-interactively 'find-file)))
 (global-set-key (kbd "C-x C-f") 'my/find-file)
 
-;; for popular file type
-(require 'generic-x)
-
 ;; compile
 (custom-set-variables
  '(compile-command ""))
