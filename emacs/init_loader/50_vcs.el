@@ -88,3 +88,8 @@
   (let ((magit-custom-options '("-v")))
     (magit-commit)))
 (global-set-key (kbd "C-x v c") 'my/magit-commit)
+
+;; helm-open-github
+(global-set-key (kbd "C-x v f") 'helm-open-github-from-file)
+(global-set-key (kbd "C-x v c") 'helm-open-github-from-commit)
+(global-set-key (kbd "C-x v i") 'helm-open-github-from-issues)
