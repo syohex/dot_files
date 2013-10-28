@@ -18,9 +18,10 @@
                 text-mode))
   (add-to-list 'ac-modes mode))
 
-(setq ac-auto-start nil
-      ac-use-menu-map t
-      ac-quick-help-delay 1.0)
+(custom-set-variables
+ '(ac-auto-start nil)
+ '(ac-use-menu-map t)
+ '(ac-quick-help-delay 1.0))
 
 (define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)

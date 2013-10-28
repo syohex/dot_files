@@ -251,10 +251,9 @@
 (global-set-key (kbd "M-o") 'my/edit-next-line)
 
 ;; autopair
-(eval-after-load "autopair"
-  '(progn
-     (setq-default autopair-blink nil
-                   autopair-blink-delay 0)))
+(custom-set-variables
+ '(autopair-blink nil)
+ '(autopair-blink-delay 0))
 
 (defvar my/autopair-enabled-modes
   '(c-mode

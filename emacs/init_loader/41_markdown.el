@@ -1,11 +1,11 @@
 ;; setting markdown-mode
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\|mdwn\\)\\'" . markdown-mode))
 
+(custom-set-variables
+ '(markdown-command "Markdown.pl"))
+
 (eval-after-load "markdown-mode"
   '(progn
-     (setq markdown-command "Markdown.pl")
-     (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
-
      ;; key bindings
      (define-key markdown-mode-map (kbd "C-M-f") 'forward-symbol)
      (define-key markdown-mode-map (kbd "C-M-b") 'backward-symbol)
@@ -31,3 +31,4 @@
 (defun my/markdown-mode-hook ()
   (setq imenu-generic-expression markdown-imenu-generic-expression)
   (add-to-list 'ac-sources 'ac-source-look))
+(add-hook 'markdown-mode-hook 'my/markdown-mode-hook)

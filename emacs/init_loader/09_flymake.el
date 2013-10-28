@@ -40,11 +40,12 @@
 (dolist (mode my/flycheck-enable-modes)
   (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
 
+(custom-set-variables
+ '(flycheck-display-errors-delay 0.2))
+
 ;; flycheck faces
 (eval-after-load "flycheck"
   '(progn
-     (setq flycheck-display-errors-delay 0.2)
-
      (set-face-attribute 'flycheck-error nil
                          :foreground "yellow" :weight 'bold
                          :background "red")

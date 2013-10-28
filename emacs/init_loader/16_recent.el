@@ -1,7 +1,8 @@
 ;;;; recentf-ext
-(setq recentf-max-saved-items 2000
-      recentf-auto-cleanup 600
-      recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
+(custom-set-variables
+ '(recentf-max-saved-items 2000)
+ '(recentf-auto-cleanup 600))
+(setq recentf-exclude '("/auto-install/" ".recentf" "/repos/" "/elpa/"
                         "\\.mime-example" "\\.ido.last" "woman_cache.el"
                         "COMMIT_EDITMSG" "MERGE_MSG" "bookmarks"))
 

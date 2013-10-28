@@ -1,14 +1,15 @@
 ;;; slime
 (require 'slime-autoloads)
+
+(custom-set-variables
+ '(slime-net-coding-system 'utf-8-unix))
+
 (eval-after-load "slime"
   '(progn
      ;; SLIME REPL
      (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
 
      (setq slime-autodoc-delay 0.5)
-
-     ;; encoding
-     (setq slime-net-coding-system 'utf-8-unix)
 
      ;; for clojure
      (setq slime-protocol-version 'ignore)

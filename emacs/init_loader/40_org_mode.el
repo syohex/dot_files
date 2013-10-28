@@ -1,23 +1,22 @@
 ;; org-mode
 (define-key global-map (kbd "C-x l") 'org-store-link)
 
+(custom-set-variables
+ '(org-startup-truncated nil)
+ '(org-directory (expand-file-name "~/Dropbox/"))
+ '(org-agenda-files (list org-directory))
+ '(org-return-follows-link t)
+ '(org-use-fast-todo-selection t)
+ '(org-src-fontify-natively t)
+ '(org-todo-keywords
+   '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)")))
+ '(org-todo-keyword-faces
+   '(("TODO" . org-warning)
+     ("DOING" . (:foreground "orange" :underline t :weight bold))
+     ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue"))))
+
 (eval-after-load "org"
   '(progn
-     (setq org-startup-truncated nil
-           org-return-follows-link t
-           org-directory (expand-file-name "~/Dropbox/")
-           org-agenda-files (list org-directory)
-           org-use-fast-todo-selection t
-           org-src-fontify-natively t)
-
-     (setq org-todo-keywords
-           '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)")))
-
-     (setq org-todo-keyword-faces
-           '(("TODO" . org-warning)
-             ("DOING" . (:foreground "orange" :underline t :weight bold))
-             ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue")))
-
      ;; function of org-open-at-point
      ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 

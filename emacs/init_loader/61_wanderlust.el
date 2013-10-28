@@ -11,7 +11,8 @@
 
      (setq mine-w3m-display-inline-images t)))
 
-(add-hook 'wl-draft-mode-hook
-          '(lambda ()
-             (wrap-region-mode)
-             (yas/minor-mode)))
+(defun my/wl-draft-mode-hook ()
+  (wrap-region-mode)
+  (yas/minor-mode))
+
+(add-hook 'wl-draft-mode-hook 'my/wl-draft-mode-hook)

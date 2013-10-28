@@ -2,13 +2,13 @@
 (add-to-list 'auto-mode-alist '("\\.\\(rb\\|gemspec\\|ru\\|\\)\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\(Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
 
+(custom-set-variables
+ '(ruby-deep-indent-paren nil))
+
 (eval-after-load "ruby-mode"
   '(progn
      ;; rbenv
      ;;(global-rbenv-mode t) ;; I think it may not be needed
-
-     ;; style
-     (setq ruby-deep-indent-paren nil)
 
      ;; binding
      (define-key ruby-mode-map (kbd "|") 'my/ruby-insert-bar)

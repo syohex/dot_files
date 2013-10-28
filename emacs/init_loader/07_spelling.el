@@ -1,8 +1,8 @@
 ;; configuration of spell check
+(custom-set-variables
+ '(ispell-program-name "aspell"))
 (eval-after-load "ispell"
-  '(progn
-     (setq-default ispell-program-name "aspell")
-     (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))     ))
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 
 ;; flyspell
 (eval-after-load "flyspell"

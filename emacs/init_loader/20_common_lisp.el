@@ -1,8 +1,6 @@
 ;; Common Lisp
-(setq inferior-lisp-program
-      (cond
-       ((executable-find "ccl") "ccl")
-       ((executable-find "clisp") "clisp")))
+(custom-set-variables
+ '(inferior-lisp-program "ccl"))
 
 ;; hyperspec document
 (eval-after-load "lisp-mode"

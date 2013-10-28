@@ -8,9 +8,11 @@
   (add-hook hook 'turn-on-eldoc-mode)
   (add-hook hook 'elisp-slime-nav-mode))
 
+(custom-set-variables
+ '(eldoc-idle-delay 0.2))
+
 (eval-after-load "eldoc"
   '(progn
-     (setq eldoc-idle-delay 0.2)
      (set-face-attribute 'eldoc-highlight-function-argument nil
                          :underline t :foreground "green"
                          :weight 'bold)))

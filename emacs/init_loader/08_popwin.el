@@ -1,7 +1,8 @@
 ;;;; popwin
 (require 'popwin)
 (defvar popwin:special-display-config-backup popwin:special-display-config)
-(setq display-buffer-function 'popwin:display-buffer)
+(custom-set-variables
+ '(display-buffer-function 'popwin:display-buffer))
 
 ;; basic
 (push '("*Help*" :stick t :noselect t) popwin:special-display-config)

@@ -55,10 +55,9 @@
 (dolist (hook '(sgml-mode-hook html-mode-hook web-mode-hook))
   (add-hook 'hook 'emmet-mode))
 
-(eval-after-load "emmet-mode"
-  '(progn
-     ;; Preview is disable as default
-     (setq emmet-preview-default nil)))
+;; Preview is disable as default
+(custom-set-variables
+ '(emmet-preview-default nil))
 
 (defun my/emmet-mode-hook ()
   (setq emmet-indentation 2))
