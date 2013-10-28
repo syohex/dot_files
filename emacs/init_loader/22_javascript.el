@@ -1,8 +1,11 @@
 ;; setting for javascript
-(defalias 'javascript-generic-mode 'js-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
-(setq-default js-auto-indent-flag nil)
-(add-hook 'js-mode-hook 'flymake-jslint-load)
+(eval-after-load "js"
+  '(progn
+     (setq-default js-auto-indent-flag nil)))
+
+(defun my/js-mode-hook ()
+  (setq flycheck-checker 'javascript-jshint))
+(add-hook 'js-mode-hook 'my/js-mode-hook)
 
 ;; coffeescript
 (eval-after-load "coffee-mode"

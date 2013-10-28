@@ -56,7 +56,7 @@
     haskell-mode ghc
 
     ;; flymake
-    flycheck flymake-jslint
+    flycheck
 
     ;; clojure
     clojure-mode cider
