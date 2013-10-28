@@ -13,6 +13,7 @@
      (setq coffee-tab-width 2)))
 
 (defun my/coffee-mode-hook ()
+  (setq flycheck-checker 'coffee)
   (local-unset-key (kbd "C-m")))
 
 (add-hook 'coffee-mode-hook 'my/coffee-mode-hook)
