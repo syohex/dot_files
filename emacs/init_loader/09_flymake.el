@@ -80,6 +80,7 @@
 (defvar my/flycheck-enable-modes
   '(coffee-mode
     python-mode
+    js-mode
     ruby-mode))
 
 (dolist (mode my/flycheck-enable-modes)
@@ -88,7 +89,7 @@
 ;; flycheck faces
 (eval-after-load "flycheck"
   '(progn
-     (setq flycheck-display-errors-delay 0.3)
+     (setq flycheck-display-errors-delay 0.2)
 
      (set-face-attribute 'flycheck-error nil
                          :foreground "yellow" :weight 'bold
