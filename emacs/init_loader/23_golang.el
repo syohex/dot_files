@@ -1,7 +1,9 @@
+;; eldoc
+(add-hook 'go-mode-hook 'go-eldoc-setup)
+
 (eval-after-load "go-mode"
   '(progn
      (require 'go-autocomplete)
-     (add-hook 'go-mode-hook 'go-eldoc-setup)
 
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/go-build)
@@ -12,6 +14,10 @@
      (define-key go-mode-map (kbd "C-c C-d") 'my/helm-go)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
+
+(defun my/go-mode-hook ()
+  (setq flycheck-checker 'go-build))
+(add-hook 'go-mode-hook 'my/go-mode-hook)
 
 (defvar my/helm-go-source
   '((name . "Helm Go")
