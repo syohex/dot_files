@@ -56,24 +56,6 @@
 (define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
 
-(defun my/highlight-symbol-query-replace-in-defun (replacement)
-  (interactive (let ((symbol (or (thing-at-point 'symbol)
-                                 (error "No symbol at point"))))
-                 (highlight-symbol-temp-highlight)
-                 (set query-replace-to-history-variable
-                      (cons (substring-no-properties symbol)
-                            (eval query-replace-to-history-variable)))
-                 (list
-                  (read-from-minibuffer "Replacement: " nil nil nil
-                                        query-replace-to-history-variable))))
-  (goto-char (beginning-of-thing 'symbol))
-  (let ((start (save-excursion (beginning-of-defun) (point)))
-        (end (save-excursion (end-of-defun) (point)))
-        (symbol (highlight-symbol-get-symbol)))
-    (query-replace-regexp symbol replacement nil start end)
-    (highlight-symbol-remove-symbol symbol)))
-(define-key my/ctrl-q-map (kbd "%") 'my/highlight-symbol-query-replace-in-defun)
-
 (smartrep-define-key
     global-map "C-q" '((">" . 'highlight-symbol-next)
                        ("<" . 'highlight-symbol-prev)))

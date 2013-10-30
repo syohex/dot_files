@@ -3,7 +3,7 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
-(global-set-key (kbd "C-x %") 'anzu-query-replace-at-cursor)
+(global-set-key (kbd "C-x %") 'anzu-query-replace-at-cursor-thing)
 
 (defun my/yank (arg)
   (interactive "P")
