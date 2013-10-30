@@ -303,22 +303,24 @@
                (matched (match-string 1))
                (pair (my/unwrap-counterpart matched))
                (replace-pair (and replaced (my/unwrap-counterpart replaced))))
-          (save-excursion
-            (forward-char 1)
-            (while (re-search-forward matched curpoint t)
-              (incf count)))
-          (goto-char curpoint)
-          (when (re-search-forward pair nil t (1+ count))
-            (when (< (point) curpoint)
-              (error "This point is not wrapped!!"))
-            (backward-char)
-            (delete-char 1)
-            (when replaced
-              (insert replace-pair))
-            (goto-char start)
-            (delete-char 1)
-            (when replaced
-              (insert replaced))))))))
+          (if (string-match-p "[(\[{]" matched )
+              (forward-list 1)
+            (save-excursion
+              (forward-char 1)
+              (while (re-search-forward (regexp-quote matched) curpoint t)
+                (incf count)))
+            (goto-char curpoint)
+            (when (re-search-forward pair nil t (1+ count))
+              (when (< (point) curpoint)
+                (error "This point is not wrapped!!"))))
+          (backward-char)
+          (delete-char 1)
+          (when replaced
+            (insert replace-pair))
+          (goto-char start)
+          (delete-char 1)
+          (when replaced
+            (insert replaced)))))))
 
 (defun my/replace-wrapped-string (arg)
   (interactive "p")
