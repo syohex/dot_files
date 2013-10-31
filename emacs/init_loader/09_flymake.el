@@ -1,10 +1,12 @@
 ;; setting for flymake
-(require 'flymake)
-;; avoid abnormal exit
-(defadvice flymake-post-syntax-check (before
-                                      flymake-force-check-was-interrupted
-                                      activate)
-  (setq flymake-check-was-interrupted t))
+
+(eval-after-load "flymake"
+  '(progn
+     ;; avoid abnormal exit
+     (defadvice flymake-post-syntax-check (before
+                                           flymake-force-check-was-interrupted
+                                           activate)
+       (setq flymake-check-was-interrupted t))))
 
 (defun my/toggle-flymake ()
   (interactive)

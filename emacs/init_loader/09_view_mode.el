@@ -1,5 +1,6 @@
 ;; view-mode
-(setq view-read-only t)
+(custom-set-variables
+ '(view-read-only t))
 
 (defun View-goto-line-last (&optional line)
   "goto last line"

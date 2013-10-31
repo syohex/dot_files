@@ -1,25 +1,26 @@
 ;;;; dired
-(require 'dired)
+(eval-after-load "dired"
+  '(progn
+     ;; Not create new buffer, if you chenge directory in dired
+     (put 'dired-find-alternate-file 'disabled nil)
 
-;; Not create new buffer, if you chenge directory in dired
-(put 'dired-find-alternate-file 'disabled nil)
+     (when (executable-find "gls")
+       (setq insert-directory-program "gls"))
 
-;; display directories by first
-(when (executable-find "gls")
-  (setq insert-directory-program "gls"))
-(load-library "ls-lisp")
+     (load-library "ls-lisp")
 
-(setq ls-lisp-dirs-first t
-      dired-dwim-target t
-      dired-recursive-copies 'always
-      dired-recursive-deletes 'always)
+     ;; binding
+     (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+     (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
+     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
 
-;; binding
-(define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-(define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
-(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+(custom-set-variables
+ '(ls-lisp-dirs-first t)
+ '(dired-dwim-target t)
+ '(dired-recursive-copies 'always)
+ '(dired-recursive-deletes 'always))
 
-;; dired-x
+(autoload 'dired-jump "dired-x" nil t)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; direx
