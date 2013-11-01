@@ -57,10 +57,6 @@
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
 
 (smartrep-define-key
-    global-map "C-q" '((">" . 'highlight-symbol-next)
-                       ("<" . 'highlight-symbol-prev)))
-
-(smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
 
