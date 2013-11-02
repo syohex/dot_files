@@ -5,6 +5,11 @@
 (setq mozc-candidate-style 'echo-area) ;; overlay is too slow
 (global-set-key (kbd "C-o") 'toggle-input-method)
 
+;; browse
+(custom-set-variables
+ '(browse-url-browser-function 'browse-url-generic)
+ '(browse-url-generic-program "/opt/google/chrome/google-chrome"))
+
 ;; font-setting for Linux(Ubuntu)
 
 (defun change-font-size (size)

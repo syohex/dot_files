@@ -150,16 +150,12 @@
       smartrep-mode-line-string-activated "<<< SmartRep >>>")
 
 ;; expand symbolic link
-(setq-default find-file-visit-truename t)
+(custom-set-variables
+ '(find-file-visit-truename t))
 
-;; find-file
-(defun my/find-file ()
-  (interactive)
-  (if current-prefix-arg
-      (let ((current-prefix-arg nil))
-        (call-interactively 'helm-find-files))
-    (call-interactively 'find-file)))
-(global-set-key (kbd "C-x C-f") 'my/find-file)
+;; w3m
+(add-to-list 'load-path (concat user-emacs-directory "elisps/emacs-w3m"))
+(autoload 'w3m "w3m-load" nil t)
 
 ;; compile
 (custom-set-variables
