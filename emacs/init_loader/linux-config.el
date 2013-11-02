@@ -22,7 +22,7 @@
 (with-temp-buffer
   (call-process "xdpyinfo" nil t)
   (goto-char (point-min))
-  (when (re-search-forward "dimensions:\\s-+\\([0-9]+\\)x\\([0-9]+\\)" nil t)
+  (when (re-search-forward "dimensions:\\s-+\\([0-9]+\\)x\\(?:[0-9]+\\)" nil t)
     (let* ((width (string-to-number (match-string-no-properties 1)))
            (size (if (>= width 1900) 12 10)))
       (condition-case err
