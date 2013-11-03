@@ -33,20 +33,14 @@
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
+(eval-after-load "git-gutter"
+  '(progn
+     (set-face-background 'git-gutter:deleted  "red")
+     (set-face-background 'git-gutter:modified "magenta")))
+
 (smartrep-define-key
     global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
                         ("n" . 'git-gutter:next-diff)))
-
-(eval-after-load "git-gutter"
-  '(progn
-     (if (macosx-p)
-         (setq git-gutter:added-sign "+ "
-               git-gutter:deleted-sign " "
-               git-gutter:modified-sign " ")
-       (setq git-gutter:modified-sign " "
-             git-gutter:deleted-sign " "))
-     (set-face-background 'git-gutter:deleted  "red")
-     (set-face-background 'git-gutter:modified "magenta")))
 
 ;; magit
 (global-set-key (kbd "M-g M-g") 'magit-status)

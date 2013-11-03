@@ -40,9 +40,10 @@
 ;; for `cde' command. move to directorycurrent buffer
 (defun elscreen-get-current-directory (buf)
   (with-current-buffer buf
-    (aif (buffer-file-name)
-        (file-name-directory it)
-      default-directory)))
+    (let ((bufname (buffer-file-name)))
+      (if bufname
+          (file-name-directory bufname)
+        default-directory))))
 
 (defun elscreen-current-directory ()
   (let* ((current-screen (elscreen-get-current-screen))

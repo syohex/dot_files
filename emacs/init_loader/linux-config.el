@@ -12,6 +12,10 @@
  '(browse-url-browser-function 'browse-url-generic)
  '(browse-url-generic-program "/opt/google/chrome/google-chrome"))
 
+(custom-set-variables
+ '(git-gutter:modified-sign " ")
+ '(git-gutter:deleted-sign " "))
+
 ;; font-setting for Linux(Ubuntu)
 
 (defun change-font-size (size)

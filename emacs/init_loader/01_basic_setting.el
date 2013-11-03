@@ -15,11 +15,6 @@
 (when (file-exists-p "/mnt/ramdisk")
   (setq temporary-file-directory "/mnt/ramdisk/"))
 
-;; default frame size
-(when (not (macosx-p))
-  (setq default-frame-alist
-        '((width . 115) (height . 42) (top . 28) (left . 0))))
-
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)

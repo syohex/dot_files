@@ -1,7 +1,7 @@
 ;; python-setting
 
 ;; ipython setting
-(when (linux-p)
+(when (memq system-type '(gnu/linux))
   (custom-set-variables
    '(python-shell-interpreter "ipython")
    '(python-shell-interpreter-args "")
