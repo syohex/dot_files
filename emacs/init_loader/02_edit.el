@@ -218,14 +218,13 @@
 (global-set-key (kbd "C-M-p") 'my/backward-list)
 
 ;; Insert next line and previous line('o' and 'O')
-(defun my/edit-next-line ()
-  (interactive)
-  (if (not current-prefix-arg)
-      (progn
+(defun my/edit-next-line (arg)
+  (interactive "p")
+  (if (>= arg 0)
+      (dotimes (i arg)
         (end-of-line)
         (newline-and-indent))
-    (let ((current-prefix-arg nil))
-      (my/edit-previous-line))))
+    (my/edit-previous-line arg)))
 
 (defun my/edit-next-line-no-indent ()
   (interactive)
@@ -241,12 +240,13 @@
     (newline)
     (move-to-column col t)))
 
-(defun my/edit-previous-line ()
-  (interactive)
-  (forward-line -1)
-  (if (not (= (line-number-at-pos) 1))
+(defun my/edit-previous-line (arg)
+  (interactive "p")
+  (dotimes (i (- arg))
+    (forward-line -1)
+    (unless (= (line-number-at-pos) 1)
       (end-of-line))
-  (newline-and-indent))
+    (newline-and-indent)))
 
 (global-set-key [(shift return)] 'my/edit-next-line)
 (global-set-key (kbd "M-o") 'my/edit-next-line)
