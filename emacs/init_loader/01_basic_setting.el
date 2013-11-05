@@ -45,7 +45,7 @@
 (auto-compression-mode t)
 
 ;; highlight mark region
-(transient-mark-mode t)
+(transient-mark-mode +1)
 
 ;; indicate last line
 (setq-default indicate-empty-lines t
@@ -58,8 +58,9 @@
 
 ;; enable yascrollbar
 (global-yascroll-bar-mode)
-(setq yascroll:disabled-modes
-      '(eshell-mode magit-status-mode completion-list-mode compilation-mode))
+(custom-set-variables
+ '(yascroll:disabled-modes
+   '(eshell-mode magit-status-mode completion-list-mode compilation-mode)))
 
 ;; not create backup file and not create auto save file
 (setq backup-inhibited t
@@ -104,7 +105,7 @@
 (require 'which-func)
 (set-face-attribute 'which-func nil
                     :foreground "LightPink3" :weight 'bold)
-(which-func-mode t)
+(which-function-mode +1)
 
 ;; invisible mouse cursor when editing text
 (setq make-pointer-invisible t)
