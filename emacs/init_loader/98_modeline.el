@@ -41,11 +41,11 @@
     (setcdr cell (cons newcdr (cdr cell)))))
 
 (defun my/update-git-branch-mode-line ()
-  (let* ((branch (replace-regexp-in-string
-                  "[\r\n]+\\'" ""
-                  (shell-command-to-string "git symbolic-ref -q HEAD")))
-         (mode-line-str (if (string-match "^refs/heads/" branch)
-                            (format "[%s]" (substring branch 11))
-                          "[Not Repo]")))
-    (propertize mode-line-str
+  (let* ((cmd "git symbolic-ref -q HEAD")
+         (br-str (with-temp-buffer
+                   (when (zerop (call-process-shell-command cmd nil t))
+                     (goto-char (point-min))
+                     (when (re-search-forward "\\`refs/heads/\\(.+\\)$" nil t)
+                       (format "[%s]" (match-string 1)))))))
+    (propertize (or br-str "[Not Repo]")
                 'face '((:foreground "GreenYellow" :weight bold)))))
