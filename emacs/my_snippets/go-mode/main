@@ -3,8 +3,6 @@
 # --
 package main
 
-$0
-
 func main () {
-
+        $0
 }
