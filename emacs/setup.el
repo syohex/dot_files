@@ -149,8 +149,6 @@
   '(
     ;; my own utilities
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
-    "https://raw.github.com/syohex/emacs-helm-pydoc/master/helm-pydoc.el"
-    "https://raw.github.com/syohex/emacs-helm-pydoc/master/helm-pydoc.py"
     "https://raw.github.com/syohex/emacs-helm-perldoc/master/helm-perldoc.el"
 
     ;; 3rd pirty
