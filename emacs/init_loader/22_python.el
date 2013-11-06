@@ -11,8 +11,6 @@
    '(python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n")
    '(python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")))
 
-(autoload 'helm-pydoc "helm-pydoc" nil t)
-
 (eval-after-load "python"
   '(progn
      ;; binding
