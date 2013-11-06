@@ -13,3 +13,5 @@
  '(anzu-search-threshold 1000))
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow")
+(set-face-attribute 'anzu-replace-to nil
+                    :foreground "yellow" :background "grey10")
