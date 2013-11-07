@@ -5,9 +5,9 @@
   '(progn
      (require 'go-autocomplete)
 
+     (define-key go-mode-map (kbd "C-c C-a") 'my/go-import-add)
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/go-build)
-     (define-key go-mode-map (kbd "C-c C-h") 'my/helm-go-build)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
@@ -85,24 +85,26 @@
                                (progn (message "Congratulate: no errors !!!") nil)
                              (reverse lines))))))
 
-(defvar helm-go-build-source
-  '((name . "Go Build")
-    (candidates . helm-go-build-init)
-    (volatile)
-    (action . (lambda (c)
-                (let ((fields (split-string c ":")))
-                  (goto-char (point-min))
-                  (forward-line (1- (string-to-number (nth 1 fields)))))))))
-
-(defun my/helm-go-build ()
-  (interactive)
-  (save-buffer)
-  (let ((helm-quit-if-no-candidate t))
-    (helm :sources '(helm-go-build-source) :buffer "*helm-go-build*")))
-
 (defun my/go-build ()
   (interactive)
   (save-buffer)
   (let ((command (format "go build -o /dev/null %s"
                          (expand-file-name (buffer-file-name)))))
     (compile command)))
+
+(defun my/go-import-add ()
+  (interactive)
+  (save-excursion
+    (skip-chars-backward (concat go-identifier-regexp "\\."))
+    (let ((package (thing-at-point 'symbol)))
+      (if (not package)
+          (call-interactively 'go-import-add)
+        (if (find-if (lambda (p) (string= package p)) (go-packages))
+            (go-import-add current-prefix-arg package)
+          (let* ((re (concat (regexp-quote package) "\\'"))
+                 (matched (loop for pack in (go-packages)
+                                when (and pack (string-match-p re pack))
+                                collect pack)))
+            (if (= (length matched) 1)
+                (go-import-add current-prefix-arg (car matched))
+              (call-interactively 'go-import-add))))))))
