@@ -72,7 +72,7 @@
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-m") 'my/flymake-popup-error-message)
-(global-set-key (kbd "M-g M-l") 'flycheck-list-errors)
+(global-set-key (kbd "M-g M-l") 'my/flycheck-list-errors)
 
 ;;; buffer-move
 (global-set-key (kbd "M-g h") 'buf-move-left)
