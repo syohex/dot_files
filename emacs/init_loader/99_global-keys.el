@@ -1,6 +1,7 @@
 ;;;; global key setting
 
 ;; my key mapping
+(global-set-key (kbd "M-ESC ESC") 'keyboard-quit)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-*") 'tags-loop-continue)
 (global-set-key (kbd "<f11>") 'my/open-task-memo)
