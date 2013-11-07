@@ -150,9 +150,9 @@
     ;; my own utilities
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
     "https://raw.github.com/syohex/emacs-helm-perldoc/master/helm-perldoc.el"
+    "https://raw.github.com/syohex/emacs-helm-godoc/master/helm-godoc.el"
 
     ;; 3rd pirty
-    "http://homepage1.nifty.com/bmonkey/emacs/elisp/iman.el"
     "https://raw.github.com/renormalist/emacs-pod-mode/master/pod-mode.el"
     "http://www.emacswiki.org/emacs/download/xs-mode.el"
     "http://www.neilvandyke.org/quack/quack.el"

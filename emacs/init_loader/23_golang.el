@@ -1,6 +1,7 @@
 ;; eldoc
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(autoload 'helm-godoc "helm-godoc" nil t)
 (eval-after-load "go-mode"
   '(progn
      (require 'go-autocomplete)
@@ -11,28 +12,13 @@
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
-     (define-key go-mode-map (kbd "C-c C-d") 'my/helm-go)
+     (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
 
 (defun my/go-mode-hook ()
   (setq flycheck-checker 'go-build))
 (add-hook 'go-mode-hook 'my/go-mode-hook)
-
-(defvar my/helm-go-source
-  '((name . "Helm Go")
-    (candidates . (lambda ()
-                    (cons "builtin" (go-packages))))
-    (action . (("Show document" . godoc)
-               ("Import package" . my/helm-go-import-add)))))
-
-(defun my/helm-go-import-add (candidate)
-  (dolist (package (helm-marked-candidates))
-    (go-import-add current-prefix-arg package)))
-
-(defun my/helm-go ()
-  (interactive)
-  (helm :sources '(my/helm-go-source) :buffer "*helm go*"))
 
 (defun my/go-toggle-test-file ()
   (interactive)
@@ -64,26 +50,6 @@
     (let ((compilation-scroll-output t)
           (cmd (concat "go test " package)))
       (compile cmd))))
-
-(defun helm-go-build-init ()
-  (let ((cmd (format "go build -o /dev/null %s"
-                     (with-helm-current-buffer
-                       (buffer-file-name)))))
-    (with-temp-buffer
-      (call-process-shell-command cmd nil t)
-      (goto-char (point-min))
-      (loop with lines = nil
-            while (not (eobp))
-            for line = (buffer-substring-no-properties
-                        (line-beginning-position) (line-end-position))
-            do
-            (progn
-              (when (not (string-match "^#" line))
-                (push line lines))
-              (forward-line 1))
-            finally return (if (zerop (length lines))
-                               (progn (message "Congratulate: no errors !!!") nil)
-                             (reverse lines))))))
 
 (defun my/go-build ()
   (interactive)
