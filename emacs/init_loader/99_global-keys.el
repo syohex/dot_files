@@ -30,6 +30,7 @@
 (global-set-key (kbd "C-x .")   'helm-ag-this-file)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
+(global-set-key (kbd "C-x r b") 'helm-bookmarks)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
