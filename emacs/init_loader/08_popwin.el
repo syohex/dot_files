@@ -43,7 +43,8 @@
 (push '(direx:direx-mode :position left :width 40 :dedicated t)
       popwin:special-display-config)
 
-;; go-direx
+;; Go
+(push '("\*godoc\*" :stick t :noselect t) popwin:special-display-config)
 (push '("^\*go-direx:" :position left :width 0.3 :dedicated t :stick t :regexp t)
       popwin:special-display-config)
 
