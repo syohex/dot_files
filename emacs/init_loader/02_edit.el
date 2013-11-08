@@ -19,46 +19,6 @@
   nil)
 (global-set-key (kbd "C-y") 'my/yank)
 
-;; Vim's 'f', 'F'
-(defvar my/last-search-char nil)
-(defun my/forward-to-char (arg &optional char)
-  (interactive "p\n")
-  (unless char
-    (if (memq last-command '(my/forward-to-char my/backward-to-char))
-        (setq char my/last-search-char)
-      (setq char (read-char "Forward Char: "))))
-  (setq my/last-search-char char)
-  (when (>= arg 0)
-    (forward-char 1))
-  (let ((case-fold-search nil))
-    (search-forward (char-to-string char) nil t arg))
-  (when (>= arg 0)
-    (backward-char 1)))
-
-(defun my/backward-to-char (arg &optional char)
-  (interactive "p\n")
-  (unless char
-    (if (memq last-command '(my/forward-to-char my/backward-to-char))
-        (setq char my/last-search-char)
-      (setq char (read-char "Backward Char: "))))
-  (backward-char 1)
-  (my/forward-to-char (- arg) char))
-
-(defun my/forward-last-char ()
-  (interactive)
-  (my/forward-to-char 1 my/last-search-char))
-
-(defun my/backward-last-char ()
-  (interactive)
-  (my/backward-to-char 1 my/last-search-char))
-
-(global-set-key (kbd "C-M-s") 'my/forward-to-char)
-(global-set-key (kbd "C-M-r") 'my/backward-to-char)
-
-(smartrep-define-key
-    global-map  "C-x" '((";" . 'my/forward-last-char)
-                        (":" . 'my/backward-last-char)))
-
 ;; move lines
 (defun my/move-line-up ()
   (interactive)
@@ -98,25 +58,12 @@
       (delete-region orig-point (point)))))
 (global-set-key (kbd "M-k") 'delete-following-spaces)
 
-(defun my/join-line ()
-  (interactive)
-  (join-line -1))
-(global-set-key (kbd "M-K") 'my/join-line)
-
 ;; for word delete instead of kill-word and backward-kill-word
 (defun my/delete-word (arg)
   (interactive "p")
   (delete-region (point) (progn (forward-word arg) (point))))
 
-(defun my/delete-cursor-word-or-region ()
-  (interactive)
-  (if (use-region-p)
-      (call-interactively 'kill-region)
-    (progn
-      (backward-word)
-      (my/delete-word 1))))
-
-(defun my/backward-kill-word (args)
+(defun my/backward-kill-word (arg)
   (interactive "p")
   (let ((from (save-excursion
                 (forward-word -1)
@@ -124,11 +71,10 @@
         (limit (save-excursion
                  (back-to-indentation)
                  (point))))
-    (cond ((bolp) (backward-kill-word args))
+    (cond ((bolp) (backward-kill-word arg))
           (t
            (delete-region (max from limit) (point))))))
 
-(global-set-key (kbd "C-w") 'my/delete-cursor-word-or-region)
 (global-set-key (kbd "M-d") 'my/delete-word)
 (global-set-key (kbd "M-<backspace>") 'my/backward-kill-word)
 
@@ -168,7 +114,6 @@
           (insert (format format-string i))
           (forward-line 1)))
   (goto-char start))
-
 (global-set-key (kbd "C-x r N") 'number-rectangle)
 
 ;; moving block
@@ -217,40 +162,6 @@
 (global-set-key (kbd "C-M-n") 'my/forward-list)
 (global-set-key (kbd "C-M-p") 'my/backward-list)
 
-;; Insert next line and previous line('o' and 'O')
-(defun my/edit-next-line (arg)
-  (interactive "p")
-  (if (>= arg 0)
-      (dotimes (i arg)
-        (end-of-line)
-        (newline-and-indent))
-    (my/edit-previous-line arg)))
-
-(defun my/edit-next-line-no-indent ()
-  (interactive)
-  (end-of-line)
-  (newline))
-
-(defun my/edit-next-line-same-column ()
-  (interactive)
-  (let ((col (save-excursion
-               (back-to-indentation)
-               (current-column))))
-    (end-of-line)
-    (newline)
-    (move-to-column col t)))
-
-(defun my/edit-previous-line (arg)
-  (interactive "p")
-  (dotimes (i (- arg))
-    (forward-line -1)
-    (unless (= (line-number-at-pos) 1)
-      (end-of-line))
-    (newline-and-indent)))
-
-(global-set-key [(shift return)] 'my/edit-next-line)
-(global-set-key (kbd "M-o") 'my/edit-next-line)
-
 ;; autopair
 (custom-set-variables
  '(autopair-blink nil)
@@ -283,87 +194,33 @@
 
 (add-hook 'prog-mode-hook 'my/add-watchwords)
 
-;; unwrap
-(defvar my/unwrap-pair
-  '(("(" . ")") ("[" . "]") ("{" . "}") ("'" . "'") ("\"" . "\"")
-    ("<" . ">") ("|" . "|") ("`" . "`")))
+;; editutil
+(dolist (func '(editutil-edit-next-line
+                editutil-edit-previous-line
+                editutil-unwrap-at-point
+                editutil-replace-wrapped-string
+                editutil-edit-next-line-no-indent
+                editutil-edit-next-line-same-column
+                editutil-zap-to-char
+                editutil-next-symbol
+                editutil-previous-symbol
+                editutil-forward-char
+                editutil-backward-char
+                editutil-move-line-up
+                editutil-move-line-down))
+  (autoload func "editutil" nil t))
 
-(defun my/unwrap-counterpart (sign)
-  (let ((pair (assoc-default sign my/unwrap-pair)))
-    (unless pair
-      (error "Not found: pair string of '%s'" sign))
-    pair))
+(global-set-key [(control shift up)] 'editutil-move-line-up)
+(global-set-key [(control shift down)] 'editutil-move-line-down)
 
-(defun my/unwrap-at-point (arg &optional replaced)
-  (interactive "p")
-  (save-excursion
-    (let ((curpoint (point))
-          (count 0))
-      (when (re-search-backward "\\([(\[{'\"`|<]\\)" (point-min) t arg)
-        (let* ((start (point))
-               (matched (match-string 1))
-               (pair (my/unwrap-counterpart matched))
-               (replace-pair (and replaced (my/unwrap-counterpart replaced))))
-          (if (string-match-p "[(\[{]" matched )
-              (forward-list 1)
-            (save-excursion
-              (forward-char 1)
-              (while (re-search-forward (regexp-quote matched) curpoint t)
-                (incf count)))
-            (goto-char curpoint)
-            (when (re-search-forward pair nil t (1+ count))
-              (when (< (point) curpoint)
-                (error "This point is not wrapped!!"))))
-          (backward-char)
-          (delete-char 1)
-          (when replaced
-            (insert replace-pair))
-          (goto-char start)
-          (delete-char 1)
-          (when replaced
-            (insert replaced)))))))
+(global-set-key (kbd "C-M-s") 'editutil-forward-char)
+(global-set-key (kbd "C-M-r") 'editutil-previous-char)
 
-(defun my/replace-wrapped-string (arg)
-  (interactive "p")
-  (let ((replaced (char-to-string (read-char))))
-    (my/unwrap-at-point arg replaced)))
-(global-set-key (kbd "M-s") 'my/unwrap-at-point)
-(global-set-key (kbd "M-r") 'my/replace-wrapped-string)
+(global-set-key (kbd "M-o") 'editutil-edit-next-line)
 
-(defun my/zap-to-char (arg char)
-  (interactive "p\ncZap to char: ")
-  (with-no-warnings
-    (when (char-table-p translation-table-for-input)
-      (setq char (or (aref translation-table-for-input char) char))))
-  (delete-region (point)
-                 (progn
-                   (when (>= arg 0)
-                     (forward-char 1))
-                   (search-forward (char-to-string char) nil nil arg)
-                   (if (>= arg 0)
-                       (backward-char 1)
-                     (forward-char 1))
-                   (point))))
-(global-set-key (kbd "M-z") 'my/zap-to-char)
+(global-set-key (kbd "M-s") 'editutil-unwrap-at-point)
+(global-set-key (kbd "M-r") 'editutil-replace-wrapped-string)
+(global-set-key (kbd "M-z") 'editutil-zap-to-char)
 
-(defun my/next-symbol (arg)
-  (interactive "p")
-  (let ((symbol (thing-at-point 'symbol))
-        (curpoint (point)))
-    (unless symbol
-      (error "No symbol at cursor!!"))
-    (let ((bound (bounds-of-thing-at-point 'symbol)))
-      (if (>= arg 0)
-          (goto-char (cdr bound))
-        (goto-char (car bound))))
-    (let ((regexp (concat "\\_<" (regexp-quote symbol) "\\_>")))
-      (if (re-search-forward regexp nil t arg)
-          (goto-char (match-beginning 0))
-        (goto-char curpoint)
-        (error "No more found('%s')" symbol)))))
-
-(defun my/previous-symbol (arg)
-  (interactive "p")
-  (my/next-symbol (- arg)))
-(global-set-key (kbd "M-n") 'my/next-symbol)
-(global-set-key (kbd "M-p") 'my/previous-symbol)
+(global-set-key (kbd "M-n") 'editutil-next-symbol)
+(global-set-key (kbd "M-p") 'editutil-previous-symbol)
