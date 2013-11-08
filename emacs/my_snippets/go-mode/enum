@@ -1,0 +1,6 @@
+# name: const ( var = iota ... )
+# key: enum
+# --
+const (
+      $0 = iota
+)
