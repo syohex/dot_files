@@ -148,6 +148,7 @@
 (defvar my/nonelpa-packages-url
   '(
     ;; my own utilities
+    "https://raw.github.com/syohex/emacs-utils/master/editutil.el"
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
     "https://raw.github.com/syohex/emacs-helm-perldoc/master/helm-perldoc.el"
     "https://raw.github.com/syohex/emacs-helm-godoc/master/helm-godoc.el"
