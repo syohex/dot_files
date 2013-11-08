@@ -1,18 +1,22 @@
 ;; eldoc
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(autoload 'helm-godoc "helm-godoc" nil t)
+;;; helm-godoc
+(dolist (func '(helm-godoc helm-godoc-at-point))
+  (autoload func "helm-godoc" nil t))
+
 (eval-after-load "go-mode"
   '(progn
      (require 'go-autocomplete)
 
      (define-key go-mode-map (kbd "C-c C-a") 'my/go-import-add)
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
-     (define-key go-mode-map (kbd "C-c C-c") 'my/go-build)
+     (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
      (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
+     (define-key go-mode-map (kbd "C-c .") 'helm-godoc-at-point)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
 
@@ -50,13 +54,6 @@
     (let ((compilation-scroll-output t)
           (cmd (concat "go test " package)))
       (compile cmd))))
-
-(defun my/go-build ()
-  (interactive)
-  (save-buffer)
-  (let ((command (format "go build -o /dev/null %s"
-                         (expand-file-name (buffer-file-name)))))
-    (compile command)))
 
 (defun my/go-import-add ()
   (interactive)
