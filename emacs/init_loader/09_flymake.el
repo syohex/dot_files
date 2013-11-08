@@ -18,7 +18,7 @@
   (setq flycheck-display-errors-function nil)
   (if (not (my/flycheck-enable-mode-p major-mode))
       (error "This mode can't use flycheck-mode")
-    (unless flycheck-mode
+    (when (or (not (boundp 'flycheck-mode)) (not flycheck-mode))
       (flycheck-mode +1))
     (call-interactively 'flycheck-list-errors)))
 
