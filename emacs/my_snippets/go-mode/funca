@@ -1,6 +1,6 @@
 # name: Anynomous function
 # key: funca
 # --
-func ($0) {
+func($0) {
      
 }
