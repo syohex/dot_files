@@ -1,0 +1,6 @@
+# name: goroutine with immediate function
+# key: gof
+# --
+go func($1) {
+        $0
+}()
