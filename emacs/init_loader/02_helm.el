@@ -43,6 +43,8 @@
                       (call-process-shell-command ,cmd nil t))))
           (candidates-in-buffer)
           (action . (("Open File" . find-file)
+                     ("Open Directory" . (lambda (file)
+                                           (dired (file-name-directory file))))
                      ("Open File other window" . find-file-other-window)
                      ("Insert buffer" . insert-file))))))
 
