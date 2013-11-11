@@ -214,7 +214,7 @@
 (global-set-key [(control shift down)] 'editutil-move-line-down)
 
 (global-set-key (kbd "C-M-s") 'editutil-forward-char)
-(global-set-key (kbd "C-M-r") 'editutil-previous-char)
+(global-set-key (kbd "C-M-r") 'editutil-backward-char)
 
 (global-set-key (kbd "M-o") 'editutil-edit-next-line)
 (global-set-key (kbd "M-O") 'editutil-edit-previous-line)
