@@ -40,11 +40,11 @@
      (define-key ruby-mode-map "\"" nil)
      (define-key ruby-mode-map "'" nil)
 
-     ;; smartparens
-     (require 'smartparens-ruby)
-     (set-face-attribute 'sp-show-pair-match-face nil
-                         :background "grey20" :foreground "green"
-                         :weight 'semi-bold)
+;;     ;; smartparens
+;;     (require 'smartparens-ruby)
+;;     (set-face-attribute 'sp-show-pair-match-face nil
+;;                         :background "grey20" :foreground "green"
+;;                         :weight 'semi-bold)
 
      ;; rsense
      (setq rsense-home
