@@ -16,9 +16,10 @@
      (set-face-attribute 'eshell-prompt nil
                          :foreground "yellow")))
 
-(defun my/eshell-load-hook ()
-  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
-(add-hook 'eshell-first-time-mode-hook 'my/eshell-load-hook)
+(defun my/eshell-first-time-load-hook ()
+  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)
+  (setq eshell-first-time-p nil))
+(add-hook 'eshell-first-time-mode-hook 'my/eshell-first-time-load-hook)
 
 (defvar eshell-pop-buffer "*eshell-pop*")
 (defvar eshell-prev-buffer nil)
