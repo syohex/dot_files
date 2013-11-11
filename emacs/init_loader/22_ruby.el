@@ -24,11 +24,11 @@
       'ruby-mode '(("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\({[^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*}\\)\\([ixms]+\\)?"
                     (1 'my/ruby-mode-special-literal t)
                     (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-special-literal t))
+                    (3 'my/ruby-mode-special-literal t t))
                    ("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\(([^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*)\\)\\([ixms]+\\)?"
                     (1 'my/ruby-mode-special-literal t)
                     (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-special-literal t))))
+                    (3 'my/ruby-mode-special-literal t t))))
 
      ;; autopair
      (define-key ruby-mode-map "(" nil)
