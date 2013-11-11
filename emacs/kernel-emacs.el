@@ -362,42 +362,6 @@
 (global-set-key [C-backspace] 'backward-delete-word)
 (global-set-key (kbd "M-DEL") 'backward-delete-word)
 
-;; Vim's 'f', 'F'
-(defvar my/last-search-char nil)
-(defun my/forward-to-char (arg &optional char)
-  (interactive "p\n")
-  (unless char
-    (if (memq last-command '(my/forward-to-char my/backward-to-char))
-        (setq char my/last-search-char)
-      (setq char (read-char "Forward Char: "))))
-  (setq my/last-search-char char)
-  (when (>= arg 0)
-    (forward-char 1))
-  (let ((case-fold-search nil))
-    (search-forward (char-to-string char) nil t arg))
-  (when (>= arg 0)
-    (backward-char 1)))
-
-(defun my/backward-to-char (arg &optional char)
-  (interactive "p\n")
-  (unless char
-    (if (memq last-command '(my/forward-to-char my/backward-to-char))
-        (setq char my/last-search-char)
-      (setq char (read-char "Backward Char: "))))
-  (backward-char 1)
-  (my/forward-to-char (- arg) char))
-
-(defun my/forward-last-char ()
-  (interactive)
-  (my/forward-to-char 1 my/last-search-char))
-
-(defun my/backward-last-char ()
-  (interactive)
-  (my/backward-to-char 1 my/last-search-char))
-
-(global-set-key (kbd "C-M-s") 'my/forward-to-char)
-(global-set-key (kbd "C-M-r") 'my/backward-to-char)
-
 ;; (makunbound 'overriding-minor-mode-map)
 (define-minor-mode overriding-minor-mode
   "Most superior minir mode"
@@ -679,6 +643,37 @@
                          :background nil
                          :weight 'bold
                          :underline t)))
+
+(dolist (func '(editutil-edit-next-line
+                editutil-edit-previous-line
+                editutil-unwrap-at-point
+                editutil-replace-wrapped-string
+                editutil-edit-next-line-no-indent
+                editutil-edit-next-line-same-column
+                editutil-zap-to-char
+                editutil-next-symbol
+                editutil-previous-symbol
+                editutil-forward-char
+                editutil-backward-char
+                editutil-move-line-up
+                editutil-move-line-down))
+  (autoload func "editutil" nil t))
+
+(global-set-key [(control shift up)] 'editutil-move-line-up)
+(global-set-key [(control shift down)] 'editutil-move-line-down)
+
+(global-set-key (kbd "C-M-s") 'editutil-forward-char)
+(global-set-key (kbd "C-M-r") 'editutil-previous-char)
+
+(global-set-key (kbd "M-o") 'editutil-edit-next-line)
+(global-set-key (kbd "M-O") 'editutil-edit-previous-line)
+
+(global-set-key (kbd "M-s") 'editutil-unwrap-at-point)
+(global-set-key (kbd "M-r") 'editutil-replace-wrapped-string)
+(global-set-key (kbd "M-z") 'editutil-zap-to-char)
+
+(global-set-key (kbd "M-n") 'editutil-next-symbol)
+(global-set-key (kbd "M-p") 'editutil-previous-symbol)
 
 (progn
   (set-face-attribute 'show-paren-match nil
