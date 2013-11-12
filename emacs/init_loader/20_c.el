@@ -14,6 +14,7 @@
   (my/setup-symbol-moving)
   (add-to-list 'ac-sources 'ac-source-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-header-symbols t)
-  (setq c-basic-offset 4))
+  (setq c-basic-offset 8
+        indent-tabs-mode t))
 
 (add-hook 'c-mode-hook 'my/c-mode-init)
