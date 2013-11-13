@@ -57,6 +57,8 @@
 (define-key my/ctrl-q-map (kbd "C-k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
+(define-key my/ctrl-q-map (kbd "s") 'editutil-unwrap-at-point)
+(define-key my/ctrl-q-map (kbd "r") 'editutil-replace-wrapped-string)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
