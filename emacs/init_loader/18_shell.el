@@ -53,7 +53,7 @@
 (defun eshell/cdp ()
   (let ((dir (loop with cwd = default-directory
                    for d in '(".git" ".hg" ".svn")
-                   when (locate-dominating-file d cwd)
+                   when (locate-dominating-file cwd d)
                    return (file-name-directory it))))
     (eshell/cd dir)))
 
