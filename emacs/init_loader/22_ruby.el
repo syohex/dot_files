@@ -15,6 +15,10 @@
      (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
      (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
+     (define-key ruby-mode-map (kbd "C-c C-a") 'ruby-beginning-of-block)
+     (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-end-of-block)
+     (define-key ruby-mode-map (kbd "C-c ?") 'my/ruby-search-doc)
+
      (defface my/ruby-mode-special-literal
        '((t (:foreground "orchid1")))
        "Face of Ruby's regexp"
@@ -53,7 +57,6 @@
      (require 'rsense)
 
      ;; yari
-     (require 'yari)
      (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
 
 (defun my/ruby-mode-hook ()
@@ -108,8 +111,22 @@
   (forward-line 1)
   (back-to-indentation))
 
-;; rbenv
-(eval-after-load "rbenv"
-  '(progn
-     (set-face-attribute 'rbenv-active-ruby-face nil
-                         :foreground "yellow")))
+(defun my/ruby-search-doc (searched)
+  (interactive
+   (list (read-string "Searchd Doc: ")))
+  (let ((cmd (concat "ri -T -f ansi " (shell-quote-argument searched))))
+   (with-current-buffer (get-buffer-create "*ri-doc*")
+     (view-mode -1)
+     (erase-buffer)
+     (unless (zerop (call-process-shell-command cmd nil t))
+       (error "Failed: '%s'" cmd))
+     (goto-char (point-min))
+     (ansi-color-apply-on-region (point-min) (point-max))
+     (view-mode +1)
+     (pop-to-buffer (current-buffer)))))
+
+;;;; rbenv
+;;(eval-after-load "rbenv"
+;;  '(progn
+;;     (set-face-attribute 'rbenv-active-ruby-face nil
+;;                         :foreground "yellow")))
