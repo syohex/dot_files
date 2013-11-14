@@ -59,7 +59,7 @@
   (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
 
 (custom-set-variables
- '(flycheck-display-errors-delay 0.2))
+ '(flycheck-display-errors-delay 0.5))
 
 ;; flycheck faces
 (eval-after-load "flycheck"
