@@ -17,7 +17,8 @@
 (push '("*ielm*" :stick t) popwin:special-display-config)
 (push '("*eshell pop*" :stick t) popwin:special-display-config)
 
-;; pry
+;; Ruby
+(push '("*ri-doc*" :stick t :height 20) popwin:special-display-config)
 (push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
 
 ;; prolog
