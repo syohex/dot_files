@@ -200,7 +200,6 @@ export PYTHONSTARTUP=~/.pythonsetup
 if [ -d /opt/go ]; then
     [[ -d /opt/go ]] && path=(/opt/go/bin $path)
     [[ -e /opt/go/misc/zsh/go ]] && source /opt/go/misc/zsh/go
-    export GOROOT=/opt/go
 fi
 if \which go >/dev/null 2>&1; then
     export GOPATH=$HOME/local/go:$HOME/program/go
