@@ -1,6 +1,4 @@
 ;; configuration of spell check
-(custom-set-variables
- '(ispell-program-name "aspell"))
 (eval-after-load "ispell"
   '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 
