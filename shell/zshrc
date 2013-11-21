@@ -25,6 +25,9 @@ setopt share_history
 # key-type is Emacs
 bindkey -e
 
+# Delete to last space
+bindkey '^[^U' backward-delete-word
+
 # removed keys(for miss typing)
 # I want to bind good function for these keys!!
 bindkey -r '^J'
