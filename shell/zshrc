@@ -25,7 +25,9 @@ setopt share_history
 # key-type is Emacs
 bindkey -e
 
-# Delete to last space
+# Mode/Delete like emacs symbol one
+bindkey '^[^B' vi-backward-blank-word
+bindkey '^[^F' vi-forward-blank-word
 bindkey '^[^U' backward-delete-word
 
 # removed keys(for miss typing)
