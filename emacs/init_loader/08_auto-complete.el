@@ -39,28 +39,8 @@
          (auto-complete)
        (call-interactively 'dabbrev-expand)))))
 
-;; look command with auto-complete
-(defun ac-look--judge-case (str)
-  (let ((case-fold-search nil))
-    (cond ((string-match "\\`[A-Z]\\{2\\}" str) 'upcase)
-          ((string-match "\\`[A-Z]\\{1\\}" str) 'capitalize)
-          (t 'identity))))
+;; ac-ispell
+(ac-ispell-setup)
 
-(defun ac-look-candidates ()
-  (if (not (executable-find "look"))
-      (message "Error: not found `look'")
-    (let ((result (format "look -f %s" ac-prefix))
-          (case-func (ac-look--judge-case ac-prefix)))
-      (ignore-errors
-        (mapcar case-func
-                (split-string (shell-command-to-string result) "\n"))))))
-
-(defun ac-look ()
-  (interactive)
-  (auto-complete '(ac-source-look)))
-
-(ac-define-source look
-  '((candidates . ac-look-candidates)
-    (requires . 2)))
-
-(global-set-key (kbd "C-M-l") 'ac-look)
+(dolist (hook '(text-mode-hook git-commit-mode-hook))
+  (add-hook hook 'ac-ispell-ac-setup))
