@@ -29,6 +29,7 @@ bindkey -e
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
 bindkey '^[^U' backward-delete-word
+bindkey '^[^K' delete-word
 
 # removed keys(for miss typing)
 # I want to bind good function for these keys!!
