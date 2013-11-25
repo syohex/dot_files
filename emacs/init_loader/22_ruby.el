@@ -3,7 +3,8 @@
 (add-to-list 'auto-mode-alist '("\\(Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
 
 (custom-set-variables
- '(ruby-deep-indent-paren nil))
+ '(ruby-deep-indent-paren nil)
+ '(ruby-insert-encoding-magic-comment nil))
 
 (eval-after-load "ruby-mode"
   '(progn
