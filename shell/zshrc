@@ -248,6 +248,7 @@ if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     bindkey '^[$' zaw-history
     bindkey '^[@' zaw-cdr
     bindkey '^[#' zaw-git-directories
+    bindkey '^xb' zaw-git-recent-branches
 fi
 
 # for git completion(too slowly in big repository)

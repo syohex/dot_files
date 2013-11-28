@@ -22,8 +22,9 @@ cd $UTILDIR
 
 # setting for zsh zaw
 (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zaw.git)
-## Install my own zaw source
-(cd "${HOME}/.zsh/zaw/sources && curl -O https://raw.github.com/syohex/zaw-git-directories/master/git-directories.zsh"
+## Install 3rd party zaw source
+(cd "${HOME}/.zsh/zaw/sources" && curl -O https://raw.github.com/syohex/zaw-git-directories/master/git-directories.zsh \)
+(cd "${HOME}/.zsh/zaw/sources" && curl -O https://raw.github.com/shibayu36/config-file/master/.zsh/zaw-sources/git-recent-branches.zsh)
 
 # completion
 MYCOMPDIR="${HOME}/.zsh/mycomp"
