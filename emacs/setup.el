@@ -106,6 +106,9 @@
     ;; parenthesis
     smartparens
 
+    ;; document
+    zeal-at-point
+
     ;; basic
     init-loader reverse-theme exec-path-from-shell anzu
     ))

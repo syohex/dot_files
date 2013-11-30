@@ -10,11 +10,8 @@
 (global-set-key (kbd "M-<return>") 'editutil-edit-next-line-no-indent)
 (global-set-key (kbd "C-h e")   'popwin:messages)
 (global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
-
-(global-unset-key (kbd "C-x q"))
-(global-set-key (kbd "C-x q C-f") 'find-file-other-window)
-(global-set-key (kbd "C-x q C-b") 'switch-to-buffer-other-window)
-(global-set-key (kbd "C-x q C-j") 'dired-jump-other-window)
+(global-set-key (kbd "C-x ?") 'zeal-at-point)
+(global-set-key (kbd "C-h z") 'zeal-at-point)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'my/helm-etags-select)
