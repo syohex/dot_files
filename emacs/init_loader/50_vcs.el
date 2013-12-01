@@ -5,6 +5,8 @@
 
 ;; disable vc-mode
 (setq vc-handled-backends '())
+(eval-after-load "vc"
+  '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 
 ;;; Setting for Git
 (defun my/git-intent-to-add ()
