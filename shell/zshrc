@@ -12,6 +12,7 @@ umask 022
 # for move by word
 autoload -Uz select-word-style
 select-word-style bash
+WORDCHARS="${WORDCHARS}:"
 
 # History
 HISTFILE=~/.zsh_history
