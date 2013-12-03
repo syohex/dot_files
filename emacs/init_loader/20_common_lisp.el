@@ -1,6 +1,4 @@
 ;; Common Lisp
-(custom-set-variables
- '(inferior-lisp-program "ccl"))
 
 ;; hyperspec document
 (eval-after-load "lisp-mode"

@@ -6,6 +6,8 @@
 
 (eval-after-load "slime"
   '(progn
+     (setq inferior-lisp-program "ccl")
+
      ;; SLIME REPL
      (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
 
