@@ -159,9 +159,8 @@
 
 ;; comint
 (eval-after-load "comint"
-  '(progn
-     (set-face-attribute 'comint-highlight-input nil
-                         :foreground "grey80" :weight 'semi-bold :underline t)))
+  '(set-face-attribute 'comint-highlight-input nil
+                       :foreground "grey80" :weight 'semi-bold))
 
 ;; minibuffer
 (defun my/minibuffer-delete-current-dir ()
