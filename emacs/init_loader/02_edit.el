@@ -162,6 +162,10 @@
 (global-set-key (kbd "C-M-n") 'my/forward-list)
 (global-set-key (kbd "C-M-p") 'my/backward-list)
 
+;; electrict-mode
+(custom-set-variables
+ '(electric-indent-mode nil))
+
 ;; autopair
 (custom-set-variables
  '(autopair-blink nil)
