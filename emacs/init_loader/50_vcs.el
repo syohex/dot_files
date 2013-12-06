@@ -37,6 +37,9 @@
 
 (eval-after-load "git-gutter"
   '(progn
+     (when (boundp 'focus-in-hook)
+       (add-to-list 'git-gutter:update-hooks 'focus-in-hook))
+
      (set-face-background 'git-gutter:deleted  "red")
      (set-face-background 'git-gutter:modified "magenta")))
 
