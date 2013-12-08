@@ -65,7 +65,7 @@
   (add-to-list 'ac-sources ac-source-rsense-method)
   ;;(add-to-list 'ac-sources ac-source-rsense-constant)
 
-  (setq flycheck-checker 'ruby-lint)
+  (setq flycheck-checker 'ruby-rubylint)
 
   ;; smartparen
   (show-smartparens-mode +1)
