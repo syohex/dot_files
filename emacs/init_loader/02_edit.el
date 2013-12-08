@@ -6,6 +6,12 @@
 (global-set-key (kbd "C-x M-%") 'anzu-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") 'anzu-query-replace-at-cursor-thing)
 
+(defun my/insert-newline-without-moving ()
+  (interactive)
+  (save-excursion
+    (newline)))
+(global-set-key (kbd "C-M-l") 'my/insert-newline-without-moving)
+
 (defun my/yank (arg)
   (interactive "P")
   (setq yank-window-start (window-start))
