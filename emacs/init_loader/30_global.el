@@ -1,4 +1,7 @@
 ;;;; GNU gtags
+(custom-set-variables
+ '(helm-gtags-pulse-at-cursor nil))
+
 (eval-after-load "helm-gtags"
   '(progn
      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
