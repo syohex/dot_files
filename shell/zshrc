@@ -26,6 +26,9 @@ setopt share_history
 # key-type is Emacs
 bindkey -e
 
+# Like bash C-u behavior
+bindkey '^U' backward-kill-line
+
 # Mode/Delete like emacs symbol one
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
