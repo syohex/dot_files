@@ -1,6 +1,6 @@
 ;; setting for ruby
-(add-to-list 'auto-mode-alist '("\\.\\(rb\\|gemspec\\|ru\\|\\)\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\(Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(?:rb\\|gemspec\\|ru\\|\\)\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\(?:Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
 
 (custom-set-variables
  '(ruby-deep-indent-paren nil)
@@ -51,21 +51,15 @@
 ;;                         :background "grey20" :foreground "green"
 ;;                         :weight 'semi-bold)
 
-     ;; rsense
-     (setq rsense-home
-           (expand-file-name (concat user-emacs-directory "elisps/rsense")))
-     (add-to-list 'load-path (concat rsense-home "/etc"))
-     (require 'rsense)
-
      ;; yari
      (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
 
 (defun my/ruby-mode-hook ()
-  ;; auto-complete rsense
-  (add-to-list 'ac-sources ac-source-rsense-method)
-  ;;(add-to-list 'ac-sources ac-source-rsense-constant)
-
   (setq flycheck-checker 'ruby-rubocop)
+
+  ;; robe
+  (robe-mode +1)
+  (add-to-list 'ac-sources 'ac-source-robe)
 
   ;; smartparen
   (show-smartparens-mode +1)
