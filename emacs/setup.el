@@ -116,7 +116,7 @@
 (defvar sub-packages
   '(
     ;; auto-complete
-    ac-slime go-autocomplete
+    ac-slime go-autocomplete robe
 
     ;; popwin
     import-popwin
@@ -167,15 +167,6 @@
   (dolist (url my/nonelpa-packages-url)
     (unless (file-exists-p (file-name-nondirectory url))
       (my/download-url url))))
-
-;; rsense
-(let ((default-directory my/elisp-directory))
-  (when (not (file-directory-p "rsense"))
-    (message "Install rsense(Wait a minute)")
-    (my/system "curl -O http://cx4a.org/pub/rsense/rsense-0.3.zip")
-    (my/system "unzip rsense-0.3.zip")
-    (my/system "mv rsense-0.3 rsense")
-    (my/system "rm -f rsense-0.3.zip")))
 
 ;; Hyperspec
 (let ((default-directory my/elisp-directory))
