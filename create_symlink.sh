@@ -61,6 +61,7 @@ mkdir_if_not_exist ${PERCOL_DIR}
 ln -sf $PWD/python/percolrc.py ${PERCOL_DIR}/rc.py
 
 # Ruby
+ln -sf $PWD/ruby/rubocop.yml ~/.rubocop.yml
 ln -sf $PWD/ruby/pryrc ~/.pryrc
 
 # For Common Lisp
