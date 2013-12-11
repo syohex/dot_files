@@ -64,6 +64,8 @@
 ;; flycheck faces
 (eval-after-load "flycheck"
   '(progn
+     (set-face-attribute 'flycheck-info nil
+                         :underline '(:style wave :color "green"))
      (set-face-attribute 'flycheck-error nil
                          :foreground "yellow" :weight 'bold
                          :background "red")
