@@ -14,23 +14,20 @@
 (eval-after-load "python"
   '(progn
      ;; binding
-     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))
+     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
+     (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
+     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)))
 
 ;; jedi
 (custom-set-variables
  '(jedi:tooltip-method nil))
 (eval-after-load "jedi"
   '(progn
-     ;; binding
-     (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
-     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
-
      ;; show-doc
      (set-face-attribute 'jedi:highlight-function-argument nil
                          :foreground "green")))
 
 (defun my/python-mode-hook ()
-  (setq python-indent 4)
   (jedi:setup)
 
   ;; flycheck
