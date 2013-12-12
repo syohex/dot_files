@@ -53,6 +53,7 @@
   '(coffee-mode
     python-mode
     js-mode
+    haskell-mode
     ruby-mode))
 
 (dolist (mode my/flycheck-enable-modes)

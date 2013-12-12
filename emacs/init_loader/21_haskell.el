@@ -11,7 +11,7 @@
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-indent)
   (ghc-init)
-  (flymake-mode)
+  (setq flycheck-checker 'haskell-ghc)
   (autopair-mode)
 
   ;; bindings
