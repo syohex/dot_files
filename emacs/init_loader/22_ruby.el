@@ -4,7 +4,8 @@
 
 (custom-set-variables
  '(ruby-deep-indent-paren nil)
- '(ruby-insert-encoding-magic-comment nil))
+ '(ruby-insert-encoding-magic-comment nil)
+ '(robe-completing-read-func 'completing-read))
 
 (eval-after-load "ruby-mode"
   '(progn
