@@ -1,5 +1,5 @@
 ;; setting for ruby
-(add-to-list 'auto-mode-alist '("\\.\\(?:rb\\|gemspec\\|ru\\|\\)\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(?:rb\\|gemspec\\|ru\\)\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\(?:Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
 
 (custom-set-variables
