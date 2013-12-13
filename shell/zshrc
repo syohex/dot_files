@@ -2,7 +2,7 @@
 path=($HOME/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
 
 # completion
-fpath=(~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
+fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
 autoload -U compinit
 compinit
 
@@ -216,9 +216,6 @@ if \which go >/dev/null 2>&1; then
     path=($HOME/local/go/bin $path)
 fi
 
-# loading common function for any platform
-source ~/dot_files/shell/common_func.sh
-
 ## show git branch at right prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
@@ -280,8 +277,18 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
-# load private data
-source ~/.zsh/private.sh
+zle -N git_status _git_status
+zle -N git_browse _git_browse
+bindkey '^Xs' git_status
+bindkey '^Xw' git_browse
+
+## autoload
+autoload -Uz _git_status
+autoload -Uz _git_browse
+autoload -Uz us_keyboard
+autoload -Uz cde
+autoload -Uz cdp
+autoload -Uz dired
 
 ## Last
 # setting global alias for avoiding conflict variable name

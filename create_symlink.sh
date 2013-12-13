@@ -31,6 +31,7 @@ esac
 
 # zsh
 ln -sf $PWD/shell/zshrc ~/.zshrc
+ln -sf $PWD/shell/functions ~/.zsh/
 
 # tmux
 ln -sf $PWD/shell/tmux.conf ~/.tmux.conf

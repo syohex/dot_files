@@ -1,0 +1,15 @@
+## Chdir to the ``default-directory'' of currently opened in Emacs buffer.
+function cde() {
+    EMACS_CWD=`emacsclient -e "
+      (if (featurep 'elscreen)
+          (elscreen-current-directory)
+        (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
+
+    if [ "$EMACS_CWD" == "nil" ]; then
+        echo "Failed cde"
+        return 1
+    fi
+
+    echo "chdir to $EMACS_CWD"
+    cd "$EMACS_CWD"
+}

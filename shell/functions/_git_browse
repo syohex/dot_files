@@ -1,0 +1,5 @@
+function _git_browse() {
+    echo git browse
+    git browse
+    zle reset-prompt
+}
