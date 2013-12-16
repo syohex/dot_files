@@ -208,7 +208,7 @@ export PYTHONSTARTUP=~/.pythonsetup
 
 # golang
 if [ -d /opt/go ]; then
-    if [[ -d /opt/go/bin/go ]]; then
+    if [[ -e /opt/go/bin/go ]]; then
         path=(/opt/go/bin $path)
         export GOROOT=/opt/go
     fi
