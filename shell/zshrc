@@ -208,7 +208,11 @@ export PYTHONSTARTUP=~/.pythonsetup
 
 # golang
 if [ -d /opt/go ]; then
-    [[ -d /opt/go ]] && path=(/opt/go/bin $path)
+    if [[ -d /opt/go/bin/go ]]; then
+        path=(/opt/go/bin $path)
+        export GOROOT=/opt/go
+    fi
+
     [[ -e /opt/go/misc/zsh/go ]] && source /opt/go/misc/zsh/go
 fi
 if \which go >/dev/null 2>&1; then
