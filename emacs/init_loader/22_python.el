@@ -32,10 +32,6 @@
 
   ;; flycheck
   (setq flycheck-checker 'python-flake8
-        flycheck-flake8rc (expand-file-name "~/.config/flake8"))
-
-  ;; autopair
-  (setq autopair-handle-action-fns
-        '(autopair-default-handle-action autopair-python-triple-quote-action)))
+        flycheck-flake8rc (expand-file-name "~/.config/flake8")))
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)

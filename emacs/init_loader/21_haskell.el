@@ -12,7 +12,6 @@
   (turn-on-haskell-indent)
   (ghc-init)
   (setq flycheck-checker 'haskell-ghc)
-  (autopair-mode)
 
   ;; bindings
   (local-unset-key (kbd "C-M-d"))

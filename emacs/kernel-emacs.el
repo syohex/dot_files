@@ -20,11 +20,6 @@
 ;; restore construction of windows
 (winner-mode t)
 
-;; anzu
-(global-anzu-mode +1)
-(setq anzu-mode-lighter ""
-      anzu-search-threshold 1000)
-
 (require 'thingopt)
 (define-thing-commands)
 
@@ -48,10 +43,23 @@
 (load "saveplace")
 (setq-default save-place t)
 
+;; search
+;; anzu
+(global-anzu-mode +1)
+(custom-set-variables
+ '(anzu-mode-lighter "")
+ '(anzu-deactivate-region t)
+ '(anzu-search-threshold 1000)
+ '(anzu-replace-to-string-separator " => "))
+(set-face-attribute 'anzu-mode-line nil
+                    :foreground "yellow")
+(set-face-attribute 'anzu-replace-to nil
+                    :foreground "yellow" :background "grey10")
+
 ;; Use regexp version as Default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
 
 ;; my key mapping
 (global-set-key (kbd "M-C-o") 'other-window)
@@ -136,30 +144,17 @@
 ;; backspace
 (normal-erase-is-backspace-mode 0)
 
-;; autopair
-(eval-after-load "autopair"
-  '(progn
-     (setq-default autopair-blink nil
-                   autopair-blink-delay 0)))
+;; smartparens
+(custom-set-variables
+ '(sp-highlight-pair-overlay nil)
+ '(sp-highlight-wrap-overlay nil)
+ '(sp-highlight-wrap-tag-overlay nil))
 
 ;; C coding style
-(defun backward-symbol (arg)
-  (interactive "p")
-  (forward-symbol (- arg)))
-
-(defun my/set-symbol-moving ()
-  (local-set-key (kbd "C-M-f") 'forward-symbol)
-  (local-set-key (kbd "C-M-b") 'backward-symbol))
-
-(defun my/c-up-block ()
-  (interactive)
-  (search-backward "{" nil t))
-
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
-  (hs-minor-mode 1)
-  (my/set-symbol-moving)
-  (autopair-mode)
+  (smartparens-mode +1)
+  (sp-use-smartparens-bindings)
   (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
   (c-toggle-electric-state -1)
   (setq c-basic-offset 8)
@@ -327,12 +322,6 @@
 (push '(Man-mode :stick t :height 20) popwin:special-display-config)
 (push '("*sgit*" :width 0.5 :position right :stick t) popwin:special-display-config)
 
-;; flyspell
-(eval-after-load "flyspell"
-  '(progn
-     (define-key flyspell-mode-map (kbd "M-.") 'flyspell-auto-correct-word)
-     (define-key flyspell-mode-map (kbd "M-,") 'flyspell-goto-next-error)))
-
 ;; fixed line position after scrollup, scrolldown
 (defadvice scroll-up (around scroll-up-relative activate)
   "Scroll up relatively without move of cursor."
@@ -349,19 +338,6 @@
 ;; for symboliclink
 (setq-default find-file-visit-truename t)
 
-;; for word delete instead of kill-word and backward-kill-word
-(defun delete-word (arg)
-  (interactive "p")
-  (delete-region (point) (progn (forward-word arg) (point))))
-
-(defun backward-delete-word (arg)
-  (interactive "p")
-  (delete-word (- arg)))
-
-(global-set-key (kbd "M-d") 'delete-word)
-(global-set-key [C-backspace] 'backward-delete-word)
-(global-set-key (kbd "M-DEL") 'backward-delete-word)
-
 ;; (makunbound 'overriding-minor-mode-map)
 (define-minor-mode overriding-minor-mode
   "Most superior minir mode"
@@ -375,17 +351,6 @@
   "My original keymap binded to M-q.")
 (defalias 'my/alt-q-prefix my/alt-q-map)
 (define-key overriding-minor-mode-map (kbd "M-q") 'my/alt-q-prefix)
-
-(defun non-elscreen-current-directory ()
-  (let* ((bufsinfo (cadr (cadr (current-frame-configuration))))
-         (bufname-list (assoc-default 'buffer-list bufsinfo)))
-    (loop for buf in bufname-list
-	  for file = (or (buffer-file-name buf)
-			 (with-current-buffer buf
-			   (when (eq major-mode 'dired-mode)
-			     dired-directory)))
-	  when file
-	  return (file-name-directory it))))
 
 ;; ace-jump-mode
 (eval-after-load "ace-jump-mode"
@@ -408,25 +373,6 @@
 ;; smartrep
 (require 'smartrep)
 
-;; like Vim's "o"
-(defun my/edit-next-line ()
-  (interactive)
-  (if (not current-prefix-arg)
-      (progn
-        (end-of-line)
-        (newline-and-indent))
-    (let ((current-prefix-arg nil))
-      (my/edit-previous-line))))
-
-(defun my/edit-previous-line ()
-  (interactive)
-  (forward-line -1)
-  (if (not (= (line-number-at-pos) 1))
-      (end-of-line))
-  (newline-and-indent))
-
-(global-set-key (kbd "M-o") 'edit-next-line)
-
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
   "My original keymap binded to C-q.")
@@ -435,86 +381,13 @@
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 (define-key my/ctrl-q-map (kbd "|") 'winner-undo)
 (define-key my/ctrl-q-map (kbd "C-b") 'helm-bookmarks)
-(define-key my/ctrl-q-map (kbd "l") 'mark-line)
-
-(defun my/find-file-other-window (file)
-  (interactive
-   (list (read-file-name "Display file: ")))
-  (let ((buf (find-file-noselect file)))
-    (cond ((one-window-p)
-           (find-file-other-window file))
-          (t
-           (other-window 1)
-           (set-window-buffer (selected-window) buf)))))
-(define-key my/ctrl-q-map (kbd "C-f") 'my/find-file-other-window)
-
-(defun my/revert-buffer ()
-  (interactive)
-  (revert-buffer nil t))
-(define-key my/ctrl-q-map (kbd "r") 'my/revert-buffer)
-
-(defun my/delete-to-specified-character ()
-  (interactive)
-  (let ((curpoint (point))
-        (regexp (read-char "Delete to: ")))
-    (skip-chars-forward (concat "^" (char-to-string regexp)))
-    (delete-region curpoint (point))))
-
-(define-key my/ctrl-q-map (kbd "d") 'my/delete-to-specified-character)
-
-(defun swap-buffers ()
-  (interactive)
-  (when (one-window-p)
-    (error "This frame is not splitted!!"))
-  (let ((curwin (selected-window))
-        (curbuf (window-buffer)))
-    (other-window 1)
-    (set-window-buffer curwin (window-buffer))
-    (set-window-buffer (selected-window) curbuf)))
-(define-key my/ctrl-q-map (kbd "b") 'swap-buffers)
-
-(defun my/delete-line ()
-  (interactive)
-  (delete-region (line-beginning-position) (line-end-position)))
-(define-key my/ctrl-q-map (kbd "k") 'my/delete-line)
-
-;; moving block
-(defvar my/backward-up-list-regexp
-  "[{\"(\[]")
-(make-variable-buffer-local 'my/backward-up-list-regexp)
-
-(defvar my/down-list-regexp
-  "[{\"(\[]")
-(make-variable-buffer-local 'my/down-list-regexp)
-
-(defun my/backward-up-list (arg)
-  (interactive "p")
-  (unless (ignore-errors
-            (backward-up-list arg) t)
-    (re-search-backward my/backward-up-list-regexp nil t)))
-
-(defun my/down-list (arg)
-  (interactive "p")
-  (unless (ignore-errors
-            (down-list arg) t)
-    (re-search-forward my/down-list-regexp nil t)))
-
-(global-set-key (kbd "C-M-u") 'my/backward-up-list)
-(global-set-key (kbd "C-M-d") 'my/down-list)
+(define-key my/ctrl-q-map (kbd "l") 'copy-line)
+(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 
 ;; goto-chg
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
-
-(defun my/duplicate-line ()
-  (interactive)
-  (let ((line (thing-at-point 'line)))
-    (save-excursion
-      (forward-line 1)
-      (insert line))))
-(smartrep-define-key
-    global-map "M-g" '(("c" . 'my/duplicate-line)))
 
 ;; sgit
 (require 'sgit)
@@ -543,30 +416,7 @@
 (define-key ac-completing-map (kbd "C-i") 'ac-complete)
 
 (setq ac-quick-help-delay 0.5)
-
-;; look command with auto-complete
-(defun my/ac-look ()
-  "`look' command with auto-completelook"
-  (interactive)
-  (unless (executable-find "look")
-    (error "Please install `look' command"))
-  (let ((cmd (format "look %s" ac-prefix)))
-    (with-temp-buffer
-      (call-process-shell-command cmd nil t)
-      (split-string-and-unquote (buffer-string) "\n"))))
-
-(defun ac-look ()
-  (interactive)
-  (let ((ac-menu-height 50)
-        (ac-candidate-limit t))
-    (auto-complete '(ac-source-look))))
-
-(defvar ac-source-look
-  '((candidates . my/ac-look)
-    (requires . 2)))
-
 (global-set-key (kbd "C-M-i") 'auto-complete)
-(global-set-key (kbd "C-M-l") 'ac-look)
 
 ;; eshell
 (eval-after-load "em-prompt"
@@ -612,6 +462,40 @@
 
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 
+(require 'editutil)
+(global-set-key [(control shift up)] 'editutil-move-line-up)
+(global-set-key [(control shift down)] 'editutil-move-line-down)
+
+(global-set-key (kbd "C-M-s") 'editutil-forward-char)
+(global-set-key (kbd "C-M-r") 'editutil-backward-char)
+
+(global-set-key (kbd "M-o") 'editutil-edit-next-line)
+(global-set-key (kbd "M-O") 'editutil-edit-previous-line)
+
+(global-set-key (kbd "M-s") 'editutil-unwrap-at-point)
+(global-set-key (kbd "M-r") 'editutil-replace-wrapped-string)
+(global-set-key (kbd "M-z") 'editutil-zap-to-char)
+
+(global-set-key (kbd "M-n") 'editutil-next-symbol)
+(global-set-key (kbd "M-p") 'editutil-previous-symbol)
+
+(global-set-key (kbd "M-k") 'editutil-delete-following-spaces)
+
+(global-set-key (kbd "C-y") 'editutil-yank)
+
+(global-set-key (kbd "M-d") 'editutil-delete-word)
+(global-set-key (kbd "M-<backspace>") 'editutil-backward-delete-word)
+
+(global-set-key (kbd "C-x r N") 'editutil-number-rectangle)
+
+(global-set-key (kbd "C-M-SPC") 'editutil-copy-sexp)
+
+(smartrep-define-key
+    global-map "C-x" '(("j" . 'editutil-insert-newline-without-moving)))
+
+(smartrep-define-key
+    global-map "M-g" '(("c" . 'editutil-duplicate-thing)))
+
 (eval-after-load "diff-mode"
   '(progn
      (set-face-attribute 'diff-added nil
@@ -643,37 +527,6 @@
                          :background nil
                          :weight 'bold
                          :underline t)))
-
-(dolist (func '(editutil-edit-next-line
-                editutil-edit-previous-line
-                editutil-unwrap-at-point
-                editutil-replace-wrapped-string
-                editutil-edit-next-line-no-indent
-                editutil-edit-next-line-same-column
-                editutil-zap-to-char
-                editutil-next-symbol
-                editutil-previous-symbol
-                editutil-forward-char
-                editutil-backward-char
-                editutil-move-line-up
-                editutil-move-line-down))
-  (autoload func "editutil" nil t))
-
-(global-set-key [(control shift up)] 'editutil-move-line-up)
-(global-set-key [(control shift down)] 'editutil-move-line-down)
-
-(global-set-key (kbd "C-M-s") 'editutil-forward-char)
-(global-set-key (kbd "C-M-r") 'editutil-backward-char)
-
-(global-set-key (kbd "M-o") 'editutil-edit-next-line)
-(global-set-key (kbd "M-O") 'editutil-edit-previous-line)
-
-(global-set-key (kbd "M-s") 'editutil-unwrap-at-point)
-(global-set-key (kbd "M-r") 'editutil-replace-wrapped-string)
-(global-set-key (kbd "M-z") 'editutil-zap-to-char)
-
-(global-set-key (kbd "M-n") 'editutil-next-symbol)
-(global-set-key (kbd "M-p") 'editutil-previous-symbol)
 
 (progn
   (set-face-attribute 'show-paren-match nil

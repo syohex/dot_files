@@ -36,7 +36,7 @@
                     (2 font-lock-string-face t)
                     (3 'my/ruby-mode-special-literal t t))))
 
-     ;; autopair
+     ;; pair
      (define-key ruby-mode-map "(" nil)
      (define-key ruby-mode-map ")" nil)
      (define-key ruby-mode-map "{" nil)

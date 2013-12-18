@@ -10,5 +10,5 @@
 
 ;; disable paredit enable mode
 (dolist (mode (append '(emacs-lisp-mode scheme-mode lisp-mode clojure-mode)
-                      my/autopair-enabled-modes))
+                      my/smartparens-enabled-modes))
   (add-to-list 'wrap-region-except-modes mode))

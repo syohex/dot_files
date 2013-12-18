@@ -35,11 +35,6 @@
 (defalias 'my/ctrl-q-prefix my/ctrl-q-map)
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-(defun my/copy-line ()
-  (interactive)
-  (let ((n (if current-prefix-arg 1 0)))
-    (kill-ring-save (line-beginning-position) (+ n (line-end-position)))))
-(define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
 
 ;; col-highlight
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
@@ -50,6 +45,7 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
+(define-key my/ctrl-q-map (kbd "l") 'copy-line)
 (define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
@@ -79,29 +75,3 @@
 (global-set-key (kbd "M-g j") 'buf-move-down)
 (global-set-key (kbd "M-g k") 'buf-move-up)
 (global-set-key (kbd "M-g l") 'buf-move-right)
-
-;; duplicate current line
-(defun my/duplicate-thing (n)
-  (interactive "p")
-  (let ((orig-column (current-column))
-        (lines (if mark-active
-                   (1+ (- (line-number-at-pos (region-end))
-                          (line-number-at-pos (region-beginning))))
-                 1)))
-    (save-excursion
-      (let ((orig-line (line-number-at-pos))
-            (str (if mark-active
-                     (buffer-substring (region-beginning) (region-end))
-                   (buffer-substring (line-beginning-position)
-                                     (line-end-position)))))
-        (forward-line 1)
-        ;; maybe last line
-        (when (= orig-line (line-number-at-pos))
-          (insert "\n"))
-        (dotimes (i (or n 1))
-          (insert str "\n"))))
-    (forward-line lines)
-    (move-to-column orig-column)))
-
-(smartrep-define-key
-    global-map "M-g" '(("c" . my/duplicate-thing)))
