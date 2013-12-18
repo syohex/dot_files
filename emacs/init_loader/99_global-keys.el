@@ -40,7 +40,6 @@
   (let ((n (if current-prefix-arg 1 0)))
     (kill-ring-save (line-beginning-position) (+ n (line-end-position)))))
 (define-key my/ctrl-q-map (kbd "l") 'my/copy-line)
-(define-key my/ctrl-q-map (kbd "C-l") 'mark-line)
 
 ;; col-highlight
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
@@ -51,7 +50,7 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
-(define-key my/ctrl-q-map (kbd "C-k") 'kill-whole-line)
+(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
 (define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
 (define-key my/ctrl-q-map (kbd "s") 'editutil-unwrap-at-point)

@@ -10,7 +10,8 @@
   (interactive)
   (save-excursion
     (newline)))
-(global-set-key (kbd "C-M-l") 'my/insert-newline-without-moving)
+(smartrep-define-key
+    global-map "C-x" '(("j" . 'my/insert-newline-without-moving)))
 
 (defun my/yank (arg)
   (interactive "P")
