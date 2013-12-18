@@ -48,6 +48,14 @@
   (smartparens-mode +1)
   (sp-use-smartparens-bindings))
 
+(eval-after-load "smartparens"
+  '(progn
+     (let ((disabled '("M-<backspace>")))
+       (setq sp-smartparens-bindings
+             (remove-if (lambda (key-command)
+                          (member (car key-command) disabled))
+                        sp-smartparens-bindings)))))
+
 (dolist (mode my/smartparens-enabled-modes)
   (add-hook (intern (format "%s-hook" mode)) 'my/enable-smartparens-mode))
 

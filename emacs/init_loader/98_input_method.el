@@ -1,12 +1,12 @@
 ;; change cursor color 'enable input method' / 'disable input method'
 (defun my/input-method-active-hook ()
-  (when (and (memq major-mode my/smartparens-enabled-modes)
-             smartparens-mode)
+  (when (and (and (boundp 'smartparens-mode) smartparens-mode)
+             (memq major-mode my/smartparens-enabled-modes))
     (smartparens-mode -1))
   (set-cursor-color "gold"))
 
 (defun my/input-method-inactivate-hook ()
-  (when (and (not smartparens-mode)
+  (when (and (and (boundp 'smartparens-mode) (not smartparens-mode))
              (memq major-mode my/smartparens-enabled-modes))
     (smartparens-mode +1))
   (set-cursor-color "chartreuse2"))
