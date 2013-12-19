@@ -11,7 +11,6 @@
 (defun my/c-mode-init ()
   (c-set-style "k&r")
   (c-toggle-electric-state -1)
-  (my/setup-symbol-moving)
   (add-to-list 'ac-sources 'ac-source-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-header-symbols t)
   (setq c-basic-offset 8

@@ -11,6 +11,19 @@
 (set-face-attribute 'mode-line-buffer-id nil
                     :foreground "orange" :weight 'bold)
 
+;; basic customize variables
+(custom-set-variables
+ '(large-file-warning-threshold (* 25 1024 1024))
+ '(save-place t)
+ '(dabbrev-case-fold-search nil)
+ '(inhibit-startup-screen t)
+ '(x-select-enable-clipboard t)
+ '(read-file-name-completion-ignore-case t)
+ '(line-move-visual nil)
+ '(set-mark-command-repeat-pop t)
+ '(find-file-visit-truename t)
+ '(compile-command ""))
+
 ;; temp directory
 (when (file-exists-p "/mnt/ramdisk")
   (setq temporary-file-directory "/mnt/ramdisk/"))
@@ -24,10 +37,6 @@
 
 ;; echo stroke
 (setq echo-keystrokes 0.1)
-
-;; large file
-(setq large-file-warning-threshold (* 25 1024 1024))
-
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
@@ -37,9 +46,6 @@
 ;; saveplace
 (savehist-mode 1)
 (load "saveplace")
-(setq-default save-place t)
-
-(setq dabbrev-case-fold-search nil)
 
 ;; info for japanese
 (auto-compression-mode t)
@@ -72,18 +78,9 @@
 ;; not beep
 (setq ring-bell-function (lambda()))
 
-;; not display start message
-(setq inhibit-startup-message t)
-
 ;; display line infomation
 (line-number-mode 1)
 (column-number-mode 1)
-
-;; to send clip board
-(setq x-select-enable-clipboard t)
-
-;; ignore upper or lower
-(setq read-file-name-completion-ignore-case t)
 
 ;; yes-or-no-p
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -92,9 +89,6 @@
 ;; history
 (setq history-length 500
       history-delete-duplicates t)
-
-;; move physical line
-(setq line-move-visual nil)
 
 ;; run server
 (require 'server)
@@ -124,9 +118,6 @@
 ;; fill-mode
 (setq fill-column 80)
 
-;; move to mark position
-(setq set-mark-command-repeat-pop t)
-
 ;; fixed line position after scrollup, scrolldown
 (defadvice scroll-up (around scroll-up-relative activate)
   "Scroll up relatively without move of cursor."
@@ -145,17 +136,9 @@
 (setq smartrep-mode-line-active-bg nil
       smartrep-mode-line-string-activated "<<< SmartRep >>>")
 
-;; expand symbolic link
-(custom-set-variables
- '(find-file-visit-truename t))
-
 ;; w3m
 (add-to-list 'load-path (concat user-emacs-directory "elisps/emacs-w3m"))
 (autoload 'w3m "w3m-load" nil t)
-
-;; compile
-(custom-set-variables
- '(compile-command ""))
 
 ;; comint
 (eval-after-load "comint"

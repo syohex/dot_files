@@ -15,7 +15,8 @@
 
 ;; naming of same name file
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(custom-set-variables
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets))
 
 ;; use ibuffer instead of list-buffer
 (defalias 'list-buffers 'ibuffer)
@@ -40,8 +41,9 @@
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
 
 (require 'zoom-window)
-(setq zoom-window-mode-line-color "DarkGreen"
-      zoom-window-use-elscreen t)
+(custom-set-variables
+ '(zoom-window-mode-line-color "DarkGreen")
+ '(zoom-window-use-elscreen t))
 
 (eval-after-load "elscreen"
  '(progn

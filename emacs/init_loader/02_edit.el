@@ -14,9 +14,8 @@
 (eval-after-load "ace-jump-mode"
   '(progn
      (setq ace-jump-mode-case-fold nil)
-     (set-face-foreground 'ace-jump-face-foreground "lime green")
-     (set-face-bold-p 'ace-jump-face-foreground t
-                      (set-face-underline-p 'ace-jump-face-foreground t))))
+     (set-face-attribute 'ace-jump-face-foreground nil
+                         :foreground "LimeGreen" :weight 'bold)))
 
 ;; electrict-mode
 (custom-set-variables
@@ -62,7 +61,7 @@
 ;; highlight specified words
 (defun my/add-watchwords ()
   (font-lock-add-keywords
-   nil '(("\\<\\(FIXME\\|TODO\\|XXX\\|@@@\\)\\>"
+   nil '(("\\_<\\(FIXME\\|TODO\\|XXX\\|@@@\\)\\_>"
           1 '((:foreground "pink") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook 'my/add-watchwords)
