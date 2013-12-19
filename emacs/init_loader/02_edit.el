@@ -50,7 +50,7 @@
 
 (eval-after-load "smartparens"
   '(progn
-     (let ((disabled '("M-<backspace>")))
+     (let ((disabled '("M-<backspace>" "C-M-n" "C-M-p" "C-M-a" "C-M-e")))
        (setq sp-smartparens-bindings
              (remove-if (lambda (key-command)
                           (member (car key-command) disabled))
