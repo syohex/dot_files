@@ -283,7 +283,7 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
 zle -N git_status _git_status
 zle -N git_browse _git_browse
-bindkey '^Xs' git_status
+bindkey '^[^s' git_status
 bindkey '^Xw' git_browse
 
 ## autoload
