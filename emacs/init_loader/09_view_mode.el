@@ -2,17 +2,12 @@
 (custom-set-variables
  '(view-read-only t))
 
-(defun View-goto-line-last ()
-  (interactive)
-  (goto-char (point-max))
-  (goto-char (line-beginning-position)))
-
 (eval-after-load "view"
   '(progn
      (define-key view-mode-map (kbd "N") 'View-search-last-regexp-backward)
      (define-key view-mode-map (kbd "?") 'View-search-regexp-backward?)
      (define-key view-mode-map (kbd "g") 'View-goto-line)
-     (define-key view-mode-map (kbd "G") 'View-goto-line-last)
+     (define-key view-mode-map (kbd "G") 'editutil-goto-last-line)
      (define-key view-mode-map (kbd "f") 'editutil-forward-char)
      (define-key view-mode-map (kbd "F") 'editutil-backward-char)
      (define-key view-mode-map (kbd "w") 'forward-word)
