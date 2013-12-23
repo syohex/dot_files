@@ -2,10 +2,14 @@
 (add-to-list 'auto-mode-alist '("\\.\\(?:rb\\|gemspec\\|ru\\)\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\(?:Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
 
+(defun helm-robe-completing-read (prompt choices &optional predicate require-match)
+  (let ((collection (mapcar (lambda (c) (if (listp c) (car c) c)) choices)))
+    (helm-comp-read prompt collection :test predicate :must-match require-match)))
+
 (custom-set-variables
  '(ruby-deep-indent-paren nil)
  '(ruby-insert-encoding-magic-comment nil)
- '(robe-completing-read-func 'completing-read))
+ '(robe-completing-read-func 'helm-robe-completing-read))
 
 (eval-after-load "ruby-mode"
   '(progn
@@ -51,9 +55,7 @@
 ;;     (set-face-attribute 'sp-show-pair-match-face nil
 ;;                         :background "grey20" :foreground "green"
 ;;                         :weight 'semi-bold)
-
-     ;; yari
-     (define-key ruby-mode-map (kbd "C-c C-d") 'yari-helm)))
+     ))
 
 (defun my/ruby-mode-hook ()
   (setq flycheck-checker 'ruby-rubocop)
@@ -69,19 +71,6 @@
   (ruby-end-mode 1))
 
 (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
-
-(defvar yari-helm-source-ri-pages
-  '((name . "RI documentation")
-    (candidates . (lambda () (yari-ruby-obarray)))
-    (action  ("Show with Yari" . yari))
-    (candidate-number-limit . 300)
-    (requires-pattern . 2)
-    "Source for completing RI documentation."))
-
-(defun yari-helm (&optional rehash)
-  (interactive (list current-prefix-arg))
-  (when current-prefix-arg (yari-ruby-obarray rehash))
-  (helm :sources 'yari-helm-source-ri-pages :buffer "*yari*"))
 
 ;; insert "|"
 (defun my/ruby-insert-bar ()
