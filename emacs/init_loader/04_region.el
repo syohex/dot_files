@@ -1,5 +1,5 @@
 ;;;; region setting
-(global-set-key (kbd "M-#") 'er/expand-region)
+(global-set-key (kbd "C-M-w") 'er/expand-region)
 
 ;; wrap-region
 (wrap-region-global-mode +1)
