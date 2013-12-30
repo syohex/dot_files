@@ -12,7 +12,7 @@
      (define-key haskell-mode-map (kbd "TAB") 'haskell-simple-indent)
      (define-key haskell-mode-map (kbd "<backtab>") 'haskell-simple-indent-backtab)
      (define-key haskell-mode-map (kbd "<return>") 'haskell-simple-indent-newline-same-col)
-     (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent))
+     (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent)))
 
 (defun haskell-individual-setup ()
   (turn-on-haskell-doc-mode)
@@ -25,7 +25,7 @@
   (ghc-type-init)
   (unless ghc-initialized
     (ghc-comp-init)
-    (setq ghc-initialized t)))
+    (setq ghc-initialized t))
 
   ;; for auto-complete
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
