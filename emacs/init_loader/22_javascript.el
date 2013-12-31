@@ -17,7 +17,6 @@
      (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)))
 
 (defun my/coffee-mode-hook ()
-  (setq flycheck-checker 'coffee)
-  (local-unset-key (kbd "C-m")))
+  (setq flycheck-checker 'coffee))
 
 (add-hook 'coffee-mode-hook 'my/coffee-mode-hook)
