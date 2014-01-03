@@ -49,6 +49,12 @@
 
 (eval-after-load "smartparens"
   '(progn
+     (sp-pair "'" nil :actions :rem)
+     (sp-pair "\\(" nil :actions :rem)
+
+     (dolist (mode '(ruby-mode python-mode sh-mode js-mode coffee-mode cperl-mode))
+       (sp-local-pair mode "'" "'"))
+
      (let ((disabled '("M-<backspace>" "C-M-n" "C-M-p" "C-M-a" "C-M-e")))
        (setq sp-smartparens-bindings
              (remove-if (lambda (key-command)
