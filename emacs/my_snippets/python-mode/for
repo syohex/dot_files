@@ -1,5 +1,5 @@
 # name : for var in list: body
 # key  : for
 # --
-for $1 in $2:
-    $0
+for $0 in :
+    
