@@ -14,10 +14,9 @@
      (define-key haskell-mode-map (kbd "<return>") 'haskell-simple-indent-newline-same-col)
      (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent)))
 
-(defun haskell-individual-setup ()
+(defun my/haskell-mode-hook ()
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-indent)
-  (ghc-init)
   (setq flycheck-checker 'haskell-ghc)
 
   ;; I don't want to set key bindings
@@ -30,7 +29,7 @@
   ;; for auto-complete
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
 
-(add-hook 'haskell-mode-hook 'haskell-individual-setup)
+(add-hook 'haskell-mode-hook 'my/haskell-mode-hook)
 
 ;; Wrap region with block comment
 (defun haskell-block-commend-region (start end)
