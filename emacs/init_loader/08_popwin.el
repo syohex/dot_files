@@ -51,3 +51,6 @@
 
 ;; flycheck
 (push '(flycheck-error-list-mode :stick t) popwin:special-display-config)
+
+;; CoffeeScript
+(push '("*CoffeeREPL*" :stick t) popwin:special-display-config)
