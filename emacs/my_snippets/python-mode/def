@@ -1,5 +1,0 @@
-# name : def function(args): # Function Definition
-# key  : def
-# --
-def ${1:function}:
-    $0
