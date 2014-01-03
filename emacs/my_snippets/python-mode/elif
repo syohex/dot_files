@@ -1,5 +1,0 @@
-# name : elif condition : body
-# key  : elseif
-# --
-elif $0:
-    
