@@ -18,6 +18,7 @@ arguments
 break
 callee
 caller
+ceil
 charAt
 charCodeAt
 clearInterval
@@ -42,6 +43,7 @@ every
 export
 filter
 find
+floor
 forEach
 freeze
 function
@@ -76,6 +78,7 @@ reduce
 reduceRight
 replace
 reverse
+round
 seal
 search
 setInterval
