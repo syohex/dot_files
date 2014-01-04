@@ -15,6 +15,8 @@
      (define-key coffee-mode-map [remap newline-and-indent] 'nil)
      (define-key coffee-mode-map (kbd "C-m") 'nil)
      (define-key coffee-mode-map (kbd "C-<return>") 'coffee-newline-and-indent)
+     (define-key coffee-mode-map (kbd "C-c <") 'coffee-indent-shift-left)
+     (define-key coffee-mode-map (kbd "C-c >") 'coffee-indent-shift-right)
      (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)))
 
 (defun my/coffee-mode-hook ()
