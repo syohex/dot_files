@@ -74,6 +74,7 @@ prompt
 prototype
 push
 quote
+random
 reduce
 reduceRight
 replace
