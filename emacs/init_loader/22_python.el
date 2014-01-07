@@ -11,9 +11,16 @@
    '(python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n")
    '(python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")))
 
+(defun my/python-insert-colon ()
+  (interactive)
+  (goto-char (line-end-position))
+  (insert ":")
+  (newline-and-indent))
+
 (eval-after-load "python"
   '(progn
      ;; binding
+     (define-key python-mode-map (kbd "C-c :") 'my/python-insert-colon)
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
      (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)))
