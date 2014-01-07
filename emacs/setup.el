@@ -44,7 +44,8 @@
     ace-jump-mode vline col-highlight rainbow-mode
 
     ;;;; editing utilities
-    autopair expand-region wrap-region
+    ;;autopair
+    expand-region wrap-region
     undo-tree multiple-cursors smartrep
     yasnippet goto-chg
 
@@ -57,9 +58,6 @@
 
     ;; flymake
     flycheck
-
-    ;; clojure
-    clojure-mode cider
 
     ;; coffee-script
     coffee-mode
@@ -115,7 +113,7 @@
 (defvar sub-packages
   '(
     ;; auto-complete
-    ac-slime go-autocomplete robe
+    ac-slime go-autocomplete robe ac-ispell ac-etags
 
     ;; popwin
     import-popwin
