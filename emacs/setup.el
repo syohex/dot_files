@@ -122,7 +122,7 @@
     go-eldoc
 
     ;; helm
-    helm-gtags helm-descbinds helm-themes helm-ag helm-pydoc
+    helm-gtags helm-descbinds helm-ag helm-pydoc
     ))
 
 (dolist (package base-packages)
