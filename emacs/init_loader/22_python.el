@@ -14,6 +14,7 @@
 (defun my/python-insert-colon ()
   (interactive)
   (goto-char (line-end-position))
+  (delete-horizontal-space)
   (insert ":")
   (newline-and-indent))
 
