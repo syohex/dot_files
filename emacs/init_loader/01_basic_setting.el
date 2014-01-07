@@ -136,10 +136,6 @@
 (setq smartrep-mode-line-active-bg nil
       smartrep-mode-line-string-activated "<<< SmartRep >>>")
 
-;; w3m
-(add-to-list 'load-path (concat user-emacs-directory "elisps/emacs-w3m"))
-(autoload 'w3m "w3m-load" nil t)
-
 ;; comint
 (eval-after-load "comint"
   '(set-face-attribute 'comint-highlight-input nil

@@ -5,11 +5,7 @@
 (eval-after-load "wl"
   '(progn
      (load "mime-setup")
-     (require 'w3m-load nil t)
-     (require 'mime-w3m nil t)
-     (require 'elscreen-wl)
-
-     (setq mine-w3m-display-inline-images t)))
+     (require 'elscreen-wl)))
 
 (defun my/wl-draft-mode-hook ()
   (wrap-region-mode)

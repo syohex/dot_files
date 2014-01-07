@@ -11,7 +11,6 @@
 (global-set-key (kbd "C-h e")   'popwin:messages)
 (global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
-(global-set-key (kbd "C-]") 'view-mode)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'my/helm-etags-select)

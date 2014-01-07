@@ -53,16 +53,6 @@ setup_wanderlust () {
     curl -o ~/.emacs.d/elisps/elscreen-wl.el 'https://raw.github.com/syohex/emacs-elscreen-wl/master/elscreen-wl.el'
 }
 
-setup_w3m () {
-    cd ~/.emacs.d/elisps
-
-    cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m
-    cd emacs-w3m
-    autoconf
-    ./configure
-    make
-}
-
 for dir in ~/bin ~/src ~/.emacs.d/elisps
 do
     echo "mkdir $dir"
@@ -71,4 +61,3 @@ done
 
 setup_sdic
 setup_wanderlust
-setup_w3m
