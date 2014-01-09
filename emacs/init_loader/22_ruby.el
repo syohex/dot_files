@@ -25,37 +25,9 @@
      (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-end-of-block)
      (define-key ruby-mode-map (kbd "C-c ?") 'my/ruby-search-doc)
 
-     (defface my/ruby-mode-special-literal
-       '((t (:foreground "orchid1")))
-       "Face of Ruby's regexp"
-       :group 'ruby-mode)
-
-     (font-lock-add-keywords
-      'ruby-mode '(("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\({[^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*}\\)\\([ixms]+\\)?"
-                    (1 'my/ruby-mode-special-literal t)
-                    (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-special-literal t t))
-                   ("\\(?:^\\|[[ \t\n<+(,=]\\)\\(%[xrqQwW]?\\)\\(([^\n\\\\]*\\(?:\\\\.[^\n\\\\]*\\)*)\\)\\([ixms]+\\)?"
-                    (1 'my/ruby-mode-special-literal t)
-                    (2 font-lock-string-face t)
-                    (3 'my/ruby-mode-special-literal t t))))
-
-     ;; pair
-     (define-key ruby-mode-map "(" nil)
-     (define-key ruby-mode-map ")" nil)
-     (define-key ruby-mode-map "{" nil)
-     (define-key ruby-mode-map "}" nil)
-     (define-key ruby-mode-map "[" nil)
-     (define-key ruby-mode-map "]" nil)
-     (define-key ruby-mode-map "\"" nil)
-     (define-key ruby-mode-map "'" nil)
-
-;;     ;; smartparens
-;;     (require 'smartparens-ruby)
-;;     (set-face-attribute 'sp-show-pair-match-face nil
-;;                         :background "grey20" :foreground "green"
-;;                         :weight 'semi-bold)
-     ))
+     ;; disable default bindings
+     (dolist (key '("(" ")" "{" "}" "[" "]" "\"" "'"))
+       (define-key ruby-mode-map key nil))))
 
 (defun my/ruby-mode-hook ()
   (setq flycheck-checker 'ruby-rubocop)
@@ -63,9 +35,6 @@
   ;; robe
   (robe-mode +1)
   (add-to-list 'ac-sources 'ac-source-robe)
-
-  ;; smartparen
-  (show-smartparens-mode +1)
 
   ;; auto insert `end'
   (ruby-end-mode 1))
@@ -109,9 +78,3 @@
      (ansi-color-apply-on-region (point-min) (point-max))
      (view-mode +1)
      (pop-to-buffer (current-buffer)))))
-
-;;;; rbenv
-;;(eval-after-load "rbenv"
-;;  '(progn
-;;     (set-face-attribute 'rbenv-active-ruby-face nil
-;;                         :foreground "yellow")))
