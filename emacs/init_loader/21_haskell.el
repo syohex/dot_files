@@ -12,7 +12,7 @@
      (define-key haskell-mode-map (kbd "TAB") 'haskell-simple-indent)
      (define-key haskell-mode-map (kbd "<backtab>") 'haskell-simple-indent-backtab)
      (define-key haskell-mode-map [remap newline] 'haskell-simple-indent-newline-same-col)
-     (define-key haskell-mode-map [remap newline-and-indent] 'haskell-simple-indent-newline-same-col)
+     (define-key haskell-mode-map [remap newline-and-indent] 'haskell-simple-indent-newline-indent)
      (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent)))
 
 (defun my/haskell-mode-hook ()
