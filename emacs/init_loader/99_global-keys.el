@@ -52,6 +52,10 @@
 (define-key my/ctrl-q-map (kbd "r") 'editutil-replace-wrapped-string)
 
 (smartrep-define-key
+    global-map "C-q" '(("<" . 'winner-undo)
+                       (">" . 'winner-redo)))
+
+(smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
 
