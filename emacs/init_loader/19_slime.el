@@ -1,20 +1,15 @@
 ;;; slime
-;;(require 'slime-autoloads)
-
 (custom-set-variables
- '(slime-net-coding-system 'utf-8-unix))
+ '(slime-net-coding-system 'utf-8-unix)
+ '(slime-autodoc-delay 0.5))
 
 (eval-after-load "slime"
   '(progn
      (setq inferior-lisp-program "ccl")
+     ;;(setq slime-protocol-version 'ignore)      ;; for clojure
 
      ;; SLIME REPL
      (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
-
-     (setq slime-autodoc-delay 0.5)
-
-     ;; for clojure
-     (setq slime-protocol-version 'ignore)
 
      ;; face
      (set-face-foreground 'slime-repl-inputed-output-face "pink1")
