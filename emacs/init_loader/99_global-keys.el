@@ -8,9 +8,10 @@
 (global-set-key (kbd "<f10>") 'my/open-daily-memo)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-<return>") 'editutil-edit-next-line-no-indent)
-(global-set-key (kbd "C-h e")   'popwin:messages)
+(global-set-key (kbd "C-h e") 'popwin:messages)
 (global-set-key (kbd "C-M-y") '(lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
+(global-set-key (kbd "M-K") 'kill-whole-line)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'my/helm-etags-select)
@@ -44,8 +45,7 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
-(define-key my/ctrl-q-map (kbd "l") 'copy-line)
-(define-key my/ctrl-q-map (kbd "k") 'kill-whole-line)
+(define-key my/ctrl-q-map (kbd "l") 'editutil-copy-line)
 (define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
 (define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
 (define-key my/ctrl-q-map (kbd "s") 'editutil-unwrap-at-point)
