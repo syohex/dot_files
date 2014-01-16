@@ -10,13 +10,6 @@
 (require 'thingopt)
 (define-thing-commands)
 
-;; moving with ace-jump-mode
-(eval-after-load "ace-jump-mode"
-  '(progn
-     (setq ace-jump-mode-case-fold nil)
-     (set-face-attribute 'ace-jump-face-foreground nil
-                         :foreground "LimeGreen" :weight 'bold)))
-
 ;; electrict-mode
 (custom-set-variables
  '(electric-indent-mode nil))
