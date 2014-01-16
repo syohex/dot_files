@@ -1,7 +1,7 @@
 (require 'dired-x)
 
 ;; disable vc-mode
-(setq vc-handled-backends ())
+(setq vc-handled-backends '())
 
 ;; not create backup file and not create auto save file
 (setq backup-inhibited t

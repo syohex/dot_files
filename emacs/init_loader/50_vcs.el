@@ -1,10 +1,12 @@
 ;;;; Common VCS setting
+(custom-set-variables
+ '(auto-revert-check-vc-info t))
 (global-auto-revert-mode 1)
-(setq vc-follow-symlinks t)
-(setq auto-revert-check-vc-info t)
 
 ;; disable vc-mode
-(setq vc-handled-backends '())
+(custom-set-variables
+ '(vc-handled-backends '())
+ '(vc-follow-symlinks t))
 (eval-after-load "vc"
   '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 
