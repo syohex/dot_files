@@ -1,6 +1,4 @@
 ;; setting markdown-mode
-(add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\|mdwn\\)\\'" . markdown-mode))
-
 (custom-set-variables
  '(markdown-command "Markdown.pl"))
 
