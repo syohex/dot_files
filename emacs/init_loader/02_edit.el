@@ -14,13 +14,12 @@
 (custom-set-variables
  '(electric-indent-mode nil))
 
-;; smartparens
+;; autopair
 (custom-set-variables
- '(sp-highlight-pair-overlay nil)
- '(sp-highlight-wrap-overlay nil)
- '(sp-highlight-wrap-tag-overlay nil))
+ '(autopair-blink nil)
+ '(autopair-blink-delay 0))
 
-(defvar my/smartparens-enabled-modes
+(defvar my/autopair-enabled-modes
   '(c-mode
     c++-mode
     java-mode
@@ -36,29 +35,8 @@
     coffee-mode
     cperl-mode))
 
-(defun my/enable-smartparens-mode ()
-  (smartparens-mode +1)
-  (sp-use-smartparens-bindings))
-
-(eval-after-load "smartparens"
-  '(progn
-     (sp-pair "'" nil :actions :rem)
-     (sp-pair "\\\"" nil :actions :rem)
-     (sp-pair "\\\"" "")
-     (sp-pair "\\(" nil :actions :rem)
-
-     (dolist (mode '(ruby-mode python-mode sh-mode js-mode coffee-mode cperl-mode))
-       (sp-local-pair mode "'" "'"))
-
-     (let ((disabled '("M-<backspace>" "C-M-n" "C-M-p" "C-M-a" "C-M-e" "C-M-w" "C-M-k"
-                       "C-M-f" "C-M-b")))
-       (setq sp-smartparens-bindings
-             (remove-if (lambda (key-command)
-                          (member (car key-command) disabled))
-                        sp-smartparens-bindings)))))
-
-(dolist (mode my/smartparens-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'my/enable-smartparens-mode))
+(dolist (mode my/autopair-enabled-modes)
+  (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
 
 ;; highlight specified words
 (defun my/add-watchwords ()
