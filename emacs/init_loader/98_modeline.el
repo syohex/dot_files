@@ -7,6 +7,7 @@
     (paredit-mode . " Pe")
     (eldoc-mode . "")
     (abbrev-mode . "")
+    (autopair-mode . " ap")
     (undo-tree-mode . " Ut")
     (elisp-slime-nav-mode . " EN")
     (helm-gtags-mode . " HG")

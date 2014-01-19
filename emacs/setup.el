@@ -101,7 +101,7 @@
     direx
 
     ;; parenthesis
-    smartparens
+    autopair
 
     ;; document
     zeal-at-point
