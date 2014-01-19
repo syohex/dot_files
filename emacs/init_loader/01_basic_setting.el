@@ -141,28 +141,6 @@
   '(set-face-attribute 'comint-highlight-input nil
                        :foreground "grey80" :weight 'semi-bold))
 
-;; minibuffer
-(defun my/minibuffer-delete-current-dir ()
-  (interactive)
-  (backward-char 1)
-  (when (search-backward "/" nil t)
-    (delete-region (1+ (point)) (line-end-position))
-    (forward-char 1)))
-
-(defun my/minibuffer-up-dir ()
-  (interactive)
-  (backward-char 1)
-  (search-backward "/" nil t)
-  (forward-char 1))
-
-(defun my/minibuffer-down-dir ()
-  (interactive)
-  (search-forward "/" nil t))
-
-(define-key minibuffer-local-map (kbd "C-M-f") 'my/minibuffer-down-dir)
-(define-key minibuffer-local-map (kbd "C-M-b") 'my/minibuffer-up-dir)
-(define-key minibuffer-local-map (kbd "C-M-u") 'my/minibuffer-delete-current-dir)
-
 ;; winnner
 (winner-mode +1)
 
