@@ -40,7 +40,7 @@
 
   ;; autopair
   (setq autopair-handle-action-fns
-        '(autopair-default-handle-action autopair-python-triple-quote-action)))
+        '(autopair-default-handle-action autopair-python-triple-quote-action))
 
   ;; flycheck
   (setq flycheck-checker 'python-flake8
