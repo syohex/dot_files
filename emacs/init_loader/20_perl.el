@@ -40,10 +40,10 @@
                   '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" flymake-perl-init))))
 
 (defun flymake-perl-root-directory ()
-  (loop with curdir = default-directory
-        for file in '("Makefile.PL" "Build.PL" "cpanfile")
-        when (locate-dominating-file curdir file)
-        return (directory-file-name (expand-file-name it))))
+  (cl-loop with curdir = default-directory
+           for file in '("Makefile.PL" "Build.PL" "cpanfile")
+           when (locate-dominating-file curdir file)
+           return (directory-file-name (expand-file-name it))))
 
 (defun flymake-perl-add-topdir-option ()
   (let ((curdir (directory-file-name (file-name-directory (buffer-file-name))))

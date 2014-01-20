@@ -66,9 +66,9 @@
         (if (find-if (lambda (p) (string= symbol p)) packages)
             (go-import-add current-prefix-arg symbol)
           (let* ((re (concat (regexp-quote symbol) "\\'"))
-                 (matched (loop for package in packages
-                                when (and package (string-match-p re package))
-                                collect pack)))
+                 (matched (cl-loop for package in packages
+                                   when (and package (string-match-p re package))
+                                   collect pack)))
             (if (= (length matched) 1)
                 (go-import-add current-prefix-arg (car matched))
               (call-interactively 'go-import-add))))))))

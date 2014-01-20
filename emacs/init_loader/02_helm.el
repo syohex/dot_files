@@ -1,7 +1,5 @@
 ;;;; helm
-;; configuration helm variable
 (custom-set-variables
- '(helm-idle-delay 0.1)
  '(helm-input-idle-delay 0)
  '(helm-candidate-number-limit 500)
  '(helm-ag-insert-at-point 'symbol)
@@ -31,22 +29,22 @@
 
 ;; my helm utilities
 (defun my/helm-git-project-source (pwd)
-  (loop for (description . option) in
-        '(("Modified Files" . "--modified")
-          ("Untracked Files" . "--others --exclude-standard")
-          ("All Files" . ""))
-        for cmd = (concat "git ls-files " option)
-        collect
-        `((name . ,(format "%s (%s)" description pwd))
-          (init . (lambda ()
-                    (with-current-buffer (helm-candidate-buffer 'global)
-                      (call-process-shell-command ,cmd nil t))))
-          (candidates-in-buffer)
-          (action . (("Open File" . find-file)
-                     ("Open Directory" . (lambda (file)
-                                           (dired (file-name-directory file))))
-                     ("Open File other window" . find-file-other-window)
-                     ("Insert buffer" . insert-file))))))
+  (cl-loop for (description . option) in
+           '(("Modified Files" . "--modified")
+             ("Untracked Files" . "--others --exclude-standard")
+             ("All Files" . ""))
+           for cmd = (concat "git ls-files " option)
+           collect
+           `((name . ,(format "%s (%s)" description pwd))
+             (init . (lambda ()
+                       (with-current-buffer (helm-candidate-buffer 'global)
+                         (call-process-shell-command ,cmd nil t))))
+             (candidates-in-buffer)
+             (action . (("Open File" . find-file)
+                        ("Open Directory" . (lambda (file)
+                                              (dired (file-name-directory file))))
+                        ("Open File other window" . find-file-other-window)
+                        ("Insert buffer" . insert-file))))))
 
 (defun my/helm-git-project-files ()
   (interactive)

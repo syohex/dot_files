@@ -26,10 +26,10 @@
 	  (concat "Gauche help topic : ")
           (current-word))))
   (switch-to-buffer-other-window (get-buffer-create "*info*"))
-  (let ((info-file (loop for file in '("/usr/share/info/gauche-refe.info.gz"
-                                       "/usr/local/share/info/gauche-refe.info.gz")
-                         when (file-exists-p file)
-                         return file)))
+  (let ((info-file (cl-loop for file in '("/usr/share/info/gauche-refe.info.gz"
+                                          "/usr/local/share/info/gauche-refe.info.gz")
+                            when (file-exists-p file)
+                            return file)))
     (info info-file)
     (Info-index topic)))
 

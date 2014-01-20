@@ -65,8 +65,8 @@
 
 ;; auto-complete for CSS
 (defvar ac-source-css-property-names
-  '((candidates . (loop for property in ac-css-property-alist
-                        collect (car property)))))
+  '((candidates . (cl-loop for property in ac-css-property-alist
+                           collect (car property)))))
 
 (defun my-css-mode-hook ()
   (add-to-list 'ac-sources 'ac-source-css-property)

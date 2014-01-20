@@ -4,10 +4,9 @@
 (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
 (run-with-idle-timer 20 t 'elscreen-frame-title-update)
-(setq elscreen-tab-width nil
-      elscreen-tab-display-kill-screen nil)
 
 (custom-set-variables
+ '(elscreen-tab-display-kill-screen nil)
  '(elscreen-buffer-to-nickname-alist nil))
 
 ;; Don't show tab number in mode-line
@@ -21,14 +20,14 @@
 (defun elscreen-frame-title-update ()
   (interactive)
   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
-    (let ((sort-func #'(lambda (a b) (< (car a) (car b)))))
-      (loop with screen-list = (copy-list (elscreen-get-screen-to-name-alist))
-            for (index . name) in (sort screen-list sort-func)
-            for status = (elscreen-status-label index)
-            for name = (my/elscreen-filter-name name)
-            collect (format "%d%s %s" index status name) into screen-names
-            finally
-            (set-frame-name (mapconcat #'identity screen-names " "))))))
+    (let ((sort-func (lambda (a b) (< (car a) (car b)))))
+      (cl-loop with screen-list = (copy-list (elscreen-get-screen-to-name-alist))
+               for (index . name) in (sort screen-list sort-func)
+               for status = (elscreen-status-label index)
+               for name = (my/elscreen-filter-name name)
+               collect (format "%d%s %s" index status name) into screen-names
+               finally
+               (set-frame-name (mapconcat #'identity screen-names " "))))))
 
 (defun my/elscreen-filter-name (screen-name)
   (let ((case-fold-search nil))
@@ -54,10 +53,10 @@
 (defun non-elscreen-current-directory ()
   (let* ((bufsinfo (cadr (cadr (current-frame-configuration))))
          (bufname-list (assoc-default 'buffer-list bufsinfo)))
-    (loop for buf in bufname-list
-          for file = (or (buffer-file-name buf)
-                         (with-current-buffer buf
-                           (when (eq major-mode 'dired-mode)
-                             dired-directory)))
-          when (buffer-file-name buf)
-          return (file-name-directory it))))
+    (cl-loop for buf in bufname-list
+             for file = (or (buffer-file-name buf)
+                            (with-current-buffer buf
+                              (when (eq major-mode 'dired-mode)
+                                dired-directory)))
+             when (buffer-file-name buf)
+             return (file-name-directory it))))

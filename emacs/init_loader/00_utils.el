@@ -1,5 +1,5 @@
 ;; use cl functions and macros in my config files.
-(require 'cl)
+(require 'cl-lib)
 
 ;; my memo utility
 (defun my/open-daily-memo ()
