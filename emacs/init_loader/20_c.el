@@ -8,12 +8,14 @@
 
      (require 'ac-c-headers)))
 
+(custom-set-variables
+ '(c-basic-offset 8))
+
 (defun my/c-mode-init ()
   (c-set-style "k&r")
+  (setq indent-tabs-mode t)
   (c-toggle-electric-state -1)
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-header-symbols t)
-  (setq c-basic-offset 8
-        indent-tabs-mode t))
+  (add-to-list 'ac-sources 'ac-source-c-header-symbols t))
 
 (add-hook 'c-mode-hook 'my/c-mode-init)
