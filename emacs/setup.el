@@ -46,7 +46,7 @@
     ;;;; editing utilities
     ;;autopair
     expand-region wrap-region
-    undo-tree multiple-cursors smartrep
+    undo-tree smartrep
     yasnippet goto-chg
 
     ;;;; buffer utils
