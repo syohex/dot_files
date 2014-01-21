@@ -16,7 +16,7 @@
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
-     (define-key go-mode-map (kbd "C-c .") 'helm-godoc-at-point)
+     (define-key go-mode-map (kbd "C-c ?") 'helm-godoc-at-point)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
 
