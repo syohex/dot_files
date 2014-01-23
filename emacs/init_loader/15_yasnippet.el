@@ -29,14 +29,21 @@
         (nth (position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(defun my/yas-insert-snippet ()
-  (interactive)
-  (let ((sym (thing-at-point 'symbol)))
-    (if sym
-        (call-interactively 'ac-complete-yasnippet)
-      (call-interactively 'yas-insert-snippet))))
+(defun my/yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  (let ((fn (or display-fn 'identity)))
+    (popup-menu* (mapcar (lambda (choice)
+                           (popup-make-item (funcall fn choice) :value choice))
+                         choices)
+                 :prompt prompt
+                 :isearch t)))
 
-(global-set-key (kbd "M-=") 'my/yas-insert-snippet)
+(defun my/yas-insert-snippet-with-popup ()
+  (interactive)
+  (let ((yas-prompt-functions '(my/yas-popup-isearch-prompt)))
+    (call-interactively 'yas-insert-snippet)))
+
+(global-set-key (kbd "M-=") 'yas-insert-snippet)
+(global-set-key (kbd "M-q") 'my/yas-insert-snippet-with-popup)
 
 (eval-after-load "yasnippet"
   '(progn
