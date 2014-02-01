@@ -3,6 +3,7 @@
 ;; enable yasnippet mode
 (autoload 'yas-minor-mode-on "yasnippet" nil t)
 (dolist (hook '(c-mode-hook
+                c++-mode-hook
                 java-mode-hook
                 cperl-mode-hook
                 emacs-lisp-mode-hook
