@@ -31,8 +31,7 @@
 
 (defun my/elscreen-filter-name (screen-name)
   (let ((case-fold-search nil))
-    (cond ((string-match "^WL" screen-name) "Wl(draft)")
-          ((string-match "Minibuf" screen-name)
+    (cond ((string-match "Minibuf" screen-name)
            (replace-regexp-in-string "\\*Minibuf-\\w\\*" "" screen-name))
           (t screen-name))))
 
