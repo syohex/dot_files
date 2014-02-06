@@ -8,7 +8,7 @@
      (setq flymake-check-was-interrupted t)))
 
 (defsubst my/flycheck-enable-mode-p (mode)
-  (or (memq mode my/flycheck-enable-modes) (memq mode '(go-mode))))
+  (memq mode my/flycheck-enable-modes))
 
 (defsubst my/flycheck-reset-function ()
   (setq flycheck-display-errors-function 'flycheck-display-error-messages))
@@ -52,12 +52,10 @@
 (defvar my/flycheck-enable-modes
   '(coffee-mode
     python-mode
+    go-mode
     js-mode
     haskell-mode
     ruby-mode))
-
-(dolist (mode my/flycheck-enable-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'flycheck-mode))
 
 (custom-set-variables
  '(flycheck-display-errors-delay 0.5))
