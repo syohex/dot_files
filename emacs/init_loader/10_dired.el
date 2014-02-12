@@ -10,6 +10,7 @@
      (load-library "ls-lisp")
 
      ;; binding
+     (define-key dired-mode-map (kbd "f") 'helm-find-files)
      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
      (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
      (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
