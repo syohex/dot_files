@@ -12,10 +12,9 @@
   '(progn
      (require 'go-autocomplete)
 
-     (define-key go-mode-map (kbd "C-c C-a") 'my/go-import-add)
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
-     (define-key go-mode-map (kbd "C-c C-s") 'my/go-cleanup)
+     (define-key go-mode-map (kbd "C-c C-s") 'gofmt)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
@@ -38,13 +37,6 @@
                             (replace-regexp-in-string "\\.go\\'" "_test.go" basename)))
            (find-func (if current-prefix-arg 'find-file-other-window 'find-file)))
       (funcall find-func switched-file))))
-
-(defun my/go-cleanup ()
-  (interactive)
-  (save-buffer)
-  (go-remove-unused-imports nil)
-  (gofmt)
-  (save-buffer))
 
 (defun my/go-test ()
   (interactive)
