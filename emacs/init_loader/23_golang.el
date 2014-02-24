@@ -1,6 +1,9 @@
 ;; eldoc
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(custom-set-variables
+ '(gofmt-command "goimports"))
+
 ;;; helm-godoc
 (dolist (func '(helm-godoc helm-godoc-at-point))
   (autoload func "helm-godoc" nil t))
@@ -54,21 +57,3 @@
     (let ((compilation-scroll-output t)
           (cmd (concat "go test " package)))
       (compile cmd))))
-
-(defun my/go-import-add ()
-  (interactive)
-  (save-excursion
-    (skip-chars-backward (concat go-identifier-regexp "\\."))
-    (let ((symbol (thing-at-point 'symbol))
-          (packages (go-packages)))
-      (if (not symbol)
-          (call-interactively 'go-import-add)
-        (if (find-if (lambda (p) (string= symbol p)) packages)
-            (go-import-add current-prefix-arg symbol)
-          (let* ((re (concat (regexp-quote symbol) "\\'"))
-                 (matched (cl-loop for package in packages
-                                   when (and package (string-match-p re package))
-                                   collect pack)))
-            (if (= (length matched) 1)
-                (go-import-add current-prefix-arg (car matched))
-              (call-interactively 'go-import-add))))))))
