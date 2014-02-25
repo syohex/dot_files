@@ -14,13 +14,18 @@
 
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
-     (define-key go-mode-map (kbd "C-c C-s") 'gofmt)
+     (define-key go-mode-map (kbd "C-c C-s") 'my/gofmt)
      (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
      (define-key go-mode-map (kbd "C-c ?") 'helm-godoc-at-point)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
+
+(defun my/gofmt ()
+  (save-buffer)
+  (gofmt)
+  (save-buffer))
 
 (defun my/go-mode-hook ()
   (setq flycheck-checker 'go-build))
