@@ -122,7 +122,7 @@
     go-eldoc
 
     ;; helm
-    helm-gtags helm-descbinds helm-ag helm-pydoc
+    helm-gtags helm-descbinds helm-ag helm-pydoc helm-perldoc
     ))
 
 (dolist (package base-packages)
@@ -150,7 +150,6 @@
     ;; my own utilities
     "https://raw.github.com/syohex/emacs-utils/master/editutil.el"
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
-    "https://raw.github.com/syohex/emacs-helm-perldoc/master/helm-perldoc.el"
     "https://raw.github.com/syohex/emacs-helm-godoc/master/helm-godoc.el"
 
     ;; 3rd pirty
