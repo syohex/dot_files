@@ -4,8 +4,6 @@
          '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
 (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
 
-(autoload 'helm-perldoc:setup "helm-perldoc")
-
 (eval-after-load "cperl-mode"
   '(progn
      (cperl-set-style "PerlStyle")
