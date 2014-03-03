@@ -33,7 +33,7 @@
   (interactive)
   (if (and (boundp 'flycheck-mode) flycheck-mode)
       (my/flycheck-reset-function)
-   (let* ((line-no (flymake-current-line-no))
+   (let* ((line-no (line-number-at-pos))
           (cur-err-info (flymake-find-err-info flymake-err-info line-no))
           (line-err-info-list (nth 0 cur-err-info))
           (count (length line-err-info-list)))
