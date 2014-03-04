@@ -38,13 +38,7 @@
                  :prompt prompt
                  :isearch t)))
 
-(defun my/yas-insert-snippet-with-popup ()
-  (interactive)
-  (let ((yas-prompt-functions '(my/yas-popup-isearch-prompt)))
-    (call-interactively 'yas-insert-snippet)))
-
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "M-q") 'my/yas-insert-snippet-with-popup)
 
 (eval-after-load "yasnippet"
   '(progn
