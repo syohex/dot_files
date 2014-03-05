@@ -22,4 +22,5 @@
 
 (eval-after-load "paredit"
   '(progn
+     (define-key paredit-mode-map (kbd "M-q") nil)
      (define-key paredit-mode-map (kbd "M-)") 'move-past-close-and-reindent)))
