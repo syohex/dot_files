@@ -51,7 +51,6 @@
 
 ;; magit
 (global-set-key (kbd "M-g M-g") 'magit-status)
-(global-set-key (kbd "M-g M-b") 'magit-branch-manager)
 (eval-after-load "magit"
   '(progn
 

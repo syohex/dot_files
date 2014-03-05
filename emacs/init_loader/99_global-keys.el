@@ -17,7 +17,7 @@
 ;; helm binding
 (global-set-key (kbd "M-.") 'my/helm-etags-select)
 (global-set-key (kbd "C-M-z")   'helm-resume)
-(global-set-key (kbd "C-x C-x") 'helm-find-files)
+(global-set-key (kbd "C-M-c") 'helm-find-files)
 (global-set-key (kbd "C-x C-p") 'my/helm-git-project-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-l") 'helm-locate)
@@ -28,7 +28,7 @@
 (global-set-key (kbd "C-x .")   'helm-ag-this-file)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
-(global-set-key (kbd "C-x r b") 'helm-bookmarks)
+(global-set-key (kbd "M-g M-b") 'helm-bookmarks)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
