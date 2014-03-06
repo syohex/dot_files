@@ -5,8 +5,6 @@
 ;; flyspell
 (eval-after-load "flyspell"
   '(progn
-     (define-key flyspell-mode-map (kbd "C-M-i") nil)
-     (define-key flyspell-mode-map (kbd "M-n") 'flyspell-goto-next-error)
-     (define-key flyspell-mode-map (kbd "M-.") 'ispell-word)))
+     (define-key flyspell-mode-map (kbd "C-M-i") nil)))
 
 (add-to-list 'auto-mode-alist '("Changes\\'" . flyspell-mode))
