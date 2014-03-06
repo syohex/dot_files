@@ -12,7 +12,7 @@
     (elisp-slime-nav-mode . " EN")
     (helm-gtags-mode . " HG")
     (flymake-mode . " Fm")
-    (git-gutter-mode . " GG")
+    (git-gutter-mode . " Git")
     ;; Major modes
     (lisp-interaction-mode . "Li")
     (python-mode . "Py")
