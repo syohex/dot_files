@@ -206,11 +206,6 @@ export PYTHONSTARTUP=~/.pythonsetup
 # haskell setting
 [[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
 
-# Ocaml Setting
-if [[ -f /home/syohei/.opam/opam-init/init.zsh ]]; then
-    source /home/syohei/.opam/opam-init/init.zsh > /dev/null 2>&1 || true
-fi
-
 # golang
 if [ -d /opt/go ]; then
     if [[ -e /opt/go/bin/go ]]; then
