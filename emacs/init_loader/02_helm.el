@@ -27,6 +27,11 @@
      (set-face-attribute 'helm-ff-directory nil
                          :foreground "cyan" :background nil :underline t)))
 
+(eval-after-load "helm-grep"
+  '(progn
+     (set-face-attribute 'helm-grep-lineno nil :foreground "GreenYellow")
+     (set-face-attribute 'helm-moccur-buffer nil :foreground "yellow")))
+
 ;; my helm utilities
 (defun my/helm-git-project-source (pwd)
   (cl-loop for (description . option) in
