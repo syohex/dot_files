@@ -8,4 +8,4 @@
   `((,(kbd "C-M-j") . dabbrev-expand)
     (,(kbd "C-M-i") . my/auto-complete)
     (,(kbd "M-q") . editutil-forward-char)
-    (,(kbd "M-C-o") . other-window)))
+    (,(kbd "C-M-o") . editutil-other-window)))
