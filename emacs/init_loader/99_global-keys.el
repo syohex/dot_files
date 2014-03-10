@@ -45,8 +45,8 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "l") 'editutil-copy-line)
-(define-key my/ctrl-q-map (kbd ".") 'highlight-symbol-at-point)
-(define-key my/ctrl-q-map (kbd "?") 'highlight-symbol-remove-all)
+(define-key my/ctrl-q-map (kbd ".") 'editutil-highlight-symbol-in-defun)
+(define-key my/ctrl-q-map (kbd "?") 'editutil-highlight-clear-overlays)
 (define-key my/ctrl-q-map (kbd "s") 'editutil-unwrap-at-point)
 (define-key my/ctrl-q-map (kbd "r") 'editutil-replace-wrapped-string)
 
