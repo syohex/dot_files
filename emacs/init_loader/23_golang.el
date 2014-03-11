@@ -23,7 +23,8 @@
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
 
 (defun my/gofmt ()
-  (save-buffer)
+  (when (buffer-modified-p)
+    (save-buffer))
   (gofmt)
   (save-buffer))
 
