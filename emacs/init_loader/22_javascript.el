@@ -8,7 +8,8 @@
 
 ;; coffeescript
 (custom-set-variables
- '(coffee-tab-width 2))
+ '(coffee-tab-width 2)
+ '(coffee-args-compile '("-c" "-m")))
 
 (defun my/coffee-edit-next-line ()
   (interactive)
@@ -29,3 +30,4 @@
   (setq flycheck-checker 'coffee))
 
 (add-hook 'coffee-mode-hook 'my/coffee-mode-hook)
+(add-hook 'coffee-after-compile-hook 'sourcemap-goto-corresponding-point)
