@@ -60,7 +60,7 @@
     flycheck
 
     ;; coffee-script
-    coffee-mode
+    coffee-mode sourcemap
 
     ;; perl
     cperl-mode
