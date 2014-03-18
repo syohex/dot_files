@@ -1,0 +1,6 @@
+# name : (ert-deftest test-name () description ...)
+# key  : ert-deftest
+# --
+(ert-deftest $0 ()
+  ""
+  )
