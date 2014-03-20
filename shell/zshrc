@@ -250,10 +250,12 @@ zstyle ':completion:*' recent-dirs-insert both
 # zaw : anything
 if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     source ~/.zsh/zaw/zaw.zsh
+    ZAW_EDITOR='emacsclient -n'
     bindkey '^[$' zaw-history
     bindkey '^[@' zaw-cdr
     bindkey '^[#' zaw-git-directories
     bindkey '^xb' zaw-git-recent-branches
+    bindkey '^x^f' zaw-git-files
 fi
 
 # for git completion(too slowly in big repository)
