@@ -49,4 +49,3 @@
 
 ;; editutil
 (require 'editutil)
-(editutil-default-setup)

@@ -44,11 +44,6 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
-(define-key my/ctrl-q-map (kbd "l") 'editutil-copy-line)
-(define-key my/ctrl-q-map (kbd ".") 'editutil-highlight-symbol-in-defun)
-(define-key my/ctrl-q-map (kbd "?") 'editutil-highlight-clear-overlays)
-(define-key my/ctrl-q-map (kbd "s") 'editutil-unwrap-at-point)
-(define-key my/ctrl-q-map (kbd "r") 'editutil-replace-wrapped-string)
 
 (smartrep-define-key
     global-map "C-q" '(("<" . 'winner-undo)
@@ -61,6 +56,9 @@
 (smartrep-define-key
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
+
+;; editutil mappings
+(editutil-default-setup)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
