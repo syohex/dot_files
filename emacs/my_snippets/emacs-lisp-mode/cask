@@ -1,0 +1,11 @@
+# name : Cask Template
+# key  : cask
+# --
+(source gnu)
+(source melpa)
+(source marmalade)
+
+(package "$0" "0" "")
+
+(development
+ (depends-on "ert"))
