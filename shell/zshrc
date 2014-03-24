@@ -96,21 +96,12 @@ bindkey "^N" history-beginning-search-forward-end
 REPORTTIME=10
 
 # Setting for MacOSX
-TEST_CONFIG=${HOME}/dot_files/emacs/test_emacs
-KERNEL_EMACS_CONFIG=${HOME}/dot_files/emacs/kernel-emacs.el
 case "$OSTYPE" in
 darwin*)
-        # java setting for using iterm on mac
-        alias javac='javac -J-Dfile.encoding=UTF-8'
-        alias java='java -Dfile.encoding=UTF-8'
-        EMACSAPP="/Applications/Emacs.app/Contents/MacOS/Emacs"
-        alias test-emacs="$EMACSAPP -Q -l $TEST_CONFIG"
-        alias kernel-emacs="$EMACSAPP -Q -l $KERNEL_EMACS_CONFIG"
-        ;;
-linux-gnu)
-        alias test-emacs="emacs -Q -l $TEST_CONFIG"
-        alias kernel-emacs="TERM=xterm emacs -Q -l $KERNEL_EMACS_CONFIG"
-        ;;
+    # java setting for using iterm on mac
+    alias javac='javac -J-Dfile.encoding=UTF-8'
+    alias java='java -Dfile.encoding=UTF-8'
+    ;;
 esac
 
 # setting LANG, this should be UTF-8
