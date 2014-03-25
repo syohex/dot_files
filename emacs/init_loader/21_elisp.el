@@ -20,3 +20,6 @@
 ;; for regexp color
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
 (set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
+
+;; Cask
+(add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
