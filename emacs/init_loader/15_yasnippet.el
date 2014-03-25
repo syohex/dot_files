@@ -17,11 +17,6 @@
                 wl-draft-mode-hook))
   (add-hook hook 'yas-minor-mode-on))
 
-;; makefile does not work auto-indent
-(defun my/yas-disable-indent-line ()
-  (setq-local yas-indent-line nil))
-(add-hook 'makefile-mode-hook 'my/yas-disable-indent-line)
-
 ;; helm interface
 (defun my/yas-prompt (prompt choices &optional display-fn)
   (let* ((names (cl-loop for choice in choices

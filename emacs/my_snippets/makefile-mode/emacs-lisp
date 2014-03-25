@@ -1,5 +1,6 @@
 # name: emacs lisp project makefile
 # key: elisp
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
 # --
 .PHONY : test
 
