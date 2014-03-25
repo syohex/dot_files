@@ -13,8 +13,14 @@
                 ruby-mode-hook
                 go-mode-hook
                 sh-mode-hook
+                makefile-mode-hook
                 wl-draft-mode-hook))
   (add-hook hook 'yas-minor-mode-on))
+
+;; makefile does not work auto-indent
+(defun my/yas-disable-indent-line ()
+  (setq-local yas-indent-line nil))
+(add-hook 'makefile-mode-hook 'my/yas-disable-indent-line)
 
 ;; helm interface
 (defun my/yas-prompt (prompt choices &optional display-fn)
