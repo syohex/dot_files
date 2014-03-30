@@ -192,10 +192,10 @@ fi
 export PYTHONSTARTUP=~/.pythonsetup
 
 ## Cask
-[[ -d ~/.cask/bin ]] && path=(~/.cask/bin $path)
+path=(~/.cask/bin(N-/) $path)
 
 # haskell setting
-[[ -d ~/.cabal/bin ]] && path=(~/.cabal/bin $path)
+path=(~/.cabal/bin(N-/) $path)
 
 # golang
 if [ -d /opt/go ]; then
