@@ -37,15 +37,15 @@
      (add-to-list 'flymake-allowed-file-name-masks
                   '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" my/flymake-perl-init))))
 
-(defun flymake-perl-root-directory ()
+(defun my/flymake-perl-root-directory ()
   (cl-loop with curdir = default-directory
            for file in '("Makefile.PL" "Build.PL" "cpanfile")
            when (locate-dominating-file curdir file)
            return (directory-file-name (expand-file-name it))))
 
-(defun flymake-perl-add-topdir-option ()
+(defun my/flymake-perl-add-topdir-option ()
   (let ((curdir (directory-file-name (file-name-directory (buffer-file-name))))
-        (rootdir (flymake-perl-root-directory)))
+        (rootdir (my/flymake-perl-root-directory)))
     (when (and rootdir (not (string= curdir rootdir)))
       (format "-I%s" rootdir))))
 
@@ -55,7 +55,7 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name)))
-         (topdir (flymake-perl-add-topdir-option)))
+         (topdir (my/flymake-perl-add-topdir-option)))
     (if topdir
         `("perl" ,(list "-MProject::Libs" topdir "-wc" local-file))
       `("perl" ,(list "-MProject::Libs" "-wc" local-file)))))
