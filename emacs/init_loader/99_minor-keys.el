@@ -7,5 +7,7 @@
   "" ;; Not display mode-line
   `((,(kbd "C-M-j") . dabbrev-expand)
     (,(kbd "C-M-i") . my/auto-complete)
+    (,(kbd "M-e") . editutil-forward-char)
+    (,(kbd "M-a") . editutil-backward-char)
     (,(kbd "M-q") . editutil-forward-char)
     (,(kbd "C-M-o") . editutil-other-window)))
