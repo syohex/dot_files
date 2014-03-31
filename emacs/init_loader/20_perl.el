@@ -35,7 +35,7 @@
 (eval-after-load "flymake"
   '(progn
      (add-to-list 'flymake-allowed-file-name-masks
-                  '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" flymake-perl-init))))
+                  '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" my/flymake-perl-init))))
 
 (defun flymake-perl-root-directory ()
   (cl-loop with curdir = default-directory
@@ -49,7 +49,7 @@
     (when (and rootdir (not (string= curdir rootdir)))
       (format "-I%s" rootdir))))
 
-(defun flymake-perl-init ()
+(defun my/flymake-perl-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                      'flymake-create-temp-inplace))
          (local-file (file-relative-name
