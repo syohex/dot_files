@@ -1,6 +1,11 @@
 ;; SDIC dictonary for Linux
 (autoload 'sdic-describe-word "sdic" "search word" t nil)
-(global-set-key (kbd "C-c w") 'sdic-describe-word)
+(global-set-key (kbd "C-c w") 'my/sdic-describe-word)
+
+(defun my/sdic-describe-word ()
+  (interactive)
+  (let ((word (thing-at-point 'word)))
+    (sdic-describe-word (or word (read-string "Search word: ")))))
 
 (eval-after-load "sdic"
   '(progn
