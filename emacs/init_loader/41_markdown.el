@@ -27,6 +27,5 @@
     ("fn"   "^\\[\\^\\(.+?\\)\\]" 1) ))
 
 (defun my/markdown-mode-hook ()
-  (setq imenu-generic-expression markdown-imenu-generic-expression)
-  (add-to-list 'ac-sources 'ac-source-look))
+  (setq imenu-generic-expression markdown-imenu-generic-expression))
 (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
