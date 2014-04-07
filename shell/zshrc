@@ -180,9 +180,6 @@ if [ -e ~/.nvm/nvm.sh ]; then
     export NODE_PATH=${HOME}/.nvm/`node --version`/lib/node_modules:$NODE_PATH
 fi
 
-# pythonz
-[[ -e ~/.pythonz/etc/bashrc ]] && source ~/.pythonz/etc/bashrc
-
 # setting for python virtual env
 VIRTUALENV_ACTIVE=~/virtual_env/bin/activate
 if [ -e ${VIRTUALENV_ACTIVE} ]; then
