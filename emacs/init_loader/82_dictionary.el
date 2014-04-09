@@ -4,7 +4,8 @@
 
 (defun my/sdic-describe-word ()
   (interactive)
-  (let ((word (thing-at-point 'word)))
+  (let ((word (and (not (member (char-to-string (char-after)) '(" " "\t" "\n" "\r")))
+                   (thing-at-point 'word))))
     (sdic-describe-word (or word (read-string "Search word: ")))))
 
 (eval-after-load "sdic"
