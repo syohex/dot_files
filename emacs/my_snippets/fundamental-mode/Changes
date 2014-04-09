@@ -1,0 +1,7 @@
+# name : Changes Template
+# key  : changes
+# --
+
+Revision history for $0
+
+Revision 0.01 `(format-time-string "%Y/%m/%d" (current-time))` syohex
