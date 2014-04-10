@@ -101,6 +101,12 @@
                     :foreground "LightPink3" :weight 'bold)
 (which-function-mode +1)
 
+(defun my/show-here-function ()
+  (interactive)
+  (if (not which-func-mode)
+      (message "`which-func-mode' is not enabled")
+    (message "%s" (gethash (selected-window) which-func-table))))
+
 ;; invisible mouse cursor when editing text
 (setq make-pointer-invisible t)
 
