@@ -56,11 +56,8 @@
 
 ;; Preview is disable as default
 (custom-set-variables
- '(emmet-preview-default nil))
-
-(defun my/emmet-mode-hook ()
-  (setq emmet-indentation 2))
-(add-hook 'emmet-mode-hook 'my/emmet-mode-hook)
+ '(emmet-preview-default nil)
+ '(emmet-indentation 2))
 
 ;; auto-complete for CSS
 (defvar ac-source-css-property-names
