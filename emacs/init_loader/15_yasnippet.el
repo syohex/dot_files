@@ -28,7 +28,7 @@
                        (action . (("Insert snippet" . (lambda (arg) arg))))))
                     "*helm yas/prompt*")))
     (if selected
-        (nth (position selected names :test 'equal) choices)
+        (nth (cl-position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
 (defun my/yas-popup-isearch-prompt (prompt choices &optional display-fn)

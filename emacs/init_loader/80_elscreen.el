@@ -21,7 +21,7 @@
   (interactive)
   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
     (let ((sort-func (lambda (a b) (< (car a) (car b)))))
-      (cl-loop with screen-list = (copy-list (elscreen-get-screen-to-name-alist))
+      (cl-loop with screen-list = (cl-copy-list (elscreen-get-screen-to-name-alist))
                for (index . name) in (sort screen-list sort-func)
                for status = (elscreen-status-label index)
                for name = (my/elscreen-filter-name name)
