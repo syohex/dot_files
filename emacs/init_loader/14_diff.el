@@ -25,8 +25,7 @@
      (define-key diff-mode-map (kbd "C-M-p") 'diff-file-prev)))
 
 ;; ediff
-(eval-after-load "ediff"
-  '(progn
-     (setq ediff-window-setup-function 'ediff-setup-windows-plain
-           ediff-split-window-function 'split-window-horizontally
-           ediff-diff-options "-twB")))
+(custom-set-variables
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-diff-options "-twB"))
