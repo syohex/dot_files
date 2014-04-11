@@ -1,4 +1,5 @@
 ;; setting for diff-mode and ediff
+(add-hook 'diff-mode-hook 'read-only-mode)
 (eval-after-load "diff-mode"
   '(progn
      (set-face-attribute 'diff-added-face nil
