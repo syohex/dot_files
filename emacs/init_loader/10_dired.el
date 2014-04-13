@@ -10,6 +10,7 @@
      (load-library "ls-lisp")
 
      ;; binding
+     (define-key dired-mode-map (kbd "D") 'sgit:diff)
      (define-key dired-mode-map (kbd "K") 'dired-k)
      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
      (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
