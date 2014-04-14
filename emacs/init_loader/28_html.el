@@ -67,4 +67,4 @@
 (defun my/css-mode-hook ()
   (add-to-list 'ac-sources 'ac-source-css-property)
   (add-to-list 'ac-sources 'ac-source-css-property-names))
-(add-hook 'css-mode-hook 'my-css/mode-hook)
+(add-hook 'css-mode-hook 'my/css-mode-hook)
