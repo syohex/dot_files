@@ -29,6 +29,9 @@
 (depends-on "popwin")
 (depends-on "buffer-move")
 
+;; Window
+(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window")
+
 ;; Key utility
 (depends-on "smartrep")
 

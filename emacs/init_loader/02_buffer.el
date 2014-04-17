@@ -40,7 +40,6 @@
 (global-set-key (kbd "M-9") 'bs-cycle-next)
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
 
-(require 'zoom-window)
 (custom-set-variables
  '(zoom-window-mode-line-color "DarkGreen")
  '(zoom-window-use-elscreen t))
