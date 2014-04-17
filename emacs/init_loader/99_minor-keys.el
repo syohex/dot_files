@@ -9,5 +9,6 @@
     (,(kbd "C-M-i") . my/auto-complete)
     (,(kbd "M-e") . editutil-forward-char)
     (,(kbd "M-a") . editutil-backward-char)
-    (,(kbd "M-q") . editutil-forward-char)
+    (,(kbd "M-q") . editutil-zap-to-char)
+    (,(kbd "M-Q") . editutil-zap-to-char-backward)
     (,(kbd "C-M-o") . editutil-other-window)))
