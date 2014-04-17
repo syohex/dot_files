@@ -132,6 +132,7 @@
 
 ;;;; go-mode
 (depends-on "go-eldoc")
+(depends-on "helm-godoc" :git "https://github.com/syohex/emacs-helm-godoc.git")
 
 ;;;; helm
 (depends-on "helm-gtags")
