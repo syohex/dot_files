@@ -1,36 +1,58 @@
 (source gnu)
 (source melpa)
 
-(depends-on "auto-complete")
-(depends-on "fuzzy")
-
+;; auto-complete
 (depends-on "auto-complete")
 (depends-on "fuzzy")
 (depends-on "popup")
-(depends-on "pos-tip")
-(depends-on "vline")
-(depends-on "col-highlight")
-(depends-on "rainbow-mode")
-(depends-on "autopair")
+;;(depends-on "pos-tip")
+
+;; region
 (depends-on "expand-region")
 (depends-on "wrap-region")
+
+;; undo
 (depends-on "undo-tree")
-(depends-on "smartrep")
+
+;; highlight
+(depends-on "vline")
+(depends-on "col-highlight")
+
+;; snippet
 (depends-on "yasnippet")
+
+;; cursor
 (depends-on "goto-chg")
-(depends-on "popwin")
+
+;; buffer
 (depends-on "elscreen")
-(depends-on "yascroll")
+(depends-on "popwin")
 (depends-on "buffer-move")
+
+;; Key utility
+(depends-on "smartrep")
+
+;; Scroll bar
+(depends-on "yascroll")
+
+;; Haskell
 (depends-on "haskell-mode")
 (depends-on "ghc")
-(depends-on "flymake")
-(depends-on "flycheck")
+
+;; CoffeeScript
 (depends-on "coffee-mode")
 (depends-on "sourcemap")
+
+;; Perl
 (depends-on "cperl-mode")
+
+;; Go
 (depends-on "go-mode")
+
+;; Python
 (depends-on "jedi")
+
+;; Ruby
 (depends-on "ruby-block")
 (depends-on "ruby-compilation")
 (depends-on "ruby-end")
@@ -39,36 +61,79 @@
 (depends-on "ruby-test-mode")
 (depends-on "ruby-tools")
 (depends-on "inf-ruby")
+
+;; Programming Misc
+(depends-on "autopair")
+(depends-on "rainbow-mode")
+
+;; Emacs Lisp
 (depends-on "elisp-slime-nav")
-(depends-on "thingopt")
-(depends-on "slime")
 (depends-on "paredit")
-(depends-on "scheme-complete")
+
+;; Common Lisp
+(depends-on "slime")
+;;(depends-on "scheme-complete")
+
+;; Validation
+(depends-on "flycheck")
+
+;; Shell
 (depends-on "quickrun")
+
+;; Markup language
 (depends-on "web-mode")
-(depends-on "yaml-mode")
 (depends-on "emmet-mode")
+(depends-on "yaml-mode")
+
+;; markdown
 (depends-on "markdown-mode")
 (depends-on "markdown-mode+")
+
+;; helm
 (depends-on "helm")
+
+;; VCS
 (depends-on "magit")
 (depends-on "git-gutter")
+
+;; Directory
+(depends-on "dired-k")
 (depends-on "direx")
-(depends-on "autopair")
+
+;; Documentation
 (depends-on "zeal-at-point")
+
+;; Setup
 (depends-on "init-loader")
-(depends-on "reverse-theme")
 (depends-on "exec-path-from-shell")
+
+;; Theme
+(depends-on "reverse-theme")
+
+;; Search
 (depends-on "anzu")
 
+;; clojure
+(depends-on "clojure-mode")
+(depends-on "cider")
+
 ;; sub packages
+
+;;;; auto-complete sources
 (depends-on "ac-slime")
+(depends-on "ac-nrepl")
 (depends-on "go-autocomplete")
-(depends-on "robe")
 (depends-on "ac-ispell")
 (depends-on "ac-etags")
+(depends-on "robe")
+
+;;;; popwin
 (depends-on "import-popwin")
+
+;;;; go-mode
 (depends-on "go-eldoc")
+
+;;;; helm
 (depends-on "helm-gtags")
 (depends-on "helm-descbinds")
 (depends-on "helm-ag")
