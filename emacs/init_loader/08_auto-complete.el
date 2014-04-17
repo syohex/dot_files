@@ -12,6 +12,7 @@
 (dolist (mode '(git-commit-mode
                 coffee-mode
                 go-mode
+                cider-repl-mode
                 markdown-mode
                 fundamental-mode
                 org-mode
