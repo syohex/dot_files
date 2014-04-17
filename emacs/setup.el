@@ -23,116 +23,13 @@
 (add-to-list 'load-path my/elisp-directory)
 
 ;; check commands
-(dolist (cmd '("curl"))
+(dolist (cmd '("curl" "cask"))
   (unless (executable-find cmd)
     (error "Please install %s" cmd)))
 
 ;; Emacs package system
-(require 'package)
-(setq package-user-dir (concat user-emacs-directory "elpa"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
-
-(package-refresh-contents)
-
-(defvar base-packages
-  '(
-    ;;;; for auto-complete
-    auto-complete fuzzy popup pos-tip
-
-    ;;;; highlight
-    vline col-highlight rainbow-mode
-
-    ;;;; editing utilities
-    ;;autopair
-    expand-region wrap-region
-    undo-tree smartrep
-    yasnippet goto-chg
-
-    ;;;; buffer utils
-    popwin elscreen yascroll buffer-move
-
-    ;;;; programming
-    ;; haskell
-    haskell-mode ghc
-
-    ;; flymake
-    flycheck
-
-    ;; coffee-script
-    coffee-mode sourcemap
-
-    ;; perl
-    cperl-mode
-
-    ;; go
-    go-mode
-
-    ;; python
-    jedi
-
-    ;; ruby
-    ruby-block ruby-compilation ruby-end ruby-interpolation
-    ruby-mode ruby-test-mode ruby-tools inf-ruby
-
-    ;; emacs-lisp
-    elisp-slime-nav thingopt
-
-    ;; Common Lisp
-    slime paredit
-
-    ;; scheme
-    scheme-complete
-
-    ;; common utility
-    quickrun
-
-    ;;;; markup language
-    htmlize web-mode yaml-mode emmet-mode
-    markdown-mode markdown-mode+
-
-    ;; helm
-    helm
-
-    ;; git
-    magit git-gutter
-
-    ;; directory operation
-    direx
-
-    ;; parenthesis
-    autopair
-
-    ;; document
-    zeal-at-point
-
-    ;; basic
-    init-loader reverse-theme exec-path-from-shell anzu
-    ))
-
-(defvar sub-packages
-  '(
-    ;; auto-complete
-    ac-slime go-autocomplete robe ac-ispell ac-etags
-
-    ;; popwin
-    import-popwin
-
-    ;; go
-    go-eldoc
-
-    ;; helm
-    helm-gtags helm-descbinds helm-ag helm-pydoc helm-perldoc
-    ))
-
-(dolist (package base-packages)
-  (when (or (not (package-installed-p package))
-            (memq package '(cperl-mode ruby-mode)))
-    (package-install package)))
-
-(dolist (package sub-packages)
-  (unless (package-installed-p package)
-    (package-install package)))
+(require 'cask "~/.cask/cask.el")
+(cask-initialize user-emacs-directory)
 
 (defun my/download-url (url)
   (assert (stringp url))
@@ -150,10 +47,8 @@
     ;; my own utilities
     "https://raw.github.com/syohex/emacs-utils/master/editutil.el"
     "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
-    "https://raw.github.com/syohex/emacs-helm-godoc/master/helm-godoc.el"
 
     ;; 3rd pirty
-    "https://raw.github.com/renormalist/emacs-pod-mode/master/pod-mode.el"
     "http://www.emacswiki.org/emacs/download/xs-mode.el"
     "http://www.neilvandyke.org/quack/quack.el"
     ))
