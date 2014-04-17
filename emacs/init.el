@@ -6,9 +6,12 @@
 (add-to-list 'load-path (concat user-emacs-directory "elisps"))
 
 ;; Emacs package system
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
+;;(require 'package)
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;;(package-initialize)
 
 ;; load environment variables
 (let ((envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
