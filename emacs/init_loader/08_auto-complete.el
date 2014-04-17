@@ -41,5 +41,5 @@
 ;; ac-ispell
 (ac-ispell-setup)
 
-(dolist (hook '(text-mode-hook markdown-mode-hook git-commit-mode-hook))
+(dolist (hook '(text-mode-hook markdown-mode-hook))
   (add-hook hook 'ac-ispell-ac-setup))
