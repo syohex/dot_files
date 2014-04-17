@@ -1,6 +1,6 @@
 ;; Emacs lisp install file
 
-(require 'cl)
+(require 'cl-lib)
 
 (defvar my/elisp-directory)
 (defvar my/init-loader-directory)
@@ -37,10 +37,11 @@
       (message "Success Download %s" url)
     (message "Failed Download %s" url)))
 
-(defun my/system (cmd)
-  (message "Execute '%s'" cmd)
-  (unless (zerop (call-process-shell-command cmd))
-    (error "%s is failed!!" cmd)))
+(cl-defun my/system (&rest cmds)
+  (dolist (cmd cmds)
+    (message "Execute '%s'" cmd)
+    (unless (zerop (call-process-shell-command cmd))
+      (error "%s is failed!!" cmd))))
 
 (defvar my/nonelpa-packages-url
   '(
@@ -60,8 +61,8 @@
     (message "Install HyperSpec(Wait a minute)")
     (unless (file-exists-p "HyperSpec-7-0.tar.gz")
       (my/download-url "ftp://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz"))
-    (my/system "tar xf HyperSpec-7-0.tar.gz")
-    (my/system "rm -f HyperSpec-7-0.tar.gz")))
+    (my/system "tar xf HyperSpec-7-0.tar.gz"
+               "rm -f HyperSpec-7-0.tar.gz")))
 
 (load-theme 'reverse t t)
 (enable-theme 'reverse)
