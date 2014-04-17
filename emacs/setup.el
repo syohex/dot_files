@@ -44,13 +44,8 @@
 
 (defvar my/nonelpa-packages-url
   '(
-    ;; my own utilities
-    "https://raw.github.com/syohex/emacs-utils/master/editutil.el"
-    "https://raw.github.com/syohex/emacs-utils/master/sgit.el"
-
     ;; 3rd pirty
-    "http://www.emacswiki.org/emacs/download/xs-mode.el"
-    "http://www.neilvandyke.org/quack/quack.el"
+;;    "http://www.neilvandyke.org/quack/quack.el"
     ))
 
 ;; setup nonelpa packages

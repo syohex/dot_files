@@ -30,7 +30,7 @@
 (depends-on "buffer-move")
 
 ;; Window
-(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window")
+(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
 
 ;; Key utility
 (depends-on "smartrep")
@@ -48,6 +48,7 @@
 
 ;; Perl
 (depends-on "cperl-mode")
+(depends-on "xs-mode" :git "https://github.com/emacsmirror/xs-mode.git")
 
 ;; Go
 (depends-on "go-mode")
@@ -143,3 +144,7 @@
 (depends-on "helm-ag")
 (depends-on "helm-pydoc")
 (depends-on "helm-perldoc")
+
+;; My own tools
+(depends-on "emacs-utils" :git "https://github.com/syohex/emacs-utils.git"
+            :files ("editutil.el" "sgit.el" "pomodoro.el"))
