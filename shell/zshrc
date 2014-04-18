@@ -181,7 +181,7 @@ if [ -e ~/.nvm/nvm.sh ]; then
 fi
 
 # setting for python virtual env
-VIRTUALENV_ACTIVE=~/virtual_env/bin/activate
+VIRTUALENV_ACTIVE=~/.virtualenv/bin/activate
 if [ -e ${VIRTUALENV_ACTIVE} ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     source ${VIRTUALENV_ACTIVE}
