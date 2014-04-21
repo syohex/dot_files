@@ -1,5 +1,5 @@
 ;; org-mode
-(define-key global-map (kbd "C-x l") 'org-store-link)
+(define-key global-map (kbd "C-x L") 'org-store-link)
 
 (custom-set-variables
  '(org-startup-truncated nil)
