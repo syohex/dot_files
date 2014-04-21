@@ -130,6 +130,7 @@
 (depends-on "ac-ispell")
 (depends-on "ac-etags")
 (depends-on "robe")
+(depends-on "ac-c-headers")
 
 ;;;; popwin
 (depends-on "import-popwin")
