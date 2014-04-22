@@ -7,6 +7,9 @@
 (depends-on "popup")
 ;;(depends-on "pos-tip")
 
+;; Editing
+(depends-on "thingopt")
+
 ;; region
 (depends-on "expand-region")
 (depends-on "wrap-region")
