@@ -145,6 +145,7 @@
 (depends-on "helm-ag")
 (depends-on "helm-pydoc")
 (depends-on "helm-perldoc")
+(depends-on "helm-open-github")
 
 ;; My own tools
 (depends-on "emacs-utils" :git "https://github.com/syohex/emacs-utils.git"
