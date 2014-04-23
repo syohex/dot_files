@@ -145,4 +145,4 @@
 (winner-mode +1)
 
 ;; specify mode
-(add-to-list 'auto-mode-alist '("Changes\\'" . text-mode))
+(add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))
