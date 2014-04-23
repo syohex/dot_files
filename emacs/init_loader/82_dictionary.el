@@ -1,61 +1,17 @@
 ;; SDIC dictonary for Linux
-(autoload 'sdic-describe-word "sdic" "search word" t nil)
 (global-set-key (kbd "C-c w") 'my/sdic-describe-word)
 
-(defun my/sdic-describe-word ()
-  (interactive)
-  (let ((word (and (not (member (char-to-string (char-after)) '(" " "\t" "\n" "\r")))
-                   (thing-at-point 'word))))
-    (sdic-describe-word (or word (read-string "Search word: ")))))
-
-(eval-after-load "sdic"
-  '(progn
-     (global-set-key (kbd "C-c W") 'sdic-describe-word-at-point)
-     (setq sdic-default-coding-system 'utf-8
-           sdicf-array-command "/usr/bin/sary"
-           sdic-eiwa-dictionary-list
-           `((sdicf-client ,(expand-file-name "~/local/dict/eijiro127.sdic")
-                           (strategy array)))
-
-           sdic-waei-dictionary-list
-           `((sdicf-client ,(expand-file-name "~/local/dict/eijiro127.sdic")
-                           (strategy array))))
-
-     ;; saryを直接使用できるように sdicf.el 内に定義されている
-     ;; arrayコマンド用関数を強制的に置換
-     (fset 'sdicf-array-init 'sdicf-common-init)
-     (fset 'sdicf-array-quit 'sdicf-common-quit)
-     (fset 'sdicf-array-search
-           (lambda (sdic pattern &optional case regexp)
-             (sdicf-array-init sdic)
-             (if regexp
-                 (signal 'sdicf-invalid-method '(regexp))
-               (save-excursion
-                 (set-buffer (sdicf-get-buffer sdic))
-                 (delete-region (point-min) (point-max))
-                 (apply 'sdicf-call-process
-                        sdicf-array-command
-                        (sdicf-get-coding-system sdic)
-                        nil t nil
-                        (if case
-                            (list "-i" pattern (sdicf-get-filename sdic))
-                          (list pattern (sdicf-get-filename sdic))))
-                 (goto-char (point-min))
-                 (let (entries)
-                   (while (not (eobp)) (sdicf-search-internal))
-                   (nreverse entries))))))
-
-     (defadvice sdic-search-eiwa-dictionary (after highlight-phrase (arg) activate)
-       (highlight-phrase arg "hi-yellow"))
-     (defadvice sdic-search-waei-dictionary (after highlight-phrase (arg) activate)
-       (highlight-phrase arg "hi-yellow"))
-
-     ;; omake
-     (defadvice sdic-forward-item (after sdic-forward-item-always-top activate)
-       (recenter 0))
-     (defadvice sdic-backward-item (after sdic-backward-item-always-top activate)
-       (recenter 0))))
-
-(defun sdic-popup-last-word ()
-  (interactive)
-  (pop-to-buffer "*sdic*"))
+(defun my/sdic-describe-word (word)
+  (interactive
+   (list (or (thing-at-point 'word)
+             (read-string "Word: "))))
+  (with-current-buffer (get-buffer-create "*sdic*")
+    (read-only-mode -1)
+    (erase-buffer)
+    (unless (call-process "dict" nil t nil word)
+      (error "Failed: 'dict %s'" word))
+    (goto-char (point-min))
+    (ansi-color-apply-on-region (point-min) (point-max))
+    (view-mode +1)
+    (read-only-mode +1)
+    (pop-to-buffer (current-buffer))))
