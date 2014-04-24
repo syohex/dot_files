@@ -7,7 +7,7 @@
      ;; key bindings
      (define-key markdown-mode-map (kbd "C-M-f") 'forward-symbol)
      (define-key markdown-mode-map (kbd "C-M-b") 'editutil-backward-symbol)
-     (define-key markdown-mode-map (kbd "C-M-u") 'my/backward-up-list)
+     (define-key markdown-mode-map (kbd "C-M-u") 'editutil-backward-up)
 
      (define-key markdown-mode-map (kbd "C-c C-n") 'outline-next-visible-heading)
      (define-key markdown-mode-map (kbd "C-c C-p") 'outline-previous-visible-heading)
