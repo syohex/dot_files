@@ -1,10 +1,10 @@
 ;;;; recentf-ext
 (custom-set-variables
  '(recentf-max-saved-items 2000)
- '(recentf-auto-cleanup 600))
-(setq recentf-exclude '(".recentf" "/elpa/" "/elisps/"
-                        "\\.mime-example" "\\.ido.last" "woman_cache.el"
-                        "COMMIT_EDITMSG" "MERGE_MSG" "bookmarks" "\\.gz$"))
+ '(recentf-auto-cleanup 600)
+ '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "^/tmp/"
+                     "\\.mime-example" "\\.ido.last" "woman_cache.el"
+                     "COMMIT_EDITMSG" "MERGE_MSG" "bookmarks" "\\.gz$")))
 
 (run-at-time t 600 'recentf-save-list)
 
