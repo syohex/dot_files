@@ -13,8 +13,7 @@
                 ruby-mode-hook
                 go-mode-hook
                 sh-mode-hook
-                makefile-mode-hook
-                wl-draft-mode-hook))
+                makefile-mode-hook))
   (add-hook hook 'yas-minor-mode-on))
 
 ;; helm interface
