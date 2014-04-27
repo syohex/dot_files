@@ -236,6 +236,7 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 500
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
+zstyle ':filter-select' case-insensitive yes
 
 # zaw : anything
 if [ -e ~/.zsh/zaw/zaw.zsh ]; then
