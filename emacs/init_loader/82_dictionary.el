@@ -12,7 +12,6 @@
       (while (not found)
         (unless (call-process "dict" nil t nil word)
           (error "Failed: 'dict %s'" word))
-        (setq tmstms (buffer-string))
         (if (string= (buffer-string) "")
             (progn
               (message "'%s' is not found" word)
