@@ -22,9 +22,11 @@
      (define-key coffee-mode-map (kbd "C-m") 'nil)
      (define-key coffee-mode-map (kbd "C-<return>") 'coffee-newline-and-indent)
      (define-key coffee-mode-map (kbd "M-o") 'my/coffee-edit-next-line)
-     (define-key coffee-mode-map (kbd "C-c <") 'coffee-indent-shift-left)
-     (define-key coffee-mode-map (kbd "C-c >") 'coffee-indent-shift-right)
-     (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)))
+     (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)
+
+     (smartrep-define-key
+         coffee-mode-map "C-c" '(("h" . 'coffee-indent-shift-left)
+                                 ("l" . 'coffee-indent-shift-right)))))
 
 (defun my/coffee-mode-hook ()
   (setq flycheck-checker 'coffee))

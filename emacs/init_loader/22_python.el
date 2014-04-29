@@ -24,7 +24,11 @@
      (define-key python-mode-map (kbd "C-c :") 'my/python-insert-colon)
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
-     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)))
+     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
+
+     (smartrep-define-key
+         coffee-mode-map "C-c" '(("h" . 'python-indent-shift-left)
+                                 ("l" . 'python-indent-shift-right)))))
 
 ;; jedi
 (custom-set-variables
