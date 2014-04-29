@@ -27,7 +27,7 @@
      (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
 
      (smartrep-define-key
-         coffee-mode-map "C-c" '(("h" . 'python-indent-shift-left)
+         python-mode-map "C-c" '(("h" . 'python-indent-shift-left)
                                  ("l" . 'python-indent-shift-right)))))
 
 ;; jedi
