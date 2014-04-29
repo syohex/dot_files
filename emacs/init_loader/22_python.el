@@ -21,7 +21,7 @@
 (eval-after-load "python"
   '(progn
      ;; binding
-     (define-key python-mode-map (kbd "C-c :") 'my/python-insert-colon)
+     (define-key python-mode-map (kbd "C-c o") 'my/python-insert-colon)
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
      (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
      (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
