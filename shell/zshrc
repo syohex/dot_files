@@ -16,8 +16,8 @@ WORDCHARS="${WORDCHARS}:"
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
