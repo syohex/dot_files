@@ -70,6 +70,7 @@
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-m") 'my/flymake-popup-error-message)
 (global-set-key (kbd "M-g M-l") 'my/flycheck-list-errors)
+(global-set-key (kbd "M-g s") 'helm-swoop)
 
 ;;; buffer-move
 (global-set-key (kbd "M-g h") 'buf-move-left)

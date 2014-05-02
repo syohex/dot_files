@@ -144,6 +144,7 @@
 (depends-on "golint")
 
 ;;;; helm
+(depends-on "helm-swoop")
 (depends-on "helm-gtags")
 (depends-on "helm-descbinds")
 (depends-on "helm-ag")
