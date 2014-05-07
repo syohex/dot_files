@@ -13,6 +13,7 @@
                 ruby-mode-hook
                 go-mode-hook
                 sh-mode-hook
+                markdown-mode-hook
                 makefile-mode-hook))
   (add-hook hook 'yas-minor-mode-on))
 
