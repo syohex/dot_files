@@ -1,0 +1,6 @@
+# name: Code block
+# key: codeblock
+# --
+\`\`\`$1
+$0
+\`\`\`
