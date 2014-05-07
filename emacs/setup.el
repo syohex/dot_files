@@ -32,7 +32,7 @@
 (cask-initialize user-emacs-directory)
 
 (defun my/download-url (url)
-  (assert (stringp url))
+  (cl-assert (stringp url))
   (if (zerop (call-process "curl" nil nil nil "-O" url))
       (message "Success Download %s" url)
     (message "Failed Download %s" url)))
