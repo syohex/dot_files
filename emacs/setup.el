@@ -43,18 +43,6 @@
     (unless (zerop (call-process-shell-command cmd))
       (error "%s is failed!!" cmd))))
 
-(defvar my/nonelpa-packages-url
-  '(
-    ;; 3rd pirty
-;;    "http://www.neilvandyke.org/quack/quack.el"
-    ))
-
-;; setup nonelpa packages
-(let ((default-directory my/elisp-directory))
-  (dolist (url my/nonelpa-packages-url)
-    (unless (file-exists-p (file-name-nondirectory url))
-      (my/download-url url))))
-
 ;; Hyperspec
 (let ((default-directory my/elisp-directory))
   (when (not (file-directory-p "HyperSpec"))
