@@ -30,7 +30,7 @@
   (save-buffer))
 
 (defun my/go-mode-hook ()
-  (setq flycheck-checker 'go-build))
+  (setq flycheck-checker 'go-golint))
 (add-hook 'go-mode-hook 'my/go-mode-hook)
 
 (defun my/go-toggle-test-file ()
