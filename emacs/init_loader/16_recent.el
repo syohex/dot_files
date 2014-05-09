@@ -2,7 +2,7 @@
 (custom-set-variables
  '(recentf-max-saved-items 2000)
  '(recentf-auto-cleanup 600)
- '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "^/tmp/"
+ '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "^/tmp/" "/\\.git/"
                      "\\.mime-example" "\\.ido.last" "woman_cache.el"
                      "COMMIT_EDITMSG" "MERGE_MSG" "bookmarks" "\\.gz$")))
 
