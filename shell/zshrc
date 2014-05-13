@@ -178,8 +178,7 @@ fi
 # load nvm(node.js manager)
 if [ -e ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
-    nvm use myuse > /dev/null
-    export NODE_PATH=${HOME}/.nvm/`node --version`/lib/node_modules:$NODE_PATH
+    nvm use default > /dev/null
 fi
 
 # setting for python virtual env
