@@ -4,10 +4,6 @@
 (custom-set-variables
  '(gofmt-command "goimports"))
 
-;;; helm-godoc
-(dolist (func '(helm-godoc helm-godoc-at-point))
-  (autoload func "helm-godoc" nil t))
-
 (eval-after-load "go-mode"
   '(progn
      (require 'go-autocomplete)
