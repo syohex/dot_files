@@ -6,7 +6,8 @@
 (custom-set-variables
  '(ruby-deep-indent-paren nil)
  '(ruby-insert-encoding-magic-comment nil)
- '(robe-completing-read-func 'helm-robe-completing-read))
+ '(robe-completing-read-func 'helm-robe-completing-read)
+ '(robe-highlight-capf-candidates nil))
 
 (eval-after-load "ruby-mode"
   '(progn
@@ -20,7 +21,7 @@
 
      (define-key ruby-mode-map (kbd "C-c C-a") 'ruby-beginning-of-block)
      (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-end-of-block)
-     (define-key ruby-mode-map (kbd "C-c ?") 'my/ruby-search-doc)
+     (define-key ruby-mode-map (kbd "C-c ?") 'robe-doc)
 
      ;; disable default bindings
      (dolist (key '("(" ")" "{" "}" "[" "]" "\"" "'"))
@@ -61,17 +62,3 @@
        (progn (beginning-of-line) t))
   (forward-line 1)
   (back-to-indentation))
-
-(defun my/ruby-search-doc (searched)
-  (interactive
-   (list (read-string "Searchd Doc: ")))
-  (let ((cmd (concat "ri -T -f ansi " (shell-quote-argument searched))))
-   (with-current-buffer (get-buffer-create "*ri-doc*")
-     (view-mode -1)
-     (erase-buffer)
-     (unless (zerop (call-process-shell-command cmd nil t))
-       (error "Failed: '%s'" cmd))
-     (goto-char (point-min))
-     (ansi-color-apply-on-region (point-min) (point-max))
-     (view-mode +1)
-     (pop-to-buffer (current-buffer)))))
