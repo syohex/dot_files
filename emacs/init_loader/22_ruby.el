@@ -1,7 +1,4 @@
 ;; setting for ruby
-(add-to-list 'auto-mode-alist '("\\.\\(?:rb\\|gemspec\\|ru\\)\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\(?:Rakefile\\|Gemfile\\|Guardfil\\)\\'" . ruby-mode))
-
 (defun helm-robe-completing-read (prompt choices &optional predicate require-match)
   (let ((collection (mapcar (lambda (c) (if (listp c) (car c) c)) choices)))
     (helm-comp-read prompt collection :test predicate :must-match require-match)))
