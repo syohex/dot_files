@@ -35,7 +35,7 @@
   (add-to-list 'ac-sources 'ac-source-robe)
 
   ;; auto insert `end'
-  (ruby-end-mode 1))
+  (ruby-end-mode +1))
 
 (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
 
