@@ -17,7 +17,9 @@
      (define-key go-mode-map (kbd "C-c [") 'my/go-insert-bracket)
      (define-key go-mode-map (kbd "C-c ?") 'helm-godoc-at-point)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
-     (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
+     (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
+
+     (define-key go-mode-map (kbd ":") nil)))
 
 (defun my/go-insert-bracket ()
   (interactive)
