@@ -11,7 +11,6 @@
      (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
      (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
      (define-key go-mode-map (kbd "C-c C-s") 'my/gofmt)
-     (define-key go-mode-map (kbd "M-g M-t") 'my/go-test)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
      (define-key go-mode-map (kbd "C-c [") 'my/go-insert-bracket)
@@ -51,15 +50,3 @@
                             (replace-regexp-in-string "\\.go\\'" "_test.go" basename)))
            (find-func (if current-prefix-arg 'find-file-other-window 'find-file)))
       (funcall find-func switched-file))))
-
-(defun my/go-test ()
-  (interactive)
-  (let ((package (save-excursion
-                   (goto-char (point-min))
-                   (let ((regexp (concat "package\\s-+\\(" go-identifier-regexp "\\)")))
-                     (if (re-search-forward regexp nil t)
-                         (match-string-no-properties 1)
-                       (error "Error: Can't find package name"))))))
-    (let ((compilation-scroll-output t)
-          (cmd (concat "go test " package)))
-      (compile cmd))))
