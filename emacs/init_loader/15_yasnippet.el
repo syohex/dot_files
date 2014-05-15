@@ -31,14 +31,6 @@
         (nth (cl-position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(defun my/yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  (let ((fn (or display-fn 'identity)))
-    (popup-menu* (mapcar (lambda (choice)
-                           (popup-make-item (funcall fn choice) :value choice))
-                         choices)
-                 :prompt prompt
-                 :isearch t)))
-
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 
 (eval-after-load "yasnippet"
