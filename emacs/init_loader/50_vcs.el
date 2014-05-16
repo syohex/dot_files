@@ -33,6 +33,9 @@
                         ("n" . 'git-gutter:next-diff)))
 
 ;; magit
+(custom-set-variables
+ '(magit-auto-revert-mode-lighter ""))
+
 (global-set-key (kbd "M-g M-g") 'magit-status)
 (eval-after-load "magit"
   '(progn
@@ -66,12 +69,6 @@
 
 (defadvice git-commit-commit (after move-to-magit-buffer activate)
   (delete-window))
-
-(defun my/magit-commit ()
-  (interactive)
-  (let ((magit-custom-options '("-v")))
-    (magit-commit)))
-(global-set-key (kbd "C-x v c") 'my/magit-commit)
 
 ;; helm-open-github
 (global-set-key (kbd "C-c o f") 'helm-open-github-from-file)
