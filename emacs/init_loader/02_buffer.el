@@ -33,3 +33,7 @@
     (zoom-window-setup)))
 
 (global-set-key (kbd "C-x C-z") 'zoom-window-zoom)
+
+;; window move
+(custom-set-variables
+ '(windmove-wrap-around t))

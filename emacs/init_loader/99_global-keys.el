@@ -45,10 +45,10 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
-
-(smartrep-define-key
-    global-map "C-q" '(("<" . 'winner-undo)
-                       (">" . 'winner-redo)))
+(define-key my/ctrl-q-map (kbd "h") 'windmove-left)
+(define-key my/ctrl-q-map (kbd "j") 'windmove-down)
+(define-key my/ctrl-q-map (kbd "k") 'windmove-up)
+(define-key my/ctrl-q-map (kbd "l") 'windmove-right)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
