@@ -42,7 +42,7 @@
 ;; insert "|"
 (defun my/ruby-insert-bar ()
   (interactive)
-  (if (looking-back "\\(?:do\\|{\\) +")
+  (if (looking-back "\\(?:do\\s-+\\|{\\)")
       (progn
         (insert "||")
         (backward-char 1))
