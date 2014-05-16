@@ -141,8 +141,5 @@
   '(set-face-attribute 'comint-highlight-input nil
                        :foreground "grey80" :weight 'semi-bold))
 
-;; winnner
-(winner-mode +1)
-
 ;; specify mode
 (add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))
