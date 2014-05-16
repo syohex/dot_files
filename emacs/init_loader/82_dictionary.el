@@ -5,6 +5,7 @@
   (interactive
    (list (or (thing-at-point 'word)
              (read-string "Word: "))))
+  (setq word (downcase (substring-no-properties word)))
   (with-current-buffer (get-buffer-create "*sdic*")
     (read-only-mode -1)
     (erase-buffer)
@@ -15,7 +16,7 @@
         (if (string= (buffer-string) "")
             (progn
               (message "'%s' is not found" word)
-              (setq word (read-string "Try again: ")))
+              (setq word (read-string "Try again: " word)))
           (setq found t))))
     (goto-char (point-min))
     (ansi-color-apply-on-region (point-min) (point-max))
