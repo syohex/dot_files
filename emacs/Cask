@@ -153,5 +153,6 @@
 (depends-on "helm-open-github")
 
 ;; My own tools
+(depends-on "editutil" :git "https://github.com/syohex/emacs-editutil.git")
 (depends-on "emacs-utils" :git "https://github.com/syohex/emacs-utils.git"
-            :files ("editutil.el" "sgit.el" "pomodoro.el"))
+            :files ("sgit.el" "pomodoro.el"))
