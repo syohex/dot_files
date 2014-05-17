@@ -13,13 +13,14 @@
 (global-set-key (kbd "C-M-y") 'dired-jump-other-window)
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
+(global-set-key (kbd "M-=") 'yas-insert-snippet)
 
 ;; helm binding
-(global-set-key (kbd "M-.") 'my/helm-etags-select)
+(global-set-key (kbd "M-.") 'helm-editutil-etags-select)
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-x") 'helm-find-files)
-(global-set-key (kbd "C-x C-p") 'my/helm-git-project-files)
-(global-set-key (kbd "C-x C-a") 'my/helm-git-project-files)
+(global-set-key (kbd "C-x C-p") 'helm-editutil-git-ls-files)
+(global-set-key (kbd "C-x C-a") 'helm-editutil-git-ls-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-l") 'helm-locate)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)

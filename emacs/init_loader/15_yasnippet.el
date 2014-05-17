@@ -17,26 +17,10 @@
                 makefile-mode-hook))
   (add-hook hook 'yas-minor-mode-on))
 
-;; helm interface
-(defun my/yas-prompt (prompt choices &optional display-fn)
-  (let* ((names (cl-loop for choice in choices
-                         collect (or (and display-fn (funcall display-fn choice))
-                                     choice)))
-         (selected (helm-other-buffer
-                    `(((name . ,(format "%s" prompt))
-                       (candidates . names)
-                       (action . (("Insert snippet" . (lambda (arg) arg))))))
-                    "*helm yas/prompt*")))
-    (if selected
-        (nth (cl-position selected names :test 'equal) choices)
-      (signal 'quit "user quit!"))))
-
-(global-set-key (kbd "M-=") 'yas-insert-snippet)
-
 (eval-after-load "yasnippet"
   '(progn
      (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
-                   yas-prompt-functions '(my/yas-prompt))
+                   yas-prompt-functions '(helm-editutil-yas-prompt))
      (yas-reload-all)))
 
 ;; utility functions
