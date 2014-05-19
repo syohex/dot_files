@@ -1,11 +1,4 @@
 ;; setting of auto-complete
-(require 'popup)
-(require 'fuzzy)
-;;(require 'pos-tip)
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories
-             (concat user-emacs-directory "ac-dict"))
-(global-auto-complete-mode t)
 (ac-config-default)
 
 ;; Enable auto-complete mode other than default enable modes
@@ -20,6 +13,8 @@
   (add-to-list 'ac-modes mode))
 
 (custom-set-variables
+ `(ac-dictionary-directories ,(concat user-emacs-directory "ac-dict"))
+ '(ac-use-fuzzy t)
  '(ac-auto-start nil)
  '(ac-use-menu-map t)
  '(ac-quick-help-delay 1.0))
