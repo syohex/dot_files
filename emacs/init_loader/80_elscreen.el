@@ -1,5 +1,4 @@
 ;; elscreen
-(require 'elscreen)
 (elscreen-start)
 (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
