@@ -1,4 +1,5 @@
 ;; setting of auto-complete
+(require 'auto-complete-config)
 (ac-config-default)
 
 ;; Enable auto-complete mode other than default enable modes
