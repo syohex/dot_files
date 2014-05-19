@@ -30,7 +30,7 @@
 ;; buffer
 (depends-on "elscreen")
 (depends-on "popwin")
-(depends-on "buffer-move")
+(depends-on "buffer-move" :git "https://github.com/emacsmirror/buffer-move.git")
 
 ;; Window
 (depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
