@@ -27,7 +27,7 @@
 ;; for global minor mode
 (defun my/auto-complete ()
   (interactive)
-  (case major-mode
+  (cl-case major-mode
     (python-mode (jedi:complete))
     (otherwise
      (if auto-complete-mode
