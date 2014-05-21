@@ -29,7 +29,6 @@
 (global-set-key (kbd "C-h m")   'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
-(global-set-key (kbd "M-g M-b") 'helm-bookmarks)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -65,6 +64,8 @@
 ;; M-g mapping
 (global-set-key (kbd "M-g M-q") 'quickrun)
 (global-set-key (kbd "M-g M-w") 'quickrun-with-arg)
+(global-set-key (kbd "M-g M-r") 'compile)
+(global-set-key (kbd "M-g <return>") 'recompile)
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
