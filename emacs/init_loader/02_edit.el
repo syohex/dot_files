@@ -46,6 +46,3 @@
           1 '((:foreground "pink") (:weight bold)) t))))
 
 (add-hook 'prog-mode-hook 'my/add-watchwords)
-
-;; editutil
-(require 'editutil)
