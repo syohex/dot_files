@@ -143,6 +143,9 @@
 (depends-on "helm-godoc" :git "https://github.com/syohex/emacs-helm-godoc.git")
 (depends-on "golint")
 
+;;;; clojure
+(depend-on "cider-nrepl")
+
 ;;;; helm
 (depends-on "helm-swoop")
 (depends-on "helm-gtags")
