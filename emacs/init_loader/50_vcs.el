@@ -56,7 +56,12 @@
 (defun my/magit-quit-session ()
   (interactive)
   (kill-buffer)
-  (jump-to-register :magit-fullscreen))
+  (jump-to-register :magit-fullscreen)
+  (dolist (win (window-list))
+    (let ((buf (window-buffer win)))
+      (with-current-buffer buf
+        (when git-gutter-mode
+          (git-gutter))))))
 
 (defun my/git-commit-mode-hook ()
   (when (looking-at "\n")
