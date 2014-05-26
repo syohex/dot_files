@@ -5,12 +5,6 @@
       default-input-method "MacOSX"
       system-uses-terminfo nil)
 
-;; git-gutter
-(custom-set-variables
- '(git-gutter:added-sign "+ ")
- '(git-gutter:deleted-sign " ")
- '(git-gutter:modified-sign " "))
-
 ;; font setting
 (set-face-attribute 'default nil
                     :family "monaco"

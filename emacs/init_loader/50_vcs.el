@@ -23,6 +23,10 @@
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
+(custom-set-variables
+ '(git-gutter:modified-sign " ")
+ '(git-gutter:deleted-sign " "))
+
 (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
 
 (set-face-background 'git-gutter:deleted  "red")
