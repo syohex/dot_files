@@ -4,13 +4,9 @@
 (set-frame-font "VL Gothic 12")
 
 ;; for helm
-(add-to-list 'load-path "~/program/elisp/helm")
 (require 'helm-config)
 
 ;; for auto-complete
-(add-to-list 'load-path "~/program/elisp/auto-complete")
-(add-to-list 'load-path "~/program/elisp/popup-el")
-
 (require 'popup)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
@@ -18,6 +14,7 @@
 
 ;; current-directory
 (add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
+(require '$0)
 
 (set-scroll-bar-mode 'nil)
 (tool-bar-mode 0)
