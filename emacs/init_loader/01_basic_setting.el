@@ -135,8 +135,9 @@
 
 ;; smart repetition
 (require 'smartrep)
-(setq smartrep-mode-line-active-bg nil
-      smartrep-mode-line-string-activated "<<< SmartRep >>>")
+(custom-set-variables
+ '(smartrep-mode-line-active-bg nil)
+ '(smartrep-mode-line-string-activated "<<< SmartRep >>>"))
 
 ;; comint
 (eval-after-load "comint"
