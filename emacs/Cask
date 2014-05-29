@@ -124,6 +124,9 @@
 (depends-on "clojure-mode")
 (depends-on "cider")
 
+;; shell
+(depends-on "shell-pop")
+
 ;; sub packages
 
 ;;;; auto-complete sources

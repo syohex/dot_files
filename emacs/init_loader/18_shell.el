@@ -21,26 +21,17 @@
   (setq eshell-first-time-p nil))
 (add-hook 'eshell-first-time-mode-hook 'my/eshell-first-time-load-hook)
 
-(defvar eshell-pop-buffer "*eshell-pop*")
+(custom-set-variables
+ '(shell-pop-autocd-to-working-dir nil)
+ '(shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
+ '(shell-pop-universal-key "M-z")
+ '(shell-pop-window-position "full"))
+(global-set-key (kbd "M-z") 'shell-pop)
+
 (defvar eshell-prev-buffer nil)
 
-(defun eshell-chdir (dir)
-  (eshell-kill-input)
-  (insert dir)
-  (eshell-send-input))
-
-(defun eshell-pop ()
-  (interactive)
-  (let ((curdir default-directory))
-    (setq eshell-prev-buffer (current-buffer))
-    (unless (get-buffer eshell-pop-buffer)
-      (save-window-excursion
-        (pop-to-buffer (get-buffer-create eshell-pop-buffer))
-        (eshell-mode)))
-    (popwin:popup-buffer (get-buffer eshell-pop-buffer) :height 20 :stick t)
-    (unless (string= default-directory curdir)
-      (eshell-chdir curdir))))
-(global-set-key (kbd "M-g M-s") 'eshell-pop)
+(defadvice shell-pop (before shell-pop-before activate)
+  (setq eshell-prev-buffer (current-buffer)))
 
 (defun eshell/cde ()
   (let* ((file-name (buffer-file-name eshell-prev-buffer))
