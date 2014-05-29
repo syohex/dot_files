@@ -23,7 +23,7 @@
      (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
      (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
      (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
-     (define-key org-mode-map (kbd "C-M-<tab>") 'show-all)
+     (define-key org-mode-map (kbd "C-c <tab>") 'show-all)
      (local-unset-key (kbd "M-S-<return>"))
 
      (smartrep-define-key
