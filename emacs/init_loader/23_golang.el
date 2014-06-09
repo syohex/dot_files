@@ -36,6 +36,7 @@
   (save-buffer))
 
 (defun my/go-mode-hook ()
+  (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))
 (add-hook 'go-mode-hook 'my/go-mode-hook)
 
