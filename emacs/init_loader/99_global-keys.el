@@ -10,6 +10,7 @@
 (global-set-key (kbd "<f10>") 'my/open-daily-memo)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-h e") 'popwin:messages)
+(global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "C-M-y") 'dired-jump-other-window)
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
