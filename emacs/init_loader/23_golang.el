@@ -46,7 +46,7 @@
     (unless file
       (error "Error: this buffer is not related to real file"))
     (let* ((basename (file-name-nondirectory file))
-           (switched-file (if (string-match "_test" file)
+           (switched-file (if (string-match-p "_test\\.go\\'" file)
                               (replace-regexp-in-string "_test" "" basename)
                             (replace-regexp-in-string "\\.go\\'" "_test.go" basename)))
            (find-func (if current-prefix-arg 'find-file-other-window 'find-file)))
