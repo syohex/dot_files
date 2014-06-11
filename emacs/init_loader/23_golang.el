@@ -13,7 +13,6 @@
      (define-key go-mode-map (kbd "C-c C-s") 'my/gofmt)
      (define-key go-mode-map (kbd "C-c C-t") 'my/go-toggle-test-file)
      (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
-     (define-key go-mode-map (kbd "C-c [") 'my/go-insert-bracket)
      (define-key go-mode-map (kbd "C-c ?") 'my/godoc-query)
      (define-key go-mode-map (kbd "M-.") 'godef-jump)
      (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
@@ -24,16 +23,13 @@
   (interactive)
   (godoc (read-string "Query: ")))
 
-(defun my/go-insert-bracket ()
-  (interactive)
-  (insert "[]"))
-
 (defun my/gofmt ()
   (interactive)
   (when (buffer-modified-p)
     (save-buffer))
   (gofmt)
-  (save-buffer))
+  (when (buffer-modified-p)
+    (save-buffer)))
 
 (defun my/go-mode-hook ()
   (setq compile-command "go test")
