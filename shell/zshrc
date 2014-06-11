@@ -209,8 +209,8 @@ if [ -d /opt/go ]; then
     [[ -e /opt/go/misc/zsh/go ]] && source /opt/go/misc/zsh/go
 fi
 if \which go >/dev/null 2>&1; then
-    export GOPATH=$HOME/local/go:$HOME/program/go
-    path=($HOME/local/go/bin $path)
+    export GOPATH=$HOME/go
+    path=($GOPATH/bin $path)
 fi
 
 ## show git branch at right prompt
