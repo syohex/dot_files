@@ -10,13 +10,6 @@
 ;; popwin for slime
 (push '(slime-repl-mode :stick t) popwin:special-display-config)
 
-;; man
-(push '(Man-mode :stick t :height 20) popwin:special-display-config)
-
-;; Elisp
-(push '("*ielm*" :stick t) popwin:special-display-config)
-(push '("*eshell pop*" :stick t) popwin:special-display-config)
-
 ;; Ruby
 (push '("*ri-doc*" :stick t :height 20) popwin:special-display-config)
 (push '(inf-ruby-mode :stick t :height 20) popwin:special-display-config)
@@ -45,7 +38,6 @@
       popwin:special-display-config)
 
 ;; Go
-(push '("\*godoc\*" :stick t :noselect t) popwin:special-display-config)
 (push '("^\*go-direx:" :position left :width 0.3 :dedicated t :stick t :regexp t)
       popwin:special-display-config)
 
