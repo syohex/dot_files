@@ -56,10 +56,10 @@ IPYTHON_DIR=${HOME}/.config/ipython/profile_default
 mkdir_if_not_exist ${IPYTHON_DIR}
 ln -sf $PWD/python/ipython_config.py $IPYTHON_DIR
 
-## percol
-PERCOL_DIR=~/.percol.d
-mkdir_if_not_exist ${PERCOL_DIR}
-ln -sf $PWD/python/percolrc.py ${PERCOL_DIR}/rc.py
+## golang
+PECO_DIR=~/.peco
+mkdir_if_not_exist ${PECO_DIR}
+ln -sf $PWD/golang/config.json ${PECO_DIR}/config.json
 
 # Ruby
 ln -sf $PWD/ruby/gemrc ~/.gemrc
