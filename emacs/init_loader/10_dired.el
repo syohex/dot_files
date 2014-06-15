@@ -28,12 +28,14 @@
 ;; direx
 (defun my/direx-jump ()
   (interactive)
-  (cond ((not (one-window-p))
-         (or (ignore-errors
-               (direx-project:jump-to-project-root) t)
-             (direx:jump-to-directory)))
-        (t
-         (or (ignore-errors
-               (direx-project:jump-to-project-root-other-window) t)
-             (direx:jump-to-directory-other-window)))))
-(global-set-key (kbd "C-x C-d") 'my/direx-jump)
+  (if (eq major-mode 'direx:direx-mode)
+      (quit-window)
+    (cond ((not (one-window-p))
+           (or (ignore-errors
+                 (direx-project:jump-to-project-root) t)
+               (direx:jump-to-directory)))
+          (t
+           (or (ignore-errors
+                 (direx-project:jump-to-project-root-other-window) t)
+               (direx:jump-to-directory-other-window))))))
+(global-set-key (kbd "C-\\") 'my/direx-jump)
