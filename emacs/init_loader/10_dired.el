@@ -26,6 +26,10 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; direx
+(eval-after-load "direx"
+  '(progn
+     (define-key direx:direx-mode-map (kbd "K") 'direx-k)))
+
 (defun my/direx-jump ()
   (interactive)
   (if (eq major-mode 'direx:direx-mode)
