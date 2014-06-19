@@ -1,7 +1,13 @@
 # name : Base of test configuration file
 # key  : conf
 # --
-(set-frame-font "VL Gothic 12")
+
+(when window-system
+  (set-frame-font "VL Gothic 12")
+  (set-scroll-bar-mode 'nil)
+  (tool-bar-mode 0))
+
+(menu-bar-mode -1)
 
 ;; for helm
 (require 'helm-config)
@@ -15,10 +21,6 @@
 ;; current-directory
 (add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
 (require '$0)
-
-(set-scroll-bar-mode 'nil)
-(tool-bar-mode 0)
-(menu-bar-mode -1)
 
 (setq default-frame-alist
        '((width . 72) (height . 24) (top . 28) (left . 0)))
