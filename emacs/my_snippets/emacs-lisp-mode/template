@@ -1,7 +1,7 @@
 # name : Package Template
 # key  : package
 # --
-;;; `(file-name-nondirectory (buffer-file-name))` ---
+;;; `(file-name-nondirectory (buffer-file-name))` --- $0
 
 ;; Copyright (C) `(format-time-string "%Y" (current-time))` by Syohei YOSHIDA
 
@@ -26,7 +26,7 @@
 
 ;;; Code:
 
-$0
+
 
 (provide '`(file-name-sans-extension (file-name-nondirectory (buffer-file-name)))`)
 
