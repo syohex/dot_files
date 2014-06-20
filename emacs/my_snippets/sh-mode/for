@@ -1,0 +1,7 @@
+# name: for # for var in list; do Body ; done
+# key: for
+# --
+for $1 in $2
+do
+        $0
+done
