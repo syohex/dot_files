@@ -3,7 +3,6 @@
 # --
 (source gnu)
 (source melpa)
-(source marmalade)
 
 (package "$0" "0" "")
 
