@@ -1,7 +1,7 @@
 {
     "Keymap": {
-        "C-q": "peco.Finish",
         "C-v": "peco.SelectNextPage",
+        "C-c": "peco.Cancel",
         "C-Space": "peco.ToggleSelection"
     },
     "Matcher": "Regexp"
