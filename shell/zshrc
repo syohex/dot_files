@@ -277,18 +277,18 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
-zle -N git_status _git_status
+## My commands
 zle -N git_browse _git_browse
-bindkey '^[^s' git_status
+zle -N ghq_cd _ghq_cd
 bindkey '^Xw' git_browse
+bindkey '^X^P' ghq_cd
 
-## autoload
-autoload -Uz _git_status
 autoload -Uz _git_browse
 autoload -Uz us_keyboard
 autoload -Uz cde
 autoload -Uz cdp
 autoload -Uz dired
+autoload -Uz _ghq_cd
 
 ## Last
 # setting global alias for avoiding conflict variable name
