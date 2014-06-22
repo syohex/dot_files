@@ -1,5 +1,0 @@
-function _git_status() {
-    echo git st
-    git st
-    zle reset-prompt
-}
