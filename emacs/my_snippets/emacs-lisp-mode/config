@@ -1,7 +1,6 @@
 # name : Base of test configuration file
 # key  : conf
 # --
-
 (when window-system
   (set-frame-font "VL Gothic 12")
   (set-scroll-bar-mode 'nil)
