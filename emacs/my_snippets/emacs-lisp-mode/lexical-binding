@@ -1,0 +1,4 @@
+# name : Enable lexical binding
+# key  : lexical-binding
+# --
+-*- lexical-binding: t; -*-
