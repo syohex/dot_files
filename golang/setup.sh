@@ -10,4 +10,3 @@ go get -u github.com/golang/lint/golint
 go get -u github.com/peco/peco/cmd/peco/
 go get -u github.com/syohex/gotentry
 go get -u github.com/motemen/ghq
-
