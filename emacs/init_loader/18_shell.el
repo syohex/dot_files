@@ -28,16 +28,16 @@
  '(shell-pop-window-position "full"))
 (global-set-key (kbd "M-z") 'shell-pop)
 
-(defvar eshell-prev-buffer nil)
-
-(defadvice shell-pop (before shell-pop-before activate)
-  (setq eshell-prev-buffer (current-buffer)))
+(defvar my/eshell-prev-buffer nil)
+(defun my/shell-pop-up-hook ()
+  (setq my/eshell-prev-buffer (current-buffer)))
+(add-hook 'shell-pop-up-hook 'my/shell-pop-up-hook)
 
 (defun eshell/cde ()
-  (let* ((file-name (buffer-file-name eshell-prev-buffer))
+  (let* ((file-name (buffer-file-name my/eshell-prev-buffer))
          (dir (or (and file-name (file-name-directory file-name))
                   (and (eq major-mode 'dired-mode) dired-directory)
-                  (with-current-buffer eshell-prev-buffer
+                  (with-current-buffer my/eshell-prev-buffer
                     default-directory))))
     (eshell/cd dir)))
 
