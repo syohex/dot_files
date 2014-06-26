@@ -91,6 +91,7 @@
 (depends-on "web-mode")
 (depends-on "emmet-mode")
 (depends-on "yaml-mode")
+(depends-on "less-css-mode")
 
 ;; markdown
 (depends-on "markdown-mode")
