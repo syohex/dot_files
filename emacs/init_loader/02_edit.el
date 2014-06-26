@@ -34,6 +34,7 @@
     js-mode
     go-mode
     coffee-mode
+    markdown-mode
     cperl-mode))
 
 (dolist (mode my/autopair-enabled-modes)
