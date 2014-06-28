@@ -3,7 +3,6 @@
         "C-v": "peco.SelectNextPage",
         "M-v": "peco.SelectPreviousPage",
         "C-c": "peco.Cancel",
-        "C-Space": "peco.ToggleSelection"
     },
     "Matcher": "Regexp"
 }
