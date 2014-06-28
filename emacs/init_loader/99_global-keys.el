@@ -50,6 +50,7 @@
 (define-key my/ctrl-q-map (kbd "j") 'windmove-down)
 (define-key my/ctrl-q-map (kbd "k") 'windmove-up)
 (define-key my/ctrl-q-map (kbd "l") 'windmove-right)
+(define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
