@@ -1,8 +1,7 @@
 {
     "Keymap": {
         "C-v": "peco.SelectNextPage",
-        "M-v": "peco.SelectPreviousPage",
-        "C-c": "peco.Cancel",
+        "M-v": "peco.SelectPreviousPage"
     },
     "Matcher": "Regexp"
 }
