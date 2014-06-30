@@ -1,7 +1,13 @@
 {
+    "Matcher": "Regexp",
     "Keymap": {
         "C-v": "peco.SelectNextPage",
         "M-v": "peco.SelectPreviousPage"
     },
-    "Matcher": "Regexp"
+    "CustomMatcher": {
+        "Migemo": [
+            "migemogrep",
+            "$QUERY"
+        ]
+    }
 }
