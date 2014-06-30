@@ -195,11 +195,6 @@ path=(~/.cask/bin(N-/) $path)
 # haskell setting
 path=(~/.cabal/bin(N-/) $path)
 
-# golang
-function godoc() {
-    command godoc $* |less
-}
-
 if [ -d /opt/go ]; then
     if [[ -e /opt/go/bin/go ]]; then
         path=(/opt/go/bin $path)
