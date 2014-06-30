@@ -1,5 +1,5 @@
 # -*- mode:shell-script -*-
-path=($HOME/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
+path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
 
 # completion
 fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
@@ -290,3 +290,5 @@ autoload -Uz _ghq_cd
 alias -g L='|less -R'
 alias -g G='|grep'
 alias -g P='|ptrigger'
+
+path=($HOME/bin $path)
