@@ -1,8 +1,0 @@
-# name: if cond {} else {}
-# key: ife
-# --
-if $0 {
-   
-} else {
-
-}
