@@ -1,5 +1,5 @@
 # name: if err != nil { ... }
-# key: iferr
+# key: ife
 # --
 if err != nil {
 	$0
