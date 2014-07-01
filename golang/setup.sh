@@ -12,3 +12,4 @@ go get -u github.com/syohex/gotentry
 go get -u github.com/motemen/ghq
 go get -u github.com/koron/gomigemo/cmd/migemogrep
 go get -u github.com/koron/gomigemo/cmd/gmigemo
+go get -u github.com/jstemmer/gotags
