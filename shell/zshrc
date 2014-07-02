@@ -248,7 +248,6 @@ if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     bindkey '^xd' zaw-git-directories
     bindkey '^xb' zaw-git-recent-branches
     bindkey '^x^f' zaw-git-files
-    bindkey '^x^r' zaw-history
 fi
 
 # for git completion(too slowly in big repository)
@@ -279,8 +278,10 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 ## My commands
 zle -N git_browse _git_browse
 zle -N ghq_cd _ghq_cd
+zle -N peco-history _peco-history
 bindkey '^Xw' git_browse
 bindkey '^X^P' ghq_cd
+bindkey '^X^R' peco-history
 
 autoload -Uz _git_browse
 autoload -Uz us_keyboard
@@ -288,6 +289,7 @@ autoload -Uz cde
 autoload -Uz cdp
 autoload -Uz dired
 autoload -Uz _ghq_cd
+autoload -Uz _peco-history
 
 ## Last
 # setting global alias for avoiding conflict variable name
