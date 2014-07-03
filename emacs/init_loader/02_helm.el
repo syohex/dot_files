@@ -5,6 +5,10 @@
  '(helm-ag-insert-at-point 'symbol)
  '(helm-find-files-doc-header ""))
 
+(defun my/helm-exit-minibuffer ()
+  (interactive)
+  (helm-exit-minibuffer))
+
 (eval-after-load "helm"
   '(progn
      (helm-descbinds-mode)
@@ -13,6 +17,7 @@
      (define-key helm-map (kbd "C-n")   'helm-next-line)
      (define-key helm-map (kbd "C-M-n") 'helm-next-source)
      (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
+     (define-key helm-map (kbd "<RET>") 'my/helm-exit-minibuffer)
 
      (set-face-attribute 'helm-source-header nil
                          :height 1.0 :weight 'semi-bold :family nil)))
