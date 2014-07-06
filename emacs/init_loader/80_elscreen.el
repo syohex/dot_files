@@ -9,8 +9,8 @@
  '(elscreen-buffer-to-nickname-alist nil))
 
 ;; Don't show tab number in mode-line
-(setq-default elscreen-e21-mode-line-string nil)
-(remove-hook 'elscreen-screen-update-hook 'elscreen-e21-mode-line-update)
+(setq-default elscreen-mode-line-string nil)
+(remove-hook 'elscreen-screen-update-hook 'elscreen-mode-line-update)
 (add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update)
 (global-set-key (kbd "C-z C-l") 'helm-elscreen)
 (elscreen-toggle-display-tab)
