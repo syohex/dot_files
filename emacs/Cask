@@ -28,7 +28,7 @@
 (depends-on "goto-chg")
 
 ;; buffer
-(depends-on "elscreen")
+(depends-on "elscreen" :git "https://github.com/emacs-jp/elscreen.git" :branch "fixed")
 (depends-on "popwin")
 (depends-on "buffer-move")
 

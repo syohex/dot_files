@@ -45,7 +45,7 @@
 (defun elscreen-current-directory ()
   (let* ((current-screen (elscreen-get-current-screen))
          (property (elscreen-get-screen-property current-screen))
-         (curbuf (marker-buffer (cadr (get-alist 'window-configuration property)))))
+         (curbuf (marker-buffer (cadr (assoc-default 'window-configuration property)))))
     (elscreen-get-current-directory curbuf)))
 
 (defun non-elscreen-current-directory ()
