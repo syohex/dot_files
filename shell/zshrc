@@ -295,6 +295,6 @@ autoload -Uz _peco-history
 # setting global alias for avoiding conflict variable name
 alias -g L='|less -R'
 alias -g G='|grep'
-alias -g P='|ptrigger'
+alias -g P='|peco'
 
 path=($HOME/bin $path)
