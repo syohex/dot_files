@@ -4,7 +4,7 @@
 (source gnu)
 (source melpa)
 
-(package "$0" "0" "")
+(package-file "$0")
 
 (development
  (depends-on "ert"))
