@@ -24,9 +24,9 @@
 (custom-set-variables
  '(shell-pop-autocd-to-working-dir nil)
  '(shell-pop-shell-type '("eshell" " *eshell*" (lambda () (eshell))))
- '(shell-pop-universal-key "M-z")
+ '(shell-pop-universal-key "M-\\")
  '(shell-pop-window-position "full"))
-(global-set-key (kbd "M-z") 'shell-pop)
+(global-set-key (kbd "M-\\") 'shell-pop)
 
 (defvar my/eshell-prev-buffer nil)
 (defun my/shell-pop-up-hook ()
