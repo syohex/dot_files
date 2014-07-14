@@ -1,7 +1,4 @@
 ;; setting markdown-mode
-(custom-set-variables
- '(markdown-command "Markdown.pl"))
-
 (eval-after-load "markdown-mode"
   '(progn
      ;; key bindings
