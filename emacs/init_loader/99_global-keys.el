@@ -20,7 +20,6 @@
 (global-set-key (kbd "M-.") 'helm-editutil-etags-select)
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-x") 'helm-find-files)
-(global-set-key (kbd "C-x C-p") 'helm-editutil-ghq-list)
 (global-set-key (kbd "C-x C-a") 'helm-editutil-git-ls-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x C-l") 'helm-locate)
