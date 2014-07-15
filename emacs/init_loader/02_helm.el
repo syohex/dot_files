@@ -14,6 +14,8 @@
      (define-key helm-map (kbd "C-n")   'helm-next-line)
      (define-key helm-map (kbd "C-M-n") 'helm-next-source)
      (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
+     (define-key helm-map (kbd "C-e") 'helm-editutil-select-2nd-action)
+     (define-key helm-map (kbd "C-j") 'helm-editutil-select-3rd-action)
 
      (set-face-attribute 'helm-source-header nil
                          :height 1.0 :weight 'semi-bold :family nil)))
