@@ -66,7 +66,7 @@
 (global-set-key (kbd "M-g M-q") 'quickrun)
 (global-set-key (kbd "M-g M-w") 'quickrun-with-arg)
 (global-set-key (kbd "M-g M-r") 'compile)
-(global-set-key (kbd "M-g <return>") 'recompile)
+(global-set-key (kbd "M-g RET") 'recompile)
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
