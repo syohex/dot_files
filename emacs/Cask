@@ -26,6 +26,7 @@
 
 ;; cursor
 (depends-on "goto-chg")
+(depends-on "ace-jump-mode")
 
 ;; buffer
 (depends-on "elscreen" :git "https://github.com/emacs-jp/elscreen.git" :branch "fixed")
