@@ -1,7 +1,6 @@
 ;;;; cperl-mode
-(defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist
-         '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
+             '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
 (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
 
 (eval-after-load "cperl-mode"
