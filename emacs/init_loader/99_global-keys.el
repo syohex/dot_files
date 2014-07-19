@@ -13,6 +13,8 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
+(global-set-key (kbd "M-z") 'ace-jump-mode)
+(global-set-key (kbd "M-Z") 'ace-jump-char-mode)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'helm-editutil-etags-select)
