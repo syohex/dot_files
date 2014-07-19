@@ -1,5 +1,6 @@
 ;;;; popwin
 (require 'popwin)
+(global-set-key (kbd "C-x C-p") popwin:keymap)
 (defvar popwin:special-display-config-backup popwin:special-display-config)
 (custom-set-variables
  '(display-buffer-function 'popwin:display-buffer))
