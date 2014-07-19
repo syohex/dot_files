@@ -6,8 +6,6 @@
 (global-set-key (kbd "M-*") 'tags-loop-continue)
 (global-set-key (kbd "M-[") 'backward-paragraph)
 (global-set-key (kbd "M-]") 'forward-paragraph)
-(global-set-key (kbd "<f11>") 'my/open-task-memo)
-(global-set-key (kbd "<f10>") 'my/open-daily-memo)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-h e") 'popwin:messages)
 (global-set-key (kbd "C-M-l") 'goto-line)
