@@ -13,4 +13,4 @@ if [ "x_$XDG_CURRENT_DESKTOP" = "x_XFCE" ]; then
 fi
 
 echo "Install packages:"
-sudo aptitude install $PACKAGES
+sudo apt install $PACKAGES
