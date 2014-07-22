@@ -34,7 +34,7 @@
 (depends-on "buffer-move")
 
 ;; Window
-(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
+;;;(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
 
 ;; Key utility
 (depends-on "smartrep")

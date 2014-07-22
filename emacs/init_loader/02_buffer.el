@@ -23,17 +23,3 @@
 
 (global-set-key (kbd "M-9") 'bs-cycle-next)
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
-
-(custom-set-variables
- '(zoom-window-mode-line-color "DarkGreen")
- '(zoom-window-use-elscreen t))
-
-(eval-after-load "elscreen"
- '(progn
-    (zoom-window-setup)))
-
-(global-set-key (kbd "C-x C-z") 'zoom-window-zoom)
-
-;; window move
-(custom-set-variables
- '(windmove-wrap-around t))
