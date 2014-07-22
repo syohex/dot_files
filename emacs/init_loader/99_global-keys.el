@@ -13,8 +13,8 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "M-z") 'ace-jump-mode)
-(global-set-key (kbd "M-Z") 'ace-jump-char-mode)
+(global-set-key (kbd "C-M-r") 'ace-jump-mode)
+(global-set-key (kbd "C-M-c") 'ace-jump-char-mode)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'helm-editutil-etags-select)
@@ -45,10 +45,6 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
-(define-key my/ctrl-q-map (kbd "h") 'windmove-left)
-(define-key my/ctrl-q-map (kbd "j") 'windmove-down)
-(define-key my/ctrl-q-map (kbd "k") 'windmove-up)
-(define-key my/ctrl-q-map (kbd "l") 'windmove-right)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 
 (smartrep-define-key
