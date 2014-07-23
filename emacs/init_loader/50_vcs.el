@@ -66,6 +66,9 @@
         (when git-gutter-mode
           (git-gutter))))))
 
+(custom-set-variables
+ '(git-commit-fill-column 80))
+
 (defun my/git-commit-mode-hook ()
   (when (looking-at "\n")
     (open-line 1)))
