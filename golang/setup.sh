@@ -12,3 +12,8 @@ go get -u github.com/syohex/gotentry
 go get -u github.com/motemen/ghq
 go get -u github.com/peco/migemogrep
 go get -u github.com/jstemmer/gotags
+
+OS=$(uname)
+if [ "x$OS" = "xLinux" ]; then
+    go get -u github.com/syohex/byzanz-window
+fi
