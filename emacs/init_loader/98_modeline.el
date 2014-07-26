@@ -41,6 +41,8 @@
   (unless (member newcdr mode-line-format)
     (setcdr cell (cons newcdr (cdr cell)))))
 
+(defvar my/current-branch nil)
+
 (defun my/update-git-branch-mode-line ()
   (with-temp-buffer
     (when (zerop (call-process "git" nil t nil "symbolic-ref" "-q" "HEAD"))
@@ -56,7 +58,10 @@
                       (point) (line-end-position))))))
 
 (defun my/update-branch-mode-line ()
-  (let ((br-str (or (my/update-git-branch-mode-line)
+  (let ((br-str (or my/current-branch
+                    (my/update-git-branch-mode-line)
                     (my/update-hg-branch-mode-line))))
-    (propertize (or br-str "[Not Repo]")
+    (set (make-local-variable 'my/current-branch)
+         (or br-str "[Not Repo]"))
+    (propertize my/current-branch
                 'face '((:foreground "GreenYellow" :weight bold)))))
