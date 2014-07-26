@@ -37,16 +37,26 @@
 ;; Show Git branch information to mode-line
 (let ((cell (or (memq 'mode-line-position mode-line-format)
 		(memq 'mode-line-buffer-identification mode-line-format)))
-      (newcdr '(:eval (my/update-git-branch-mode-line))))
+      (newcdr '(:eval (my/update-branch-mode-line))))
   (unless (member newcdr mode-line-format)
     (setcdr cell (cons newcdr (cdr cell)))))
 
 (defun my/update-git-branch-mode-line ()
-  (let* ((cmd "git symbolic-ref -q HEAD")
-         (br-str (with-temp-buffer
-                   (when (zerop (call-process-shell-command cmd nil t))
-                     (goto-char (point-min))
-                     (when (re-search-forward "\\`refs/heads/\\(.+\\)$" nil t)
-                       (format "[%s]" (match-string 1)))))))
+  (with-temp-buffer
+    (when (zerop (call-process "git" nil t nil "symbolic-ref" "-q" "HEAD"))
+      (goto-char (point-min))
+      (when (re-search-forward "\\`refs/heads/\\(.+\\)$" nil t)
+        (format "[%s]" (match-string-no-properties 1))))))
+
+(defun my/update-hg-branch-mode-line ()
+  (with-temp-buffer
+    (when (zerop (call-process "hg" nil t nil "branch"))
+      (goto-char (point-min))
+      (format "[%s]" (buffer-substring-no-properties
+                      (point) (line-end-position))))))
+
+(defun my/update-branch-mode-line ()
+  (let ((br-str (or (my/update-git-branch-mode-line)
+                    (my/update-hg-branch-mode-line))))
     (propertize (or br-str "[Not Repo]")
                 'face '((:foreground "GreenYellow" :weight bold)))))
