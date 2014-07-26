@@ -5,7 +5,7 @@
 
 ;; disable vc-mode
 (custom-set-variables
- '(vc-handled-backends '())
+ '(vc-handled-backends '(Git))
  '(vc-follow-symlinks t))
 (eval-after-load "vc"
   '(remove-hook 'find-file-hooks 'vc-find-file-hook))
