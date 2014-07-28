@@ -32,6 +32,7 @@
 (depends-on "elscreen" :git "https://github.com/emacs-jp/elscreen.git" :branch "fixed")
 (depends-on "popwin")
 (depends-on "buffer-move")
+(depends-on "ace-jump-buffer")
 
 ;; Window
 ;;;(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
@@ -96,7 +97,6 @@
 
 ;; markdown
 (depends-on "markdown-mode")
-(depends-on "markdown-mode+")
 
 ;; helm
 (depends-on "helm")

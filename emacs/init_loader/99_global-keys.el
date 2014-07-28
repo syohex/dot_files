@@ -29,7 +29,7 @@
 (global-set-key (kbd "C-h a")   'helm-apropos)
 (global-set-key (kbd "C-h m")   'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
-(global-set-key (kbd "C-x b")   'helm-buffers-list)
+(global-set-key (kbd "C-x b")   'ace-jump-buffer)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
