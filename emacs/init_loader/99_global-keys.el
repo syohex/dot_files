@@ -15,7 +15,7 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-M-r") 'ace-jump-mode)
 (global-set-key (kbd "C-M-c") 'ace-jump-char-mode)
-(global-unset-key (kbd "M-z"))
+(global-set-key (kbd "C-x =") 'indent-region)
 
 ;; helm binding
 (global-set-key (kbd "M-.") 'helm-editutil-etags-select)
