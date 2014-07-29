@@ -159,5 +159,4 @@
 
 ;; My own tools
 (depends-on "editutil" :git "https://github.com/syohex/emacs-editutil.git")
-(depends-on "emacs-utils" :git "https://github.com/syohex/emacs-utils.git"
-            :files ("sgit.el" "pomodoro.el"))
+(depends-on "sgit" :git "https://github.com/syohex/emacs-sgit.git")

@@ -11,9 +11,8 @@
   '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 
 ;; sgit
-(global-set-key (kbd "C-x v g") 'sgit:grep)
-(global-set-key (kbd "C-x v d") 'sgit:diff)
-(global-set-key (kbd "C-x v N") 'sgit:intent-to-add)
+(global-set-key (kbd "C-x v d") 'sgit-diff)
+(global-set-key (kbd "C-x v N") 'sgit-intent-to-add)
 
 ;; git-gutter
 (global-git-gutter-mode +1)
