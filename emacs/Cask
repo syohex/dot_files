@@ -5,7 +5,6 @@
 (depends-on "auto-complete")
 (depends-on "fuzzy")
 (depends-on "popup")
-;;(depends-on "pos-tip")
 
 ;; Editing
 (depends-on "thingopt")
@@ -26,7 +25,6 @@
 
 ;; cursor
 (depends-on "goto-chg")
-(depends-on "ace-jump-mode")
 
 ;; buffer
 (depends-on "elscreen" :git "https://github.com/emacs-jp/elscreen.git" :branch "fixed")
