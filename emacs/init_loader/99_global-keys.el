@@ -13,8 +13,7 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "C-M-r") 'ace-jump-mode)
-(global-set-key (kbd "C-M-c") 'ace-jump-char-mode)
+(global-set-key (kbd "C-M-c") 'ace-jump-mode)
 (global-set-key (kbd "C-x =") 'indent-region)
 
 ;; helm binding
@@ -36,9 +35,7 @@
 (define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
 (define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
 
-;; col-highlight
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
-
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
