@@ -6,5 +6,3 @@
 (eval-after-load "flyspell"
   '(progn
      (define-key flyspell-mode-map (kbd "C-M-i") nil)))
-
-(add-to-list 'auto-mode-alist '("Changes\\'" . flyspell-mode))

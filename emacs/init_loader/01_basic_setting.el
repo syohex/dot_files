@@ -145,5 +145,10 @@
   '(set-face-attribute 'comint-highlight-input nil
                        :foreground "grey80" :weight 'semi-bold))
 
-;; specify mode
+;; for Changes
 (add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))
+
+(defun my/text-mode-hook ()
+  (when (string-match-p "\\`Changes" (buffer-name))
+    (flyspell-mode +1)))
+(add-hook 'text-mode-hook 'my/text-mode-hook)
