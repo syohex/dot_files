@@ -24,6 +24,7 @@
  '(line-move-visual nil)
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
+ '(horizontal-scroll-bar nil)
  '(compile-command ""))
 
 ;; temp directory
