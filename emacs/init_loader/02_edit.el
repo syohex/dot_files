@@ -38,8 +38,6 @@
 
 (dolist (mode my/autopair-enabled-modes)
   (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
-;; wrap-region mode should be enabled in markdown-mode
-(add-hook 'markdown-mode-hook 'autopair-mode)
 
 ;; highlight specified words
 (defun my/add-watchwords ()
