@@ -1,5 +1,7 @@
 (require 'dired-x)
 
+(setq-default horizontal-scroll-bar nil)
+
 ;; disable vc-mode
 (setq vc-handled-backends '())
 
