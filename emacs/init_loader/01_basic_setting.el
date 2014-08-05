@@ -27,6 +27,8 @@
  '(horizontal-scroll-bar nil)
  '(compile-command ""))
 
+(setq-default horizontal-scroll-bar nil)
+
 ;; temp directory
 (when (file-exists-p "/mnt/ramdisk")
   (setq temporary-file-directory "/mnt/ramdisk/"))
