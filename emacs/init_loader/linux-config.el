@@ -1,12 +1,3 @@
-;; This value should be set before loading `mozc.el'
-(custom-set-variables
- '(default-input-method "japanese-mozc")
- '(mozc-candidate-style 'echo-area)  ;; overlay is too slow
- '(mozc-leim-title "[も]"))
-
-(require 'mozc)
-(global-set-key (kbd "C-o") 'toggle-input-method)
-
 ;; browse
 (custom-set-variables
  '(browse-url-browser-function 'browse-url-generic)

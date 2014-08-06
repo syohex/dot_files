@@ -11,3 +11,12 @@
 
 (add-hook 'input-method-activate-hook 'my/input-method-active-hook)
 (add-hook 'input-method-inactivate-hook 'my/input-method-inactivate-hook)
+
+;; This value should be set before loading `mozc.el'
+(custom-set-variables
+ '(mozc-candidate-style 'echo-area) ;; overlay is too slow
+ '(mozc-leim-title "[も]"))
+
+(when (require 'mozc nil t)
+  (setq default-input-method "japanese-mozc")
+  (global-set-key (kbd "C-o") 'toggle-input-method))
