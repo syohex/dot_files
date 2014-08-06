@@ -2,8 +2,10 @@
 (setq ns-command-modifier 'meta
       ns-alternate-modifier 'super
       ns-use-native-fullscreen nil ;; Don't use system fullscreen
-      default-input-method "MacOSX"
       system-uses-terminfo nil)
+
+(unless (featurep 'mozc)
+  (setq default-input-method "MacOSX"))
 
 ;; font setting
 (set-face-attribute 'default nil
