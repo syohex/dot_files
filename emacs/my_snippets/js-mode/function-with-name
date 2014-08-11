@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: function name () { ... }
-# key: nfunc
+# key: funcn
 # --
 function $0 () {
 
