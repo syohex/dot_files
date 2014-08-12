@@ -24,7 +24,6 @@
      (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
      (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
      (define-key org-mode-map (kbd "C-c <tab>") 'show-all)
-     (local-unset-key (kbd "M-S-<return>"))
 
      (smartrep-define-key
          org-mode-map "C-c" '(("l" . 'org-shiftright)
@@ -32,15 +31,7 @@
 
      (smartrep-define-key
          org-mode-map "C-c" '(("j" . 'org-metadown)
-                              ("k" . 'org-metaup)))
-
-     (smartrep-define-key
-         org-mode-map "C-c" '(("C-f" . (outline-forward-same-level 1))
-                              ("C-b" . (outline-backward-same-level 1))))
-
-     (smartrep-define-key
-         org-mode-map "C-c" '(("C-n" . (outline-next-visible-heading 1))
-                              ("C-p" . (outline-previous-visible-heading 1))))))
+                              ("k" . 'org-metaup)))))
 
 (eval-after-load "org-faces"
   '(progn
@@ -52,3 +43,7 @@
      (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
      (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
      (set-face-attribute 'org-level-4 nil :foreground "grey80")))
+
+(defun my/org-mode-hook ()
+  (local-unset-key (kbd "M-S-<return>")))
+(add-hook 'org-mode-hook 'my/org-mode-hook)
