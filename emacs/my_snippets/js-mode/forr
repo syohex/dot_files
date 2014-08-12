@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ranged for
+# key: forr
+# --
+for (var $0 in ) {
+
+}
