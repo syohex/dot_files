@@ -11,7 +11,7 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-K") 'kill-whole-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "C-M-c") 'ace-jump-mode)
+(global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x =") 'indent-region)
 
 ;; helm binding
