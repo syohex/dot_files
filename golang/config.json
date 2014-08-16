@@ -1,5 +1,5 @@
 {
-    "Matcher": "Regexp",
+    "InitialMatcher": "Regexp",
     "Keymap": {
         "C-v": "peco.SelectNextPage",
         "M-v": "peco.SelectPreviousPage"
