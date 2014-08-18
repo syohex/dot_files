@@ -1,8 +1,8 @@
 {
     "InitialMatcher": "Regexp",
     "Keymap": {
-        "C-v": "peco.SelectNextPage",
-        "M-v": "peco.SelectPreviousPage"
+        "C-v": "peco.ScrollPageDown",
+        "M-v": "peco.ScrollPageUp"
     },
     "CustomMatcher": {
         "Migemo": [
