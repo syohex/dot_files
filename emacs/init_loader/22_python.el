@@ -18,7 +18,20 @@
   (insert ":")
   (newline-and-indent))
 
+(defun my/python-mode-hook ()
+  (jedi:setup)
+
+  ;; autopair
+  (setq autopair-handle-action-fns
+        '(autopair-default-handle-action autopair-python-triple-quote-action))
+
+  ;; flycheck
+  (setq flycheck-checker 'python-flake8
+        flycheck-flake8rc (expand-file-name "~/.config/flake8")))
+
 (with-eval-after-load 'python
+  (add-hook 'python-mode-hook 'my/python-mode-hook)
+
   ;; binding
   (define-key python-mode-map (kbd "C-c o") 'my/python-insert-colon)
   (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
@@ -36,16 +49,3 @@
   ;; show-doc
   (set-face-attribute 'jedi:highlight-function-argument nil
                       :foreground "green"))
-
-(defun my/python-mode-hook ()
-  (jedi:setup)
-
-  ;; autopair
-  (setq autopair-handle-action-fns
-        '(autopair-default-handle-action autopair-python-triple-quote-action))
-
-  ;; flycheck
-  (setq flycheck-checker 'python-flake8
-        flycheck-flake8rc (expand-file-name "~/.config/flake8")))
-
-(add-hook 'python-mode-hook 'my/python-mode-hook)

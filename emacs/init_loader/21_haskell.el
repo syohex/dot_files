@@ -2,6 +2,9 @@
 (with-eval-after-load 'haskell-mode
   (require 'haskell-simple-indent)
   (require 'ghc)
+
+  (add-hook 'haskell-mode-hook 'my/haskell-mode-hook)
+
   ;; ghc
   (setq ghc-module-command (executable-find "ghc-mod"))
 
@@ -28,8 +31,6 @@
 
   ;; for auto-complete
   (add-to-list 'ac-sources 'ac-source-ghc-mod))
-
-(add-hook 'haskell-mode-hook 'my/haskell-mode-hook)
 
 ;; Wrap region with block comment
 (defun haskell-block-commend-region (start end)

@@ -10,6 +10,7 @@
  '(robe-highlight-capf-candidates nil))
 
 (with-eval-after-load 'ruby-mode
+  (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
   ;; rbenv
   ;;(global-rbenv-mode t) ;; I think it may not be needed
 
@@ -35,8 +36,6 @@
 
   ;; auto insert `end'
   (ruby-end-mode +1))
-
-(add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
 
 ;; insert "|"
 (defun my/ruby-insert-bar ()

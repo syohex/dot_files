@@ -2,7 +2,8 @@
 (custom-set-variables
  '(gofmt-command "goimports"))
 
-(with-eval-after-load "go-mode"
+(with-eval-after-load 'go-mode
+  (add-hook 'go-mode-hook 'my/go-mode-hook)
   (add-hook 'go-mode-hook 'go-eldoc-setup)
 
   (require 'go-autocomplete)
@@ -33,4 +34,3 @@
 (defun my/go-mode-hook ()
   (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))
-(add-hook 'go-mode-hook 'my/go-mode-hook)

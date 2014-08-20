@@ -1,5 +1,6 @@
 ;; web-mode
 (with-eval-after-load 'web-mode
+  (add-hook 'web-mode-hook 'my/web-mode-hook)
   ;; remap key
   (define-key web-mode-map (kbd "C-c b b") 'web-mode-block-beginning)
   (define-key web-mode-map (kbd "C-c b e") 'web-mode-block-end)
@@ -37,7 +38,6 @@
   (local-unset-key (kbd "C-c C-b"))
   (local-unset-key (kbd "C-c C-e"))
   (local-unset-key (kbd "C-c C-t")))
-(add-hook 'web-mode-hook 'my/web-mode-hook)
 
 ;; html-mode
 (defun html-mode-insert-br ()

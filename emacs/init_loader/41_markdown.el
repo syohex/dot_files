@@ -1,6 +1,6 @@
 ;; setting markdown-mode
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
-(with-eval-after-load "markdown-mode"
+(with-eval-after-load 'markdown-mode
   ;; key bindings
   (define-key markdown-mode-map (kbd "C-M-f") 'forward-symbol)
   (define-key markdown-mode-map (kbd "C-M-b") 'editutil-backward-symbol)

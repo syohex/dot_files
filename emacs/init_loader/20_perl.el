@@ -94,7 +94,7 @@
 ;; XS
 (autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
 (add-to-list 'auto-mode-alist '("\\.xs\\'" . xs-mode))
-(with-eval-after-load "xs-mode"
+(with-eval-after-load 'xs-mode
   (c-toggle-electric-state -1)
   (setq c-auto-newline nil)
   (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
