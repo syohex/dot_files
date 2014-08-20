@@ -7,7 +7,7 @@
 (custom-set-variables
  '(vc-handled-backends '(Git))
  '(vc-follow-symlinks t))
-(eval-after-load "vc"
+(with-eval-after-load 'vc
   '(remove-hook 'find-file-hooks 'vc-find-file-hook))
 
 ;; sgit
@@ -39,21 +39,19 @@
  '(magit-auto-revert-mode-lighter ""))
 
 (global-set-key (kbd "M-g M-g") 'magit-status)
-(eval-after-load "magit"
-  '(progn
+(with-eval-after-load 'magit
+  (defadvice magit-status (around magit-fullscreen activate)
+    (window-configuration-to-register :magit-fullscreen)
+    ad-do-it
+    (delete-other-windows))
 
-     (defadvice magit-status (around magit-fullscreen activate)
-       (window-configuration-to-register :magit-fullscreen)
-       ad-do-it
-       (delete-other-windows))
+  (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
 
-     (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
-
-     ;; faces
-     (set-face-attribute 'magit-branch nil
-                         :foreground "yellow" :weight 'bold :underline t)
-     (set-face-attribute 'magit-item-highlight nil
-                         :background "gray3" :weight 'normal)))
+  ;; faces
+  (set-face-attribute 'magit-branch nil
+                      :foreground "yellow" :weight 'bold :underline t)
+  (set-face-attribute 'magit-item-highlight nil
+                      :background "gray3" :weight 'normal))
 
 (defun my/magit-quit-session ()
   (interactive)
@@ -72,10 +70,9 @@
   (when (looking-at "\n")
     (open-line 1)))
 
-(eval-after-load "git-commit-mode"
-  '(progn
-     (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
-     (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)))
+(with-eval-after-load 'git-commit-mode
+  (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
+  (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook))
 
 (defadvice git-commit-commit (after move-to-magit-buffer activate)
   (delete-window))

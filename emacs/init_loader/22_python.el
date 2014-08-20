@@ -18,26 +18,24 @@
   (insert ":")
   (newline-and-indent))
 
-(eval-after-load "python"
-  '(progn
-     ;; binding
-     (define-key python-mode-map (kbd "C-c o") 'my/python-insert-colon)
-     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
-     (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
-     (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
+(with-eval-after-load 'python
+  ;; binding
+  (define-key python-mode-map (kbd "C-c o") 'my/python-insert-colon)
+  (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
+  (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
+  (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
 
-     (smartrep-define-key
-         python-mode-map "C-c" '(("h" . 'python-indent-shift-left)
-                                 ("l" . 'python-indent-shift-right)))))
+  (smartrep-define-key
+      python-mode-map "C-c" '(("h" . 'python-indent-shift-left)
+                              ("l" . 'python-indent-shift-right))))
 
 ;; jedi
 (custom-set-variables
  '(jedi:tooltip-method nil))
-(eval-after-load "jedi"
-  '(progn
-     ;; show-doc
-     (set-face-attribute 'jedi:highlight-function-argument nil
-                         :foreground "green")))
+(with-eval-after-load 'jedi
+  ;; show-doc
+  (set-face-attribute 'jedi:highlight-function-argument nil
+                      :foreground "green"))
 
 (defun my/python-mode-hook ()
   (jedi:setup)

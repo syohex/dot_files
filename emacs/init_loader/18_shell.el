@@ -5,16 +5,14 @@
 (custom-set-variables
  '(compilation-message-face nil))
 
-(eval-after-load "compile"
-  '(progn
-     (set-face-attribute 'compilation-error nil :underline nil)
-     (set-face-attribute 'compilation-line-number nil :underline t)))
+(with-eval-after-load 'compile
+  (set-face-attribute 'compilation-error nil :underline nil)
+  (set-face-attribute 'compilation-line-number nil :underline t))
 
 ;; eshell
-(eval-after-load "em-prompt"
-  '(progn
-     (set-face-attribute 'eshell-prompt nil
-                         :foreground "yellow")))
+(with-eval-after-load 'em-prompt
+  (set-face-attribute 'eshell-prompt nil
+                      :foreground "yellow"))
 
 (defun my/eshell-first-time-load-hook ()
   (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)

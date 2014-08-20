@@ -3,35 +3,34 @@
  '(slime-net-coding-system 'utf-8-unix)
  '(slime-autodoc-delay 0.5))
 
-(eval-after-load "slime"
-  '(progn
-     (setq inferior-lisp-program "ccl")
-     ;;(setq slime-protocol-version 'ignore)      ;; for clojure
+(with-eval-after-load 'slime
+  (setq inferior-lisp-program "ccl")
+  ;;(setq slime-protocol-version 'ignore)      ;; for clojure
 
-     ;; SLIME REPL
-     (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
+  ;; SLIME REPL
+  (slime-setup '(slime-repl slime-fancy slime-banner slime-presentations))
 
-     ;; face
-     (set-face-foreground 'slime-repl-inputed-output-face "pink1")
+  ;; face
+  (set-face-foreground 'slime-repl-inputed-output-face "pink1")
 
-     (defalias 'slime-cleanup 'slime-restart-inferior-lisp)
+  (defalias 'slime-cleanup 'slime-restart-inferior-lisp)
 
-     ;; hyperspec
-     (add-to-list 'load-path (concat (file-name-directory (locate-library "slime")) "lib"))
-     (require 'hyperspec)
-     (let ((hyperspec-dir (expand-file-name
-                           (concat user-emacs-directory "elisps/HyperSpec/"))))
-       (setq common-lisp-hyperspec-root (concat "file://" hyperspec-dir)
-             common-lisp-hyperspec-symbol-table (concat hyperspec-dir "Data/Map_Sym.txt")))
+  ;; hyperspec
+  (add-to-list 'load-path (concat (file-name-directory (locate-library "slime")) "lib"))
+  (require 'hyperspec)
+  (let ((hyperspec-dir (expand-file-name
+                        (concat user-emacs-directory "elisps/HyperSpec/"))))
+    (setq common-lisp-hyperspec-root (concat "file://" hyperspec-dir)
+          common-lisp-hyperspec-symbol-table (concat hyperspec-dir "Data/Map_Sym.txt")))
 
-      ;;;; ac-slime
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+  ;; ac-slime
+  (add-hook 'slime-mode-hook 'set-up-slime-ac)
+  (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
-     ;; bindings
-     (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
-     (define-key slime-mode-map (kbd "C-c C-d C-a") 'helm-hyperspec)
-     (define-key slime-mode-map (kbd "C-c C-d C-d") 'common-lisp-hyperspec)))
+  ;; bindings
+  (define-key slime-mode-map (kbd "C-M-i") 'auto-complete)
+  (define-key slime-mode-map (kbd "C-c C-d C-a") 'helm-hyperspec)
+  (define-key slime-mode-map (kbd "C-c C-d C-d") 'common-lisp-hyperspec))
 
 (defun my/obarray-to-list (obarray)
   (let (symbols)
@@ -53,10 +52,9 @@
         :default (thing-at-point 'symbol)
         :buffer (get-buffer-create "*Helm HyperSpec*")))
 
-(eval-after-load "slime-repl"
-  '(progn
-     (define-key slime-repl-mode-map (kbd "TAB") nil)
-     (define-key slime-repl-mode-map (kbd "C-M-i") 'auto-complete)))
+(with-eval-after-load 'slime-repl
+  (define-key slime-repl-mode-map (kbd "TAB") nil)
+  (define-key slime-repl-mode-map (kbd "C-M-i") 'auto-complete))
 
 (dolist (hook '(lisp-mode-hook))
   (add-hook hook 'slime-mode))

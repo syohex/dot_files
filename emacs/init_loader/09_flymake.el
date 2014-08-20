@@ -1,11 +1,11 @@
 ;; setting for flymake
 
 ;; avoid abnormal exit
-(eval-after-load "flymake"
-  '(defadvice flymake-post-syntax-check (before
-                                         flymake-force-check-was-interrupted
-                                         activate)
-     (setq flymake-check-was-interrupted t)))
+(with-eval-after-load 'flymake
+  (defadvice flymake-post-syntax-check (before
+                                        flymake-force-check-was-interrupted
+                                        activate)
+    (setq flymake-check-was-interrupted t)))
 
 (defsubst my/flycheck-enable-mode-p (mode)
   (memq mode my/flycheck-enable-modes))
@@ -61,18 +61,17 @@
  '(flycheck-display-errors-delay 0.5))
 
 ;; flycheck faces
-(eval-after-load "flycheck"
-  '(progn
-     (set-face-attribute 'flycheck-info nil
-                         :underline '(:style wave :color "green"))
-     (set-face-attribute 'flycheck-error nil
-                         :foreground "yellow" :weight 'bold
-                         :background "red")
-     (set-face-attribute 'flycheck-warning nil
-                         :weight 'bold :underline "darkorange"
-                         :foreground nil :background nil)
-     (set-face-attribute 'flycheck-error-list-highlight-at-point nil
-                         :background "grey15")))
+(with-eval-after-load 'flycheck
+  (set-face-attribute 'flycheck-info nil
+                      :underline '(:style wave :color "green"))
+  (set-face-attribute 'flycheck-error nil
+                      :foreground "yellow" :weight 'bold
+                      :background "red")
+  (set-face-attribute 'flycheck-warning nil
+                      :weight 'bold :underline "darkorange"
+                      :foreground nil :background nil)
+  (set-face-attribute 'flycheck-error-list-highlight-at-point nil
+                      :background "grey15"))
 
 (defun my/flymake-goto-next-error (arg)
   (interactive "P")

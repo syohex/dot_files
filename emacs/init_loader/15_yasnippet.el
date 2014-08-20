@@ -30,11 +30,10 @@
         (nth (cl-position selected names :test 'equal) choices)
       (signal 'quit "user quit!"))))
 
-(eval-after-load "yasnippet"
-  '(progn
-     (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
-                   yas-prompt-functions '(my/helm-yas-prompt))
-     (yas-reload-all)))
+(with-eval-after-load 'yasnippet
+  (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
+                yas-prompt-functions '(my/helm-yas-prompt))
+  (yas-reload-all))
 
 ;; utility functions
 (defun my-yas/perl-package-name ()

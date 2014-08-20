@@ -143,9 +143,9 @@
  '(smartrep-mode-line-string-activated "<<< SmartRep >>>"))
 
 ;; comint
-(eval-after-load "comint"
-  '(set-face-attribute 'comint-highlight-input nil
-                       :foreground "grey80" :weight 'semi-bold))
+(with-eval-after-load 'comint
+  (set-face-attribute 'comint-highlight-input nil
+                      :foreground "grey80" :weight 'semi-bold))
 
 ;; for Changes
 (add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))

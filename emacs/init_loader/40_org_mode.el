@@ -15,34 +15,32 @@
      ("DOING" . (:foreground "orange" :underline t :weight bold))
      ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue"))))
 
-(eval-after-load "org"
-  '(progn
-     ;; function of org-open-at-point
-     ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+(with-eval-after-load 'org
+  ;; function of org-open-at-point
+  ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
-     (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
-     (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
-     (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
-     (define-key org-mode-map (kbd "C-c <tab>") 'show-all)
+  (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
+  (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
+  (define-key org-mode-map (kbd "C-M-<return>") 'org-insert-todo-heading)
+  (define-key org-mode-map (kbd "C-c <tab>") 'show-all)
 
-     (smartrep-define-key
-         org-mode-map "C-c" '(("l" . 'org-shiftright)
-                              ("h" . 'org-shiftleft)))
+  (smartrep-define-key
+      org-mode-map "C-c" '(("l" . 'org-shiftright)
+                           ("h" . 'org-shiftleft)))
 
-     (smartrep-define-key
-         org-mode-map "C-c" '(("j" . 'org-metadown)
-                              ("k" . 'org-metaup)))))
+  (smartrep-define-key
+      org-mode-map "C-c" '(("j" . 'org-metadown)
+                           ("k" . 'org-metaup))))
 
-(eval-after-load "org-faces"
-  '(progn
-     (set-face-foreground 'org-block "green")
-     (set-face-foreground 'org-tag "green yellow")
-     (set-face-foreground 'org-checkbox "LawnGreen")
+(with-eval-after-load 'org-faces
+  (set-face-foreground 'org-block "green")
+  (set-face-foreground 'org-tag "green yellow")
+  (set-face-foreground 'org-checkbox "LawnGreen")
 
-     (set-face-attribute 'org-warning nil :foreground "hotpink")
-     (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
-     (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
-     (set-face-attribute 'org-level-4 nil :foreground "grey80")))
+  (set-face-attribute 'org-warning nil :foreground "hotpink")
+  (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)
+  (set-face-attribute 'org-level-2 nil :foreground "yellow" :weight 'semi-bold)
+  (set-face-attribute 'org-level-4 nil :foreground "grey80"))
 
 (defun my/org-mode-hook ()
   (local-unset-key (kbd "M-S-<return>")))

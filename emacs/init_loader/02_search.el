@@ -4,11 +4,10 @@
   (isearch-yank-internal (lambda () (forward-symbol 1) (point))))
 (define-key isearch-mode-map (kbd "C-M-w") 'isearch-yank-symbol)
 
-(eval-after-load 'ace-jump-mode
-  '(progn
-     (setq ace-jump-mode-case-fold nil)
-     (set-face-attribute 'ace-jump-face-foreground nil
-                         :foreground "yellow" :weight 'bold)))
+(with-eval-after-load 'ace-jump-mode
+  (setq ace-jump-mode-case-fold nil)
+  (set-face-attribute 'ace-jump-face-foreground nil
+                      :foreground "yellow" :weight 'bold))
 
 ;; anzu
 (global-anzu-mode +1)

@@ -9,23 +9,22 @@
  '(robe-completing-read-func 'helm-robe-completing-read)
  '(robe-highlight-capf-candidates nil))
 
-(eval-after-load "ruby-mode"
-  '(progn
-     ;; rbenv
-     ;;(global-rbenv-mode t) ;; I think it may not be needed
+(with-eval-after-load 'ruby-mode
+  ;; rbenv
+  ;;(global-rbenv-mode t) ;; I think it may not be needed
 
-     ;; binding
-     (define-key ruby-mode-map (kbd "|") 'my/ruby-insert-bar)
-     (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
-     (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
+  ;; binding
+  (define-key ruby-mode-map (kbd "|") 'my/ruby-insert-bar)
+  (define-key ruby-mode-map (kbd "C-M-a") 'my/ruby-beginning-of-defun)
+  (define-key ruby-mode-map (kbd "C-M-e") 'my/ruby-end-of-defun)
 
-     (define-key ruby-mode-map (kbd "C-c C-a") 'ruby-beginning-of-block)
-     (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-end-of-block)
-     (define-key ruby-mode-map (kbd "C-c ?") 'robe-doc)
+  (define-key ruby-mode-map (kbd "C-c C-a") 'ruby-beginning-of-block)
+  (define-key ruby-mode-map (kbd "C-c C-e") 'ruby-end-of-block)
+  (define-key ruby-mode-map (kbd "C-c ?") 'robe-doc)
 
-     ;; disable default bindings
-     (dolist (key '("(" ")" "{" "}" "[" "]" "\"" "'"))
-       (define-key ruby-mode-map key nil))))
+  ;; disable default bindings
+  (dolist (key '("(" ")" "{" "}" "[" "]" "\"" "'"))
+    (define-key ruby-mode-map key nil)))
 
 (defun my/ruby-mode-hook ()
   (setq flycheck-checker 'ruby-rubocop)

@@ -3,38 +3,35 @@
              '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
 (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
 
-(eval-after-load "cperl-mode"
-  '(progn
-     (cperl-set-style "PerlStyle")
-     (setq cperl-auto-newline nil)
+(with-eval-after-load 'cperl-mode
+  (cperl-set-style "PerlStyle")
+  (setq cperl-auto-newline nil)
 
-     (helm-perldoc:setup)
+  (helm-perldoc:setup)
 
-     ;; bindings
-     (define-key cperl-mode-map "\177" nil)
-     (define-key cperl-mode-map (kbd ";") nil)
-     (define-key cperl-mode-map (kbd ":") nil)
-     (define-key cperl-mode-map (kbd "(") nil)
-     (define-key cperl-mode-map (kbd "{") nil)
-     (define-key cperl-mode-map (kbd "}") nil)
-     (define-key cperl-mode-map (kbd "[") nil)
+  ;; bindings
+  (define-key cperl-mode-map "\177" nil)
+  (define-key cperl-mode-map (kbd ";") nil)
+  (define-key cperl-mode-map (kbd ":") nil)
+  (define-key cperl-mode-map (kbd "(") nil)
+  (define-key cperl-mode-map (kbd "{") nil)
+  (define-key cperl-mode-map (kbd "}") nil)
+  (define-key cperl-mode-map (kbd "[") nil)
 
-     (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
-     (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
+  (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
+  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
 
-     ;; faces
-     (set-face-attribute 'cperl-array-face nil
-                         :background nil :weight 'normal)
-     (set-face-attribute 'cperl-hash-face nil
-                         :foreground "DarkOliveGreen3"
-                         :background nil
-                         :weight 'normal :italic nil)))
+  ;; faces
+  (set-face-attribute 'cperl-array-face nil
+                      :background nil :weight 'normal)
+  (set-face-attribute 'cperl-hash-face nil
+                      :foreground "DarkOliveGreen3" :background nil
+                      :weight 'normal :italic nil))
 
 ;; for flymake
-(eval-after-load "flymake"
-  '(progn
-     (add-to-list 'flymake-allowed-file-name-masks
-                  '("\\.\\(pl\\|pm\\|t\\|psgi\\)\\'" my/flymake-perl-init))))
+(with-eval-after-load 'flymake
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.\\(?:pl\\|pm\\|t\\|psgi\\)\\'" my/flymake-perl-init)))
 
 (defun my/flymake-perl-root-directory ()
   (cl-loop with curdir = default-directory
@@ -97,12 +94,11 @@
 ;; XS
 (autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
 (add-to-list 'auto-mode-alist '("\\.xs\\'" . xs-mode))
-(eval-after-load "xs-mode"
-  '(progn
-     (c-toggle-electric-state -1)
-     (setq c-auto-newline nil)
-     (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
-     (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc)))
+(with-eval-after-load "xs-mode"
+  (c-toggle-electric-state -1)
+  (setq c-auto-newline nil)
+  (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
+  (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc))
 
 (defun xs-perldoc ()
   (interactive)
