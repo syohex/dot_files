@@ -21,7 +21,16 @@
                 slime-repl-mode-hook))
   (add-hook hook 'enable-paredit-mode))
 
+(defun my/paredit-edit-next-line ()
+  (interactive)
+  (let ((syntax (char-syntax (char-after))))
+    (if (eq syntax ?\()
+        (paredit-forward)
+      (paredit-forward-up))
+    (paredit-newline)))
+
 (with-eval-after-load 'paredit
+  (define-key paredit-mode-map (kbd "M-RET") 'my/paredit-edit-next-line)
   (define-key paredit-mode-map (kbd "C-c C-l") 'editutil-toggle-let)
   (define-key paredit-mode-map (kbd "C-c C-q") 'paredit-reindent-defun)
   (define-key paredit-mode-map (kbd "M-q") 'nil)
