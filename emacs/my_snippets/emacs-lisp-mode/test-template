@@ -1,7 +1,7 @@
 # name : Test Template
 # key  : test_template
 # --
-;;; `(file-name-nondirectory (buffer-file-name))` ---
+;;; `(file-name-nondirectory (buffer-file-name))` --- $1
 
 ;; Copyright (C) `(format-time-string "%Y" (current-time))` by Syohei YOSHIDA
 
