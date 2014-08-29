@@ -41,6 +41,8 @@
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
+(define-key my/ctrl-q-map (kbd "[") 'backward-paragraph)
+(define-key my/ctrl-q-map (kbd "]") 'forward-paragraph)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
