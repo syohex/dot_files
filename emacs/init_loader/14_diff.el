@@ -10,6 +10,12 @@
   (set-face-attribute 'diff-file-header-face nil
                       :background nil :weight 'extra-bold)
 
+  (set-face-attribute 'diff-refine-added nil
+                      :background nil :underline "green")
+
+  (set-face-attribute 'diff-refine-removed nil
+                      :background nil :underline "red")
+
   (set-face-attribute 'diff-refine-change nil
                       :background nil)
 
