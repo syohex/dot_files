@@ -2,7 +2,11 @@
     "InitialMatcher": "Regexp",
     "Keymap": {
         "C-v": "peco.ScrollPageDown",
-        "M-v": "peco.ScrollPageUp"
+        "M-v": "peco.ScrollPageUp",
+        "M-f": "peco.ForwardWord",
+        "M-b": "peco.BackwardWord",
+        "M-d": "peco.DeleteForwardWord",
+        "M-k": "peco.DeleteBackwardWord"
     },
     "CustomMatcher": {
         "Migemo": [
