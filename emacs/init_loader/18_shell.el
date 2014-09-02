@@ -23,7 +23,7 @@
  '(shell-pop-autocd-to-working-dir nil)
  '(shell-pop-shell-type '("eshell" " *eshell*" (lambda () (eshell))))
  '(shell-pop-universal-key "M-`")
- '(shell-pop-window-position "full"))
+ '(shell-pop-full-span t))
 (global-set-key (kbd "M-`") 'shell-pop)
 
 (defvar my/eshell-prev-buffer nil)
