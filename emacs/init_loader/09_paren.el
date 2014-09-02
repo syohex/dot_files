@@ -32,6 +32,7 @@
 (with-eval-after-load 'paredit
   (define-key paredit-mode-map (kbd "M-RET") 'my/paredit-edit-next-line)
   (define-key paredit-mode-map (kbd "C-c C-l") 'editutil-toggle-let)
+  (define-key paredit-mode-map (kbd "C-c C-d") 'editutil-toggle-defun)
   (define-key paredit-mode-map (kbd "C-c C-q") 'paredit-reindent-defun)
   (define-key paredit-mode-map (kbd "C-c SPC") 'mark-sexp)
   (define-key paredit-mode-map (kbd "M-q") 'nil)
