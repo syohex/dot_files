@@ -118,6 +118,7 @@
 (global-undo-tree-mode)
 (define-key undo-tree-map (kbd "C-x u") 'undo-tree-undo)
 (define-key undo-tree-map (kbd "C-/") 'undo-tree-undo)
+(define-key undo-tree-map (kbd "M-_") 'nil)
 (global-set-key (kbd "M-/") 'undo-tree-redo)
 
 ;; fill-mode
