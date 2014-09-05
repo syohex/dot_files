@@ -102,7 +102,7 @@
 ;; which-func
 (require 'which-func)
 (set-face-attribute 'which-func nil
-                    :foreground "LightPink3" :weight 'bold)
+                    :foreground "chartreuse1" :weight 'bold)
 (which-function-mode +1)
 
 ;; invisible mouse cursor when editing text
