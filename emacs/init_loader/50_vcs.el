@@ -22,6 +22,7 @@
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
 (custom-set-variables
+ '(git-gutter:verbosity 4)
  '(git-gutter:modified-sign " ")
  '(git-gutter:deleted-sign " "))
 
