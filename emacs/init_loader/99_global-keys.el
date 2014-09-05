@@ -52,6 +52,10 @@
     global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
                        ("-" . 'evil-numbers/dec-at-pt)))
 
+(smartrep-define-key
+    undo-tree-map "C-x" '(("u" . 'undo-tree-undo)
+                          ("U" . 'undo-tree-redo)))
+
 ;; editutil mappings
 (editutil-default-setup)
 
