@@ -18,6 +18,7 @@
   (define-key view-mode-map (kbd "I") 'editutil-view-insert-at-bol)
   (define-key view-mode-map (kbd "A") 'editutil-view-insert-at-eol)
 
+  (define-key view-mode-map (kbd "q") 'read-only-mode)
   (define-key view-mode-map (kbd "h") 'backward-char)
   (define-key view-mode-map (kbd "j") 'next-line)
   (define-key view-mode-map (kbd "k") 'previous-line)
