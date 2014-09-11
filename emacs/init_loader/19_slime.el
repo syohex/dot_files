@@ -50,7 +50,7 @@
   (interactive)
   (helm :sources '(helm-hyperspec-source)
         :default (thing-at-point 'symbol)
-        :buffer (get-buffer-create "*Helm HyperSpec*")))
+        :buffer "*Helm HyperSpec*"))
 
 (with-eval-after-load 'slime-repl
   (define-key slime-repl-mode-map (kbd "TAB") nil)
