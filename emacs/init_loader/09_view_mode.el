@@ -10,7 +10,9 @@
   (define-key view-mode-map (kbd "f") 'editutil-forward-char)
   (define-key view-mode-map (kbd "F") 'editutil-backward-char)
   (define-key view-mode-map (kbd "w") 'forward-word)
+  (define-key view-mode-map (kbd "W") 'forward-symbol)
   (define-key view-mode-map (kbd "b") 'backward-word)
+  (define-key view-mode-map (kbd "B") 'editutil-backward-symbol)
   (define-key view-mode-map (kbd "e") 'editutil-view-word-end)
 
   (define-key view-mode-map (kbd "i") 'editutil-view-insert)
