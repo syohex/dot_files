@@ -1,6 +1,5 @@
 ;;;; global key setting
 
-;; my key mapping
 (global-set-key (kbd "M-ESC ESC") 'keyboard-quit)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-*") 'tags-loop-continue)
@@ -41,8 +40,7 @@
 (define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
-(define-key my/ctrl-q-map (kbd "[") 'backward-paragraph)
-(define-key my/ctrl-q-map (kbd "]") 'forward-paragraph)
+(define-key my/ctrl-q-map (kbd "C-w") 'read-only-mode)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
