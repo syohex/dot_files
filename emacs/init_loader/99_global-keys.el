@@ -1,6 +1,6 @@
 ;;;; global key setting
 
-(global-set-key (kbd "M-ESC ESC") 'keyboard-quit)
+(global-set-key (kbd "M-ESC ESC") 'read-only-mode)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-*") 'tags-loop-continue)
 (global-set-key [delete] 'delete-char)
