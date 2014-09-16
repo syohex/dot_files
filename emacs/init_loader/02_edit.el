@@ -38,11 +38,3 @@
 
 (dolist (mode my/autopair-enabled-modes)
   (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
-
-;; highlight specified words
-(defun my/add-watchwords ()
-  (font-lock-add-keywords
-   nil '(("\\_<\\(FIXME\\|TODO\\|XXX\\|@@@\\)\\_>"
-          1 '((:foreground "pink") (:weight bold)) t))))
-
-(add-hook 'prog-mode-hook 'my/add-watchwords)
