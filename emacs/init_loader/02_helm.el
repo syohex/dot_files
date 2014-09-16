@@ -30,5 +30,6 @@
                       :foreground "cyan" :background nil :underline t))
 
 (with-eval-after-load 'helm-grep
-  (set-face-attribute 'helm-grep-lineno nil :foreground "GreenYellow")
-  (set-face-attribute 'helm-moccur-buffer nil :foreground "yellow"))
+  (set-face-attribute 'helm-grep-lineno nil :foreground "IndianRed1")
+  (set-face-attribute 'helm-moccur-buffer nil
+                      :foreground "aquamarine1" :underline nil))

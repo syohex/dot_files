@@ -11,9 +11,9 @@
   (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack)
 
   (set-face-attribute 'helm-gtags-file nil
-                      :foreground "yellow")
+                      :foreground "aquamarine1")
   (set-face-attribute 'helm-gtags-lineno nil
-                      :foreground "GreenYellow" :underline nil))
+                      :foreground "IndianRed1" :underline nil))
 
 ;;; Enable helm-gtags-mode
 (dolist (hook '(c-mode-common-hook
