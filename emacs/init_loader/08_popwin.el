@@ -1,6 +1,6 @@
 ;;;; popwin
 (require 'popwin)
-(global-set-key (kbd "C-x C-p") popwin:keymap)
+(global-set-key (kbd "M-z") popwin:keymap)
 (defvar popwin:special-display-config-backup popwin:special-display-config)
 (custom-set-variables
  '(display-buffer-function 'popwin:display-buffer))
@@ -47,3 +47,6 @@
 
 ;; CoffeeScript
 (push '("*CoffeeREPL*" :stick t) popwin:special-display-config)
+
+;; Ocaml
+(push '("*ocaml-toplevel*" :stick t) popwin:special-display-config)

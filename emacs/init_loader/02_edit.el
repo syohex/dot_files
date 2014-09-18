@@ -34,6 +34,8 @@
     js-mode
     go-mode
     coffee-mode
+    tuareg-mode
+    tuareg-interactive-mode
     cperl-mode))
 
 (dolist (mode my/autopair-enabled-modes)
