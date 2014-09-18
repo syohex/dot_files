@@ -1,9 +1,7 @@
-## Chdir to the ``default-directory'' of currently opened in Emacs buffer.
+## Chdir to directory of current buffer
 function cde() {
-    EMACS_CWD=`emacsclient -e "
-      (if (featurep 'elscreen)
-          (elscreen-current-directory)
-        (non-elscreen-current-directory))" | sed 's/^"\(.*\)"$/\1/'`
+    local EMACS_CWD=$(emacsclient -e \
+      '(editutil-current-buffer-directory) | sed 's/^"\(.*\)"$/\1/' )
 
     if [ "$EMACS_CWD" == "nil" ]; then
         echo "Failed cde"
