@@ -13,15 +13,24 @@
   (define-key go-mode-map (kbd "C-c C-s") 'my/gofmt)
   (define-key go-mode-map (kbd "C-c C-t") 'ff-find-other-file)
   (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
-  (define-key go-mode-map (kbd "C-c ?") 'my/godoc-query)
+  (define-key go-mode-map (kbd "C-c ?") 'my/godoc-type-at-cursor)
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
   (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
   (define-key go-mode-map (kbd ":") nil))
 
-(defun my/godoc-query ()
+(defun my/godoc-type-at-cursor ()
   (interactive)
-  (godoc (read-string "Query: ")))
+  (save-excursion
+    (unless (looking-at-p "\\>")
+      (forward-word 1))
+    (let ((cand (go-eldoc--invoke-autocomplete)))
+      (when (and cand (string-match "\\`\\([^,]+\\),,\\(.+\\)$" cand))
+        (let ((name (match-string-no-properties 1 cand))
+              (type (match-string-no-properties 2 cand)))
+          (when (string-match "\\`var\\(.+\\)" type)
+            (setq type (match-string-no-properties 1 type)))
+          (message "%s:%s" (propertize name 'face 'font-lock-type-face) type))))))
 
 (defun my/gofmt ()
   (interactive)
