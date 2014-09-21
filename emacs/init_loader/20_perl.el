@@ -2,6 +2,7 @@
 (add-to-list 'auto-mode-alist
              '("\\.\\(pl\\|pm\\|cgi\\|t\\|psgi\\)\\'" . cperl-mode))
 (add-to-list 'auto-mode-alist '("cpanfile\\'" . cperl-mode))
+(defalias 'perl-mode 'cperl-mode)
 
 (with-eval-after-load 'cperl-mode
   (cperl-set-style "PerlStyle")
