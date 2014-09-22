@@ -25,15 +25,12 @@
 
 ;; cursor
 (depends-on "goto-chg")
+(depends-on "ace-jump-mode")
 
 ;; buffer
 (depends-on "elscreen" :git "https://github.com/emacs-jp/elscreen.git" :branch "fixed")
 (depends-on "popwin")
 (depends-on "buffer-move")
-(depends-on "ace-jump-buffer")
-
-;; Window
-;;;(depends-on "zoom-window" :git "https://github.com/syohex/emacs-zoom-window.git")
 
 ;; Key utility
 (depends-on "smartrep")
