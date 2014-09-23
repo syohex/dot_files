@@ -2,6 +2,9 @@
 (unless load-file-name
   (cd (getenv "HOME")))
 
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
 ;; Add load path of emacs lisps
 (add-to-list 'load-path (concat user-emacs-directory "elisps"))
 
