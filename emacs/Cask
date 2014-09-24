@@ -131,7 +131,7 @@
 
 ;;;; auto-complete sources
 (depends-on "ac-slime")
-(depends-on "ac-nrepl")
+(depends-on "ac-cider")
 (depends-on "go-autocomplete")
 (depends-on "ac-ispell")
 (depends-on "ac-etags")
