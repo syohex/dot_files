@@ -24,7 +24,8 @@
  '(line-move-visual nil)
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
- '(compile-command ""))
+ '(compile-command "")
+ '(delete-auto-save-files t))
 
 (setq-default horizontal-scroll-bar nil)
 
@@ -73,8 +74,7 @@
    '(eshell-mode magit-status-mode completion-list-mode compilation-mode)))
 
 ;; not create backup file and not create auto save file
-(setq backup-inhibited t
-      delete-auto-save-files t)
+(setq backup-inhibited t)
 
 ;; Disable menu bar
 (menu-bar-mode -1)
