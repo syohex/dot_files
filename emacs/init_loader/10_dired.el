@@ -17,6 +17,7 @@
 (custom-set-variables
  '(ls-lisp-dirs-first t)
  '(dired-dwim-target t)
+ '(dired-auto-revert-buffer t)
  '(dired-recursive-copies 'always)
  '(dired-recursive-deletes 'always))
 
