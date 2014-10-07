@@ -1,17 +1,6 @@
 ;; use space not use tab
 (setq-default indent-tabs-mode nil)
-
-;; delete trailling space and blank line tail of file
-(defun my/cleanup-for-spaces ()
-  (interactive)
-  (delete-trailing-whitespace)
-  (save-excursion
-    (save-restriction
-      (widen)
-      (goto-char (point-max))
-      (delete-blank-lines))))
-
-(add-hook 'before-save-hook 'my/cleanup-for-spaces)
+(add-hook 'before-save-hook 'editutils-cleanup-spaces)
 
 (defvar my/current-cleanup-state "")
 
