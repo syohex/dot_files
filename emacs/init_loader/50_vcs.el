@@ -26,7 +26,7 @@
  '(git-gutter:modified-sign " ")
  '(git-gutter:deleted-sign " "))
 
-(add-to-list 'git-gutter:update-hooks 'focus-in-hook)
+(add-hook 'focus-in-hook 'git-gutter:update-all-windows)
 
 (set-face-background 'git-gutter:deleted  "red")
 (set-face-background 'git-gutter:modified "magenta")
@@ -58,11 +58,7 @@
   (interactive)
   (kill-buffer)
   (jump-to-register :magit-fullscreen)
-  (dolist (win (window-list))
-    (let ((buf (window-buffer win)))
-      (with-current-buffer buf
-        (when git-gutter-mode
-          (git-gutter))))))
+  (git-gutter:update-all-windows))
 
 (custom-set-variables
  '(git-commit-fill-column 80))
