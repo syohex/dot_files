@@ -26,6 +26,6 @@
 (custom-set-variables
  '(shell-pop-autocd-to-working-dir nil)
  '(shell-pop-shell-type '("eshell" " *eshell*" (lambda () (eshell))))
- '(shell-pop-universal-key "M-_")
+ '(shell-pop-universal-key "C-M-r")
  '(shell-pop-full-span t))
-(global-set-key (kbd "M-_") 'shell-pop)
+(global-set-key (kbd "C-M-r") 'shell-pop)

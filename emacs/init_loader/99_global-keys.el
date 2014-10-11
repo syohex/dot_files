@@ -24,7 +24,7 @@
 (global-set-key (kbd "C-h m")   'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
-(global-set-key (kbd "C-M-r") 'helm-swoop)
+(global-set-key (kbd "M-_") 'helm-swoop)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -45,10 +45,6 @@
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
-
-(smartrep-define-key
-    global-map "C-c" '(("+" . 'evil-numbers/inc-at-pt)
-                       ("-" . 'evil-numbers/dec-at-pt)))
 
 (smartrep-define-key
     undo-tree-map "C-x" '(("u" . 'undo-tree-undo)
