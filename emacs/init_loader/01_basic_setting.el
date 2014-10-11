@@ -80,7 +80,7 @@
 (menu-bar-mode -1)
 
 ;; not beep
-(setq ring-bell-function (lambda()))
+(setq ring-bell-function 'ignore)
 
 ;; display line infomation
 (line-number-mode 1)
