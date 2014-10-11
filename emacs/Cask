@@ -78,7 +78,7 @@
 (depends-on "paredit")
 
 ;; Common Lisp
-(depends-on "slime")
+(depends-on "sly")
 ;;(depends-on "scheme-complete")
 
 ;; Validation
@@ -130,7 +130,7 @@
 ;; sub packages
 
 ;;;; auto-complete sources
-(depends-on "ac-slime")
+(depends-on "ac-sly")
 (depends-on "ac-cider")
 (depends-on "go-autocomplete")
 (depends-on "ac-ispell")

@@ -18,7 +18,7 @@
                 inferior-scheme-mode-hook
                 clojure-mode-hook
                 cider-repl-mode-hook
-                slime-repl-mode-hook))
+                sly-mrepl-mode-hook))
   (add-hook hook 'enable-paredit-mode))
 
 (defun my/paredit-edit-next-line ()

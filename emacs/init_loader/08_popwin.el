@@ -8,8 +8,8 @@
 ;; basic
 (push '("*Help*" :stick t :noselect t) popwin:special-display-config)
 
-;; popwin for slime
-(push '(slime-repl-mode :stick t) popwin:special-display-config)
+;; popwin for sly
+(push '(sly-mrepl-mode :stick t) popwin:special-display-config)
 
 ;; Ruby
 (push '("*ri-doc*" :stick t :height 20) popwin:special-display-config)
