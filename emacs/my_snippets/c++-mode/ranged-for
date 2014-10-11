@@ -1,0 +1,6 @@
+# name: for (var a: collection) { ... }
+# key: forr
+# --
+for ($0:) {
+
+}
