@@ -5,8 +5,10 @@
 (dolist (hook '(emacs-lisp-mode-hook
                 lisp-interaction-mode-hook
                 ielm-mode-hook))
-  (add-hook hook 'turn-on-eldoc-mode)
+  (add-hook hook 'eldoc-mode)
   (add-hook hook 'elisp-slime-nav-mode))
+
+(add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)
 
 (custom-set-variables
  '(eldoc-idle-delay 0.2))
