@@ -9,7 +9,7 @@
   (setq ghc-module-command (executable-find "ghc-mod"))
 
   ;; bindings
-  (define-key haskell-mode-map (kbd "C-c C-d") 'helm-ghc-browse-document)
+  (define-key haskell-mode-map (kbd "C-c C-d") 'helm-editutil-ghc-browse-document)
   (define-key haskell-mode-map (kbd "M-o") 'editutil-edit-next-line-same-column)
   (define-key haskell-mode-map (kbd "TAB") 'haskell-simple-indent)
   (define-key haskell-mode-map (kbd "<backtab>") 'haskell-simple-indent-backtab)
@@ -43,26 +43,3 @@
       (insert "{-\n")
       (goto-char (marker-position end-marker))
       (insert "-}"))))
-
-;; find document
-(defvar helm-ghc-mod-source
-  '((name . "GHC Browse Documennt")
-    (init . helm-ghc-mod-init)
-    (candidates-in-buffer)
-    (candidate-number-limit . 9999)
-    (action . helm-ghc-mod-action-display-document)))
-
-(defun helm-ghc-mod-init ()
-  (with-current-buffer (helm-candidate-buffer 'global)
-    (unless (call-process-shell-command "ghc-mod list" nil t t)
-      (error "Failed 'ghc-mod list'"))))
-
-(defun helm-ghc-mod-action-display-document (candidate)
-  (let ((pkg (ghc-resolve-package-name candidate)))
-    (if (and pkg candidate)
-        (ghc-display-document pkg candidate nil)
-      (error (format "Not found %s(Package %s)" candidate pkg)))))
-
-(defun helm-ghc-browse-document ()
-  (interactive)
-  (helm :sources '(helm-ghc-mod-source) :buffer "*helm-ghc-document*"))
