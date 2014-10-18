@@ -41,6 +41,7 @@
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 (define-key my/ctrl-q-map (kbd "C-w") 'read-only-mode)
+(define-key my/ctrl-q-map (kbd "y") 'clipboard-yank)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
