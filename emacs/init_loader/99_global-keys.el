@@ -37,7 +37,7 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
-(define-key my/ctrl-q-map (kbd "C-t") 'toggle-cleanup-spaces)
+(define-key my/ctrl-q-map (kbd "C-t") 'my/toggle-cleanup-spaces)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 (define-key my/ctrl-q-map (kbd "C-w") 'read-only-mode)

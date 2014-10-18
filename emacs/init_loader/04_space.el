@@ -8,7 +8,7 @@
               (cons '(:eval my/current-cleanup-state)
                     mode-line-format))
 
-(defun toggle-cleanup-spaces ()
+(defun my/toggle-cleanup-spaces ()
   (interactive)
   (cond ((memq 'my/cleanup-for-spaces before-save-hook)
          (setq my/current-cleanup-state
