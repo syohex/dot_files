@@ -70,7 +70,7 @@
   (set-face-attribute 'flycheck-warning nil
                       :weight 'bold :underline "darkorange"
                       :foreground nil :background nil)
-  (set-face-attribute 'flycheck-error-list-highlight-at-point nil
+  (set-face-attribute 'flycheck-error-list-highlight nil
                       :background "grey15"))
 
 (defun my/flymake-goto-next-error (arg)
