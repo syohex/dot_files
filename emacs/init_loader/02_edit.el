@@ -5,7 +5,7 @@
 (global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
 (global-set-key (kbd "ESC M-%") 'anzu-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") 'anzu-replace-at-cursor-thing)
-(global-unset-key (kbd "C-M-s"))
+(global-set-key (kbd "C-M-s") 'isearch-forward-symbol-at-point)
 
 ;; thingopt
 (require 'thingopt)
