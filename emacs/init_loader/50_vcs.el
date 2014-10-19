@@ -46,6 +46,7 @@
     ad-do-it
     (delete-other-windows))
 
+  (define-key magit-status-mode-map (kbd "C-x w") 'editutil-git-browse)
   (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
 
   ;; faces
