@@ -13,8 +13,8 @@
   (cond ((memq 'my/cleanup-for-spaces before-save-hook)
          (setq my/current-cleanup-state
                (propertize "[DT-]" 'face '((:foreground "turquoise1" :weight bold))))
-         (remove-hook 'before-save-hook 'my/cleanup-for-spaces))
+         (remove-hook 'before-save-hook 'delete-trailing-whitespace))
         (t
          (setq my/current-cleanup-state "")
-         (add-hook 'before-save-hook 'my/cleanup-for-spaces)))
+         (add-hook 'before-save-hook 'delete-trailing-whitespace)))
   (force-mode-line-update))
