@@ -4,7 +4,7 @@
 (custom-set-variables
  '(org-startup-truncated nil)
  '(org-directory (expand-file-name "~/Dropbox/"))
- '(org-agenda-files (list editutil-todo-directory))
+ '(org-agenda-files (list "~/TODO/"))
  '(org-return-follows-link t)
  '(org-use-fast-todo-selection t)
  '(org-src-fontify-natively t)
