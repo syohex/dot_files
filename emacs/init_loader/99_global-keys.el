@@ -38,7 +38,6 @@
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
-(define-key my/ctrl-q-map (kbd "C-w") 'read-only-mode)
 (define-key my/ctrl-q-map (kbd "y") 'clipboard-yank)
 
 (smartrep-define-key
