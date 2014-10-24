@@ -1,4 +1,4 @@
 # name: Travis Badge link
 # key: travis
 # --
-[![Build Status](https://travis-ci.org/syohex/$1.png)](https://travis-ci.org/syohex/$1)
+[![travis badge][travis-badge]][travis-link]

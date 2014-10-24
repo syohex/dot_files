@@ -1,0 +1,7 @@
+# name : MELPA badge links
+# key  : melpa-badge-links
+# --
+[melpa-link]: http://melpa.milkbox.net/#/$1
+[melpa-stable-link]: http://melpa-stable.milkbox.net/#/$1
+[melpa-badge]: http://melpa.milkbox.net/packages/$1-badge.svg
+[melpa-stable-badge]: http://melpa-stable.milkbox.net/packages/$1-badge.svg

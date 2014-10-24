@@ -1,0 +1,4 @@
+# name : MELPA badges
+# key  : melpa-badge
+# --
+[![melpa badge][melpa-badge]][melpa-link] [![melpa stable badge][melpa-stable-badge]][melpa-stable-link]
