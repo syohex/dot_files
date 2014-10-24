@@ -297,5 +297,6 @@ autoload -Uz _peco-history
 alias -g L='|less -R'
 alias -g G='|grep'
 alias -g P='|peco'
+alias -g XX='|xargs'
 
 path=($HOME/bin $path)
