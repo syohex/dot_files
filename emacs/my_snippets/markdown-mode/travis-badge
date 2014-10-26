@@ -1,4 +1,4 @@
-# name: Travis Badge link
+# name: Travis Badge
 # key: travis
 # --
 [![travis badge][travis-badge]][travis-link]
