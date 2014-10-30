@@ -19,7 +19,6 @@
  '(save-place t)
  '(dabbrev-case-fold-search nil)
  '(inhibit-startup-screen t)
- '(x-select-enable-clipboard t)
  '(read-file-name-completion-ignore-case t)
  '(line-move-visual nil)
  '(set-mark-command-repeat-pop t)
