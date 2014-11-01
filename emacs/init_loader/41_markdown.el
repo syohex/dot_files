@@ -1,5 +1,9 @@
 ;; setting markdown-mode
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+
+(custom-set-variables
+ '(markdown-indent-on-enter nil))
+
 (with-eval-after-load 'markdown-mode
   ;; key bindings
   (define-key markdown-mode-map (kbd "C-M-f") 'forward-symbol)
