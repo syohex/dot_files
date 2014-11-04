@@ -155,6 +155,9 @@
 (depends-on "helm-perldoc")
 (depends-on "helm-open-github")
 
+;;;; cmake-mode
+(depends-on "cmake-mode")
+
 ;; My own tools
 (depends-on "editutil" :git "https://github.com/syohex/emacs-editutil.git")
 (depends-on "sgit" :git "https://github.com/syohex/emacs-sgit.git")
