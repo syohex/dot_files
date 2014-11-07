@@ -1,4 +1,4 @@
-;;;; C and C++ setting
+;;;; C and C++ and assembly language setting
 
 (with-eval-after-load 'cc-mode
   ;; key bindings
@@ -17,3 +17,6 @@
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
+
+(with-eval-after-load 'asm-mode
+  (define-key asm-mode-map (kbd "RET") 'newline))
