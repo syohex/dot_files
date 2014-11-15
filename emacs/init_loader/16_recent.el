@@ -2,7 +2,8 @@
 (custom-set-variables
  '(recentf-max-saved-items 2000)
  '(recentf-auto-cleanup 600)
- '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "^/tmp/" "/\\.git/" "/\\.cask/"
+ '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "\\`/tmp/" "/\\.git/" "/\\.cask/"
+                     "/tmp/gomi/"
                      "\\.mime-example" "\\.ido.last" "woman_cache.el"
                      "CMakeCache.txt" "bookmarks" "\\.gz$"
                      "COMMIT_EDITMSG" "MERGE_MSG" "git-rebase-todo")))
