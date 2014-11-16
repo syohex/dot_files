@@ -24,6 +24,7 @@
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
  '(compile-command "")
+ '(imenu-auto-rescan t)
  '(delete-auto-save-files t))
 
 (setq-default horizontal-scroll-bar nil)
