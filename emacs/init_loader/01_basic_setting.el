@@ -12,6 +12,8 @@
                     :background "#333333" :foreground "#cccccd")
 (set-face-attribute 'mode-line-buffer-id nil
                     :foreground "orange" :weight 'bold)
+(set-face-attribute 'font-lock-string-face nil
+                    :foreground "LightSalmon")
 
 ;; basic customize variables
 (custom-set-variables
