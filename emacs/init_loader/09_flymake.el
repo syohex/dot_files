@@ -1,11 +1,12 @@
 ;; setting for flymake
 
 ;; avoid abnormal exit
+(defun my/flymake-post-syntax-check-before (_exit-status _command)
+  (setq flymake-check-was-interrupted t))
+
 (with-eval-after-load 'flymake
-  (defadvice flymake-post-syntax-check (before
-                                        flymake-force-check-was-interrupted
-                                        activate)
-    (setq flymake-check-was-interrupted t)))
+  (advice-add 'flymake-post-syntax-check
+              :before 'my/flymake-post-syntax-check-before))
 
 (defsubst my/flycheck-enable-mode-p (mode)
   (memq mode my/flycheck-enable-modes))

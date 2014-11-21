@@ -125,17 +125,12 @@
 (setq fill-column 80)
 
 ;; fixed line position after scrollup, scrolldown
-(defadvice scroll-up (around scroll-up-relative activate)
-  "Scroll up relatively without move of cursor."
+(defun my/scroll-move-around (orig-fn &rest args)
   (let ((orig-line (count-lines (window-start) (point))))
-    ad-do-it
+    (apply orig-fn args)
     (move-to-window-line orig-line)))
-
-(defadvice scroll-down (around scroll-down-relative activate)
-  "Scroll down relatively without move of cursor."
-  (let ((orig-line (count-lines (window-start) (point))))
-    ad-do-it
-    (move-to-window-line orig-line)))
+(advice-add 'scroll-up :around 'my/scroll-move-around)
+(advice-add 'scroll-down :around 'my/scroll-move-around)
 
 ;; smart repetition
 (require 'smartrep)

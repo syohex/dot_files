@@ -39,12 +39,14 @@
 (custom-set-variables
  '(magit-auto-revert-mode-lighter ""))
 
+(defun my/magit-status-around (orig-fn &rest args)
+  (window-configuration-to-register :magit-fullscreen)
+  (apply orig-fn args)
+  (delete-other-windows))
+
 (global-set-key (kbd "M-g M-g") 'magit-status)
 (with-eval-after-load 'magit
-  (defadvice magit-status (around magit-fullscreen activate)
-    (window-configuration-to-register :magit-fullscreen)
-    ad-do-it
-    (delete-other-windows))
+  (advice-add 'magit-status :around 'my/magit-status-around)
 
   (define-key magit-status-mode-map (kbd "C-x w") 'editutil-git-browse)
   (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
@@ -68,12 +70,14 @@
   (when (looking-at "\n")
     (open-line 1)))
 
+(defun my/git-commit-commit-after (_unused)
+  (delete-window))
+
 (with-eval-after-load 'git-commit-mode
   (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
-  (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook))
+  (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
 
-(defadvice git-commit-commit (after move-to-magit-buffer activate)
-  (delete-window))
+  (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
 
 ;; helm-open-github
 (global-set-key (kbd "C-c o f") 'helm-open-github-from-file)
