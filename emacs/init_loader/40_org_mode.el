@@ -37,7 +37,7 @@
 (with-eval-after-load 'org-faces
   (set-face-foreground 'org-block "green")
   (set-face-foreground 'org-tag "green yellow")
-  (set-face-foreground 'org-checkbox "LawnGreen")
+  (set-face-attribute 'org-checkbox nil :foreground "LawnGreen" :weight 'bold)
 
   (set-face-attribute 'org-warning nil :foreground "hotpink")
   (set-face-attribute 'org-level-1 nil :foreground "hotpink" :weight 'bold)

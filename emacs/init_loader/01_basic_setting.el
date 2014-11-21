@@ -14,6 +14,8 @@
                     :foreground "orange" :weight 'bold)
 (set-face-attribute 'font-lock-string-face nil
                     :foreground "LightSalmon")
+(set-face-attribute 'font-lock-doc-face nil
+                    :foreground "LightSalmon")
 
 ;; basic customize variables
 (custom-set-variables
