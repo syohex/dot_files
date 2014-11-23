@@ -17,8 +17,8 @@
   (exec-path-from-shell-copy-envs envs))
 
 ;;;; setup theme
-(load-theme 'reverse t t)
-(enable-theme 'reverse)
+(load-theme 'syohex t t)
+(enable-theme 'syohex)
 
 ;; init-loader
 (custom-set-variables

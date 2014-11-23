@@ -114,9 +114,6 @@
 (depends-on "init-loader")
 (depends-on "exec-path-from-shell")
 
-;; Theme
-(depends-on "reverse-theme")
-
 ;; Search
 (depends-on "anzu")
 
@@ -158,7 +155,8 @@
 ;;;; cmake-mode
 (depends-on "cmake-mode")
 
-;; My own tools
+;; own repository
 (depends-on "editutil" :git "https://github.com/syohex/emacs-editutil.git")
 (depends-on "sgit" :git "https://github.com/syohex/emacs-sgit.git")
 (depends-on "eshellutil" :git "https://github.com/syohex/emacs-eshellutil.git")
+(depends-on "syohex-theme" :git "https://github.com/syohex/emacs-syohex-theme.git")
