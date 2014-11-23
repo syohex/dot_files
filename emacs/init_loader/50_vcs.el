@@ -49,13 +49,7 @@
   (advice-add 'magit-status :around 'my/magit-status-around)
 
   (define-key magit-status-mode-map (kbd "C-x w") 'editutil-git-browse)
-  (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
-
-  ;; faces
-  (set-face-attribute 'magit-branch nil
-                      :foreground "yellow" :weight 'bold :underline t)
-  (set-face-attribute 'magit-item-highlight nil
-                      :background "gray3" :weight 'normal))
+  (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session))
 
 (defun my/magit-quit-session ()
   (interactive)

@@ -20,14 +20,7 @@
   (define-key cperl-mode-map (kbd "[") nil)
 
   (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
-  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
-
-  ;; faces
-  (set-face-attribute 'cperl-array-face nil
-                      :background nil :weight 'normal)
-  (set-face-attribute 'cperl-hash-face nil
-                      :foreground "DarkOliveGreen3" :background nil
-                      :weight 'normal :italic nil))
+  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history))
 
 ;; for flymake
 (with-eval-after-load 'flymake

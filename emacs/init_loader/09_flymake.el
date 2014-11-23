@@ -61,19 +61,6 @@
 (custom-set-variables
  '(flycheck-display-errors-delay 0.5))
 
-;; flycheck faces
-(with-eval-after-load 'flycheck
-  (set-face-attribute 'flycheck-info nil
-                      :underline '(:style wave :color "green"))
-  (set-face-attribute 'flycheck-error nil
-                      :foreground "yellow" :weight 'bold
-                      :background "red")
-  (set-face-attribute 'flycheck-warning nil
-                      :weight 'bold :underline "darkorange"
-                      :foreground nil :background nil)
-  (set-face-attribute 'flycheck-error-list-highlight nil
-                      :background "grey15"))
-
 (defun my/flymake-goto-next-error (arg)
   (interactive "P")
   (if (and (boundp 'flycheck-mode) flycheck-mode)

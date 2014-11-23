@@ -7,16 +7,6 @@
 ;; Coloring
 (global-font-lock-mode +1)
 
-;; mode-line color
-(set-face-attribute 'mode-line nil
-                    :background "#333333" :foreground "#cccccd")
-(set-face-attribute 'mode-line-buffer-id nil
-                    :foreground "orange" :weight 'bold)
-(set-face-attribute 'font-lock-string-face nil
-                    :foreground "LightSalmon")
-(set-face-attribute 'font-lock-doc-face nil
-                    :foreground "LightSalmon")
-
 ;; basic customize variables
 (custom-set-variables
  '(large-file-warning-threshold (* 25 1024 1024))
@@ -105,9 +95,6 @@
   (server-start))
 
 ;; which-func
-(require 'which-func)
-(set-face-attribute 'which-func nil
-                    :foreground "chartreuse1" :weight 'bold)
 (which-function-mode +1)
 
 ;; invisible mouse cursor when editing text
@@ -139,11 +126,6 @@
 (custom-set-variables
  '(smartrep-mode-line-active-bg nil)
  '(smartrep-mode-line-string-activated "<<< SmartRep >>>"))
-
-;; comint
-(with-eval-after-load 'comint
-  (set-face-attribute 'comint-highlight-input nil
-                      :foreground "grey80" :weight 'semi-bold))
 
 ;; for Changes
 (add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))

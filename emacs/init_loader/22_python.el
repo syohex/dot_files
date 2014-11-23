@@ -45,7 +45,3 @@
 ;; jedi
 (custom-set-variables
  '(jedi:tooltip-method nil))
-(with-eval-after-load 'jedi
-  ;; show-doc
-  (set-face-attribute 'jedi:highlight-function-argument nil
-                      :foreground "green"))

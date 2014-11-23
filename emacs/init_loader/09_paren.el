@@ -5,10 +5,6 @@
  '(show-paren-style 'expression)
  '(parens-require-spaces nil))
 
-(set-face-attribute 'show-paren-match-face nil
-                    :background nil :foreground nil
-                    :underline "#ffff00" :weight 'extra-bold)
-
 ;;;; Paredit
 (dolist (hook '(emacs-lisp-mode-hook
                 lisp-interaction-mode-hook
