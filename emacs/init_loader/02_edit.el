@@ -33,6 +33,7 @@
     sh-mode
     js-mode
     go-mode
+    cmake-mode
     coffee-mode
     tuareg-mode
     tuareg-interactive-mode
