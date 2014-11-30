@@ -68,6 +68,7 @@
   (delete-window))
 
 (with-eval-after-load 'git-commit-mode
+  (add-hook 'git-commit-mode-hook 'flyspell-mode)
   (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
   (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
 
