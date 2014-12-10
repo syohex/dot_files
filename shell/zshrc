@@ -14,6 +14,10 @@ autoload -Uz select-word-style
 select-word-style bash
 WORDCHARS="${WORDCHARS}:"
 
+# insert last word
+autoload -Uz smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
