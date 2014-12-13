@@ -18,6 +18,7 @@
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
  '(compile-command "")
+ '(compilation-always-kill t)
  '(comment-style 'multi-line)
  '(imenu-auto-rescan t)
  '(delete-auto-save-files t))
