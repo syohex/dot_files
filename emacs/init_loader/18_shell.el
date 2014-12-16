@@ -8,6 +8,10 @@
  '(compilation-message-face nil))
 
 ;; eshell
+(custom-set-variables
+ '(eshell-cmpl-cycle-completions nil)
+ '(eshell-hist-ignoredups t))
+
 (with-eval-after-load 'shell-pop
   (require 'eshellutil)
   (add-hook 'shell-pop-up-hook 'eshellutil-shell-pop-up-hook))
