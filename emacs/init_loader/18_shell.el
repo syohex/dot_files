@@ -25,5 +25,5 @@
  '(shell-pop-autocd-to-working-dir nil)
  '(shell-pop-shell-type '("eshell" " *eshell*" (lambda () (eshell))))
  '(shell-pop-universal-key "C-M-r")
- '(shell-pop-full-span t))
+ '(shell-pop-window-position "full"))
 (global-set-key (kbd "C-M-r") 'shell-pop)
