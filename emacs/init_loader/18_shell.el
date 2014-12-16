@@ -3,6 +3,8 @@
 
 ;; compilation
 (custom-set-variables
+ '(compile-command "")
+ '(compilation-always-kill t)
  '(compilation-message-face nil))
 
 ;; eshell
