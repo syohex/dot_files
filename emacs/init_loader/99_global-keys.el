@@ -11,6 +11,8 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x =") 'indent-region)
+(global-set-key (kbd "M-SPC") 'point-to-register)
+(global-set-key (kbd "M-j") 'jump-to-register)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
