@@ -1,6 +1,7 @@
 ;; Go Lang
 (custom-set-variables
- '(gofmt-command "goimports"))
+ '(gofmt-command "goimports")
+ '(ac-go-expand-arguments-into-snippets nil))
 
 (with-eval-after-load 'go-mode
   (add-hook 'go-mode-hook 'my/go-mode-hook)
