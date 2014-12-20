@@ -10,7 +10,8 @@
 ;; eshell
 (custom-set-variables
  '(eshell-cmpl-cycle-completions nil)
- '(eshell-hist-ignoredups t))
+ '(eshell-hist-ignoredups t)
+ '(eshell-scroll-show-maximum-output nil))
 
 (with-eval-after-load 'shell-pop
   (require 'eshellutil)
