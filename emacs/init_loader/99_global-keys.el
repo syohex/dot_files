@@ -7,10 +7,8 @@
 (global-set-key (kbd "C-h e") 'popwin:messages)
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
-(global-set-key (kbd "M-K") 'kill-whole-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
-(global-set-key (kbd "C-x =") 'indent-region)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
@@ -36,7 +34,6 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "\\") 'align)
-(define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 (define-key my/ctrl-q-map (kbd "y") 'clipboard-yank)
 (define-key my/ctrl-q-map (kbd "C-SPC") 'point-to-register)
 (define-key my/ctrl-q-map (kbd "C-j") 'jump-to-register)
