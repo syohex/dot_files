@@ -11,8 +11,6 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x =") 'indent-region)
-(global-set-key (kbd "M-SPC") 'point-to-register)
-(global-set-key (kbd "M-j") 'jump-to-register)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
@@ -40,6 +38,8 @@
 (define-key my/ctrl-q-map (kbd "\\") 'align)
 (define-key my/ctrl-q-map (kbd "SPC") 'mark-symbol)
 (define-key my/ctrl-q-map (kbd "y") 'clipboard-yank)
+(define-key my/ctrl-q-map (kbd "C-SPC") 'point-to-register)
+(define-key my/ctrl-q-map (kbd "C-j") 'jump-to-register)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
