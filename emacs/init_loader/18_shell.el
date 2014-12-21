@@ -15,6 +15,9 @@
  '(eshell-scroll-show-maximum-output nil))
 
 (defun my/eshell-first-time-load-hook ()
+  (eshellutil-setup)
   (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)
   (setq eshell-first-time-p nil))
 (add-hook 'eshell-first-time-mode-hook 'my/eshell-first-time-load-hook)
+
+(global-set-key (kbd "M-_") 'eshellutil-popup)
