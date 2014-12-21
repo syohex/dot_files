@@ -9,6 +9,7 @@
 
 ;; eshell
 (custom-set-variables
+ '(eshell-banner-message "")
  '(eshell-cmpl-cycle-completions nil)
  '(eshell-hist-ignoredups t)
  '(eshell-scroll-show-maximum-output nil))
