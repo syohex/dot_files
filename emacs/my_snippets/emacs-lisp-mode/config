@@ -8,14 +8,8 @@
 
 (menu-bar-mode -1)
 
-;; for helm
-(require 'helm-config)
-
-;; for auto-complete
-(require 'popup)
-(require 'auto-complete-config)
-(global-auto-complete-mode t)
-(ac-config-default)
+(require 'cask "~/.cask/cask.el")
+(cask-initialize default-directory)
 
 ;; current-directory
 (add-to-list 'load-path "`(file-name-directory (buffer-file-name))`")
