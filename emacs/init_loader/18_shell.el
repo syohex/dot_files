@@ -14,18 +14,7 @@
  '(eshell-hist-ignoredups t)
  '(eshell-scroll-show-maximum-output nil))
 
-(with-eval-after-load 'shell-pop
-  (require 'eshellutil)
-  (add-hook 'shell-pop-up-hook 'eshellutil-shell-pop-up-hook))
-
 (defun my/eshell-first-time-load-hook ()
   (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)
   (setq eshell-first-time-p nil))
 (add-hook 'eshell-first-time-mode-hook 'my/eshell-first-time-load-hook)
-
-(custom-set-variables
- '(shell-pop-autocd-to-working-dir nil)
- '(shell-pop-shell-type '("eshell" " *eshell*" (lambda () (eshell))))
- '(shell-pop-universal-key "C-M-r")
- '(shell-pop-window-position "full"))
-(global-set-key (kbd "C-M-r") 'shell-pop)
