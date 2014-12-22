@@ -10,7 +10,8 @@
 
   ;; binding
   (define-key dired-mode-map (kbd "K") 'dired-k)
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+  (define-key dired-mode-map (kbd "i") 'dired-subtree-insert)
+  (define-key dired-mode-map (kbd "I") 'dired-subtree-remove)
   (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
   (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 
