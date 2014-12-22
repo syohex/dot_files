@@ -14,10 +14,8 @@
  '(eshell-hist-ignoredups t)
  '(eshell-scroll-show-maximum-output nil))
 
-(defun my/eshell-first-time-load-hook ()
-  (eshellutil-setup)
-  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history)
-  (setq eshell-first-time-p nil))
-(add-hook 'eshell-first-time-mode-hook 'my/eshell-first-time-load-hook)
+(defun my/eshell-mode-hook ()
+  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
 
-(global-set-key (kbd "M-_") 'eshellutil-popup)
+(add-hook 'eshell-mode-hook 'my/eshell-mode-hook)
+(global-set-key (kbd "C-\\") 'eshellutil-popup)
