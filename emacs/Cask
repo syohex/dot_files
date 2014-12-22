@@ -106,6 +106,7 @@
 ;; Directory
 (depends-on "dired-k")
 (depends-on "direx")
+(depends-on "dired-subtree")
 
 ;; Documentation
 (depends-on "zeal-at-point")
@@ -120,9 +121,6 @@
 ;; clojure
 (depends-on "clojure-mode")
 (depends-on "cider")
-
-;; shell
-(depends-on "shell-pop")
 
 ;; sub packages
 
