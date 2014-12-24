@@ -7,11 +7,5 @@
         "M-b": "peco.BackwardWord",
         "M-d": "peco.DeleteForwardWord",
         "M-k": "peco.DeleteBackwardWord"
-    },
-    "CustomMatcher": {
-        "Migemo": [
-            "migemogrep",
-            "$QUERY"
-        ]
     }
 }
