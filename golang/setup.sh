@@ -17,5 +17,5 @@ go get -u github.com/syohex/url_title
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" ]; then
-    go get -u github.com/syohex/byzanz-window
+    go get -u github.com/syohex/byzanz-window/cmd/byzanz-window
 fi
