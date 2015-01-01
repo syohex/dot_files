@@ -15,6 +15,7 @@
  '(eshell-scroll-show-maximum-output nil))
 
 (defun my/eshell-mode-hook ()
+  (define-key eshell-mode-map (kbd "C-x w") 'editutil-git-browse)
   (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
 
 (add-hook 'eshell-mode-hook 'my/eshell-mode-hook)
