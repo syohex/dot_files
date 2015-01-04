@@ -1,1 +1,2 @@
 alias s git st
+alias d git --no-pager diff
