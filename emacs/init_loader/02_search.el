@@ -1,5 +1,5 @@
 ;;;; setting for searching
-(define-key isearch-mode-map (kbd "C-M-s") 'isearch-forward-symbol-at-point)
+(define-key isearch-mode-map (kbd "ESC") 'helm-swoop-from-isearch)
 
 (with-eval-after-load 'ace-jump-mode
   (setq ace-jump-mode-case-fold nil))
