@@ -35,9 +35,6 @@
 ;; Key utility
 (depends-on "smartrep")
 
-;; Scroll bar
-(depends-on "yascroll")
-
 ;; Haskell
 (depends-on "haskell-mode")
 (depends-on "ghc")
