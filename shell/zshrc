@@ -284,9 +284,11 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 zle -N git_browse _git_browse
 zle -N ghq_cd _ghq_cd
 zle -N peco-history _peco-history
+zle -N peco-up _peco-up
 bindkey '^Xw' git_browse
 bindkey '^X^P' ghq_cd
 bindkey '^X^R' peco-history
+bindkey '^Xu' peco-up
 
 autoload -Uz _git_browse
 autoload -Uz us_keyboard
@@ -295,6 +297,7 @@ autoload -Uz cdp
 autoload -Uz dired
 autoload -Uz _ghq_cd
 autoload -Uz _peco-history
+autoload -Uz _peco-up
 
 ## Last
 # setting global alias for avoiding conflict variable name

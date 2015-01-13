@@ -1,0 +1,15 @@
+function _peco-up() {
+    local current
+    current=$(dirname $PWD)
+
+    local -a dirs
+    while [[ "$current" != "/" ]]
+    do
+        dirs=($dirs $current)
+        current=$(dirname $current)
+    done
+
+    local dir
+    dir=$(echo ${(j:\n:)dirs} | peco)
+    cd $dir
+}
