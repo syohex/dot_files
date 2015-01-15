@@ -17,5 +17,8 @@ function _peco-up() {
 
     local dir
     dir=$(echo ${(j:\n:)dirs} | peco)
-    cd $dir
+
+    if [[ "$dir" != "" ]]; then
+        cd $dir
+    fi
 }
