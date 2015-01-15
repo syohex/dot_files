@@ -39,10 +39,6 @@ ln -sf $PWD/shell/tmux.conf ~/.tmux.conf
 # aspell
 ln -sf $PWD/aspell.conf ~/.aspell.conf
 
-# fonts
-mkdir_if_not_exist ~/.config/fontconfig
-ln -sf $PWD/evince/fonts.conf ~/.config/fontconfig/fonts.conf
-
 # Spellunker
 ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 
