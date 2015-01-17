@@ -5,7 +5,8 @@
  '(helm-candidate-number-limit 500)
  '(helm-ag-insert-at-point 'symbol)
  '(helm-swoop-pre-input-function 'ignore)
- '(helm-find-files-doc-header ""))
+ '(helm-find-files-doc-header "")
+ '(helm-command-prefix-key nil))
 
 (with-eval-after-load 'helm
   (helm-descbinds-mode)
