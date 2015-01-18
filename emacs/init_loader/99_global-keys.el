@@ -10,6 +10,8 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x DEL") 'kill-whole-line)
+(global-set-key (kbd "C-x c q") 'quickrun)
+(global-set-key (kbd "C-x c w") 'quickrun-with-arg)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
@@ -51,10 +53,6 @@
 (editutil-default-setup)
 
 ;; M-g mapping
-(global-set-key (kbd "M-g M-q") 'quickrun)
-(global-set-key (kbd "M-g M-w") 'quickrun-with-arg)
-(global-set-key (kbd "M-g M-r") 'compile)
-(global-set-key (kbd "M-g RET") 'recompile)
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
