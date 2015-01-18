@@ -3,7 +3,7 @@
  '(sly-net-coding-system 'utf-8-unix))
 
 (with-eval-after-load 'sly
-  (setq inferior-lisp-program "ccl")
+  (setq inferior-lisp-program "sbcl")
   ;;(setq sly-protocol-version 'ignore)      ;; for clojure
 
   (defalias 'sly-cleanup 'sly-restart-inferior-lisp)
