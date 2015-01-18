@@ -7,7 +7,7 @@
      (require 'cmuscheme)
      (push '("*scheme*" :stick t) popwin:special-display-config)
      (define-key scheme-mode-map (kbd "C-c C-z") 'run-scheme)
-     (define-key global-map (kbd "C-c C-d") 'gauche-info-index)))
+     (define-key scheme-mode-map (kbd "C-c C-d") 'gauche-info-index)))
 
 (defun my/gauche-info-index (topic)
   (interactive
