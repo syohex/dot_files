@@ -19,8 +19,6 @@
 
 (with-eval-after-load 'paredit
   (define-key paredit-mode-map (kbd "C-c C-l") 'editutil-toggle-let)
-  (define-key paredit-mode-map (kbd "C-c C-d") 'editutil-toggle-defun)
   (define-key paredit-mode-map (kbd "C-c C-q") 'paredit-reindent-defun)
-  (define-key paredit-mode-map (kbd "C-c SPC") 'mark-sexp)
   (define-key paredit-mode-map (kbd "M-q") 'nil)
   (define-key paredit-mode-map (kbd "M-)") 'move-past-close-and-reindent))
