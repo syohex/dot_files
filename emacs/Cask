@@ -123,7 +123,7 @@
 
 ;;;; auto-complete sources
 (depends-on "ac-sly")
-(depends-on "ac-cider")
+;;(depends-on "ac-cider")
 (depends-on "go-autocomplete")
 (depends-on "ac-ispell")
 (depends-on "ac-etags")
