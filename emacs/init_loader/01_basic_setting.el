@@ -19,13 +19,15 @@
  '(find-file-visit-truename t)
  '(comment-style 'multi-line)
  '(imenu-auto-rescan t)
- '(delete-auto-save-files t))
+ '(delete-auto-save-files t)
+ '(backup-directory-alist `((".*" . ,temporary-file-directory)))
+ '(auto-save-file-name-transforms `((".*" ,temporary-file-directory t))))
 
 (setq-default horizontal-scroll-bar nil)
 
 ;; temp directory
 (when (file-exists-p "/mnt/ramdisk")
-  (setq temporary-file-directory "/mnt/ramdisk/"))
+  (setq-default temporary-file-directory "/mnt/ramdisk/"))
 
 ;; cursor
 (set-cursor-color "chartreuse2")

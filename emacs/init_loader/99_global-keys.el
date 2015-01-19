@@ -12,6 +12,7 @@
 (global-set-key (kbd "C-x DEL") 'kill-whole-line)
 (global-set-key (kbd "C-x c q") 'quickrun)
 (global-set-key (kbd "C-x c w") 'quickrun-with-arg)
+(global-set-key (kbd "C-x c r") 'recompile)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
