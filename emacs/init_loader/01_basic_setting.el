@@ -20,6 +20,7 @@
  '(comment-style 'multi-line)
  '(imenu-auto-rescan t)
  '(delete-auto-save-files t)
+ '(create-lockfiles nil)
  '(backup-directory-alist `((".*" . ,temporary-file-directory)))
  '(auto-save-file-name-transforms `((".*" ,temporary-file-directory t))))
 
