@@ -6,8 +6,8 @@
  '(display-buffer-function 'popwin:display-buffer))
 
 ;; remove from default config
-(cl-loop for stuff in '("*vc-diff*")
-         do (delete removed popwin:special-display-config))
+(cl-loop for stuff in '("*vc-diff*" "*vc-change-log*")
+         do (delete stuff popwin:special-display-config))
 
 ;; basic
 (push '("*Help*" :stick t :noselect t) popwin:special-display-config)
