@@ -4,6 +4,9 @@
       ns-use-native-fullscreen nil ;; Don't use system fullscreen
       system-uses-terminfo nil)
 
+;; for yosemite
+(fringe-mode -1)
+
 (unless (featurep 'mozc)
   (setq default-input-method "MacOSX"))
 
