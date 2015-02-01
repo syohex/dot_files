@@ -6,11 +6,7 @@
 (depends-on "fuzzy")
 (depends-on "popup")
 
-;; Editing
-(depends-on "thingopt")
-
 ;; region
-(depends-on "expand-region")
 (depends-on "wrap-region")
 
 ;; undo
