@@ -91,6 +91,8 @@
   (server-start))
 
 ;; which-func
+(custom-set-variables
+ '(which-func-unknown ""))
 (which-function-mode +1)
 
 ;; invisible mouse cursor when editing text
