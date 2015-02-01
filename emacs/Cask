@@ -44,7 +44,6 @@
 
 ;; Perl
 (depends-on "cperl-mode")
-(depends-on "xs-mode" :git "https://github.com/emacsmirror/xs-mode.git")
 
 ;; Go
 (depends-on "go-mode")

@@ -81,25 +81,3 @@
  '(cperl-indent-parens-as-block t)
  '(cperl-close-paren-offset -4)
  '(cperl-indent-subs-specially nil))
-
-;; pod-mode
-(add-to-list 'auto-mode-alist '("\\.pod\\'" . pod-mode))
-
-;; XS
-(autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
-(add-to-list 'auto-mode-alist '("\\.xs\\'" . xs-mode))
-(with-eval-after-load 'xs-mode
-  (c-toggle-electric-state -1)
-  (setq c-auto-newline nil)
-  (define-key xs-mode-map (kbd "C-c C-a") 'xs-perldoc)
-  (define-key xs-mode-map (kbd "C-c C-d") 'xs-perldoc))
-
-(defun xs-perldoc ()
-  (interactive)
-  (let* ((docs-alist '(("perlapi") ("perlxs") ("perlguts")
-                 ("perlcall") ("perlclib") ("perlxstut")))
-         (manual-program "perldoc")
-         (input (completing-read "perldoc entry: " docs-alist)))
-    (unless input
-      (error "xs-perldoc: no input!!"))
-    (manual-entry input)))
