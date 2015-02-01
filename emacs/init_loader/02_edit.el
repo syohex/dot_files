@@ -6,10 +6,6 @@
 (global-set-key (kbd "ESC M-%") 'anzu-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") 'anzu-replace-at-cursor-thing)
 
-;; thingopt
-(require 'thingopt)
-(define-thing-commands)
-
 ;; electrict-mode
 (custom-set-variables
  '(electric-indent-mode nil))

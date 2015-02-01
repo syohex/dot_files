@@ -1,6 +1,4 @@
 ;;;; region setting
-(global-set-key (kbd "M-SPC") 'er/expand-region)
-
 ;; wrap-region
 (wrap-region-global-mode +1)
 
