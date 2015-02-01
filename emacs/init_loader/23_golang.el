@@ -43,5 +43,6 @@
     (save-buffer)))
 
 (defun my/go-mode-hook ()
+  (delete 'ac-source-words-in-same-mode-buffers ac-sources)
   (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))
