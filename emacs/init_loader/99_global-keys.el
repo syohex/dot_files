@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-x c q") 'quickrun)
 (global-set-key (kbd "C-x c w") 'quickrun-with-arg)
 (global-set-key (kbd "C-x c r") 'recompile)
+(global-set-key (kbd "C-x z") popwin:keymap)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
