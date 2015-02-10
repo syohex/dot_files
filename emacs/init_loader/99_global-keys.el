@@ -1,4 +1,6 @@
 ;;;; global key setting
+(global-unset-key (kbd "C-x c"))
+(global-unset-key (kbd "C-x z"))
 
 (global-set-key (kbd "M-ESC ESC") 'read-only-mode)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
