@@ -9,6 +9,7 @@
 (run-with-idle-timer 20 t 'elscreen-editutil-update-frame-title)
 
 (custom-set-variables
+ '(elscreen-display-screen-number nil)
  '(elscreen-tab-display-kill-screen nil)
  '(elscreen-buffer-to-nickname-alist nil))
 
