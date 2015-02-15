@@ -20,4 +20,5 @@
 
 ;; helm faces
 (with-eval-after-load 'helm-files
-  (define-key helm-find-files-map (kbd "C-M-u") 'helm-find-files-down-one-level))
+  (define-key helm-find-files-map (kbd "C-M-u") 'helm-find-files-down-one-level)
+  (define-key helm-find-files-map (kbd "C-c C-o") 'helm-ff-run-switch-other-window))
