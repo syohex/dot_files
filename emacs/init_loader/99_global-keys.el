@@ -1,7 +1,4 @@
 ;;;; global key setting
-(global-unset-key (kbd "C-x c"))
-(global-unset-key (kbd "C-x z"))
-
 (global-set-key (kbd "M-ESC ESC") 'read-only-mode)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-*") 'tags-loop-continue)
@@ -11,10 +8,6 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
-(global-set-key (kbd "C-x DEL") 'kill-whole-line)
-(global-set-key (kbd "C-x c q") 'quickrun)
-(global-set-key (kbd "C-x c w") 'quickrun-with-arg)
-(global-set-key (kbd "C-x c r") 'recompile)
 (global-set-key (kbd "M-z") popwin:keymap)
 
 ;; helm binding
@@ -55,6 +48,11 @@
 
 ;; editutil mappings
 (editutil-default-setup)
+
+;; 'C-x c' prefix
+(global-set-key (kbd "C-x c q") 'quickrun)
+(global-set-key (kbd "C-x c w") 'quickrun-with-arg)
+(global-set-key (kbd "C-x c r") 'recompile)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ag)
