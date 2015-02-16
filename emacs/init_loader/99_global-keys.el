@@ -3,14 +3,10 @@
 (global-set-key (kbd "M-,") 'pop-tag-mark)
 (global-set-key (kbd "M-*") 'tags-loop-continue)
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-h e") 'popwin:messages)
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
-(global-set-key (kbd "C-x SPC") 'point-to-register)
-(global-set-key (kbd "C-x j") 'jump-to-register)
-(global-set-key (kbd "C-x r SPC") 'rectangle-mark-mode)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
