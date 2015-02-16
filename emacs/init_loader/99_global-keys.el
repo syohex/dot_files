@@ -8,7 +8,9 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
-(global-set-key (kbd "M-z") popwin:keymap)
+(global-set-key (kbd "C-x SPC") 'point-to-register)
+(global-set-key (kbd "C-x j") 'jump-to-register)
+(global-set-key (kbd "C-x r SPC") 'rectangle-mark-mode)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
@@ -33,10 +35,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
-(define-key my/ctrl-q-map (kbd "\\") 'align)
-(define-key my/ctrl-q-map (kbd "y") 'clipboard-yank)
-(define-key my/ctrl-q-map (kbd "C-SPC") 'point-to-register)
-(define-key my/ctrl-q-map (kbd "C-j") 'jump-to-register)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
@@ -53,6 +51,10 @@
 (global-set-key (kbd "C-x c q") 'quickrun)
 (global-set-key (kbd "C-x c w") 'quickrun-with-arg)
 (global-set-key (kbd "C-x c r") 'recompile)
+(global-set-key (kbd "C-x c y") 'clipboard-yank)
+
+;; 'C-x t' prefix
+(global-set-key (kbd "C-x t \\") 'align)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ag)
