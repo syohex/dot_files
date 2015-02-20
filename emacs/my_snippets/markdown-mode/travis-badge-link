@@ -1,5 +1,5 @@
 # name : Travis badge links
 # key  : travis-badge-links
 # --
-[travis-badge]: https://travis-ci.org/syohex/$1.png
+[travis-badge]: https://travis-ci.org/syohex/$1.svg
 [travis-link]: https://travis-ci.org/syohex/$1
