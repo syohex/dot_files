@@ -279,6 +279,11 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
+## github browse
+bindkey -s "^Xww" " hub browse"
+bindkey -s "^Xwi" " hub browse -- issues"
+bindkey -s "^Xwp" " hub browse -- pulls"
+
 ## My commands
 zle -N ghq_cd _ghq_cd
 zle -N peco-history _peco-history
