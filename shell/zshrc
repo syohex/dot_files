@@ -36,7 +36,6 @@ bindkey '^U' backward-kill-line
 # Mode/Delete like emacs symbol one
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
-bindkey '^[^U' backward-delete-word
 bindkey '^[^K' delete-word
 
 # removed keys(for miss typing)
@@ -285,10 +284,12 @@ zle -N git_browse _git_browse
 zle -N ghq_cd _ghq_cd
 zle -N peco-history _peco-history
 zle -N peco-up _peco-up
+zle -N delete_previous_word _delete_previous_word
 bindkey '^Xw' git_browse
 bindkey '^X^P' ghq_cd
 bindkey '^X^R' peco-history
 bindkey '^Xu' peco-up
+bindkey '^[^U' delete_previous_word
 
 autoload -Uz _git_browse
 autoload -Uz us_keyboard
@@ -298,6 +299,7 @@ autoload -Uz dired
 autoload -Uz _ghq_cd
 autoload -Uz _peco-history
 autoload -Uz _peco-up
+autoload -Uz _delete_previous_word
 
 ## Last
 # setting global alias for avoiding conflict variable name
