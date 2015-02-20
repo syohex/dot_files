@@ -10,6 +10,7 @@ go get -u github.com/golang/lint/golint
 go get -u github.com/peco/peco/cmd/peco
 go get -u github.com/jstemmer/gotags
 go get -u github.com/mitchellh/gox
+go get -u github.com/github/hub
 
 # My own tools
 go get -u github.com/syohex/gotentry
