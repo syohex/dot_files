@@ -5,7 +5,8 @@
 (custom-set-variables
  '(compile-command "")
  '(compilation-always-kill t)
- '(compilation-message-face nil))
+ '(compilation-message-face nil)
+ '(compilation-auto-jump-to-first-error t))
 
 ;; eshell
 (custom-set-variables
