@@ -287,11 +287,9 @@ bindkey -s "^Xwp" " hub browse -- pulls"
 ## My commands
 zle -N ghq_cd _ghq_cd
 zle -N peco-history _peco-history
-zle -N peco-up _peco-up
 zle -N delete_previous_word _delete_previous_word
 bindkey '^X^P' ghq_cd
 bindkey '^X^R' peco-history
-bindkey '^Xu' peco-up
 bindkey '^[^U' delete_previous_word
 
 autoload -Uz _git_browse
@@ -301,7 +299,6 @@ autoload -Uz cdp
 autoload -Uz dired
 autoload -Uz _ghq_cd
 autoload -Uz _peco-history
-autoload -Uz _peco-up
 autoload -Uz _delete_previous_word
 
 ## Last
