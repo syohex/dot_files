@@ -145,6 +145,9 @@
 ;;;; cmake-mode
 (depends-on "cmake-mode")
 
+;;;; Input
+(depends-on "mozc")
+
 ;; own repository
 (depends-on "editutil" :git "https://github.com/syohex/emacs-editutil.git")
 (depends-on "eshellutil" :git "https://github.com/syohex/emacs-eshellutil.git")
