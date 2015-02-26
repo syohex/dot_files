@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
+(global-set-key (kbd "C-x C-o") 'org-capture)
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
