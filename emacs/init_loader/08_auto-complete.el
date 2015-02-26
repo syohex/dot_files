@@ -24,15 +24,9 @@
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (define-key ac-completing-map (kbd "<tab>") 'ac-complete)
 
-;; for global minor mode
-(defun my/auto-complete ()
-  (interactive)
-  (cl-case major-mode
-    (python-mode (jedi:complete))
-    (otherwise
-     (if auto-complete-mode
-         (call-interactively 'auto-complete)
-       (call-interactively 'dabbrev-expand)))))
+(global-set-key (kbd "C-M-i") 'auto-complete)
+(define-key lisp-interaction-mode-map (kbd "C-M-i") 'auto-complete)
+(define-key emacs-lisp-mode-map (kbd "C-M-i") 'auto-complete)
 
 ;; ac-ispell
 (ac-ispell-setup)
