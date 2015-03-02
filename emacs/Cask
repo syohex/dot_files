@@ -1,6 +1,9 @@
 (source gnu)
 (source melpa)
 
+;; evil
+(depends-on "evil")
+
 ;; auto-complete
 (depends-on "auto-complete")
 (depends-on "fuzzy")
