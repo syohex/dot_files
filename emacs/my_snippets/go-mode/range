@@ -1,5 +1,5 @@
 # name: for i, elm := range collection { ... }
-# key: range
+# key: forr
 # --
 for $1 := range $2 {
     $0
