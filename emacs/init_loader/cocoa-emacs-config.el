@@ -1,6 +1,6 @@
 ;; Mac specified setting(Meta key, input method, terminfo)
-(setq ns-command-modifier 'meta
-      ns-alternate-modifier 'super
+(setq ns-command-modifier 'super
+      ns-alternate-modifier 'meta
       ns-use-native-fullscreen nil ;; Don't use system fullscreen
       system-uses-terminfo nil)
 
