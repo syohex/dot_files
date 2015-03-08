@@ -42,6 +42,7 @@ ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 
 # Python
 ## REPL
+mkdir_if_not_exist ~/.config
 ln -sf $PWD/python/pythonsetup ~/.pythonsetup
 ln -sf $PWD/python/flake8 ~/.config/flake8
 
