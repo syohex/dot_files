@@ -22,6 +22,7 @@ EMACS_CLIENT_APP_PATH='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 case "$OSTYPE" in
     darwin*)
         echo "Set up for MacOSX"
+        mkdir_if_not_exist ~/bin
         ln -sf ${EMACS_CLIENT_APP_PATH} ~/bin/emacsclient
         ;;
 esac
