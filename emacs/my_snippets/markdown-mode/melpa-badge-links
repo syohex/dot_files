@@ -2,6 +2,6 @@
 # key  : melpa-badge-links
 # --
 [melpa-link]: http://melpa.org/#/$1
-[melpa-stable-link]: http://melpa.org/#/$1
+[melpa-stable-link]: http://stable.melpa.org/#/$1
 [melpa-badge]: http://melpa.org/packages/$1-badge.svg
 [melpa-stable-badge]: http://stable.melpa.org/packages/$1-badge.svg
