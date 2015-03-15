@@ -42,8 +42,11 @@
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
-;; enable narrow-to-region
+;; enable disabled commands
 (put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
 
 ;; saveplace
 (savehist-mode 1)
