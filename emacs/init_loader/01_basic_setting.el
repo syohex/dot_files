@@ -134,3 +134,12 @@
   (when (string-match-p "\\`Changes" (buffer-name))
     (flyspell-mode +1)))
 (add-hook 'text-mode-hook 'my/text-mode-hook)
+
+;; hippie-expand
+(custom-set-variables
+ '(hippie-expand-verbose nil)
+ '(hippie-expand-try-functions-list
+   '(try-complete-file-name
+     try-complete-file-name-partially
+     try-expand-dabbrev
+     try-expand-dabbrev-all-buffers)))
