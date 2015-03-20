@@ -56,6 +56,7 @@
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
+(global-set-key (kbd "M-g p") 'helm-ag-project-root)
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-m") 'my/flymake-popup-error-message)
