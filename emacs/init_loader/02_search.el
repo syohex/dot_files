@@ -2,7 +2,7 @@
 (define-key isearch-mode-map (kbd "M-s") 'helm-swoop-from-isearch)
 
 (with-eval-after-load 'ace-jump-mode
-  (setq ace-jump-mode-case-fold nil))
+  (setq-default ace-jump-mode-case-fold nil))
 
 ;; anzu
 (global-anzu-mode +1)

@@ -35,10 +35,10 @@
 (blink-cursor-mode t)
 
 ;; for GC
-(setq gc-cons-threshold (* gc-cons-threshold 10))
+(setq-default gc-cons-threshold (* gc-cons-threshold 10))
 
 ;; echo stroke
-(setq echo-keystrokes 0.1)
+(setq-default echo-keystrokes 0.1)
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
@@ -68,13 +68,13 @@
   (tool-bar-mode 0))
 
 ;; not create backup file and not create auto save file
-(setq backup-inhibited t)
+(setq-default backup-inhibited t)
 
 ;; Disable menu bar
 (menu-bar-mode -1)
 
 ;; not beep
-(setq ring-bell-function 'ignore)
+(setq-default ring-bell-function 'ignore)
 
 ;; display line infomation
 (line-number-mode 1)
@@ -98,12 +98,12 @@
 (setq-default which-func-unknown "")
 
 ;; invisible mouse cursor when editing text
-(setq make-pointer-invisible t)
+(setq-default make-pointer-invisible t)
 
 ;; undo setting
-(setq undo-no-redo t
-      undo-limit 600000
-      undo-strong-limit 900000)
+(setq-default undo-no-redo t
+              undo-limit 600000
+              undo-strong-limit 900000)
 
 ;;;; undo-tree
 (global-undo-tree-mode)
@@ -111,7 +111,7 @@
 (define-key undo-tree-map (kbd "M-_") 'nil)
 
 ;; fill-mode
-(setq fill-column 80)
+(setq-default fill-column 80)
 
 ;; fixed line position after scrollup, scrolldown
 (defun my/scroll-move-around (orig-fn &rest args)
