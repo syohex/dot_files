@@ -68,6 +68,8 @@
   (delete-window))
 
 (with-eval-after-load 'git-commit-mode
+  (define-key git-commit-mode-map (kbd "C-M-i") 'auto-complete)
+
   (add-hook 'git-commit-mode-hook 'flyspell-mode)
   (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
   (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
