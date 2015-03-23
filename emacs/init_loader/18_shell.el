@@ -8,6 +8,12 @@
  '(compilation-message-face nil)
  '(compilation-auto-jump-to-first-error t))
 
+(defun my/colorize-compilation-buffer ()
+  (ansi-color-process-output nil))
+
+(with-eval-after-load 'compile
+  (add-hook 'compilation-filter-hook 'my/colorize-compilation-buffer))
+
 ;; eshell
 (custom-set-variables
  '(eshell-banner-message "")
