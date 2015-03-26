@@ -139,7 +139,7 @@
 (custom-set-variables
  '(hippie-expand-verbose nil)
  '(hippie-expand-try-functions-list
-   '(try-complete-file-name
+   '(try-expand-dabbrev
+     try-complete-file-name
      try-complete-file-name-partially
-     try-expand-dabbrev
      try-expand-dabbrev-all-buffers)))
