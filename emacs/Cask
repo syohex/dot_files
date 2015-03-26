@@ -1,8 +1,13 @@
 (source gnu)
 (source melpa)
 
+;; Setup
+(depends-on "init-loader")
+(depends-on "exec-path-from-shell")
+
 ;; evil
 (depends-on "evil")
+(depends-on "evil-surround")
 
 ;; auto-complete
 (depends-on "auto-complete")
@@ -35,11 +40,11 @@
 (depends-on "smartrep")
 
 ;; Haskell
-(depends-on "haskell-mode")
-(depends-on "ghc")
+;;(depends-on "haskell-mode")
+;;(depends-on "ghc")
 
 ;; Ocaml
-(depends-on "tuareg")
+;;(depends-on "tuareg")
 
 ;; CoffeeScript
 (depends-on "coffee-mode")
@@ -56,24 +61,18 @@
 
 ;; Ruby
 (depends-on "ruby-block")
-(depends-on "ruby-compilation")
 (depends-on "ruby-end")
-(depends-on "ruby-interpolation")
-(depends-on "ruby-mode")
-(depends-on "ruby-test-mode")
-(depends-on "ruby-tools")
 (depends-on "inf-ruby")
 
-;; Programming Misc
+;; Pair
 (depends-on "autopair")
-(depends-on "rainbow-mode")
+(depends-on "paredit")
 
 ;; Emacs Lisp
 (depends-on "elisp-slime-nav")
-(depends-on "paredit")
 
 ;; Common Lisp
-(depends-on "sly")
+;;(depends-on "sly")
 ;;(depends-on "scheme-complete")
 
 ;; Validation
@@ -83,13 +82,12 @@
 (depends-on "quickrun")
 
 ;; Markup language
+(depends-on "yaml-mode")
+(depends-on "markdown-mode")
+
+;; HTML
 (depends-on "web-mode")
 (depends-on "emmet-mode")
-(depends-on "yaml-mode")
-(depends-on "less-css-mode")
-
-;; markdown
-(depends-on "markdown-mode")
 
 ;; helm
 (depends-on "helm")
@@ -106,22 +104,18 @@
 ;; Documentation
 (depends-on "zeal-at-point")
 
-;; Setup
-(depends-on "init-loader")
-(depends-on "exec-path-from-shell")
-
 ;; Search
 (depends-on "anzu")
 
 ;; clojure
-;;(depends-on "clojure-mode")
-;;(depends-on "cider")
+(depends-on "clojure-mode")
+(depends-on "cider")
 
 ;; sub packages
 
 ;;;; auto-complete sources
-(depends-on "ac-sly")
-;;(depends-on "ac-cider")
+;;(depends-on "ac-sly")
+(depends-on "ac-cider")
 (depends-on "go-autocomplete")
 (depends-on "ac-ispell")
 (depends-on "ac-etags")
