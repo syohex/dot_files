@@ -76,6 +76,11 @@
 ;; CoffeeScript
 (el-get-bundle defunkt/coffee-mode)
 
+;; Go
+(el-get-bundle go-mode)
+(el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
+(el-get-bundle elpa:golint)
+
 ;; Perl
 (el-get-bundle jrockway/cperl-mode)
 
