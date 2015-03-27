@@ -8,8 +8,6 @@
   (add-hook hook 'eldoc-mode)
   (add-hook hook 'elisp-slime-nav-mode))
 
-(add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)
-
 (custom-set-variables
  '(eldoc-idle-delay 0.2))
 
