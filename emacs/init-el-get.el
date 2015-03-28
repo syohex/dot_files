@@ -10,6 +10,10 @@
 (el-get-bundle emacs-jp/init-loader)
 (el-get-bundle purcell/exec-path-from-shell)
 
+;; library
+(el-get-bundle epc)
+(el-get-bundle deferred)
+
 ;; Utility
 (el-get-bundle syohex/emacs-editutil :name editutil)
 
@@ -83,6 +87,9 @@
 
 ;; Perl
 (el-get-bundle jrockway/cperl-mode)
+
+;; Python
+(el-get-bundle tkf/emacs-jedi)
 
 ;; Ruby
 (el-get-bundle ruby-block)
