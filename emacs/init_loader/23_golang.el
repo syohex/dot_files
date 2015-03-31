@@ -9,6 +9,7 @@
 
   (require 'go-autocomplete)
 
+  (define-key go-mode-map (kbd "C-c a") 'go-import-add)
   (define-key go-mode-map (kbd "C-c C-a") 'helm-godoc-import)
   (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
   (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
