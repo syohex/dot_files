@@ -9,6 +9,9 @@
 (global-set-key (kbd "C-M-r") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-o") 'org-capture)
 
+;; unset keys
+(global-unset-key (kbd "C-x C-n"))
+
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
 (global-set-key (kbd "C-x C-x") 'helm-find-files)
