@@ -1,5 +1,4 @@
-;; shellscript mode
-(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+;; Shell/Command utilities
 
 ;; compilation
 (custom-set-variables
