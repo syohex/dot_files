@@ -212,6 +212,9 @@ fi
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
+# Heroku
+path=(/usr/local/heroku/bin $path)
+
 ## show git branch at right prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
