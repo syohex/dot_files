@@ -41,18 +41,3 @@
 ;; Clojure
 (push '(cider-repl-mode :stick t) popwin:special-display-config)
 
-;; popwin for sly
-;;(push '(sly-mrepl-mode :stick t) popwin:special-display-config)
-
-;; prolog
-;;(push '(prolog-inferior-mode :stick t :height 20) popwin:special-display-config)
-
-;; erlang
-;;(push '(erlang-shell-mode :stick t) popwin:special-display-config)
-
-;; Haskell
-;;(push '("*haskell*" :stick t) popwin:special-display-config)
-;;(push '("*GHC Info*") popwin:special-display-config)
-
-;; Ocaml
-;;(push '("*ocaml-toplevel*" :stick t) popwin:special-display-config)
