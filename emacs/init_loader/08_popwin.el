@@ -2,15 +2,22 @@
 (require 'popwin)
 (global-set-key (kbd "M-z") popwin:keymap)
 (global-set-key (kbd "C-x l") 'popwin:popup-last-buffer)
-(global-set-key (kbd "C-x SPC") 'popwin:select-popup-window)
+(global-set-key (kbd "C-x SPC") 'my/popwin:select-popup-window)
 
 (defvar popwin:special-display-config-backup popwin:special-display-config)
 (custom-set-variables
  '(display-buffer-function 'popwin:display-buffer))
 
+(defun my/popwin:select-popup-window ()
+  (interactive)
+  (if (popwin:popup-window-live-p)
+      (select-window popwin:popup-window)
+    (popwin:popup-last-buffer)
+    (select-window popwin:popup-window)))
+
 ;; remove from default config
-(cl-loop for stuff in '("*vc-diff*" "*vc-change-log*")
-         do (delete stuff popwin:special-display-config))
+(dolist (stuff '("*vc-diff*" "*vc-change-log*"))
+  (delete stuff popwin:special-display-config))
 
 ;; basic
 (push '("*Help*" :stick t :noselect t) popwin:special-display-config)
@@ -40,4 +47,3 @@
 
 ;; Clojure
 (push '(cider-repl-mode :stick t) popwin:special-display-config)
-
