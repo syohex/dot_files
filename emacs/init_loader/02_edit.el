@@ -28,6 +28,7 @@
     sh-mode
     js-mode
     go-mode
+    css-mode
     cmake-mode
     coffee-mode
     tuareg-mode
