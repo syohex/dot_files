@@ -1,5 +1,4 @@
 ;; setting for emacs-lisp
-(find-function-setup-keys)
 
 ;;;; eldoc & slimenav
 (dolist (hook '(emacs-lisp-mode-hook
@@ -10,6 +9,8 @@
 
 (custom-set-variables
  '(eldoc-idle-delay 0.2))
+
+(setq-default edebug-inhibit-emacs-lisp-mode-bindings t)
 
 ;; Cask
 (add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
