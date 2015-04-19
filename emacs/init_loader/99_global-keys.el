@@ -6,7 +6,7 @@
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "C-x ?") 'zeal-at-point)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "C-M-r") 'ace-jump-mode)
+(global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-o") 'org-capture)
 
 ;; unset keys
@@ -22,7 +22,7 @@
 (global-set-key (kbd "C-h m")   'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b")   'helm-buffers-list)
-(global-set-key (kbd "C-]") 'helm-swoop)
+(global-set-key (kbd "C-M-r") 'helm-swoop)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
