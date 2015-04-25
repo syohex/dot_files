@@ -131,7 +131,7 @@
 (add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))
 
 (defun my/text-mode-hook ()
-  (when (string-match-p "\\`Changes" (buffer-name))
+  (when (string-prefix-p "Changes" (buffer-name))
     (flyspell-mode +1)))
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 
