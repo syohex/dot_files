@@ -49,7 +49,7 @@
 (el-get-bundle emacs-jp/elscreen)
 (el-get-bundle m2ym/popwin-el :name popwin)
 (el-get-bundle lukhas/buffer-move)
-(el-get-bundle syohex/emacs-import-popwin)
+(el-get-bundle syohex/emacs-import-popwin :name import-popwin)
 
 ;; Directory
 (el-get-bundle m2ym/direx-el :name direx)
