@@ -26,10 +26,6 @@
 
 (setq-default horizontal-scroll-bar nil)
 
-;; temp directory
-(when (file-exists-p "/mnt/ramdisk")
-  (setq-default temporary-file-directory "/mnt/ramdisk/"))
-
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
