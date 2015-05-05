@@ -8,6 +8,7 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-]") 'ace-jump-mode)
 (global-set-key (kbd "C-x C-o") 'org-capture)
+(global-set-key (kbd "C-x z") 'zoom-window-zoom)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))

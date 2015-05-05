@@ -1,4 +1,6 @@
-;;;; popwin
+;;;; Window configuration
+
+;; popwin
 (require 'popwin)
 (global-set-key (kbd "M-z") popwin:keymap)
 (global-set-key (kbd "C-x l") 'popwin:popup-last-buffer)
@@ -47,3 +49,8 @@
 
 ;; Clojure
 (push '(cider-repl-mode :stick t) popwin:special-display-config)
+
+;; zoom-window
+(custom-set-variables
+ '(zoom-window-use-elscreen t)
+ '(zoom-window-mode-line-color "DarkOliveGreen"))
