@@ -44,8 +44,6 @@
 (global-set-key (kbd "C-x v l") 'magit-log)
 
 (with-eval-after-load 'magit
-  (setq-default magit-last-seen-setup-instructions "1.4.0")
-
   (advice-add 'magit-status :around 'my/magit-status-around)
 
   (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session))
