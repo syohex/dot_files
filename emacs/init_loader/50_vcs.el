@@ -64,7 +64,7 @@
 (defun my/git-commit-commit-after (_unused)
   (delete-window))
 
-(with-eval-after-load 'git-commit-mode
+(with-eval-after-load 'git-commit
   (define-key git-commit-mode-map (kbd "C-M-i") 'auto-complete)
 
   (add-hook 'git-commit-mode-hook 'flyspell-mode)
