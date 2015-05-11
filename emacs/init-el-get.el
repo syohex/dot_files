@@ -90,6 +90,7 @@
 (el-get-bundle jrockway/cperl-mode)
 
 ;; Python
+(el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
 
 ;; Ruby
