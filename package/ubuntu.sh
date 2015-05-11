@@ -2,11 +2,16 @@
 
 set -e
 
-PACKAGES="zsh git-svn emacs vim subversion build-essential
+PACKAGES="zsh tmux
+    build-essential diffutils
+    git mercurial git-svn
+    emacs vim aspell ispell exuberant-ctags ttf-vlgothic nkf lv
     emacs-mozc emacs-mozc-bin mozc-server mozc-utils-gui
-    dia diffutils nkf lv w3m gtk-recordmydesktop
-    curl shutter lftp aspell ispell minicom ttf-vlgothic
-    wmctrl paco tmux sary xsel exuberant-ctags"
+    dia shutter byzanz handrake
+    curl w3m lftp
+    minicom
+    wmctrl xsel
+    paco sary"
 
 if [ "x_$XDG_CURRENT_DESKTOP" = "x_XFCE" ]; then
     PACKAGES="$PACKAGES xfce-theme-manager"
