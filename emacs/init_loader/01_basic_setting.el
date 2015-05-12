@@ -78,11 +78,11 @@
 
 ;; yes-or-no-p
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq use-dialog-box nil)
+(setq-default use-dialog-box nil)
 
 ;; history
-(setq history-length 500
-      history-delete-duplicates t)
+(setq-default history-length 500
+              history-delete-duplicates t)
 
 ;; run server
 (require 'server)
