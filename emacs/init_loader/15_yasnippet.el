@@ -1,13 +1,12 @@
 ;;;; yasnippet
 
 ;; enable yasnippet mode
-(autoload 'yas-minor-mode-on "yasnippet" nil t)
 (dolist (hook '(c-mode-hook
                 c++-mode-hook
                 java-mode-hook
                 cperl-mode-hook
                 emacs-lisp-mode-hook
-                html-mode
+                html-mode-hook
                 js-mode-hook
                 python-mode-hook
                 ruby-mode-hook
@@ -15,7 +14,7 @@
                 sh-mode-hook
                 markdown-mode-hook
                 makefile-mode-hook))
-  (add-hook hook 'yas-minor-mode-on))
+  (add-hook hook 'yas-minor-mode))
 
 (with-eval-after-load 'yasnippet
   (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets")
