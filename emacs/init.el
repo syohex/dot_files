@@ -1,4 +1,4 @@
-;; for lancher
+;; for lancher (package-initialize)
 (unless load-file-name
   (cd (getenv "HOME")))
 
