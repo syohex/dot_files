@@ -36,7 +36,7 @@
 
 ;; moving cursor
 (el-get-bundle goto-chg)
-(el-get-bundle winterTTr/ace-jump-mode)
+(el-get-bundle abo-abo/avy)
 
 ;; Pair
 (el-get-bundle capitaomorte/autopair)
