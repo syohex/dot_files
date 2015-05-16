@@ -57,10 +57,6 @@
 (custom-set-variables
  '(git-commit-fill-column 80))
 
-(defun my/git-commit-mode-hook ()
-  (when (looking-at "\n")
-    (open-line 1)))
-
 (defun my/git-commit-commit-after (_unused)
   (delete-window))
 
@@ -69,7 +65,6 @@
 
   (add-hook 'git-commit-mode-hook 'flyspell-mode)
   (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
-  (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
 
   (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
 
