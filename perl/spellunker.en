@@ -1,6 +1,7 @@
 <th>
 addCols
 add_row
+setCols
 addRow
 add_rows
 addRowLine
