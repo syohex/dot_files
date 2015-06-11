@@ -285,10 +285,8 @@ bindkey -s "^Xwi" " hub browse -- issues"
 bindkey -s "^Xwp" " hub browse -- pulls"
 
 ## My commands
-zle -N ghq_cd _ghq_cd
 zle -N peco-history _peco-history
 zle -N delete_previous_word _delete_previous_word
-bindkey '^X^P' ghq_cd
 bindkey '^X^R' peco-history
 bindkey '^[^U' delete_previous_word
 
@@ -296,8 +294,8 @@ autoload -Uz _git_browse
 autoload -Uz us_keyboard
 autoload -Uz cde
 autoload -Uz cdp
+autoload -Uz cdg
 autoload -Uz dired
-autoload -Uz _ghq_cd
 autoload -Uz _peco-history
 autoload -Uz _delete_previous_word
 

@@ -1,0 +1,9 @@
+function cdg() {
+    local godir
+    godir=$(ghq list | peco)
+    if [ "$godir" == "" ]; then
+        return
+    fi
+
+    cd $GOPATH/$godir
+}
