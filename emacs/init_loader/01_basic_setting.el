@@ -9,6 +9,7 @@
 
 ;; basic customize variables
 (custom-set-variables
+ '(package-enable-at-startup nil)
  '(large-file-warning-threshold (* 25 1024 1024))
  '(save-place t)
  '(dabbrev-case-fold-search nil)
