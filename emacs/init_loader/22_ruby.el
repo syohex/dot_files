@@ -60,3 +60,18 @@
        (progn (beginning-of-line) t))
   (forward-line 1)
   (back-to-indentation))
+
+(defun my/ruby-test ()
+  (interactive)
+  (let ((root (locate-dominating-file default-directory "Rakefile")))
+    (unless root
+      (error "Here is not Ruby source tree"))
+    (let* ((curfile (file-relative-name (buffer-file-name) root))
+           (rspec-p (string-suffix-p "_spec.rb" curfile)))
+      (let* ((default-directory root)
+             (has-bundle (file-exists-p ".bundle"))
+             (command (if has-bundle "bundle exec " ""))
+             (compilation-scroll-output t))
+        (if rspec-p
+            (compile (concat command "rspec " curfile))
+          (compile (concat command "ruby -Ilib:test " curfile)))))))
