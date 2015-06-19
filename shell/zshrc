@@ -201,7 +201,11 @@ path=(~/.cask/bin(N-/) $path)
 path=(~/.cabal/bin(N-/) $path)
 
 function godoc() {
-    command godoc $@ | less
+    if [ "$1" == "" ]; then
+        godocp
+    else
+        command godoc $@ | less
+    fi
 }
 
 # Go Language
