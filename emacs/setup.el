@@ -13,10 +13,10 @@
 (unless (file-directory-p my/elisp-directory)
   (make-directory my/elisp-directory))
 
-(setq my/init-loader-directory (concat user-emacs-directory "init_loader"))
+(setq my/init-loader-directory (concat user-emacs-directory "init-loader"))
 (unless load-file-name
   (unless (file-symlink-p my/init-loader-directory)
-    (make-symbolic-link (concat default-directory "init_loader")
+    (make-symbolic-link (concat default-directory "init-loader")
                         user-emacs-directory)))
 
 ;; first eval this code block
