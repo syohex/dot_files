@@ -12,8 +12,9 @@
   (setq indent-tabs-mode t
         c-basic-offset 8)
   (c-toggle-electric-state -1)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-header-symbols t))
+;;  (add-to-list 'ac-sources 'ac-source-c-headers)
+;;  (add-to-list 'ac-sources 'ac-source-c-header-symbols t)
+  )
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)

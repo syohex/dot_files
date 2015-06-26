@@ -32,7 +32,8 @@
 
   ;; robe
   (robe-mode +1)
-  (add-to-list 'ac-sources 'ac-source-robe)
+  ;;(add-to-list 'ac-sources 'ac-source-robe)
+  (add-to-list 'company-backends 'company-robe)
 
   ;; auto insert `end'
   (ruby-end-mode +1))

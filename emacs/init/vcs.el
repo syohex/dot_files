@@ -60,11 +60,14 @@
 (defun my/git-commit-commit-after (_unused)
   (delete-window))
 
+(defun my/git-commit-mode-hook ()
+  (setq company-backends '(company-ispell company-capf company-files company-dabbrev)))
+
 (with-eval-after-load 'git-commit
-  (define-key git-commit-mode-map (kbd "C-M-i") 'auto-complete)
+  (define-key git-commit-mode-map (kbd "C-M-i") 'company-complete)
 
   (add-hook 'git-commit-mode-hook 'flyspell-mode)
-  (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
+  ;;(add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
 
   (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
 

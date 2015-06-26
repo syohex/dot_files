@@ -1,7 +1,7 @@
 ;; Go Lang
 (custom-set-variables
- '(gofmt-command "goimports")
- '(ac-go-expand-arguments-into-snippets nil))
+ ;;'(ac-go-expand-arguments-into-snippets nil)
+ '(gofmt-command "goimports"))
 
 (with-eval-after-load 'go-mode
   (add-hook 'go-mode-hook 'my/go-mode-hook)
@@ -45,6 +45,7 @@
     (save-buffer)))
 
 (defun my/go-mode-hook ()
-  (delete 'ac-source-words-in-same-mode-buffers ac-sources)
+  (add-to-list 'company-backends 'company-go)
+  ;;(delete 'ac-source-words-in-same-mode-buffers ac-sources)
   (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))

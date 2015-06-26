@@ -58,9 +58,12 @@
 (el-get-bundle dired-hacks)
 
 ;; auto-complete
-(el-get-bundle auto-complete/popup-el :name popup)
-(el-get-bundle auto-complete/fuzzy-el :name fuzzy)
-(el-get-bundle auto-complete/auto-complete)
+;;(el-get-bundle auto-complete/popup-el :name popup)
+;;(el-get-bundle auto-complete/fuzzy-el :name fuzzy)
+;;(el-get-bundle auto-complete/auto-complete)
+
+;; company
+(el-get-bundle company-mode/company-mode)
 
 ;; helm
 (el-get-bundle emacs-helm/helm)
@@ -85,6 +88,8 @@
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
 (el-get-bundle elpa:golint)
+;;(el-get-bundle nsf/gocode :load-path ("emacs"))
+(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 
 ;; Perl
 (el-get-bundle jrockway/cperl-mode)
@@ -92,11 +97,13 @@
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
+(el-get-bundle syohex/emacs-company-jedi :name company)
 
 ;; Ruby
 (el-get-bundle ruby-block)
 (el-get-bundle ruby-end)
 (el-get-bundle inf-ruby)
+(el-get-bundle dgutov/robe)
 
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav)
@@ -104,6 +111,7 @@
 ;; Clojure
 (el-get-bundle clojure-mode)
 (el-get-bundle cider)
+;;(el-get-bundle clojure-emacs/ac-cider)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
@@ -132,12 +140,8 @@
 
 ;; auto-complete plugins
 ;;(el-get-bundle qoocku/ac-sly)
-(el-get-bundle clojure-emacs/ac-cider)
-(el-get-bundle nsf/gocode :load-path ("emacs"))
-(el-get-bundle syohex/emacs-ac-ispell :name ac-ispell)
-(el-get-bundle syohex/emacs-ac-etags :name ac-etags)
-(el-get-bundle dgutov/robe)
-(el-get-bundle zk-phi/ac-c-headers)
+;;(el-get-bundle syohex/emacs-ac-ispell :name ac-ispell)
+;;(el-get-bundle zk-phi/ac-c-headers)
 
 ;; Helm plugins
 (el-get-bundle ShingoFukuyama/helm-swoop)
