@@ -5,7 +5,8 @@
   (define-key c-mode-map (kbd "C-c C-t") 'ff-find-other-file)
   (define-key c-mode-map (kbd "C-c C-s") 'my/unwrap-at-point)
 
-  (require 'ac-c-headers))
+;;  (require 'ac-c-headers)
+  )
 
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
