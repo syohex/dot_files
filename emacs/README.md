@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Emacs 24.3 or higher
+- Emacs 24.5 or higher
 - [curl](http://curl.haxx.se/)
 - [cask](http://cask.github.io/)
 
@@ -11,10 +11,10 @@
 
 Please execute following command
 
-```
-% git clone git@github.com/syohex/dot_files.git
+```bash
+% git clone https://github.com/syohex/dot_files.git
 % cd dot_files/emacs
-% curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+% curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 % cask install
 % emacs -Q -l setup.el
 ```
