@@ -61,12 +61,13 @@
   (delete-window))
 
 (defun my/git-commit-mode-hook ()
+  (flyspell-mode +1)
   (setq company-backends '(company-ispell company-capf company-files company-dabbrev)))
 
 (with-eval-after-load 'git-commit
   (define-key git-commit-mode-map (kbd "C-M-i") 'company-complete)
 
-  (add-hook 'git-commit-mode-hook 'flyspell-mode)
+  (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
   ;;(add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
 
   (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
