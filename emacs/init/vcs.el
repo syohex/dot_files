@@ -62,7 +62,7 @@
 
 (defun my/git-commit-mode-hook ()
   (flyspell-mode +1)
-  (setq company-backends '(company-ispell company-capf company-files company-dabbrev)))
+  (setq-local company-backends '(company-ispell company-capf company-files company-dabbrev)))
 
 (with-eval-after-load 'git-commit
   (define-key git-commit-mode-map (kbd "C-M-i") 'company-complete)
