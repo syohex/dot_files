@@ -97,7 +97,7 @@
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
-(el-get-bundle syohex/emacs-company-jedi :name company)
+(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
 
 ;; Ruby
 (el-get-bundle ruby-block)
