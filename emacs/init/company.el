@@ -13,3 +13,6 @@
 
 (define-key lisp-interaction-mode-map (kbd "C-M-i") 'company-elisp)
 (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete)
+
+(with-eval-after-load 'company
+  (fset 'company-echo-show 'ignore))
