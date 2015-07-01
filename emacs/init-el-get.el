@@ -132,7 +132,8 @@
 (el-get-bundle syohex/emacs-eshellutil :name eshellutil)
 
 ;; VCS
-(el-get-bundle magit/magit :branch "next")
+(el-get-bundle magit/magit :branch "next"
+  (add-to-list 'load-path (concat default-directory "lisp")))
 (el-get-bundle syohex/emacs-git-gutter :name git-gutter)
 
 ;; Documentation
