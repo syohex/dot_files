@@ -1,6 +1,6 @@
 ;; Mac specified setting(Meta key, input method, terminfo)
-(setq-default ns-command-modifier 'super
-              ns-alternate-modifier 'meta
+(setq-default ns-command-modifier 'meta ;; For thinkpad keyboard
+              ;;ns-alternate-modifier 'meta
               ns-use-native-fullscreen nil ;; Don't use system fullscreen
               system-uses-terminfo nil)
 
