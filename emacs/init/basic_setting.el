@@ -132,6 +132,9 @@
     (flyspell-mode +1)))
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 
+(with-eval-after-load 'text-mode
+  (define-key text-mode-map (kbd "C-M-i") 'company-complete))
+
 ;; hippie-expand
 (custom-set-variables
  '(hippie-expand-verbose nil)
