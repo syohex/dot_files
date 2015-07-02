@@ -133,7 +133,7 @@
 
 ;; VCS
 (el-get-bundle magit/magit
-  (add-to-list 'load-path (concat default-directory "lisp")))
+  :load-path ("lisp"))
 (el-get-bundle syohex/emacs-git-gutter :name git-gutter)
 
 ;; Documentation
