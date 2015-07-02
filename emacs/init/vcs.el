@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-x v l") 'magit-log)
 
 (with-eval-after-load 'magit
+  (global-git-commit-mode +1)
   (advice-add 'magit-status :around 'my/magit-status-around)
 
   (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session))
