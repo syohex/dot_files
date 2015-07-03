@@ -1,6 +1,7 @@
 ;; Go Lang
 (custom-set-variables
  ;;'(ac-go-expand-arguments-into-snippets nil)
+ '(company-go-insert-arguments nil)
  '(gofmt-command "goimports"))
 
 (with-eval-after-load 'go-mode
