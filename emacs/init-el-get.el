@@ -25,14 +25,14 @@
 (el-get-bundle elpa:mozc)
 
 ;; undo
-(el-get-bundle undo-tree :type git :url "http://www.dr-qubit.org/git/undo-tree.git")
+(el-get-bundle undo-tree)
 
 ;; highlighting
 (el-get-bundle vline)
 (el-get-bundle col-highlight)
 
 ;; Search
-(el-get-bundle syohex/emacs-anzu :name anzu)
+(el-get-bundle anzu)
 
 ;; moving cursor
 (el-get-bundle goto-chg)
@@ -40,14 +40,14 @@
 
 ;; Pair
 (el-get-bundle capitaomorte/autopair)
-(el-get-bundle paredit :type git :url "http://mumble.net/~campbell/git/paredit.git")
+(el-get-bundle paredit)
 
 ;; Region
-(el-get-bundle rejeep/wrap-region)
+(el-get-bundle wrap-region)
 
 ;; Buffer
 (el-get-bundle emacs-jp/elscreen)
-(el-get-bundle m2ym/popwin-el :name popwin)
+(el-get-bundle popwin)
 (el-get-bundle lukhas/buffer-move)
 (el-get-bundle syohex/emacs-import-popwin :name import-popwin)
 (el-get-bundle syohex/emacs-zoom-window :name zoom-window)
@@ -91,9 +91,6 @@
 ;;(el-get-bundle nsf/gocode :load-path ("emacs"))
 (el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 
-;; Perl
-(el-get-bundle jrockway/cperl-mode)
-
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
@@ -120,7 +117,7 @@
 (el-get-bundle flycheck)
 
 ;; Markup language
-(el-get-bundle markdown-mode :type git :url "git://jblevins.org/git/markdown-mode.git")
+(el-get-bundle markdown-mode)
 (el-get-bundle yoshiki/yaml-mode)
 
 ;; HTML
@@ -128,13 +125,12 @@
 (el-get-bundle smihica/emmet)
 
 ;; shell
-(el-get-bundle syohex/emacs-quickrun :name quickrun)
+(el-get-bundle quickrun)
 (el-get-bundle syohex/emacs-eshellutil :name eshellutil)
 
 ;; VCS
-(el-get-bundle magit/magit
-  :load-path ("lisp"))
-(el-get-bundle syohex/emacs-git-gutter :name git-gutter)
+(el-get-bundle magit)
+(el-get-bundle git-gutter)
 
 ;; Documentation
 (el-get-bundle zeal-at-point)
@@ -145,13 +141,13 @@
 ;;(el-get-bundle zk-phi/ac-c-headers)
 
 ;; Helm plugins
-(el-get-bundle ShingoFukuyama/helm-swoop)
-(el-get-bundle emacs-helm/helm-descbinds)
-(el-get-bundle syohex/emacs-helm-gtags :name helm-gtags)
-(el-get-bundle syohex/emacs-helm-ag :name helm-ag)
+(el-get-bundle helm-swoop)
+(el-get-bundle helm-descbinds)
+(el-get-bundle helm-gtags)
+(el-get-bundle helm-ag)
 (el-get-bundle syohex/emacs-helm-pydoc :name helm-pydoc)
 (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
-(el-get-bundle syohex/emacs-helm-open-github :name helm-open-github)
+(el-get-bundle helm-open-github)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
 
 ;; Evil
