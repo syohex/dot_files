@@ -3,8 +3,6 @@
 (with-eval-after-load 'cc-mode
   ;; key bindings
   (define-key c-mode-map (kbd "C-c C-t") 'ff-find-other-file)
-  (define-key c-mode-map (kbd "C-c C-s") 'my/unwrap-at-point)
-
 ;;  (require 'ac-c-headers)
   )
 
