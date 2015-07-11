@@ -15,7 +15,6 @@
 
 ;; helm binding
 (global-set-key (kbd "C-M-z")   'helm-resume)
-(global-set-key (kbd "C-x C-x") 'helm-find-files)
 (global-set-key (kbd "C-x C-l") 'helm-locate)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
