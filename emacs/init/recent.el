@@ -5,7 +5,7 @@
  '(recentf-exclude '(".recentf" "/elpa/" "/elisps/" "\\`/tmp/" "/\\.git/" "/\\.cask/"
                      "/tmp/gomi/" "/el-get/" ".loaddefs.el"
                      "\\.mime-example" "\\.ido.last" "woman_cache.el"
-                     "CMakeCache.txt" "bookmarks" "\\.gz$"
+                     "CMakeCache.txt" "/bookmarks" "\\.gz$"
                      "COMMIT_EDITMSG" "MERGE_MSG" "git-rebase-todo")))
 
 (run-at-time t 600 'recentf-save-list)
