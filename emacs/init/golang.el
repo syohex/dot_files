@@ -24,6 +24,18 @@
 
   (define-key go-mode-map (kbd ":") nil))
 
+(defvar my/go-impl-interfaces
+  '("http.Handler"))
+
+(defun my/go-impl (receiver interface)
+  (interactive
+   (list
+    (read-string "Receiver: ")
+    (completing-read "Interface: " my/go-impl-interfaces)))
+  (save-excursion
+    (unless (process-file "impl" nil t nil receiver interface)
+      (error "Error: 'impl' interface=%s" interface))))
+
 (defun my/godoc-type-at-cursor ()
   (interactive)
   (save-excursion
