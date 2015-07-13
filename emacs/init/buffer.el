@@ -10,3 +10,5 @@
 
 (global-set-key (kbd "M-9") 'bs-cycle-next)
 (global-set-key (kbd "M-0") 'bs-cycle-previous)
+
+(add-hook 'focus-out-hook 'save-buffer)
