@@ -2,7 +2,7 @@
 path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
 
 # completion
-fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/mycomp $fpath)
+fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
 autoload -U compinit
 compinit
 
