@@ -133,7 +133,9 @@
 (el-get-bundle git-gutter)
 
 ;; Documentation
-(el-get-bundle zeal-at-point)
+(if (eq system-type 'darwin)
+    (el-get-bundle dash-at-point)
+  (el-get-bundle zeal-at-point))
 
 ;; auto-complete plugins
 ;;(el-get-bundle qoocku/ac-sly)
