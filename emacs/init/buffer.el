@@ -7,9 +7,11 @@
 
 ;; use ibuffer instead of list-buffer
 (defalias 'list-buffers 'ibuffer)
+(with-eval-after-load 'bs
+  (fset 'bs-message-without-log 'ignore))
 
-(global-set-key (kbd "M-9") 'bs-cycle-next)
-(global-set-key (kbd "M-0") 'bs-cycle-previous)
+(global-set-key (kbd "M-[") 'bs-cycle-next)
+(global-set-key (kbd "M-]") 'bs-cycle-previous)
 
 (defun my/save-buffer ()
   (save-buffer))
