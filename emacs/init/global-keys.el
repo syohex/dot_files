@@ -36,6 +36,7 @@
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
 (define-key my/ctrl-q-map (kbd "C-e") 'evil-mode)
+(define-key my/ctrl-q-map (kbd "C-i") 'my/popwin:select-popup-window)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
