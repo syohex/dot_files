@@ -133,7 +133,7 @@
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 
 (with-eval-after-load 'text-mode
-  (define-key text-mode-map (kbd "C-M-i") 'company-complete))
+  (define-key text-mode-map (kbd "C-M-i") 'auto-complete))
 
 ;; hippie-expand
 (custom-set-variables
