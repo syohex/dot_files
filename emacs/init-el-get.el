@@ -58,12 +58,12 @@
 (el-get-bundle dired-hacks)
 
 ;; auto-complete
-;;(el-get-bundle auto-complete/popup-el :name popup)
-;;(el-get-bundle auto-complete/fuzzy-el :name fuzzy)
-;;(el-get-bundle auto-complete/auto-complete)
+(el-get-bundle auto-complete/popup-el :name popup)
+(el-get-bundle auto-complete/fuzzy-el :name fuzzy)
+(el-get-bundle auto-complete/auto-complete)
 
 ;; company
-(el-get-bundle company-mode/company-mode)
+;;(el-get-bundle company-mode/company-mode)
 
 ;; helm
 (el-get-bundle emacs-helm/helm)
@@ -88,13 +88,13 @@
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
 (el-get-bundle elpa:golint)
-;;(el-get-bundle nsf/gocode :load-path ("emacs"))
-(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
+(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
+;;(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
-(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
+;;(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
 
 ;; Ruby
 (el-get-bundle ruby-block)
@@ -139,8 +139,8 @@
 
 ;; auto-complete plugins
 ;;(el-get-bundle qoocku/ac-sly)
-;;(el-get-bundle syohex/emacs-ac-ispell :name ac-ispell)
-;;(el-get-bundle zk-phi/ac-c-headers)
+(el-get-bundle syohex/emacs-ac-ispell :name ac-ispell)
+(el-get-bundle zk-phi/ac-c-headers)
 
 ;; Helm plugins
 (el-get-bundle helm-swoop)
