@@ -1,5 +1,6 @@
 ;; setting of auto-complete
 (ac-config-default)
+(remove-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
 
 ;; Enable auto-complete mode other than default enable modes
 (dolist (mode '(git-commit-mode
