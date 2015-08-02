@@ -33,6 +33,7 @@
 
 ;; magit
 (custom-set-variables
+ '(git-commit-summary-max-length 72)
  '(magit-auto-revert-mode-lighter ""))
 
 (defun my/magit-status-around (orig-fn &rest args)
