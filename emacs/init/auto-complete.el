@@ -24,6 +24,7 @@
 (define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (define-key ac-completing-map (kbd "<tab>") 'ac-complete)
+(define-key ac-completing-map (kbd "C-i") 'ac-complete)
 
 (global-set-key (kbd "C-M-i") 'auto-complete)
 (define-key lisp-interaction-mode-map (kbd "C-M-i") 'auto-complete)
