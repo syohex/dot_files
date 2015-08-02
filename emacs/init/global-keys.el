@@ -34,7 +34,7 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
-(define-key my/ctrl-q-map (kbd "C-m") 'my/toggle-flymake)
+(define-key my/ctrl-q-map (kbd "C-m") 'flycheck-mode)
 (define-key my/ctrl-q-map (kbd "C-e") 'evil-mode)
 (define-key my/ctrl-q-map (kbd "C-i") 'my/popwin:select-popup-window)
 

@@ -22,34 +22,6 @@
   (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
   (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history))
 
-;; for flymake
-(with-eval-after-load 'flymake
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.\\(?:pl\\|pm\\|t\\|psgi\\)\\'" my/flymake-perl-init)))
-
-(defun my/flymake-perl-root-directory ()
-  (cl-loop with curdir = default-directory
-           for file in '("Makefile.PL" "Build.PL" "cpanfile")
-           when (locate-dominating-file curdir file)
-           return (directory-file-name (expand-file-name it))))
-
-(defun my/flymake-perl-add-topdir-option ()
-  (let ((curdir (directory-file-name (file-name-directory (buffer-file-name))))
-        (rootdir (my/flymake-perl-root-directory)))
-    (when (and rootdir (not (string= curdir rootdir)))
-      (format "-I%s" rootdir))))
-
-(defun my/flymake-perl-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name)))
-         (topdir (my/flymake-perl-add-topdir-option)))
-    (if topdir
-        `("perl" ,(list "-MProject::Libs" topdir "-wc" local-file))
-      `("perl" ,(list "-MProject::Libs" "-wc" local-file)))))
-
 (defun my/cperl-imenu-create-index ()
   (let (index)
     (save-excursion
@@ -68,12 +40,10 @@
       (nreverse index))))
 
 (defun my/cperl-mode-hook ()
-  (flymake-mode t)
   (hs-minor-mode 1)
 
   ;; my own imenu. cperl imenu is too many information for me
-  (set (make-local-variable 'imenu-create-index-function)
-       'my/cperl-imenu-create-index))
+  (setq imenu-create-index-function 'my/cperl-imenu-create-index))
 
 (add-hook 'cperl-mode-hook 'my/cperl-mode-hook)
 
