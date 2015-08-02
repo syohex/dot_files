@@ -63,7 +63,7 @@
 (el-get-bundle auto-complete/auto-complete)
 
 ;; company
-;;(el-get-bundle company-mode/company-mode)
+(el-get-bundle company-mode/company-mode)
 
 ;; helm
 (el-get-bundle emacs-helm/helm)
@@ -104,6 +104,10 @@
 
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav)
+
+;; Elixir
+(el-get-bundle elixir-mode)
+(el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
 (el-get-bundle clojure-mode)
