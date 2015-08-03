@@ -1,1 +1,1 @@
-../init/flymake.el
+../init/flycheck.el
