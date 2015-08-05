@@ -106,7 +106,7 @@
 (el-get-bundle purcell/elisp-slime-nav)
 
 ;; Elixir
-(el-get-bundle elixir-mode)
+(el-get-bundle elixir)
 (el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
