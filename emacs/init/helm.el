@@ -4,7 +4,6 @@
  '(helm-exit-idle-delay 0)
  '(helm-candidate-number-limit 500)
  '(helm-ag-insert-at-point 'symbol)
- '(helm-swoop-pre-input-function 'ignore)
  '(helm-find-files-doc-header "")
  '(helm-command-prefix-key nil))
 

@@ -147,7 +147,6 @@
 (el-get-bundle zk-phi/ac-c-headers)
 
 ;; Helm plugins
-(el-get-bundle helm-swoop)
 (el-get-bundle helm-descbinds)
 (el-get-bundle helm-gtags)
 (el-get-bundle helm-ag)
