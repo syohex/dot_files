@@ -58,7 +58,7 @@
     (save-buffer)))
 
 (defun my/go-mode-hook ()
-  (add-to-list 'company-backends 'company-go)
-  ;;(delete 'ac-source-words-in-same-mode-buffers ac-sources)
+  ;;(add-to-list 'company-backends 'company-go)
+  (delete 'ac-source-words-in-same-mode-buffers ac-sources)
   (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))
