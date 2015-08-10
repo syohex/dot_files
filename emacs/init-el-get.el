@@ -22,7 +22,8 @@
   (add-to-list 'custom-theme-load-path default-directory))
 
 ;; Input method
-(el-get-bundle elpa:mozc)
+(when (executable-find "mozc_emacs_helper")
+  (el-get-bundle elpa:mozc))
 
 ;; undo
 (el-get-bundle undo-tree)
