@@ -63,7 +63,6 @@ ln -sf $PWD/ruby/pryrc ~/.pryrc
 
 # For Common Lisp
 #ln -sf $PWD/common_lisp/clisprc.lisp ~/.clisprc.lisp
-#ln -sf $PWD/common_lisp/ccl-init.lisp ~/.ccl-init.lisp
 
 # haskell
 ln -sf $PWD/haskell/ghci ~/.ghci
