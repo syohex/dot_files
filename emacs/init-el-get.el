@@ -111,8 +111,8 @@
 (el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
-(el-get-bundle clojure-mode)
-(el-get-bundle cider)
+;;(el-get-bundle clojure-mode)
+;;(el-get-bundle cider)
 ;;(el-get-bundle clojure-emacs/ac-cider)
 
 ;; Build tool
