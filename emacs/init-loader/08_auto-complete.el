@@ -1,1 +1,1 @@
-/home/syohei/dot_files/emacs/init-loader/../init/auto-complete.el
+../init/auto-complete.el
