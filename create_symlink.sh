@@ -16,6 +16,7 @@ ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
 ln -sf ${PWD}/emacs/my_snippets ~/.emacs.d/
 ln -sf ${PWD}/emacs/ac-dict ~/.emacs.d/
 ln -sf ${PWD}/emacs/init-el-get.el ~/.emacs.d
+ln -sf ${PWD}/emacs/init-loader ~/.emacs.d
 
 ## Use Emacs.app instead of pre-installed emacs on MacOSX
 EMACS_CLIENT_APP_PATH='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
