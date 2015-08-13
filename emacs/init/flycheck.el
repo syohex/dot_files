@@ -2,7 +2,7 @@
 
 (defun my/flycheck-list-errors ()
   (interactive)
-  (when (or (not (boundp 'flycheck-mode)) (not flycheck-mode))
+  (when (bound-and-true-p flycheck-mode)
     (flycheck-mode +1))
   (call-interactively 'flycheck-list-errors))
 
