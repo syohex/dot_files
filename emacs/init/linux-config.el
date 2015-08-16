@@ -1,10 +1,12 @@
-;; browse
+;; Linux specific configuration
 (custom-set-variables
  '(browse-url-browser-function 'browse-url-generic)
  '(browse-url-generic-program "firefox"))
 
-;; font-setting for Linux(Ubuntu)
+;; key config
+(global-set-key (kbd "C-x ?") 'zeal-at-point)
 
+;; font-setting for Linux(Ubuntu)
 (defun change-font-size (size)
   (interactive
    (list (read-number "Size: ")))

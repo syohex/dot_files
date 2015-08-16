@@ -1,5 +1,5 @@
 ;; Mac specified setting(Meta key, input method, terminfo)
-(setq-default ns-command-modifier 'meta ;; For thinkpad keyboard
+(setq-default ns-command-modifier 'meta
               ;;ns-alternate-modifier 'meta
               ns-use-native-fullscreen nil ;; Don't use system fullscreen
               system-uses-terminfo nil)
@@ -9,6 +9,9 @@
 
 (unless (featurep 'mozc)
   (setq default-input-method "MacOSX"))
+
+;; key config
+(global-set-key (kbd "C-x ?") 'dash-at-point)
 
 ;; font setting
 (set-face-attribute 'default nil
