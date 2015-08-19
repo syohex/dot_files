@@ -33,6 +33,10 @@
  (frame-parameter nil 'font)
  'mule-unicode-0100-24ff
  '("monaco" . "iso10646-1"))
+(set-fontset-font
+ t 'symbol
+ (font-spec :family "Apple Color Emoji") nil 'prepend)
+
 (setq-default face-font-rescale-alist
               '(("^-apple-hiragino.*" . 1.2)
                 (".*osaka-bold.*" . 1.2)
