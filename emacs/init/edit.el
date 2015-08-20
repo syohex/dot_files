@@ -11,6 +11,11 @@
  '(electric-indent-mode nil))
 
 ;; smartparens
+(custom-set-variables
+ '(sp-highlight-pair-overlay nil)
+ '(sp-highlight-wrap-overlay nil)
+ '(sp-highlight-wrap-tag-overlay nil))
+
 (defvar my/smartparens-enabled-modes
   '(c-mode
     c++-mode
