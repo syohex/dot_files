@@ -40,11 +40,8 @@
 (el-get-bundle abo-abo/avy)
 
 ;; Pair
-(el-get-bundle capitaomorte/autopair)
+(el-get-bundle smartparens)
 (el-get-bundle paredit)
-
-;; Region
-(el-get-bundle wrap-region)
 
 ;; Buffer
 (el-get-bundle emacs-jp/elscreen)

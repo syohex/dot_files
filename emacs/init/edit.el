@@ -10,12 +10,8 @@
 (custom-set-variables
  '(electric-indent-mode nil))
 
-;; autopair
-(custom-set-variables
- '(autopair-blink nil)
- '(autopair-blink-delay 0))
-
-(defvar my/autopair-enabled-modes
+;; smartparens
+(defvar my/smartparens-enabled-modes
   '(c-mode
     c++-mode
     java-mode
@@ -33,7 +29,8 @@
     coffee-mode
     tuareg-mode
     tuareg-interactive-mode
-    cperl-mode))
+    cperl-mode
+    markdown-mode))
 
-(dolist (mode my/autopair-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'autopair-mode))
+(dolist (mode my/smartparens-enabled-modes)
+  (add-hook (intern (format "%s-hook" mode)) 'smartparens-mode))

@@ -21,10 +21,6 @@
 (defun my/python-mode-hook ()
   (jedi:setup)
 
-  ;; autopair
-  (setq autopair-handle-action-fns
-        '(autopair-default-handle-action autopair-python-triple-quote-action))
-
   ;; flycheck
   (setq flycheck-checker 'python-flake8
         flycheck-flake8rc (expand-file-name "~/.config/flake8")))
