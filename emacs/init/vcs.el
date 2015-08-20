@@ -33,8 +33,10 @@
 
 ;; magit
 (custom-set-variables
+ '(git-commit-fill-column 80)
  '(git-commit-summary-max-length 72)
- '(magit-auto-revert-mode-lighter ""))
+ '(magit-auto-revert-mode-lighter "")
+ '(magit-push-always-verify nil))
 
 (defun my/magit-status-around (orig-fn &rest args)
   (window-configuration-to-register :magit-fullscreen)
@@ -42,7 +44,6 @@
   (delete-other-windows))
 
 (global-set-key (kbd "M-g M-g") 'magit-status)
-(global-set-key (kbd "C-x v l") 'magit-log)
 
 (with-eval-after-load 'magit
   (global-git-commit-mode +1)
@@ -55,9 +56,6 @@
   (kill-buffer)
   (jump-to-register :magit-fullscreen)
   (git-gutter:update-all-windows))
-
-(custom-set-variables
- '(git-commit-fill-column 80))
 
 (defun my/git-commit-commit-after (_unused)
   (delete-window))
