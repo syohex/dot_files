@@ -19,4 +19,5 @@
   (define-key markdown-mode-map (kbd "C-c C-b") 'outline-backward-same-level)
   (define-key markdown-mode-map (kbd "C-c C-u") 'outline-up-heading)
 
-  (define-key gfm-mode-map (kbd "C-c C-i c") 'markdown-insert-gfm-code-block))
+  (define-key gfm-mode-map (kbd "C-c C-i c") 'markdown-insert-gfm-code-block)
+  (define-key gfm-mode-map (kbd "`") nil))
