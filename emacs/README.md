@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Emacs 24.5 or higher
+- Emacs 25.0 or higher
 - `git`, `mercurial`
 
 
