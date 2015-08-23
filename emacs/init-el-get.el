@@ -40,7 +40,6 @@
 (el-get-bundle abo-abo/avy)
 
 ;; Pair
-(el-get-bundle smartparens)
 (el-get-bundle paredit)
 
 ;; Buffer

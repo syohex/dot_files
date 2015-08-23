@@ -16,7 +16,7 @@
  '(sp-highlight-wrap-overlay nil)
  '(sp-highlight-wrap-tag-overlay nil))
 
-(defvar my/smartparens-enabled-modes
+(defvar my/electric-pair-enabled-modes
   '(c-mode
     c++-mode
     java-mode
@@ -37,5 +37,5 @@
     cperl-mode
     markdown-mode))
 
-(dolist (mode my/smartparens-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'smartparens-mode))
+(dolist (mode my/electric-pair-enabled-modes)
+  (add-hook (intern (format "%s-hook" mode)) 'electric-pair-local-mode))
