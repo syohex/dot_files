@@ -16,6 +16,7 @@
 
 ;; Utility
 (el-get-bundle syohex/emacs-editutil :name editutil)
+(el-get-bundle myuhe/quick-preview.el :name quick-preview)
 
 ;; Theme
 (el-get-bundle syohex/emacs-syohex-theme :name syohex-theme
@@ -52,7 +53,6 @@
 ;; Directory
 (el-get-bundle m2ym/direx-el :name direx)
 (el-get-bundle syohex/emacs-dired-k :name dired-k)
-(el-get-bundle dired-hacks)
 
 ;; auto-complete
 (el-get-bundle auto-complete/popup-el :name popup)
