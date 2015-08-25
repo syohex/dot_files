@@ -217,6 +217,9 @@ fi
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
+# Rust
+path=(/opt/rust/rustc/bin(N-/) /opt/rust/cargo/bin(N-/) $path)
+
 # Heroku
 path=(/usr/local/heroku/bin $path)
 
