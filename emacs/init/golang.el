@@ -17,6 +17,7 @@
   (define-key go-mode-map (kbd "C-c C-s") 'my/gofmt)
   (define-key go-mode-map (kbd "C-c C-t") 'ff-find-other-file)
   (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
+  (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)
   (define-key go-mode-map (kbd "C-c C-l") 'my/flycheck-list-errors)
   (define-key go-mode-map (kbd "C-c ?") 'my/godoc-type-at-cursor)
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
