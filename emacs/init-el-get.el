@@ -152,6 +152,3 @@
 (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
 (el-get-bundle helm-open-github)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
-
-;; Evil
-(el-get-bundle evil)
