@@ -21,3 +21,7 @@
 
   (define-key gfm-mode-map (kbd "C-c C-i c") 'markdown-insert-gfm-code-block)
   (define-key gfm-mode-map (kbd "`") nil))
+
+(defun my/markdown-mode-hook ()
+  (setq-local tab-width 8))
+(add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
