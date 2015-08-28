@@ -23,5 +23,7 @@
   (define-key gfm-mode-map (kbd "`") nil))
 
 (defun my/markdown-mode-hook ()
+  (make-local-variable 'electric-pair-pairs)
+  (add-to-list 'electric-pair-pairs '(?` . ?`))
   (setq-local tab-width 8))
 (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
