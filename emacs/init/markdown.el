@@ -9,10 +9,6 @@
   (define-key markdown-mode-map (kbd "C-M-i") 'auto-complete)
   ;;(define-key markdown-mode-map (kbd "C-M-i") 'company-complete)
 
-  (define-key markdown-mode-map (kbd "C-M-f") 'forward-symbol)
-  (define-key markdown-mode-map (kbd "C-M-b") 'editutil-backward-symbol)
-  (define-key markdown-mode-map (kbd "C-M-u") 'editutil-backward-up)
-
   (define-key markdown-mode-map (kbd "C-c C-n") 'outline-next-visible-heading)
   (define-key markdown-mode-map (kbd "C-c C-p") 'outline-previous-visible-heading)
   (define-key markdown-mode-map (kbd "C-c C-f") 'outline-forward-same-level)
