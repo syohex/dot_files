@@ -1,5 +1,6 @@
 (require 'dired-x)
 
+(setq-default load-prefer-newer t)
 (setq-default horizontal-scroll-bar nil)
 
 ;; not create backup file and not create auto save file
