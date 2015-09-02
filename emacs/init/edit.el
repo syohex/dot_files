@@ -10,12 +10,6 @@
 (custom-set-variables
  '(electric-indent-mode nil))
 
-;; smartparens
-(custom-set-variables
- '(sp-highlight-pair-overlay nil)
- '(sp-highlight-wrap-overlay nil)
- '(sp-highlight-wrap-tag-overlay nil))
-
 (defvar my/electric-pair-enabled-modes
   '(c-mode
     c++-mode
