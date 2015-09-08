@@ -17,6 +17,7 @@
     python-mode
     ruby-mode
     erlang-mode
+    elixir-mode
     prolog-mode
     haskell-mode
     inferior-haskell-mode

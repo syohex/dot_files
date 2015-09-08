@@ -6,6 +6,7 @@
                 java-mode-hook
                 cperl-mode-hook
                 emacs-lisp-mode-hook
+                elixir-mode-hook
                 html-mode-hook
                 js-mode-hook
                 python-mode-hook
