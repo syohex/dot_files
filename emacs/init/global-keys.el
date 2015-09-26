@@ -13,14 +13,13 @@
 (global-unset-key (kbd "C-x C-n"))
 
 ;; helm binding
-(global-set-key (kbd "C-M-z")   'helm-resume)
-(global-set-key (kbd "C-x C-l") 'helm-locate)
+(global-set-key (kbd "C-M-z") 'helm-resume)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-h a")   'helm-apropos)
-(global-set-key (kbd "C-h m")   'helm-man-woman)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-h m") 'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
-(global-set-key (kbd "C-x b")   'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
