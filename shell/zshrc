@@ -158,7 +158,8 @@ colors
 PROMPT="%B%{${fg[yellow]}%}%n@%m:%{${reset_color}%}%b%# "
 
 # EDITOR
-export EDITOR="emacsclient"
+export EDITOR=vim
+export GIT_EDITOR=emacsclient
 
 # PAGER setting
 export PAGER='less'
