@@ -6,6 +6,7 @@
         "M-f": "peco.ForwardWord",
         "M-b": "peco.BackwardWord",
         "M-d": "peco.DeleteForwardWord",
-        "M-k": "peco.DeleteBackwardWord"
+        "M-k": "peco.DeleteBackwardWord",
+        "C-q": "peco.ToggleSingleKeyJump"
     }
 }
