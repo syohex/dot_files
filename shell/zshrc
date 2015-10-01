@@ -169,9 +169,14 @@ export INFOPATH=/usr/local/share/info:/usr/share/info
 
 # load plenv config file
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
-if [ -e ~/.plenv/bin ]; then
+if [ -d ~/.plenv/bin ]; then
     path=($HOME/.plenv/bin $path)
     eval "$(plenv init -)"
+fi
+
+if [ -d ~/.rakudobrew/bin ]; then
+    path=(~/.rakudobrew/bin  ~/.rakudobrew/moar-nom/install/share/perl6/site/bin/ $path)
+    eval "$(~/.rakudobrew/bin/rakudobrew init -)"
 fi
 
 # load rbenv
