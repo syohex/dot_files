@@ -164,6 +164,7 @@ export GIT_EDITOR=emacsclient
 # PAGER setting
 export PAGER='less'
 export LESSCHARSET=utf-8
+export LESS="-r"
 
 # info
 export INFOPATH=/usr/local/share/info:/usr/share/info
