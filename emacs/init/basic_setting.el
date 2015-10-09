@@ -11,7 +11,6 @@
 (custom-set-variables
  '(package-enable-at-startup nil)
  '(large-file-warning-threshold (* 25 1024 1024))
- '(save-place t)
  '(dabbrev-case-fold-search nil)
  '(inhibit-startup-screen t)
  '(read-file-name-completion-ignore-case t)
@@ -47,7 +46,7 @@
 
 ;; saveplace
 (savehist-mode 1)
-(load "saveplace")
+(save-place-mode +1)
 
 ;; info for japanese
 (auto-compression-mode t)
