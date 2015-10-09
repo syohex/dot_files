@@ -165,7 +165,6 @@ export GIT_EDITOR=emacsclient
 # PAGER setting
 export PAGER='less'
 export LESSCHARSET=utf-8
-export LESS="-r"
 
 # info
 export INFOPATH=/usr/local/share/info:/usr/share/info
@@ -201,6 +200,10 @@ if [ -e ${VIRTUALENV_ACTIVE} ]; then
     source ${VIRTUALENV_ACTIVE}
 fi
 export PYTHONSTARTUP=~/.pythonsetup
+
+function ipython() {
+    env LESS="-r" ipython $@
+}
 
 ## Cask
 path=(~/.cask/bin(N-/) $path)

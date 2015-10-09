@@ -93,6 +93,9 @@
 (el-get-bundle tkf/emacs-jedi)
 ;;(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
 
+;; Perl
+(el-get-bundle hinrik/perl6-mode)
+
 ;; Ruby
 (el-get-bundle ruby-block)
 (el-get-bundle ruby-end)
@@ -150,5 +153,4 @@
 (el-get-bundle helm-ag)
 (el-get-bundle syohex/emacs-helm-pydoc :name helm-pydoc)
 (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
-(el-get-bundle helm-open-github)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
