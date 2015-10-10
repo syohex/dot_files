@@ -7,7 +7,6 @@
 
 ;;;; Paredit
 (dolist (hook '(emacs-lisp-mode-hook
-                lisp-interaction-mode-hook
                 lisp-mode-hook
                 ielm-mode-hook
                 scheme-mode-hook
