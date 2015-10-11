@@ -30,6 +30,7 @@
     tuareg-mode
     tuareg-interactive-mode
     cperl-mode
+    perl6-mode
     markdown-mode))
 
 (dolist (mode my/electric-pair-enabled-modes)
