@@ -1,6 +1,6 @@
-# name: net/http.HandleFunc
-# key: handlefunc
+# name: net/http handler function
+# key: funch
 # --
-http.HandleFunc("$1", func(w http.ResponseWriter, r *http.Request) {
+func(w http.ResponseWriter, r *http.Request) {
         $0
-})
+}
