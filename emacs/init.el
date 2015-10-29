@@ -9,7 +9,6 @@
 
 ;; load environment variables
 (exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH"))
-(setq-default eshell-path-env (getenv "PATH"))
 
 ;;;; setup theme
 (load-theme 'syohex t t)

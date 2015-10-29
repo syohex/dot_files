@@ -20,8 +20,5 @@
  '(eshell-hist-ignoredups t)
  '(eshell-scroll-show-maximum-output nil))
 
-(defun my/eshell-mode-hook ()
-  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
-
-(add-hook 'eshell-mode-hook 'my/eshell-mode-hook)
+(setq-default eshell-path-env (getenv "PATH"))
 (global-set-key (kbd "C-\\") 'eshellutil-popup)
