@@ -8,8 +8,8 @@
 (load (concat user-emacs-directory "init-el-get.el"))
 
 ;; load environment variables
-(let ((envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
-  (exec-path-from-shell-copy-envs envs))
+(exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH"))
+(setq-default eshell-path-env (getenv "PATH"))
 
 ;;;; setup theme
 (load-theme 'syohex t t)
