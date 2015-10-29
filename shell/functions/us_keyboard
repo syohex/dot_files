@@ -2,7 +2,7 @@
 function us_keyboard() {
     setxkbmap -model us -layout us
 
-    xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
+    # xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
     # xmodmap ~/dot_files/keyboard/hhk_xmodmap # Happy Hacking Keyboard
     xset r rate 195 62
 }
