@@ -27,7 +27,6 @@
 (setq-default horizontal-scroll-bar nil)
 
 ;; cursor
-(set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
 
 ;; for GC
