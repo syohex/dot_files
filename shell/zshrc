@@ -266,7 +266,7 @@ zstyle ':filter-select' case-insensitive yes
 if [ -e ~/.zsh/zaw/zaw.zsh ]; then
     source ~/.zsh/zaw/zaw.zsh
     ZAW_EDITOR='emacsclient -n'
-    bindkey '^x@' zaw-cdr
+    bindkey '^x^x' zaw-cdr
     bindkey '^xd' zaw-git-directories
     bindkey '^xb' zaw-git-recent-branches
     bindkey '^x^f' zaw-git-files
