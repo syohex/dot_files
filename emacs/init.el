@@ -8,6 +8,8 @@
 (load (concat user-emacs-directory "init-el-get.el"))
 
 ;; load environment variables
+(custom-set-variables
+ '(exec-path-from-shell-arguments '("-l")))
 (exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH"))
 
 ;;;; setup theme
