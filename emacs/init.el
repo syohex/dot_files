@@ -10,8 +10,9 @@
 (load (concat user-emacs-directory "init-el-get.el"))
 
 ;; load environment variables
-(cl-letf (((symbol-function 'warn) #'ignore))
-  (exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH")))
+(custom-set-variables
+ '(exec-path-from-shell-check-startup-files nil))
+(exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH"))
 
 ;;;; setup theme
 (load-theme 'syohex t t)
