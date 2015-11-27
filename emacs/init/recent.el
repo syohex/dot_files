@@ -8,5 +8,5 @@
                      "CMakeCache.txt" "/bookmarks" "\\.gz$"
                      "COMMIT_EDITMSG" "MERGE_MSG" "git-rebase-todo")))
 
-(run-at-time t 600 'recentf-save-list)
+(run-at-time t 600 #'editutil-recentf-save-list)
 (recentf-mode 1)
