@@ -15,6 +15,7 @@
   (define-key markdown-mode-map (kbd "C-c C-b") 'outline-backward-same-level)
   (define-key markdown-mode-map (kbd "C-c C-u") 'outline-up-heading)
   (define-key markdown-mode-map (kbd "C-c C-c C-l") 'markdown-insert-link)
+  (define-key markdown-mode-map (kbd "C-c C-c C-i") 'markdown-insert-image)
 
   (define-key gfm-mode-map (kbd "C-c C-c C-c") 'markdown-insert-gfm-code-block)
   (define-key gfm-mode-map (kbd "`") nil))
