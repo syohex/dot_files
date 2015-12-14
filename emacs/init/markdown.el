@@ -9,11 +9,6 @@
   (define-key markdown-mode-map (kbd "C-M-i") 'auto-complete)
   ;;(define-key markdown-mode-map (kbd "C-M-i") 'company-complete)
 
-  (define-key markdown-mode-map (kbd "C-c C-n") 'outline-next-visible-heading)
-  (define-key markdown-mode-map (kbd "C-c C-p") 'outline-previous-visible-heading)
-  (define-key markdown-mode-map (kbd "C-c C-f") 'outline-forward-same-level)
-  (define-key markdown-mode-map (kbd "C-c C-b") 'outline-backward-same-level)
-  (define-key markdown-mode-map (kbd "C-c C-u") 'outline-up-heading)
   (define-key markdown-mode-map (kbd "C-c C-c C-l") 'markdown-insert-link)
   (define-key markdown-mode-map (kbd "C-c C-c C-i") 'markdown-insert-image)
 
