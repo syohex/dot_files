@@ -15,6 +15,9 @@ go get -u github.com/github/hub
 go get -u github.com/motemen/gore
 go get -u github.com/motemen/ghq
 go get -u github.com/josharian/impl
+go get -u golang.org/x/tools/cmd/cover
+go get -u golang.org/x/tools/cmd/godoc
+go get -u golang.org/x/tools/cmd/vet
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" ]; then
