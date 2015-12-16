@@ -67,3 +67,6 @@ ln -sf $PWD/ruby/pryrc ~/.pryrc
 
 # haskell
 ln -sf $PWD/haskell/ghci ~/.ghci
+
+# Firefox
+ln -sf $PWD/firefox/vimperatorrc ~/.vimperatorrc

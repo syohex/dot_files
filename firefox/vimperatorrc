@@ -1,0 +1,65 @@
+set visualbell
+highlight Bell display:none
+
+" Don't focus text area automatically
+set focuscontent
+
+" Default search engine
+set defsearch=google
+
+" Highlight search keyword
+set hlsearch
+
+" Characters of hit-a-hint
+set hintchars="hfjdksla"
+
+" Toolbar is smart
+set gui=addons,nobookmarks,nomenu,nonavigation,tabs
+
+" More scroll
+map j 5<C-e>
+map k 5<C-y>
+
+" Select candidates like vim
+cmap <C-n> <Tab>
+cmap <C-p> <S-Tab>
+
+" Tab closing
+no dd :tabclose<CR>
+map d <NOP>
+
+" Disable keys
+map <C-k> <NOP>
+map <C-x> <NOP>
+
+" History forward/backward
+map H <A-Left>
+map L <A-Right>
+
+map <C-s> /
+
+" Move tab
+map <C-h> gT
+map <C-l> gt
+
+" Copy title
+nnoremap <A-y> :js util.copyToClipboard(buffer.title+' : '+buffer.URL, true)<CR>
+nnoremap Y :js util.copyToClipboard(buffer.title, true)<CR>
+
+" qmark
+qmark m https://mail.google.com/
+qmark t https://twitter.com/
+qmark l http://reader.livedoor.com/reader/
+qmark S https://soozy.slack.com/
+qmark k https://keep.google.com/
+qmark b http://b.hatena.ne.jp/hotentry
+qmark g https://github.com/
+qmark h hatenabookmark
+qmark p pocket
+
+" editor
+set editor='emacsclient -c'
+
+" Disable vimperator sites
+ignorekeys add mail.google.com
+ignorekeys add reader.livedoor.com
