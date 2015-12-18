@@ -2,7 +2,7 @@ set visualbell
 highlight Bell display:none
 
 " simple completion
-complete=l
+set complete=l
 
 " Don't focus text area automatically
 set focuscontent
