@@ -1,3 +1,4 @@
+set titlestring=''
 set visualbell
 highlight Bell display:none
 
