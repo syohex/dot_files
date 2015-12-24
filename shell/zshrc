@@ -301,6 +301,7 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 bindkey -s "^Xww" " hub browse"
 bindkey -s "^Xwi" " hub browse -- issues"
 bindkey -s "^Xwp" " hub browse -- pulls"
+bindkey -s "^Xwu" " hub browse -u"
 
 ## My commands
 zle -N peco-history _peco-history
