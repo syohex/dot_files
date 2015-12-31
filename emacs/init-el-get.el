@@ -143,7 +143,7 @@
 
 ;; auto-complete plugins
 ;;(el-get-bundle qoocku/ac-sly)
-(el-get-bundle syohex/emacs-ac-ispell :name ac-ispell)
+(el-get-bundle syohex/emacs-helm-ispell :name helm-ispell)
 (el-get-bundle zk-phi/ac-c-headers)
 (el-get-bundle syohex/emacs-ac-alchemist :name ac-alchemist)
 

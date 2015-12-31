@@ -29,9 +29,3 @@
 (global-set-key (kbd "C-M-i") 'auto-complete)
 (define-key lisp-interaction-mode-map (kbd "C-M-i") 'auto-complete)
 (define-key emacs-lisp-mode-map (kbd "C-M-i") 'auto-complete)
-
-;; ac-ispell
-(ac-ispell-setup)
-
-(dolist (hook '(text-mode-hook markdown-mode-hook))
-  (add-hook hook 'ac-ispell-ac-setup))
