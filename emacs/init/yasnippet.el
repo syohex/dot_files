@@ -14,7 +14,8 @@
                 go-mode-hook
                 sh-mode-hook
                 markdown-mode-hook
-                makefile-mode-hook))
+                makefile-mode-hook
+                text-mode))
   (add-hook hook 'yas-minor-mode))
 
 (with-eval-after-load 'yasnippet
