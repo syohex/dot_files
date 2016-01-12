@@ -120,8 +120,8 @@
  '(smartrep-mode-line-active-bg nil)
  '(smartrep-mode-line-string-activated "<<< SmartRep >>>"))
 
-;; for Changes
-(add-to-list 'auto-mode-alist '("/Changes\\'" . text-mode))
+;; Use text-mode
+(add-to-list 'auto-mode-alist '("/\\(?:LICENSE\\|Changes\\)\\'" . text-mode))
 
 (defun my/text-mode-hook ()
   (when (string-prefix-p "Changes" (buffer-name))
