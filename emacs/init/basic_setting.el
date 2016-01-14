@@ -15,7 +15,7 @@
  '(line-move-visual nil)
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
- '(comment-style 'multi-line)
+ '(comment-style 'extra-line)
  '(imenu-auto-rescan t)
  '(delete-auto-save-files t)
  '(create-lockfiles nil)
