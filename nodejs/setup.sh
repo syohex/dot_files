@@ -1,8 +1,7 @@
 #!/bin/sh
-
 set -e
 
-PACKAGES=coffee-script
+PACKAGES="jslint coffee-script"
 for package in $PACKAGES
 do
     npm install -g $package
