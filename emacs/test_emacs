@@ -2,7 +2,10 @@
 
 (setq-default load-prefer-newer t)
 (setq-default horizontal-scroll-bar nil)
+(column-number-mode +1)
 
 ;; not create backup file and not create auto save file
 (setq backup-inhibited t
       delete-auto-save-files t)
+
+(find-function-setup-keys)
