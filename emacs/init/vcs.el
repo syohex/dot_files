@@ -1,6 +1,7 @@
 ;;;; Common VCS setting
 (custom-set-variables
- '(auto-revert-check-vc-info t))
+ '(auto-revert-check-vc-info t)
+ '(auto-revert-mode-text ""))
 (global-auto-revert-mode 1)
 
 ;; disable vc-mode
