@@ -29,8 +29,8 @@
 (add-hook 'focus-in-hook 'git-gutter:update-all-windows)
 
 (smartrep-define-key
-    global-map  "C-x" '(("p" . 'git-gutter:previous-diff)
-                        ("n" . 'git-gutter:next-diff)))
+    global-map  "C-x" '(("p" . 'git-gutter:previous-hunk)
+                        ("n" . 'git-gutter:next-hunk)))
 
 ;; magit
 (custom-set-variables
