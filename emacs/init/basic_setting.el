@@ -31,7 +31,7 @@
 (setq-default gc-cons-threshold (* gc-cons-threshold 10))
 
 ;; echo stroke
-(setq-default echo-keystrokes 0.1)
+(setq-default echo-keystrokes 0)
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
