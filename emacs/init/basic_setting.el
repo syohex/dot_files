@@ -7,6 +7,7 @@
 
 ;; basic customize variables
 (custom-set-variables
+ '(user-full-name "Syohei YOSHIDA")
  '(package-enable-at-startup nil)
  '(large-file-warning-threshold (* 25 1024 1024))
  '(dabbrev-case-fold-search nil)
