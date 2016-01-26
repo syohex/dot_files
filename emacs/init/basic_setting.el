@@ -13,7 +13,6 @@
  '(dabbrev-case-fold-search nil)
  '(inhibit-startup-screen t)
  '(read-file-name-completion-ignore-case t)
- '(line-move-visual nil)
  '(set-mark-command-repeat-pop t)
  '(find-file-visit-truename t)
  '(comment-style 'extra-line)
