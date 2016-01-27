@@ -176,11 +176,6 @@ if [ -d ~/.plenv/bin ]; then
     eval "$(plenv init -)"
 fi
 
-if [ -d ~/.rakudobrew/bin ]; then
-    path=(~/.rakudobrew/bin  ~/.rakudobrew/moar-nom/install/share/perl6/site/bin/ $path)
-    eval "$(~/.rakudobrew/bin/rakudobrew init -)"
-fi
-
 # load rbenv
 if [ -d ~/.rbenv/bin ]; then
     path=($HOME/.rbenv/bin $path)
