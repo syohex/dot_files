@@ -12,7 +12,7 @@
 (setq-default edebug-inhibit-emacs-lisp-mode-bindings t)
 
 (defun my/elisp-mode-hook ()
-  (setq ac-sources '(ac-source-features ac-source-functions ac-source-variables ac-source-symbols)))
+  (setq ac-sources '(ac-source-features ac-source-functions ac-source-variables)))
 (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
 
 ;; Cask
