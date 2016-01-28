@@ -7,20 +7,21 @@
 
 ;; basic customize variables
 (custom-set-variables
- '(user-full-name "Syohei YOSHIDA")
- '(package-enable-at-startup nil)
- '(large-file-warning-threshold (* 25 1024 1024))
+ '(auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+ '(backup-directory-alist `((".*" . ,temporary-file-directory)))
+ '(comment-style 'extra-line)
+ '(create-lockfiles nil)
  '(dabbrev-case-fold-search nil)
+ '(delete-auto-save-files t)
+ '(find-file-visit-truename t)
+ '(imenu-auto-rescan t)
  '(inhibit-startup-screen t)
+ '(large-file-warning-threshold (* 25 1024 1024))
+ '(package-enable-at-startup nil)
  '(read-file-name-completion-ignore-case t)
  '(set-mark-command-repeat-pop t)
- '(find-file-visit-truename t)
- '(comment-style 'extra-line)
- '(imenu-auto-rescan t)
- '(delete-auto-save-files t)
- '(create-lockfiles nil)
- '(backup-directory-alist `((".*" . ,temporary-file-directory)))
- '(auto-save-file-name-transforms `((".*" ,temporary-file-directory t))))
+ '(text-quoting-style 'grave)
+ '(user-full-name "Syohei YOSHIDA"))
 
 (setq-default horizontal-scroll-bar nil)
 
