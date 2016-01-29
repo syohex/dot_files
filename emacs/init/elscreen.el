@@ -11,7 +11,15 @@
 (custom-set-variables
  '(elscreen-display-screen-number nil)
  '(elscreen-tab-display-kill-screen nil)
- '(elscreen-buffer-to-nickname-alist nil))
+ '(elscreen-buffer-to-nickname-alist nil)
+
+ '(elscreen-mode-to-nickname-alist
+   '(("^dired-mode$" . (lambda () (format "Dired(%s/)" (buffer-name))))
+     ("^Info-mode$" . (lambda ()
+                        (format "Info(%s)" (file-name-nondirectory Info-current-file))))))
+
+ '(elscreen-buffer-to-nickname-alist
+   '(("Minibuf". ""))))
 
 ;; Don't show tab number in mode-line
 (setq-default elscreen-mode-line-string nil)
