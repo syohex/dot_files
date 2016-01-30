@@ -18,9 +18,11 @@
                 text-mode))
   (add-hook hook 'yas-minor-mode))
 
+(custom-set-variables
+ '(yas-snippet-dirs (list (concat user-emacs-directory "my_snippets"))))
+
 (with-eval-after-load 'yasnippet
   (setq-default yas-verbosity 1)
-  (setq-default yas-snippet-dirs (concat user-emacs-directory "my_snippets"))
   (yas-reload-all))
 
 ;; utility functions
