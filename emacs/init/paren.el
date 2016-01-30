@@ -18,5 +18,6 @@
 
 (with-eval-after-load 'paredit
   (define-key paredit-mode-map (kbd "C-c C-q") 'paredit-reindent-defun)
-  (define-key paredit-mode-map (kbd "M-q") 'nil)
-  (define-key paredit-mode-map (kbd "M-)") 'move-past-close-and-reindent))
+  (define-key paredit-mode-map (kbd "C-c C-j") #'eval-print-last-sexp)
+  (define-key paredit-mode-map (kbd "M-q") nil)
+  (define-key paredit-mode-map (kbd "M-)") #'move-past-close-and-reindent))
