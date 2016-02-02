@@ -5,7 +5,6 @@
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "C-]") 'avy-goto-char)
 (global-set-key (kbd "C-x C-o") 'org-capture)
 (global-set-key (kbd "C-x z") 'zoom-window-zoom)
 
