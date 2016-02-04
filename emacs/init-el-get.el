@@ -34,7 +34,7 @@
 (el-get-bundle col-highlight)
 
 ;; Search
-(el-get-bundle anzu)
+(el-get-bundle syohex/emacs-anzu :name anzu)
 
 ;; moving cursor
 (el-get-bundle goto-chg)
@@ -128,12 +128,12 @@
 (el-get-bundle smihica/emmet)
 
 ;; shell
-(el-get-bundle quickrun)
+(el-get-bundle syohex/emacs-quickrun :name quickrun)
 (el-get-bundle syohex/emacs-eshellutil :name eshellutil)
 
 ;; VCS
 (el-get-bundle magit)
-(el-get-bundle git-gutter)
+(el-get-bundle syohex/emacs-git-gutter :name git-gutter)
 
 ;; Documentation
 (if (eq system-type 'darwin)
@@ -147,9 +147,9 @@
 (el-get-bundle syohex/emacs-ac-alchemist :name ac-alchemist)
 
 ;; Helm plugins
-(el-get-bundle helm-descbinds)
-(el-get-bundle helm-gtags)
-(el-get-bundle helm-ag)
+(el-get-bundle emacs-helm/helm-descbinds)
+(el-get-bundle syohex/emacs-helm-gtags :name helm-gtags)
+(el-get-bundle syohex/emacs-helm-ag :name helm-ag)
 (el-get-bundle syohex/emacs-helm-pydoc :name helm-pydoc)
 (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
