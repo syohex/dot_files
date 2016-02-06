@@ -63,6 +63,7 @@ qmark p pocket
 
 " editor
 set editor='emacsclient -c'
+imap <A-i> <C-i>
 
 " Disable vimperator sites
 ignorekeys add mail.google.com
