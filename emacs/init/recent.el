@@ -5,6 +5,7 @@
  '(recentf-exclude '("recentf" "/elpa/" "/elisps/" "\\`/tmp/" "/\\.git/" "/\\.cask/"
                      "/tmp/gomi/" "/el-get/" ".loaddefs.el" "/\\.cpanm/"
                      "\\.mime-example" "\\.ido.last" "woman_cache.el"
+                     "\\`/proc/" "\\`/sys/"
                      "CMakeCache.txt" "/bookmarks" "\\.gz$"
                      "COMMIT_EDITMSG" "MERGE_MSG" "git-rebase-todo")))
 
