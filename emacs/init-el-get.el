@@ -94,7 +94,7 @@
 ;;(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
 
 ;; Perl
-(el-get-bundle hinrik/perl6-mode)
+;; (el-get-bundle hinrik/perl6-mode)
 
 ;; Ruby
 (el-get-bundle ruby-block)
