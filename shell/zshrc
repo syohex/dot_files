@@ -130,9 +130,7 @@ fi
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias agp="ag --pager='less -R'"
-alias be='bundle exec'
 alias e='emacsclient'
-alias g='git'
 alias s='git st '
 alias d='git diff '
 alias W='weblio'
