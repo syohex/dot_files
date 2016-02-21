@@ -6,6 +6,8 @@
  '(robe-highlight-capf-candidates nil))
 
 (with-eval-after-load 'ruby-mode
+  (progutil-ruby-setup)
+
   (add-hook 'ruby-mode-hook 'my/ruby-mode-hook)
   ;; rbenv
   ;;(global-rbenv-mode t) ;; I think it may not be needed
