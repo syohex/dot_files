@@ -2,7 +2,6 @@
 
 ;; popwin
 (require 'popwin)
-(global-set-key (kbd "M-z") popwin:keymap)
 
 (defvar popwin:special-display-config-backup popwin:special-display-config)
 (custom-set-variables
@@ -21,6 +20,7 @@
 
 ;; basic
 (push '("*Help*" :stick t :noselect t) popwin:special-display-config)
+(push '("*sdic*") popwin:special-display-config)
 
 ;; Ruby
 (push '("*ri-doc*" :stick t :height 20) popwin:special-display-config)
