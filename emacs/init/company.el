@@ -4,7 +4,7 @@
 
 (global-company-mode +1)
 ;; suppress minibuffer message
-(fset 'company-echo-show 'ignore)
+(fset 'company-echo-show #'ignore)
 
 (global-set-key (kbd "C-M-i") 'company-complete)
 
