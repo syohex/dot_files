@@ -9,7 +9,7 @@
   (setq indent-tabs-mode t
         c-basic-offset 8)
   (c-toggle-electric-state -1)
-  (setq-local 'company-backends '(company-clang company-dabbrev)))
+  (setq-local company-backends '(company-clang company-dabbrev)))
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
