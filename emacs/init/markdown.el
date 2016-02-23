@@ -2,7 +2,8 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
 (custom-set-variables
- '(markdown-indent-on-enter nil))
+ '(markdown-indent-on-enter nil)
+ '(markdown-make-gfm-checkboxes-buttons))
 
 (with-eval-after-load 'markdown-mode
   ;; key bindings
