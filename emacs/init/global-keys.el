@@ -32,7 +32,6 @@
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
 (define-key my/ctrl-q-map (kbd "C-m") 'flycheck-mode)
-(define-key my/ctrl-q-map (kbd "C-i") 'my/popwin:select-popup-window)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)

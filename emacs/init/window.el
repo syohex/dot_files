@@ -7,13 +7,6 @@
 (custom-set-variables
  '(display-buffer-function 'popwin:display-buffer))
 
-(defun my/popwin:select-popup-window ()
-  (interactive)
-  (if (popwin:popup-window-live-p)
-      (select-window popwin:popup-window)
-    (popwin:popup-last-buffer)
-    (select-window popwin:popup-window)))
-
 ;; remove from default config
 (dolist (stuff '("*vc-diff*" "*vc-change-log*"))
   (delete stuff popwin:special-display-config))
