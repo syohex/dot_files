@@ -55,9 +55,9 @@
 (el-get-bundle syohex/emacs-dired-k :name dired-k)
 
 ;; auto-complete
-(el-get-bundle auto-complete/popup-el :name popup)
-(el-get-bundle auto-complete/fuzzy-el :name fuzzy)
-(el-get-bundle auto-complete/auto-complete)
+;; (el-get-bundle auto-complete/popup-el :name popup)
+;; (el-get-bundle auto-complete/fuzzy-el :name fuzzy)
+;; (el-get-bundle auto-complete/auto-complete)
 
 ;; company
 (el-get-bundle company-mode/company-mode)
@@ -86,8 +86,8 @@
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
 (el-get-bundle elpa:golint)
-(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
-;;(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
+;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
+(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
@@ -111,9 +111,8 @@
 (el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
-;;(el-get-bundle clojure-mode)
-;;(el-get-bundle cider)
-;;(el-get-bundle clojure-emacs/ac-cider)
+(el-get-bundle clojure-mode)
+(el-get-bundle cider)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
@@ -144,9 +143,8 @@
 
 ;; auto-complete plugins
 ;;(el-get-bundle qoocku/ac-sly)
-(el-get-bundle syohex/emacs-helm-ispell :name helm-ispell)
-(el-get-bundle zk-phi/ac-c-headers)
-(el-get-bundle syohex/emacs-ac-alchemist :name ac-alchemist)
+;;(el-get-bundle zk-phi/ac-c-headers)
+;;(el-get-bundle syohex/emacs-ac-alchemist :name ac-alchemist)
 
 ;; Helm plugins
 (el-get-bundle emacs-helm/helm-descbinds)

@@ -62,7 +62,7 @@
   (delete-window))
 
 (defun my/git-commit-mode-hook ()
-  ;;(setq-local company-backends '(company-ispell company-capf company-files company-dabbrev))
+  (setq-local company-backends '(company-ispell company-files company-dabbrev))
   (flyspell-mode +1))
 
 (with-eval-after-load 'git-commit
