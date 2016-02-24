@@ -51,11 +51,10 @@
 (el-get-bundle syohex/emacs-zoom-window :name zoom-window)
 
 ;; Directory
-(el-get-bundle m2ym/direx-el :name direx)
 (el-get-bundle syohex/emacs-dired-k :name dired-k)
 
 ;; auto-complete
-;; (el-get-bundle auto-complete/popup-el :name popup)
+(el-get-bundle auto-complete/popup-el :name popup)
 ;; (el-get-bundle auto-complete/fuzzy-el :name fuzzy)
 ;; (el-get-bundle auto-complete/auto-complete)
 
@@ -92,7 +91,7 @@
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
 (el-get-bundle tkf/emacs-jedi)
-;;(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
+(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
 
 ;; Perl
 ;; (el-get-bundle hinrik/perl6-mode)
