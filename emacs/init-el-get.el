@@ -62,7 +62,6 @@
 (el-get-bundle company-mode/company-mode)
 
 ;; helm
-(el-get-bundle jwiegley/emacs-async :name async)
 (el-get-bundle emacs-helm/helm)
 
 ;; Repeat utility
