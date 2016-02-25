@@ -43,11 +43,6 @@
 
 ;; editutil mappings
 (editutil-default-setup)
-
-;; 'C-x c' prefix
-(global-set-key (kbd "C-x c q") 'quickrun)
-(global-set-key (kbd "C-x c w") 'quickrun-with-arg)
-(global-set-key (kbd "C-x c r") 'recompile)
 (global-set-key (kbd "C-x c y") 'clipboard-yank)
 
 ;; 'C-x t' prefix
@@ -60,6 +55,8 @@
 (global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-l") 'my/flycheck-list-errors)
+(global-set-key (kbd "M-g r") #'recompile)
+(global-set-key (kbd "M-g q") #'quickrun)
 
 ;;; buffer-move
 (global-set-key (kbd "M-g h") 'buf-move-left)
