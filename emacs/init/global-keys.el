@@ -43,6 +43,7 @@
 
 ;; editutil mappings
 (editutil-default-setup)
+(global-set-key (kbd "C-x c") ctl-x-4-map)
 (global-set-key (kbd "C-x c y") 'clipboard-yank)
 
 ;; 'C-x t' prefix
