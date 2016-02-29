@@ -104,9 +104,9 @@
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav)
 
-;; Elixir
-(el-get-bundle elixir)
-(el-get-bundle tonini/alchemist.el)
+;;;; Elixir
+;;(el-get-bundle elixir)
+;;(el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
 (el-get-bundle clojure-mode)
