@@ -111,6 +111,7 @@
 ;; Clojure
 (el-get-bundle clojure-mode)
 (el-get-bundle cider)
+(el-get-bundle clj-refactor)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
