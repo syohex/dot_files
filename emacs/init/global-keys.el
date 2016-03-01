@@ -46,9 +46,6 @@
 (global-set-key (kbd "C-x c") ctl-x-4-map)
 (global-set-key (kbd "C-x c y") 'clipboard-yank)
 
-;; 'C-x t' prefix
-(global-set-key (kbd "C-x t \\") 'align)
-
 ;; M-g mapping
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
