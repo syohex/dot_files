@@ -26,7 +26,7 @@
   (progutil-go-setup))
 
 (defun my/go-mode-hook ()
-  (setq-local 'company-backends '(company-go company-files company-dabbrev))
+  (setq-local company-backends '(company-go company-files company-dabbrev))
   ;;(delete 'ac-source-words-in-same-mode-buffers ac-sources)
   (setq compile-command "go test")
   (setq flycheck-checker 'go-golint))
