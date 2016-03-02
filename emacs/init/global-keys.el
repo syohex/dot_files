@@ -5,7 +5,6 @@
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
-(global-set-key (kbd "C-x C-o") 'org-capture)
 (global-set-key (kbd "C-x z") 'zoom-window-zoom)
 
 ;; unset keys
@@ -19,7 +18,6 @@
 (global-set-key (kbd "C-h m") 'helm-man-woman)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "M-`") 'helm-ispell)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
