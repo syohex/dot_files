@@ -8,3 +8,5 @@
   (define-key scheme-mode-map (kbd "C-c C-z") 'run-scheme)
   (define-key scheme-mode-map (kbd "C-c C-c") 'scheme-send-definition)
   (define-key scheme-mode-map (kbd "C-c C-e") 'scheme-send-definition-and-go))
+
+(add-hook 'scheme-mode-hook 'progutil-scheme-hook)
