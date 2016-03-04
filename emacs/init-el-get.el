@@ -58,7 +58,10 @@
 (el-get-bundle company-mode/company-mode)
 
 ;; helm
-(el-get-bundle emacs-helm/helm)
+(el-get-bundle emacs-helm/helm
+  :autoloads "helm-autoloads"
+  :build (("make"))
+  :build/darwin `(("make" ,(format "EMACS_COMMAND=%s" el-get-emacs))))
 
 ;; Repeat utility
 (el-get-bundle myuhe/smartrep.el)
