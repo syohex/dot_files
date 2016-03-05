@@ -68,14 +68,14 @@
 (menu-bar-mode -1)
 
 ;; not beep
-(setq-default ring-bell-function 'ignore)
+(setq-default ring-bell-function #'ignore)
 
 ;; display line infomation
 (line-number-mode 1)
 (column-number-mode 1)
 
 ;; yes-or-no-p
-(defalias 'yes-or-no-p 'y-or-n-p)
+(fset 'yes-or-no-p #'y-or-n-p)
 (setq-default use-dialog-box nil)
 
 ;; history
