@@ -26,8 +26,10 @@
 
   ;; robe
   (robe-mode +1)
-  (add-to-list 'ac-sources 'ac-source-robe)
-  ;;(add-to-list 'company-backends 'company-robe)
+  ;; robe-eldoc often display wrong information
+  (setq-local eldoc-documentation-function nil)
+  ;;(add-to-list 'ac-sources 'ac-source-robe)
+  (setq-local company-backends '(company-robe company-dabbrev))
 
   ;; auto insert `end'
   (ruby-end-mode +1))
