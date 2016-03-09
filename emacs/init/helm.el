@@ -15,7 +15,8 @@
   (define-key helm-map (kbd "C-M-n") #'helm-next-source)
   (define-key helm-map (kbd "C-M-p") #'helm-previous-source))
 
-;; helm faces
 (with-eval-after-load 'helm-files
+  (remove-hook 'post-self-insert-hook 'helm-find-files--reset-level-tree)
+
   (define-key helm-find-files-map (kbd "C-M-u") #'helm-find-files-down-one-level)
   (define-key helm-find-files-map (kbd "C-c C-o") #'helm-ff-run-switch-other-window))
