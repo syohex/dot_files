@@ -13,7 +13,6 @@
 ;; Utility
 (el-get-bundle syohex/emacs-editutil :name editutil)
 (el-get-bundle syohex/emacs-progutil :name progutil)
-(el-get-bundle myuhe/quick-preview.el :name quick-preview)
 
 ;; Theme
 (el-get-bundle syohex/emacs-syohex-theme :name syohex-theme
