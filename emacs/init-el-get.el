@@ -143,6 +143,9 @@
 ;;(el-get-bundle zk-phi/ac-c-headers)
 ;;(el-get-bundle syohex/emacs-ac-alchemist :name ac-alchemist)
 
+;; key
+(el-get-bundle which-key)
+
 ;; Helm plugins
 (el-get-bundle emacs-helm/helm-descbinds)
 (el-get-bundle syohex/emacs-helm-gtags :name helm-gtags)

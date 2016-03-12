@@ -140,3 +140,5 @@
      try-complete-file-name
      try-complete-file-name-partially
      try-expand-dabbrev-all-buffers)))
+
+(which-key-mode +1)
