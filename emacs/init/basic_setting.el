@@ -141,4 +141,7 @@
      try-complete-file-name-partially
      try-expand-dabbrev-all-buffers)))
 
+;; which-key
+(custom-set-variables
+ '(which-key-lighter ""))
 (which-key-mode +1)
