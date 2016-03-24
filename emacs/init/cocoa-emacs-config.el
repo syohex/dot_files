@@ -4,6 +4,9 @@
               ns-use-native-fullscreen nil ;; Don't use system fullscreen
               system-uses-terminfo nil)
 
+;; warning for perl
+(setenv "LANG" "ja_JP.UTF-8")
+
 ;; for yosemite
 (fringe-mode -1)
 
