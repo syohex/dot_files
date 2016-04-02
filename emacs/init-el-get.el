@@ -6,6 +6,9 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(custom-set-variables
+ '(el-get-verbose t))
+
 ;; setup
 (el-get-bundle emacs-jp/init-loader)
 (el-get-bundle purcell/exec-path-from-shell)
