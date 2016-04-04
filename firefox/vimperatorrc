@@ -60,6 +60,7 @@ qmark b http://b.hatena.ne.jp/syohex/hotentry
 qmark g https://github.com/
 qmark h hatenabookmark
 qmark p pocket
+qmark c https://calendar.google.com/
 
 " editor
 set editor='emacsclient -c'
@@ -67,5 +68,6 @@ imap <A-i> <C-i>
 
 " Disable vimperator sites
 ignorekeys add mail.google.com
-ignorekeys add reader.livedoor.com
+ignorekeys add calendar.google.com
 ignorekeys add docs.google.com
+ignorekeys add reader.livedoor.com
