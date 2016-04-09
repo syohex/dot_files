@@ -37,4 +37,4 @@
     gfm-mode))
 
 (dolist (mode my/electric-pair-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'electric-pair-local-mode))
+  (add-hook (intern (concat (symbol-name mode) "-hook")) #'electric-pair-local-mode))
