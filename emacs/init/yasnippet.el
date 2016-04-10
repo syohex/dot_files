@@ -1,5 +1,5 @@
 ;;;; yasnippet
-(require 'yasnippet)
+
 ;; enable yasnippet mode
 (dolist (hook '(c-mode-hook
                 c++-mode-hook
