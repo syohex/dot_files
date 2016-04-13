@@ -16,7 +16,6 @@ go get -u github.com/rogpeppe/godef
 go get -u golang.org/x/tools/cmd/cover
 go get -u golang.org/x/tools/cmd/godoc
 go get -u golang.org/x/tools/cmd/goimports
-go get -u golang.org/x/tools/cmd/vet
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" ]; then
