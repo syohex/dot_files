@@ -18,6 +18,6 @@ go get -u golang.org/x/tools/cmd/godoc
 go get -u golang.org/x/tools/cmd/goimports
 
 OS=$(uname)
-if [ "x$OS" = "xLinux" ]; then
+if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
     go get -u github.com/syohex/byzanz-window/cmd/byzanz-window
 fi
