@@ -61,6 +61,7 @@ qmark g https://github.com/
 qmark h hatenabookmark
 qmark p pocket
 qmark c https://calendar.google.com/
+qmark B https://play.google.com/books
 
 " editor
 set editor='emacsclient -c'
