@@ -10,6 +10,8 @@
  '(org-use-fast-todo-selection t)
  '(org-src-fontify-natively t)
  '(org-default-notes-file (concat org-directory "organizer.org"))
+ '(org-default-priority ?A)
+ '(org-lowest-priority ?F)
  '(org-todo-keywords
    '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)")))
  '(org-todo-keyword-faces
