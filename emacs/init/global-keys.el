@@ -6,6 +6,7 @@
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-x z") 'zoom-window-zoom)
+(global-set-key (kbd "M-'") 'avy-goto-word-1)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))
