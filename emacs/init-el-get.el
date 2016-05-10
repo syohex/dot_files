@@ -47,7 +47,6 @@
 (el-get-bundle popwin)
 (el-get-bundle lukhas/buffer-move)
 (el-get-bundle syohex/emacs-import-popwin :name import-popwin)
-(el-get-bundle syohex/emacs-zoom-window :name zoom-window)
 
 ;; Directory
 (el-get-bundle syohex/emacs-dired-k :name dired-k)

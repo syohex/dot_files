@@ -40,8 +40,3 @@
 
 ;; Clojure
 (push '(cider-repl-mode :stick t) popwin:special-display-config)
-
-;; zoom-window
-(custom-set-variables
- '(zoom-window-use-elscreen t)
- '(zoom-window-mode-line-color "DarkOliveGreen"))
