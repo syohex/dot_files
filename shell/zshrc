@@ -132,7 +132,6 @@ export EIJIRO_DIR=${HOME}/local/dict
 # alias
 alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
-alias agp="ag --pager='less -R'"
 alias e='emacsclient'
 alias s='git st '
 alias d='git diff '
