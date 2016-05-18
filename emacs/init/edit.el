@@ -34,7 +34,8 @@
     cperl-mode
     perl6-mode
     markdown-mode
-    gfm-mode))
+    gfm-mode
+    sql-mode))
 
 (dolist (mode my/electric-pair-enabled-modes)
   (add-hook (intern (concat (symbol-name mode) "-hook")) #'electric-pair-local-mode))
