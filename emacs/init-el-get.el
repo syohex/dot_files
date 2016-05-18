@@ -87,6 +87,7 @@
 (el-get-bundle elpa:golint)
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
 (el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
+(el-get-bundle syohex/emacs-go-impl :name go-impl)
 
 ;; Python
 (el-get-bundle tkf/emacs-python-environment)
