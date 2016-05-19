@@ -1,6 +1,0 @@
-# name: multiple variables declaration
-# key: varm
-# --
-var (
-    $0
-)
