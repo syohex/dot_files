@@ -1,0 +1,4 @@
+# name: yaml tag
+# key: yaml
+# --
+\`yaml:"$0"\`
