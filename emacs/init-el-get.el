@@ -78,9 +78,6 @@
 ;;(el-get-bundle haskell/haskell-mode)
 ;;(el-get-bundle ghc-mod)
 
-;; CoffeeScript
-(el-get-bundle defunkt/coffee-mode)
-
 ;; Go
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
