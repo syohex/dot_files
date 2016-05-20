@@ -19,7 +19,8 @@
   (add-hook hook 'yas-minor-mode))
 
 (custom-set-variables
- '(yas-snippet-dirs (list (concat user-emacs-directory "my_snippets"))))
+ '(yas-snippet-dirs (list (concat user-emacs-directory "my_snippets")))
+ '(yas-alias-to-yas/prefix-p nil))
 
 (with-eval-after-load 'yasnippet
   (setq-default yas-verbosity 1)
