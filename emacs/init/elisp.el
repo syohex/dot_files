@@ -14,6 +14,6 @@
 
 (defun my/elisp-mode-hook ()
   ;;(setq ac-sources '(ac-source-features ac-source-functions ac-source-variables))
-  (setq-local company-backends '((company-dabbrev-code company-keywords) company-dabbrev)))
+  (setq-local company-backends '(company-elisp (company-dabbrev-code company-keywords) company-dabbrev)))
 
 (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
