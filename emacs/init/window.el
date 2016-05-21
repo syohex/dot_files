@@ -24,10 +24,6 @@
 (push '("*Python Help*" :stick t :height 20) popwin:special-display-config)
 (push '("*jedi:doc*" :stick t :noselect t) popwin:special-display-config)
 
-;; direx
-(push '(direx:direx-mode :position left :width 40 :dedicated t)
-      popwin:special-display-config)
-
 ;; Go
 (push '("^\*go-direx:" :position left :width 0.3 :dedicated t :stick t :regexp t)
       popwin:special-display-config)
