@@ -49,4 +49,16 @@
                 (".*monaco-bold-.*-mac-roman" . 0.9)
                 ("-cdac$" . 1.3)))
 
+(defun my/org-clock-done-hook ()
+  (do-applescript
+   "display notification \"Timer Expired. Please break\" with title \"Org Timer\" "))
+
+(defun my/org-clock-cancel-hook ()
+  (do-applescript
+   "display notification \"Timer Canceled\" with title \"Org Timer\" "))
+
+;; notifications.el cannot be available on MacOSX
+(add-hook 'org-timer-done-hook #'my/org-clock-done-hook)
+(add-hook 'org-timer-cancel-hook #'my/org-clock-cancel-hook)
+
 (set-face-bold-p 'show-paren-match-face nil)
