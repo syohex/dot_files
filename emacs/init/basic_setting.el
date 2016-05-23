@@ -143,5 +143,6 @@
 
 ;; which-key
 (custom-set-variables
- '(which-key-lighter ""))
+ '(which-key-lighter "")
+ '(which-key-idle-delay 0.5))
 (which-key-mode +1)
