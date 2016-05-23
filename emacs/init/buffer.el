@@ -9,6 +9,3 @@
 (defalias 'list-buffers 'ibuffer)
 (with-eval-after-load 'bs
   (fset 'bs-message-without-log 'ignore))
-
-(global-set-key (kbd "M-[") 'bs-cycle-next)
-(global-set-key (kbd "M-]") 'bs-cycle-previous)
