@@ -1,4 +1,4 @@
-# name : MELPA badge links
+# name : MELPA links
 # key  : melpa-badge-links
 # --
 [melpa-link]: https://melpa.org/#/$1
