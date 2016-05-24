@@ -8,7 +8,7 @@ PACKAGES="zsh tmux
     emacs vim aspell ispell exuberant-ctags fonts-vlgothic nkf lv
     emacs-mozc emacs-mozc-bin mozc-server mozc-utils-gui
     dia shutter byzanz handbrake
-    curl w3m lftp
+    curl w3m lftp jq
     minicom
     wmctrl xsel
     paco"
