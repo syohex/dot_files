@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: map
-# key: map
-# --
-map(function ($0) {
-
-});

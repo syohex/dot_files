@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: it(testName, function(){})
-# key: it
-# --
-it("$0", function (){
-
-});

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: describe(testName, function(){})
-# key: describe
-# --
-describe("$0", function (){
-
-});
