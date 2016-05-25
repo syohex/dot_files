@@ -8,6 +8,7 @@
 (global-set-key (kbd "C-x z") 'zoom-window-zoom)
 (global-set-key (kbd "M-'") 'avy-goto-word-1)
 (global-set-key (kbd "C-x C-c") popwin:keymap)
+(global-set-key (kbd "C-x C-c C-i") 'import-popwin)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))
@@ -51,7 +52,6 @@
 (global-set-key (kbd "M-g .") 'helm-ag)
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g p") 'helm-ag-project-root)
-(global-set-key (kbd "M-g M-i") 'import-popwin)
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-l") 'my/flycheck-list-errors)
 (global-set-key (kbd "M-g r") #'recompile)
