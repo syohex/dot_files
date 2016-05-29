@@ -13,7 +13,7 @@
 (el-get-bundle emacs-jp/init-loader)
 (el-get-bundle purcell/exec-path-from-shell)
 
-;; Utility
+;; My Utilities
 (el-get-bundle syohex/emacs-editutil :name editutil)
 (el-get-bundle syohex/emacs-progutil :name progutil)
 
@@ -111,6 +111,10 @@
 (el-get-bundle clojure-mode)
 (el-get-bundle cider)
 (el-get-bundle clj-refactor)
+
+;; Javascript
+(el-get-bundle tern)
+(el-get-bundle company-tern)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
