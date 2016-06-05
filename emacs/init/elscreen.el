@@ -4,8 +4,6 @@
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
 (global-set-key (kbd "C-z C") 'elscreen-editutil-clone-only-this-window)
 (global-set-key (kbd "C-z C-l") 'helm-elscreen)
-(global-set-key (kbd "C-<tab>") 'elscreen-next)
-(global-set-key (kbd "<C-S-iso-lefttab>") 'elscreen-previous)
 (run-with-idle-timer 20 t 'elscreen-editutil-update-frame-title)
 
 (custom-set-variables
