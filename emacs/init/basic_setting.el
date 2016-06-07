@@ -1,8 +1,7 @@
-;; encoding
+;; basic configurations
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 
-;; Coloring
 (global-font-lock-mode +1)
 
 ;; basic customize variables
@@ -31,26 +30,21 @@
 ;; for GC
 (setq-default gc-cons-threshold (* gc-cons-threshold 10))
 
-;; echo stroke
 (setq-default echo-keystrokes 0)
 ;; I never use C-x C-c
 (defalias 'exit 'save-buffers-kill-emacs)
 
-;; enable disabled commands
+;; Don't disable commands
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
-;; saveplace
 (savehist-mode 1)
 (save-place-mode +1)
 
 ;; info for japanese
 (auto-compression-mode t)
-
-;; highlight mark region
-(transient-mark-mode +1)
 
 ;; indicate last line
 (setq-default indicate-empty-lines t
@@ -64,7 +58,6 @@
 ;; not create backup file and not create auto save file
 (setq-default backup-inhibited t)
 
-;; Disable menu bar
 (menu-bar-mode -1)
 
 ;; not beep
@@ -74,15 +67,12 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
-;; yes-or-no-p
 (fset 'yes-or-no-p #'y-or-n-p)
 (setq-default use-dialog-box nil)
 
-;; history
 (setq-default history-length 500
               history-delete-duplicates t)
 
-;; run server
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -104,7 +94,6 @@
 (define-key undo-tree-map (kbd "C-/") 'undo-tree-undo)
 (define-key undo-tree-map (kbd "M-_") 'nil)
 
-;; fill-mode
 (setq-default fill-column 80)
 
 ;; fixed line position after scrollup, scrolldown
@@ -121,7 +110,6 @@
  '(smartrep-mode-line-active-bg nil)
  '(smartrep-mode-line-string-activated "<<< SmartRep >>>"))
 
-;; Use text-mode
 (add-to-list 'auto-mode-alist '("/\\(?:LICENSE\\|Changes\\)\\'" . text-mode))
 
 (defun my/text-mode-hook ()
@@ -132,7 +120,6 @@
 (with-eval-after-load "text-mode"
   (define-key text-mode-map (kbd "C-M-i") 'company-complete))
 
-;; hippie-expand
 (custom-set-variables
  '(hippie-expand-verbose nil)
  '(hippie-expand-try-functions-list
@@ -141,7 +128,6 @@
      try-complete-file-name-partially
      try-expand-dabbrev-all-buffers)))
 
-;; which-key
 (custom-set-variables
  '(which-key-lighter "")
  '(which-key-idle-delay 0.5))
