@@ -9,7 +9,6 @@
 (custom-set-variables
  '(elscreen-display-screen-number nil)
  '(elscreen-tab-display-kill-screen nil)
- '(elscreen-buffer-to-nickname-alist nil)
 
  '(elscreen-mode-to-nickname-alist
    '(("^dired-mode$" . (lambda () (format "Dired(%s/)" (buffer-name))))
