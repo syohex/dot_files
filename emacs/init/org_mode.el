@@ -20,6 +20,7 @@
      ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue"))))
 
 (with-eval-after-load 'org
+  (org-editutil-setup)
   ;; function of org-open-at-point
   ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
