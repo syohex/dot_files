@@ -13,11 +13,12 @@
  '(org-default-priority ?A)
  '(org-lowest-priority ?F)
  '(org-todo-keywords
-   '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)")))
+   '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)" "NO_ACTION(n)")))
  '(org-todo-keyword-faces
    '(("TODO" . org-warning)
      ("DOING" . (:foreground "orange" :underline t :weight bold))
-     ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue"))))
+     ("BLOCKED" . "firebrick1") ("DONE" . "green") ("CANCEL" . "SteelBlue")
+     ("NO_ACTION" . "brown1"))))
 
 (with-eval-after-load 'org
   (org-editutil-setup)
