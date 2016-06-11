@@ -5,7 +5,7 @@
 (custom-set-variables
  '(org-startup-truncated nil)
  '(org-directory (expand-file-name "~/Dropbox/"))
- '(org-agenda-files (list "~/TODO/"))
+ '(org-agenda-files (list "~/Tasks/"))
  '(org-return-follows-link t)
  '(org-use-fast-todo-selection t)
  '(org-src-fontify-natively t)
