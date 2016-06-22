@@ -87,9 +87,7 @@
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
 
 ;; Python
-(el-get-bundle tkf/emacs-python-environment)
-(el-get-bundle elpa:jedi-core)
-(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
+(el-get-bundle company-jedi)
 
 ;; Perl
 ;; (el-get-bundle hinrik/perl6-mode)
