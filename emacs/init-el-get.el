@@ -26,7 +26,7 @@
   (el-get-bundle elpa:mozc))
 
 ;; undo
-(el-get-bundle undo-tree)
+(el-get-bundle elpa:undo-tree)
 
 ;; highlighting
 (el-get-bundle vline)
@@ -87,9 +87,17 @@
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
 
 ;; Python
-(el-get-bundle tkf/emacs-python-environment)
-(el-get-bundle elpa:jedi-core)
-(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
+;;(el-get-bundle tkf/emacs-python-environment)
+;;(el-get-bundle elpa:jedi-core)
+;;(el-get-bundle syohex/emacs-company-jedi :name company-jedi)
+(el-get-bundle tkf/emacs-jedi
+  :load ("jedi-core.el")
+  :name jedi-core
+  :depends (epc python-environment))
+
+(el-get-bundle company-jedi
+  :depends (company-mode))
+
 
 ;; Perl
 ;; (el-get-bundle hinrik/perl6-mode)
