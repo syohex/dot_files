@@ -29,6 +29,7 @@ case "$OSTYPE" in
 esac
 
 # zsh
+mkdir_if_not_exist ~/.zsh
 ln -sf $PWD/shell/zshrc ~/.zshrc
 ln -sf $PWD/shell/functions ~/.zsh/
 
