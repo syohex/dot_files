@@ -222,6 +222,8 @@ fi
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
+which direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
 # Rust
 path=(~/.cargo/bin(N-/) $path)
 
