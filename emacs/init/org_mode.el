@@ -25,7 +25,7 @@
 (with-eval-after-load 'org
   (org-editutil-setup)
   ;; function of org-open-at-point
-  ;;(setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+  (setf (cdr (assoc 'file org-link-frame-setup)) #'find-file)
 
   (define-key org-mode-map (kbd "M-,") 'org-mark-ring-goto)
   (define-key org-mode-map (kbd "C-c t") 'org-toggle-link-display)
