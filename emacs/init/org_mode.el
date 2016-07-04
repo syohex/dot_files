@@ -13,6 +13,7 @@
  '(org-default-notes-file (concat org-directory "organizer.org"))
  '(org-default-priority ?A)
  '(org-lowest-priority ?F)
+ '(org-imenu-depth 3)
  '(org-todo-keywords
    '((sequence "TODO(t)" "DOING(d)" "|" "DONE(x)" "BLOCKED(b)" "CANCEL(c)" "NO_ACTION(n)")))
  '(org-todo-keyword-faces
