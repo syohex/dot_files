@@ -219,6 +219,7 @@ if [[ -e /opt/go/bin/go ]]; then
     export GOROOT=/opt/go
 fi
 
+export GO15VENDOREXPERIMENT=1
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
