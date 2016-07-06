@@ -113,6 +113,7 @@
 ;; Javascript
 (el-get-bundle tern)
 (el-get-bundle company-tern)
+(el-get-bundle json-mode)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
