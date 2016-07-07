@@ -68,3 +68,6 @@
 (with-eval-after-load 'git-commit
   (add-hook 'git-commit-mode-hook 'my/git-commit-mode-hook)
   (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
+
+;; git-messenger
+(global-set-key (kbd "C-x v m") 'git-messenger:popup-message)

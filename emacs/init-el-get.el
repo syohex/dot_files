@@ -136,6 +136,7 @@
 ;; VCS
 (el-get-bundle magit)
 (el-get-bundle syohex/emacs-git-gutter :name git-gutter)
+(el-get-bundle syohex/emacs-git-messenger :name git-messenger)
 
 ;; Documentation
 (if (eq system-type 'darwin)
