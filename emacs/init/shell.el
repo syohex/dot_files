@@ -1,5 +1,8 @@
 ;; Shell/Command utilities
 
+;; direnv
+(add-to-list 'auto-mode-alist '("/\\.envrc\\'" . sh-mode))
+
 ;; compilation
 (custom-set-variables
  '(compile-command "")
