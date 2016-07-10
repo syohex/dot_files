@@ -168,26 +168,26 @@ export LESSCHARSET=utf-8
 # info
 export INFOPATH=/usr/local/share/info:/usr/share/info
 
-# load plenv config file
+# Perl
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
 if [ -d ~/.plenv/bin ]; then
     path=($HOME/.plenv/bin $path)
     eval "$(plenv init -)"
 fi
 
-# load rbenv
+# Ruby
 if [ -d ~/.rbenv/bin ]; then
     path=($HOME/.rbenv/bin $path)
     eval "$(rbenv init - zsh)"
 fi
 
-# load nvm(node.js manager)
+# Javascript
 if [ -e ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
     nvm use default > /dev/null
 fi
 
-# setting for python virtual env
+# Python
 VIRTUALENV_ACTIVE=~/.virtualenv/bin/activate
 if [ -e ${VIRTUALENV_ACTIVE} ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
