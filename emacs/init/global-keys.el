@@ -53,6 +53,7 @@
 (global-set-key (kbd "M-g ,") 'helm-ag-pop-stack)
 (global-set-key (kbd "M-g p") 'helm-ag-project-root)
 (global-set-key (kbd "M-g M-f") 'ffap)
+(global-set-key (kbd "M-g M-w") 'ffap-copy-string-as-kill)
 (global-set-key (kbd "M-g M-l") 'my/flycheck-list-errors)
 (global-set-key (kbd "M-g r") #'recompile)
 (global-set-key (kbd "M-g q") #'quickrun)
