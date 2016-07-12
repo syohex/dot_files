@@ -62,6 +62,7 @@ qmark h hatenabookmark
 qmark p pocket
 qmark c https://calendar.google.com/
 qmark B https://play.google.com/books
+qmark d https://drive.google.com/drive/my-drive
 
 " editor
 set editor='emacsclient -c'
