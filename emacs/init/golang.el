@@ -18,6 +18,8 @@
   (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
   (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)
   (define-key go-mode-map (kbd "C-c C-l") 'my/flycheck-list-errors)
+  (define-key go-mode-map (kbd "C-c p s") 'go-set-project)
+  (define-key go-mode-map (kbd "C-c p r") 'go-reset-gopath)
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
   (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
