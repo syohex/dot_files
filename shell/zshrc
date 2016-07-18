@@ -231,6 +231,12 @@ path=(~/.cargo/bin(N-/) $path)
 # Heroku
 path=(/usr/local/heroku/bin $path)
 
+# Google Cloud Platform
+if [[ -d ~/local/google-cloud-sdk ]]; then
+    source ~/local/google-cloud-sdk/path.zsh.inc
+    source ~/local/google-cloud-sdk/completion.zsh.inc
+fi
+
 ## show git branch at right prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
