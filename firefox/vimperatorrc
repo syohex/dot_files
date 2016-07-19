@@ -65,7 +65,13 @@ qmark B https://play.google.com/books
 qmark d https://drive.google.com/drive/my-drive
 
 " editor
-set editor='emacsclient -c'
+javascript <<EOM
+if (liberator.has("MacUnix")) {
+  liberator.execute("set editor='/usr/local/bin/emacsclient -c'");
+} else {
+  liberator.execute("set editor='emacsclient -c'");
+}
+EOM
 imap <A-i> <C-i>
 
 " Disable vimperator sites
