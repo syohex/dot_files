@@ -4,7 +4,8 @@
 (when (memq system-type '(gnu/linux))
   (custom-set-variables
    '(python-shell-interpreter "ipython")
-   '(python-shell-interpreter-args "")
+   '(python-shell-interpreter-args "--simple-prompt")
+   '(python-shell-completion-native-disabled-interpreters '("pypy" "ipython"))
    '(python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
    '(python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: ")
    '(python-shell-completion-setup-code "from IPython.core.completerlib import module_completion")
