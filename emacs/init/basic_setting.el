@@ -114,6 +114,7 @@
 
 (defun my/text-mode-hook ()
   (when (string-prefix-p "Changes" (buffer-name))
+    (setq-local company-backends '(company-ispell company-files company-dabbrev))
     (flyspell-mode +1)))
 (add-hook 'text-mode-hook 'my/text-mode-hook)
 
