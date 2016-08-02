@@ -70,4 +70,6 @@
   (advice-add 'git-commit-commit :after 'my/git-commit-commit-after))
 
 ;; git-messenger
+(custom-set-variables
+ '(git-messenger:handled-backends '(git)))
 (global-set-key (kbd "C-x v m") 'git-messenger:popup-message)
