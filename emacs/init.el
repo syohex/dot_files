@@ -12,8 +12,7 @@
 ;; load environment variables
 (custom-set-variables
  '(exec-path-from-shell-check-startup-files nil))
-(exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH" "EIJIRO_DIR"
-                                  "GO15VENDOREXPERIMENT"))
+(exec-path-from-shell-copy-envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH" "EIJIRO_DIR"))
 
 ;;;; setup theme
 (load-theme 'syohex t t)
