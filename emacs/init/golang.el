@@ -25,6 +25,7 @@
 
   (define-key go-mode-map (kbd ":") nil)
 
+  (modify-syntax-entry ?_  "_" go-mode-syntax-table)
   (progutil-go-setup))
 
 (defun my/go-mode-hook ()
