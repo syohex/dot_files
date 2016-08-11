@@ -14,6 +14,9 @@
   (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
   (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 
+(with-eval-after-load 'wdired
+  (define-key wdired-mode-map (kbd "C-o") 'toggle-input-method))
+
 (custom-set-variables
  '(ls-lisp-dirs-first t)
  '(dired-dwim-target t)
