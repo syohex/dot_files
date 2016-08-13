@@ -62,3 +62,10 @@
 (add-hook 'org-timer-cancel-hook #'my/org-clock-cancel-hook)
 
 (set-face-bold-p 'show-paren-match-face nil)
+
+;; evil
+(custom-set-variables
+ '(evil-move-cursor-back nil)
+ '(evil-search-module 'evil-search))
+
+(define-key my/ctrl-q-map (kbd "e") 'evil-mode)

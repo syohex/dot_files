@@ -158,3 +158,7 @@
 (el-get-bundle syohex/emacs-helm-pydoc :name helm-pydoc)
 (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
+
+;; evil
+(when (eq system-type 'darwin)
+  (el-get-bundle evil))
