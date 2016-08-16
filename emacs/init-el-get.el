@@ -23,7 +23,9 @@
 
 ;; Input method
 (when (executable-find "mozc_emacs_helper")
-  (el-get-bundle elpa:mozc))
+  (el-get-bundle mozc
+    :type http
+    :url "https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el"))
 
 ;; undo
 (el-get-bundle undo-tree)
@@ -81,7 +83,9 @@
 ;; Go
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
-(el-get-bundle elpa:golint)
+(el-get-bundle golint
+  :type http
+  :url "https://github.com/golang/lint/blob/master/misc/emacs/golint.el")
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
 (el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
