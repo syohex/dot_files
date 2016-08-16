@@ -136,6 +136,7 @@ alias e='emacsclient'
 alias s='git st '
 alias d='git diff '
 alias W='weblio'
+alias cdep='cde >/dev/null && cdp && pwd'
 
 # dstat
 alias dstat-full='dstat -Tclmdrn'
