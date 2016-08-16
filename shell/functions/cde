@@ -8,6 +8,6 @@ function cde() {
         return 1
     fi
 
-    echo "chdir to $EMACS_CWD"
     cd "$EMACS_CWD"
+    pwd
 }
