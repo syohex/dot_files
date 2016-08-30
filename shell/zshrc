@@ -326,6 +326,6 @@ autoload -Uz _delete_previous_word
 alias -g L='|less -R'
 alias -g G='|grep'
 alias -g P='|peco'
-alias -g XX='|xargs'
+alias -g J='|jq'
 
 path=($HOME/bin $path)
