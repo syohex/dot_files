@@ -22,3 +22,7 @@ OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
     go get -u github.com/syohex/byzanz-window/cmd/byzanz-window
 fi
+
+# gocode configuration
+gocode close
+gocode set unimported-packages true
