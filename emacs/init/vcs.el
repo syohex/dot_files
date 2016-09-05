@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-x v p") 'git-gutter:stage-hunk)
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+(global-set-key (kbd "C-x v e") 'git-gutter:end-of-hunk)
 
 (custom-set-variables
  '(git-gutter:verbosity 4)
