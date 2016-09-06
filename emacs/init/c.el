@@ -2,7 +2,8 @@
 
 (with-eval-after-load 'cc-mode
   ;; key bindings
-  (define-key c-mode-map (kbd "C-c C-t") 'ff-find-other-file))
+  (define-key c-mode-map (kbd "C-c t") 'ff-find-other-file)
+  (define-key c++-mode-map (kbd "C-c t") 'ff-find-other-file))
 
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
