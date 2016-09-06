@@ -14,7 +14,7 @@
   (define-key go-mode-map (kbd "C-c C-a") 'helm-godoc-import)
   (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
   (define-key go-mode-map (kbd "C-c C-c") 'my/flycheck-list-errors)
-  (define-key go-mode-map (kbd "C-c C-t") 'ff-find-other-file)
+  (define-key go-mode-map (kbd "C-c t") 'ff-find-other-file)
   (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
   (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)
   (define-key go-mode-map (kbd "C-c C-l") 'my/flycheck-list-errors)
