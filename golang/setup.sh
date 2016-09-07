@@ -17,6 +17,7 @@ go get -u golang.org/x/tools/cmd/cover
 go get -u golang.org/x/tools/cmd/godoc
 go get -u golang.org/x/tools/cmd/goimports
 go get -u github.com/direnv/direnv
+go get -u github.com/haya14busa/gopkgs/cmd/gopkgs
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
