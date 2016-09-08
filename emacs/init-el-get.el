@@ -89,6 +89,7 @@
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
 (el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
+(el-get-bundle syohex/emacs-go-add-tags :name go-add-tags)
 
 ;; Python
 (el-get-bundle company-jedi)
