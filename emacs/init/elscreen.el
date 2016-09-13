@@ -3,7 +3,7 @@
 (global-set-key (kbd "C-z C-z") 'elscreen-toggle)
 (global-set-key (kbd "C-z ,") 'elscreen-screen-nickname)
 (global-set-key (kbd "C-z C") 'elscreen-editutil-clone-only-this-window)
-(global-set-key (kbd "C-z C-l") 'helm-elscreen)
+(global-set-key (kbd "C-z C-l") 'helm-editutil-elscreen)
 (run-with-idle-timer 20 t 'elscreen-editutil-update-frame-title)
 
 (custom-set-variables
