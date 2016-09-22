@@ -1,11 +1,5 @@
 ;; setting for flycheck
 
-(defun my/flycheck-list-errors ()
-  (interactive)
-  (unless (bound-and-true-p flycheck-mode)
-    (flycheck-mode +1))
-  (call-interactively 'flycheck-list-errors))
-
 (custom-set-variables
  '(flycheck-display-errors-delay 0.5)
  '(flycheck-idle-change-delay 1.0)
