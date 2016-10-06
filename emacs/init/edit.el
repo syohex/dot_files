@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-x %") 'anzu-replace-at-cursor-thing)
 (define-key isearch-mode-map [remap isearch-query-replace]  #'anzu-isearch-query-replace)
 (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)
+(define-key isearch-mode-map (kbd "M-a") 'avy-isearch)
 
 ;; electrict-mode
 (custom-set-variables
