@@ -79,3 +79,5 @@ ignorekeys add mail.google.com
 ignorekeys add calendar.google.com
 ignorekeys add docs.google.com
 ignorekeys add reader.livedoor.com
+
+js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
