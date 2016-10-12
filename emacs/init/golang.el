@@ -30,4 +30,4 @@
   (setq-local company-backends '(company-go company-files company-dabbrev))
   ;;(delete 'ac-source-words-in-same-mode-buffers ac-sources)
   (setq compile-command "go test")
-  (setq flycheck-checker 'go-golint))
+  (setq flycheck-go-vet-shadow 'strict))

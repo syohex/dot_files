@@ -22,6 +22,3 @@
   (smartrep-define-key
       coffee-mode-map "C-c" '(("h" . 'coffee-indent-shift-left)
                               ("l" . 'coffee-indent-shift-right))))
-
-(defun my/coffee-mode-hook ()
-  (setq flycheck-checker 'coffee))

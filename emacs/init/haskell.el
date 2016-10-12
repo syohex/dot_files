@@ -20,7 +20,6 @@
 (defun my/haskell-mode-hook ()
   (turn-on-haskell-doc-mode)
   (turn-on-haskell-indent)
-  (setq flycheck-checker 'haskell-ghc)
 
   ;; I don't want to set key bindings
   (ghc-abbrev-init)

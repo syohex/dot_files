@@ -22,8 +22,6 @@
     (define-key ruby-mode-map key nil)))
 
 (defun my/ruby-mode-hook ()
-  (setq flycheck-checker 'ruby-rubocop)
-
   ;; robe
   (robe-mode +1)
   ;; robe-eldoc often display wrong information

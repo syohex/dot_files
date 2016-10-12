@@ -17,8 +17,7 @@
   (setq-local company-backends '(company-jedi company-dabbrev))
 
   ;; flycheck
-  (setq flycheck-checker 'python-flake8
-        flycheck-flake8rc (expand-file-name "~/.config/flake8")))
+  (setq flycheck-flake8rc (expand-file-name "~/.config/flake8")))
 
 (with-eval-after-load 'python
   (add-hook 'python-mode-hook 'my/python-mode-hook)
