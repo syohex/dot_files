@@ -9,6 +9,7 @@
 (global-set-key (kbd "M-'") 'avy-goto-word-1)
 (global-set-key (kbd "C-x C-c") popwin:keymap)
 (global-set-key (kbd "C-x C-c C-i") 'import-popwin)
+(global-set-key (kbd "C-x RET R") 'revert-buffer)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))
