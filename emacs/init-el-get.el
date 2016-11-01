@@ -111,9 +111,6 @@
 ;;(el-get-bundle tonini/alchemist.el)
 
 ;; Clojure
-(el-get-bundle queue
-  :type http
-  :url "https://elpa.gnu.org/packages/queue-0.1.1.el")
 (el-get-bundle clojure-mode)
 (el-get-bundle cider)
 (el-get-bundle clj-refactor)
