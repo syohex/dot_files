@@ -7,4 +7,5 @@
 
 (with-eval-after-load 'flycheck
   (define-key flycheck-command-map (kbd "M-g M-n") 'flycheck-next-error)
-  (define-key flycheck-command-map (kbd "M-g M-p") 'flycheck-previous-error))
+  (define-key flycheck-command-map (kbd "M-g M-n") 'flycheck-next-error)
+  (define-key flycheck-command-map (kbd "M-g M-l") 'flycheck-list-errors))
