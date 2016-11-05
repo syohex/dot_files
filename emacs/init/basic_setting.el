@@ -20,7 +20,8 @@
  '(read-file-name-completion-ignore-case t)
  '(set-mark-command-repeat-pop t)
  '(text-quoting-style 'grave)
- '(user-full-name "Syohei YOSHIDA"))
+ '(user-full-name "Syohei YOSHIDA")
+ '(custom-file (concat user-emacs-directory "custom.el")))
 
 (setq-default horizontal-scroll-bar nil)
 
