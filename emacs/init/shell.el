@@ -10,6 +10,10 @@
  '(compilation-message-face nil)
  '(compilation-auto-jump-to-first-error t))
 
+;; comint
+(custom-set-variables
+ '(comint-input-ignoredups t))
+
 (defun my/colorize-compilation-buffer ()
   (ansi-color-process-output nil))
 
