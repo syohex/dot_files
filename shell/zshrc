@@ -98,15 +98,6 @@ zstyle ':completion:*:processes' command "ps -u $USER"
 # show processing time for long run process
 REPORTTIME=10
 
-# Setting for MacOSX
-case "$OSTYPE" in
-darwin*)
-    # java setting for using iterm on mac
-    alias javac='javac -J-Dfile.encoding=UTF-8'
-    alias java='java -Dfile.encoding=UTF-8'
-    ;;
-esac
-
 # setting LANG, this should be UTF-8
 export LANG=ja_JP.UTF-8
 export TERM=xterm-256color
