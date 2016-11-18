@@ -128,6 +128,7 @@
 
 ;; Markup language
 (el-get-bundle markdown-mode)
+(el-get-bundle markdown-toc)
 (el-get-bundle yoshiki/yaml-mode)
 
 ;; HTML
