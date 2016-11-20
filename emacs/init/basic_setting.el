@@ -97,14 +97,6 @@
 
 (setq-default fill-column 80)
 
-;; fixed line position after scrollup, scrolldown
-(defun my/scroll-move-around (orig-fn &rest args)
-  (let ((orig-line (count-lines (window-start) (point))))
-    (apply orig-fn args)
-    (move-to-window-line orig-line)))
-(advice-add 'scroll-up :around 'my/scroll-move-around)
-(advice-add 'scroll-down :around 'my/scroll-move-around)
-
 ;; smart repetition
 (require 'smartrep)
 (custom-set-variables
