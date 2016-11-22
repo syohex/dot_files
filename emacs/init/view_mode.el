@@ -4,7 +4,7 @@
 
 (with-eval-after-load 'view
   (define-key view-mode-map (kbd "N") 'View-search-last-regexp-backward)
-  (define-key view-mode-map (kbd "?") 'View-search-regexp-backward?)
+  (define-key view-mode-map (kbd "?") 'View-search-regexp-backward)
   (define-key view-mode-map (kbd "g") 'View-goto-line)
   (define-key view-mode-map (kbd "w") 'forward-word)
   (define-key view-mode-map (kbd "W") 'forward-symbol)
