@@ -3,22 +3,22 @@
 set -e
 set -x
 
-go get -u github.com/github/hub
-go get -u github.com/golang/lint/golint
-go get -u github.com/josharian/impl
-go get -u github.com/jstemmer/gotags
-go get -u github.com/zmb3/gogetdoc
-go get -u github.com/mitchellh/gox
-go get -u github.com/motemen/ghq
-go get -u github.com/motemen/gore
-go get -u github.com/nsf/gocode
-go get -u github.com/peco/peco/cmd/peco
-go get -u github.com/rogpeppe/godef
-go get -u golang.org/x/tools/cmd/cover
-go get -u golang.org/x/tools/cmd/godoc
-go get -u golang.org/x/tools/cmd/goimports
-go get -u github.com/direnv/direnv
-go get -u github.com/haya14busa/gopkgs/cmd/gopkgs
+go get -u -v github.com/github/hub
+go get -u -v github.com/golang/lint/golint
+go get -u -v github.com/josharian/impl
+go get -u -v github.com/jstemmer/gotags
+go get -u -v github.com/zmb3/gogetdoc
+go get -u -v github.com/mitchellh/gox
+go get -u -v github.com/motemen/ghq
+go get -u -v github.com/motemen/gore
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/peco/peco/cmd/peco
+go get -u -v github.com/rogpeppe/godef
+go get -u -v golang.org/x/tools/cmd/cover
+go get -u -v golang.org/x/tools/cmd/godoc
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v github.com/direnv/direnv
+go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
