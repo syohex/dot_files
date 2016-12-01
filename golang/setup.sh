@@ -7,6 +7,7 @@ go get -u github.com/github/hub
 go get -u github.com/golang/lint/golint
 go get -u github.com/josharian/impl
 go get -u github.com/jstemmer/gotags
+go get -u github.com/zmb3/gogetdoc
 go get -u github.com/mitchellh/gox
 go get -u github.com/motemen/ghq
 go get -u github.com/motemen/gore
