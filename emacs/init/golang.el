@@ -15,7 +15,7 @@
   (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
   (define-key go-mode-map (kbd "C-c t") 'go-add-tags)
   (define-key go-mode-map (kbd "C-c C-d") 'helm-godoc)
-  (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)
+  (define-key go-mode-map (kbd "C-c d") 'progutil-go-gogetdoc)
   (define-key go-mode-map (kbd "C-c p s") 'go-set-project)
   (define-key go-mode-map (kbd "C-c p r") 'go-reset-gopath)
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
