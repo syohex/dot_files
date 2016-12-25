@@ -9,6 +9,7 @@
   (add-hook 'go-mode-hook 'go-eldoc-setup)
 
   ;;(require 'go-autocomplete)
+  (require 'go-guru)
 
   (define-key go-mode-map (kbd "C-c a") 'go-import-add)
   (define-key go-mode-map (kbd "C-c C-a") 'helm-godoc-import)
