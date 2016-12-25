@@ -17,6 +17,7 @@ go get -u -v github.com/rogpeppe/godef
 go get -u -v golang.org/x/tools/cmd/cover
 go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v github.com/direnv/direnv
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 
