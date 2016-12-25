@@ -86,6 +86,9 @@
 (el-get-bundle golint
   :type http
   :url "https://github.com/golang/lint/blob/master/misc/emacs/golint.el")
+(el-get-bundle go-guru
+  :type http
+  :url "https://raw.githubusercontent.com/dominikh/go-mode.el/master/go-guru.el")
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
 (el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
