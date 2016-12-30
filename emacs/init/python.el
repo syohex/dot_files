@@ -1,17 +1,5 @@
 ;; python-setting
 
-;; ipython setting
-(when (memq system-type '(gnu/linux))
-  (custom-set-variables
-   '(python-shell-interpreter "ipython")
-   '(python-shell-interpreter-args "--simple-prompt")
-   '(python-shell-completion-native-disabled-interpreters '("pypy" "ipython"))
-   '(python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
-   '(python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: ")
-   '(python-shell-completion-setup-code "from IPython.core.completerlib import module_completion")
-   '(python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n")
-   '(python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")))
-
 (defun my/python-mode-hook ()
   (jedi:setup)
   (setq-local company-backends '(company-jedi company-dabbrev))
