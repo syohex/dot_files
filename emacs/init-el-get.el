@@ -113,6 +113,13 @@
 ;;(el-get-bundle elixir)
 ;;(el-get-bundle tonini/alchemist.el)
 
+;; Rust
+(el-get-bundle rust-mode)
+(el-get-bundle racer-rust/emacs-racer
+  :name racer
+  :depends (rust-mode dash s f))
+(el-get-bundle flycheck/flycheck-rust)
+
 ;; Clojure
 (el-get-bundle clojure-mode)
 (el-get-bundle cider)
