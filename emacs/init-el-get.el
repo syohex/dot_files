@@ -107,7 +107,7 @@
 (el-get-bundle dgutov/robe)
 
 ;; Emacs Lisp
-(el-get-bundle purcell/elisp-slime-nav)
+(el-get-bundle purcell/elisp-slime-nav :name elisp-slime-nav)
 
 ;;;; Elixir
 ;;(el-get-bundle elixir)
