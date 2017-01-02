@@ -2,7 +2,8 @@
 # key  : conf
 # --
 (when window-system
-  (set-frame-font "VL Gothic 12")
+  (cond ((eq system-type 'gnu/linux) (set-frame-font "VL Gothic 12"))
+        ((eq system-type 'darwin) (set-frame-font "monaco 12")))
   (set-scroll-bar-mode 'nil)
   (tool-bar-mode 0))
 
