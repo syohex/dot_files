@@ -59,7 +59,7 @@
 ;; (el-get-bundle auto-complete/auto-complete)
 
 ;; company
-(el-get-bundle company-mode/company-mode)
+(el-get-bundle company-mode/company-mode :name company-mode)
 
 ;; helm
 (el-get-bundle emacs-helm/helm
@@ -68,7 +68,7 @@
   :build/darwin `(("make" ,(format "EMACS_COMMAND=%s" el-get-emacs))))
 
 ;; Repeat utility
-(el-get-bundle myuhe/smartrep.el)
+(el-get-bundle myuhe/smartrep.el :name smartrep)
 
 ;; snippet
 (el-get-bundle yasnippet)
@@ -90,12 +90,16 @@
   :type http
   :url "https://raw.githubusercontent.com/dominikh/go-mode.el/master/go-guru.el")
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
-(el-get-bundle nsf/gocode :load-path ("emacs-company") :name company-go)
+(el-get-bundle nsf/gocode
+  :load-path ("emacs-company") :name company-go
+  :depends (company-mode))
 (el-get-bundle syohex/emacs-go-impl :name go-impl)
 (el-get-bundle syohex/emacs-go-add-tags :name go-add-tags)
 
 ;; Python
-(el-get-bundle company-jedi)
+(el-get-bundle syohex/emacs-company-jedi
+  :name company-jedi
+  :depends-on (jedi-core company-mode))
 
 ;; Perl
 ;; (el-get-bundle hinrik/perl6-mode)
@@ -104,7 +108,8 @@
 (el-get-bundle ruby-block)
 (el-get-bundle ruby-end)
 (el-get-bundle inf-ruby)
-(el-get-bundle dgutov/robe)
+(el-get-bundle dgutov/robe
+  :name robe :depends (inf-ruby))
 
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav :name elisp-slime-nav)
