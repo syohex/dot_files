@@ -22,10 +22,16 @@
  '(user-full-name "Syohei YOSHIDA")
  '(custom-file (concat user-emacs-directory "custom.el")))
 
+;; Frame and cursor looking
+(blink-cursor-mode t)
+(menu-bar-mode -1)
+(line-number-mode 1)
+(column-number-mode 1)
 (setq-default horizontal-scroll-bar nil)
 
-;; cursor
-(blink-cursor-mode t)
+(when window-system
+  (set-scroll-bar-mode 'nil)
+  (tool-bar-mode 0))
 
 ;; for GC
 (setq-default gc-cons-threshold (* gc-cons-threshold 10))
@@ -35,10 +41,8 @@
 (defalias 'exit 'save-buffers-kill-emacs)
 
 ;; Don't disable commands
-(put 'narrow-to-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'set-goal-column 'disabled nil)
+(dolist (cmd '(narrow-to-region upcase-region downcase-region set-goal-column))
+  (put cmd 'disabled nil))
 
 (savehist-mode 1)
 (save-place-mode +1)
@@ -47,22 +51,11 @@
 (setq-default indicate-empty-lines t
               indicate-buffer-boundaries 'right)
 
-;; Disable default scroll bar and tool bar
-(when window-system
-  (set-scroll-bar-mode 'nil)
-  (tool-bar-mode 0))
-
 ;; not create backup file and not create auto save file
 (setq-default backup-inhibited t)
 
-(menu-bar-mode -1)
-
 ;; not beep
 (setq-default ring-bell-function #'ignore)
-
-;; display line infomation
-(line-number-mode 1)
-(column-number-mode 1)
 
 (fset 'yes-or-no-p #'y-or-n-p)
 (setq-default use-dialog-box nil)
