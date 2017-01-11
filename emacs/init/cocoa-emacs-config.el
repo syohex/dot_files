@@ -61,7 +61,7 @@
 (add-hook 'org-timer-done-hook #'my/org-clock-done-hook)
 (add-hook 'org-timer-cancel-hook #'my/org-clock-cancel-hook)
 
-(set-face-bold-p 'show-paren-match-face nil)
+(set-face-bold 'show-paren-match-face nil)
 
 ;; evil
 (custom-set-variables

@@ -8,7 +8,7 @@
  '(helm-command-prefix-key nil))
 
 (with-eval-after-load 'helm
-  (helm-descbinds-mode)
+  (helm-descbinds-mode +1)
 
   (define-key helm-map (kbd "C-p")   #'helm-previous-line)
   (define-key helm-map (kbd "C-n")   #'helm-next-line)
