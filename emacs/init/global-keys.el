@@ -12,6 +12,7 @@
 (global-set-key (kbd "C-x RET R") 'revert-buffer)
 (global-set-key (kbd "C-x j") 'jump-to-register)
 (global-set-key (kbd "C-x SPC") 'point-to-register)
+(global-set-key (kbd "C-x C-b") #'ibuffer)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))
