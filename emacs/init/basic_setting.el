@@ -10,7 +10,6 @@
  '(backup-directory-alist `((".*" . ,temporary-file-directory)))
  '(comment-style 'extra-line)
  '(create-lockfiles nil)
- '(dabbrev-case-fold-search nil)
  '(delete-auto-save-files t)
  '(find-file-visit-truename t)
  '(imenu-auto-rescan t)
