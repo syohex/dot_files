@@ -43,9 +43,6 @@
 (savehist-mode 1)
 (save-place-mode +1)
 
-;; info for japanese
-(auto-compression-mode t)
-
 ;; indicate last line
 (setq-default indicate-empty-lines t
               indicate-buffer-boundaries 'right)
