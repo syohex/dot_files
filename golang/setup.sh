@@ -20,10 +20,11 @@ go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v github.com/direnv/direnv
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
+go get -u -v github.com/derekparker/delve/cmd/dlv
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
-    go get -u github.com/syohex/byzanz-window/cmd/byzanz-window
+    go get -u -v github.com/syohex/byzanz-window/cmd/byzanz-window
 fi
 
 # gocode configuration
