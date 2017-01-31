@@ -16,6 +16,7 @@
 (defvar my/electric-pair-enabled-modes
   '(c-mode
     c++-mode
+    objc-mode
     java-mode
     python-mode
     ruby-mode
