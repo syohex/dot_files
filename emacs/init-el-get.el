@@ -85,7 +85,7 @@
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
 (el-get-bundle golint
   :type http
-  :url "https://github.com/golang/lint/blob/master/misc/emacs/golint.el")
+  :url "https://raw.githubusercontent.com/golang/lint/master/misc/emacs/golint.el")
 (el-get-bundle go-guru
   :type http
   :url "https://raw.githubusercontent.com/dominikh/go-mode.el/master/go-guru.el")
