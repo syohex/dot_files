@@ -224,6 +224,8 @@ path=(~/.cargo/bin(N-/) $path)
 # Heroku
 path=(/usr/local/heroku/bin $path)
 
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
 # Google Cloud Platform
 if [[ -d ~/local/google-cloud-sdk ]]; then
     source ~/local/google-cloud-sdk/path.zsh.inc
