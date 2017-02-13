@@ -16,6 +16,7 @@
   (setq-local company-backends '(company-clang company-dabbrev)))
 
 (add-hook 'objc-mode-hook #'my/objc-mode-hook)
+(add-to-list 'auto-mode-alist '("\\.mm\\'" . c++-mode))
 
 (with-eval-after-load 'c-mode
   (define-key c-mode-base-map (kbd "C-c C-s") #'clang-format-buffer))
