@@ -21,6 +21,7 @@ go get -u -v golang.org/x/tools/cmd/guru
 go get -u -v github.com/direnv/direnv
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 go get -u -v github.com/derekparker/delve/cmd/dlv
+go get -u -v github.com/fatih/gomodifytags
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
