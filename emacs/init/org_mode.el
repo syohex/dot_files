@@ -2,6 +2,8 @@
 (global-set-key (kbd "C-x L") 'org-store-link)
 (global-set-key (kbd "C-x r a") 'org-agenda)
 
+(autoload 'org-time-stamp "org" nil t)
+
 (custom-set-variables
  '(org-startup-truncated nil)
  '(org-directory (expand-file-name "~/Dropbox/"))
