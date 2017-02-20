@@ -36,6 +36,7 @@
     cperl-mode
     perl6-mode
     markdown-mode
+    org-mode
     gfm-mode
     sql-mode))
 
