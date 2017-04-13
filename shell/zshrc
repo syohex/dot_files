@@ -105,9 +105,9 @@ export TERM=xterm-256color
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
-if [ "$OSTYPE" == "linux-gnu" ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias ls='ls --color -F'
-    if [ ! -e ~/.dir_colors ]; then
+    if [[ ! -e ~/.dir_colors ]]; then
         dircolors -p > ~/.dir_colors
     fi
     eval `dircolors ~/.dir_colors -b`
@@ -164,7 +164,7 @@ export INFOPATH=/usr/local/share/info:/usr/share/info
 
 # Perl
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
-if [ -d ~/.plenv/bin ]; then
+if [[ -d ~/.plenv/bin ]]; then
     path=($HOME/.plenv/bin $path)
     eval "$(plenv init -)"
 fi
@@ -176,7 +176,7 @@ if [ -d ~/.rbenv/bin ]; then
 fi
 
 # Javascript
-if [ -e ~/.nvm/nvm.sh ]; then
+if [[ -e ~/.nvm/nvm.sh ]]; then
     source ~/.nvm/nvm.sh
     nvm use default > /dev/null
 fi
@@ -200,7 +200,7 @@ path=(~/.cask/bin(N-/) $path)
 path=(~/.cabal/bin(N-/) $path)
 
 function godoc() {
-    if [ "$1" == "" ]; then
+    if [[ "$1" == "" ]]; then
         godocp
     else
         command godoc $@ | less
@@ -236,7 +236,7 @@ fi
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
 zstyle ':vcs_info:*' actionformats '[%s]-(%b|%a)'
-precmd () {
+function precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
@@ -261,7 +261,7 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # zaw : anything
-if [ -e ~/.zsh/zaw/zaw.zsh ]; then
+if [[ -e ~/.zsh/zaw/zaw.zsh ]]; then
     source ~/.zsh/zaw/zaw.zsh
     ZAW_EDITOR='emacsclient -n'
     bindkey '^x^x' zaw-cdr
@@ -271,12 +271,12 @@ if [ -e ~/.zsh/zaw/zaw.zsh ]; then
 fi
 
 # for git completion(too slowly in big repository)
-__git_files () {
+function __git_files () {
     _wanted files expl 'local files' _files
 }
 
 # for tmux complete
-_tmux_pane_words() {
+function _tmux_pane_words() {
     local expl
     local -a w
     if [[ -z "$TMUX_PANE" ]]; then
