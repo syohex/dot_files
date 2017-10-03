@@ -112,9 +112,12 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     fi
     eval `dircolors ~/.dir_colors -b`
 else
+    # macOS
     if which gls > /dev/null 2>&1; then
         alias ls='gls --color -F'
     fi
+    ## for compiling Emacs
+    path=(/usr/local/opt/texinfo/bin(N-/) $path)
 fi
 
 # dictionary
