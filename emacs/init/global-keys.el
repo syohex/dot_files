@@ -7,8 +7,8 @@
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-x z") 'zoom-window-zoom)
 (global-set-key (kbd "M-'") 'avy-goto-word-1)
-(global-set-key (kbd "C-x C-c") popwin:keymap)
-(global-set-key (kbd "C-x C-c C-i") 'import-popwin)
+;;(global-set-key (kbd "C-x C-c") popwin:keymap)
+;;(global-set-key (kbd "C-x C-c C-i") 'import-popwin)
 (global-set-key (kbd "C-x RET R") 'revert-buffer)
 (global-set-key (kbd "C-x j") 'jump-to-register)
 (global-set-key (kbd "C-x SPC") 'point-to-register)
@@ -19,12 +19,12 @@
 
 ;; helm binding
 (global-set-key (kbd "C-M-z") 'helm-resume)
-(global-set-key (kbd "C-x C-c C-c") 'helm-M-x)
+(global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (global-set-key (kbd "C-h m") 'helm-man-woman)
-(global-set-key (kbd "C-h l")  'popwin:popup-last-buffer)
-(global-set-key (kbd "C-h SPC") 'popwin:select-popup-window)
+;;(global-set-key (kbd "C-h l")  'popwin:popup-last-buffer)
+;;(global-set-key (kbd "C-h SPC") 'popwin:select-popup-window)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 
