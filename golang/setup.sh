@@ -18,10 +18,12 @@ go get -u -v golang.org/x/tools/cmd/cover
 go get -u -v golang.org/x/tools/cmd/godoc
 go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v github.com/direnv/direnv
 go get -u -v github.com/haya14busa/gopkgs/cmd/gopkgs
 go get -u -v github.com/derekparker/delve/cmd/dlv
 go get -u -v github.com/fatih/gomodifytags
+
+# download only
+go get -u -d github.com/direnv/direnv
 
 OS=$(uname)
 if [ "x$OS" = "xLinux" -a -n "$DISPLAY" ]; then
