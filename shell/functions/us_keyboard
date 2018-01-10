@@ -1,9 +1,8 @@
 # Set keyboard for US keymap and key repeat
 function us_keyboard() {
-    setxkbmap -model us -layout us
+    # setxkbmap -model us -layout us
 
-    # Use Japanese keyboard
-    # xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
+    xmodmap ~/dot_files/keyboard/thinkpad_xmodmap
     # xmodmap ~/dot_files/keyboard/hhk_xmodmap # Happy Hacking Keyboard
     xset r rate 195 62
 }

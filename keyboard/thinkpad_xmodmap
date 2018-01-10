@@ -6,10 +6,10 @@ keysym Caps_Lock = Control_L
 add Lock = Caps_Lock
 add Control = Control_L
 
-keycode 49 = Escape NoSymbol Escape NoSymbol Escape
+! keycode 49 = Escape NoSymbol Escape NoSymbol Escape
 
 ! setxkbmap -model us -layout us
-keycode 132 = quoteleft asciitilde
+! keycode 132 = quoteleft asciitilde
 
 ! Muhenkan is used as 'Window key'
-keycode 102 = Super_L
+! keycode 102 = Super_L
