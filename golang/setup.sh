@@ -7,11 +7,10 @@ go get -u -v github.com/github/hub
 go get -u -v github.com/golang/lint/golint
 go get -u -v github.com/josharian/impl
 go get -u -v github.com/jstemmer/gotags
-go get -u -v github.com/zmb3/gogetdoc
 go get -u -v github.com/mitchellh/gox
 go get -u -v github.com/motemen/ghq
 go get -u -v github.com/motemen/gore
-go get -u -v github.com/nsf/gocode
+go get -u -v github.com/mdempsky/gocode
 go get -u -v github.com/peco/peco/cmd/peco
 go get -u -v github.com/rogpeppe/godef
 go get -u -v golang.org/x/tools/cmd/cover

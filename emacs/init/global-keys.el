@@ -69,3 +69,7 @@
 (global-set-key (kbd "M-g j") 'buf-move-down)
 (global-set-key (kbd "M-g k") 'buf-move-up)
 (global-set-key (kbd "M-g l") 'buf-move-right)
+
+(when (memq window-system '(mac ns))
+ (add-to-list 'default-frame-alist '(ns-appearance . 'dark))
+ (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
