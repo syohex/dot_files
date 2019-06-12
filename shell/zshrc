@@ -99,7 +99,7 @@ zstyle ':completion:*:processes' command "ps -u $USER"
 REPORTTIME=10
 
 # setting LANG, this should be UTF-8
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
 # setup ls coloring
@@ -181,14 +181,13 @@ fi
 # Javascript
 if [[ -e ~/.nvm/nvm.sh ]]; then
     source ~/.nvm/nvm.sh
-    nvm use default > /dev/null
+    nvm use --lts > /dev/null
 fi
 
 # Python
-VIRTUALENV_ACTIVE=~/.virtualenv/bin/activate
-if [ -e ${VIRTUALENV_ACTIVE} ]; then
+if [ -e ~/local/python3/bin/activate ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
-    source ${VIRTUALENV_ACTIVE}
+    source ~/local/python3/bin/activate
 fi
 export PYTHONSTARTUP=~/.pythonsetup
 
@@ -225,7 +224,10 @@ which direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 path=(~/.cargo/bin(N-/) $path)
 
 # Heroku
-path=(/usr/local/heroku/bin $path)
+path=(/usr/local/heroku/bin(N-/) $path)
+
+# .NET core
+path=(/usr/local/share/dotnet(N-/) $path)
 
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
