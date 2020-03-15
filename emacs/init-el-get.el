@@ -75,13 +75,6 @@
   :type http
   :url "https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/clang-format.el")
 
-;; Ocaml
-;;(el-get-bundle tuareg-mode)
-
-;; Haskell
-;;(el-get-bundle haskell/haskell-mode)
-;;(el-get-bundle ghc-mod)
-
 ;; Go
 (el-get-bundle go-mode)
 (el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
@@ -127,16 +120,6 @@
   :depends (rust-mode dash s f))
 (el-get-bundle flycheck/flycheck-rust)
 
-;; Clojure
-(el-get-bundle clojure-mode)
-(el-get-bundle cider)
-(el-get-bundle clj-refactor)
-
-;; Javascript
-(el-get-bundle tern)
-(el-get-bundle company-tern)
-(el-get-bundle json-mode)
-
 ;; Build tool
 (el-get-bundle cmake-mode)
 
@@ -147,10 +130,6 @@
 (el-get-bundle markdown-mode)
 (el-get-bundle markdown-toc)
 (el-get-bundle yoshiki/yaml-mode)
-
-;; HTML
-(el-get-bundle fxbois/web-mode)
-(el-get-bundle smihica/emmet)
 
 ;; shell
 (el-get-bundle syohex/emacs-quickrun :name quickrun)
