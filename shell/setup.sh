@@ -14,7 +14,7 @@ cd $UTILDIR
 
 # setting for zsh zaw
 if [[ -d ${HOME}/.zsh/zaw ]]; then
-    (cd "${HOME}/.zsh" && git pull --rebase origin master)
+    (cd "${HOME}/.zsh/zaw" && git pull --rebase origin master)
 else
     (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zaw.git)
 fi
@@ -24,4 +24,8 @@ fi
 
 # completion
 MYCOMPDIR="${HOME}/.zsh/mycomp"
-(cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zsh-completions.git)
+if [[ -d ${HOME}/.zsh/zsh-completions ]]; then
+    (cd "${HOME}/.zsh/zsh-completions" && git pull --rebase origin master)
+else
+    (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zsh-completions.git)
+fi
