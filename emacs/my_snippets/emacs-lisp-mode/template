@@ -3,9 +3,9 @@
 # --
 ;;; `(file-name-nondirectory (buffer-file-name))` --- $1 -*- lexical-binding: t; -*-
 
-;; Copyright (C) `(format-time-string "%Y" (current-time))` by Syohei YOSHIDA
+;; Copyright (C) `(format-time-string "%Y" (current-time))` by Shohei YOSHIDA
 
-;; Author: Syohei YOSHIDA <syohex@gmail.com>
+;; Author: Shohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/
 ;; Version: 0.01
 ;; Package-Requires: ((emacs "24.3"))
