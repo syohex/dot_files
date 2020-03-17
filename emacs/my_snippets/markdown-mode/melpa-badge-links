@@ -1,7 +1,0 @@
-# name : MELPA links
-# key  : melpa-badge-links
-# --
-[melpa-link]: https://melpa.org/#/$1
-[melpa-stable-link]: https://stable.melpa.org/#/$1
-[melpa-badge]: https://melpa.org/packages/$1-badge.svg
-[melpa-stable-badge]: https://stable.melpa.org/packages/$1-badge.svg

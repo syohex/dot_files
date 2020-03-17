@@ -1,4 +1,0 @@
-# name : CSS link
-# key  : css
-# --
-<link rel="stylesheet" type="text/css" href="$0">

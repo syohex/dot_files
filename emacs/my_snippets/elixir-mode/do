@@ -1,6 +1,0 @@
-# name : Inserting do block
-# key  : do
-# --
-do
-  $0
-end
