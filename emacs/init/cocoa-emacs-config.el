@@ -13,9 +13,6 @@
 (unless (featurep 'mozc)
   (setq default-input-method "MacOSX"))
 
-;; key config
-(global-set-key (kbd "C-x ?") 'dash-at-point)
-
 ;; font setting
 (set-face-attribute 'default nil
                     :family "monaco"
@@ -62,10 +59,3 @@
 (add-hook 'org-timer-cancel-hook #'my/org-clock-cancel-hook)
 
 (set-face-bold 'show-paren-match nil)
-
-;; evil
-(custom-set-variables
- '(evil-move-cursor-back nil)
- '(evil-search-module 'evil-search))
-
-(define-key my/ctrl-q-map (kbd "e") 'evil-mode)

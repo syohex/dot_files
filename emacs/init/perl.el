@@ -19,8 +19,9 @@
   (define-key cperl-mode-map (kbd "}") nil)
   (define-key cperl-mode-map (kbd "[") nil)
 
-  (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
-  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history))
+;;  (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
+;;  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
+)
 
 (defun my/cperl-imenu-create-index ()
   (let (index)

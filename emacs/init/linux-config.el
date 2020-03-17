@@ -2,9 +2,6 @@
 (custom-set-variables
  '(browse-url-browser-function #'browse-url-xdg-open))
 
-;; key config
-(global-set-key (kbd "C-x ?") 'zeal-at-point)
-
 ;; font-setting for Linux(Ubuntu)
 (defun change-font-size (size)
   (interactive

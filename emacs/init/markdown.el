@@ -7,7 +7,6 @@
 
 (with-eval-after-load 'markdown-mode
   ;; key bindings
-  ;;(define-key markdown-mode-map (kbd "C-M-i") 'auto-complete)
   (define-key markdown-mode-map (kbd "C-M-i") 'company-complete)
 
   (define-key markdown-mode-map (kbd "C-c C-c C-l") 'markdown-insert-link)
