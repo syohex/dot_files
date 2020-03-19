@@ -22,7 +22,7 @@ else
     (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zaw.git)
 fi
 ## Install 3rd party zaw source
-(cd "${HOME}/.zsh/zaw/sources" && curl -O https://raw.github.com/syohex/zaw-git-directories/master/git-directories.zsh )
+(cd "${HOME}/.zsh/zaw/sources" && curl -LO https://raw.githubusercontent.com/syohex/zaw-git-directories/master/git-directories.zsh)
 
 # completion
 MYCOMPDIR="${HOME}/.zsh/mycomp"
