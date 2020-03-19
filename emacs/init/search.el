@@ -1,12 +1,12 @@
 ;;;; setting for searching
 ;; anzu
-(global-anzu-mode +1)
+(global-anzu2-mode +1)
 (custom-set-variables
- '(anzu-mode-lighter "")
- '(anzu-deactivate-region t)
- '(anzu-search-threshold 1000)
- '(anzu-replace-threshold 50)
- '(anzu-replace-to-string-separator " => "))
+ '(anzu2-mode-lighter "")
+ '(anzu2-deactivate-region t)
+ '(anzu2-search-threshold 1000)
+ '(anzu2-replace-threshold 50)
+ '(anzu2-replace-to-string-separator " => "))
 
 ;; avy
 (custom-set-variables
