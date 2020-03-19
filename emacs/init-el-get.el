@@ -35,7 +35,7 @@
 (el-get-bundle col-highlight)
 
 ;; Search
-(el-get-bundle syohex/emacs-anzu :name anzu)
+(el-get-bundle syohex/emacs-anzu2 :name anzu2)
 
 ;; moving cursor
 (el-get-bundle goto-chg)
@@ -48,7 +48,6 @@
 (el-get-bundle emacs-jp/elscreen)
 (el-get-bundle popwin)
 (el-get-bundle lukhas/buffer-move)
-(el-get-bundle syohex/emacs-import-popwin :name import-popwin)
 
 ;; Directory
 (el-get-bundle syohex/emacs-dired-k :name dired-k)
