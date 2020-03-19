@@ -6,11 +6,14 @@ set -x
 install -d "${HOME}/.zsh/mycomp"
 
 # my utilities
-UTILDIR="${HOME}/program/utils"
-install -d $UTILDIR
+dev_dir="${HOME}/dev"
+install -d $dev_dir
 
-cd $UTILDIR
-(git clone git@github.com:syohex/my-command-utilities.git && cd my-command-utilities && ./setup.sh)
+if [[ -d ${dev_dir}/my-command-utilities ]]; then
+    (cd ${dev_dir}/my-command-utilities && git pull --rebase origin master)
+else
+    (cd ${dev_dir} && git clone git@github.com:syohex/my-command-utilities.git && cd my-command-utilities && ./setup.sh)
+fi
 
 # setting for zsh zaw
 if [[ -d ${HOME}/.zsh/zaw ]]; then
@@ -20,7 +23,6 @@ else
 fi
 ## Install 3rd party zaw source
 (cd "${HOME}/.zsh/zaw/sources" && curl -O https://raw.github.com/syohex/zaw-git-directories/master/git-directories.zsh )
-(cd "${HOME}/.zsh/zaw/sources" && curl -O https://raw.github.com/shibayu36/config-file/master/.zsh/zaw-sources/git-recent-branches.zsh)
 
 # completion
 MYCOMPDIR="${HOME}/.zsh/mycomp"
