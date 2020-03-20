@@ -114,11 +114,10 @@
 
 ;; shell
 (el-get-bundle syohex/emacs-quickrun :name quickrun)
-(el-get-bundle syohex/emacs-eshellutil :name eshellutil)
 
 ;; VCS
 (el-get-bundle syohex/emacs-git-gutter2 :name git-gutter2)
-(el-get-bundle syohex/emacs-git-messenger :name git-messenger)
+(el-get-bundle syohex/emacs-git-messenger2 :name git-messenger2)
 
 ;; Documentation
 (if (eq system-type 'darwin)

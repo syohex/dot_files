@@ -172,20 +172,8 @@ if [[ -d ~/.plenv/bin ]]; then
     eval "$(plenv init -)"
 fi
 
-# Ruby
-if [ -d ~/.rbenv/bin ]; then
-    path=($HOME/.rbenv/bin $path)
-    eval "$(rbenv init - zsh)"
-fi
-
-# Javascript
-if [[ -e ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh
-    nvm use --lts > /dev/null
-fi
-
 # Python
-if [ -e ~/local/python3/bin/activate ]; then
+if [[ -e ~/local/python3/bin/activate ]]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     source ~/local/python3/bin/activate
 fi
@@ -194,6 +182,9 @@ export PYTHONSTARTUP=~/.pythonsetup
 function ipython() {
     env LESS="-r" ipython $@
 }
+
+# node.js
+path=(~/local/node/bin(N-/) $path)
 
 ## Cask
 path=(~/.cask/bin(N-/) $path)
@@ -273,26 +264,6 @@ fi
 function __git_files () {
     _wanted files expl 'local files' _files
 }
-
-# for tmux complete
-function _tmux_pane_words() {
-    local expl
-    local -a w
-    if [[ -z "$TMUX_PANE" ]]; then
-        _message "not running inside tmux!"
-        return 1
-    fi
-    w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
-    _wanted values expl 'words from current tmux pane' compadd -a w
-}
-
-zle -C tmux-pane-words-prefix   complete-word _generic
-zle -C tmux-pane-words-anywhere complete-word _generic
-bindkey '^[/' tmux-pane-words-prefix
-bindkey '^[?' tmux-pane-words-anywhere
-zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_words
-zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
-zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=*'
 
 ## github browse
 bindkey -s "^Xww" " hub browse"

@@ -28,4 +28,3 @@
  '(eshell-scroll-show-maximum-output nil))
 
 (setq-default eshell-path-env (getenv "PATH"))
-(global-set-key (kbd "C-\\") 'eshellutil-popup)

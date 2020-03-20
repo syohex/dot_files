@@ -39,6 +39,4 @@
  '(git-commit-summary-max-length 72))
 
 ;; git-messenger
-(custom-set-variables
- '(git-messenger:handled-backends '(git)))
-(global-set-key (kbd "C-x v m") 'git-messenger:popup-message)
+(global-set-key (kbd "C-x v m") #'git-messenger2-popup-message)
