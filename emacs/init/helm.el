@@ -3,7 +3,7 @@
  '(helm-input-idle-delay 0)
  '(helm-exit-idle-delay 0)
  '(helm-candidate-number-limit 500)
- '(helm-ag-insert-at-point 'symbol)
+ '(helm-ag2-insert-at-point 'symbol)
  '(helm-find-files-doc-header "")
  '(helm-command-prefix-key nil))
 
