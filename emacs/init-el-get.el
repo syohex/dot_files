@@ -50,7 +50,7 @@
 (el-get-bundle lukhas/buffer-move)
 
 ;; Directory
-(el-get-bundle syohex/emacs-dired-k :name dired-k)
+(el-get-bundle syohex/emacs-dired-k2 :name dired-k2)
 
 ;; auto-complete
 (el-get-bundle auto-complete/popup-el :name popup)

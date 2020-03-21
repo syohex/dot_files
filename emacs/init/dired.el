@@ -9,9 +9,9 @@
   (load-library "ls-lisp")
 
   ;; binding
-  (define-key dired-mode-map (kbd "K") 'dired-k)
-  (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point)
-  (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
+  (define-key dired-mode-map (kbd "K") #'dired-k2)
+  (define-key dired-mode-map (kbd "Q") #'quick-preview-at-point)
+  (define-key dired-mode-map (kbd "C-M-u") #'dired-up-directory)
   (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 
 (with-eval-after-load 'wdired
@@ -25,4 +25,4 @@
  '(dired-recursive-deletes 'always))
 
 (autoload 'dired-jump "dired-x" nil t)
-(global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-x C-j") #'dired-jump)
