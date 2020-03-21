@@ -58,7 +58,7 @@
 (global-set-key (kbd "M-g M-w") 'ffap-copy-string-as-kill)
 (global-set-key (kbd "M-g M-t") 'ff-find-other-file)
 (global-set-key (kbd "M-g r") #'recompile)
-(global-set-key (kbd "M-g q") #'quickrun)
+(global-set-key (kbd "M-g q") #'quickrun2)
 
 ;;; buffer-move
 (global-set-key (kbd "M-g h") 'buf-move-left)

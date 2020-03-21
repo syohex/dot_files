@@ -8,7 +8,7 @@
   (cperl-set-style "PerlStyle")
   (setq cperl-auto-newline nil)
 
-  (helm-perldoc:setup)
+  ;; (helm-perldoc:setup)
 
   ;; bindings
   (define-key cperl-mode-map "\177" nil)
