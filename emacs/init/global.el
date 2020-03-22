@@ -1,18 +1,16 @@
 ;;;; GNU gtags
-(custom-set-variables
- '(helm-gtags-pulse-at-cursor nil))
 
-(with-eval-after-load 'helm-gtags
-  (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
-  (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
-  (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
-  (define-key helm-gtags-mode-map (kbd "M-g M-s") 'helm-gtags-select)
-  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-  (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack))
+(with-eval-after-load 'helm-gtags2
+  (define-key helm-gtags2-mode-map (kbd "M-t") #'helm-gtags2-find-tag)
+  (define-key helm-gtags2-mode-map (kbd "M-r") #'helm-gtags2-find-rtag)
+  (define-key helm-gtags2-mode-map (kbd "M-s") #'helm-gtags2-find-symbol)
+  (define-key helm-gtags2-mode-map (kbd "M-g M-s") #'helm-gtags2-select)
+  (define-key helm-gtags2-mode-map (kbd "C-c >") #'helm-gtags2-next-history)
+  (define-key helm-gtags2-mode-map (kbd "C-c <") #'helm-gtags2-previous-history)
+  (define-key helm-gtags2-mode-map (kbd "C-t") #'helm-gtags2-pop-stack))
 
 ;;; Enable helm-gtags-mode
 (dolist (hook '(c-mode-common-hook
                 java-mode-hook
                 asm-mode-hook))
-  (add-hook hook 'helm-gtags-mode))
+  (add-hook hook #'helm-gtags2-mode))
