@@ -8,8 +8,6 @@
   (cperl-set-style "PerlStyle")
   (setq cperl-auto-newline nil)
 
-  ;; (helm-perldoc:setup)
-
   ;; bindings
   (define-key cperl-mode-map "\177" nil)
   (define-key cperl-mode-map (kbd ";") nil)
@@ -18,9 +16,6 @@
   (define-key cperl-mode-map (kbd "{") nil)
   (define-key cperl-mode-map (kbd "}") nil)
   (define-key cperl-mode-map (kbd "[") nil)
-
-;;  (define-key cperl-mode-map (kbd "C-c C-d") 'helm-perldoc)
-;;  (define-key cperl-mode-map (kbd "C-c C-r") 'helm-perldoc:history)
 )
 
 (defun my/cperl-imenu-create-index ()

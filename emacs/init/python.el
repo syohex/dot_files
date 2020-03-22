@@ -12,7 +12,6 @@
 
   ;; binding
   (define-key python-mode-map (kbd "C-M-i") 'company-complete)
-  (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)
   (define-key python-mode-map (kbd "C-c C-h") 'jedi:show-doc)
   (define-key python-mode-map (kbd "C-c C-l") 'jedi:get-in-function-call)
 

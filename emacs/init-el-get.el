@@ -119,11 +119,6 @@
 (el-get-bundle syohex/emacs-git-gutter2 :name git-gutter2)
 (el-get-bundle syohex/emacs-git-messenger2 :name git-messenger2)
 
-;; Documentation
-(if (eq system-type 'darwin)
-    (el-get-bundle dash-at-point)
-  (el-get-bundle zeal-at-point))
-
 ;; key
 (el-get-bundle which-key)
 
@@ -131,6 +126,4 @@
 (el-get-bundle emacs-helm/helm-descbinds)
 (el-get-bundle syohex/emacs-helm-gtags :name helm-gtags)
 (el-get-bundle syohex/emacs-helm-ag2 :name helm-ag2)
-;; (el-get-bundle syohex/emacs-helm-pydoc :name helm-pydoc)
-;; (el-get-bundle syohex/emacs-helm-perldoc :name helm-perldoc)
 (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
