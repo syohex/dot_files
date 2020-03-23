@@ -15,7 +15,7 @@
 
 ;; My Utilities
 (el-get-bundle syohex/emacs-editutil :name editutil)
-(el-get-bundle syohex/emacs-progutil :name progutil)
+;;(el-get-bundle syohex/emacs-progutil :name progutil)
 (el-get-bundle syohex/emacs-zoom-window2 :name zoom-window2)
 
 ;; Theme
