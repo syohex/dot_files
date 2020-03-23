@@ -3,7 +3,7 @@ set -e
 set -x
 
 # for completion file
-install -d "${HOME}/.zsh/mycomp"
+install -d "${HOME}/.zsh/completions"
 
 # my utilities
 dev_dir="${HOME}/dev"
@@ -25,7 +25,6 @@ fi
 (cd "${HOME}/.zsh/zaw/sources" && curl -LO https://raw.githubusercontent.com/syohex/zaw-git-directories/master/git-directories.zsh)
 
 # completion
-MYCOMPDIR="${HOME}/.zsh/mycomp"
 if [[ -d ${HOME}/.zsh/zsh-completions ]]; then
     (cd "${HOME}/.zsh/zsh-completions" && git pull --rebase origin master)
 else
