@@ -7,7 +7,3 @@
  '(anzu2-search-threshold 1000)
  '(anzu2-replace-threshold 50)
  '(anzu2-replace-to-string-separator " => "))
-
-;; avy
-(custom-set-variables
- '(avy-case-fold-search nil))

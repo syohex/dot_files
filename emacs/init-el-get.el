@@ -40,7 +40,6 @@
 
 ;; moving cursor
 (el-get-bundle goto-chg)
-(el-get-bundle abo-abo/avy)
 
 ;; Pair
 (el-get-bundle paredit)
@@ -92,22 +91,11 @@
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav :name elisp-slime-nav)
 
-;;;; Elixir
-;;(el-get-bundle elixir)
-;;(el-get-bundle tonini/alchemist.el)
-
 ;; Rust
 (el-get-bundle rust-mode)
-(el-get-bundle racer-rust/emacs-racer
-  :name racer
-  :depends (rust-mode dash s f))
-(el-get-bundle flycheck/flycheck-rust)
 
 ;; Build tool
 (el-get-bundle cmake-mode)
-
-;; Validation
-(el-get-bundle flycheck)
 
 ;; Markup language
 (el-get-bundle markdown-mode)

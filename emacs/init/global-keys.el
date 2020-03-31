@@ -6,7 +6,6 @@
 (global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-x z") #'zoom-window2-zoom)
-(global-set-key (kbd "M-'") 'avy-goto-word-1)
 (global-set-key (kbd "C-x RET R") 'revert-buffer)
 (global-set-key (kbd "C-x j") 'jump-to-register)
 (global-set-key (kbd "C-x SPC") 'point-to-register)
@@ -34,7 +33,6 @@
 (define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
 (define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
 (define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
-(define-key my/ctrl-q-map (kbd "C-m") 'flycheck-mode)
 
 (smartrep-define-key
     global-map "C-q" '(("-" . 'goto-last-change)
