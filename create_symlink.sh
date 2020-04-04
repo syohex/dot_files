@@ -51,16 +51,6 @@ PECO_DIR=~/.peco
 install -d ${PECO_DIR}
 ln -sf $PWD/golang/config.json ${PECO_DIR}/config.json
 
-# Ruby
-ln -sf $PWD/ruby/gemrc ~/.gemrc
-ln -sf $PWD/ruby/rubocop.yml ~/.rubocop.yml
-ln -sf $PWD/ruby/pryrc ~/.pryrc
+## idea
+ln -sf $PWD/idea/ideavimrc ~/.ideavimrc
 
-# For Common Lisp
-#ln -sf $PWD/common_lisp/clisprc.lisp ~/.clisprc.lisp
-
-# haskell
-ln -sf $PWD/haskell/ghci ~/.ghci
-
-# Firefox
-ln -sf $PWD/firefox/vimperatorrc ~/.vimperatorrc
