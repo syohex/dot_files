@@ -30,3 +30,13 @@ if [[ -d ${HOME}/.zsh/zsh-completions ]]; then
 else
     (cd "${HOME}/.zsh" && git clone git://github.com/zsh-users/zsh-completions.git)
 fi
+
+# install gibo(gitignore utility)
+install -d $HOME/bin
+if [[ ! -e ${HOME}/bin/gibo ]]; then
+    curl -L https://raw.github.com/simonwhitaker/gibo/master/gibo -o ~/bin/gibo
+    chmod +x ~/bin/gibo
+    curl \
+        -L https://raw.githubusercontent.com/simonwhitaker/gibo/master/shell-completions/gibo-completion.zsh \
+        -o ~/.zsh/completions/_gibo
+fi
