@@ -1,27 +1,25 @@
 ;;;; global key setting
-(global-set-key (kbd "M-ESC ESC") 'read-only-mode)
-(global-set-key (kbd "M-,") 'pop-tag-mark)
-(global-set-key (kbd "M-*") 'tags-loop-continue)
+(global-set-key (kbd "M-,") #'pop-tag-mark)
+(global-set-key (kbd "M-*") #'tags-loop-continue)
 (global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-x z") #'zoom-window2-zoom)
-(global-set-key (kbd "C-x RET R") 'revert-buffer)
-(global-set-key (kbd "C-x j") 'jump-to-register)
-(global-set-key (kbd "C-x SPC") 'point-to-register)
+(global-set-key (kbd "C-x RET R") #'revert-buffer)
+(global-set-key (kbd "C-x j") #'jump-to-register)
+(global-set-key (kbd "C-x SPC") #'point-to-register)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 
 ;; unset keys
 (global-unset-key (kbd "C-x C-n"))
 
 ;; helm binding
-(global-set-key (kbd "C-M-z") 'helm-resume)
-(global-set-key (kbd "C-x C-c") 'helm-M-x)
-(global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-h a") 'helm-apropos)
-(global-set-key (kbd "C-h m") 'helm-man-woman)
-(global-set-key (kbd "C-x C-i") 'helm-imenu)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-M-z") #'helm-resume)
+(global-set-key (kbd "C-x C-c") #'helm-M-x)
+(global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
+(global-set-key (kbd "C-h a") #'helm-apropos)
+(global-set-key (kbd "C-h m") #'helm-man-woman)
+(global-set-key (kbd "C-x C-i") #'helm-imenu)
+(global-set-key (kbd "C-x b") #'helm-buffers-list)
 
 ;; Ctrl-q map
 (defvar my/ctrl-q-map (make-sparse-keymap)
@@ -45,24 +43,20 @@
 ;; editutil mappings
 (editutil-default-setup)
 (global-set-key (kbd "C-x c") ctl-x-4-map)
-(global-set-key (kbd "C-x c j") 'dired-jump-other-window)
-(global-set-key (kbd "C-x c y") 'clipboard-yank)
 
 ;; M-g mapping
 (global-set-key (kbd "M-g .") #'helm-ag2)
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
-(global-set-key (kbd "M-g M-f") 'ffap)
-(global-set-key (kbd "M-g M-w") 'ffap-copy-string-as-kill)
-(global-set-key (kbd "M-g M-t") 'ff-find-other-file)
+(global-set-key (kbd "M-g f") #'helm-do-ag2-this-file)
 (global-set-key (kbd "M-g r") #'recompile)
 (global-set-key (kbd "M-g q") #'quickrun2)
 
 ;;; buffer-move
-(global-set-key (kbd "M-g h") 'buf-move-left)
-(global-set-key (kbd "M-g j") 'buf-move-down)
-(global-set-key (kbd "M-g k") 'buf-move-up)
-(global-set-key (kbd "M-g l") 'buf-move-right)
+(global-set-key (kbd "M-g h") #'buf-move-left)
+(global-set-key (kbd "M-g j") #'buf-move-down)
+(global-set-key (kbd "M-g k") #'buf-move-up)
+(global-set-key (kbd "M-g l") #'buf-move-right)
 
 (when (memq window-system '(mac ns))
  (add-to-list 'default-frame-alist '(ns-appearance . 'dark))
