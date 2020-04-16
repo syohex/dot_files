@@ -16,11 +16,12 @@
 
 ;; git-gutter
 (global-git-gutter2-mode +1)
-(global-set-key (kbd "C-x v u") 'git-gutter2-update)
-(global-set-key (kbd "C-x v p") 'git-gutter2-stage-hunk)
-(global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
-(global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
-(global-set-key (kbd "C-x v e") 'git-gutter2-end-of-hunk)
+(global-set-key (kbd "C-x v u") #'git-gutter2-update)
+(global-set-key (kbd "C-x v U") #'git-gutter2-cached)
+(global-set-key (kbd "C-x v p") #'git-gutter2-stage-hunk)
+(global-set-key (kbd "C-x v =") #'git-gutter2-popup-hunk)
+(global-set-key (kbd "C-x v r") #'git-gutter2-revert-hunk)
+(global-set-key (kbd "C-x v e") #'git-gutter2-end-of-hunk)
 
 (custom-set-variables
  '(git-gutter2-verbosity 4)
