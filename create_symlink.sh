@@ -33,19 +33,10 @@ ln -sf $PWD/aspell.conf ~/.aspell.conf
 # Spellunker
 ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 
-# Python
-## REPL
 install -d ~/.config
-ln -sf $PWD/python/pythonsetup ~/.pythonsetup
-ln -sf $PWD/python/flake8 ~/.config/flake8
-
-## ipython
-IPYTHON_DIR=${HOME}/.config/ipython/profile_default
-install -d ${IPYTHON_DIR}
-ln -sf $PWD/python/ipython_config.py $IPYTHON_DIR
 
 ## golang
-PECO_DIR=~/.peco
+PECO_DIR=~/.config/peco
 install -d ${PECO_DIR}
 ln -sf $PWD/golang/config.json ${PECO_DIR}/config.json
 

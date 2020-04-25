@@ -106,25 +106,24 @@ export TERM=xterm-256color
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias ls='ls --color -F'
-    if [[ ! -e ~/.dir_colors ]]; then
-        dircolors -p > ~/.dir_colors
-    fi
-    eval `dircolors ~/.dir_colors -b`
+  alias ls='ls --color -F'
+  if [[ ! -e ~/.dir_colors ]]; then
+    dircolors -p > ~/.dir_colors
+  fi
+  eval `dircolors ~/.dir_colors -b`
 else
-    # macOS
-    if which gls > /dev/null 2>&1; then
-        alias ls='gls --color -F'
-    fi
-    ## for compiling Emacs
-    path=(/usr/local/opt/texinfo/bin(N-/) $path)
+  # macOS
+  if which gls > /dev/null 2>&1; then
+    alias ls='gls --color -F'
+  fi
+  ## for compiling Emacs
+  path=(/usr/local/opt/texinfo/bin(N-/) $path)
 fi
 
 # dictionary
 export EIJIRO_DIR=${HOME}/local/dict
 
 # alias
-alias rdesktop='rdesktop -x l -a 16 -g 90%'
 alias grep='grep --color=always'
 alias e='emacsclient'
 alias s='git st '
@@ -132,21 +131,13 @@ alias d='git diff '
 alias dw='git diff --word-diff '
 alias dc='git diff --cached '
 alias W='weblio'
-alias cdep='cde >/dev/null && cdp && pwd'
 
-# dstat
-alias dstat-full='dstat -Tclmdrn'
-alias dstat-mem='dstat -Tclm'
-alias dstat-cpu='dstat -Tclr'
-alias dstat-net='dstat -Tclnd'
-alias dstat-disk='dstat -Tcldr'
-
-# send to clipboard for each platform
+# # send to clipboard for each platform
 if which pbcopy >/dev/null 2>&1 ; then
-    alias -g C='| pbcopy'
+  alias -g C='| pbcopy'
 elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    alias -g C='| xsel --input --clipboard'
+  # Linux
+  alias -g C='| xsel --input --clipboard'
 fi
 
 # PROMPT
@@ -169,20 +160,15 @@ export INFOPATH=/usr/local/share/info:/usr/share/info
 # Perl
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
 if [[ -d ~/.plenv/bin ]]; then
-    path=($HOME/.plenv/bin $path)
-    eval "$(plenv init -)"
+  path=($HOME/.plenv/bin $path)
+  eval "$(plenv init -)"
 fi
 
 # Python
 if [[ -e ~/local/python3/bin/activate ]]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    source ~/local/python3/bin/activate
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  source ~/local/python3/bin/activate
 fi
-export PYTHONSTARTUP=~/.pythonsetup
-
-function ipython() {
-    env LESS="-r" ipython $@
-}
 
 # node.js
 path=(~/local/node/bin(N-/) $path)
@@ -190,56 +176,38 @@ path=(~/local/node/bin(N-/) $path)
 ## Cask
 path=(~/.cask/bin(N-/) $path)
 
-# haskell setting
-path=(~/.cabal/bin(N-/) $path)
-
-function godoc() {
-    if [[ "$1" == "" ]]; then
-        godocp
-    else
-        command godoc $@ | less
-    fi
-}
-
 # Go Language
 if [[ -e /opt/go/bin/go ]]; then
-    path=(/opt/go/bin $path)
-    export GOROOT=/opt/go
+  path=(/opt/go/bin $path)
+  export GOROOT=/opt/go
 fi
 
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
-which direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
-
 # Rust
 path=(~/.cargo/bin(N-/) $path)
 
-# Heroku
-path=(/usr/local/heroku/bin(N-/) $path)
-
 # .NET core
 path=(/usr/local/share/dotnet(N-/) $path)
-
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
 zstyle ':vcs_info:*' actionformats '[%s]-(%b|%a)'
 function precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        stashes=$(git stash list 2>/dev/null | wc -l)
-        if [ ${stashes} -eq 0 ]; then
-            psvar[2]=""
-        else
-            psvar[2]="@${stashes// /}"
-        fi
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    stashes=$(git stash list 2>/dev/null | wc -l)
+    if [ ${stashes} -eq 0 ]; then
+      psvar[2]=""
+    else
+      psvar[2]="@${stashes// /}"
     fi
+  fi
 }
 _DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
 RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{yellow}%2v%f|)"%b${_DIRPART}
@@ -263,7 +231,7 @@ fi
 
 # for git completion(too slowly in big repository)
 function __git_files () {
-    _wanted files expl 'local files' _files
+  _wanted files expl 'local files' _files
 }
 
 ## github browse
