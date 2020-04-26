@@ -1,9 +1,0 @@
-function cdg() {
-    local godir
-    godir=$(gopkgs | sort | grep -Ev '/?(vendor|internal)/?' | peco)
-    if [ "$godir" == "" ]; then
-        return
-    fi
-
-    cd $GOPATH/src/$godir
-}

@@ -1,3 +1,0 @@
-function dired() {
-    emacsclient -e "(dired \"${1:-$PWD}\")"
-}

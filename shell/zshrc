@@ -47,7 +47,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
 # Disable completion command
-# following command completion is too long.
+# following command completion is too slow.
 compdef -d java
 
 # not exit Ctrl-D
@@ -221,12 +221,12 @@ zstyle ':filter-select' case-insensitive yes
 
 # zaw : anything
 if [[ -e ~/.zsh/zaw/zaw.zsh ]]; then
-    source ~/.zsh/zaw/zaw.zsh
-    ZAW_EDITOR='vim'
-    bindkey '^x^x' zaw-cdr
-    bindkey '^xd' zaw-git-directories
-    bindkey '^xb' zaw-git-recent-branches
-    bindkey '^x^f' zaw-git-files
+  source ~/.zsh/zaw/zaw.zsh
+  ZAW_EDITOR='vim'
+  bindkey '^x^x' zaw-cdr
+  bindkey '^xd' zaw-git-directories
+  bindkey '^xb' zaw-git-recent-branches
+  bindkey '^x^f' zaw-git-files
 fi
 
 # for git completion(too slowly in big repository)
@@ -238,7 +238,6 @@ function __git_files () {
 bindkey -s "^Xww" " hub browse"
 bindkey -s "^Xwi" " hub browse -- issues"
 bindkey -s "^Xwp" " hub browse -- pulls"
-bindkey -s "^Xwu" " hub browse -u"
 
 ## My commands
 zle -N peco-history _peco-history
@@ -246,17 +245,12 @@ zle -N delete_previous_word _delete_previous_word
 bindkey '^X^R' peco-history
 bindkey '^[^U' delete_previous_word
 
-autoload -Uz _git_browse
-autoload -Uz us_keyboard
 autoload -Uz cde
 autoload -Uz cdp
-autoload -Uz cdg
-autoload -Uz dired
 autoload -Uz _peco-history
 autoload -Uz _delete_previous_word
 
-## Last
-# setting global alias for avoiding conflict variable name
+# Global alias should be set end of zshrc for avoding variable name confliction
 alias -g L='|less -R'
 alias -g G='|grep'
 alias -g P='|peco'
