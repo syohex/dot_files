@@ -25,7 +25,6 @@
      ("NO_ACTION" . "brown1"))))
 
 (with-eval-after-load 'org
-  (org-editutil-setup)
   ;; function of org-open-at-point
   (setf (cdr (assoc 'file org-link-frame-setup)) #'find-file)
 
