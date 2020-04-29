@@ -21,6 +21,10 @@
 (with-eval-after-load 'compile
   (add-hook 'compilation-filter-hook 'my/colorize-compilation-buffer))
 
+(with-eval-after-load 'term-mode
+  (define-key term-mode-map (kbd "C-z") elscreen-map)
+  (define-key term-raw-map (kbd "C-z") elscreen-map))
+
 ;; eshell
 (custom-set-variables
  '(eshell-banner-message "")
