@@ -1,11 +1,11 @@
 function _delete_previous_word () {
-    local lbuf
-    lbuf=$LBUFFER
+  local lbuf
+  lbuf=$LBUFFER
 
-    if [[ "$lbuf" == "" ]]; then
-        return
-    fi
+  if [[ "$lbuf" == "" ]]; then
+    return
+  fi
 
-    LBUFFER=$(perl -we '@a = split / /, shift; pop @a; print $_, " " for @a;' $lbuf)
-    CURSOR=$#LBUFFER
+  LBUFFER=$(perl -we '@a = split / /, shift; pop @a; print $_, " " for @a;' $lbuf)
+  CURSOR=$#LBUFFER
 }

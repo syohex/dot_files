@@ -1,13 +1,21 @@
 ## Chdir to directory of current buffer
 function cde() {
-    local EMACS_CWD=$(emacsclient -e \
-      '(editutil-current-buffer-directory)' | sed 's/^"\(.*\)"$/\1/' )
+  local in_emacs
+  local arg
+  if [[ -n $INSIDE_EMACS ]]; then
+    arg='t'
+  else
+    arg='nil'
+  fi
 
-    if [ "$EMACS_CWD" == "nil" ]; then
-        echo "Failed cde"
-        return 1
-    fi
+  local emacs_cwd=$(emacsclient -e \
+    "(editutil-current-buffer-directory $arg)" | sed 's/^"\(.*\)"$/\1/' )
 
-    cd "$EMACS_CWD"
-    pwd
+  if [[ "$emacs_cwd" == "nil" ]]; then
+    echo "Failed cde"
+    return 1
+  fi
+
+  cd "$emacs_cwd"
+  pwd
 }
