@@ -7,7 +7,11 @@
 (global-set-key (kbd "C-x %") 'anzu2-replace-at-cursor-thing)
 (define-key isearch-mode-map [remap isearch-query-replace]  #'anzu2-isearch-query-replace)
 (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu2-isearch-query-replace-regexp)
-(define-key isearch-mode-map (kbd "M-a") 'avy-isearch)
+
+;; anzu
+(global-anzu2-mode +1)
+(custom-set-variables
+ '(anzu2-mode-lighter ""))
 
 ;; electrict-mode
 (custom-set-variables
@@ -20,23 +24,13 @@
     java-mode
     python-mode
     ruby-mode
-    erlang-mode
-    elixir-mode
-    prolog-mode
-    haskell-mode
-    inferior-haskell-mode
     sh-mode
     js-mode
     go-mode
     css-mode
     cmake-mode
-    coffee-mode
-    tuareg-mode
-    tuareg-interactive-mode
     cperl-mode
-    perl6-mode
     markdown-mode
-    org-mode
     gfm-mode
     sql-mode))
 
