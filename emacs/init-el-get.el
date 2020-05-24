@@ -68,25 +68,25 @@
 (el-get-bundle yasnippet)
 
 ;; C/C++
-(el-get-bundle clang-format
-  :type http
-  :url "https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/clang-format.el")
+;; (el-get-bundle clang-format
+;;   :type http
+;;   :url "https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/clang-format.el")
 
 ;; Go
 (el-get-bundle go-mode)
-(el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
-(el-get-bundle golint
-  :type http
-  :url "https://raw.githubusercontent.com/golang/lint/master/misc/emacs/golint.el")
-(el-get-bundle go-guru
-  :type http
-  :url "https://raw.githubusercontent.com/dominikh/go-mode.el/master/go-guru.el")
+;;(el-get-bundle syohex/emacs-go-eldoc :name go-eldoc)
+;;(el-get-bundle golint
+;;  :type http
+;;  :url "https://raw.githubusercontent.com/golang/lint/master/misc/emacs/golint.el")
+;;(el-get-bundle go-guru
+;;  :type http
+;;  :url "https://raw.githubusercontent.com/dominikh/go-mode.el/master/go-guru.el")
 ;;(el-get-bundle nsf/gocode :load-path ("emacs") :name go-autocomplete)
-(el-get-bundle nsf/gocode
-  :load-path ("emacs-company") :name company-go
-  :depends (company-mode))
-(el-get-bundle syohex/emacs-go-impl :name go-impl)
-(el-get-bundle syohex/emacs-go-add-tags :name go-add-tags)
+;; (el-get-bundle nsf/gocode
+;;   :load-path ("emacs-company") :name company-go
+;;   :depends (company-mode))
+;; (el-get-bundle syohex/emacs-go-impl :name go-impl)
+;; (el-get-bundle syohex/emacs-go-add-tags :name go-add-tags)
 
 ;; Emacs Lisp
 (el-get-bundle purcell/elisp-slime-nav :name elisp-slime-nav)
@@ -115,4 +115,4 @@
 (el-get-bundle emacs-helm/helm-descbinds)
 (el-get-bundle syohex/emacs-helm-gtags2 :name helm-gtags2)
 (el-get-bundle syohex/emacs-helm-ag2 :name helm-ag2)
-(el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
+;; (el-get-bundle syohex/emacs-helm-godoc :name helm-godoc)
