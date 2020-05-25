@@ -229,9 +229,9 @@ function __git_files () {
 }
 
 ## github browse
-bindkey -s "^Xww" " hub browse"
-bindkey -s "^Xwi" " hub browse -- issues"
-bindkey -s "^Xwp" " hub browse -- pulls"
+bindkey -s "^Xww" " hub browse >/dev/null 2>/dev/null"
+bindkey -s "^Xwi" " hub browse -- issues >/dev/null 2>/dev/null"
+bindkey -s "^Xwp" " hub browse -- pulls>/dev/null 2>/dev/null"
 
 ## My commands
 zle -N peco-history _peco-history
