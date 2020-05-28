@@ -3,6 +3,7 @@
 
 (custom-set-variables
  '(markdown-indent-on-enter nil)
+ '(markdown-gfm-use-electric-backquote nil)
  '(markdown-make-gfm-checkboxes-buttons))
 
 (with-eval-after-load 'markdown-mode
@@ -13,8 +14,7 @@
   (define-key markdown-mode-map (kbd "C-c C-c C-i") 'markdown-insert-image)
   (define-key markdown-mode-map (kbd "C-c .") 'org-time-stamp)
 
-  (define-key gfm-mode-map (kbd "C-c C-c C-c") 'markdown-insert-gfm-code-block)
-  (define-key gfm-mode-map (kbd "`") nil))
+  (define-key gfm-mode-map (kbd "C-c C-c C-c") 'markdown-insert-gfm-code-block))
 
 (defun my/markdown-mode-hook ()
   (setq-local company-backends '(company-ispell company-files company-dabbrev))
