@@ -168,6 +168,9 @@ fi
 # node.js
 path=(~/local/node/bin(N-/) $path)
 
+# ruby
+path=(~/local/ruby/bin(N-/) $path)
+
 ## Cask
 path=(~/.cask/bin(N-/) $path)
 
