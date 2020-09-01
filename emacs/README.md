@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- Emacs 25.0 or higher
-- `git`, `mercurial`
+- Emacs 27.1 or development version
+- `git`
 
 
 ## Launch Emacs same as my configuration

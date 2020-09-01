@@ -1,4 +1,5 @@
-! Swap Ctrl, CapsLock. now use Gnome keyboard setting
+! This configuration is for Japanese thinkpad keyboard
+!! Swap Ctrl, CapsLock. now use Gnome keyboard setting
 remove Lock = Caps_Lock
 remove Control = Control_L
 keysym Control_L = Caps_Lock
