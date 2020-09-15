@@ -187,7 +187,7 @@ path=($GOPATH/bin $path)
 path=(~/.cargo/bin(N-/) $path)
 
 # .NET core
-path=(/usr/local/share/dotnet(N-/) $path)
+path=(/usr/local/share/dotnet(N-/) ~/.dotnet/tools(N-/) $path)
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
