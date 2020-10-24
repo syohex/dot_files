@@ -254,4 +254,4 @@ alias -g G='|grep'
 alias -g P='|peco'
 alias -g J='|jq'
 
-path=($HOME/bin $path)
+path=($HOME/bin $HOME/local/bin $path)
