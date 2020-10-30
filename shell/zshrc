@@ -102,6 +102,19 @@ REPORTTIME=10
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
+function eval_cache() {
+    cmd=$1
+    name=$2
+
+    cache_file="/tmp/$name"
+    if [[ ! -e $cache_file ]]; then
+        eval $cmd > $cache_file
+        zcompile $cache_file
+    fi
+
+    source $cache_file
+}
+
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
@@ -111,7 +124,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if [[ ! -e ~/.dir_colors ]]; then
     dircolors -p > ~/.dir_colors
   fi
-  eval `dircolors ~/.dir_colors -b`
+  eval_cache 'dircolors ~/.dir_colors -b' 'dir_colors.cache'
+  #eval `dircolors ~/.dir_colors -b`
 else
   # macOS
   alias -g C='| pbcopy'
@@ -156,7 +170,8 @@ export INFOPATH=/usr/local/share/info:/usr/share/info
 export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
 if [[ -d ~/.plenv/bin ]]; then
   path=($HOME/.plenv/bin $path)
-  eval "$(plenv init -)"
+  eval_cache 'plenv init -' 'plenv.cache'
+  #eval "$(plenv init -)"
 fi
 
 # Python
