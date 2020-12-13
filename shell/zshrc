@@ -124,14 +124,17 @@ zstyle ':completion:*' list-colors $LIST_COLOR
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias -g C='| xsel --input --clipboard'
   alias ls='ls --color -F'
+  alias open='xdg-open'
+  alias start='xdg-open'
+
   if [[ ! -e ~/.dir_colors ]]; then
     dircolors -p > ~/.dir_colors
   fi
   eval_cache 'dircolors ~/.dir_colors -b' 'dir_colors.cache'
-  #eval `dircolors ~/.dir_colors -b`
 else
   # macOS
   alias -g C='| pbcopy'
+  alias start='open'
   if command -v gls > /dev/null; then
     alias ls='gls --color -F'
   fi
