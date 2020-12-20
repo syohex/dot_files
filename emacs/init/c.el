@@ -19,6 +19,7 @@
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . c++-mode))
 
 (with-eval-after-load 'c-mode
+  (define-key c-mode-base-map (kbd "C-c o") #'ff-find-other-file)
   (define-key c-mode-base-map (kbd "C-c C-s") #'clang-format-buffer))
 
 (with-eval-after-load 'asm-mode
