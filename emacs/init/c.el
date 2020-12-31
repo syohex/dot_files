@@ -22,5 +22,8 @@
   (define-key c-mode-base-map (kbd "C-c o") #'ff-find-other-file)
   (define-key c-mode-base-map (kbd "C-c C-s") #'clang-format-buffer))
 
+(with-eval-after-load 'c++-mode
+  (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file))
+
 (with-eval-after-load 'asm-mode
   (define-key asm-mode-map (kbd "RET") 'newline))
