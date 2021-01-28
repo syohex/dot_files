@@ -206,6 +206,7 @@ path=($GOPATH/bin $path)
 
 # Rust
 path=(~/.cargo/bin(N-/) $path)
+alias rust-check='cargo clippy --all-targets -- -W clippy::pedantic'
 
 # .NET core
 path=(/usr/local/share/dotnet(N-/) ~/.dotnet/tools(N-/) $path)
