@@ -196,9 +196,9 @@ path=(~/local/ruby/bin(N-/) $path)
 path=(~/.cask/bin(N-/) $path)
 
 # Go Language
-if [[ -e /opt/go/bin/go ]]; then
-  path=(/opt/go/bin $path)
-  export GOROOT=/opt/go
+if [[ -e ~/local/go/bin/go ]]; then
+  path=(~/local/go/bin $path)
+  export GOROOT=$HOME/local/go
 fi
 
 export GOPATH=$HOME/go
