@@ -1,0 +1,34 @@
+{
+    "C_Cpp.updateChannel": "Insiders",
+    "vim.easymotion": true,
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "window.zoomLevel": 0,
+    "git.autofetch": true,
+    "files.insertFinalNewline": true,
+    "sqltools.useNodeRuntime": true,
+    "extensions.ignoreRecommendations": false,
+    "vim.handleKeys": {
+        "<C-d>": false,
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-n>": false,
+        "<C-c>": false,
+        "<C-x>": false,
+        "<C-v>": false,
+        "<C-b>": false,
+        "<C-j>": false,
+        "<C-k>": false
+    },
+    "editor.columnSelection": true,
+    "[rust]": {
+        "editor.defaultFormatter": "matklad.rust-analyzer"
+    },
+    "workbench.startupEditor": "none",
+    "jupyter.jupyterServerType": "local",
+    "cSpell.customUserDictionaries": [
+    ],
+    "cSpell.userWords": [
+        "nums"
+    ],
+}

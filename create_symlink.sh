@@ -43,3 +43,8 @@ ln -sf $PWD/golang/config.json ${PECO_DIR}/config.json
 ## idea
 ln -sf $PWD/idea/ideavimrc ~/.ideavimrc
 
+## Visual Studio Code
+VSCODE_USER_DIR=~/.config/Code/User
+install -d ${VSCODE_USER_DIR}
+ln -sf $PWD/vscode/settings.json ${VSCODE_USER_DIR}/settings.json
+ln -sf $PWD/vscode/keybindings.json ${VSCODE_USER_DIR}/keybindings.json
