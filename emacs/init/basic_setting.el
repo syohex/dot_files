@@ -27,11 +27,11 @@
 (menu-bar-mode -1)
 (line-number-mode 1)
 (column-number-mode 1)
+(tool-bar-mode -1)
 (setq-default horizontal-scroll-bar nil)
 
 (when window-system
-  (set-scroll-bar-mode 'nil)
-  (tool-bar-mode 0))
+  (set-scroll-bar-mode 'nil))
 
 ;; for GC
 (setq-default gc-cons-threshold (* gc-cons-threshold 10))
