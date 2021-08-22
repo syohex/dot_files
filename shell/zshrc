@@ -159,7 +159,7 @@ alias W='weblio'
 autoload colors
 colors
 returncode="%(?..%{$fg[red]%} %Berr=%?%b %{${reset_color}%})"
-PROMPT="%B%{${fg[yellow]}%}%n@%m:%{${reset_color}%}%b${returncode}%# "
+PROMPT="%B%{${fg[yellow]}%}%m:%{${reset_color}%}%b${returncode}%# "
 
 # EDITOR
 export EDITOR=vim
