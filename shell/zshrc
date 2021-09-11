@@ -42,7 +42,6 @@ bindkey '^[^K' delete-word
 bindkey -s '^W' '^[^B^[^K'
 
 # removed keys(for miss typing)
-# I want to bind good function for these keys!!
 bindkey -r '^J'
 
 # for incremental search
@@ -253,11 +252,6 @@ fi
 function __git_files () {
   _wanted files expl 'local files' _files
 }
-
-## github browse
-bindkey -s "^Xww" " hub browse >/dev/null 2>/dev/null"
-bindkey -s "^Xwi" " hub browse -- issues >/dev/null 2>/dev/null"
-bindkey -s "^Xwp" " hub browse -- pulls>/dev/null 2>/dev/null"
 
 ## My commands
 zle -N peco-history _peco-history
