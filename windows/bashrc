@@ -1,0 +1,46 @@
+shopt -s globstar
+export PYTHONIOENCODING=utf-8
+
+alias ls='ls -F --color'
+alias s='git status -s'
+alias d='git diff'
+alias dc='git diff --cached'
+alias open='start'
+
+alias B='cd /c/dev'
+
+stty start undef
+stty stop undef
+
+function cdp() {
+  local dir
+  dir=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ $? = 0 ]]; then
+    cd $(cygpath "$dir")
+  else
+    echo "Here is not git repository"
+  fi
+}
+
+function parse_git_branch() {
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function show_exit_code() {
+  local exit_code=$?
+  if [[ $exit_code == 0 ]]; then
+    printf " \033[0;32mOK\33[0m"
+  else
+    printf " \033[0;31mErr=${exit_code}\33[0m"
+  fi
+}
+
+export PS1='\[\e[1;33m\]win:\[\e[0m\] \[\e[1;36m\]\w\[\e[0m\]`show_exit_code`\[\e[35m\] `parse_git_branch`\[\e[0m\]\n% '
+bind '"\C-w": "\eb\ed"'
+
+export PATH=$HOME/local/bin:$PATH
+
+if command -v >/dev/null 2>/dev/null; then
+  eval "$(zoxide init bash)"
+  alias z='zi'
+fi
