@@ -3,7 +3,6 @@
     "vim.easymotion": true,
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
-    "window.zoomLevel": 0,
     "git.autofetch": true,
     "files.insertFinalNewline": true,
     "sqltools.useNodeRuntime": true,

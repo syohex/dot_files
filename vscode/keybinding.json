@@ -6,5 +6,14 @@
     {
         "key": "ctrl+shift+tab",
         "command": "workbench.action.previousEditor"
+    },
+    // for linux
+    {
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "alt+shift+f",
+        "command": "editor.action.formatDocument"
     }
 ]
