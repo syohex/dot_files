@@ -1,5 +1,5 @@
 # -*- mode:shell-script -*-
-path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin)
+path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /snap/bin)
 
 # completion
 fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
@@ -195,11 +195,6 @@ path=(~/local/ruby/bin(N-/) $path)
 path=(~/.cask/bin(N-/) $path)
 
 # Go Language
-if [[ -e ~/local/go/bin/go ]]; then
-  path=(~/local/go/bin $path)
-  export GOROOT=$HOME/local/go
-fi
-
 export GOPATH=$HOME/go
 path=($GOPATH/bin $path)
 
