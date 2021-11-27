@@ -29,5 +29,25 @@
     ],
     "cSpell.userWords": [
         "nums"
-    ]
+    ],
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    "[html]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    }
 }
