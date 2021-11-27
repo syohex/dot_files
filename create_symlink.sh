@@ -35,6 +35,9 @@ ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
 
 install -d ~/.config
 
+# SQLite
+ln -sf $PWD/sql/sqliterc ~/.sqliterc
+
 ## golang
 PECO_DIR=~/.config/peco
 install -d ${PECO_DIR}
