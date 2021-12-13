@@ -1,6 +1,7 @@
 {
     "C_Cpp.updateChannel": "Insiders",
     "vim.easymotion": true,
+    "vim.leader": "<space>",
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "git.autofetch": true,
