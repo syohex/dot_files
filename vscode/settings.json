@@ -24,12 +24,6 @@
         "editor.defaultFormatter": "matklad.rust-analyzer"
     },
     "workbench.startupEditor": "none",
-    "jupyter.jupyterServerType": "local",
-    "cSpell.customUserDictionaries": [
-    ],
-    "cSpell.userWords": [
-        "nums"
-    ],
     "[javascript]": {
         "editor.tabSize": 2,
         "editor.detectIndentation": false

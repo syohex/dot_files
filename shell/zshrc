@@ -188,9 +188,6 @@ fi
 # node.js
 path=(~/local/node/bin(N-/) $path)
 
-# ruby
-path=(~/local/ruby/bin(N-/) $path)
-
 ## Cask
 path=(~/.cask/bin(N-/) $path)
 
@@ -203,7 +200,7 @@ path=(~/.cargo/bin(N-/) $path)
 alias rust-check='cargo clippy --all-targets -- -W clippy::pedantic'
 
 # .NET core
-path=(/usr/local/share/dotnet(N-/) ~/.dotnet/tools(N-/) $path)
+path=(~/.dotnet/tools(N-/) $path)
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
