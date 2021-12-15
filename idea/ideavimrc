@@ -1,3 +1,6 @@
+let mapleader = "\<Space>"
+
+set easymotion
 set surround
 set visualbell
 set noerrorbells
