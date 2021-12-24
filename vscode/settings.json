@@ -18,7 +18,8 @@
         "<C-v>": false,
         "<C-b>": false,
         "<C-j>": false,
-        "<C-k>": false
+        "<C-k>": false,
+        "<C-t>": false
     },
     "editor.columnSelection": true,
     "[rust]": {
