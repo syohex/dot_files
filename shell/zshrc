@@ -200,7 +200,7 @@ path=(~/.cargo/bin(N-/) $path)
 alias rust-check='cargo clippy --all-targets -- -W clippy::pedantic'
 
 # .NET core
-path=(~/.dotnet/tools(N-/) $path)
+path=(~/.dotnet(N-/) $path)
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
