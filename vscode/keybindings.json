@@ -15,5 +15,14 @@
     {
         "key": "alt+shift+f",
         "command": "editor.action.formatDocument"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     }
 ]
