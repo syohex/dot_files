@@ -196,7 +196,7 @@ path=(~/.cask/bin(N-/) $path)
 if [[ -d ~/local/go ]]; then
   export GOROOT=$HOME/local/go
   export GOPATH=$HOME/go
-  path=($GOPATH/bin $path)
+  path=($GOROOT/bin $GOPATH/bin $path)
 fi
 
 # Rust
