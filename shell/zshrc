@@ -187,20 +187,24 @@ fi
 
 # node.js
 path=(~/local/node/bin(N-/) $path)
+path=(~/.deno/bin(N-/) $path)
 
 ## Cask
 path=(~/.cask/bin(N-/) $path)
 
 # Go Language
-export GOPATH=$HOME/go
-path=($GOPATH/bin $path)
+if [[ -d ~/local/go ]]; then
+  export GOROOT=$HOME/local/go
+  export GOPATH=$HOME/go
+  path=($GOPATH/bin $path)
+fi
 
 # Rust
 path=(~/.cargo/bin(N-/) $path)
 alias rust-check='cargo clippy --all-targets -- -W clippy::pedantic'
 
 # .NET core
-path=(~/.dotnet(N-/) $path)
+path=(~/.dotnet(N-/) ~/.dotnet/tools(N-/) $path)
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
