@@ -16,6 +16,7 @@ WORDCHARS="${WORDCHARS}:"
 
 # insert last word
 autoload -Uz smart-insert-last-word
+zstyle :insert-last-word match '*[[:alnum:]/\\]*'
 zle -N insert-last-word smart-insert-last-word
 
 # History
