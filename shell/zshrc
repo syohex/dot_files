@@ -150,10 +150,9 @@ alias grep='grep --color=always'
 alias e='emacsclient'
 alias s='git st '
 alias d='git diff '
-alias D='env GIT_PAGER=delta git diff '
 alias dw='git diff --word-diff '
 alias dc='git diff --cached '
-alias W='weblio'
+alias b='gh browse'
 
 # PROMPT
 autoload colors
