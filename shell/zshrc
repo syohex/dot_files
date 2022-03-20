@@ -142,9 +142,6 @@ else
   path=(/usr/local/opt/texinfo/bin(N-/) $path)
 fi
 
-# dictionary
-export EIJIRO_DIR=${HOME}/local/dict
-
 # alias
 alias grep='grep --color=always'
 alias e='emacsclient'
@@ -203,8 +200,11 @@ fi
 path=(~/.cargo/bin(N-/) $path)
 alias rust-check='cargo clippy --all-targets -- -W clippy::pedantic'
 
-# .NET core
-path=(~/.dotnet(N-/) ~/.dotnet/tools(N-/) $path)
+# .NET
+if [[ -d ~/.dotnet ]] then
+  path=(~/.dotnet ~/.dotnet/tools $path)
+  export DOTNET_ROOT=$HOME/.dotnet
+fi
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
