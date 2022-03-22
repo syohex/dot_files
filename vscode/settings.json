@@ -47,5 +47,6 @@
     "[html]": {
         "editor.tabSize": 2,
         "editor.detectIndentation": false
-    }
+    },
+    "FSharp.dotnetRoot": "/home/shohei/.dotnet"
 }
