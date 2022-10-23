@@ -10,7 +10,7 @@
   (set-cursor-color "chartreuse2"))
 
 (add-hook 'input-method-activate-hook 'my/input-method-active-hook)
-(add-hook 'input-method-inactivate-hook 'my/input-method-inactivate-hook)
+(add-hook 'input-method-deactivate-hook 'my/input-method-inactivate-hook)
 
 ;; This value should be set before loading `mozc.el'
 (custom-set-variables
