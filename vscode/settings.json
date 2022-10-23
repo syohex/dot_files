@@ -1,12 +1,10 @@
 {
-    "C_Cpp.updateChannel": "Insiders",
     "vim.easymotion": true,
     "vim.leader": "<space>",
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "git.autofetch": true,
     "files.insertFinalNewline": true,
-    "sqltools.useNodeRuntime": true,
     "extensions.ignoreRecommendations": false,
     "vim.handleKeys": {
         "<C-d>": false,
@@ -20,11 +18,12 @@
         "<C-j>": false,
         "<C-k>": false,
         "<C-t>": false,
-        "<C-h>": false
+        "<C-h>": false,
+        "<C-.>": false,
     },
     "editor.columnSelection": true,
     "[rust]": {
-        "editor.defaultFormatter": "matklad.rust-analyzer"
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "workbench.startupEditor": "none",
     "[javascript]": {
