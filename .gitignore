@@ -1,5 +1,6 @@
 *~
 *.pch
+*.elc
 
 # for trial my emacs environment
 emacs/ac-comphist.dat

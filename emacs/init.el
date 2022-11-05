@@ -1,4 +1,4 @@
-;; for lancher (package-initialize)
+;; for lancher (package-initialize) -*- lexical-binding: t -*-
 (unless load-file-name
   (cd (getenv "HOME")))
 
@@ -67,24 +67,8 @@
 (el-get-bundle vline)
 (el-get-bundle col-highlight)
 
-;; Search
-(el-get-bundle syohex/emacs-anzu2 :name anzu2)
-
-;; moving cursor
-(el-get-bundle goto-chg)
-
-;; Pair
-(el-get-bundle paredit)
-
 ;; Buffer
 (el-get-bundle emacs-jp/elscreen)
-(el-get-bundle popwin)
-(el-get-bundle lukhas/buffer-move)
-
-;; Directory
-(el-get-bundle syohex/emacs-dired-k2 :name dired-k2)
-
-;; auto-complete
 (el-get-bundle auto-complete/popup-el :name popup)
 
 ;; company
@@ -93,31 +77,21 @@
 ;; helm
 (el-get-bundle helm)
 
-;; Repeat utility
 (el-get-bundle myuhe/smartrep.el :name smartrep)
 
-;; C/C++
-(el-get-bundle emacsmirror/clang-format)
-
-;; Go
-(el-get-bundle go-mode)
-
-;; Emacs Lisp
+(el-get-bundle paredit)
 (el-get-bundle purcell/elisp-slime-nav)
-
-;; Build tool
+(el-get-bundle dominikh/go-mode.el)
+(el-get-bundle emacsmirror/clang-format)
 (el-get-bundle cmake-mode)
-
-;; Markup language
-(el-get-bundle markdown-mode)
+(el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle yoshiki/yaml-mode)
 
-;; shell
+(el-get-bundle syohex/emacs-anzu2 :name anzu2)
 (el-get-bundle syohex/emacs-quickrun2 :name quickrun2)
-
-;; VCS
 (el-get-bundle syohex/emacs-git-gutter2 :name git-gutter2)
 (el-get-bundle syohex/emacs-git-messenger2 :name git-messenger2)
+(el-get-bundle syohex/emacs-dired-k2 :name dired-k2)
 
 ;; key
 (el-get-bundle which-key)
@@ -552,7 +526,7 @@
  '(git-gutter2-modified-sign " ")
  '(git-gutter2-deleted-sign " "))
 
-(add-hook 'focus-in-hook #'git-gutter2-update-all-windows)
+(add-hook 'after-focus-change-function #'git-gutter2-update-all-windows)
 
 (smartrep-define-key
  global-map  "C-x" '(("p" . 'git-gutter2-previous-hunk)
@@ -611,7 +585,7 @@
 
 ;;;; global key setting
 (global-set-key (kbd "M-,") #'pop-tag-mark)
-(global-set-key (kbd "M-*") #'tags-loop-continue)
+(global-set-key (kbd "M-*") #'fileloop-continue)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-=") 'yas-insert-snippet)
 (global-set-key (kbd "C-x z") #'zoom-window2-zoom)
@@ -658,12 +632,6 @@
 (global-set-key (kbd "M-g f") #'helm-do-ag2-this-file)
 (global-set-key (kbd "M-g r") #'recompile)
 (global-set-key (kbd "M-g q") #'quickrun2)
-
-;;; buffer-move
-(global-set-key (kbd "M-g h") #'buf-move-left)
-(global-set-key (kbd "M-g j") #'buf-move-down)
-(global-set-key (kbd "M-g k") #'buf-move-up)
-(global-set-key (kbd "M-g l") #'buf-move-right)
 
 ;; font
 ;; Linux specific configuration
