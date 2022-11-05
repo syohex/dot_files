@@ -5,19 +5,6 @@ set -x
 # Emacs
 install -d ~/.emacs.d
 ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
-ln -sf ${PWD}/emacs/my_snippets ~/.emacs.d/
-ln -sf ${PWD}/emacs/init-el-get.el ~/.emacs.d
-ln -sf ${PWD}/emacs/init-loader ~/.emacs.d
-
-## Use Emacs.app instead of pre-installed emacs on MacOSX
-EMACS_CLIENT_APP_PATH='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
-case "$OSTYPE" in
-  darwin*)
-    echo "Set up for MacOSX"
-    install -d ~/bin
-    ln -sf ${EMACS_CLIENT_APP_PATH} ~/bin/emacsclient
-    ;;
-esac
 
 # zsh
 install -d ~/.zsh

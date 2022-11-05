@@ -1,22 +1,14 @@
 ;;;; C and C++ and assembly language setting
 
 (defun my/c-mode-hook ()
+  (eglot-ensure)
   (c-set-style "k&r")
   (setq indent-tabs-mode t
         c-basic-offset 8)
-  (c-toggle-electric-state -1)
-  (setq-local company-backends '(company-clang company-dabbrev)))
+  (c-toggle-electric-state -1))
 
 (add-hook 'c-mode-hook #'my/c-mode-hook)
 (add-hook 'c++-mode-hook #'my/c-mode-hook)
-
-(defun my/objc-mode-hook ()
-  (setq c-basic-offset 4)
-  (c-toggle-electric-state -1)
-  (setq-local company-backends '(company-clang company-dabbrev)))
-
-(add-hook 'objc-mode-hook #'my/objc-mode-hook)
-(add-to-list 'auto-mode-alist '("\\.mm\\'" . c++-mode))
 
 (with-eval-after-load 'c-mode
   (define-key c-mode-base-map (kbd "C-c o") #'ff-find-other-file)

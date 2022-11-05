@@ -23,8 +23,3 @@
   (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
   (define-key go-mode-map (kbd ":") nil))
-
-(defun my/go-mode-hook ()
-  ;; (setq-local company-backends '(company-go company-files company-dabbrev))
-  ;;(delete 'ac-source-words-in-same-mode-buffers ac-sources)
-  (setq compile-command "go test"))

@@ -36,10 +36,6 @@
     global-map "C-q" '(("-" . 'goto-last-change)
                        ("+" . 'goto-last-change-reverse)))
 
-(smartrep-define-key
-    undo-tree-map "C-x" '(("u" . 'undo-tree-undo)
-                          ("U" . 'undo-tree-redo)))
-
 ;; editutil mappings
 (editutil-default-setup)
 (global-set-key (kbd "C-x c") ctl-x-4-map)

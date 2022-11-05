@@ -1,1 +1,0 @@
-../init/man_info.el
