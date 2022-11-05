@@ -7,9 +7,8 @@ PACKAGES="zsh tmux
     git
     emacs vim aspell ispell exuberant-ctags fonts-vlgothic nkf lv
     emacs-mozc emacs-mozc-bin mozc-server mozc-utils-gui
-    dia byzanz
-    curl w3m lftp jq
-    wmctrl xsel
+    bat exa
+    curl w3m jq
     porg"
 
 echo "Install packages:"

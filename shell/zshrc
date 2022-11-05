@@ -123,26 +123,19 @@ local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias -g C='| xsel --input --clipboard'
-  alias ls='ls --color -F'
   alias open='xdg-open'
   alias start='xdg-open'
-
-  if [[ ! -e ~/.dir_colors ]]; then
-    dircolors -p > ~/.dir_colors
-  fi
-  eval_cache 'dircolors ~/.dir_colors -b' 'dir_colors.cache'
 else
   # macOS
   alias -g C='| pbcopy'
   alias start='open'
-  if command -v gls > /dev/null; then
-    alias ls='gls --color -F'
-  fi
   ## for compiling Emacs
   path=(/usr/local/opt/texinfo/bin(N-/) $path)
 fi
 
 # alias
+alias ls='exa -F'
+alias bat="batcat --theme='OneHalfDark'"
 alias grep='grep --color=always'
 alias e='emacsclient'
 alias s='git st '
