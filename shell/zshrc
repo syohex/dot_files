@@ -105,19 +105,6 @@ REPORTTIME=10
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
-function eval_cache() {
-  cmd=$1
-  name=$2
-
-  cache_file="/tmp/$name"
-  if [[ ! -e $cache_file ]]; then
-      eval $cmd > $cache_file
-      zcompile $cache_file
-  fi
-
-  source $cache_file
-}
-
 # setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
@@ -129,8 +116,6 @@ else
   # macOS
   alias -g C='| pbcopy'
   alias start='open'
-  ## for compiling Emacs
-  path=(/usr/local/opt/texinfo/bin(N-/) $path)
 fi
 
 # alias
@@ -138,8 +123,8 @@ alias ls='exa -F'
 alias bat="batcat --theme='OneHalfDark'"
 alias grep='grep --color=always'
 alias e='emacsclient'
-alias s='git st '
-alias d='git diff '
+alias s='git status -s -b'
+alias d='git diff'
 alias dw='git diff --word-diff '
 alias dc='git diff --cached '
 alias b='gh browse'
@@ -161,14 +146,6 @@ export LESSCHARSET=utf-8
 # info
 export INFOPATH=/usr/local/share/info:/usr/share/info
 
-# Perl
-export PERLDOC_PAGER='less -R' # for new Pod::Perldoc
-if [[ -d ~/.plenv/bin ]]; then
-  path=($HOME/.plenv/bin $path)
-  eval_cache 'plenv init -' 'plenv.cache'
-  #eval "$(plenv init -)"
-fi
-
 # Python
 if [[ -e ~/local/python3/bin/activate ]]; then
   export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -177,10 +154,9 @@ fi
 
 # node.js
 path=(~/local/node/bin(N-/) $path)
-path=(~/.deno/bin(N-/) $path)
 
 ## Cask
-path=(~/.cask/bin(N-/) $path)
+path=(~/local/cask/bin(N-/) $path)
 
 # Go Language
 if [[ -d ~/local/go ]]; then
