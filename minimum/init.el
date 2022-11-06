@@ -9,10 +9,15 @@
     (eval-print-last-sexp)))
 
 (custom-set-variables
+ '(split-width-threshold 0)
+ '(read-file-name-completion-ignore-case t)
+ '(dabbrev-case-fold-search nil)
+ '(inhibit-startup-screen t)
+ '(find-file-visit-truename t)
+ '(large-file-warning-threshold (* 25 1024 1024))
  '(anzu2-deactivate-region t)
  '(anzu2-mode-lighter "")
  '(anzu2-replace-to-string-separator " => ")
- '(c-basic-offset 4)
  '(dired-auto-revert-buffer t)
  '(dired-dwim-target t)
  '(dired-recursive-copies 'always)
@@ -38,6 +43,11 @@
  '(show-paren-style 'expression)
  '(view-read-only t)
  '(warning-suppress-types '((el-get) ((package reinitialization)))))
+
+(setq gc-cons-threshold (* gc-cons-threshold 10)
+      ring-bell-function #'ignore)
+(setq-default indent-tabs-mode nil
+              echo-keystrokes 0)
 
 (el-get-bundle syohex/emacs-editutil :name editutil)
 
@@ -99,28 +109,19 @@
 (dolist (mode my/electric-pair-enabled-modes)
   (add-hook (intern (format "%s-hook" mode)) 'electric-pair-local-mode))
 
-;; smartrep
 (require 'smartrep)
 
-;; for GC
-(setq gc-cons-threshold (* gc-cons-threshold 10)
-      echo-keystrokes 0
-      large-file-warning-threshold (* 25 1024 1024))
-
-(setq-default indent-tabs-mode nil)
-
-;; saveplace
 (savehist-mode 1)
 (save-place-mode +1)
 
 ;; my key mapping
+(global-set-key [delete] 'delete-char)
 (global-set-key (kbd "M-ESC ESC") 'keyboard-quit)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'anzu2-query-replace-regexp)
 (global-set-key (kbd "ESC M-%") 'anzu2-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") 'anzu2-replace-at-cursor-thing)
-(global-set-key (kbd "C-M-l") 'goto-line)
 (global-set-key (kbd "C-M-z") 'helm-resume)
 (global-set-key (kbd "C-x C-i") 'helm-imenu)
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
@@ -130,20 +131,12 @@
 (global-set-key (kbd "M-g M-f") 'ffap)
 (global-set-key (kbd "M-g M-l") 'flymake-show-buffer-diagnostics)
 
-(setq dabbrev-case-fold-search nil)
-
-;; info for japanese
-(auto-compression-mode t)
-
-;; Coloring
 (global-font-lock-mode t)
-
-;; not highlight region
 (transient-mark-mode nil)
 
 ;; indicate last line
 (setq-default indicate-empty-lines t
-	      indicate-buffer-boundaries 'right)
+              indicate-buffer-boundaries 'right)
 
 ;; not create backup file
 (setq backup-inhibited t
@@ -152,12 +145,7 @@
 ;; Disable menu bar
 (menu-bar-mode -1)
 
-;; show paren
 (show-paren-mode 1)
-
-(setq ring-bell-function #'ignore)
-(setq inhibit-startup-message t)
-
 (line-number-mode 1)
 (column-number-mode 1)
 
@@ -165,10 +153,6 @@
 (unless (server-running-p)
   (server-start))
 (defalias 'exit 'save-buffers-kill-emacs)
-
-(setq read-file-name-completion-ignore-case t)
-
-(global-set-key [delete] 'delete-char)
 
 ;; backspace
 (when (not window-system)
@@ -235,18 +219,12 @@
   (define-key helm-gtags2-mode-map (kbd "C-c <") 'helm-gtags2-previous-history)
   (define-key helm-gtags2-mode-map (kbd "C-t") 'helm-gtags2-pop-stack))
 
-;; helm in dired
-(setq-default split-width-threshold 0)
-
 (define-key helm-map (kbd "C-p") 'helm-previous-line)
 (define-key helm-map (kbd "C-n") 'helm-next-line)
 (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 
-;; helm-show-kill-ring
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
-
-;; apropos with helm
 (global-set-key (kbd "C-h a") 'helm-apropos)
 
 ;; helm faces
@@ -277,28 +255,6 @@
 (set-face-foreground 'which-func "color-201")
 (set-face-bold-p 'which-func t)
 (which-function-mode t)
-
-;; view-mode
-(setq view-read-only t)
-
-;; for regexp color
-(set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
-(set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
-
-;; for symboliclink
-(setq-default find-file-visit-truename t)
-
-;; Ctrl-q map
-(defvar my/ctrl-q-map (make-sparse-keymap)
-  "My original keymap binded to C-q.")
-(defalias 'my/ctrl-q-prefix my/ctrl-q-map)
-(define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
-(define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-
-;; goto-chg
-(smartrep-define-key
-    global-map "C-q" '(("-" . 'goto-last-change)
-                       ("+" . 'goto-last-change-reverse)))
 
 (global-set-key (kbd "C-x v d") 'vc-diff)
 
@@ -370,8 +326,7 @@
 
 (smartrep-define-key
  global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
-		    ("p" . 'git-gutter2-previous-hunk)))
-
+                    ("p" . 'git-gutter2-previous-hunk)))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -383,19 +338,29 @@
 (add-hook 'haskell-mode #'eglot-ensure)
 (add-hook 'go-mode-hook #'eglot-ensure)
 
+(set-face-attribute 'mode-line nil
+                    :foreground "color-248"
+                    :background "color-238")
+(set-face-attribute 'mode-line-inactive nil
+                    :foreground "color-254"
+                    :background "color-247")
 (set-face-attribute 'mode-line-buffer-id nil
                     :weight 'extra-bold)
 (set-face-attribute 'editutil-clean-space nil
                     :foreground "purple")
+(set-face-attribute 'editutil-vc-branch nil
+                    :foreground "color-202"
+                    :weight 'extra-bold)
 (set-face-attribute 'anzu2-mode-line nil
-                    :foreground "purple")
+                    :foreground "color-226"
+                    :weight 'extra-bold)
+(set-face-attribute 'show-paren-match nil
+                    :background 'unspecified :foreground 'unspecified
+                    :underline t :weight 'bold)
+(set-face-background 'show-paren-match 'unspecified)
+(set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
+(set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
 
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
                       :foreground "color-166"))
-
-(progn
-  (set-face-attribute 'show-paren-match nil
-		      :background 'unspecified :foreground 'unspecified
-		      :underline t :weight 'bold)
-  (set-face-background 'show-paren-match 'unspecified))
