@@ -123,13 +123,11 @@ export LESSCHARSET=utf-8
 path=(~/local/cask/bin $path)
 
 ## Perl
-export PERLDOC_PAGER='less -R'
-path=(~/.plenv/bin $path)
-if [[ ! -e /tmp/plenv.cache ]]; then
-  plenv init - > /tmp/plenv.cache
-  zcompile /tmp/plenv.cache
+if [[ -d ~/.plenv ]]; then
+  export PERLDOC_PAGER='less -R'
+  path=(~/.plenv/bin $path)
+  eval "$(plenv init -)"
 fi
-source /tmp/plenv.cache
 
 ## Python
 path=(~/local/python3/bin $path)
