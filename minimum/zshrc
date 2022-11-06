@@ -3,6 +3,8 @@ fpath=(~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
 autoload -U compinit
 compinit
 
+autoload -Uz add-zsh-hook
+
 setopt re_match_pcre
 
 # default umask
@@ -95,8 +97,8 @@ alias ls='exa -F'
 alias bat="batcat --theme='OneHalfDark'"
 alias grep='grep --color=always'
 alias e='emacsclient'
-alias s='git st '
-alias d='git diff '
+alias s='git status -s -b'
+alias d='git diff'
 alias dc='git diff --cached'
 alias dw='git diff --word-diff'
 
@@ -145,35 +147,33 @@ path=($GOROOT/bin $GOPATH/bin $path)
 
 ## Chdir top of Git project
 function cdp() {
-    local dir=$(git rev-parse --show-toplevel 2>/dev/null)
-    if [[ $? == 0 ]]; then
-        cd $dir
-    else
-        echo "'$PWD' is not a git repository"
-    fi
+  local dir=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ $? == 0 ]]; then
+    cd $dir
+  else
+    echo "'$PWD' is not a git repository"
+  fi
 }
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%b)'
+setopt prompt_subst
+zstyle ':vcs_info:*' formats "%F{129}(%b)%c%u%f"
 zstyle ':vcs_info:*' actionformats '[%s]-(%b|%a)'
-precmd () {
-  psvar=()
-  LANG=en_US.UTF-8 vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%F{49}+%f"
+zstyle ':vcs_info:*' unstagedstr "%F{214}!%f"
 
-  if [[ -n "$vcs_info_msg_0_" ]]; then
-     psvar[1]="$vcs_info_msg_0_"
-     stashes=$(git stash list 2>/dev/null | wc -l)
-     if [ ${stashes} -eq 0 ]; then
-       psvar[2]=""
-     else
-       psvar[2]="@${stashes// /}"
-     fi
-  fi
+_call_vcs_info() {
+  vcs_info
 }
-_DIRPART=%B%{$fg[cyan]%}'[%(5~,%-2~/.../%2~,%~)]'%{$reset_color%}%b
-RPROMPT=%B"%1(v|%F{magenta}%1v%f%F{green}%2v%f|)"%b${_DIRPART}
 
+add-zsh-hook precmd _call_vcs_info
+
+_DIRPART="%F{75}%B[%(5~,%-2~/.../%2~,%~)]%b%f"
+RPROMPT=%B'${vcs_info_msg_0_}'%b${_DIRPART}
+
+# cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 500
@@ -186,10 +186,9 @@ bindkey '^x^x' zaw-cdr
 bindkey '^xd' zaw-git-directories
 bindkey '^x^r' zaw-history
 
-# completion git
-# for git completion(too slowly in big repository)
+# completion git(too slowly in big repository)
 __git_files () {
-    _wanted files expl 'local files' _files
+  _wanted files expl 'local files' _files
 }
 
 function _delete_previous_word () {
@@ -197,7 +196,7 @@ function _delete_previous_word () {
   lbuf=$LBUFFER
 
   if [[ "$lbuf" == "" ]]; then
-      return
+    return
   fi
 
   LBUFFER=$(perl -we '@a = split / /, shift; pop @a; print $_, " " for @a;' $lbuf)
