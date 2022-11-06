@@ -42,6 +42,7 @@
  '(show-paren-delay 0)
  '(show-paren-style 'expression)
  '(view-read-only t)
+ '(sh-indentation 2)
  '(warning-suppress-types '((el-get) ((package reinitialization)))))
 
 (setq gc-cons-threshold (* gc-cons-threshold 10)
