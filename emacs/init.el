@@ -63,10 +63,6 @@
                  :type http
                  :url "https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el"))
 
-;; highlighting
-(el-get-bundle vline)
-(el-get-bundle col-highlight)
-
 ;; Buffer
 (el-get-bundle emacs-jp/elscreen)
 (el-get-bundle auto-complete/popup-el :name popup)
@@ -114,8 +110,6 @@
 (prefer-coding-system 'utf-8-unix)
 
 (global-font-lock-mode +1)
-
-;; Frame and cursor looking
 (blink-cursor-mode t)
 (menu-bar-mode -1)
 (line-number-mode 1)
@@ -472,9 +466,6 @@
 (add-hook 'emacs-lisp-mode-hook 'my/elisp-mode-hook)
 
 ;; go
-(custom-set-variables
- '(gofmt-command "goimports"))
-
 (with-eval-after-load 'go-mode
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
   (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
@@ -525,8 +516,6 @@
  '(git-gutter2-verbosity 4)
  '(git-gutter2-modified-sign " ")
  '(git-gutter2-deleted-sign " "))
-
-(add-hook 'after-focus-change-function #'git-gutter2-update-all-windows)
 
 (smartrep-define-key
  global-map  "C-x" '(("p" . 'git-gutter2-previous-hunk)
@@ -606,21 +595,6 @@
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
 (global-set-key (kbd "C-x b") #'helm-buffers-list)
 
-;; Ctrl-q map
-(defvar my/ctrl-q-map (make-sparse-keymap)
-  "My original keymap binded to C-q.")
-(defalias 'my/ctrl-q-prefix my/ctrl-q-map)
-(define-key global-map (kbd "C-q") 'my/ctrl-q-prefix)
-(define-key my/ctrl-q-map (kbd "C-q") 'quoted-insert)
-
-(define-key my/ctrl-q-map (kbd "C-c") 'column-highlight-mode)
-(define-key my/ctrl-q-map (kbd "C-a") 'text-scale-adjust)
-(define-key my/ctrl-q-map (kbd "C-f") 'flyspell-mode)
-
-(smartrep-define-key
- global-map "C-q" '(("-" . 'goto-last-change)
-                    ("+" . 'goto-last-change-reverse)))
-
 ;; editutil mappings
 (editutil-default-setup)
 (global-set-key (kbd "C-x c") ctl-x-4-map)
@@ -633,7 +607,6 @@
 (global-set-key (kbd "M-g r") #'recompile)
 (global-set-key (kbd "M-g q") #'quickrun2)
 
-;; font
 ;; Linux specific configuration
 (custom-set-variables
  '(browse-url-browser-function #'browse-url-xdg-open))
