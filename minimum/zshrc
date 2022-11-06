@@ -156,7 +156,7 @@ function cdp() {
 ## show git branch at right prompt
 autoload -Uz vcs_info
 setopt prompt_subst
-zstyle ':vcs_info:*' formats "%F{129}(%b)%c%u%f"
+zstyle ':vcs_info:*' formats "%F{201}(%b)%c%u%f"
 zstyle ':vcs_info:*' actionformats '[%s]-(%b|%a)'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%F{49}+%f"
