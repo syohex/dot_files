@@ -119,30 +119,6 @@ export EDITOR="vim"
 export PAGER='less'
 export LESSCHARSET=utf-8
 
-## Emacs Lisp
-path=(~/local/cask/bin $path)
-
-## Perl
-if [[ -d ~/.plenv ]]; then
-  export PERLDOC_PAGER='less -R'
-  path=(~/.plenv/bin $path)
-  eval "$(plenv init -)"
-fi
-
-## Python
-path=(~/local/python3/bin $path)
-
-## node
-path=(~/local/node/bin $path)
-
-## .net
-path=(~/.dotnet/tools $path)
-
-# Go lang
-export GOROOT=$HOME/local/go
-export GOPATH=$HOME/go
-path=($GOROOT/bin $GOPATH/bin $path)
-
 ## Chdir top of Git project
 function cdp() {
   local dir=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -206,11 +182,20 @@ bindkey '^[^U' delete_previous_word
 # gpg
 export GPG_TTY=$(tty)
 
+## Perl
+if [[ -d ~/.plenv ]]; then
+  export PERLDOC_PAGER='less -R'
+  path=(~/.plenv/bin $path)
+  eval "$(plenv init -)"
+fi
+
+# Go lang
+export GOROOT=$HOME/local/go
+export GOPATH=$HOME/go
+path=($GOROOT/bin $GOPATH/bin $path)
+
 # rust
 source ~/.cargo/env
-
-# dart
-path=(~/local/dart-sdk/bin ~/.pub-cache/bin ~/local/flutter/bin $path)
 
 # haskell
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env
@@ -220,4 +205,9 @@ if [[ "$TERM_PROGRAM" == "tmux" ]]; then
 else
   export TERM=xterm-256color
 fi
+
+path=(~/local/dart-sdk/bin ~/.pub-cache/bin ~/local/flutter/bin $path)
+path=(~/local/cask/bin(N-/) ~/local/python3/bin(N-/) ~/local/node/bin(N-/) ~/local/ruby/bin(N-/) $path)
+path=(~/.dotnet/tools(N-/) $path)
+
 path=(~/bin ~/.local/bin /snap/bin $path)
