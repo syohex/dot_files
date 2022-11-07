@@ -357,6 +357,9 @@
 (set-face-background 'show-paren-match 'unspecified)
 (set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
 (set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
+(set-face-attribute 'helm-grep-file nil
+                    :foreground "cyan"
+                    :underline 'unspecified)
 
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
