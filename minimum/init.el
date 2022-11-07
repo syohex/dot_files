@@ -84,31 +84,27 @@
 
 (require 'cl-lib)
 
-;; paredit
 (dolist (hook '(emacs-lisp-mode-hook
                 lisp-interaction-mode-hook
                 lisp-mode-hook))
   (add-hook hook 'enable-paredit-mode))
 
-;; electric-pair(like autopair)
-(defvar my/electric-pair-enabled-modes
-  '(c-mode
-    c++-mode
-    java-mode
-    python-mode
-    fsharp-mode
-    ruby-mode
-    sh-mode
-    js-mode
-    css-mode
-    cmake-mode
-    cperl-mode
-    markdown-mode
-    gfm-mode
-    yaml-mode))
-
-(dolist (mode my/electric-pair-enabled-modes)
-  (add-hook (intern (format "%s-hook" mode)) 'electric-pair-local-mode))
+(dolist (hook '(c-mode-hook
+                c++-mode-hook
+                python-mode-hook
+                fsharp-mode-hook
+                kotlin-mode-hook
+                go-mode-hook
+                sh-mode-hook
+                js-mode-hook
+                rust-mode-hook
+                css-mode-hook
+                cmake-mode-hook
+                cperl-mode-hook
+                markdown-mode-hook
+                gfm-mode-hook
+                yaml-mode-hook))
+  (add-hook hook 'electric-pair-local-mode))
 
 (require 'smartrep)
 
@@ -171,17 +167,12 @@
   (c-set-style "k&r")
   (hs-minor-mode 1)
   (c-toggle-electric-state -1)
-
-  (setq c-basic-offset 4
-        indent-tabs-mode nil)
-
-  (eglot-ensure)
-  (helm-gtags2-mode))
+  (setq c-basic-offset 4)
+  (helm-gtags2-mode +1))
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
 
-;; asm-mode
 (add-hook 'asm-mode-hook 'helm-gtags2-mode)
 
 ;; ibuffer
@@ -336,8 +327,13 @@
   (define-key markdown-mode-map (kbd "C-x n b") nil)
   (define-key markdown-mode-map (kbd "C-x n s") nil))
 
-(add-hook 'haskell-mode #'eglot-ensure)
-(add-hook 'go-mode-hook #'eglot-ensure)
+(dolist (hook '(c-mode-hook
+                c++-mode-hook
+                go-mode-hook
+                haskell-mode-hook
+                python-mode-hook
+                rust-mode-hook))
+  (add-hook hook #'eglot-ensure))
 
 (set-face-attribute 'mode-line nil
                     :foreground "color-248"
