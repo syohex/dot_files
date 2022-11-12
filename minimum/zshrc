@@ -206,6 +206,11 @@ else
   export TERM=xterm-256color
 fi
 
+if [[ -e ~/.dotnet/dotnet ]]; then
+  export DOTNET_ROOT=$HOME/.dotnet
+  path=(~/.dotnet $path)
+fi
+
 path=(~/local/dart-sdk/bin ~/.pub-cache/bin ~/local/flutter/bin $path)
 path=(~/local/cask/bin(N-/) ~/local/python3/bin(N-/) ~/local/node/bin(N-/) ~/local/ruby/bin(N-/) $path)
 path=(~/.dotnet/tools(N-/) $path)
