@@ -101,6 +101,7 @@ zstyle ':completion:*' list-colors $LIST_COLOR
 alias ls='exa -F'
 alias bat="batcat --theme='OneHalfDark'"
 alias grep='grep --color=always'
+alias emacs='env COLORTERM=true emacs'
 alias e='emacsclient'
 alias s='git status -s -b'
 alias d='git diff'
