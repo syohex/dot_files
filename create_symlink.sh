@@ -2,6 +2,8 @@
 set -e
 set -x
 
+install -d ~/.config
+
 # Emacs
 install -d ~/.emacs.d
 ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
@@ -16,11 +18,6 @@ ln -sf $PWD/shell/tmux.conf ~/.tmux.conf
 
 # aspell
 ln -sf $PWD/aspell.conf ~/.aspell.conf
-
-# Spellunker
-ln -sf $PWD/perl/spellunker.en ~/.spellunker.en
-
-install -d ~/.config
 
 # SQLite
 ln -sf $PWD/sql/sqliterc ~/.sqliterc
