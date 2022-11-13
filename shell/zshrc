@@ -1,10 +1,11 @@
 # -*- mode:shell-script -*-
 path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /snap/bin)
-
-# completion
-fpath=(~/.zsh/functions ~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
+fpath=(~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
 autoload -U compinit
 compinit
+
+autoload colors
+colors
 
 autoload -Uz add-zsh-hook
 
@@ -16,54 +17,57 @@ autoload -Uz select-word-style
 select-word-style bash
 WORDCHARS="${WORDCHARS}:"
 
-# insert last word
 autoload -Uz smart-insert-last-word
-zstyle :insert-last-word match '*[[:alnum:]/\\]*'
 zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*[[:alnum:]/\\]*'
 
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt hist_ignore_all_dups
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 
+# show processing time for too long process
+REPORTTIME=10
+
 # key-type is Emacs
 bindkey -e
-
-# Like bash C-u behavior
 bindkey '^U' backward-kill-line
+
+# Delete under cursor key
+bindkey -s '^W' '^[^B^[^K'
 
 # Mode/Delete like emacs symbol one
 bindkey '^[^B' vi-backward-blank-word
 bindkey '^[^F' vi-forward-blank-word
 bindkey '^[^K' delete-word
 
-# Delete under cursor key
-bindkey -s '^W' '^[^B^[^K'
-
-# removed keys(for miss typing)
-bindkey -r '^J'
-
 # for incremental search
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
-# Disable completion command
-# following command completion is too slow.
+# unbind keys for miss typing
+bindkey -r '^O'
+bindkey -r '^J'
+
+# not complete command, these completion is too long.
 compdef -d java
 
-# not exit Ctrl-D
 setopt ignoreeof
-
-# for sighup
 setopt NOHUP
 setopt nocheckjobs
+setopt noautoremoveslash
+setopt null_glob no_nomatch
+setopt NO_beep
+setopt nolistbeep
+setopt re_match_pcre
+setopt magic_equal_subst
+setopt interactive_comments
 
-# stty
-stty stop undef
+unsetopt promptcr
 
 # completion like emacs
 zstyle ':completion:*:default' menu select=1
@@ -71,41 +75,41 @@ zstyle ':completion:*:default' menu select=1
 # completion use cache
 zstyle ':completion:*' use-cache true
 
-# completion after '='(like --prefix=/usr)
-setopt magic_equal_subst
+if [[ -n $DISPLAY ]]; then
+  stty stop undef
+fi
 
-# with slash
-setopt noautoremoveslash
-
-# glob expand
-setopt null_glob no_nomatch
-
-# print if line is one line
-unsetopt promptcr
-
-# Not bell
-setopt NO_beep
-setopt nolistbeep
-
-# String behind '#' is comment.
-setopt interactive_comments
-
-# key binding of command history
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# process completion
-zstyle ':completion:*:processes' command "ps -u $USER"
+export LANG=ja_JP.UTF-8
+export LC_ALL=en_US.UTF-8
+export EDITOR="vim"
+export PAGER='less'
+export LESSCHARSET=utf-8
 
-# show processing time for long run process
-REPORTTIME=10
+if [[ -z $DISPLAY ]]; then
+  export GPG_TTY=$(tty)
+fi
 
-# setup ls coloring
 local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
+
+alias ls='exa -F'
+alias bat="batcat --theme='OneHalfDark'"
+alias grep='grep --color=always'
+alias e='emacsclient'
+alias s='git status -s -b'
+alias d='git diff'
+alias dc='git diff --cached'
+alias dw='git diff --word-diff'
+alias b='gh browse'
+alias -g L='|less -R'
+alias -g G='|grep'
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   alias -g C='| xsel --input --clipboard'
   alias open='xdg-open'
@@ -116,63 +120,23 @@ else
   alias start='open'
 fi
 
-# alias
-alias ls='exa -F'
-alias bat="batcat --theme='OneHalfDark'"
-alias grep='grep --color=always'
-alias e='emacsclient'
-alias s='git status -s -b'
-alias d='git diff'
-alias dw='git diff --word-diff '
-alias dc='git diff --cached '
-alias b='gh browse'
-
-# PROMPT
-autoload colors
-colors
 returncode="%(?..%F{199} %Berr=%?%b %f)"
 PROMPT="%B%F{220}%m:%f%b${returncode}%# "
 
-export LANG=en_US.UTF-8
-export TERM=xterm-256color
-export EDITOR=vim
-export GIT_EDITOR=vim
-export PAGER='less'
-export LESSCHARSET=utf-8
-export INFOPATH=/usr/local/share/info:/usr/share/info
-
-# Python
-if [[ -e ~/local/python3/bin/activate ]]; then
-  export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source ~/local/python3/bin/activate
-fi
-
-# node.js
-path=(~/local/node/bin(N-/) $path)
-
-## Cask
-path=(~/local/cask/bin(N-/) $path)
-
-# Go Language
-if [[ -d ~/local/go ]]; then
-  export GOROOT=$HOME/local/go
-  export GOPATH=$HOME/go
-  path=($GOROOT/bin $GOPATH/bin $path)
-fi
-
-# Rust
-path=(~/.cargo/bin(N-/) $path)
-
-# .NET
-if [[ -d ~/.dotnet ]] then
-  path=(~/.dotnet ~/.dotnet/tools $path)
-  export DOTNET_ROOT=$HOME/.dotnet
-fi
+## Chdir top of Git project
+function cdp() {
+  local dir=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ $? == 0 ]]; then
+    cd $dir
+  else
+    echo "'$PWD' is not a git repository"
+  fi
+}
 
 ## show git branch at right prompt
 autoload -Uz vcs_info
 setopt prompt_subst
-zstyle ':vcs_info:*' formats "%F{129}(%b)%c%u%f"
+zstyle ':vcs_info:*' formats "%F{201}(%b)%c%u%f"
 zstyle ':vcs_info:*' actionformats '[%s]-(%b|%a)'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%F{49}+%f"
@@ -187,43 +151,60 @@ add-zsh-hook precmd _call_vcs_info
 _DIRPART="%F{75}%B[%(5~,%-2~/.../%2~,%~)]%b%f"
 RPROMPT=%B'${vcs_info_msg_0_}'%b${_DIRPART}
 
+# cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 500
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
-zstyle ':filter-select' case-insensitive yes
 
 # zaw : anything
-if [[ -e ~/.zsh/zaw/zaw.zsh ]]; then
-  source ~/.zsh/zaw/zaw.zsh
-  ZAW_EDITOR='vim'
-  bindkey '^x^x' zaw-cdr
-  bindkey '^xd' zaw-git-directories
-  bindkey '^xb' zaw-git-recent-branches
-  bindkey '^x^f' zaw-git-files
-fi
+source ~/.zsh/zaw/zaw.zsh
+bindkey '^x^x' zaw-cdr
+bindkey '^xd' zaw-git-directories
+bindkey '^x^r' zaw-history
 
-# for git completion(too slowly in big repository)
-function __git_files () {
+# completion git(too slowly in big repository)
+__git_files () {
   _wanted files expl 'local files' _files
 }
 
-## My commands
-zle -N peco-history _peco-history
+function _delete_previous_word () {
+  local lbuf
+  lbuf=$LBUFFER
+
+  if [[ "$lbuf" == "" ]]; then
+    return
+  fi
+
+  LBUFFER=$(perl -we '@a = split / /, shift; pop @a; print $_, " " for @a;' $lbuf)
+  CURSOR=$#LBUFFER
+}
 zle -N delete_previous_word _delete_previous_word
-bindkey '^X^R' peco-history
 bindkey '^[^U' delete_previous_word
 
-autoload -Uz cde
-autoload -Uz cdp
-autoload -Uz _peco-history
-autoload -Uz _delete_previous_word
+if [[ -d ~/.plenv ]]; then
+  export PERLDOC_PAGER='less -R'
+  path=(~/.plenv/bin $path)
+  eval "$(plenv init -)"
+fi
 
-# Global alias should be set end of zshrc for avoding variable name confliction
-alias -g L='|less -R'
-alias -g G='|grep'
-alias -g P='|peco'
-alias -g J='|jq'
+export GOROOT=$HOME/local/go
+export GOPATH=$HOME/go
+path=($GOROOT/bin $GOPATH/bin $path)
 
-path=($HOME/bin $HOME/local/bin $path)
+if [[ "$TERM_PROGRAM" == "tmux" ]]; then
+  export TERM=tmux-256color
+else
+  export TERM=xterm-256color
+fi
+
+if [[ -e ~/.dotnet/dotnet ]]; then
+  export DOTNET_ROOT=$HOME/.dotnet
+  path=(~/.dotnet $path)
+fi
+
+path=(~/local/cask/bin(N-/) ~/local/python3/bin(N-/) ~/local/node/bin(N-/) ~/local/ruby/bin(N-/) $path)
+path=(~/.cargo/bin(N-/) ~/.dotnet/tools(N-/) $path)
+path=(~/.ghcup/bin(N-/) ~/.cabal/bin(N-/) $path)
+path=(~/bin ~/.local/bin  $path)
