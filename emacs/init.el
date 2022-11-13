@@ -67,6 +67,7 @@
 (setq-default indent-tabs-mode nil
               echo-keystrokes 0)
 
+(fset 'yes-or-no-p #'y-or-n-p)
 
 (el-get-bundle paredit)
 (el-get-bundle helm)
@@ -94,7 +95,11 @@
 (when (executable-find "mozc_emacs_helper")
   (el-get-bundle mozc
     :type http
-    :url "https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el"))
+    :url "https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el")
+
+  (custom-set-variables
+   '(mozc-candidate-style 'echo-area)
+   '(mozc-leim-title "[も]")))
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
