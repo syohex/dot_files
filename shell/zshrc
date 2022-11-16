@@ -9,7 +9,6 @@ colors
 
 autoload -Uz add-zsh-hook
 
-# default umask
 umask 022
 
 # for move by word
@@ -71,8 +70,6 @@ unsetopt promptcr
 
 # completion like emacs
 zstyle ':completion:*:default' menu select=1
-
-# completion use cache
 zstyle ':completion:*' use-cache true
 
 if [[ -n $DISPLAY ]]; then
@@ -122,20 +119,10 @@ else
   alias start='open'
 fi
 
+# prompt
 returncode="%(?..%F{199} %Berr=%?%b %f)"
 PROMPT="%B%F{220}%m:%f%b${returncode}%# "
 
-## Chdir top of Git project
-function cdp() {
-  local dir=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [[ $? == 0 ]]; then
-    cd $dir
-  else
-    echo "'$PWD' is not a git repository"
-  fi
-}
-
-## show git branch at right prompt
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' formats "%F{201}(%b)%c%u%f"
@@ -160,7 +147,7 @@ zstyle ':chpwd:*' recent-dirs-max 500
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 
-# zaw : anything
+# zaw
 source ~/.zsh/zaw/zaw.zsh
 bindkey '^x^x' zaw-cdr
 bindkey '^xd' zaw-git-directories
@@ -169,6 +156,16 @@ bindkey '^x^r' zaw-history
 # completion git(too slowly in big repository)
 __git_files () {
   _wanted files expl 'local files' _files
+}
+
+# cd to git root
+function cdp() {
+  local dir=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ $? == 0 ]]; then
+    cd $dir
+  else
+    echo "'$PWD' is not a git repository"
+  fi
 }
 
 function _delete_previous_word () {
@@ -206,7 +203,6 @@ if [[ -e ~/.dotnet/dotnet ]]; then
   path=(~/.dotnet $path)
 fi
 
-path=(~/local/cask/bin(N-/) ~/local/python3/bin(N-/) ~/local/node/bin(N-/) ~/local/ruby/bin(N-/) $path)
-path=(~/.cargo/bin(N-/) ~/.dotnet/tools(N-/) $path)
-path=(~/.ghcup/bin(N-/) ~/.cabal/bin(N-/) $path)
-path=(~/bin ~/.local/bin  $path)
+path=(~/local/*/bin $path)
+path=(~/.ghcup/bin(N-/) ~/.cabal/bin(N-/) ~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.dotnet/tools(N-/) $path)
+path=(~/bin $path)
