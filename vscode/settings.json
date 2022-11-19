@@ -37,7 +37,6 @@
     "[typescript]": {
         "editor.tabSize": 2,
         "editor.detectIndentation": false,
-        "editor.defaultFormatter": "denoland.vscode-deno"
     },
     "[typescriptreact]": {
         "editor.tabSize": 2,
@@ -51,5 +50,21 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.bracketPairColorization.enabled": false,
     "C_Cpp.default.cppStandard": "c++20",
-    "C_Cpp.default.cStandard": "c17"
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+    "C_Cpp.inlayHints.parameterNames.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.showSpace": true,
+    "javascript.inlayHints.enumMemberValues.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "javascript.inlayHints.variableTypes.enabled": true,
+    "typescript.inlayHints.parameterTypes.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.variableTypes.enabled": true,
+    "javascript.inlayHints.parameterTypes.enabled": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.functionReturnTypes": true
 }
