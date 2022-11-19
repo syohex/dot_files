@@ -307,6 +307,7 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
+;; face
 (set-face-attribute 'mode-line nil
                     :foreground "color-248"
                     :background "color-238")
@@ -342,3 +343,7 @@
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
                       :foreground "color-166"))
+
+(with-eval-after-load 'mozc
+  (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
+                      :foreground "color-184"))
