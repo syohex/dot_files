@@ -4,7 +4,7 @@
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
 
 (custom-set-variables
- '(split-width-threshold 0)
+ '(split-width-threshold 160)
  '(read-file-name-completion-ignore-case t)
  '(dabbrev-case-fold-search nil)
  '(inhibit-startup-screen t)
@@ -17,6 +17,7 @@
  '(dired-dwim-target t)
  '(dired-recursive-copies 'always)
  '(dired-recursive-deletes 'always)
+ '(eldoc-echo-area-use-multiline-p nil)
  '(el-get-verbose t)
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
@@ -136,6 +137,7 @@
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 (global-set-key (kbd "M-[") #'backward-paragraph)
 (global-set-key (kbd "M-]") #'forward-paragraph)
+(global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 
 (global-font-lock-mode t)
 (transient-mark-mode nil)
@@ -340,6 +342,10 @@
 (set-face-attribute 'helm-selection nil
                     :foreground "black"
                     :background "color-204")
+
+(with-eval-after-load 'markdown-mode
+  (set-face-attribute 'markdown-line-break-face nil
+                      :underline 'unspecified))
 
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
