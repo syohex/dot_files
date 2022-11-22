@@ -138,7 +138,7 @@
 (global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 
 (global-font-lock-mode +1)
-(transient-mark-mode -1)
+(transient-mark-mode +1)
 
 ;; indicate last line
 (setq-default indicate-empty-lines t
@@ -309,6 +309,9 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;; face
+(set-face-attribute 'region nil
+                    :foreground "color-240"
+                    :background "color-159")
 (set-face-attribute 'mode-line nil
                     :foreground "color-248"
                     :background "color-238")
