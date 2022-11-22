@@ -135,12 +135,10 @@
 (global-set-key (kbd "M-j") #'jump-to-register)
 (global-set-key (kbd "M-SPC") #'point-to-register)
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
-(global-set-key (kbd "M-[") #'backward-paragraph)
-(global-set-key (kbd "M-]") #'forward-paragraph)
 (global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 
-(global-font-lock-mode t)
-(transient-mark-mode nil)
+(global-font-lock-mode +1)
+(transient-mark-mode -1)
 
 ;; indicate last line
 (setq-default indicate-empty-lines t
@@ -170,7 +168,7 @@
 (run-at-time t 600 'recentf-save-list)
 (recentf-mode +1)
 
-(global-auto-revert-mode 1)
+(global-auto-revert-mode +1)
 
 (dolist (hook '(emacs-lisp-mode-hook
                 lisp-interaction-mode-hook
@@ -296,7 +294,7 @@
     (,(kbd "M-a") . editutil-backward-char)
     (,(kbd "M-e") . editutil-forward-char)))
 
-(global-git-gutter2-mode t)
+(global-git-gutter2-mode +1)
 (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
 (global-set-key (kbd "C-x v u") 'git-gutter2-update)
 (global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
