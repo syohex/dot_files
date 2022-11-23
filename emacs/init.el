@@ -344,6 +344,13 @@
                     :foreground "black"
                     :background "color-204")
 
+(with-eval-after-load 'flyspell
+  (set-face-attribute 'flyspell-duplicate nil
+                      :foreground "color-228")
+  (set-face-attribute 'flyspell-incorrect nil
+                      :foreground "color-198"
+                      :underline t))
+
 (with-eval-after-load 'markdown-mode
   (set-face-attribute 'markdown-line-break-face nil
                       :underline 'unspecified))
