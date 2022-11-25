@@ -73,6 +73,7 @@
 (el-get-bundle paredit)
 (el-get-bundle helm)
 (el-get-bundle which-key)
+(el-get-bundle emacs-evil/evil)
 
 (el-get-bundle emacs-helm/helm-descbinds)
 (el-get-bundle company-mode/company-mode :name company-mode)
@@ -130,12 +131,13 @@
 (global-set-key (kbd "M-g .") #'helm-ag2)
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
+(global-set-key (kbd "M-g e") #'evil-mode)
 (global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
+(global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 (global-set-key (kbd "M-g l") #'flymake-show-buffer-diagnostics)
 (global-set-key (kbd "M-j") #'jump-to-register)
 (global-set-key (kbd "M-SPC") #'point-to-register)
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
-(global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 
 (global-font-lock-mode +1)
 (transient-mark-mode +1)
@@ -335,8 +337,11 @@
                     :background 'unspecified :foreground 'unspecified
                     :underline t :weight 'bold)
 (set-face-background 'show-paren-match 'unspecified)
-(set-face-foreground 'font-lock-regexp-grouping-backslash "#ff1493")
-(set-face-foreground 'font-lock-regexp-grouping-construct "#ff8c00")
+(set-face-foreground 'font-lock-regexp-grouping-backslash "color-199")
+(set-face-foreground 'font-lock-regexp-grouping-construct "color-190")
+(set-face-attribute 'eldoc-highlight-function-argument nil
+                    :foreground "color-82"
+                    :weight 'extra-bold)
 (set-face-attribute 'helm-grep-file nil
                     :foreground "color-45"
                     :underline 'unspecified)
