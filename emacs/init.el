@@ -122,6 +122,7 @@
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
 (global-set-key (kbd "ESC M-%") #'anzu2-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
+(global-set-key (kbd "C-M-c") #'duplicate-dwim)
 (global-set-key (kbd "C-M-z") #'helm-resume)
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
 (global-set-key (kbd "C-x C-c") #'helm-M-x)
