@@ -168,6 +168,20 @@ function cdp() {
   fi
 }
 
+## Chdir to directory of current buffer
+function cde() {
+  local emacs_cwd=$(emacsclient -e \
+    "(editutil-current-buffer-directory)" | awk '{gsub("\"", ""); print}' )
+
+  if [[ "$emacs_cwd" == "nil" ]]; then
+    echo "Could not get the directory of current buffer in Emacs"
+    return 1
+  fi
+
+  cd "$emacs_cwd"
+  pwd
+}
+
 function _delete_previous_word () {
   local lbuf
   lbuf=$LBUFFER
