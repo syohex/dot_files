@@ -47,6 +47,8 @@
  '(recentf-exclude '(".recentf" "/repos/" "/elpa/" "/el-get/" "CMakeCache.txt"
                      "/usr/local/share/emacs/"
                      "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/"))
+ '(git-gutter2-deleted-sign " ")
+ '(git-gutter2-modified-sign " ")
  '(markdown-indent-on-enter nil)
  '(markdown-gfm-use-electric-backquote nil)
  '(markdown-make-gfm-checkboxes-buttons)
@@ -117,6 +119,7 @@
 (global-unset-key (kbd "C-x w"))
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
+(global-set-key (kbd "M-k") #'kill-whole-line)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
 (global-set-key (kbd "C-r") #'isearch-backward-regexp)
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
@@ -124,6 +127,7 @@
 (global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
 (global-set-key (kbd "C-M-c") #'duplicate-dwim)
 (global-set-key (kbd "C-M-z") #'helm-resume)
+(global-set-key (kbd "C-x .") #'eglot-rename)
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
 (global-set-key (kbd "C-x C-c") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
@@ -349,6 +353,14 @@
 (set-face-attribute 'helm-selection nil
                     :foreground "black"
                     :background "color-204")
+
+(with-eval-after-load 'git-gutter2
+  (set-face-attribute 'git-gutter2-deleted nil
+                      :foreground nil
+                      :background "brightred")
+  (set-face-attribute 'git-gutter2-modified nil
+                      :foreground nil
+                      :background "brightmagenta"))
 
 (with-eval-after-load 'flyspell
   (set-face-attribute 'flyspell-duplicate nil
