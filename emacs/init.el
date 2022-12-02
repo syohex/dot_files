@@ -380,3 +380,25 @@
 (with-eval-after-load 'mozc
   (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
                       :foreground "color-184"))
+
+(with-eval-after-load 'diff-mode
+  (set-face-attribute 'diff-added nil
+                      :background nil :foreground "green"
+                      :weight 'normal)
+  (set-face-attribute 'diff-removed nil
+                      :background nil :foreground "brightred"
+                      :weight 'normal)
+  (set-face-attribute 'diff-header nil
+                      :background "color-240" :weight 'extra-bold)
+  (set-face-attribute 'diff-file-header nil
+                      :background "color-240" :weight 'bold)
+  (set-face-attribute 'diff-refine-added nil
+                      :background nil :underline t)
+  (set-face-attribute 'diff-refine-removed nil
+                      :background nil :underline t)
+  (set-face-attribute 'diff-refine-changed nil
+                      :background nil)
+  (set-face-attribute 'diff-hunk-header nil
+                      :foreground "color-208"
+                      :weight 'extra-bold
+                      :underline t))
