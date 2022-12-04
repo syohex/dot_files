@@ -140,8 +140,6 @@
 (global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
 (global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 (global-set-key (kbd "M-g l") #'flymake-show-buffer-diagnostics)
-(global-set-key (kbd "M-j") #'jump-to-register)
-(global-set-key (kbd "M-SPC") #'point-to-register)
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 
 (global-font-lock-mode +1)
@@ -258,12 +256,12 @@
 (helm-descbinds-install)
 
 (with-eval-after-load 'helm-gtags2
-  (define-key helm-gtags2-mode-map (kbd "M-t") #'helm-gtags2-find-tag)
-  (define-key helm-gtags2-mode-map (kbd "M-r") #'helm-gtags2-find-rtag)
-  (define-key helm-gtags2-mode-map (kbd "M-s") #'helm-gtags2-find-symbol)
+  (define-key helm-gtags2-mode-map (kbd "C-c t") #'helm-gtags2-find-tag)
+  (define-key helm-gtags2-mode-map (kbd "C-c r") #'helm-gtags2-find-rtag)
+  (define-key helm-gtags2-mode-map (kbd "C-c s") #'helm-gtags2-find-symbol)
   (define-key helm-gtags2-mode-map (kbd "C-c >") #'helm-gtags2-next-history)
   (define-key helm-gtags2-mode-map (kbd "C-c <") #'helm-gtags2-previous-history)
-  (define-key helm-gtags2-mode-map (kbd "C-t") #'helm-gtags2-pop-stack))
+  (define-key helm-gtags2-mode-map (kbd "C-c ,") #'helm-gtags2-pop-stack))
 
 (require 'helm-files)
 (setq helm-find-files-doc-header "")
