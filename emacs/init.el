@@ -55,6 +55,7 @@
  '(warning-suppress-types '((el-get) ((package reinitialization)))))
 
 (require 'cl-lib)
+(require 'subr-x)
 
 ;; el-get
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
@@ -108,8 +109,6 @@
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 
-(require 'cl-lib)
-
 (require 'smartrep)
 
 (savehist-mode 1)
@@ -127,7 +126,8 @@
 (global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
 (global-set-key (kbd "C-M-c") #'duplicate-dwim)
 (global-set-key (kbd "C-M-z") #'helm-resume)
-(global-set-key (kbd "C-x .") #'eglot-rename)
+(global-set-key (kbd "C-x !") #'eglot-rename)
+(global-set-key (kbd "C-x M-.") #'xref-find-references)
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
 (global-set-key (kbd "C-x C-c") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
@@ -314,6 +314,8 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;; face
+(set-face-attribute 'minibuffer-prompt nil
+                    :foreground "color-46")
 (set-face-attribute 'region nil
                     :foreground "color-240"
                     :background "color-159")
@@ -346,7 +348,7 @@
                     :foreground "color-82"
                     :weight 'extra-bold)
 (set-face-attribute 'helm-grep-file nil
-                    :foreground "color-45"
+                    :foreground "color-120"
                     :underline 'unspecified)
 (set-face-attribute 'helm-selection nil
                     :foreground "black"
