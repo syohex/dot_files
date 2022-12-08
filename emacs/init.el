@@ -289,16 +289,6 @@
   (setq-default default-input-method "japanese-mozc")
   (global-set-key (kbd "C-o") 'toggle-input-method))
 
-;; (makeunbound 'overriding-minor-mode-map)
-(define-minor-mode overriding-minor-mode
-  ""
-  :global     t
-  :lighter    ""
-  `((,(kbd "M-q") . editutil-zap-to-char)
-    (,(kbd "M-Q") . editutil-zap-to-char-backward)
-    (,(kbd "M-a") . editutil-backward-char)
-    (,(kbd "M-e") . editutil-forward-char)))
-
 (global-git-gutter2-mode +1)
 (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
 (global-set-key (kbd "C-x v u") 'git-gutter2-update)
