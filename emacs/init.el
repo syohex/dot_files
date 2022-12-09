@@ -372,9 +372,9 @@
 
 (with-eval-after-load 'flymake
   (set-face-attribute 'flymake-error nil
-                      :foreground "color-126")
+                      :foreground "color-199" :underline t)
   (set-face-attribute 'flymake-warning nil
-                      :foreground "color-228"))
+                      :foreground "color-228" :underline t))
 
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
