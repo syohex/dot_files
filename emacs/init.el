@@ -108,14 +108,14 @@
   ;; Variables of mozc.el must be set before loading
   (custom-set-variables
    '(mozc-candidate-style 'echo-area)
-   '(mozc-leim-title "[も]")
+   '(mozc-leim-title "[も]"))
 
    (require 'mozc)
    (setq-default default-input-method "japanese-mozc")
    (global-set-key (kbd "C-o") 'toggle-input-method)
 
    (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
-                      :foreground "color-184")))
+                      :foreground "color-184"))
 
 (global-font-lock-mode +1)
 (transient-mark-mode +1)
