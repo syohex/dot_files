@@ -80,13 +80,13 @@
 
 (el-get-bundle emacs-helm/helm-descbinds)
 (el-get-bundle company-mode/company-mode :name company-mode)
-(el-get-bundle myuhe/smartrep.el :name smartrep)
+(el-get-bundle! myuhe/smartrep.el :name smartrep)
 (el-get-bundle jrblevin/markdown-mode)
 (el-get-bundle yoshiki/yaml-mode)
 
-(el-get-bundle syohex/emacs-git-gutter2 :name git-gutter2)
-(el-get-bundle syohex/emacs-editutil :name editutil)
-(el-get-bundle syohex/emacs-anzu2 :name anzu2)
+(el-get-bundle! syohex/emacs-git-gutter2 :name git-gutter2)
+(el-get-bundle! syohex/emacs-editutil :name editutil)
+(el-get-bundle! syohex/emacs-anzu2 :name anzu2)
 (el-get-bundle syohex/emacs-helm-ag2 :name helm-ag2)
 (el-get-bundle syohex/emacs-helm-gtags2 :name helm-gtags2)
 
@@ -97,19 +97,43 @@
 (el-get-bundle kotlin-mode)
 (el-get-bundle haskell/haskell-mode)
 
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8-unix)
+
 (when (executable-find "mozc_emacs_helper")
   (el-get-bundle mozc
     :type http
     :url "https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el")
 
+  ;; Variables of mozc.el must be set before loading
   (custom-set-variables
    '(mozc-candidate-style 'echo-area)
-   '(mozc-leim-title "[も]")))
+   '(mozc-leim-title "[も]")
 
-(set-language-environment "Japanese")
-(prefer-coding-system 'utf-8-unix)
+   (require 'mozc)
+   (setq-default default-input-method "japanese-mozc")
+   (global-set-key (kbd "C-o") 'toggle-input-method)
 
-(require 'smartrep)
+   (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
+                      :foreground "color-184")))
+
+(global-font-lock-mode +1)
+(transient-mark-mode +1)
+
+;; indicate last line
+(setq-default indicate-empty-lines t
+              indicate-buffer-boundaries 'right)
+
+;; not create backup file
+(setq backup-inhibited t
+      delete-auto-save-files t)
+
+(normal-erase-is-backspace-mode -1)
+
+(menu-bar-mode -1)
+(line-number-mode +1)
+(column-number-mode +1)
+(which-function-mode +1)
 
 (savehist-mode 1)
 (save-place-mode +1)
@@ -142,31 +166,17 @@
 (global-set-key (kbd "M-g l") #'flymake-show-buffer-diagnostics)
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 
-(global-font-lock-mode +1)
-(transient-mark-mode +1)
-
-;; indicate last line
-(setq-default indicate-empty-lines t
-              indicate-buffer-boundaries 'right)
-
-;; not create backup file
-(setq backup-inhibited t
-      delete-auto-save-files t)
-
-;; Disable menu bar
-(menu-bar-mode -1)
-
+;; show-paren
 (show-paren-mode 1)
-(line-number-mode 1)
-(column-number-mode 1)
+(set-face-attribute 'show-paren-match nil
+                    :background 'unspecified :foreground 'unspecified
+                    :underline t :weight 'bold)
+(set-face-background 'show-paren-match 'unspecified)
 
 (require 'server)
 (unless (server-running-p)
   (server-start))
 (defalias 'exit 'save-buffers-kill-emacs)
-
-;; backspace
-(normal-erase-is-backspace-mode -1)
 
 (require 'uniquify)
 (require 'recentf)
@@ -235,11 +245,13 @@
 (with-eval-after-load 'markdown-mode
   (define-key markdown-mode-map (kbd "C-x n") nil)
   (define-key markdown-mode-map (kbd "C-x n b") nil)
-  (define-key markdown-mode-map (kbd "C-x n s") nil))
+  (define-key markdown-mode-map (kbd "C-x n s") nil)
+
+  (set-face-attribute 'markdown-line-break-face nil
+                      :underline 'unspecified))
 
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
-(require 'helm-config)
 (require 'helm)
 (require 'helm-mode)
 (helm-mode -1)
@@ -252,6 +264,13 @@
 
 (global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") #'helm-apropos)
+
+(set-face-attribute 'helm-grep-file nil
+                    :foreground "color-120"
+                    :underline 'unspecified)
+(set-face-attribute 'helm-selection nil
+                    :foreground "black"
+                    :background "color-204")
 
 (helm-descbinds-install)
 
@@ -266,8 +285,9 @@
 (require 'helm-files)
 (setq helm-find-files-doc-header "")
 
-(which-function-mode +1)
+(which-key-mode +1)
 
+;; company
 (global-company-mode +1)
 (global-set-key (kbd "C-M-i") #'company-complete)
 
@@ -279,16 +299,21 @@
 (define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-elisp)
 (define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
 
-(which-key-mode +1)
+;; anzu
 (global-anzu2-mode +1)
+(set-face-attribute 'anzu2-mode-line nil
+                    :foreground "color-226"
+                    :weight 'extra-bold)
 
-(require 'editutil)
+;; editutil
 (editutil-default-setup)
+(set-face-attribute 'editutil-clean-space nil
+                    :foreground "purple")
+(set-face-attribute 'editutil-vc-branch nil
+                    :foreground "color-202"
+                    :weight 'extra-bold)
 
-(when (and (executable-find "mozc_emacs_helper") (require 'mozc nil t))
-  (setq-default default-input-method "japanese-mozc")
-  (global-set-key (kbd "C-o") 'toggle-input-method))
-
+;; git-gutter
 (global-git-gutter2-mode +1)
 (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
 (global-set-key (kbd "C-x v u") 'git-gutter2-update)
@@ -300,6 +325,13 @@
 (smartrep-define-key
  global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
                     ("p" . 'git-gutter2-previous-hunk)))
+
+(set-face-attribute 'git-gutter2-deleted nil
+                    :foreground nil
+                    :background "brightred")
+(set-face-attribute 'git-gutter2-modified nil
+                    :foreground nil
+                    :background "brightmagenta")
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
@@ -320,37 +352,11 @@
 (set-face-attribute 'which-func nil
                     :foreground "color-201"
                     :weight 'extra-bold)
-(set-face-attribute 'editutil-clean-space nil
-                    :foreground "purple")
-(set-face-attribute 'editutil-vc-branch nil
-                    :foreground "color-202"
-                    :weight 'extra-bold)
-(set-face-attribute 'anzu2-mode-line nil
-                    :foreground "color-226"
-                    :weight 'extra-bold)
-(set-face-attribute 'show-paren-match nil
-                    :background 'unspecified :foreground 'unspecified
-                    :underline t :weight 'bold)
-(set-face-background 'show-paren-match 'unspecified)
 (set-face-foreground 'font-lock-regexp-grouping-backslash "color-199")
 (set-face-foreground 'font-lock-regexp-grouping-construct "color-190")
 (set-face-attribute 'eldoc-highlight-function-argument nil
                     :foreground "color-82"
                     :weight 'extra-bold)
-(set-face-attribute 'helm-grep-file nil
-                    :foreground "color-120"
-                    :underline 'unspecified)
-(set-face-attribute 'helm-selection nil
-                    :foreground "black"
-                    :background "color-204")
-
-(with-eval-after-load 'git-gutter2
-  (set-face-attribute 'git-gutter2-deleted nil
-                      :foreground nil
-                      :background "brightred")
-  (set-face-attribute 'git-gutter2-modified nil
-                      :foreground nil
-                      :background "brightmagenta"))
 
 (with-eval-after-load 'flyspell
   (set-face-attribute 'flyspell-duplicate nil
@@ -359,17 +365,20 @@
                       :foreground "color-198"
                       :underline t))
 
-(with-eval-after-load 'markdown-mode
-  (set-face-attribute 'markdown-line-break-face nil
-                      :underline 'unspecified))
+(with-eval-after-load 'rust-mode
+  (set-face-attribute 'rust-string-interpolation nil
+                      :foreground "color-81"
+                      :slant 'unspecified))
+
+(with-eval-after-load 'flymake
+  (set-face-attribute 'flymake-error nil
+                      :foreground "color-126")
+  (set-face-attribute 'flymake-warning nil
+                      :foreground "color-228"))
 
 (with-eval-after-load 'eglot
   (set-face-attribute 'eglot-mode-line nil
                       :foreground "color-166"))
-
-(with-eval-after-load 'mozc
-  (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
-                      :foreground "color-184"))
 
 (with-eval-after-load 'diff-mode
   (set-face-attribute 'diff-added nil
