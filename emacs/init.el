@@ -75,7 +75,6 @@
 
 (el-get-bundle paredit)
 (el-get-bundle helm)
-(el-get-bundle which-key)
 (el-get-bundle emacs-evil/evil)
 
 (el-get-bundle emacs-helm/helm-descbinds)
@@ -284,8 +283,6 @@
 
 (require 'helm-files)
 (setq helm-find-files-doc-header "")
-
-(which-key-mode +1)
 
 ;; company
 (global-company-mode +1)
