@@ -104,7 +104,7 @@ alias dwc='git diff --cached --word-diff'
 alias -g L='|less -R'
 alias -g G='|grep'
 
-if [[ -z $DISPLAY ]]; then
+if [[ -z $DISPLAY || -n $WSLENV ]]; then
   alias b='gh browse -n'
   export GPG_TTY=$(tty)
 else
@@ -206,7 +206,7 @@ fi
 
 export GOROOT=$HOME/local/go
 export GOPATH=$HOME/go
-path=($GOROOT/bin $GOPATH/bin $path)
+path=($GOROOT/bin(N-/) $GOPATH/bin(N-/) $path)
 
 if [[ "$TERM_PROGRAM" == "tmux" ]]; then
   export TERM=tmux-256color
@@ -217,6 +217,10 @@ fi
 if [[ -e ~/.dotnet/dotnet ]]; then
   export DOTNET_ROOT=$HOME/.dotnet
   path=(~/.dotnet $path)
+fi
+
+if [[ -n $WSLENV ]]; then
+  path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft VS Code/bin(N-/) $path)
 fi
 
 path=(~/local/*/bin $path)
