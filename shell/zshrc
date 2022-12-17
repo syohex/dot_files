@@ -220,7 +220,7 @@ if [[ -e ~/.dotnet/dotnet ]]; then
 fi
 
 if [[ -n $WSLENV ]]; then
-  path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft VS Code/bin(N-/) $path)
+  path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/) $path)
 fi
 
 path=(~/local/*/bin $path)
