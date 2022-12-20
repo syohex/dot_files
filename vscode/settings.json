@@ -20,8 +20,6 @@
         "<C-t>": false,
         "<C-h>": false,
         "<C-.>": false,
-        "<C-i>": false,
-        "<C-o>": false,
     },
     "editor.columnSelection": true,
     "[rust]": {
