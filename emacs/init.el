@@ -93,7 +93,6 @@
 (el-get-bundle dominikh/go-mode.el)
 (el-get-bundle fsharp/emacs-fsharp-mode :name fsharp-mode)
 (el-get-bundle rust-lang/rust-mode)
-(el-get-bundle kotlin-mode)
 (el-get-bundle haskell/haskell-mode)
 
 (set-language-environment "Japanese")
