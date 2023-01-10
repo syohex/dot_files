@@ -111,14 +111,18 @@ else
   alias b='gh browse'
 fi
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  alias -g C='| xsel --input --clipboard'
-  alias open='xdg-open'
-  alias start='xdg-open'
+if [[ -n $WSLENV ]]; then
+  alias -g C='| /mnt/c/Windows/System32/clip.exe'
 else
-  # macOS
-  alias -g C='| pbcopy'
-  alias start='open'
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias -g C='| xsel --input --clipboard'
+    alias open='xdg-open'
+    alias start='xdg-open'
+  else
+    # macOS
+    alias -g C='| pbcopy'
+    alias start='open'
+  fi
 fi
 
 # prompt
