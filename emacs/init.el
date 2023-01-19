@@ -93,7 +93,6 @@
 (el-get-bundle dominikh/go-mode.el)
 (el-get-bundle fsharp/emacs-fsharp-mode :name fsharp-mode)
 (el-get-bundle rust-lang/rust-mode)
-(el-get-bundle haskell/haskell-mode)
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
@@ -194,7 +193,6 @@
                 c++-mode-hook
                 go-mode-hook
                 fsharp-mode-hook
-                haskell-mode-hook
                 python-mode-hook
                 rust-mode-hook))
   (add-hook hook #'eglot-ensure))
