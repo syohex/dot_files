@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
 (custom-set-variables
- '(custom-file "~/.emacs/custom.el")
+ '(custom-file "~/.emacs.d/custom.el")
  '(anzu2-deactivate-region t)
  '(anzu2-mode-lighter "")
  '(anzu2-replace-to-string-separator " => ")
@@ -37,7 +37,8 @@
  '(parens-require-spaces nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
-   '(".recentf" "/repos/" "/elpa/" "/el-get/" "CMakeCache.txt" "/usr/local/share/emacs/" "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/"))
+   '(".recentf" "/repos/" "/elpa/" "/el-get/" "CMakeCache.txt" "/usr/local/share/emacs/"
+     "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/"))
  '(recentf-max-saved-items 1000)
  '(set-mark-command-repeat-pop t)
  '(sh-indentation 2)
