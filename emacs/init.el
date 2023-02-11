@@ -62,8 +62,8 @@
 (require 'use-package)
 
 (cl-defun from-github (&key repo name rev)
-  (let ((url (format "https://github.com/%s" repo)))
-    (unless (package-installed-p name)
+  (unless (package-installed-p name)
+    (let ((url (format "https://github.com/%s" repo)))
       (package-vc-install url rev nil name))))
 
 (setq gc-cons-threshold (* gc-cons-threshold 10)
