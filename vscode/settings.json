@@ -66,5 +66,6 @@
     "typescript.inlayHints.variableTypes.enabled": true,
     "javascript.inlayHints.parameterTypes.enabled": true,
     "python.analysis.inlayHints.variableTypes": true,
-    "python.analysis.inlayHints.functionReturnTypes": true
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "git.openRepositoryInParentFolders": "never"
 }
