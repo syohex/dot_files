@@ -114,6 +114,7 @@ fi
 if [[ -n $WSLENV ]]; then
   alias -g C='| /mnt/c/Windows/System32/clip.exe'
   alias start='/mnt/c/Windows/explorer.exe'
+  alias open='/mnt/c/Windows/explorer.exe'
 else
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias -g C='| xsel --input --clipboard'
