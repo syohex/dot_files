@@ -309,10 +309,10 @@
   (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk)
 
   (set-face-attribute 'git-gutter2-deleted nil
-                      :foreground nil
+                      :foreground 'unspecified
                       :background "brightred")
   (set-face-attribute 'git-gutter2-modified nil
-                      :foreground nil
+                      :foreground 'unspecified
                       :background "brightmagenta"))
 
 (use-package smartrep
