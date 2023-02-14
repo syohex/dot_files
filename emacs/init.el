@@ -352,8 +352,15 @@
 (global-set-key (kbd "C-h a") #'helm-apropos)
 
 ;; face
-(set-face-attribute 'minibuffer-prompt nil
-                    :foreground "color-46")
+(set-face-foreground 'font-lock-string-face "color-215")
+(set-face-foreground 'font-lock-comment-face "color-208")
+(set-face-foreground 'font-lock-builtin-face "color-87")
+(set-face-foreground 'font-lock-keyword-face "color-159")
+(set-face-foreground 'font-lock-constant-face "color-82")
+(set-face-foreground 'font-lock-variable-name-face "color-222")
+(set-face-foreground 'font-lock-type-face "color-83")
+(set-face-foreground 'font-lock-function-name-face "color-81")
+(set-face-foreground 'minibuffer-prompt "color-46")
 (set-face-attribute 'region nil
                     :foreground "color-240"
                     :background "color-159")
