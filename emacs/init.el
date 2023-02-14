@@ -192,6 +192,9 @@
   (define-key go-mode-map (kbd "M-,") #'pop-tag-mark)
   (define-key go-mode-map (kbd ":") nil))
 
+(use-package eglot-fsharp
+  :defer t)
+
 (use-package fsharp-mode
   :defer t
   :config
