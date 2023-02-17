@@ -21,7 +21,7 @@
  '(helm-candidate-number-limit 500)
  '(helm-command-prefix-key nil)
  '(helm-exit-idle-delay 0)
- '(helm-gtags-pulse-at-cursor nil)
+ '(helm-gtags2-pulse-at-cursor nil)
  '(helm-input-idle-delay 0)
  '(hippie-expand-try-functions-list
    '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
@@ -262,10 +262,12 @@
 
 (use-package helm-ag2
   :defer t
+  :commands (helm-ag2 helm-do-ag2 helm-ag2-project-root)
   :init (from-github :repo "syohex/emacs-helm-ag2" :name 'helm-ag2))
 
 (use-package helm-gtags2
   :defer t
+  :commands (helm-gtags2-mode)
   :init (from-github :repo "syohex/emacs-helm-gtags2" :name 'helm-gtags2)
   :config
   (define-key helm-gtags2-mode-map (kbd "C-c t") #'helm-gtags2-find-tag)
