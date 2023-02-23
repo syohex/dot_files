@@ -161,8 +161,11 @@
                   rust-mode-hook))
     (add-hook hook #'eglot-ensure))
   :config
-  (set-face-attribute 'eglot-mode-line nil
-                      :foreground "color-166"))
+  (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
+
+  (set-face-foreground 'eglot-mode-line "color-166")
+  (set-face-attribute 'eglot-inlay-hint-face nil
+                      :foreground "color-83" :weight 'unspecified :italic t))
 
 (use-package clang-format
   :defer t)
