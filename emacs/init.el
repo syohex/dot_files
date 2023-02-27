@@ -366,6 +366,9 @@
 (set-face-foreground 'font-lock-type-face "color-83")
 (set-face-foreground 'font-lock-function-name-face "color-81")
 (set-face-foreground 'minibuffer-prompt "color-46")
+(set-face-foreground 'shadow "color-249")
+(set-face-foreground 'link "color-39")
+(set-face-foreground 'completions-common-part "color-190")
 (set-face-attribute 'region nil
                     :foreground "color-240"
                     :background "color-159")
@@ -385,6 +388,10 @@
 (set-face-attribute 'eldoc-highlight-function-argument nil
                     :foreground "color-82"
                     :weight 'extra-bold)
+
+(with-eval-after-load 'org-faces
+  (set-face-foreground 'org-formula "color-163")
+  (set-face-foreground 'org-table "color-33"))
 
 (with-eval-after-load 'flyspell
   (set-face-attribute 'flyspell-duplicate nil
