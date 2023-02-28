@@ -372,7 +372,7 @@
 (set-face-foreground 'font-lock-variable-name-face "color-222")
 (set-face-foreground 'font-lock-type-face "color-83")
 (set-face-foreground 'font-lock-function-name-face "color-81")
-(set-face-foreground 'font-lock-property-face "color-123")
+(set-face-foreground 'font-lock-property-name-face "color-123")
 (set-face-foreground 'minibuffer-prompt "color-46")
 (set-face-foreground 'shadow "color-249")
 (set-face-foreground 'link "color-39")
