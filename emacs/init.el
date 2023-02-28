@@ -254,6 +254,7 @@
   (define-key helm-map (kbd "C-M-p") #'helm-previous-source)
   (define-key helm-map (kbd "C-M-n") #'helm-next-source)
 
+  (set-face-foreground 'helm-match "color-198")
   (set-face-attribute 'helm-grep-file nil
                       :foreground "color-120"
                       :underline 'unspecified)
@@ -330,6 +331,7 @@
 
 ;; key mapping
 (global-unset-key (kbd "C-x w"))
+(global-unset-key (kbd "C-x @"))
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
 (global-set-key (kbd "M-k") #'kill-whole-line)
@@ -357,6 +359,9 @@
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 (global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") #'helm-apropos)
+(global-set-key (kbd "C-x [") #'beginning-of-buffer)
+(global-set-key (kbd "C-x ]") #'end-of-buffer)
+(global-set-key (kbd "C-x @") #'pop-global-mark)
 
 ;; face
 (set-face-foreground 'font-lock-string-face "color-215")
