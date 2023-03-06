@@ -162,6 +162,7 @@
     (add-hook hook #'eglot-ensure))
   :config
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
+  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
 
   (set-face-foreground 'eglot-mode-line "color-166")
   (set-face-attribute 'eglot-inlay-hint-face nil
