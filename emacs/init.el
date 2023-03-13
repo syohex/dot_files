@@ -292,7 +292,16 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous)
   (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
-  (define-key company-active-map (kbd "C-i") #'company-complete-selection))
+  (define-key company-active-map (kbd "C-i") #'company-complete-selection)
+
+  (set-face-attribute 'company-tooltip nil :foreground "color-231" :background "color-240")
+  (set-face-foreground 'company-echo-common "color-199")
+  (set-face-foreground 'company-preview-common "color-123")
+  (set-face-foreground 'company-preview-search "color-123")
+  (set-face-foreground 'company-tooltip-common "color-123")
+  (set-face-foreground 'company-tooltip-annotation "color-38")
+  (set-face-background 'company-tooltip-scrollbar-thumb "color-253")
+  (set-face-background 'company-tooltip-scrollbar-track "color-240"))
 
 (define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-elisp)
 (define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
