@@ -297,12 +297,13 @@
   (set-face-attribute 'company-tooltip nil :foreground "color-231" :background "color-240")
   (set-face-attribute 'company-tooltip-search nil :foreground "color-231" :background "color-99")
   (set-face-attribute 'company-tooltip-search-selection nil :foreground "color-255" :background "color-99")
-  (set-face-attribute 'company-tooltip-selection nil :foreground "color-255" :background "color-238")
+  (set-face-attribute 'company-tooltip-selection nil
+                      :foreground "color-255" :background "color-238" :underline t)
   (set-face-foreground 'company-echo-common "color-199")
   (set-face-foreground 'company-preview-common "color-123")
   (set-face-foreground 'company-preview-search "color-123")
   (set-face-foreground 'company-tooltip-common "color-123")
-  (set-face-foreground 'company-tooltip-annotation "color-38")
+  (set-face-attribute 'company-tooltip-annotation nil :foreground "color-85")
   (set-face-background 'company-tooltip-scrollbar-thumb "color-253")
   (set-face-background 'company-tooltip-scrollbar-track "color-240"))
 
