@@ -124,6 +124,7 @@ else
     # macOS
     alias -g C='| pbcopy'
     alias start='open'
+    path=(/opt/homebrew/bin(N-/) $path)
   fi
 fi
 
