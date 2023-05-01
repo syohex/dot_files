@@ -12,7 +12,7 @@ install -d $dev_dir
 if [[ -d ${dev_dir}/my-command-utilities ]]; then
   (cd ${dev_dir}/my-command-utilities && git pull --rebase origin master)
 else
-  (cd ${dev_dir} && git clone git@github.com:syohex/my-command-utilities.git && cd my-command-utilities && ./setup.sh)
+  (cd ${dev_dir} && git clone https://github.com/syohex/my-command-utilities.git && cd my-command-utilities && ./setup.sh)
 fi
 
 # completion
