@@ -223,10 +223,8 @@
                       :foreground "color-81"
                       :slant 'unspecified))
 
-(use-package typescript-ts-mode
-  :init
-  (add-to-list 'auto-mode-alist '("\\.ts" . typescript-ts-mode))
-  (add-to-list 'auto-mode-alist '("\\.tsx" . tsx-ts-mode)))
+(add-to-list 'auto-mode-alist '("\\.ts" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx" . tsx-ts-mode))
 
 (with-eval-after-load 'dired
   ;; Not create new buffer, if you chenge directory in dired
