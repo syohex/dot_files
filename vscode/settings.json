@@ -67,5 +67,6 @@
     "javascript.inlayHints.parameterTypes.enabled": true,
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.colorTheme": "Default Dark+"
 }
