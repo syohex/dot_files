@@ -158,12 +158,13 @@
                   go-mode-hook
                   fsharp-mode-hook
                   python-mode-hook
+                  js-mode-hook
                   typescript-ts-mode-hook
                   rust-mode-hook))
     (add-hook hook #'eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
-               '((typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
+               '((js-mode typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
 
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
   (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
