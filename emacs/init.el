@@ -61,11 +61,6 @@
 (package-initialize)
 (require 'use-package)
 
-(cl-defun from-github (&key repo name rev)
-  (unless (package-installed-p name)
-    (let ((url (format "https://github.com/%s" repo)))
-      (package-vc-install url rev nil name))))
-
 (setq gc-cons-threshold (* gc-cons-threshold 10)
       ring-bell-function #'ignore)
 (setq-default indent-tabs-mode nil
@@ -113,7 +108,7 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (use-package anzu2
-  :init (from-github :repo "syohex/emacs-anzu2" :name 'anzu2)
+  :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
   (global-anzu2-mode +1)
   (set-face-attribute 'anzu2-mode-line nil
@@ -121,7 +116,7 @@
                       :weight 'extra-bold))
 
 (use-package editutil
-  :init (from-github :repo "syohex/emacs-editutil" :name 'editutil)
+  :vc (:url "https://github.com/syohex/emacs-editutil.git" :rev :newest)
   :config
   (editutil-default-setup)
   (set-face-attribute 'editutil-clean-space nil
@@ -278,12 +273,12 @@
 (use-package helm-ag2
   :defer t
   :commands (helm-ag2 helm-do-ag2 helm-ag2-project-root)
-  :init (from-github :repo "syohex/emacs-helm-ag2" :name 'helm-ag2))
+  :vc (:url "https://github.com/syohex/emacs-helm-ag2.git" :rev :newest))
 
 (use-package helm-gtags2
   :defer t
   :commands (helm-gtags2-mode)
-  :init (from-github :repo "syohex/emacs-helm-gtags2" :name 'helm-gtags2)
+  :vc (:url "https://github.com/syohex/emacs-helm-gtags2.git" :rev :newest)
   :config
   (define-key helm-gtags2-mode-map (kbd "C-c t") #'helm-gtags2-find-tag)
   (define-key helm-gtags2-mode-map (kbd "C-c r") #'helm-gtags2-find-rtag)
@@ -327,7 +322,7 @@
     (add-hook hook 'enable-paredit-mode)))
 
 (use-package git-gutter2
-  :init (from-github :repo "syohex/emacs-git-gutter2" :name 'git-gutter2)
+  :vc (:url "https://github.com/syohex/emacs-git-gutter2.git" :rev :newest)
   :config
   (global-git-gutter2-mode +1)
 
