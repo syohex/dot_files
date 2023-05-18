@@ -71,6 +71,11 @@
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 
+;; disable keys
+(global-unset-key (kbd "C-x w"))
+(global-unset-key (kbd "C-x @"))
+(global-unset-key (kbd "C-x a"))
+
 (when (executable-find "mozc_emacs_helper")
   (use-package mozc
     :init
@@ -280,9 +285,9 @@
   :commands (helm-gtags2-mode)
   :vc (:url "https://github.com/syohex/emacs-helm-gtags2.git" :rev :newest)
   :config
-  (define-key helm-gtags2-mode-map (kbd "C-c t") #'helm-gtags2-find-tag)
-  (define-key helm-gtags2-mode-map (kbd "C-c r") #'helm-gtags2-find-rtag)
-  (define-key helm-gtags2-mode-map (kbd "C-c s") #'helm-gtags2-find-symbol)
+  (define-key helm-gtags2-mode-map (kbd "M-t") #'helm-gtags2-find-tag)
+  (define-key helm-gtags2-mode-map (kbd "M-r") #'helm-gtags2-find-rtag)
+  (define-key helm-gtags2-mode-map (kbd "M-s") #'helm-gtags2-find-symbol)
   (define-key helm-gtags2-mode-map (kbd "C-c >") #'helm-gtags2-next-history)
   (define-key helm-gtags2-mode-map (kbd "C-c <") #'helm-gtags2-previous-history)
   (define-key helm-gtags2-mode-map (kbd "C-c ,") #'helm-gtags2-pop-stack))
@@ -347,8 +352,6 @@
                        ("p" . 'git-gutter2-previous-hunk))))
 
 ;; key mapping
-(global-unset-key (kbd "C-x w"))
-(global-unset-key (kbd "C-x @"))
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
 (global-set-key (kbd "M-k") #'kill-whole-line)
