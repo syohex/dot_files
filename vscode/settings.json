@@ -68,5 +68,6 @@
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "git.openRepositoryInParentFolders": "never",
-    "workbench.colorTheme": "Default Dark+"
+    "workbench.colorTheme": "Default Dark+",
+    "go.toolsManagement.autoUpdate": true
 }
