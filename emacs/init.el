@@ -203,6 +203,8 @@
   (define-key go-mode-map (kbd "M-,") #'pop-tag-mark)
   (define-key go-mode-map (kbd ":") nil))
 
+(add-to-list 'major-mode-remap-alist '(csharp-mode . csharp-ts-mode))
+
 (use-package eglot-fsharp
   :defer t)
 
