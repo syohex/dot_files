@@ -38,7 +38,7 @@
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
    '(".recentf" "/repos/" "/elpa/" "/el-get/" "CMakeCache.txt" "/usr/local/share/emacs/"
-     "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/"))
+     "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*"))
  '(recentf-max-saved-items 1000)
  '(set-mark-command-repeat-pop t)
  '(sh-indentation 2)
