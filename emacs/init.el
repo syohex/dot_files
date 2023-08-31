@@ -42,6 +42,7 @@
  '(recentf-max-saved-items 1000)
  '(set-mark-command-repeat-pop t)
  '(sh-indentation 2)
+ '(js-indent-level 2)
  '(show-paren-delay 0)
  '(show-paren-style 'expression)
  '(split-width-threshold 160)
