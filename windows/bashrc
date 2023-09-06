@@ -6,6 +6,7 @@ alias s='git status -s'
 alias d='git diff'
 alias dc='git diff --cached'
 alias open='start'
+alias rg='rg --path-separator //'
 
 alias B='cd /c/dev'
 
@@ -40,7 +41,7 @@ bind '"\C-w": "\eb\ed"'
 
 export PATH=$HOME/local/bin:$PATH
 
-if command -v >/dev/null 2>/dev/null; then
+if command -v zoxide >/dev/null 2>/dev/null; then
   eval "$(zoxide init bash)"
   alias z='zi'
 fi
