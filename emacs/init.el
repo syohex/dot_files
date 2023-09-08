@@ -375,7 +375,6 @@
 (global-set-key (kbd "M-g .") #'helm-ag2)
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
-(global-set-key (kbd "M-g e") #'evil-mode)
 (global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
 (global-set-key (kbd "M-g h") #'eldoc-doc-buffer)
 (global-set-key (kbd "M-g l") #'flymake-show-buffer-diagnostics)
