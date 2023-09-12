@@ -166,6 +166,9 @@
   :config
   (add-to-list 'eglot-server-programs
                '((js-mode typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
+  (setq eglot-ignored-server-capabilities '(:documentFormattingProvider
+                                            :documentOnTypeFormattingProvider
+                                            :documentRangeFormattingProvider))
 
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
   (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
