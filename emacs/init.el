@@ -46,6 +46,7 @@
  '(show-paren-delay 0)
  '(show-paren-style 'expression)
  '(split-width-threshold 160)
+ '(use-short-answers t)
  '(use-package-always-ensure t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
@@ -66,8 +67,6 @@
       ring-bell-function #'ignore)
 (setq-default indent-tabs-mode nil
               echo-keystrokes 0)
-
-(fset 'yes-or-no-p #'y-or-n-p)
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
