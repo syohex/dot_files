@@ -84,10 +84,7 @@
      '(mozc-leim-title "[も]"))
     :config
     (setq-default default-input-method "japanese-mozc")
-    (global-set-key (kbd "C-o") 'toggle-input-method)
-
-    (set-face-attribute 'mozc-cand-echo-area-candidate-face nil
-                        :foreground "color-184")))
+    (global-set-key (kbd "C-o") 'toggle-input-method)))
 
 (global-font-lock-mode +1)
 (transient-mark-mode +1)
@@ -115,27 +112,22 @@
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
-  (global-anzu2-mode +1)
-  (set-face-attribute 'anzu2-mode-line nil
-                      :foreground "color-226"
-                      :weight 'extra-bold))
+  (global-anzu2-mode +1))
 
 (use-package editutil
   :vc (:url "https://github.com/syohex/emacs-editutil.git" :rev :newest)
   :config
-  (editutil-default-setup)
-  (set-face-attribute 'editutil-clean-space nil
-                      :foreground "purple")
-  (set-face-attribute 'editutil-vc-branch nil
-                      :foreground "color-202"
-                      :weight 'extra-bold))
+  (editutil-default-setup))
+
+(use-package syohex-theme
+  :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
+  :init
+  (if (display-graphic-p)
+      (load-theme 'syohex-terminal t)
+    (load-theme 'syohex t)))
 
 ;; show-paren
 (show-paren-mode 1)
-(set-face-attribute 'show-paren-match nil
-                    :background 'unspecified :foreground 'unspecified
-                    :underline t :weight 'bold)
-(set-face-background 'show-paren-match 'unspecified)
 
 (require 'server)
 (unless (server-running-p)
@@ -170,11 +162,7 @@
                                             :documentRangeFormattingProvider))
 
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
-  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
-
-  (set-face-foreground 'eglot-mode-line "color-166")
-  (set-face-attribute 'eglot-inlay-hint-face nil
-                      :foreground "color-83" :weight 'unspecified :italic t))
+  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))))
 
 (use-package clang-format
   :defer t)
@@ -223,11 +211,7 @@
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
 
 (use-package rust-mode
-  :defer t
-  :config
-  (set-face-attribute 'rust-string-interpolation nil
-                      :foreground "color-81"
-                      :slant 'unspecified))
+  :defer t)
 
 (add-to-list 'auto-mode-alist '("\\.ts" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx" . tsx-ts-mode))
@@ -248,9 +232,7 @@
   :config
   (define-key markdown-mode-map (kbd "C-x n") nil)
   (define-key markdown-mode-map (kbd "C-x n b") nil)
-  (define-key markdown-mode-map (kbd "C-x n s") nil)
-  (set-face-attribute 'markdown-line-break-face nil
-                      :underline 'unspecified))
+  (define-key markdown-mode-map (kbd "C-x n s") nil))
 
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 
@@ -266,15 +248,7 @@
   (define-key helm-map (kbd "C-p") #'helm-previous-line)
   (define-key helm-map (kbd "C-n") #'helm-next-line)
   (define-key helm-map (kbd "C-M-p") #'helm-previous-source)
-  (define-key helm-map (kbd "C-M-n") #'helm-next-source)
-
-  (set-face-foreground 'helm-match "color-198")
-  (set-face-attribute 'helm-grep-file nil
-                      :foreground "color-120"
-                      :underline 'unspecified)
-  (set-face-attribute 'helm-selection nil
-                      :foreground "black"
-                      :background "color-204"))
+  (define-key helm-map (kbd "C-M-n") #'helm-next-source))
 
 (use-package helm-descbinds
   :config
@@ -305,20 +279,7 @@
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous)
   (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
-  (define-key company-active-map (kbd "C-i") #'company-complete-selection)
-
-  (set-face-attribute 'company-tooltip nil :foreground "color-231" :background "color-240")
-  (set-face-attribute 'company-tooltip-search nil :foreground "color-231" :background "color-99")
-  (set-face-attribute 'company-tooltip-search-selection nil :foreground "color-255" :background "color-99")
-  (set-face-attribute 'company-tooltip-selection nil
-                      :foreground "color-255" :background "color-238" :underline t)
-  (set-face-foreground 'company-echo-common "color-199")
-  (set-face-foreground 'company-preview-common "color-123")
-  (set-face-foreground 'company-preview-search "color-123")
-  (set-face-foreground 'company-tooltip-common "color-123")
-  (set-face-attribute 'company-tooltip-annotation nil :foreground "color-85")
-  (set-face-background 'company-tooltip-scrollbar-thumb "color-253")
-  (set-face-background 'company-tooltip-scrollbar-track "color-240"))
+  (define-key company-active-map (kbd "C-i") #'company-complete-selection))
 
 (define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-elisp)
 (define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
@@ -341,14 +302,7 @@
   (global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
 
   (global-set-key (kbd "C-x n") 'git-gutter2-next-hunk)
-  (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk)
-
-  (set-face-attribute 'git-gutter2-deleted nil
-                      :foreground 'unspecified
-                      :background "brightred")
-  (set-face-attribute 'git-gutter2-modified nil
-                      :foreground 'unspecified
-                      :background "brightmagenta"))
+  (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk))
 
 (use-package smartrep
   :config
@@ -386,80 +340,3 @@
 (global-set-key (kbd "C-x [") #'beginning-of-buffer)
 (global-set-key (kbd "C-x ]") #'end-of-buffer)
 (global-set-key (kbd "C-x @") #'pop-global-mark)
-
-;; face
-(set-face-foreground 'font-lock-string-face "color-215")
-(set-face-foreground 'font-lock-comment-face "color-208")
-(set-face-foreground 'font-lock-builtin-face "color-87")
-(set-face-foreground 'font-lock-keyword-face "color-159")
-(set-face-foreground 'font-lock-constant-face "color-82")
-(set-face-foreground 'font-lock-variable-name-face "color-222")
-(set-face-foreground 'font-lock-type-face "color-83")
-(set-face-foreground 'font-lock-function-name-face "color-81")
-(set-face-foreground 'font-lock-property-name-face "color-123")
-(set-face-foreground 'minibuffer-prompt "color-46")
-(set-face-foreground 'shadow "color-249")
-(set-face-foreground 'link "color-39")
-(set-face-foreground 'completions-common-part "color-190")
-(set-face-attribute 'region nil
-                    :foreground "color-240"
-                    :background "color-159")
-(set-face-attribute 'mode-line nil
-                    :foreground "color-248"
-                    :background "color-238")
-(set-face-attribute 'mode-line-inactive nil
-                    :foreground "color-254"
-                    :background "color-247")
-(set-face-attribute 'mode-line-buffer-id nil
-                    :weight 'extra-bold)
-(set-face-attribute 'which-func nil
-                    :foreground "color-201"
-                    :weight 'extra-bold)
-(set-face-foreground 'font-lock-regexp-grouping-backslash "color-199")
-(set-face-foreground 'font-lock-regexp-grouping-construct "color-190")
-(set-face-attribute 'eldoc-highlight-function-argument nil
-                    :foreground "color-82"
-                    :weight 'extra-bold)
-
-(with-eval-after-load 'org-faces
-  (set-face-foreground 'org-formula "color-163")
-  (set-face-foreground 'org-table "color-33"))
-
-(with-eval-after-load 'css-mode
-  (set-face-foreground 'css-selector "color-123")
-  (set-face-foreground 'css-property "color-41"))
-
-(with-eval-after-load 'flyspell
-  (set-face-attribute 'flyspell-duplicate nil
-                      :foreground "color-228")
-  (set-face-attribute 'flyspell-incorrect nil
-                      :foreground "color-198"
-                      :underline t))
-
-(with-eval-after-load 'flymake
-  (set-face-attribute 'flymake-error nil
-                      :foreground "color-199" :underline t)
-  (set-face-attribute 'flymake-warning nil
-                      :foreground "color-228" :underline t))
-
-(with-eval-after-load 'diff-mode
-  (set-face-attribute 'diff-added nil
-                      :background 'unspecified :foreground "green"
-                      :weight 'normal)
-  (set-face-attribute 'diff-removed nil
-                      :background 'unspecified :foreground "brightred"
-                      :weight 'normal)
-  (set-face-attribute 'diff-header nil
-                      :background "color-240" :weight 'extra-bold)
-  (set-face-attribute 'diff-file-header nil
-                      :background "color-240" :weight 'bold)
-  (set-face-attribute 'diff-refine-added nil
-                      :background 'unspecified :underline t)
-  (set-face-attribute 'diff-refine-removed nil
-                      :background 'unspecified :underline t)
-  (set-face-attribute 'diff-refine-changed nil
-                      :background 'unspecified)
-  (set-face-attribute 'diff-hunk-header nil
-                      :foreground "color-208"
-                      :weight 'extra-bold
-                      :underline t))
