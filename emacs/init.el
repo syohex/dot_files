@@ -126,6 +126,10 @@
       (load-theme 'syohex t)
     (load-theme 'syohex-terminal t)))
 
+(when (display-graphic-p)
+  (set-frame-font "HackGen Console-12")
+  (tool-bar-mode -1))
+
 ;; show-paren
 (show-paren-mode 1)
 
