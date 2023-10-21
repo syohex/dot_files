@@ -123,8 +123,8 @@
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
   :init
   (if (display-graphic-p)
-      (load-theme 'syohex-terminal t)
-    (load-theme 'syohex t)))
+      (load-theme 'syohex t)
+    (load-theme 'syohex-terminal t)))
 
 ;; show-paren
 (show-paren-mode 1)
