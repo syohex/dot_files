@@ -127,6 +127,7 @@
     (load-theme 'syohex-terminal t)))
 
 (when (display-graphic-p)
+  (set-frame-size nil 130 50)
   (set-frame-font "HackGen Console-12")
   (tool-bar-mode -1))
 
