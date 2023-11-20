@@ -12,6 +12,7 @@
  '(dired-dwim-target t)
  '(dired-recursive-copies 'always)
  '(dired-recursive-deletes 'always)
+ '(edebug-inhibit-emacs-lisp-mode-bindings t)
  '(eldoc-echo-area-use-multiline-p nil)
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
@@ -23,6 +24,7 @@
  '(helm-exit-idle-delay 0)
  '(helm-gtags2-pulse-at-cursor nil)
  '(helm-input-idle-delay 0)
+ '(helm-move-to-line-cycle-in-source nil)
  '(hippie-expand-try-functions-list
    '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
  '(hippie-expand-verbose nil)
