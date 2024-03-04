@@ -312,6 +312,7 @@
   (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk))
 
 (use-package smartrep
+  :vc (:url "https://github.com/syohex/smartrep.el" :rev :newest)
   :config
   (smartrep-define-key
     global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
