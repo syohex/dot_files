@@ -1,15 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
-PACKAGES="zsh tmux
-    build-essential diffutils
-    git
-    emacs vim aspell ispell exuberant-ctags fonts-vlgothic nkf lv
-    emacs-mozc emacs-mozc-bin mozc-server mozc-utils-gui
-    bat exa
-    curl w3m jq
-    porg"
+declare -a packages
+packages=(zsh build-essential diffutils vim aspell jq nkf curl w3m porg bat)
+
+if [[ -z $WSLENV && -n $DISPLAY ]]; then
+  packages+=(emacs-moz emacs-mozc-bin mozc-server mozc-utils-gui)
+fi
 
 echo "Install packages:"
-sudo apt install $PACKAGES
+sudo apt install "${packages[@]}"
