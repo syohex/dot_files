@@ -213,7 +213,7 @@ fi
 
 export GOROOT=$HOME/local/go
 export GOPATH=$HOME/go
-path=($GOROOT/bin(N-/) $GOPATH/bin(N-/) $path)
+path=($GOPATH/bin(N-/) $path)
 
 if [[ "$TERM_PROGRAM" == "tmux" && "$OSTYPE" == "linux-gnu" ]]; then
   export TERM=tmux-256color
@@ -223,7 +223,7 @@ fi
 
 if [[ -e ~/.dotnet/dotnet ]]; then
   export DOTNET_ROOT=$HOME/.dotnet
-  path=(~/.dotnet $path)
+  path=(~/.dotnet ~/.dotnet/tools(N-/) $path)
 fi
 
 if [[ -n $WSLENV ]]; then
@@ -232,5 +232,5 @@ if [[ -n $WSLENV ]]; then
 fi
 
 path=(~/local/*/bin $path)
-path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.dotnet/tools(N-/) $path)
+path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.ghcup/bin(N-/) $path)
 path=(~/bin $path)
