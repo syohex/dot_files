@@ -34,8 +34,6 @@
  '(markdown-gfm-use-electric-backquote nil)
  '(markdown-indent-on-enter nil)
  '(markdown-make-gfm-checkboxes-buttons nil)
- '(package-selected-packages
-   '(anzu2 helm-ag2 editutil git-gutter2 helm-gtags2 company editutil smartrep git-gutter2 git-gutter2 paredit company-mode helm-gtags2 helm-gtags2 helm-ag2 helm-ag2 helm-descbinds helm yaml-ts-mode markdown-mode rust-mode fsharp-mode go-mode clang-format editutil anzu2 anzu2 jsonrpc queue))
  '(parens-require-spaces nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
@@ -155,10 +153,10 @@
   (dolist (hook '(c-mode-hook
                   c++-mode-hook
                   go-mode-hook
-                  fsharp-mode-hook
                   python-mode-hook
                   js-mode-hook
                   typescript-ts-mode-hook
+                  haskell-mode-hook
                   rust-mode-hook))
     (add-hook hook #'eglot-ensure))
   :config
@@ -203,17 +201,13 @@
 
 (add-to-list 'major-mode-remap-alist '(csharp-mode . csharp-ts-mode))
 
-(use-package eglot-fsharp
-  :defer t)
-
-(use-package fsharp-mode
+(use-package haskell-mode
   :defer t
-  :config
-  (require 'eglot-fsharp)
-  (add-hook 'fsharp-mode-hook #'my/fsharp-mode-hook))
-
-(defun my/fsharp-mode-hook ()
-  (setq-local indent-line-function #'indent-relative))
+  :init
+  (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
+  (with-eval-after-load 'haskell
+    (define-key interactive-haskell-mode-map (kbd "C-c C-c") #'haskell-process-load-file)
+    (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build)))
 
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
 
