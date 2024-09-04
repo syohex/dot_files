@@ -207,7 +207,9 @@
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   (with-eval-after-load 'haskell
     (define-key interactive-haskell-mode-map (kbd "C-c C-c") #'haskell-process-load-file)
-    (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build)))
+    (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build))
+  :config
+  (define-key haskell-mode-map (kbd "C-j") #'haskell-indentation-newline-and-indent))
 
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
 
