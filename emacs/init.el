@@ -218,6 +218,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.ts" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\(CMakeLists\\.txt\\|\\.cmake\\)\\'" . cmake-ts-mode))
 
 (with-eval-after-load 'dired
   ;; Not create new buffer, if you chenge directory in dired
