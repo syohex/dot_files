@@ -7,19 +7,22 @@
     "files.insertFinalNewline": true,
     "extensions.ignoreRecommendations": false,
     "vim.handleKeys": {
-        "<C-d>": false,
         "<C-a>": false,
-        "<C-f>": false,
-        "<C-n>": false,
-        "<C-c>": false,
-        "<C-x>": false,
-        "<C-v>": false,
         "<C-b>": false,
+        "<C-c>": false,
+        "<C-d>": false,
+        "<C-f>": false,
+        "<C-h>": false,
+        "<C-i>": false,
         "<C-j>": false,
         "<C-k>": false,
+        "<C-p>": false,
+        "<C-n>": false,
+        "<C-o>": false,
         "<C-t>": false,
-        "<C-h>": false,
-        "<C-.>": false,
+        "<C-x>": false,
+        "<C-v>": false,
+        "<C-.>": false
     },
     "editor.columnSelection": true,
     "[rust]": {
@@ -36,7 +39,7 @@
     },
     "[typescript]": {
         "editor.tabSize": 2,
-        "editor.detectIndentation": false,
+        "editor.detectIndentation": false
     },
     "[typescriptreact]": {
         "editor.tabSize": 2,
