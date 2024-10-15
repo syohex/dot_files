@@ -34,7 +34,7 @@
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
-    "FSharp.dotnetRoot": "${env:HOME}/.dotnet",
+    "FSharp.suggestGitignore": false,
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.default.cStandard": "c23",
     "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
