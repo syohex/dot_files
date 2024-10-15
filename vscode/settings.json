@@ -1,11 +1,18 @@
 {
+    "editor.columnSelection": true,
+    "editor.stickyScroll.scrollWithEditor": false,
+    "extensions.ignoreRecommendations": false,
+    "files.insertFinalNewline": true,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.startupEditor": "none",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.stickyScroll.enabled": false,
+    "editor.hover.sticky": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.bracketPairColorization.enabled": false,
     "vim.easymotion": true,
     "vim.leader": "<space>",
-    "go.formatTool": "goimports",
-    "go.useLanguageServer": true,
-    "git.autofetch": true,
-    "files.insertFinalNewline": true,
-    "extensions.ignoreRecommendations": false,
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-b>": false,
@@ -24,34 +31,10 @@
         "<C-v>": false,
         "<C-.>": false
     },
-    "editor.columnSelection": true,
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
-    "workbench.startupEditor": "none",
-    "[javascript]": {
-        "editor.tabSize": 2,
-        "editor.detectIndentation": false
-    },
-    "[javascriptreact]": {
-        "editor.tabSize": 2,
-        "editor.detectIndentation": false
-    },
-    "[typescript]": {
-        "editor.tabSize": 2,
-        "editor.detectIndentation": false
-    },
-    "[typescriptreact]": {
-        "editor.tabSize": 2,
-        "editor.detectIndentation": false
-    },
-    "[html]": {
-        "editor.tabSize": 2,
-        "editor.detectIndentation": false
-    },
-    "FSharp.dotnetRoot": "/home/shohei/.dotnet",
-    "editor.inlayHints.enabled": "offUnlessPressed",
-    "editor.bracketPairColorization.enabled": false,
+    "FSharp.dotnetRoot": "${env:HOME}/.dotnet",
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.default.cStandard": "c23",
     "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
@@ -59,18 +42,6 @@
     "C_Cpp.inlayHints.parameterNames.enabled": true,
     "C_Cpp.inlayHints.referenceOperator.enabled": true,
     "C_Cpp.inlayHints.referenceOperator.showSpace": true,
-    "javascript.inlayHints.enumMemberValues.enabled": true,
-    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-    "typescript.inlayHints.enumMemberValues.enabled": true,
-    "javascript.inlayHints.variableTypes.enabled": true,
-    "typescript.inlayHints.parameterTypes.enabled": true,
-    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-    "typescript.inlayHints.variableTypes.enabled": true,
-    "javascript.inlayHints.parameterTypes.enabled": true,
-    "python.analysis.inlayHints.variableTypes": true,
-    "python.analysis.inlayHints.functionReturnTypes": true,
-    "git.openRepositoryInParentFolders": "never",
-    "workbench.colorTheme": "Default Dark+",
-    "go.toolsManagement.autoUpdate": true
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true
 }
