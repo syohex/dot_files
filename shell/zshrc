@@ -236,5 +236,5 @@ if [[ -n $WSLENV ]]; then
 fi
 
 path=(~/local/*/bin $path)
-path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.ghcup/bin(N-/) $path)
+path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.ghcup/bin(N-/) ~/.cabal/bin(N-/) $path)
 path=(~/bin $path)

@@ -156,6 +156,7 @@
                   python-mode-hook
                   js-mode-hook
                   typescript-ts-mode-hook
+                  tuareg-mode-hook
                   haskell-mode-hook
                   rust-mode-hook))
     (add-hook hook #'eglot-ensure))
@@ -210,6 +211,11 @@
     (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build))
   :config
   (define-key haskell-mode-map (kbd "C-j") #'haskell-indentation-newline-and-indent))
+
+(use-package tuareg
+  :defer t
+  :config
+  (define-key tuareg-mode-map (kbd "C-c C-l") #'tuareg-eval-buffer))
 
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
 
