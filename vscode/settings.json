@@ -34,6 +34,7 @@
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
+    "dotnet.automaticallyCreateSolutionInWorkspace": false,
     "FSharp.suggestGitignore": false,
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.default.cStandard": "c23",
