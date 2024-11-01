@@ -1,4 +1,8 @@
 {
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": false,
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}"
+    "workbench.layoutControl.enabled": false,
     "editor.columnSelection": true,
     "editor.stickyScroll.scrollWithEditor": false,
     "extensions.ignoreRecommendations": false,
