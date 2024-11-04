@@ -2,6 +2,7 @@
 
 (custom-set-variables
  '(custom-file "~/.emacs.d/custom.el")
+ '(confirm-kill-processes nil)
  '(anzu2-deactivate-region t)
  '(anzu2-mode-lighter "")
  '(anzu2-replace-to-string-separator " => ")
