@@ -157,6 +157,7 @@
                   go-mode-hook
                   python-mode-hook
                   js-mode-hook
+                  csharp-mode-hook
                   typescript-ts-mode-hook
                   tuareg-mode-hook
                   haskell-mode-hook
@@ -201,8 +202,6 @@
   (define-key go-mode-map (kbd "M-.") #'godef-jump)
   (define-key go-mode-map (kbd "M-,") #'pop-tag-mark)
   (define-key go-mode-map (kbd ":") nil))
-
-(add-to-list 'major-mode-remap-alist '(csharp-mode . csharp-ts-mode))
 
 (use-package haskell-mode
   :defer t
