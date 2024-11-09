@@ -48,5 +48,6 @@
     "C_Cpp.inlayHints.referenceOperator.enabled": true,
     "C_Cpp.inlayHints.referenceOperator.showSpace": true,
     "go.formatTool": "goimports",
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "go.toolsManagement.autoUpdate": true
 }
