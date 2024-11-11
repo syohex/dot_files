@@ -1,4 +1,7 @@
 {
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.activeBackground1": "#ffffff"
+    },
     "window.titleBarStyle": "custom",
     "window.commandCenter": false,
     "window.title": " ",
@@ -38,7 +41,6 @@
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
-    "dotnet.automaticallyCreateSolutionInWorkspace": false,
     "FSharp.suggestGitignore": false,
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.default.cStandard": "c23",
