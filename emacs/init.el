@@ -322,6 +322,9 @@
     global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
                        ("p" . 'git-gutter2-previous-hunk))))
 
+(use-package evil
+  :defer t)
+
 ;; key mapping
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
@@ -352,3 +355,4 @@
 (global-set-key (kbd "C-x [") #'beginning-of-buffer)
 (global-set-key (kbd "C-x ]") #'end-of-buffer)
 (global-set-key (kbd "C-x @") #'pop-global-mark)
+(define-key editutil-ctrl-q-map (kbd "e") #'evil-mode)
