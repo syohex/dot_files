@@ -27,5 +27,10 @@
         "key": "ctrl+\\",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "fsi.SendFile",
+        "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
     }
 ]
