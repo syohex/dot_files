@@ -167,6 +167,8 @@
   :defer t)
 
 (with-eval-after-load 'cc-mode
+  (advice-add 'c-update-modeline :around #'ignore)
+
   (define-key c-mode-map (kbd "M-q") nil)
   (define-key c-mode-map (kbd "C-c o") #'ff-find-other-file)
   (define-key c-mode-map (kbd "C-c C-f") #'clang-format-buffer)
