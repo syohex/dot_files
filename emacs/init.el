@@ -4,9 +4,6 @@
  '(custom-file "~/.emacs.d/custom.el")
  '(confirm-kill-processes nil)
  '(edebug-inhibit-emacs-lisp-mode-bindings t)
- '(anzu2-deactivate-region t)
- '(anzu2-mode-lighter "")
- '(anzu2-replace-to-string-separator " => ")
  '(auto-revert-check-vc-info t)
  '(auto-revert-interval 10)
  '(dabbrev-case-fold-search nil)
@@ -19,23 +16,12 @@
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
  '(find-file-visit-truename t)
- '(git-gutter2-deleted-sign " ")
- '(git-gutter2-modified-sign " ")
- '(helm-candidate-number-limit 500)
- '(helm-command-prefix-key nil)
- '(helm-exit-idle-delay 0)
- '(helm-gtags2-pulse-at-cursor nil)
- '(helm-input-idle-delay 0)
- '(helm-move-to-line-cycle-in-source nil)
  '(hippie-expand-try-functions-list
    '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
  '(hippie-expand-verbose nil)
  '(inhibit-startup-screen t)
  '(large-file-warning-threshold (* 25 1024 1024))
  '(ls-lisp-dirs-first t)
- '(markdown-gfm-use-electric-backquote nil)
- '(markdown-indent-on-enter nil)
- '(markdown-make-gfm-checkboxes-buttons nil)
  '(parens-require-spaces nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
@@ -114,6 +100,9 @@
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
+  (setq-default anzu2-deactivate-region t
+                anzu2-mode-lighter ""
+                anzu2-replace-to-string-separator " => ")
   (global-anzu2-mode +1))
 
 (use-package editutil
@@ -215,9 +204,15 @@
   (define-key haskell-mode-map (kbd "C-j") #'haskell-indentation-newline-and-indent))
 
 (use-package tuareg
+  :defer t)
+
+(use-package utop
   :defer t
   :config
-  (define-key tuareg-mode-map (kbd "C-c C-l") #'tuareg-eval-buffer))
+  (setq utop-command "opam exec -- dune utop . -- -emacs")
+  (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+  (define-key utop-minor-mode-map (kbd "C-x C-r") nil)
+  (define-key utop-minor-mode-map (kbd "C-c C-l") #'utop-eval-buffer))
 
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
 
@@ -242,6 +237,10 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
   :config
+  (setq-default markdown-gfm-use-electric-backquote nil
+                markdown-indent-on-enter nil
+                markdown-make-gfm-checkboxes-buttons nil)
+
   (define-key markdown-mode-map (kbd "C-x n") nil)
   (define-key markdown-mode-map (kbd "C-x n b") nil)
   (define-key markdown-mode-map (kbd "C-x n s") nil))
@@ -250,11 +249,17 @@
 
 (use-package helm
   :config
+  (setq-default helm-candidate-number-limit 500
+                helm-command-prefix-key nil
+                helm-exit-idle-delay 0
+                helm-input-idle-delay 0
+                helm-move-to-line-cycle-in-source nil)
+
   (require 'helm-mode)
   (helm-mode -1)
 
   (require 'helm-files)
-  (setq helm-find-files-doc-header "")
+  (setq-default helm-find-files-doc-header "")
 
   (define-key helm-map (kbd "C-q") #'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-p") #'helm-previous-line)
@@ -276,6 +281,8 @@
   :commands (helm-gtags2-mode)
   :vc (:url "https://github.com/syohex/emacs-helm-gtags2.git" :rev :newest)
   :config
+  (setq-default helm-gtags2-pulse-at-cursor nil)
+
   (define-key helm-gtags2-mode-map (kbd "M-t") #'helm-gtags2-find-tag)
   (define-key helm-gtags2-mode-map (kbd "M-r") #'helm-gtags2-find-rtag)
   (define-key helm-gtags2-mode-map (kbd "M-s") #'helm-gtags2-find-symbol)
@@ -307,6 +314,9 @@
 (use-package git-gutter2
   :vc (:url "https://github.com/syohex/emacs-git-gutter2.git" :rev :newest)
   :config
+  (setq-default git-gutter2-deleted-sign " "
+                git-gutter2-modified-sign " ")
+
   (global-git-gutter2-mode +1)
 
   (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
@@ -319,13 +329,18 @@
 (use-package smartrep
   :vc (:url "https://github.com/syohex/smartrep.el" :rev :newest)
   :config
+  (setq-default smartrep-mode-line-string-activated " <<SMARTREP>> "
+                smartrep-mode-line-active-bg "color-223")
+
   (smartrep-define-key
-    global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
-                       ("p" . 'git-gutter2-previous-hunk))))
+      global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
+                         ("p" . 'git-gutter2-previous-hunk))))
 
 (use-package evil
   :defer t
   :config
+  (setq-default evil-mode-line-format nil)
+
   (define-key evil-normal-state-map (kbd "C-n") #'next-line)
   (define-key evil-normal-state-map (kbd "C-p") #'previous-line)
   (define-key evil-insert-state-map (kbd "C-n") #'next-line)
