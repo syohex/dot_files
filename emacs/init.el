@@ -110,7 +110,10 @@
 (use-package editutil
   :vc (:url "https://github.com/syohex/emacs-editutil.git" :rev :newest)
   :config
-  (editutil-default-setup))
+  (editutil-default-setup)
+
+  (define-key editutil-ctrl-q-map (kbd "e") #'evil-mode)
+  (define-key editutil-ctrl-q-map "p" project-prefix-map))
 
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
@@ -264,7 +267,7 @@
 
 (use-package helm-descbinds
   :config
-  (helm-descbinds-install))
+  (helm-descbinds-mode +1))
 
 (use-package helm-ag2
   :defer t
@@ -346,6 +349,8 @@
 ;; key mapping
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
+(global-set-key (kbd "M-z") #'suspend-frame)
+(global-set-key (kbd "M-/") #'comment-line)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
 (global-set-key (kbd "C-r") #'isearch-backward-regexp)
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
@@ -370,4 +375,3 @@
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 (global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") #'helm-apropos)
-(define-key editutil-ctrl-q-map (kbd "e") #'evil-mode)
