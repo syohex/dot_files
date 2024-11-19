@@ -1,11 +1,13 @@
 ;; -*- lexical-binding: t -*-
 
 (custom-set-variables
- '(custom-file "~/.emacs.d/custom.el")
- '(confirm-kill-processes nil)
- '(edebug-inhibit-emacs-lisp-mode-bindings t)
  '(auto-revert-check-vc-info t)
  '(auto-revert-interval 10)
+ '(confirm-kill-processes nil)
+ '(compilation-ask-about-save nil)
+ '(compile-command "")
+ '(custom-file "~/.emacs.d/custom.el")
+ '(edebug-inhibit-emacs-lisp-mode-bindings t)
  '(dabbrev-case-fold-search nil)
  '(dired-auto-revert-buffer t)
  '(dired-dwim-target t)
@@ -25,12 +27,12 @@
  '(parens-require-spaces nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
-   '(".recentf" "/repos/" "/elpa/" "/el-get/" "CMakeCache.txt" "/usr/local/share/emacs/"
-     "\\.mime-example" "\\.ido.last" "/tmp/gomi/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*"))
+   '(".recentf" "/elpa/" "CMakeCache.txt" "/usr/local/share/emacs/"
+     "\\.mime-example" "\\.ido.last" "/tmp/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*"))
  '(recentf-max-saved-items 1000)
- '(set-mark-command-repeat-pop t)
  '(sh-indentation 2)
  '(js-indent-level 2)
+ '(scroll-preserve-screen-position t)
  '(show-paren-delay 0)
  '(show-paren-style 'expression)
  '(split-width-threshold 160)
@@ -122,8 +124,7 @@
   (set-frame-font "HackGen Console-12")
   (tool-bar-mode -1))
 
-;; show-paren
-(show-paren-mode 1)
+(show-paren-mode +1)
 
 (require 'server)
 (unless (server-running-p)
@@ -131,8 +132,6 @@
 (defalias 'exit 'save-buffers-kill-emacs)
 
 (require 'uniquify)
-(require 'recentf)
-(run-at-time t 600 'recentf-save-list)
 (recentf-mode +1)
 
 (global-auto-revert-mode +1)
@@ -151,7 +150,7 @@
                   tuareg-mode-hook
                   haskell-mode-hook
                   markdown-mode-hook
-                  rust-mode-hook))
+                  rust-ts-mode-hook))
     (add-hook hook #'eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
@@ -163,18 +162,13 @@
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
   (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))))
 
-(use-package clang-format
-  :defer t)
-
 (with-eval-after-load 'cc-mode
   (advice-add 'c-update-modeline :around #'ignore)
 
   (define-key c-mode-map (kbd "M-q") nil)
   (define-key c-mode-map (kbd "C-c o") #'ff-find-other-file)
-  (define-key c-mode-map (kbd "C-c C-f") #'clang-format-buffer)
 
-  (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file)
-  (define-key c++-mode-map (kbd "C-c C-f") #'clang-format-buffer))
+  (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file))
 
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
@@ -210,20 +204,19 @@
 
 (use-package utop
   :defer t
-  :config
-  (setq utop-command "opam exec -- dune utop . -- -emacs")
+  :init
   (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+  :config
   (define-key utop-minor-mode-map (kbd "C-x C-r") nil)
   (define-key utop-minor-mode-map (kbd "C-c C-l") #'utop-eval-buffer))
 
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-to-list 'auto-mode-alist '("\\(?:dune\\(?:-project\\)?\\)" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
-
-(use-package rust-mode
-  :defer t)
 
 (add-to-list 'auto-mode-alist '("\\.ts" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx" . tsx-ts-mode))
-(add-to-list 'auto-mode-alist '("\\(CMakeLists\\.txt\\|\\.cmake\\)\\'" . cmake-ts-mode))
+(add-to-list 'auto-mode-alist '("\\(?:CMakeLists\\.txt\\|\\.cmake\\)\\'" . cmake-ts-mode))
 
 (with-eval-after-load 'dired
   ;; Not create new buffer, if you chenge directory in dired
@@ -353,7 +346,6 @@
 ;; key mapping
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
-(global-set-key (kbd "M-k") #'kill-whole-line)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
 (global-set-key (kbd "C-r") #'isearch-backward-regexp)
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
@@ -373,11 +365,9 @@
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
 (global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
-(global-set-key (kbd "M-g l") #'flymake-show-buffer-diagnostics)
+(global-set-key (kbd "M-g c") #'compile)
+(global-set-key (kbd "M-g r") #'recompile)
 (global-set-key (kbd "C-x w") #'window-configuration-to-register)
 (global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") #'helm-apropos)
-(global-set-key (kbd "C-x [") #'beginning-of-buffer)
-(global-set-key (kbd "C-x ]") #'end-of-buffer)
-(global-set-key (kbd "C-x @") #'pop-global-mark)
 (define-key editutil-ctrl-q-map (kbd "e") #'evil-mode)
