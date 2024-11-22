@@ -175,9 +175,9 @@
 
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
-  (hs-minor-mode 1)
   (c-toggle-electric-state -1)
   (setq c-basic-offset 4)
+  (setq-local comment-start "//" comment-end "")
   (helm-gtags2-mode +1))
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
