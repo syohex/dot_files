@@ -340,6 +340,11 @@
 
   (evil-mode +1)
 
+  (evil-set-leader nil (kbd "SPC"))
+  (evil-define-key 'normal 'global (kbd "<leader>rr") #'anzu2-query-replace)
+  (evil-define-key 'normal 'global (kbd "<leader>r%") #'anzu2-query-replace-at-cursor)
+  (evil-define-key 'normal 'global (kbd "<leader>mf") #'mark-defun)
+
   (define-key evil-normal-state-map (kbd "C-n") #'next-line)
   (define-key evil-normal-state-map (kbd "C-p") #'previous-line)
   (define-key evil-insert-state-map (kbd "C-n") #'next-line)
