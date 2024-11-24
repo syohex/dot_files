@@ -335,9 +335,10 @@
                          ("p" . 'git-gutter2-previous-hunk))))
 
 (use-package evil
-  :defer t
   :config
   (setq-default evil-mode-line-format nil)
+
+  (evil-mode +1)
 
   (define-key evil-normal-state-map (kbd "C-n") #'next-line)
   (define-key evil-normal-state-map (kbd "C-p") #'previous-line)
