@@ -265,10 +265,6 @@
   (define-key helm-map (kbd "C-M-p") #'helm-previous-source)
   (define-key helm-map (kbd "C-M-n") #'helm-next-source))
 
-(use-package helm-descbinds
-  :config
-  (helm-descbinds-mode +1))
-
 (use-package helm-ag2
   :defer t
   :commands (helm-ag2 helm-do-ag2 helm-ag2-project-root)
