@@ -50,5 +50,12 @@
     "C_Cpp.inlayHints.referenceOperator.showSpace": true,
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "github.copilot.editor.enableAutoCompletions": true
 }
