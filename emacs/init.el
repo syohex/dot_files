@@ -336,7 +336,8 @@
 
 (use-package evil
   :config
-  (setq-default evil-mode-line-format nil)
+  (setq-default evil-mode-line-format nil
+                evil-symbol-word-search t)
 
   (evil-mode +1)
 
