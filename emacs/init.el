@@ -343,6 +343,7 @@
   (evil-define-key 'normal 'global (kbd "<leader>r%") #'anzu2-query-replace-at-cursor)
   (evil-define-key 'normal 'global (kbd "<leader>mf") #'mark-defun)
 
+  (define-key evil-normal-state-map (kbd "M-.") #'xref-find-definitions)
   (define-key evil-normal-state-map (kbd "C-n") #'next-line)
   (define-key evil-normal-state-map (kbd "C-p") #'previous-line)
   (define-key evil-insert-state-map (kbd "C-n") #'next-line)
