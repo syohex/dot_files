@@ -316,6 +316,7 @@
   (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
   (global-set-key (kbd "C-x v u") 'git-gutter2-update)
   (global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
+  (global-set-key (kbd "C-x v c") 'git-gutter2-clear-gutter)
 
   (global-set-key (kbd "C-x n") 'git-gutter2-next-hunk)
   (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk))
