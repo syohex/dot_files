@@ -92,10 +92,10 @@ local LIST_COLOR='di=34;1' 'ln=35' 'so=32' 'ex=32;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LIST_COLOR
 
 alias ls='ls -F --color'
-alias bat="batcat --theme='OneHalfDark'"
 alias grep='grep --color=always'
 alias emacs='env COLORTERM=true emacs'
-alias e='emacsclient'
+alias e='env COLORTERM=true emacs -nw'
+alias ec='emacsclient'
 alias s='git status -s -b'
 alias d='git diff'
 alias dc='git diff --cached'
@@ -111,17 +111,18 @@ else
   alias b='gh browse'
 fi
 
-if [[ -n $WSLENV ]]; then
-  alias -g C='| /mnt/c/Windows/System32/clip.exe'
-  alias start='/mnt/c/Windows/explorer.exe'
-  alias open='/mnt/c/Windows/explorer.exe'
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    if [[ -n $WSLENV ]]; then
+        alias -g C='| /mnt/c/Windows/System32/clip.exe'
+        alias start='/mnt/c/Windows/explorer.exe'
+        alias open='/mnt/c/Windows/explorer.exe'
+    else
+        alias -g C='| xsel --input --clipboard'
+        alias open='xdg-open'
+        alias start='xdg-open'
+    fi
+    alias bat="batcat --theme='OneHalfDark'"
 else
-  if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias -g C='| xsel --input --clipboard'
-    alias open='xdg-open'
-    alias start='xdg-open'
-  else
-    # macOS
     alias -g C='| pbcopy'
     alias start='open'
     path=(/opt/homebrew/bin(N-/) $path)
