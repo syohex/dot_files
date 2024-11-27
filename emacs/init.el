@@ -145,7 +145,7 @@
   :init
   (dolist (hook '(c-mode-hook
                   c++-mode-hook
-                  go-mode-hook
+                  go-ts-mode-hook
                   python-mode-hook
                   js-mode-hook
                   csharp-mode-hook
@@ -183,15 +183,6 @@
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
 
-(use-package go-mode
-  :defer t
-  :config
-  (define-key go-mode-map (kbd "C-c C-f") #'gofmt)
-  (define-key go-mode-map (kbd "C-c C-j") 'go-goto-map)
-  (define-key go-mode-map (kbd "M-.") #'godef-jump)
-  (define-key go-mode-map (kbd "M-,") #'pop-tag-mark)
-  (define-key go-mode-map (kbd ":") nil))
-
 (use-package haskell-mode
   :defer t
   :init
@@ -213,6 +204,7 @@
   (define-key utop-minor-mode-map (kbd "C-x C-r") nil)
   (define-key utop-minor-mode-map (kbd "C-c C-l") #'utop-eval-buffer))
 
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-to-list 'auto-mode-alist '("\\(?:dune\\(?:-project\\)?\\)" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\(?:cpanfile\\|\\.t\\)\\'" . perl-mode))
