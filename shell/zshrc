@@ -162,7 +162,7 @@ bindkey '^x^x' zaw-cdr
 bindkey '^xd' zaw-git-directories
 bindkey '^x^r' zaw-history
 
-# completion git(too slowly in big repository)
+# override _git internal function because this is too slow in big repo like linux kernel
 __git_files () {
   _wanted files expl 'local files' _files
 }
@@ -175,20 +175,6 @@ function cdp() {
   else
     echo "'$PWD' is not a git repository"
   fi
-}
-
-## Chdir to directory of current buffer
-function cde() {
-  local emacs_cwd=$(emacsclient -e \
-    "(editutil-current-buffer-directory)" | awk '{gsub("\"", ""); print}' )
-
-  if [[ "$emacs_cwd" == "nil" ]]; then
-    echo "Could not get the directory of current buffer in Emacs"
-    return 1
-  fi
-
-  cd "$emacs_cwd"
-  pwd
 }
 
 function _delete_previous_word () {
@@ -233,6 +219,10 @@ fi
 if [[ -n $WSLENV ]]; then
   path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/) $path)
   path=(/mnt/c/Program\ Files/Docker/Docker/resources/bin(N-/) $path)
+fi
+
+if [[ -n $VSCODE_INJECTION ]]; then
+  export GIT_EDITOR='code --wait'
 fi
 
 path=(~/local/*/bin $path)
