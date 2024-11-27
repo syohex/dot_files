@@ -20,8 +20,20 @@
         "command": "editor.action.formatDocument"
     },
     {
+        "key": "alt+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.showAllSymbols"
+    },
+    {
         "key": "ctrl+\\",
         "command": "workbench.action.createTerminalEditor"
+    },
+    {
+        "key": "alt+\\",
+        "command": "workbench.action.createTerminalEditorSide"
     },
     {
         "key": "ctrl+l",

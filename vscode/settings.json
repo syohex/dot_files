@@ -22,17 +22,13 @@
     "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-a>": false,
-        "<C-b>": false,
         "<C-c>": false,
-        "<C-d>": false,
-        "<C-f>": false,
         "<C-h>": false,
         "<C-i>": false,
         "<C-j>": false,
         "<C-k>": false,
         "<C-p>": false,
         "<C-n>": false,
-        "<C-t>": false,
         "<C-x>": false,
         "<C-v>": false,
         "<C-.>": false
