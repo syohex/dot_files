@@ -108,24 +108,24 @@ if [[ -z $DISPLAY || -n $WSLENV ]]; then
   alias b='gh browse -n'
   export GPG_TTY=$(tty)
 else
-  alias b='gh browse'
+  alias b='gh browse 1>/dev/null 2>/dev/null'
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    if [[ -n $WSLENV ]]; then
-        alias -g C='| /mnt/c/Windows/System32/clip.exe'
-        alias start='/mnt/c/Windows/explorer.exe'
-        alias open='/mnt/c/Windows/explorer.exe'
-    else
-        alias -g C='| xsel --input --clipboard'
-        alias open='xdg-open'
-        alias start='xdg-open'
-    fi
-    alias bat="batcat --theme='OneHalfDark'"
+  if [[ -n $WSLENV ]]; then
+    alias -g C='| /mnt/c/Windows/System32/clip.exe'
+    alias start='/mnt/c/Windows/explorer.exe'
+    alias open='/mnt/c/Windows/explorer.exe'
+  else
+    alias -g C='| xsel --input --clipboard'
+    alias open='xdg-open'
+    alias start='xdg-open'
+  fi
+  alias bat="batcat --theme='OneHalfDark'"
 else
-    alias -g C='| pbcopy'
-    alias start='open'
-    path=(/opt/homebrew/bin(N-/) $path)
+  alias -g C='| pbcopy'
+  alias start='open'
+  path=(/opt/homebrew/bin(N-/) $path)
 fi
 
 # prompt
