@@ -45,9 +45,6 @@
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
 
-(require 'cl-lib)
-(require 'subr-x)
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -60,6 +57,10 @@
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
+
+;; git
+(setenv "GIT_EDITOR" "emacsclient")
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
 
 ;; disable keys
 (global-unset-key (kbd "C-x w"))
@@ -90,7 +91,6 @@
 (normal-erase-is-backspace-mode -1)
 
 (menu-bar-mode -1)
-(line-number-mode +1)
 (column-number-mode +1)
 (which-function-mode +1)
 
@@ -118,21 +118,13 @@
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
   :init
-  (if (display-graphic-p)
-      (load-theme 'syohex t)
-    (load-theme 'syohex-terminal t)))
-
-(when (display-graphic-p)
-  (set-frame-size nil 130 50)
-  (set-frame-font "HackGen Console-12")
-  (tool-bar-mode -1))
+  (load-theme 'syohex-terminal t))
 
 (show-paren-mode +1)
 
 (require 'server)
 (unless (server-running-p)
   (server-start))
-(defalias 'exit 'save-buffers-kill-emacs)
 
 (require 'uniquify)
 (recentf-mode +1)
@@ -170,7 +162,6 @@
 
   (define-key c-mode-map (kbd "M-q") nil)
   (define-key c-mode-map (kbd "C-c o") #'ff-find-other-file)
-
   (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file))
 
 (defun my/c-mode-hook ()
@@ -313,16 +304,6 @@
   (global-set-key (kbd "C-x n") 'git-gutter2-next-hunk)
   (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk))
 
-(use-package smartrep
-  :vc (:url "https://github.com/syohex/smartrep.el" :rev :newest)
-  :config
-  (setq-default smartrep-mode-line-string-activated " <<SMARTREP>> "
-                smartrep-mode-line-active-bg "color-223")
-
-  (smartrep-define-key
-      global-map "C-x" '(("n" . 'git-gutter2-next-hunk)
-                         ("p" . 'git-gutter2-previous-hunk))))
-
 (use-package evil
   :config
   (setq-default evil-mode-line-format nil
@@ -330,24 +311,25 @@
 
   (evil-mode +1)
 
+  (evil-define-key 'normal 'global (kbd "M-.") #'xref-find-definitions)
+  (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
+  (evil-define-key 'normal 'global (kbd "C-p") #'previous-line)
+  (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
+  (evil-define-key 'normal 'global (kbd "C-p") #'previous-line)
+  (evil-define-key 'normal 'global (kbd "C-a") #'move-beginning-of-line)
+  (evil-define-key 'normal 'global (kbd "C-e") #'move-end-of-line)
+  (evil-define-key 'normal 'global (kbd "[ v") #'git-gutter2-previous-hunk)
+  (evil-define-key 'normal 'global (kbd "] v") #'git-gutter2-next-hunk)
+
   (evil-set-leader nil (kbd "SPC"))
   (evil-define-key 'normal 'global (kbd "<leader>rr") #'anzu2-query-replace)
   (evil-define-key 'normal 'global (kbd "<leader>r%") #'anzu2-query-replace-at-cursor)
   (evil-define-key 'normal 'global (kbd "<leader>mf") #'mark-defun)
-
-  (define-key evil-normal-state-map (kbd "M-.") #'xref-find-definitions)
-  (define-key evil-normal-state-map (kbd "C-n") #'next-line)
-  (define-key evil-normal-state-map (kbd "C-p") #'previous-line)
-  (define-key evil-insert-state-map (kbd "C-n") #'next-line)
-  (define-key evil-insert-state-map (kbd "C-p") #'previous-line)
-  (define-key evil-insert-state-map (kbd "C-a") #'move-beginning-of-line)
-  (define-key evil-insert-state-map (kbd "C-e") #'move-end-of-line))
+  (evil-define-key 'normal 'global (kbd "<leader>u") #'git-gutter2-update))
 
 ;; key mapping
 (global-set-key [delete] #'delete-char)
-(global-set-key (kbd "M-ESC ESC") #'keyboard-quit)
 (global-set-key (kbd "M-z") #'suspend-frame)
-(global-set-key (kbd "M-/") #'comment-line)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
 (global-set-key (kbd "C-r") #'isearch-backward-regexp)
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
@@ -357,6 +339,7 @@
 (global-set-key (kbd "C-M-z") #'helm-resume)
 (global-set-key (kbd "C-x !") #'eglot-rename)
 (global-set-key (kbd "C-x m") #'eldoc-doc-buffer)
+(global-set-key (kbd "C-x \\") #'eshell)
 (global-set-key (kbd "C-x M-.") #'xref-find-references)
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
 (global-set-key (kbd "C-x C-c") #'helm-M-x)
