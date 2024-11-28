@@ -27,7 +27,7 @@
  '(parens-require-spaces nil)
  '(read-file-name-completion-ignore-case t)
  '(recentf-exclude
-   '(".recentf" "/elpa/" "CMakeCache.txt" "/usr/local/share/emacs/"
+   '(".recentf" "/elpa/" "CMakeCache.txt" "/usr/local/share/emacs/" "/.git/"
      "\\.mime-example" "\\.ido.last" "/tmp/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*"))
  '(recentf-max-saved-items 1000)
  '(sh-indentation 2)
@@ -296,7 +296,7 @@
 
   (global-git-gutter2-mode +1)
 
-  (global-set-key (kbd "C-x v =") 'git-gutter2-popup-hunk)
+  (global-set-key (kbd "C-x v p") 'git-gutter2-popup-hunk)
   (global-set-key (kbd "C-x v u") 'git-gutter2-update)
   (global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
   (global-set-key (kbd "C-x v c") 'git-gutter2-clear-gutter)
@@ -345,7 +345,6 @@
 (global-set-key (kbd "C-x C-c") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
-(global-set-key (kbd "C-x v d") #'vc-diff)
 (global-set-key (kbd "M-g .") #'helm-ag2)
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
