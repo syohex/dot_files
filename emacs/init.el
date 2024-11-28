@@ -310,6 +310,7 @@
                 evil-symbol-word-search t)
 
   (evil-mode +1)
+  (evil-set-toggle-key "M-z")
 
   (evil-define-key 'normal 'global (kbd "M-.") #'xref-find-definitions)
   (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
@@ -329,7 +330,6 @@
 
 ;; key mapping
 (global-set-key [delete] #'delete-char)
-(global-set-key (kbd "M-z") #'suspend-frame)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
 (global-set-key (kbd "C-r") #'isearch-backward-regexp)
 (global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
