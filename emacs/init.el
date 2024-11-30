@@ -213,6 +213,9 @@
   ;; display directories by first
   (load-library "ls-lisp"))
 
+(with-eval-after-load 'esh-mode
+  (define-key eshell-mode-map (kbd "C-x \\") #'previous-buffer))
+
 (use-package markdown-mode
   :defer t
   :init
@@ -321,6 +324,11 @@
   (evil-define-key 'normal 'global (kbd "C-e") #'move-end-of-line)
   (evil-define-key 'normal 'global (kbd "[ v") #'git-gutter2-previous-hunk)
   (evil-define-key 'normal 'global (kbd "] v") #'git-gutter2-next-hunk)
+  (evil-define-key 'insert 'global (kbd "C-a") #'move-beginning-of-line)
+  (evil-define-key 'insert 'global (kbd "C-e") #'move-end-of-line)
+  (evil-define-key 'insert 'global (kbd "C-n") #'next-line)
+  (evil-define-key 'insert 'global (kbd "C-p") #'previous-line)
+  (evil-define-key 'insert 'global (kbd "C-y") #'editutil-yank)
 
   (evil-set-leader nil (kbd "SPC"))
   (evil-define-key 'normal 'global (kbd "<leader>rr") #'anzu2-query-replace)
