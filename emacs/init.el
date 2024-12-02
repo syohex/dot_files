@@ -329,6 +329,7 @@
   (evil-define-key 'insert 'global (kbd "C-n") #'next-line)
   (evil-define-key 'insert 'global (kbd "C-p") #'previous-line)
   (evil-define-key 'insert 'global (kbd "C-y") #'editutil-yank)
+  (evil-define-key 'insert 'global (kbd "C-k") #'editutil-kill-line)
 
   (evil-set-leader nil (kbd "SPC"))
   (evil-define-key 'normal 'global (kbd "<leader>rr") #'anzu2-query-replace)
