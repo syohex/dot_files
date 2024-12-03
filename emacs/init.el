@@ -7,13 +7,11 @@
  '(compilation-ask-about-save nil)
  '(compile-command "")
  '(custom-file "~/.emacs.d/custom.el")
- '(edebug-inhibit-emacs-lisp-mode-bindings t)
  '(dabbrev-case-fold-search nil)
  '(dired-auto-revert-buffer t)
  '(dired-dwim-target t)
  '(dired-recursive-copies 'always)
  '(dired-recursive-deletes 'always)
- '(edebug-inhibit-emacs-lisp-mode-bindings t)
  '(eldoc-echo-area-use-multiline-p nil)
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
@@ -53,15 +51,11 @@
 (setq gc-cons-threshold (* gc-cons-threshold 10)
       ring-bell-function #'ignore)
 (setq-default indent-tabs-mode nil
-              echo-keystrokes 0)
+              echo-keystrokes 0
+              edebug-inhibit-emacs-lisp-mode-bindings t)
 
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
-
-;; disable keys
-(global-unset-key (kbd "C-x w"))
-(global-unset-key (kbd "C-x @"))
-(global-unset-key (kbd "C-x a"))
 
 (when (executable-find "mozc_emacs_helper")
   (use-package mozc
@@ -94,9 +88,6 @@
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
-  (setq-default anzu2-deactivate-region t
-                anzu2-mode-lighter ""
-                anzu2-replace-to-string-separator " => ")
   (global-anzu2-mode +1))
 
 (use-package editutil
@@ -277,9 +268,6 @@
 (use-package git-gutter2
   :vc (:url "https://github.com/syohex/emacs-git-gutter2.git" :rev :newest)
   :config
-  (setq-default git-gutter2-deleted-sign " "
-                git-gutter2-modified-sign " ")
-
   (global-git-gutter2-mode +1)
 
   (global-set-key (kbd "C-x v p") 'git-gutter2-popup-hunk)
@@ -334,7 +322,7 @@
 (global-set-key (kbd "C-x \\") #'eshell)
 (global-set-key (kbd "C-x M-.") #'xref-find-references)
 (global-set-key (kbd "C-x C-i") #'helm-imenu)
-(global-set-key (kbd "C-x C-c") #'helm-M-x)
+(global-set-key (kbd "C-x C-a") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "M-g .") #'helm-ag2)
