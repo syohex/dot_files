@@ -58,10 +58,6 @@
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 
-;; git
-(setenv "GIT_EDITOR" "emacsclient")
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))
-
 ;; disable keys
 (global-unset-key (kbd "C-x w"))
 (global-unset-key (kbd "C-x @"))
@@ -77,13 +73,6 @@
     (setq-default default-input-method "japanese-mozc")
     (global-set-key (kbd "C-o") 'toggle-input-method)))
 
-(global-font-lock-mode +1)
-(transient-mark-mode +1)
-
-;; indicate last line
-(setq-default indicate-empty-lines t
-              indicate-buffer-boundaries 'right)
-
 ;; not create backup file
 (setq backup-inhibited t
       delete-auto-save-files t)
@@ -98,6 +87,9 @@
 (save-place-mode +1)
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
+
+(with-eval-after-load 'compile
+  (setq-default compilation-mode-line-errors nil))
 
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
@@ -134,19 +126,15 @@
 
 (use-package eglot
   :defer t
-  :init
-  (dolist (hook '(c-mode-hook
-                  c++-mode-hook
-                  go-ts-mode-hook
-                  python-mode-hook
-                  js-mode-hook
-                  csharp-mode-hook
-                  typescript-ts-mode-hook
-                  tuareg-mode-hook
-                  haskell-mode-hook
-                  markdown-mode-hook
-                  rust-ts-mode-hook))
-    (add-hook hook #'eglot-ensure))
+  :hook ((c-mode
+          c++-mode
+          rust-ts-mode
+          go-ts-mode
+          python-mode
+          tuareg-mode
+          haskell-mode
+          js-mode
+          type-script-ts-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '((js-mode typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
@@ -176,8 +164,8 @@
 
 (use-package haskell-mode
   :defer t
+  :hook ((haskell-mode . interactive-haskell-mode))
   :init
-  (add-hook 'haskell-mode-hook #'interactive-haskell-mode)
   (with-eval-after-load 'haskell
     (define-key interactive-haskell-mode-map (kbd "C-c C-c") #'haskell-process-load-file)
     (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build))
@@ -189,8 +177,7 @@
 
 (use-package utop
   :defer t
-  :init
-  (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+  :hook ((tuareg-mode . utop-minor-mode))
   :config
   (define-key utop-minor-mode-map (kbd "C-x C-r") nil)
   (define-key utop-minor-mode-map (kbd "C-c C-l") #'utop-eval-buffer))
@@ -285,11 +272,7 @@
 
 (use-package paredit
   :defer t
-  :init
-  (dolist (hook '(emacs-lisp-mode-hook
-                  lisp-interaction-mode-hook
-                  lisp-mode-hook))
-    (add-hook hook 'enable-paredit-mode)))
+  :hook ((emacs-lisp-mode lisp-interaction-mode lisp-mode) . enable-paredit-mode))
 
 (use-package git-gutter2
   :vc (:url "https://github.com/syohex/emacs-git-gutter2.git" :rev :newest)
