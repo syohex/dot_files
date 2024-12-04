@@ -201,20 +201,13 @@
   :config
   (setq-default markdown-gfm-use-electric-backquote nil
                 markdown-indent-on-enter nil
-                markdown-make-gfm-checkboxes-buttons nil)
-
-  (define-key markdown-mode-map (kbd "C-x n") nil)
-  (define-key markdown-mode-map (kbd "C-x n b") nil)
-  (define-key markdown-mode-map (kbd "C-x n s") nil))
+                markdown-make-gfm-checkboxes-buttons nil))
 
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 
 (use-package helm
   :config
-  (setq-default helm-candidate-number-limit 500
-                helm-command-prefix-key nil
-                helm-exit-idle-delay 0
-                helm-input-idle-delay 0
+  (setq-default helm-input-idle-delay 0
                 helm-move-to-line-cycle-in-source nil)
 
   (require 'helm-mode)
@@ -223,6 +216,7 @@
   (require 'helm-files)
   (setq-default helm-find-files-doc-header "")
 
+  (global-set-key (kbd "C-x c") nil)
   (define-key helm-map (kbd "C-q") #'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-p") #'helm-previous-line)
   (define-key helm-map (kbd "C-n") #'helm-next-line)
@@ -329,8 +323,5 @@
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
 (global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
-(global-set-key (kbd "M-g c") #'compile)
-(global-set-key (kbd "M-g r") #'recompile)
-(global-set-key (kbd "C-x w") #'window-configuration-to-register)
 (global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-h a") #'helm-apropos)
