@@ -16,6 +16,9 @@
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
  '(find-file-visit-truename t)
+ '(flymake-margin-indicators-string '((error "X" compilation-error)
+                                      (warning "!" compilation-warning)
+                                      (note "@" compilation-info)))
  '(hippie-expand-try-functions-list
    '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
  '(hippie-expand-verbose nil)
@@ -285,8 +288,6 @@
   (evil-define-key 'normal 'global (kbd "C-p") #'previous-line)
   (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
   (evil-define-key 'normal 'global (kbd "C-p") #'previous-line)
-  (evil-define-key 'normal 'global (kbd "C-a") #'move-beginning-of-line)
-  (evil-define-key 'normal 'global (kbd "C-e") #'move-end-of-line)
   (evil-define-key 'normal 'global (kbd "[ v") #'git-gutter2-previous-hunk)
   (evil-define-key 'normal 'global (kbd "] v") #'git-gutter2-next-hunk)
   (evil-define-key 'insert 'global (kbd "C-a") #'move-beginning-of-line)
