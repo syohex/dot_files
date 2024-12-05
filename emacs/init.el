@@ -16,9 +16,9 @@
  '(eldoc-idle-delay 0.2)
  '(electric-indent-mode nil)
  '(find-file-visit-truename t)
- '(flymake-margin-indicators-string '((error "X" compilation-error)
+ '(flymake-margin-indicators-string '((error "x" compilation-error)
                                       (warning "!" compilation-warning)
-                                      (note "@" compilation-info)))
+                                      (note "!" compilation-info)))
  '(hippie-expand-try-functions-list
    '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
  '(hippie-expand-verbose nil)
