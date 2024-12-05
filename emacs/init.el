@@ -41,6 +41,8 @@
  '(use-package-always-ensure t)
  '(vc-follow-symlinks t)
  '(vc-handled-backends '(Git))
+ '(vc-git-diff-switches '("--stat"))
+ '(vc-git-log-switches '("--stat"))
  '(view-read-only t))
 
 (when load-file-name
@@ -322,6 +324,7 @@
 (global-set-key (kbd "C-x C-a") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
+(global-set-key (kbd "C-x v d") #'vc-root-diff)
 (global-set-key (kbd "M-g .") #'helm-ag2)
 (global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
 (global-set-key (kbd "M-g p") #'helm-ag2-project-root)
