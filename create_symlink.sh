@@ -2,8 +2,9 @@
 set -e
 set -x
 
-install -d ~/.emacs.d
-ln -sf ${PWD}/emacs/init.el ~/.emacs.d/init.el
+install -d ~/.emacs.d/eshell
+ln -sf $PWD/emacs/init.el ~/.emacs.d/init.el
+ln -sf $PWD/emacs/alias ~/.emacs.d/eshell/alias
 
 install -d ~/.zsh
 ln -sf $PWD/shell/zshrc ~/.zshrc

@@ -250,6 +250,8 @@
   (global-company-mode +1)
   (global-set-key (kbd "C-M-i") #'company-complete)
 
+  (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
+
   (define-key company-active-map (kbd "C-n") #'company-select-next)
   (define-key company-active-map (kbd "C-p") #'company-select-previous)
   (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
