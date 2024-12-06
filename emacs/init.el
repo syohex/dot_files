@@ -105,7 +105,7 @@
 
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
-  :init
+  :config
   (load-theme 'syohex-terminal t))
 
 (show-paren-mode +1)
