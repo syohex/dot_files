@@ -8,6 +8,7 @@
     "workbench.layoutControl.enabled": false,
     "editor.columnSelection": true,
     "editor.stickyScroll.scrollWithEditor": false,
+    "editor.minimap.enabled": false,
     "extensions.ignoreRecommendations": false,
     "files.insertFinalNewline": true,
     "workbench.colorTheme": "Default Dark+",
