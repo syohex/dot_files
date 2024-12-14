@@ -286,6 +286,7 @@
 
   (evil-mode +1)
   (evil-set-toggle-key "M-z")
+  (evil-set-undo-system 'undo-redo)
 
   (evil-define-key 'normal 'global (kbd "M-.") #'xref-find-definitions)
   (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
