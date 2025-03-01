@@ -136,9 +136,11 @@
                '((js-mode typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
   (setq eglot-ignored-server-capabilities '(:documentFormattingProvider
                                             :documentOnTypeFormattingProvider
-                                            :documentRangeFormattingProvider))
+                                            :documentRangeFormattingProvider)
+        eglot-code-action-indicator "")
 
   (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
+  (define-key eglot-mode-map (kbd "C-x .") #'eglot-code-actions)
   (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))))
 
 (with-eval-after-load 'cc-mode
