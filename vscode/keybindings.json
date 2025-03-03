@@ -28,6 +28,10 @@
         "command": "workbench.action.showAllSymbols"
     },
     {
+        "key": "alt+o",
+        "command": "workbench.action.gotoSymbol"
+    },
+    {
         "key": "ctrl+\\",
         "command": "workbench.action.createTerminalEditor"
     },
