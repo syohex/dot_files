@@ -3,7 +3,7 @@
 set -e
 
 declare -a packages
-packages=(zsh build-essential diffutils vim aspell jq nkf curl w3m porg bat)
+packages=(zsh build-essential diffutils vim aspell jq nkf curl porg bat)
 
 if [[ -z $WSLENV && -n $DISPLAY ]]; then
   packages+=(emacs-moz emacs-mozc-bin mozc-server mozc-utils-gui)
