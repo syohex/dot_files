@@ -310,6 +310,11 @@
   (evil-define-key 'normal 'global (kbd "<leader>mf") #'mark-defun)
   (evil-define-key 'normal 'global (kbd "<leader>u") #'git-gutter2-update))
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode +1))
+
 ;; key mapping
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
