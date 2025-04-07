@@ -1,49 +1,23 @@
 ;; -*- lexical-binding: t -*-
 
-(custom-set-variables
- '(auto-revert-check-vc-info t)
- '(auto-revert-interval 10)
- '(confirm-kill-processes nil)
- '(compilation-ask-about-save nil)
- '(compile-command "")
- '(custom-file "~/.emacs.d/custom.el")
- '(dabbrev-case-fold-search nil)
- '(dired-auto-revert-buffer t)
- '(dired-dwim-target t)
- '(dired-recursive-copies 'always)
- '(dired-recursive-deletes 'always)
- '(eldoc-echo-area-use-multiline-p nil)
- '(eldoc-idle-delay 0.2)
- '(electric-indent-mode nil)
- '(find-file-visit-truename t)
- '(flymake-margin-indicators-string '((error "x" compilation-error)
-                                      (warning "!" compilation-warning)
-                                      (note "!" compilation-info)))
- '(hippie-expand-try-functions-list
-   '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers))
- '(hippie-expand-verbose nil)
- '(inhibit-startup-screen t)
- '(large-file-warning-threshold (* 25 1024 1024))
- '(ls-lisp-dirs-first t)
- '(parens-require-spaces nil)
- '(read-file-name-completion-ignore-case t)
- '(recentf-exclude
-   '(".recentf" "/elpa/" "CMakeCache.txt" "/usr/local/share/emacs/" "/.git/"
-     "\\.mime-example" "\\.ido.last" "/tmp/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*"))
- '(recentf-max-saved-items 1000)
- '(sh-indentation 2)
- '(js-indent-level 2)
- '(scroll-preserve-screen-position t)
- '(show-paren-delay 0)
- '(show-paren-style 'expression)
- '(split-width-threshold 160)
- '(use-short-answers t)
- '(use-package-always-ensure t)
- '(vc-follow-symlinks t)
- '(vc-handled-backends '(Git))
- '(vc-git-diff-switches '("--stat"))
- '(vc-git-log-switches '("--stat"))
- '(view-read-only t))
+(setopt confirm-kill-processes nil
+        custom-file "~/.emacs.d/custom.el"
+        dabbrev-case-fold-search nil
+        electric-indent-mode nil
+        find-file-visit-truename t
+        inhibit-startup-screen t
+        large-file-warning-threshold (* 25 1024 1024)
+        ls-lisp-dirs-first t
+        parens-require-spaces nil
+        read-file-name-completion-ignore-case t
+        scroll-preserve-screen-position t
+        split-width-threshold 160
+        use-short-answers t
+        view-read-only t
+        dired-auto-revert-buffer t
+        dired-dwim-target t
+        dired-recursive-copies 'always
+        dired-recursive-deletes 'always)
 
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
@@ -52,6 +26,41 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 (require 'use-package)
+
+(setopt use-package-always-ensure t)
+
+(use-package compile
+  :config
+  (setopt compilation-ask-about-save nil
+          compile-command ""))
+
+(use-package vc
+  :config
+  (setopt vc-follow-symlinks t
+          vc-handled-backends '(Git)
+          vc-git-diff-switches '("--stat")
+          vc-git-log-switches '("--stat")))
+
+(use-package flymake
+  :config
+  (setopt flymake-margin-indicators-string '((error "x" compilation-error)
+                                             (warning "!" compilation-warning)
+                                             (note "!" compilation-info))))
+
+(use-package paren
+  :config
+  (setopt show-paren-delay 0
+          show-paren-style 'expression))
+
+(use-package hippie-exp
+  :config
+  (setopt hippie-expand-try-functions-list '(try-expand-dabbrev try-complete-file-name try-complete-file-name-partially try-expand-dabbrev-all-buffers)
+          hippie-expand-verbose nil))
+
+(use-package eldoc
+  :config
+  (setopt eldoc-echo-area-use-multiline-p nil
+          eldoc-idle-delay 0.2))
 
 (setq gc-cons-threshold (* gc-cons-threshold 10)
       ring-bell-function #'ignore)
@@ -65,9 +74,8 @@
 (when (executable-find "mozc_emacs_helper")
   (use-package mozc
     :init
-    (custom-set-variables
-     '(mozc-candidate-style 'echo-area)
-     '(mozc-leim-title "[も]"))
+    (setopt mozc-candidate-style 'echo-area
+            mozc-leim-title "[も]")
     :config
     (setq-default default-input-method "japanese-mozc")
     (global-set-key (kbd "C-o") 'toggle-input-method)))
@@ -115,9 +123,20 @@
   (server-start))
 
 (require 'uniquify)
-(recentf-mode +1)
 
-(global-auto-revert-mode +1)
+(use-package recentf
+  :config
+  (setopt recentf-exclude '(".recentf" "/elpa/" "CMakeCache.txt" "/usr/local/share/emacs/" "/.git/"
+                            "\\.mime-example" "\\.ido.last" "/tmp/" "/\\.cpanm/" "/Mail/" "\\.newsrc.*")
+          recentf-max-saved-items 1000)
+  (recentf-mode +1))
+
+(use-package autorevert
+  :config
+  (setopt auto-revert-check-vc-info t
+          auto-revert-interval 10)
+  (global-auto-revert-mode +1))
+
 (electric-pair-mode +1)
 
 (use-package eglot
@@ -159,6 +178,14 @@
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
+
+(use-package sh-script
+  :config
+  (setopt sh-indentation 2))
+
+(use-package js
+  :config
+  (setopt js-indent-level 2))
 
 (use-package haskell-mode
   :defer t
