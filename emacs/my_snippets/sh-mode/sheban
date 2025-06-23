@@ -1,9 +1,0 @@
-# name : #!/bin/sh # Shebang
-# key  : sheban
-# --
-#!/bin/sh
-
-set -e
-set -x
-
-$0

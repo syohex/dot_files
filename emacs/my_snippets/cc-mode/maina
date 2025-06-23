@@ -1,9 +1,0 @@
-# name: int main(int argc, char *argv[]) { ... }
-# key: maina
-# --
-int main(int argc, char *argv[])
-{
-	$0
-
-	return 0;
-}

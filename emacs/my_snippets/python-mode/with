@@ -1,5 +1,0 @@
-# name : with operation: # with context
-# key  : with
-# --
-with ${1:operation}:
-     $0

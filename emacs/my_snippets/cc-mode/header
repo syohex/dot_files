@@ -1,9 +1,0 @@
-# name: Header file template
-# key: header
-# --
-#ifndef _${1:name}_
-#define _$1_
-
-$0
-
-#endif /* _$1_ */

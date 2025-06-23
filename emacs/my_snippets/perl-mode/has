@@ -1,6 +1,0 @@
-# name: has Moose/Mouse attribute
-# key: has
-# --
-has $0 => (
-
-);

@@ -1,6 +1,0 @@
-# name: if err != nil { ... }
-# key: ife
-# --
-if err != nil {
-	$0
-}

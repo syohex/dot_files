@@ -1,6 +1,0 @@
-# name: sub {} # Anonymous function
-# key: asub
-# --
-sub {
-    $0
-}

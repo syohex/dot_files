@@ -1,6 +1,0 @@
-# name: function for test
-# key: funct
-# --
-func Test$1(t *testing.T) {
-        $0
-}

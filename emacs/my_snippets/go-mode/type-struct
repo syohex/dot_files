@@ -1,6 +1,0 @@
-# name: type struct
-# key: types
-# --
-type $1 struct {
-     $0
-}

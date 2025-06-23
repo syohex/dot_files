@@ -1,5 +1,0 @@
-# name : for var in list: body
-# key  : for
-# --
-for $0 in :
-    

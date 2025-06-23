@@ -1,6 +1,0 @@
-# name: Package template
-# key: package
-# --
-package `(my-yas/parent-directory)`
-
-$0

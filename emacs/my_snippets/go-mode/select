@@ -1,6 +1,0 @@
-# name: select { ... }
-# key: select
-# --
-select {
-$0
-}

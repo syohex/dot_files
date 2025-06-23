@@ -1,4 +1,0 @@
-# name : binmode $fh, Encoding
-# key  : binmode
-# --
-binmode ${1:STDOUT}, ":${2:utf8}";

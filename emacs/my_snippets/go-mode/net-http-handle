@@ -1,6 +1,0 @@
-# name: net/http handler function
-# key: funch
-# --
-func$1(w http.ResponseWriter, r *http.Request) {
-        $0
-}

@@ -1,8 +1,0 @@
-# name : Script Template
-# key  : scriptt
-# --
-#!perl
-use strict;
-use warnings;
-
-$0

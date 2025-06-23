@@ -1,5 +1,0 @@
-# name: catch
-# key: catch
-# --
-catch ($0) {
-}

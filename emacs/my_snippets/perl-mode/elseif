@@ -1,6 +1,0 @@
-# name: elsif (...) { ... }
-# key: elseif
-# --
-elsif ($0) {
-
-}

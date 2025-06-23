@@ -1,6 +1,0 @@
-# name: switch { ... }
-# key: switch
-# --
-switch $0 {
-
-}

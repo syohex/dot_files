@@ -1,6 +1,0 @@
-# name : use strict; use warnings;
-# key  : strict
-# --
-use strict;
-use warnings;
-$0

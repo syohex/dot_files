@@ -1,8 +1,0 @@
-# name : sheban
-# key  : sheban
-# --
-#!perl
-use strict;
-use warnings;
-
-$0

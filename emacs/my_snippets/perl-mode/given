@@ -1,6 +1,0 @@
-# name: given () { ... }
-# key: given
-# --
-given ($0) {
-
-}

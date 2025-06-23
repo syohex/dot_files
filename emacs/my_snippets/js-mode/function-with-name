@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: function name () { ... }
-# key: funcn
-# --
-function $0() {
-
-}

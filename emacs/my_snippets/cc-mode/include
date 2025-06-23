@@ -1,4 +1,0 @@
-# name: #include <header>
-# key: inc
-# --
-#include <$0>

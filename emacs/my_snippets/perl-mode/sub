@@ -1,6 +1,0 @@
-# name: sub {} # named
-# key: sub
-# --
-sub $0 {
-
-}

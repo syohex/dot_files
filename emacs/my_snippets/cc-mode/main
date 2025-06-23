@@ -1,9 +1,0 @@
-# name: int main(void) { ... }
-# key: main
-# --
-int main(void)
-{
-	$0
-
-	return 0;
-}

@@ -1,6 +1,0 @@
-# name: when () { ... }
-# key: when
-# --
-when ($0) {
-
-}

@@ -1,5 +1,0 @@
-# name : class Class(SuperClass): # Class Definition
-# key  : class
-# --
-class ${1:class}():
-      $0

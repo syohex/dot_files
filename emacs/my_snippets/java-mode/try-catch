@@ -1,7 +1,0 @@
-# name: try-catch
-# key: try
-# --
-try {
-    $0
-} catch () {
-}

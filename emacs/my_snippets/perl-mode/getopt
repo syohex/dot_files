@@ -1,8 +1,0 @@
-# name: use Getopt::Long configure
-# key: getopt
-# --
-Getopt::Long::Configure(
-    'pass_through',
-    'no_ignore_case',
-    'bundling'
-)
