@@ -117,6 +117,7 @@
   (load-theme 'syohex-terminal t))
 
 (show-paren-mode +1)
+(fido-vertical-mode +1)
 
 (require 'server)
 (unless (server-running-p)
@@ -173,8 +174,7 @@
   (c-set-style "k&r")
   (c-toggle-electric-state -1)
   (setq c-basic-offset 4)
-  (setq-local comment-start "//" comment-end "")
-  (helm-gtags2-mode +1))
+  (setq-local comment-start "//" comment-end ""))
 
 (add-hook 'c-mode-hook 'my/c-mode-hook)
 (add-hook 'c++-mode-hook 'my/c-mode-hook)
@@ -238,43 +238,6 @@
                 markdown-make-gfm-checkboxes-buttons nil))
 
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
-
-(use-package helm
-  :config
-  (setq-default helm-input-idle-delay 0
-                helm-move-to-line-cycle-in-source nil)
-
-  (require 'helm-mode)
-  (helm-mode -1)
-
-  (require 'helm-files)
-  (setq-default helm-find-files-doc-header "")
-
-  (global-set-key (kbd "C-x c") nil)
-  (define-key helm-map (kbd "C-q") #'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-p") #'helm-previous-line)
-  (define-key helm-map (kbd "C-n") #'helm-next-line)
-  (define-key helm-map (kbd "C-M-p") #'helm-previous-source)
-  (define-key helm-map (kbd "C-M-n") #'helm-next-source))
-
-(use-package helm-ag2
-  :defer t
-  :commands (helm-ag2 helm-do-ag2 helm-ag2-project-root)
-  :vc (:url "https://github.com/syohex/emacs-helm-ag2.git" :rev :newest))
-
-(use-package helm-gtags2
-  :defer t
-  :commands (helm-gtags2-mode)
-  :vc (:url "https://github.com/syohex/emacs-helm-gtags2.git" :rev :newest)
-  :config
-  (setq-default helm-gtags2-pulse-at-cursor nil)
-
-  (define-key helm-gtags2-mode-map (kbd "M-t") #'helm-gtags2-find-tag)
-  (define-key helm-gtags2-mode-map (kbd "M-r") #'helm-gtags2-find-rtag)
-  (define-key helm-gtags2-mode-map (kbd "M-s") #'helm-gtags2-find-symbol)
-  (define-key helm-gtags2-mode-map (kbd "C-c >") #'helm-gtags2-next-history)
-  (define-key helm-gtags2-mode-map (kbd "C-c <") #'helm-gtags2-previous-history)
-  (define-key helm-gtags2-mode-map (kbd "C-c ,") #'helm-gtags2-pop-stack))
 
 (use-package company
   :config
@@ -350,19 +313,12 @@
 (global-set-key (kbd "ESC M-%") #'anzu2-query-replace-at-cursor)
 (global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
 (global-set-key (kbd "C-M-c") #'duplicate-dwim)
-(global-set-key (kbd "C-M-z") #'helm-resume)
 (global-set-key (kbd "C-x !") #'eglot-rename)
 (global-set-key (kbd "C-x m") #'eldoc-doc-buffer)
 (global-set-key (kbd "C-x \\") #'eshell)
 (global-set-key (kbd "C-x M-.") #'xref-find-references)
-(global-set-key (kbd "C-x C-i") #'helm-imenu)
-(global-set-key (kbd "C-x C-a") #'helm-M-x)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
+(global-set-key (kbd "C-x C-r") #'recentf-open)
+(global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "C-x v d") #'vc-root-diff)
-(global-set-key (kbd "M-g .") #'helm-ag2)
-(global-set-key (kbd "M-g ,") #'helm-ag2-pop-stack)
-(global-set-key (kbd "M-g p") #'helm-ag2-project-root)
-(global-set-key (kbd "M-g f") #'helm-do-ag2-project-root)
-(global-set-key (kbd "C-M-y") #'helm-show-kill-ring)
-(global-set-key (kbd "C-h a") #'helm-apropos)
