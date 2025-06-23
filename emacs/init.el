@@ -280,7 +280,9 @@
   (evil-set-toggle-key "M-z")
   (evil-set-undo-system 'undo-redo)
 
-  (add-hook 'suspend-hook #'evil-force-normal-state)
+  (add-hook 'suspend-hook (lambda ()
+                            (when evil-mode
+                              (evil-force-normal-state))))
 
   (evil-define-key 'normal 'global (kbd "M-.") #'xref-find-definitions)
   (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
