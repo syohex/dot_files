@@ -319,6 +319,8 @@
 (global-set-key (kbd "C-M-c") #'duplicate-dwim)
 (global-set-key (kbd "C-x !") #'eglot-rename)
 (global-set-key (kbd "C-x m") #'eldoc-doc-buffer)
+(global-set-key (kbd "C-x C-i") #'imenu)
+(global-set-key (kbd "C-x C-x") #'find-file)
 (global-set-key (kbd "C-x \\") #'eshell)
 (global-set-key (kbd "C-x M-.") #'xref-find-references)
 (global-set-key (kbd "C-x C-b") #'ibuffer)
