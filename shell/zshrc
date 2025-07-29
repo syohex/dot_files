@@ -103,19 +103,18 @@ alias dw='git diff --word-diff'
 alias dwc='git diff --cached --word-diff'
 alias -g L='|less -R'
 alias -g G='|grep'
+alias b='gh browse 1>/dev/null 2>/dev/null'
 
-if [[ -z $DISPLAY || -n $WSLENV ]]; then
-  alias b='gh browse -n'
+if [[ -z $DISPLAY || -v WSLENV ]]; then
   export GPG_TTY=$(tty)
-else
-  alias b='gh browse 1>/dev/null 2>/dev/null'
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  if [[ -n $WSLENV ]]; then
+  if [[ -v WSLENV ]]; then
     alias -g C='| /mnt/c/Windows/System32/clip.exe'
     alias start='/mnt/c/Windows/explorer.exe'
     alias open='/mnt/c/Windows/explorer.exe'
+    export BROWSER='/mnt/c/Windows/explorer.exe'
   else
     alias -g C='| xsel --input --clipboard'
     alias open='xdg-open'
@@ -216,12 +215,12 @@ if [[ -e ~/.opam/opam-init/init.zsh ]]; then
   source ~/.opam/opam-init/init.zsh
 fi
 
-if [[ -n $WSLENV ]]; then
+if [[ -v WSLENV ]]; then
   path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/) $path)
   path=(/mnt/c/Program\ Files/Docker/Docker/resources/bin(N-/) $path)
 fi
 
-if [[ -n $VSCODE_INJECTION ]]; then
+if [[ -v VSCODE_INJECTION ]]; then
   export GIT_EDITOR='code --wait'
 fi
 
