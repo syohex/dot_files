@@ -309,6 +309,10 @@
   :config
   (global-evil-surround-mode +1))
 
+;; for Windows Terminal
+(with-eval-after-load 'xterm
+  (global-set-key [xterm-paste] #'scroll-up-command))
+
 ;; key mapping
 (global-set-key [delete] #'delete-char)
 (global-set-key (kbd "C-s") #'isearch-forward-regexp)
@@ -328,4 +332,3 @@
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "C-x v d") #'vc-root-diff)
-(global-set-key [xterm-paste] #'scroll-up-command) ;; for Windows Terminal
