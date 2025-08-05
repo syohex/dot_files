@@ -328,3 +328,4 @@
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "C-x v d") #'vc-root-diff)
+(global-set-key [xterm-paste] #'scroll-up-command) ;; for Windows Terminal
