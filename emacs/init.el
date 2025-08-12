@@ -147,13 +147,9 @@
           rust-ts-mode
           go-ts-mode
           python-mode
-          tuareg-mode
-          haskell-mode
           js-mode
           type-script-ts-mode) . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs
-               '((js-mode typescript-ts-mode tsx-ts-mode) . ("deno" "lsp" :initializationOptions (:enable t :lint t))))
   (setq eglot-ignored-server-capabilities '(:documentFormattingProvider
                                             :documentOnTypeFormattingProvider
                                             :documentRangeFormattingProvider)
@@ -186,26 +182,6 @@
 (use-package js
   :config
   (setopt js-indent-level 2))
-
-(use-package haskell-mode
-  :defer t
-  :hook ((haskell-mode . interactive-haskell-mode))
-  :init
-  (with-eval-after-load 'haskell
-    (define-key interactive-haskell-mode-map (kbd "C-c C-c") #'haskell-process-load-file)
-    (define-key interactive-haskell-mode-map (kbd "C-c C-b") #'haskell-process-cabal-build))
-  :config
-  (define-key haskell-mode-map (kbd "C-j") #'haskell-indentation-newline-and-indent))
-
-(use-package tuareg
-  :defer t)
-
-(use-package utop
-  :defer t
-  :hook ((tuareg-mode . utop-minor-mode))
-  :config
-  (define-key utop-minor-mode-map (kbd "C-x C-r") nil)
-  (define-key utop-minor-mode-map (kbd "C-c C-l") #'utop-eval-buffer))
 
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
