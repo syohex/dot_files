@@ -19,7 +19,7 @@ PECO_DIR=~/.config/peco
 install -d ${PECO_DIR}
 ln -sf $PWD/golang/config.json ${PECO_DIR}/config.json
 
-if [[ ! -v WSLENV ]]; then
+if [[ ! -v WSLENV && -v DISPLAY ]]; then
   ln -sf $PWD/idea/ideavimrc ~/.ideavimrc
 
   VSCODE_USER_DIR=~/.config/Code/User
