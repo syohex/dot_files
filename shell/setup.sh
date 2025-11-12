@@ -19,6 +19,10 @@ if [[ ! -d ${dev_dir}/zsh/zsh-completions ]]; then
   ln -sf ${dev_dir}/zsh/zsh-completions ~/.zsh/
 fi
 
+if [[ ! -d ${dev_dir}/zsh/zsh-misc-completions ]]; then
+  (cd "${dev_dir}/zsh" && git clone https://github.com/syohex/zsh-misc-completions && cd zsh-misc-completions && zsh setup.sh)
+fi
+
 # setting for zsh zaw
 if [[ ! -d ${HOME}/.zsh/zaw ]]; then
   (cd "${HOME}/.zsh" && git clone https://github.com/zsh-users/zaw)
