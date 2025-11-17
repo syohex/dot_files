@@ -17,7 +17,8 @@
         dired-auto-revert-buffer t
         dired-dwim-target t
         dired-recursive-copies 'always
-        dired-recursive-deletes 'always)
+        dired-recursive-deletes 'always
+        imenu-auto-rescan t)
 
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
