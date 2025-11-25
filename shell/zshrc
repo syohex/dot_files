@@ -1,6 +1,6 @@
 # -*- mode:shell-script -*-
 path=(/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /snap/bin)
-fpath=(~/.zsh/zsh-completions/src ~/.zsh/completions $fpath)
+fpath=(~/.zsh/completions ~/.zsh/zsh-completions/src $fpath)
 autoload -U compinit
 compinit
 
