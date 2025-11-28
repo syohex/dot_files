@@ -18,7 +18,8 @@
         dired-dwim-target t
         dired-recursive-copies 'always
         dired-recursive-deletes 'always
-        imenu-auto-rescan t)
+        imenu-auto-rescan t
+        xref-search-program 'ripgrep)
 
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
@@ -306,3 +307,4 @@
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "C-x v d") #'vc-root-diff)
 (global-set-key (kbd "C-x v a") #'project-vc-dir)
+(global-set-key (kbd "M-g s") #'project-find-regexp)
