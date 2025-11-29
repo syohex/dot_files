@@ -121,10 +121,6 @@
 (show-paren-mode +1)
 (fido-vertical-mode +1)
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
 (require 'uniquify)
 
 (use-package recentf
