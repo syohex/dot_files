@@ -272,16 +272,7 @@
   (evil-define-key 'insert 'global (kbd "C-y") #'editutil-yank)
   (evil-define-key 'insert 'global (kbd "C-k") #'editutil-kill-line)
 
-  (evil-set-leader nil (kbd "SPC"))
-  (evil-define-key 'normal 'global (kbd "<leader>rr") #'anzu2-query-replace)
-  (evil-define-key 'normal 'global (kbd "<leader>r%") #'anzu2-query-replace-at-cursor)
-  (evil-define-key 'normal 'global (kbd "<leader>mf") #'mark-defun)
-  (evil-define-key 'normal 'global (kbd "<leader>u") #'git-gutter2-update))
-
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode +1))
+  (evil-set-leader nil (kbd "SPC")))
 
 ;; key mapping
 (global-set-key [delete] #'delete-char)
