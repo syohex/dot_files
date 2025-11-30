@@ -251,7 +251,7 @@
                 evil-symbol-word-search t)
 
   (evil-mode +1)
-  (evil-set-toggle-key "M-z")
+  (evil-set-toggle-key "C-x C-z")
   (evil-set-undo-system 'undo-redo)
 
   (add-hook 'suspend-hook (lambda ()
