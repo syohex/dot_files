@@ -149,5 +149,3 @@
 (global-set-key (kbd "C-x C-r") #'recentf-open)
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
-(global-set-key (kbd "C-x v d") #'vc-root-diff)
-(global-set-key (kbd "C-x v a") #'project-vc-dir)
