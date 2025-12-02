@@ -98,13 +98,37 @@
   :config
   (load-theme 'syohex t))
 
+(use-package markdown-mode
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+  :config
+  (setq-default markdown-gfm-use-electric-backquote nil
+                markdown-indent-on-enter nil
+                markdown-make-gfm-checkboxes-buttons nil))
+
+(use-package company
+  :config
+  (global-company-mode +1)
+  (global-set-key (kbd "C-M-i") #'company-complete)
+
+  (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
+
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
+  (define-key company-active-map (kbd "C-i") #'company-complete-selection))
+
+(define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-complete)
+(define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
+
 (use-package evil
   :config
   (setq-default evil-mode-line-format nil
                 evil-symbol-word-search t)
 
   (evil-mode +1)
-  (evil-set-toggle-key "M-z")
+  (evil-set-toggle-key "C-x C-z")
   (evil-set-undo-system 'undo-redo)
 
   (add-hook 'suspend-hook (lambda ()
@@ -149,3 +173,4 @@
 (global-set-key (kbd "C-x C-r") #'recentf-open)
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
+(global-unset-key (kbd "C-z"))
