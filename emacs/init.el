@@ -41,7 +41,9 @@
   (setopt vc-follow-symlinks t
           vc-handled-backends '(Git)
           vc-git-diff-switches '("--stat")
-          vc-git-log-switches '("--stat")))
+          vc-git-log-switches '("--stat"))
+
+  (add-hook 'vc-before-checkin-hook #'vc-diff))
 
 (use-package flymake
   :config
