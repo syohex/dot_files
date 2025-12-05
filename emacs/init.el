@@ -41,9 +41,7 @@
   (setopt vc-follow-symlinks t
           vc-handled-backends '(Git)
           vc-git-diff-switches '("--stat")
-          vc-git-log-switches '("--stat"))
-
-  (add-hook 'vc-before-checkin-hook #'vc-diff))
+          vc-git-log-switches '("--stat")))
 
 (use-package flymake
   :config
@@ -228,6 +226,12 @@
 
 (use-package paredit
   :defer t
+  :config
+  (define-key paredit-mode-map (kbd "M-s") nil)
+  (define-key paredit-mode-map (kbd "M-s") search-map)
+  (define-key paredit-mode-map (kbd "M-r") 'paredit-splice-sexp)
+  (define-key paredit-mode-map (kbd "C-c C-s") #'paredit-splice-sexp)
+  (define-key paredit-mode-map (kbd "C-c C-r") #'paredit-raise-sexp)
   :hook ((emacs-lisp-mode lisp-interaction-mode lisp-mode) . enable-paredit-mode))
 
 (use-package git-gutter2
