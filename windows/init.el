@@ -149,6 +149,15 @@
 
   (evil-set-leader nil (kbd "SPC")))
 
+(defun my/c-mode-hook ()
+  (c-set-style "k&r")
+  (c-toggle-electric-state -1)
+  (setq c-basic-offset 4)
+  (setq-local comment-start "//" comment-end ""))
+
+(add-hook 'c-mode-hook 'my/c-mode-hook)
+(add-hook 'c++-mode-hook 'my/c-mode-hook)
+
 (with-eval-after-load 'cc-mode
   (advice-add 'c-update-modeline :around #'ignore)
 
