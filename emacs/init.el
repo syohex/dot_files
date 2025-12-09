@@ -39,6 +39,7 @@
 (use-package vc
   :config
   (setopt vc-follow-symlinks t
+          vc-allow-rewriting-published-history 'ask
           log-edit-hook '(log-edit-insert-message-template log-edit-maybe-show-diff)
           vc-handled-backends '(Git)
           vc-git-diff-switches '("--stat")
