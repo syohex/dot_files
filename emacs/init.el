@@ -261,6 +261,9 @@
                             (when evil-mode
                               (evil-force-normal-state))))
 
+  (dolist (mode '(log-edit-mode))
+    (add-to-list 'evil-emacs-state-modes mode))
+
   (evil-define-key 'normal 'global (kbd "M-.") #'xref-find-definitions)
   (evil-define-key 'normal 'global (kbd "C-n") #'next-line)
   (evil-define-key 'normal 'global (kbd "C-p") #'previous-line)
