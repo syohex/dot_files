@@ -19,7 +19,8 @@
         dired-recursive-copies 'always
         dired-recursive-deletes 'always
         imenu-auto-rescan t
-        xref-search-program 'ripgrep)
+        xref-search-program 'ripgrep
+        eshell-banner-message "")
 
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
@@ -300,4 +301,4 @@
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "M-g s") #'project-find-regexp)
-(global-set-key (kbd "M-z") #'repeat)
+(global-set-key (kbd "M-j") #'repeat)
