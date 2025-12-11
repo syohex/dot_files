@@ -17,7 +17,8 @@
         dired-recursive-copies 'always
         dired-recursive-deletes 'always
         imenu-auto-rescan t
-        visible-bell t)
+        visible-bell t
+        eshell-banner-message "")
 
 (setq-default indent-tabs-mode nil
               echo-keystrokes 0
@@ -182,5 +183,5 @@
 (global-set-key (kbd "C-x C-r") #'recentf-open)
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
-(global-set-key (kbd "M-z") #'repeat)
+(global-set-key (kbd "M-j") #'repeat)
 (global-unset-key (kbd "C-z"))
