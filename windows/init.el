@@ -110,6 +110,8 @@
 
 (use-package company
   :config
+  (setopt company-backends
+          '(company-capf company-files company-dabbrev-code company-keywords company-dabbrev))
   (global-company-mode +1)
   (global-set-key (kbd "C-M-i") #'company-complete)
 
