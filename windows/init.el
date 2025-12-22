@@ -184,4 +184,5 @@
 (global-set-key (kbd "C-x C-p") #'project-find-file)
 (global-set-key (kbd "C-x C-j") #'dired-jump)
 (global-set-key (kbd "M-j") #'repeat)
+(global-set-key (kbd "M-g s") #'window-swap-states)
 (global-unset-key (kbd "C-z"))
