@@ -40,6 +40,10 @@
         "command": "workbench.action.createTerminalEditorSide"
     },
     {
+        "key": "alt+f",
+        "command": "actions.find"
+    },
+    {
         "key": "alt+l",
         "command": "fsi.SendFile",
         "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
