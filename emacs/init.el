@@ -119,7 +119,7 @@
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
   :config
-  (load-theme 'syohex-terminal t))
+  (load-theme 'syohex t))
 
 (show-paren-mode +1)
 (fido-vertical-mode +1)
