@@ -212,19 +212,11 @@ if [[ -e ~/.dotnet/dotnet ]]; then
   path=(~/.dotnet ~/.dotnet/tools(N-/) $path)
 fi
 
-if [[ -e ~/.opam/opam-init/init.zsh ]]; then
-  source ~/.opam/opam-init/init.zsh
-fi
-
 if [[ -v WSLENV ]]; then
   path=(/mnt/c/Users/*/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/) $path)
   path=(/mnt/c/Program\ Files/Docker/Docker/resources/bin(N-/) $path)
 fi
 
-if [[ -v VSCODE_INJECTION ]]; then
-  export GIT_EDITOR='code --wait'
-fi
-
 path=(~/local/*/bin $path)
-path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.ghcup/bin(N-/) ~/.cabal/bin(N-/) $path)
+path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.opam/default/bin(N-/) $path)
 path=(~/bin $path)
