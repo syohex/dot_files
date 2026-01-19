@@ -300,6 +300,8 @@
 (keymap-global-set "C-x C-r" #'recentf-open)
 (keymap-global-set "C-x C-p" #'project-find-file)
 (keymap-global-set "C-x C-j" #'dired-jump)
+(keymap-global-set "C-x _" #'split-window-below)
+(keymap-global-set "C-x |" #'split-window-right)
 (keymap-global-set "M-g f" #'project-find-regexp)
 (keymap-global-set "M-g s" #'window-swap-states)
 (keymap-global-set "M-j" #'repeat)
