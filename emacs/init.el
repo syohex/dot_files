@@ -83,7 +83,7 @@
             mozc-leim-title "[も]")
     :config
     (setq-default default-input-method "japanese-mozc")
-    (global-set-key (kbd "C-o") 'toggle-input-method)))
+    (keymap-global-set (kbd "C-o") 'toggle-input-method)))
 
 ;; not create backup file
 (setq backup-inhibited t
@@ -113,8 +113,8 @@
   :config
   (editutil-default-setup)
 
-  (define-key editutil-ctrl-q-map (kbd "e") #'evil-mode)
-  (define-key editutil-ctrl-q-map "p" project-prefix-map))
+  (keymap-set editutil-ctrl-q-map "e" #'evil-mode)
+  (keymap-set editutil-ctrl-q-map "p" project-prefix-map))
 
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
@@ -156,16 +156,16 @@
                                             :documentRangeFormattingProvider)
         eglot-code-action-indicator "")
 
-  (define-key eglot-mode-map (kbd "C-c i") #'eglot-inlay-hints-mode)
-  (define-key eglot-mode-map (kbd "C-x .") #'eglot-code-actions)
+  (keymap-set eglot-mode-map "C-c i" #'eglot-inlay-hints-mode)
+  (keymap-set eglot-mode-map "C-x ." #'eglot-code-actions)
   (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))))
 
 (with-eval-after-load 'cc-mode
   (advice-add 'c-update-modeline :around #'ignore)
 
-  (define-key c-mode-map (kbd "M-q") nil)
-  (define-key c-mode-map (kbd "C-c o") #'ff-find-other-file)
-  (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file))
+  (keymap-set c-mode-map "M-q" nil)
+  (keymap-set c-mode-map "C-c o" #'ff-find-other-file)
+  (keymap-set c++-mode-map "C-c o" #'ff-find-other-file))
 
 (defun my/c-mode-hook ()
   (c-set-style "k&r")
@@ -192,14 +192,14 @@
 (with-eval-after-load 'dired
   ;; Not create new buffer, if you chenge directory in dired
   (put 'dired-find-alternate-file 'disabled nil)
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
-  (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory)
+  (keymap-set dired-mode-map "RET" 'dired-find-alternate-file)
+  (keymap-set dired-mode-map "r" 'wdired-change-to-wdired-mode)
+  (keymap-set dired-mode-map "C-M-u" 'dired-up-directory)
   ;; display directories by first
   (load-library "ls-lisp"))
 
 (with-eval-after-load 'esh-mode
-  (define-key eshell-mode-map (kbd "C-x \\") #'previous-buffer))
+  (keymap-set eshell-mode-map "C-x \\" #'previous-buffer))
 
 (use-package markdown-mode
   :defer t
@@ -219,22 +219,22 @@
 
   (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
 
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
-  (define-key company-active-map (kbd "C-i") #'company-complete-selection))
+  (keymap-set company-active-map "C-n" #'company-select-next)
+  (keymap-set company-active-map "C-p" #'company-select-previous)
+  (keymap-set company-active-map "C-s" #'company-filter-candidates)
+  (keymap-set company-active-map "C-i" #'company-complete-selection))
 
-(define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-complete)
-(define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
+(keymap-set lisp-interaction-mode-map "C-M-i" #'company-complete)
+(keymap-set emacs-lisp-mode-map "C-M-i" #'company-complete)
 
 (use-package paredit
   :defer t
   :config
-  (define-key paredit-mode-map (kbd "M-s") nil)
-  (define-key paredit-mode-map (kbd "M-s") search-map)
-  (define-key paredit-mode-map (kbd "M-r") 'paredit-splice-sexp)
-  (define-key paredit-mode-map (kbd "C-c C-s") #'paredit-splice-sexp)
-  (define-key paredit-mode-map (kbd "C-c C-r") #'paredit-raise-sexp)
+  (keymap-set paredit-mode-map "M-s" nil)
+  (keymap-set paredit-mode-map "M-s" search-map)
+  (keymap-set paredit-mode-map "M-r" 'paredit-splice-sexp)
+  (keymap-set paredit-mode-map "C-c C-s" #'paredit-splice-sexp)
+  (keymap-set paredit-mode-map "C-c C-r" #'paredit-raise-sexp)
   :hook ((emacs-lisp-mode lisp-interaction-mode lisp-mode) . enable-paredit-mode))
 
 (use-package git-gutter2
@@ -242,13 +242,13 @@
   :config
   (global-git-gutter2-mode +1)
 
-  (global-set-key (kbd "C-x v p") 'git-gutter2-popup-hunk)
-  (global-set-key (kbd "C-x v u") 'git-gutter2-update)
-  (global-set-key (kbd "C-x v r") 'git-gutter2-revert-hunk)
-  (global-set-key (kbd "C-x v c") 'git-gutter2-clear-gutter)
+  (keymap-global-set "C-x v p" 'git-gutter2-popup-hunk)
+  (keymap-global-set "C-x v u" 'git-gutter2-update)
+  (keymap-global-set "C-x v r" 'git-gutter2-revert-hunk)
+  (keymap-global-set "C-x v c" 'git-gutter2-clear-gutter)
 
-  (global-set-key (kbd "C-x n") 'git-gutter2-next-hunk)
-  (global-set-key (kbd "C-x p") 'git-gutter2-previous-hunk))
+  (keymap-global-set "C-x n" 'git-gutter2-next-hunk)
+  (keymap-global-set "C-x p" 'git-gutter2-previous-hunk))
 
 (use-package evil
   :config
@@ -283,23 +283,23 @@
   (evil-set-leader nil (kbd "SPC")))
 
 ;; key mapping
-(global-set-key [delete] #'delete-char)
-(global-set-key (kbd "C-s") #'isearch-forward-regexp)
-(global-set-key (kbd "C-r") #'isearch-backward-regexp)
-(global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
-(global-set-key (kbd "ESC M-%") #'anzu2-query-replace-at-cursor)
-(global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
-(global-set-key (kbd "C-M-c") #'duplicate-dwim)
-(global-set-key (kbd "C-x !") #'eglot-rename)
-(global-set-key (kbd "C-x m") #'eldoc-doc-buffer)
-(global-set-key (kbd "C-x C-i") #'imenu)
-(global-set-key (kbd "C-x C-x") #'find-file)
-(global-set-key (kbd "C-x \\") #'eshell)
-(global-set-key (kbd "C-x M-.") #'xref-find-references)
-(global-set-key (kbd "C-x C-b") #'ibuffer)
-(global-set-key (kbd "C-x C-r") #'recentf-open)
-(global-set-key (kbd "C-x C-p") #'project-find-file)
-(global-set-key (kbd "C-x C-j") #'dired-jump)
-(global-set-key (kbd "M-g f") #'project-find-regexp)
-(global-set-key (kbd "M-g s") #'window-swap-states)
-(global-set-key (kbd "M-j") #'repeat)
+(keymap-global-set "<delete>" #'delete-char)
+(keymap-global-set "C-s" #'isearch-forward-regexp)
+(keymap-global-set "C-r" #'isearch-backward-regexp)
+(keymap-global-set "M-%" #'anzu2-query-replace-regexp)
+(keymap-global-set "ESC M-%" #'anzu2-query-replace-at-cursor)
+(keymap-global-set "C-x %" #'anzu2-replace-at-cursor-thing)
+(keymap-global-set "C-M-c" #'duplicate-dwim)
+(keymap-global-set "C-x !" #'eglot-rename)
+(keymap-global-set "C-h m" #'eldoc-doc-buffer)
+(keymap-global-set "C-x C-i" #'imenu)
+(keymap-global-set "C-x C-x" #'find-file)
+(keymap-global-set "C-x \\" #'eshell)
+(keymap-global-set "C-x M-." #'xref-find-references)
+(keymap-global-set "C-x C-b" #'ibuffer)
+(keymap-global-set "C-x C-r" #'recentf-open)
+(keymap-global-set "C-x C-p" #'project-find-file)
+(keymap-global-set "C-x C-j" #'dired-jump)
+(keymap-global-set "M-g f" #'project-find-regexp)
+(keymap-global-set "M-g s" #'window-swap-states)
+(keymap-global-set "M-j" #'repeat)
