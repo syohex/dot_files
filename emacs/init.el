@@ -303,5 +303,7 @@
 (keymap-global-set "C-x _" #'split-window-below)
 (keymap-global-set "C-x |" #'split-window-right)
 (keymap-global-set "M-g f" #'project-find-regexp)
-(keymap-global-set "M-g s" #'window-swap-states)
+(keymap-global-set "C-x w s" #'window-swap-states)
+(keymap-global-set "C-x w |" #'window-layout-flip-leftright)
+(keymap-global-set "C-x w _" #'window-layout-flip-topdown)
 (keymap-global-set "M-j" #'repeat)
