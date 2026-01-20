@@ -106,15 +106,16 @@
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
-  (global-anzu2-mode +1))
+  (global-anzu2-mode +1)
+  :bind
+  (("M-%" . anzu2-query-replace-regexp)
+   ("ESC M-%" . anzu2-query-replace-at-cursor)
+   ("C-x %" . anzu2-replace-at-cursor-thing)))
 
 (use-package editutil
   :vc (:url "https://github.com/syohex/emacs-editutil.git" :rev :newest)
   :config
-  (editutil-default-setup)
-
-  (keymap-set editutil-ctrl-q-map "e" #'evil-mode)
-  (keymap-set editutil-ctrl-q-map "p" project-prefix-map))
+  (editutil-default-setup))
 
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
@@ -155,10 +156,13 @@
                                             :documentOnTypeFormattingProvider
                                             :documentRangeFormattingProvider)
         eglot-code-action-indicator "")
+  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
 
-  (keymap-set eglot-mode-map "C-c i" #'eglot-inlay-hints-mode)
-  (keymap-set eglot-mode-map "C-x ." #'eglot-code-actions)
-  (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))))
+  :bind
+  (("C-x !" . eglot-rename)
+   :map eglot-mode-map
+   ("C-c i" . eglot-inlay-hints-mode)
+   ("C-x ." . eglot-code-actions)))
 
 (with-eval-after-load 'cc-mode
   (advice-add 'c-update-modeline :around #'ignore)
@@ -219,36 +223,38 @@
 
   (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
 
-  (keymap-set company-active-map "C-n" #'company-select-next)
-  (keymap-set company-active-map "C-p" #'company-select-previous)
-  (keymap-set company-active-map "C-s" #'company-filter-candidates)
-  (keymap-set company-active-map "C-i" #'company-complete-selection))
-
-(keymap-set lisp-interaction-mode-map "C-M-i" #'company-complete)
-(keymap-set emacs-lisp-mode-map "C-M-i" #'company-complete)
+  :bind
+  (("C-M-i" . company-complete)
+   :map company-active-map
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous)
+   ("C-s" . company-filter-candidates)
+   ("C-i" . company-complete-selection)
+   :map lisp-interaction-mode-map
+   ("C-M-i" . company-complete)
+   :map emacs-lisp-mode-map
+   ("C-M-i" . company-complete))  )
 
 (use-package paredit
   :defer t
-  :config
-  (keymap-set paredit-mode-map "M-s" nil)
-  (keymap-set paredit-mode-map "M-s" search-map)
-  (keymap-set paredit-mode-map "M-r" 'paredit-splice-sexp)
-  (keymap-set paredit-mode-map "C-c C-s" #'paredit-splice-sexp)
-  (keymap-set paredit-mode-map "C-c C-r" #'paredit-raise-sexp)
+  :bind
+  (:map
+   paredit-mode-map
+   ("M-s" . search-map)
+   ("M-r" . paredit-splice-sexp)
+   ("C-c C-s" . paredit-splice-sexp)
+   ("C-c C-r" . paredit-raise-sexp))
   :hook ((emacs-lisp-mode lisp-interaction-mode lisp-mode) . enable-paredit-mode))
 
 (use-package git-gutter2
   :vc (:url "https://github.com/syohex/emacs-git-gutter2.git" :rev :newest)
   :config
   (global-git-gutter2-mode +1)
-
-  (keymap-global-set "C-x v p" 'git-gutter2-popup-hunk)
-  (keymap-global-set "C-x v u" 'git-gutter2-update)
-  (keymap-global-set "C-x v r" 'git-gutter2-revert-hunk)
-  (keymap-global-set "C-x v c" 'git-gutter2-clear-gutter)
-
-  (keymap-global-set "C-x n" 'git-gutter2-next-hunk)
-  (keymap-global-set "C-x p" 'git-gutter2-previous-hunk))
+  :bind
+  (("C-x v p" . git-gutter2-popup-hunk)
+   ("C-x v u" . git-gutter2-update)
+   ("C-x n" . git-gutter2-next-hunk)
+   ("C-x p" . git-gutter2-previous-hunk)))
 
 (use-package evil
   :config
@@ -256,7 +262,7 @@
                 evil-symbol-word-search t)
 
   (evil-mode +1)
-  (evil-set-toggle-key "C-x C-z")
+  (evil-set-toggle-key "C-\\")
   (evil-set-undo-system 'undo-redo)
 
   (add-hook 'suspend-hook (lambda ()
@@ -281,29 +287,3 @@
   (evil-define-key 'insert 'global (kbd "C-k") #'editutil-kill-line)
 
   (evil-set-leader nil (kbd "SPC")))
-
-;; key mapping
-(keymap-global-set "<delete>" #'delete-char)
-(keymap-global-set "C-s" #'isearch-forward-regexp)
-(keymap-global-set "C-r" #'isearch-backward-regexp)
-(keymap-global-set "M-%" #'anzu2-query-replace-regexp)
-(keymap-global-set "ESC M-%" #'anzu2-query-replace-at-cursor)
-(keymap-global-set "C-x %" #'anzu2-replace-at-cursor-thing)
-(keymap-global-set "C-M-c" #'duplicate-dwim)
-(keymap-global-set "C-x !" #'eglot-rename)
-(keymap-global-set "C-h m" #'eldoc-doc-buffer)
-(keymap-global-set "C-x C-i" #'imenu)
-(keymap-global-set "C-x C-x" #'find-file)
-(keymap-global-set "C-x \\" #'eshell)
-(keymap-global-set "C-x M-." #'xref-find-references)
-(keymap-global-set "C-x C-b" #'ibuffer)
-(keymap-global-set "C-x C-r" #'recentf-open)
-(keymap-global-set "C-x C-p" #'project-find-file)
-(keymap-global-set "C-x C-j" #'dired-jump)
-(keymap-global-set "C-x _" #'split-window-below)
-(keymap-global-set "C-x |" #'split-window-right)
-(keymap-global-set "M-g f" #'project-find-regexp)
-(keymap-global-set "C-x w s" #'window-swap-states)
-(keymap-global-set "C-x w |" #'window-layout-flip-leftright)
-(keymap-global-set "C-x w _" #'window-layout-flip-topdown)
-(keymap-global-set "M-j" #'repeat)

@@ -60,9 +60,9 @@
 (with-eval-after-load 'dired
   ;; Not create new buffer, if you chenge directory in dired
   (put 'dired-find-alternate-file 'disabled nil)
-  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-  (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
-  (define-key dired-mode-map (kbd "C-M-u") 'dired-up-directory))
+  (keymap-set dired-mode-map "RET" 'dired-find-alternate-file)
+  (keymap-set dired-mode-map "r" 'wdired-change-to-wdired-mode)
+  (keymap-set dired-mode-map "C-M-u" 'dired-up-directory))
 
 (use-package vc
   :config
@@ -85,14 +85,16 @@
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
   :config
-  (global-anzu2-mode +1))
+  (global-anzu2-mode +1)
+  :bind
+  (("M-%" . anzu2-query-replace-regexp)
+   ("ESC M-%" . anzu2-query-replace-at-cursor)
+   ("C-x %" . anzu2-replace-at-cursor-thing)))
 
 (use-package editutil
   :vc (:url "https://github.com/syohex/emacs-editutil.git" :rev :newest)
   :config
-  (editutil-default-setup)
-
-  (define-key editutil-ctrl-q-map (kbd "e") #'evil-mode))
+  (editutil-default-setup))
 
 (use-package syohex-theme
   :vc (:url "https://github.com/syohex/emacs-syohex-theme.git" :rev :newest)
@@ -113,17 +115,19 @@
   (setopt company-backends
           '(company-capf company-files company-dabbrev-code company-keywords company-dabbrev))
   (global-company-mode +1)
-  (global-set-key (kbd "C-M-i") #'company-complete)
-
   (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
 
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
-  (define-key company-active-map (kbd "C-i") #'company-complete-selection))
-
-(define-key lisp-interaction-mode-map (kbd "C-M-i") #'company-complete)
-(define-key emacs-lisp-mode-map (kbd "C-M-i") #'company-complete)
+  :bind
+  (("C-M-i" . company-complete)
+   :map company-active-map
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous)
+   ("C-s" . company-filter-candidates)
+   ("C-i" . company-complete-selection)
+   :map lisp-interaction-mode-map
+   ("C-M-i" . company-complete)
+   :map emacs-lisp-mode-map
+   ("C-M-i" . company-complete)))
 
 (use-package evil
   :config
@@ -164,27 +168,6 @@
 (with-eval-after-load 'cc-mode
   (advice-add 'c-update-modeline :around #'ignore)
 
-  (define-key c-mode-map (kbd "M-q") nil)
-  (define-key c-mode-map (kbd "C-c o") #'ff-find-other-file)
-  (define-key c++-mode-map (kbd "C-c o") #'ff-find-other-file))
-
-;; key mapping
-(global-set-key [delete] #'delete-char)
-(global-set-key (kbd "C-s") #'isearch-forward-regexp)
-(global-set-key (kbd "C-r") #'isearch-backward-regexp)
-(global-set-key (kbd "M-%") #'anzu2-query-replace-regexp)
-(global-set-key (kbd "ESC M-%") #'anzu2-query-replace-at-cursor)
-(global-set-key (kbd "C-x %") #'anzu2-replace-at-cursor-thing)
-(global-set-key (kbd "C-M-c") #'duplicate-dwim)
-(global-set-key (kbd "C-x m") #'eldoc-doc-buffer)
-(global-set-key (kbd "C-x C-i") #'imenu)
-(global-set-key (kbd "C-x C-x") #'find-file)
-(global-set-key (kbd "C-x \\") #'eshell)
-(global-set-key (kbd "C-x M-.") #'xref-find-references)
-(global-set-key (kbd "C-x C-b") #'ibuffer)
-(global-set-key (kbd "C-x C-r") #'recentf-open)
-(global-set-key (kbd "C-x C-p") #'project-find-file)
-(global-set-key (kbd "C-x C-j") #'dired-jump)
-(global-set-key (kbd "M-j") #'repeat)
-(global-set-key (kbd "M-g s") #'window-swap-states)
-(global-unset-key (kbd "C-z"))
+  (keymap-set c-mode-map "M-q" nil)
+  (keymap-set c-mode-map "C-c o" #'ff-find-other-file)
+  (keymap-set c++-mode-map "C-c o" #'ff-find-other-file))
