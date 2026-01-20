@@ -240,10 +240,11 @@
   :bind
   (:map
    paredit-mode-map
-   ("M-s" . search-map)
    ("M-r" . paredit-splice-sexp)
    ("C-c C-s" . paredit-splice-sexp)
    ("C-c C-r" . paredit-raise-sexp))
+  :bind-keymap
+  ("M-s" . search-map)
   :hook ((emacs-lisp-mode lisp-interaction-mode lisp-mode) . enable-paredit-mode))
 
 (use-package git-gutter2
