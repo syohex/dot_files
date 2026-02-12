@@ -105,6 +105,7 @@ alias dtc='git -c diff.external=difft diff --cached'
 alias -g L='|less -R'
 alias -g G='|grep'
 alias b='gh browse 1>/dev/null 2>/dev/null'
+alias z='rm ~/.zcompdump && exec zsh'
 
 if [[ -z $DISPLAY || -v WSLENV ]]; then
   export GPG_TTY=$(tty)
@@ -168,7 +169,7 @@ __git_files () {
 }
 
 # cd to git root
-function cdp() {
+cdp() {
   local dir=$(git rev-parse --show-toplevel 2>/dev/null)
   if [[ $? == 0 ]]; then
     cd $dir
@@ -177,7 +178,7 @@ function cdp() {
   fi
 }
 
-function _delete_previous_word () {
+_delete_previous_word () {
   local lbuf
   lbuf=$LBUFFER
 
