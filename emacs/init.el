@@ -105,8 +105,6 @@
 
 (use-package anzu2
   :vc (:url "https://github.com/syohex/emacs-anzu2.git" :rev :newest)
-  :config
-  (global-anzu2-mode +1)
   :bind
   (("M-%" . anzu2-query-replace-regexp)
    ("ESC M-%" . anzu2-query-replace-at-cursor)
@@ -286,4 +284,7 @@
   (evil-define-key 'insert 'global (kbd "C-y") #'editutil-yank)
   (evil-define-key 'insert 'global (kbd "C-k") #'editutil-kill-line)
 
-  (evil-set-leader nil (kbd "SPC")))
+  (evil-set-leader nil (kbd "SPC"))
+
+  ;; this should be called after enabling evil-mode
+  (global-anzu2-mode +1))
