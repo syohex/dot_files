@@ -217,7 +217,7 @@
 (use-package company
   :config
   (global-company-mode +1)
-  (global-set-key (kbd "C-M-i") #'company-complete)
+  (keymap-global-set "C-M-i" #'company-complete)
 
   (add-hook 'eshell-mode-hook (lambda () (company-mode -1)))
 
