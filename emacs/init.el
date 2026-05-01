@@ -20,7 +20,10 @@
         dired-recursive-deletes 'always
         imenu-auto-rescan t
         xref-search-program 'ripgrep
-        eshell-banner-message "")
+        eshell-banner-message ""
+        eshell-history-size 4096
+        eshell-buffer-maximum-lines 4096
+        eshell-hist-ignoredups t)
 
 (when load-file-name
   (setq-default user-emacs-directory (file-name-directory load-file-name)))
