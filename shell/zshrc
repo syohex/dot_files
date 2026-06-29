@@ -198,7 +198,6 @@ if [[ -d ~/.plenv ]]; then
   eval "$(plenv init -)"
 fi
 
-export GOROOT=$HOME/local/go
 export GOPATH=$HOME/go
 path=($GOPATH/bin(N-/) $path)
 
