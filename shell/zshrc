@@ -218,5 +218,5 @@ if [[ -v WSLENV ]]; then
 fi
 
 path=(~/local/*/bin $path)
-path=(~/.local/bin(N-/) ~/.cargo/bin(N-/) ~/.local/share/mise/shims(N-/) $path)
+path=(~/.local/bin(N-/) ~/.local/share/mise/shims(N-/) ~/.cargo/bin(N-/)  $path)
 path=(~/bin $path)
