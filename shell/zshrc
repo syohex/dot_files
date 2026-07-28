@@ -106,6 +106,7 @@ alias -g L='|less -R'
 alias -g G='|grep'
 alias b='gh browse 1>/dev/null 2>/dev/null'
 alias z='rm ~/.zcompdump && exec zsh'
+alias m='eval "$(mise activate zsh)"'
 
 if [[ -z $DISPLAY || -v WSLENV ]]; then
   export GPG_TTY=$(tty)
