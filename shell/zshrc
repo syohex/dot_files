@@ -106,7 +106,6 @@ alias -g L='|less -R'
 alias -g G='|grep'
 alias b='gh browse 1>/dev/null 2>/dev/null'
 alias z='rm ~/.zcompdump && exec zsh'
-alias m='eval "$(mise activate zsh)"'
 
 if [[ -z $DISPLAY || -v WSLENV ]]; then
   export GPG_TTY=$(tty)
@@ -219,5 +218,8 @@ if [[ -v WSLENV ]]; then
 fi
 
 path=(~/local/*/bin $path)
-path=(~/.local/bin(N-/) ~/.local/share/mise/shims(N-/) ~/.cargo/bin(N-/)  $path)
+path=(~/.local/bin(N-/) ~/.cargo/bin(N-/)  $path)
 path=(~/bin $path)
+
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
+
