@@ -95,6 +95,7 @@ zstyle ':completion:*' list-colors $LIST_COLOR
 alias ls='ls -F --color'
 alias grep='grep --color=always'
 alias e='emacs -nw'
+alias n='nvim'
 alias s='git status -s -b'
 alias d='git diff'
 alias dc='git diff --cached'
