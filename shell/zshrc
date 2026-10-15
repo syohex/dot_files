@@ -124,7 +124,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias open='xdg-open'
     alias start='xdg-open'
   fi
-  alias bat="batcat --theme='OneHalfDark'"
 else
   alias -g C='| pbcopy'
   alias start='open'
