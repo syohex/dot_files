@@ -116,9 +116,9 @@ fi
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   if [[ -v WSLENV ]]; then
     alias -g C='| /mnt/c/Windows/System32/clip.exe'
-    alias start='/mnt/c/Windows/explorer.exe'
-    alias open='/mnt/c/Windows/explorer.exe'
-    export BROWSER='/mnt/c/Windows/explorer.exe'
+    alias start='wsl-open'
+    alias open='wsl-open'
+    export BROWSER='wsl-open'
   else
     alias -g C='| xsel --input --clipboard'
     alias open='xdg-open'
