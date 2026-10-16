@@ -43,6 +43,7 @@
 (use-package vc
   :config
   (setopt vc-follow-symlinks t
+          vc-dir-show-key-binding-hints nil
           vc-allow-rewriting-published-history 'ask
           log-edit-hook '(log-edit-insert-message-template log-edit-maybe-show-diff)
           vc-handled-backends '(Git)
