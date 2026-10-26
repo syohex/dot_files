@@ -217,6 +217,7 @@
                 markdown-make-gfm-checkboxes-buttons nil))
 
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-ts-mode))
 
 (use-package company
   :config
