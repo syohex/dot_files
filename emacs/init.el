@@ -236,7 +236,7 @@
    :map lisp-interaction-mode-map
    ("C-M-i" . company-complete)
    :map emacs-lisp-mode-map
-   ("C-M-i" . company-complete))  )
+   ("C-M-i" . company-complete)))
 
 (use-package paredit
   :defer t
