@@ -16,6 +16,8 @@
         dired-dwim-target t
         dired-recursive-copies 'always
         dired-recursive-deletes 'always
+        tab-bar-new-button-show nil
+        tab-bar-close-button-show 'selected
         imenu-auto-rescan t
         visible-bell t
         eshell-banner-message "")

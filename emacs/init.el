@@ -20,6 +20,8 @@
         dired-recursive-deletes 'always
         imenu-auto-rescan t
         xref-search-program 'ripgrep
+        tab-bar-new-button-show nil
+        tab-bar-close-button-show 'selected
         eshell-banner-message ""
         eshell-history-size 4096
         eshell-buffer-maximum-lines 4096
