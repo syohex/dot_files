@@ -256,10 +256,9 @@
   :config
   (global-git-gutter2-mode +1)
   :bind
-  (("C-x v p" . git-gutter2-popup-hunk)
-   ("C-x v u" . git-gutter2-update)
-   ("C-x n" . git-gutter2-next-hunk)
-   ("C-x p" . git-gutter2-previous-hunk)))
+  (("C-x v u" . git-gutter2-update)
+   ("C-x v n" . git-gutter2-next-hunk)
+   ("C-x v p" . git-gutter2-previous-hunk)))
 
 (use-package evil
   :config
