@@ -18,6 +18,7 @@
         dired-recursive-deletes 'always
         tab-bar-new-button-show nil
         tab-bar-close-button-show 'selected
+        tab-bar-new-tab-choice "*scratch*"
         imenu-auto-rescan t
         visible-bell t
         eshell-banner-message "")
